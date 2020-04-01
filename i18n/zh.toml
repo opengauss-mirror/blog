@@ -1,0 +1,20 @@
+[home]
+  other = "主页"
+
+[main_cards_title]
+  other = "欢迎来到我的博客！"
+
+[main_cards_tags]
+  other = "标签"
+
+[main_cards_posts]
+  other = "近期文章"
+
+[main_cards_archives]
+  other = "档案"
+
+[main_cards_previous]
+  other = "上一页"
+
+[main_cards_next]
+  other = "下一页"

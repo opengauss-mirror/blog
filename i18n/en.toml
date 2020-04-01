@@ -1,0 +1,20 @@
+[home]
+  other = "Home"
+
+[main_cards_title]
+  other = "Welcome to my blog !"
+
+[main_cards_tags]
+  other = "Tags"
+
+[main_cards_posts]
+  other = "Recent posts"
+
+[main_cards_archives]
+  other = "Archives"
+
+[main_cards_previous]
+  other = "Previous"
+
+[main_cards_next]
+  other = "Next"
