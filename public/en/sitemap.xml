@@ -3,281 +3,281 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://blog.openGauss.org/en/archives/2020-03/</loc>
+    <loc>./en/archives/2020-03/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/archives/2020-03/"
+                href="./zh/archives/2020-03.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/archives/2020-03/"
+                href="./en/archives/2020-03/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/archives/</loc>
+    <loc>./en/archives/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/archives/"
+                href="./zh/archives.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/archives/"
+                href="./en/archives/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/post/</loc>
+    <loc>./en/post/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/post/"
+                href="./zh/post.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/post/"
+                href="./en/post/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/tags/</loc>
+    <loc>./en/tags/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/tags/"
+                href="./zh/tags.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/tags/"
+                href="./en/tags/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/</loc>
+    <loc>./en/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/"
+                href="./zh/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/"
+                href="./en/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-qemu/</loc>
+    <loc>./en/post/traffic_millions/2020-03-27-qemu/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/post/traffic_millions/2020-03-27-qemu/"
+                href="./zh/post/traffic_millions/2020-03-27-qemu.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-qemu/"
+                href="./en/post/traffic_millions/2020-03-27-qemu/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-virtualbox/</loc>
+    <loc>./en/post/traffic_millions/2020-03-27-virtualbox/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/post/traffic_millions/2020-03-27-virtualbox/"
+                href="./zh/post/traffic_millions/2020-03-27-virtualbox.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-virtualbox/"
+                href="./en/post/traffic_millions/2020-03-27-virtualbox/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/tags/%E5%AE%89%E8%A3%85opengauss/</loc>
+    <loc>./en/tags/%E5%AE%89%E8%A3%85opengauss/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/tags/%E5%AE%89%E8%A3%85opengauss/"
+                href="./zh/tags/%E5%AE%89%E8%A3%85opengauss.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/tags/%E5%AE%89%E8%A3%85opengauss/"
+                href="./en/tags/%E5%AE%89%E8%A3%85opengauss/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/tags/abc/</loc>
+    <loc>./en/tags/abc/</loc>
     <lastmod>2020-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/tags/abc/"
+                href="./zh/tags/abc.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/tags/abc/"
+                href="./en/tags/abc/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/tags/sample/</loc>
+    <loc>./en/tags/sample/</loc>
     <lastmod>2020-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/tags/sample/"
+                href="./zh/tags/sample.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/tags/sample/"
+                href="./en/tags/sample/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/_example/2020-03-03-sample-post/</loc>
+    <loc>./en/_example/2020-03-03-sample-post/</loc>
     <lastmod>2020-03-03T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/_example/2020-03-03-sample-post/"
+                href="./zh/_example/2020-03-03-sample-post.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/_example/2020-03-03-sample-post/"
+                href="./en/_example/2020-03-03-sample-post/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/_example/</loc>
-    <lastmod>2020-03-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://blog.openGauss.org/zh/_example/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://blog.openGauss.org/en/_example/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://blog.openGauss.org/en/tags/cccc/</loc>
+    <loc>./en/_example/</loc>
     <lastmod>2020-03-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/tags/cccc/"
+                href="./zh/_example.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/tags/cccc/"
+                href="./en/_example/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/about/</loc>
+    <loc>./en/tags/cccc/</loc>
+    <lastmod>2020-03-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="./zh/tags/cccc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="./en/tags/cccc/"
+                />
+  </url>
+  
+  <url>
+    <loc>./en/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/about/"
+                href="./zh/about.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/about/"
+                href="./en/about/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/design/content_posts/</loc>
+    <loc>./en/design/content_posts/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/design/content_posts/"
+                href="./zh/design/content_posts.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/design/content_posts/"
+                href="./en/design/content_posts/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/design/</loc>
+    <loc>./en/design/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/design/"
+                href="./zh/design.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/design/"
+                href="./en/design/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/guidance/index_/</loc>
+    <loc>./en/guidance/index_/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/guidance/index_/"
+                href="./zh/guidance/index_.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/guidance/index_/"
+                href="./en/guidance/index_/"
                 />
   </url>
   
   <url>
-    <loc>http://blog.openGauss.org/en/guidance/</loc>
+    <loc>./en/guidance/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://blog.openGauss.org/zh/guidance/"
+                href="./zh/guidance.html"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://blog.openGauss.org/en/guidance/"
+                href="./en/guidance/"
                 />
   </url>
   

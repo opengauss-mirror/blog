@@ -12,6 +12,7 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 
 
+
 [taxonomies]
     tag = "tags"
     archive = "archives"
@@ -39,3 +40,6 @@ defaultContentLanguageInSubdir = true
 [languages.zh]
     languageCode = "zh-cn"
     contentDir = "content/zh"
+
+#编译参数
+#uglyURLs = true

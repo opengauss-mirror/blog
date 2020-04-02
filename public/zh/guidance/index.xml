@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guidances on openGauss Blog</title>
-    <link>http://blog.openGauss.org/zh/guidance/</link>
+    <link>./zh/guidance.html</link>
     <description>Recent content in Guidances on openGauss Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright © 2008–2018, @JeffProd</copyright>
     
-        <atom:link href="http://blog.openGauss.org/zh/guidance/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="./zh/guidance/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Guidance to Post a Blog</title>
-      <link>http://blog.openGauss.org/zh/guidance/index_/</link>
+      <link>./zh/guidance/index_.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/zh/guidance/index_/</guid>
+      <guid>./zh/guidance/index_.html</guid>
       <description>Preparation  Refer to http://git.mydoc.io/?t=179267 to register Gitee account.
  Set your primary mail box in gitee settings https://gitee.com/profile/emails.
  Sign your CLA in https://openeuler.org/zh/cla.html.

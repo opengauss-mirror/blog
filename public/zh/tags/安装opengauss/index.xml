@@ -1,22 +1,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>安装openGauss on openGauss Blog</title>
-    <link>http://blog.openGauss.org/zh/tags/%E5%AE%89%E8%A3%85opengauss/</link>
+    <link>./zh/tags/%E5%AE%89%E8%A3%85opengauss.html</link>
     <description>Recent content in 安装openGauss on openGauss Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Copyright © 2008–2018, @JeffProd</copyright>
     <lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="http://blog.openGauss.org/zh/tags/%E5%AE%89%E8%A3%85opengauss/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="./zh/tags/%E5%AE%89%E8%A3%85opengauss/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>初试openGauss（二）：windows下使用VirtualBox安装openGauss(这是中文)</title>
-      <link>http://blog.openGauss.org/zh/post/traffic_millions/2020-03-27-virtualbox/</link>
+      <link>./zh/post/traffic_millions/2020-03-27-virtualbox.html</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/zh/post/traffic_millions/2020-03-27-virtualbox/</guid>
+      <guid>./zh/post/traffic_millions/2020-03-27-virtualbox.html</guid>
       <description>windows下使用VirtualBox安装openGauss虚拟机.</description>
     </item>
     

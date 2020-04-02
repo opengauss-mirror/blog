@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Designs on openGauss Blog</title>
-    <link>http://blog.openGauss.org/en/design/</link>
+    <link>./en/design/</link>
     <description>Recent content in Designs on openGauss Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2008–2018, @JeffProd</copyright>
     
-        <atom:link href="http://blog.openGauss.org/en/design/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="./en/design/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>http://blog.openGauss.org/en/design/content_posts/</link>
+      <link>./en/design/content_posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/design/content_posts/</guid>
+      <guid>./en/design/content_posts/</guid>
       <description>Posts This file is to explain in which way the content of the blogs are stored and read by the blog system.
 What is supported in the blog A blog can include many formats of information, like text, pictures, videos, animations or others.
 openEuler Blog is designed to support the following formats:

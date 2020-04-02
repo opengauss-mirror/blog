@@ -1,49 +1,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>openGauss Blog</title>
-    <link>http://blog.openGauss.org/en/</link>
+    <link>./en/</link>
     <description>Recent content on openGauss Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2008–2018, @JeffProd</copyright>
     <lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="http://blog.openGauss.org/en/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="./en/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>初试openGauss（一）：windows下使用qemu安装openGauss</title>
-      <link>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-qemu/</link>
+      <link>./en/post/traffic_millions/2020-03-27-qemu/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-qemu/</guid>
+      <guid>./en/post/traffic_millions/2020-03-27-qemu/</guid>
       <description>windows下使用qemu安装openGauss虚拟机</description>
     </item>
     
     <item>
       <title>初试openGauss（二）：windows下使用VirtualBox安装openGauss</title>
-      <link>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-virtualbox/</link>
+      <link>./en/post/traffic_millions/2020-03-27-virtualbox/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-virtualbox/</guid>
+      <guid>./en/post/traffic_millions/2020-03-27-virtualbox/</guid>
       <description>windows下使用VirtualBox安装openGauss虚拟机.</description>
     </item>
     
     <item>
       <title>Sample Post</title>
-      <link>http://blog.openGauss.org/en/_example/2020-03-03-sample-post/</link>
+      <link>./en/_example/2020-03-03-sample-post/</link>
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/_example/2020-03-03-sample-post/</guid>
+      <guid>./en/_example/2020-03-03-sample-post/</guid>
       <description>Just about everything you&amp;rsquo;ll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more.</description>
     </item>
     
     <item>
       <title>About Hugo</title>
-      <link>http://blog.openGauss.org/en/about/</link>
+      <link>./en/about/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/about/</guid>
+      <guid>./en/about/</guid>
       <description>Hugo is the world’s fastest framework for building websites. It is written in Go.
 It makes use of a variety of open source projects including:
  https://github.com/russross/blackfriday https://github.com/alecthomas/chroma https://github.com/muesli/smartcrop https://github.com/spf13/cobra https://github.com/spf13/viper  Learn more and contribute on GitHub.</description>
@@ -51,10 +51,10 @@ It makes use of a variety of open source projects including:
     
     <item>
       <title></title>
-      <link>http://blog.openGauss.org/en/design/content_posts/</link>
+      <link>./en/design/content_posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/design/content_posts/</guid>
+      <guid>./en/design/content_posts/</guid>
       <description>Posts This file is to explain in which way the content of the blogs are stored and read by the blog system.
 What is supported in the blog A blog can include many formats of information, like text, pictures, videos, animations or others.
 openEuler Blog is designed to support the following formats:
@@ -64,10 +64,10 @@ openEuler Blog is designed to support the following formats:
     
     <item>
       <title>Guidance to Post a Blog</title>
-      <link>http://blog.openGauss.org/en/guidance/index_/</link>
+      <link>./en/guidance/index_/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.openGauss.org/en/guidance/index_/</guid>
+      <guid>./en/guidance/index_/</guid>
       <description>Preparation  Refer to http://git.mydoc.io/?t=179267 to register Gitee account.
  Set your primary mail box in gitee settings https://gitee.com/profile/emails.
  Sign your CLA in https://openeuler.org/zh/cla.html.
