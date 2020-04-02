@@ -1,5 +1,5 @@
 +++
-title = "初试openGauss（二）：windows下使用VirtualBox安装openGauss(这是英文)"
+title = "初试openGauss（二）：windows下使用VirtualBox安装openGauss"
 date = "2020-03-27"
 tags = ["安装openGauss"]
 archives = "2020-03"
@@ -16,3 +16,5 @@ summary = "windows下使用VirtualBox安装openGauss虚拟机."
 - Windows10 64位
 - Oracle VM VirtualBox 6.1.4
 - openGauss开源社区下载：[openGauss-20.03-LTS-x86_64-dvd.iso](https://repo.openGauss.org/openGauss-20.03-LTS/ISO/x86_64/openGauss-20.03-LTS-x86_64-dvd.iso)  （X86）
+
+![index-x86](../2020-03-27-VirtualBox-media/index-x86.png "index-x86.png")

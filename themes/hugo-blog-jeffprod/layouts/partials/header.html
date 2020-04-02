@@ -18,35 +18,3 @@
 </head>
 <body>
 
-    <!-- nav -->
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="{{ .Site.BaseURL | absURL }}">Home</a>
-            <a class="navbar-item" href="/guidance">Post a Blog</a>
-        </div>
-    </nav>
-    <!-- /nav -->
-
-    <!-- hero -->
-    <section class="hero is-info is-medium">
-        <div class="hero-body" style="background-image: url({{ "img/bg-blog.jpg" | absURL }});">
-            <div class="container has-text-centered">
-                <br>
-                <h1 class="title is-size-1">
-                    <!-- {{ i18n "main_cards_title" }} -->
-                    {{ if eq .Type "tags" }}
-                        #{{ .Title }}
-                    {{ else if eq .Type "archives" }}
-                        Archive {{ .Title }}
-                    {{ else if eq .Type "guidance" }}
-                        Post a blog
-                    {{ else }}
-                        {{ .Title }}
-                    {{ end }}
-                </h1>
-                {{ if eq .Type "article" }}
-                    {{ .Date.Format "January 2, 2006" }} &middot;&nbsp;{{ .ReadingTime }} min read
-                {{ end }}
-            </div>
-        </div>
-    </section>

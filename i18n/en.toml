@@ -18,3 +18,15 @@
 
 [main_cards_next]
   other = "Next"
+
+[blog_tags_url]
+other = "en/tags"
+
+[blog_archives_url]
+other = "en/archives"
+
+[blog_guidance_url]
+other = "/en/guidance"
+
+[blog_blogs_url]
+other = "/en"

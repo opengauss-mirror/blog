@@ -1,0 +1,33 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on openGauss Blog</title>
+    <link>http://blog.openGauss.org/en/post/</link>
+    <description>Recent content in Posts on openGauss Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2008–2018, @JeffProd</copyright>
+    <lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="http://blog.openGauss.org/en/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>初试openGauss（一）：windows下使用qemu安装openGauss</title>
+      <link>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-qemu/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-qemu/</guid>
+      <description>windows下使用qemu安装openGauss虚拟机</description>
+    </item>
+    
+    <item>
+      <title>初试openGauss（二）：windows下使用VirtualBox安装openGauss</title>
+      <link>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-virtualbox/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.openGauss.org/en/post/traffic_millions/2020-03-27-virtualbox/</guid>
+      <description>windows下使用VirtualBox安装openGauss虚拟机.</description>
+    </item>
+    
+  </channel>
+</rss>
