@@ -1,14 +1,12 @@
+{{ range .Site.Data.messageUrl }}
+<input type="text" style="display: none;" value={{ .url }}>
+{{ end }}
 <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 <script>
-    window.onload = function() {
-        const blogIframe = parent.document.getElementById('blogIframe');
-        let h = document.body.scrollHeight;
-        const btn = document.getElementById('btn');
-        btn.onclick = function() {
-            blogIframe.height = h
-        }
+    window.onload=function() {
+        let height = document.body.clientHeight;
+        parent.postMessage(height,"http://127.0.0.1:1313/")
     }
 </script>
-
 </body>
 </html>
