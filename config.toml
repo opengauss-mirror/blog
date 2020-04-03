@@ -1,0 +1,45 @@
+title = "openGauss Blog"
+baseurl = "http://blog.openGauss.org"
+author = "@JeffProd"
+copyright = "Copyright © 2008–2018, @JeffProd"
+canonifyurls = true
+paginate = 10
+
+theme = "hugo-blog-jeffprod"
+
+languageCode = "en-us"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+
+
+[taxonomies]
+    tag = "tags"
+    archive = "archives"
+
+
+# Valine.
+  # You can get your appid and appkey from https://leancloud.cn
+  # more info please open https://valine.js.org
+  [params.valine]
+    enable = true
+    appId = 'KcTcd38EvA1I33vSIV6qWNea-gzGzoHsz'
+    appKey = 'oJBVUOcItn0essSFvY6tS77O'
+    notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
+    verify = false # Verification code
+    avatar = 'mm'
+    placeholder = 'Please leave a message...'
+    visitor = true
+
+[languages]
+
+[languages.en]
+    languageCode = "en-us"
+    contentDir = "content/en"
+
+[languages.zh]
+    languageCode = "zh-cn"
+    contentDir = "content/zh"
+
+#编译参数
+#uglyURLs = true

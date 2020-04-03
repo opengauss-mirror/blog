@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sample on openGauss Blog</title>
+    <link>./zh/tags/sample.html</link>
+    <description>Recent content in Sample on openGauss Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright © 2008–2018, @JeffProd</copyright>
+    <lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="./zh/tags/sample/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sample Post</title>
+      <link>./zh/_example/2020-03-03-sample-post.html</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>./zh/_example/2020-03-03-sample-post.html</guid>
+      <description>Just about everything you&amp;rsquo;ll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more.</description>
+    </item>
+    
+  </channel>
+</rss>

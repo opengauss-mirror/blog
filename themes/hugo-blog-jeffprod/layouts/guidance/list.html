@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+{{ $tag := lower .Title }}
+
+<div class="columns">
+    <div class="column is-9">
+        {{ range where $.Page.Site.Pages "Type" "guidance" }}
+        <div> {{ .Content }} </div>
+        {{ end }}
+    </div>
+    <div class="column is-3">
+        {{ partial "widget-tags.html" . }}<br>
+        {{ partial "widget-recent.html" . }}<br>
+        {{ partial "widget-archives.html" . }}
+    </div>
+</div>
+{{ end }}
+
+
+
