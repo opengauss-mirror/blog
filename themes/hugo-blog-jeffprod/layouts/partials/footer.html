@@ -1,11 +1,14 @@
-{{ range .Site.Data.messageUrl }}
-<input type="text" style="display: none;" value={{ .url }}>
+{{ range where $.Page.Site.Pages "Type" "iframeurl" }}
+{{ if .Params }}
+<input id="iframeUrl" type="text" style="display: none;" value={{ .Params.iframeUrl }}>
+{{ end }}
 {{ end }}
 <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 <script>
+    const url = document.getElementById("iframeUrl").value;
     window.onload=function() {
         let height = document.body.clientHeight;
-        parent.postMessage(height,"http://127.0.0.1:1313/")
+        parent.postMessage(height,url)
     }
 </script>
 </body>
