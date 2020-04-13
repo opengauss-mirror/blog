@@ -4,12 +4,26 @@
 {{ end }}
 {{ end }}
 <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+<script src="{{ .Site.BaseURL }}js/flexible.js"></script>
 <script>
     const url = document.getElementById("iframeUrl").value;
-    window.onload=function() {
-        let height = document.body.clientHeight;
-        parent.postMessage(height,url)
+
+    function observe (el, options, callback) {
+      var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+      var observer = new MutationObserver(callback)
+      observer.observe(el, options)
     }
+
+    var options = {
+        childList: true,
+        subtree: true,
+        characterData: true
+      }
+    observe(document.body, options, (records, instance) => {
+    const height = document.body.scrollHeight;
+    parent.postMessage(height,url);
+    })
+
 </script>
 </body>
 </html>

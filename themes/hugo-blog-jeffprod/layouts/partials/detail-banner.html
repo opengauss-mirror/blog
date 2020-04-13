@@ -1,0 +1,33 @@
+{{ if eq .Type "page" }}
+<div class="blog_bg">
+    {{ partial "prepare.html" . }}
+</div>
+{{ else if .Title }}
+<section class="hero is-info is-medium">
+    <div class="hero-warp">
+        <div class="has-text-centered">
+            <h1 class="title is-size-1">
+                <!-- {{ i18n "main_cards_title" }} -->
+                {{ if eq .Type "tags" }}
+                    #{{ .Title }}
+                {{ else if eq .Type "archives" }}
+                    Archive {{ .Title }}
+                {{ else if eq .Type "guidance" }}
+                    Post a blog
+                {{ else }}
+                    {{ .Title }}
+                {{ end }}
+            </h1>
+            {{ if eq .Type "post" }}
+                <div>
+                    <span class="article_right_author">{{ .Params.author }}</span>
+                    {{ partial "svgs/ico_date_white.svg" }}
+                    <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
+                    {{ partial "svgs/ico_read_white.svg" }}
+                    <span>{{ .Params.times }}</span>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

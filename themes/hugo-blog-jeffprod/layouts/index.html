@@ -1,48 +1,53 @@
 {{ define "main" }}
 {{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
-
-<div class="columns">
-    <div class="column is-9">
-        <div class="tile is-child box">
-            <div class="content">
-                <h3 style="overflow:hidden"><div style="float:left;"><a href={{ i18n "blog_blogs_url" }}>openGauss Blog</a></div><div style="float:right;"><a href={{ i18n "blog_guidance_url" }}>Post a Blog</a></div></h3>
-                <hr>
-                {{ range $paginator.Pages }}
-                    <article class="media">
-                        <div class="media-content">
-                            <div class="content">
-                                <p class="title is-4"><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></p>
-                                <p class="subtitle is-size-6 has-text-grey-light">
-                                    Author: {{ .Params.author }} &middot; Published at {{ .Date.Format "January 2, 2006" }} &middot;
-                                    <i class="far fa-clock"></i>&nbsp;{{.ReadingTime}} min read
-                                </p>
-                                <p>{{ .Params.summary }}...</p>
+<div class="container">
+    <div class="columns">
+        <div class="is-9">
+            <div class="tile is-child">
+                <div class="content">
+                    {{ range $paginator.Pages }}
+                        <article class="article">
+                            <div class="article_left">
+                                <a href="{{ .Permalink }}"><img src="{{ .Params.img }}"></a>
                             </div>
-                        </div>
-                    </article>
-                {{ end }}
+
+                            <div class="article_right">
+                                <a href="{{ .Permalink }}"><h3>{{ .LinkTitle }}</h3></a>
+                                <div>
+                                    <span class="article_right_author">{{ .Params.author }}</span>
+                                    {{ partial "svgs/ico_date.svg" }}
+                                    <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
+                                    {{ partial "svgs/ico_read.svg" }}
+                                    <span>{{ .Params.times }}</span>
+                                </div>
+                                <a href="{{ .Permalink }}"><p>{{ .Params.summary }}...</p></a>
+                            </div>
+                        </article>
+                    {{ end }}
+                </div>
             </div>
         </div>
+        <div class="column is-3">
+            {{ partial "widget-tags.html" . }}<br>
+            {{ partial "widget-recent.html" . }}<br>
+            {{ partial "widget-archives.html" . }}
+        </div>
     </div>
-    <div class="column is-3">
-        {{ partial "widget-tags.html" . }}<br>
-        {{ partial "widget-recent.html" . }}<br>
-        {{ partial "widget-archives.html" . }}
+    <div class="columns">
+        <div class="column is-9">
+            <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+                {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
+                {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+                <ul class="pagination-list">
+                    {{ range $paginator.Pagers }}
+                    <li class="pagination__item">
+                        <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
-<div class="columns">
-    <div class="column is-9">
-        <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-            {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
-            {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
-            <ul class="pagination-list">
-                {{ range $paginator.Pagers }}
-                <li class="pagination__item">
-                    <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        </nav>
-    </div>
-</div>
+
 {{ end }}

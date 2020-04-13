@@ -1,29 +1,29 @@
 {{ define "main" }}
-
-<div class="columns">
-    <div class="column is-9">
-        <div class="tile is-child box">
-            <div class="content">
-                {{ .Content }}
+{{ partial "detail-banner" }}
+<div class="container">
+    <div class="columns">
+        <div class="is-9 post_detail">
+            <div class="tile is-child box">
+                <div class="content">
+                    {{ .Content }}
+                </div>
             </div>
-            
+            <div class="box" style="margin-top:15px;">
+                <div style="font-size:14px;color:gray"><strong>{{ i18n "blog_declare" }}</strong>{{ i18n "blog_declare_content" }}</div>
+            </div>
+            <div class="post-comment">
+                <!-- 加入评论功能 -->
+                {{ partial "comments.html" . }}
+            </div>
         </div>
-        <div class="box" style="margin-top:15px;">
-            <div style="font-size:12px;color:gray"><strong>【免责声明】</strong>本文仅代表作者本人观点，与本网站无关。本网站对文中陈述、观点判断保持中立，不对所包含内容的准确性、可靠性或完整性提供任何明示或暗示的保证。本文仅供读者参考，由此产生的所有法律责任均由读者本人承担。</div>
-            <div style="font-size:12px;color:gray;margin-top:8px;"><strong>[Disclaimer]</strong> This article only represents the author's opinions, and is irrelevant to this website. This website is neutral in terms of the statements and opinions in this article, and does not provide any express or implied warranty of accuracy, reliability, or completeness of the contents contained therein. This article is for readers' reference only, and all legal responsibilities arising therefrom are borne by the reader himself.</div>
+        <div class="column is-3">
+            {{ partial "widget-tags.html" . }}<br>
+            {{ partial "widget-recent.html" . }}<br>
+            {{ partial "widget-related.html" . }}<br>
+            {{ partial "widget-archives.html" . }}
         </div>
-    </div>
-    <div class="column is-3">
-        {{ partial "widget-tags.html" . }}<br>
-        {{ partial "widget-recent.html" . }}<br>
-        {{ partial "widget-related.html" . }}<br>
-        {{ partial "widget-archives.html" . }}
     </div>
 </div>
 
-<div class="post-comment">
-    <!-- 加入评论功能 -->
-    {{ partial "comments.html" . }}
-</div>
 
 {{ end }}
