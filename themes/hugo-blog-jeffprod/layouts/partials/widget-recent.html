@@ -2,8 +2,13 @@
     <div class="card-content">
         <h1 class="title is-5">Recent posts</h1>
         {{ range first 5 (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
-            <h1><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></h1>
-            <time class="has-text-grey-light is-size-7">{{ .Date.Day }} {{ .Date.Month }} {{ .Date.Year }}</time>
+            <p><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></p>
+            <div>
+                {{ partial "svgs/ico_date.svg" }}
+                <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
+                {{ partial "svgs/ico_read.svg" }}
+                <span>{{ .Params.times }}</span>
+            </div>
         {{ end }}
     </div>
 </div>

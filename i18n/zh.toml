@@ -30,3 +30,18 @@ other = "/zh/guidance"
 
 [blog_blogs_url]
 other = "/zh"
+
+[blog_declare]
+other = "【免责声明】"
+
+[blog_declare_content]
+other = "本文仅代表作者本人观点，与本网站无关。本网站对文中陈述、观点判断保持中立，不对所包含内容的准确性、可靠性或完整性提供任何明示或暗示的保证。本文仅供读者参考，由此产生的所有法律责任均由读者本人承担。"
+
+[blog_prepare]
+other = "博客前准备"
+
+[blog_guidance]
+other = "写博客"
+
+[comment_placeholder]
+other = "说点什么吧..."

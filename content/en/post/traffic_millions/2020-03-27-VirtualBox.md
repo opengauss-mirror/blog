@@ -5,7 +5,8 @@ tags = ["安装openGauss"]
 archives = "2020-03"
 author = "traffic_millions"
 summary = "windows下使用VirtualBox安装openGauss虚拟机."
-
+img = "/img/blog_01.png"
+times = "2106"
 +++
 
 ### 【背景】

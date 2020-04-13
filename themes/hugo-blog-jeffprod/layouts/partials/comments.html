@@ -2,11 +2,14 @@
   {{- if .Site.Params.valine.enable -}}
   <!-- id 将作为查询条件 -->
   <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}" />
-  <div id="vcomments"></div>
+  <div id="vcomments" lang="{{ $.Site.LanguageCode | default "en" }}" mess="{{ i18n "comment_placeholder" }}"></div>
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
   <script type="text/javascript">
+    const placeholder = document.getElementById("vcomments").getAttribute("mess"),
+          lang = document.getElementById("vcomments").getAttribute("lang");
+    const  langs = lang == "zh-cn" ? "zh-cn" : "en";
     new Valine({
         el: '#vcomments' ,
         appId: '{{ .Site.Params.valine.appId }}',
@@ -14,10 +17,10 @@
         notify: true, 
         verify: true, 
         avatar:'{{ .Site.Params.valine.avatar }}', 
-        placeholder: '{{ .Site.Params.valine.placeholder }}',
+        placeholder: placeholder,
         visitor: true,
 		    meta: ['nick','mail','link'],
-        lang:"en"
+        lang: langs
     });
   </script>
   {{- end -}}

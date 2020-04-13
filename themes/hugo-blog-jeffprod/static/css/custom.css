@@ -33,9 +33,10 @@ div#comments.comments.v{
 }
 
 .v .vwrap{
-  border: 2px solid black !important;
+  border: 1px solid #dfdfdf !important;
   overflow: visible !important;
   counter-reset: avater;
+  background: #efefef;
 }
 
 .v .vwrap .vedit .vemojis{
