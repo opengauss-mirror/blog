@@ -20,7 +20,9 @@
                                     {{ partial "svgs/ico_date.svg" }}
                                     <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
                                     {{ partial "svgs/ico_read.svg" }}
-                                    <span>{{ .Params.times }}</span>
+                                    <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .LinkTitle }}">
+                                        <i class="leancloud-visitors-count"></i>                     
+                                    </span>
                                 </div>
                                 <a href="{{ .Permalink }}"><p>{{ .Params.summary }}...</p></a>
                             </div>

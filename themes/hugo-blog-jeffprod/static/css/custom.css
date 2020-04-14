@@ -159,4 +159,8 @@ div#comments.comments.v{
     display:none !important;
 }
 
+.v .vcards .vcard .vh .vmeta .vat {
+  color: #467fbf;
+}
+
 /**/
