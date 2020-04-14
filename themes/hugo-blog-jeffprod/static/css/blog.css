@@ -250,6 +250,9 @@ html,body {
 .post-comment {
     margin-top: 0.6rem;
 }
+.leancloud-visitors-count {
+    font-weight: 500;
+}
 
 /* -------------------------guidance------------------------ */
 .guidance pre {

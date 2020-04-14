@@ -3,8 +3,6 @@
   <!-- id 将作为查询条件 -->
   <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}" />
   <div id="vcomments" lang="{{ $.Site.LanguageCode | default "en" }}" mess="{{ i18n "comment_placeholder" }}"></div>
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
   <script type="text/javascript">
     const placeholder = document.getElementById("vcomments").getAttribute("mess"),
@@ -14,8 +12,6 @@
         el: '#vcomments' ,
         appId: '{{ .Site.Params.valine.appId }}',
         appKey: '{{ .Site.Params.valine.appKey }}',
-        notify: true, 
-        verify: true, 
         avatar:'{{ .Site.Params.valine.avatar }}', 
         placeholder: placeholder,
         visitor: true,
