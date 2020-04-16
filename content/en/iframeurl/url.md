@@ -1,3 +1,3 @@
 +++
-iframeUrl = "http://119.8.33.182/"
+iframeUrl = "https://test.opengauss.org/"
 +++
