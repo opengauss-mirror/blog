@@ -122,10 +122,6 @@
   }
   .has-text-centered {
       width: 100%;
-      /* display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; */
   }
   .hero-warp {
     height: 2.2rem;
@@ -148,6 +144,6 @@
     margin-top: 0.5rem;
   }
   .content h3 {
-      margin-bottom: 0.2rem;
+      margin-bottom: 0;
   }
 }
