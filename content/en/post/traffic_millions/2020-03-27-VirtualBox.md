@@ -1,5 +1,5 @@
 +++
-title = "Try a openGauss（2）: install the opengauss in the window environment"
+title = "Try a openGauss（2）"
 date = "2020-03-27"
 tags = ["安装openGauss"]
 archives = "2020-03"
