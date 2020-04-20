@@ -59,15 +59,17 @@ html,body {
     height: 7px;
     background: #467FBF;
 }
-.prepare_content>ul {
+.prepare_content>ol {
     margin: 20px 0;
+    padding-left: 0.3rem;
 }
-.prepare_content>ul li {
+.prepare_content>ol li {
     font-size: 18px;
     line-height: 27px;
     color: #080808;
+    list-style-type: decimal;
 }
-.prepare_content>ul li a {
+.prepare_content>ol li a {
     color: #467FBF;
     text-decoration: none;
 }

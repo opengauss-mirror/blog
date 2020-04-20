@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="column is-3">
+        <div class="column is-3 isPc">
             {{ partial "widget-tags.html" . }}<br>
             {{ partial "widget-recent.html" . }}<br>
             {{ partial "widget-archives.html" . }}
@@ -38,8 +38,8 @@
     <div class="columns">
         <div class="column is-9">
             <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
-                {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+                {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">{{ i18n "main_cards_previous" }}</a>{{ end }}
+                {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">{{ i18n "main_cards_next" }}</a>{{ end }}
                 <ul class="pagination-list">
                     {{ range $paginator.Pagers }}
                     <li class="pagination__item">
@@ -50,9 +50,6 @@
             </nav>
         </div>
     </div>
-</div>
-<div id="aaa">
-
 </div>
 
 {{ end }}
