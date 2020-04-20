@@ -1,0 +1,153 @@
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .isPc {
+    display: none;
+  }
+  .container {
+    width: 100%;
+  }
+  .prepare {
+      align-items: center;
+  }
+  .is-9 {
+      width: 100%;
+  }
+  .has-text-centered {
+      width: 100%;
+  }
+  .container {
+    width: 95%;
+  }
+  .has-text-centered h1,
+  .has-text-centered div {
+      text-align: center;
+  }
+  .prepare_warp {
+    width: 100%;
+  }
+  .blog_bg {
+    height: 400px;
+  }
+  a {
+    word-wrap:break-word;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .isPc {
+    display: block;
+  }
+  .isH5 {
+    display: none;
+  }
+}
+@media screen and (min-width: 319px) and (max-width: 767px) {
+  .isPc {
+    display: none;
+  }
+  .isH5 {
+    display: block;
+  }
+  .container {
+      width: 95%;
+  }
+  body {
+      font-size: 0.24rem;
+  }
+  .blog_bg {
+    height: 250px;
+  }
+  .prepare_warp {
+    width: 100%;
+  }
+  .prepare_content {
+    padding: 0.2rem 0.4rem;
+  }
+  .prepare_content>h2 {
+    font-size: 0.32rem;
+  }
+  .prepare_content>h2::after {
+      height: 0.07rem;
+  }
+  .prepare_content>ol {
+    margin: 0.2rem 0;
+  }
+  .prepare_content>ol li {
+    font-size: 0.24rem;
+    line-height: 0.24rem;
+  }
+  .btn {
+    padding: 0.06rem 0.3rem;
+    font-size: 0.24rem;
+  }
+  .is-9 {
+    width: 100%;
+  }
+  .article {
+    height: 2rem;
+    margin-top: 0.3rem;
+  }
+  .article_left {
+    width: 2.6rem;
+    height: 100%;
+  }
+  .article_right {
+    margin-left: 0.3rem;
+  }
+  .article_right h3 {
+    font-size: 0.26rem;
+  }
+  .article_right>div span {
+    font-size: 0.24rem;
+    margin-right: 0.3rem;
+  }
+  .article_right>div {
+      margin: 0.1rem 0 0.12rem 0;
+  }
+  .article_right>a>p {
+    font-size: 0.24rem;
+    line-height: 0.24rem;
+  }
+  .article_right>div svg {
+      width: 0.24rem;
+      height: 0.24rem;
+  }
+  /* -----------------分页--------------- */
+  .pagination-link, .pagination-next, .pagination-previous {
+    padding: 0.05rem 0.1rem;
+    font-size: 0.24rem;
+  }
+
+  /* -----------------single page----------------- */
+  a {
+    word-wrap:break-word;
+  }
+  .has-text-centered {
+      width: 100%;
+      /* display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; */
+  }
+  .hero-warp {
+    height: 2.2rem;
+  }
+  .has-text-centered h1,
+  .has-text-centered div {
+      text-align: center;
+  }
+  .has-text-centered h1 {
+      padding: 0 0.5rem;
+      font-size: 0.32rem;
+  }
+  .post_detail {
+    font-size: 0.24rem;
+  }
+  .tile p, .tile ul {
+    line-height: 0.32rem;
+  }
+  .is-9 .tile, .guidance {
+    margin-top: 0.5rem;
+  }
+  .content h3 {
+      margin-bottom: 0.2rem;
+  }
+}
