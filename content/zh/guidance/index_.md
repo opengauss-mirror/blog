@@ -6,13 +6,13 @@ title = "Guidance to Post a Blog"
 
 ## Preparation
 
-1. Refer to <http://git.mydoc.io/?t=179267> to register Gitee account.
+1. Refer to <a href="http://git.mydoc.io/?t=179267" target="_blank">http: //git.mydoc.io/?t=179267</a> to register Gitee account.
 
-2. Set your primary mail box in gitee settings <https://gitee.com/profile/emails>.
+2. Set your primary mail box in gitee settings <a href="https://gitee.com/profile/emails" target="_blank">https: //gitee.com/profile/emails</a>.
 
 3. Sign your CLA in <https://opengauss.org/zh/cla.html>.
 
-4. Prepare your git environment refering to <http://git.mydoc.io/?t=180692>.
+4. Prepare your git environment refering to <a href="http://git.mydoc.io/?t=180692" target="_blank">http: //git.mydoc.io/?t=180692</a>.
 
 ## Understand blog format
 
@@ -37,7 +37,7 @@ Tips: you can copy content/_example/2020-03-03-sample-post.md to your folder and
 
 ## Post your blog
 
-The blog posting follows the pull request of [Gitee](gitee.com).
+The blog posting follows the pull request of <a href="https://gitee.com" target="_blank">Gitee</a>.
 
 1. Fork the blog project <https://gitee.com/opengauss/blog> to your own gitee. Refer to <http://git.mydoc.io/?t=153749> for detailed guidance.
 
@@ -82,6 +82,6 @@ git commit -m "<message>"
 git push origin <branch-name>:<branch-name>
 ```
 
-7. Refer to <http://git.mydoc.io/?t=153749> to submit your Pull Request
+7. Refer to <a href="http://git.mydoc.io/?t=153749" target="_blank">http: //git.mydoc.io/?t=153749</a>to submit your Pull Request
 
 8. Wait for reviewing and merging.
