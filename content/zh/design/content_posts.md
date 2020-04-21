@@ -4,7 +4,7 @@ This file is to explain in which way the content of the blogs are stored and rea
 ## What is supported in the blog
 A blog can include many formats of information, like text, pictures, videos, animations or others. 
 
-openEuler Blog is designed to support the following formats:
+This blog is designed to support the following formats:
 
 1. text
 2. static picture
@@ -79,7 +79,7 @@ Linking to a PDF for readers to download:
 ```
 Linking to a url for readers to visit:
 ```
-... you can [read more](<https://gitee.com/openeuler/>).
+... you can [read more](<https://gitee.com/opengauss/>).
 ```
 
 ## Thanks

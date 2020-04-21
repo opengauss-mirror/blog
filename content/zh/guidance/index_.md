@@ -10,14 +10,14 @@ title = "Guidance to Post a Blog"
 
 2. Set your primary mail box in gitee settings <a href="https://gitee.com/profile/emails" target="_blank">https: //gitee.com/profile/emails</a>.
 
-3. Sign your CLA in <a href="https://openeuler.org/zh/cla.html" target="_blank">https: //openeuler.org/zh/cla.html</a>.
+3. Sign your CLA in <https://opengauss.org/zh/cla.html>.
 
 4. Prepare your git environment refering to <a href="http://git.mydoc.io/?t=180692" target="_blank">http: //git.mydoc.io/?t=180692</a>.
 
 ## Understand blog format
 
-The openEuler blog is written in markdown format.
-You can read <a href="https://gitee.com/openeuler/blog/blob/master/design/content_posts.md" target="_blank">https: //gitee.com/openeuler/blog/blob/master/design/content_posts.md</a> to get understand how the blog is designed.
+The blog is written in markdown format.
+You can read <https://gitee.com/opengauss/blog/blob/master/design/content_posts.md> to get understand how the blog is designed.
 
 The head includes the following information:
 ```
@@ -26,7 +26,7 @@ title = "Sample Post"
 date = "2020-03-03"
 tags = ["Sample", "ABC", "cccc"]
 archives = "2020-03"
-author = "openEuler Blog Maintainer"
+author = "Blog Maintainer"
 summary = "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
 +++
 
@@ -39,7 +39,7 @@ Tips: you can copy content/_example/2020-03-03-sample-post.md to your folder and
 
 The blog posting follows the pull request of <a href="https://gitee.com" target="_blank">Gitee</a>.
 
-1. Fork openEuler blog project <a href="https://gitee.com/openeuler/blog" target="_blank">https: //gitee.com/openeuler/blog</a> to your own gitee. Refer to <a href="http://git.mydoc.io/?t=153749" target="_blank">http: //git.mydoc.io/?t=153749</a>for detailed guidance.
+1. Fork the blog project <https://gitee.com/opengauss/blog> to your own gitee. Refer to <http://git.mydoc.io/?t=153749> for detailed guidance.
 
 2. Clone the code to your local environment.
 
