@@ -45,3 +45,12 @@ other = "写博客"
 
 [comment_placeholder]
 other = "说点什么吧..."
+
+[404_title]
+other = "没有找到页面"
+
+[404_homepage]
+other = "返回首页"
+
+[404_homepage_url]
+other = "https://test.opengauss.org/zh/"

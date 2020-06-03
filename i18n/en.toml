@@ -45,3 +45,12 @@ other = "Post a Blog"
 
 [comment_placeholder]
 other = "Please leave a message..."
+
+[404_title]
+other = "The page is not found."
+
+[404_homepage]
+other = "Back to Home"
+
+[404_homepage_url]
+other = "https://test.opengauss.org/en/"

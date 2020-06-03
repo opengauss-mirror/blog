@@ -105,6 +105,7 @@ html,body {
     font-size: 0.44rem;
     margin: 0;
     max-height: 1.6rem;
+    font-weight: bold;
 }
 .article_right h3,
 .article_right>a>p {
@@ -288,4 +289,58 @@ html,body {
 .guidance p,.guidance ol {
     line-height: 0.32rem;
     margin-bottom: 0.2rem;
+}
+
+/* ---------------------------404--------------------------- */
+#error-page {
+    text-align: center;
+    margin-top: 20%;
+    margin-bottom: 100px;
+}
+.boxs {
+    background: #fff;
+    margin: 0 0 30px;
+    border: solid 1px #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px 0;
+    border-left: none;
+    border-right: none;
+}
+.boxs h1,
+.boxs h2 {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    line-height: 1.1;
+}
+.boxs h1 {
+    color: #333333;
+}
+.boxs h2 {
+    color: #777;
+}
+#error-page p.buttons {
+    margin-top: 40px;
+}
+.btn {
+    font-weight: 700;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    border-radius: 0;
+    border: 1px solid transparent;
+}
+.btn-template-main {
+    color: #467fbf;
+    background-color: #ffffff;
+    border-color: #467fbf;
+}
+.btn-template-main:hover, .btn-template-main:focus, .btn-template-main:active, .btn-template-main.active {
+    background: #467fbf;
+    color: #ffffff;
+    border-color: #467fbf;
 }
