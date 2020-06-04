@@ -6,6 +6,11 @@
 <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 <script src="{{ .Site.BaseURL }}js/flexible.js"></script>
 <script>
+  const hash = window.location.search,
+        pageurl = window.location.href;
+  var langss = document.querySelector("html").lang === "zh-cn" ? "zh" : "en";
+  console.log("hash:",hash,"pageurl:",pageurl,"ttr",pageurl.split(langss + "/")[1])
+
   if(!document.getElementById("vcomments")) {
     new Valine({
         appId: '{{ .Site.Params.valine.appId }}',
@@ -37,6 +42,10 @@
     const height = document.body.scrollHeight;
     parent.postMessage(height,url);
     })
+    if(pageurl.split(langss + "/")[1]) parent.postMessage(pageurl.split(langss + "/")[1],url);
+    
+
+    if(document.querySelector("#notFound")) parent.postMessage("我404了",url);
 
 </script>
 </body>

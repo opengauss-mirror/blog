@@ -1,9 +1,24 @@
-{{ define "main" }}
+{{ partial "header.html" . }}
 
-<div class="box">
-    <div class="content">
-        Page not found...
+<div id="content">
+    <div class="container">
+
+        <div class="col-sm-6 col-sm-offset-3" id="error-page">
+            <div class="boxs">
+                <h1>404</h1>
+                <h2 class="text-muted">{{ i18n "404_title" }}</h2>
+                <p class="buttons">
+                    <a href="{{ i18n "404_homepage_url" }}" class="btn btn-template-main">
+                        <i class="fa fa-home"></i>{{ i18n "404_homepage" }}
+                    </a>
+                </p>
+            </div>
+
+
+        </div>
+        <!-- /.col-sm-6 -->
     </div>
+    <!-- /.container -->
 </div>
 
-{{ end }}
+{{ partial "footer.html" . }}
