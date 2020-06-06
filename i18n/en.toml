@@ -35,10 +35,10 @@ other = "/en"
 other = "[Disclaimer]"
 
 [blog_declare_content]
-other = " This article only represents the author's opinions, and is irrelevant to this website. This website is neutral in terms of the statements and opinions in this article, and does not provide any express or implied warranty of accuracy, reliability, or completeness of the contents contained therein. This article is for readers' reference only, and all legal responsibilities arising therefrom are borne by the reader himself."
+other = "This article only represents the author's opinions, and is irrelevant to this website. This website is neutral in terms of the statements and opinions in this article, and does not provide any express or implied warranty of accuracy, reliability, or completeness of the contents contained therein. This article is for readers' reference only, and all legal responsibilities arising therefrom are borne by the reader himself."
 
 [blog_prepare]
-other = "Pre-blog preparation"
+other = "Blog Preparation"
 
 [blog_guidance]
 other = "Post a Blog"
