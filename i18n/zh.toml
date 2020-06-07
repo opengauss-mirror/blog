@@ -54,3 +54,6 @@ other = "返回首页"
 
 [404_homepage_url]
 other = "https://test.opengauss.org/zh/"
+
+[blog_title]
+other = "博客"

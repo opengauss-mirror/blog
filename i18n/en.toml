@@ -54,3 +54,6 @@ other = "Back to Home"
 
 [404_homepage_url]
 other = "https://test.opengauss.org/en/"
+
+[blog_title]
+other = "Blog"
