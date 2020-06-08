@@ -12,10 +12,10 @@ RUN mkdir -p /usr/local/src && \
     curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz | tar -xz && \
     mv hugo /usr/local/bin/
 
-RUN mkdir -p /src/ && \
-    cd /src/ && \
-    git clone -b stable https://gitee.com/opengauss/blog && \
-    cd /src/blog && /usr/local/bin/hugo -b / && \
+RUN mkdir -p /src/
+COPY . /src/blog
+
+RUN cd /src/blog && /usr/local/bin/hugo -b / && \
     cp -rf /src/blog/public/* /usr/share/nginx/html/ && \
     chmod -R 755 /usr/share/nginx/html
 
