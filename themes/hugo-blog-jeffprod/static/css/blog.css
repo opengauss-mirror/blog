@@ -247,6 +247,12 @@ html,body {
     flex-direction: column;
     justify-content: center;
 }
+.has-text-centered h1 {
+    text-transform: none;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.08em; 
+}
 .has-text-centered>div svg {
     transform: translateY(2px);
 }
