@@ -1,5 +1,6 @@
 {{ define "main" }}
 
+
 {{ $tag := lower .Title }}
 <div class="container">
     <div class="section">
@@ -7,27 +8,30 @@
             <div class="column is-9">
                 <div class="tile is-child box">
                     <div class="content">
-        {{ range $key, $value := .Site.Taxonomies.tags }}{{ if eq $key $tag }}{{ range $value.Pages }}
+        
+        {{ $paginator := .Paginate (where .Data.Pages "Type" "post") 6 }}
+        {{ range $paginator.Pages }}
                         <article class="article">
                             <div class="article_left">
                                 <a href="{{ .Permalink }}"><img src="{{ .Params.img }}"></a>
                             </div>
 
                             <div class="article_right">
-                                <a href="{{ .Permalink }}"><h3>{{ .LinkTitle }}</h3></a>
+                                <a href="{{ .Permalink }}"><h3>{{ .Title }}</h3></a>
                                 <div>
                                     <span class="article_right_author">{{ .Params.author }}</span>
                                     {{ partial "svgs/ico_date.svg" }}
                                     <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
                                     {{ partial "svgs/ico_read.svg" }}
-                                    <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .LinkTitle }}">
+                                    <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
                                         <i class="leancloud-visitors-count"></i>                     
                                     </span>
                                 </div>
                                 <a href="{{ .Permalink }}"><p>{{ .Params.summary }}...</p></a>
                             </div>
                         </article>
-        {{ end }}{{ end }}{{ end }}
+        
+        {{ end }}
                     </div>
                 </div>
             </div>
