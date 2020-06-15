@@ -1,3 +1,3 @@
 +++
-iframeUrl = "https://test.opengauss.org/"
+iframeUrl = "https://opengauss.org/"
 +++
