@@ -15,9 +15,3 @@
 
 **Anything else we need to know?**:
 
-**Environment**:
-- Version:
-- OS (e.g. from /etc/os-release):
-- Kernel (e.g. `uname -a`):
-- Install tools:
-- Others:
