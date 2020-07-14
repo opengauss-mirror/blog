@@ -35,13 +35,13 @@ su - gauss
 3. 解压安装openGauss
 
 ```
-#设置环境变量
+# 设置环境变量
 export GS_HOME=/home/gauss/opengauss
 export LD_LIBRARY_PATH=$GS_HOME/lib:$LD_LIBRARY_PATH
 export PGDATA=/home/gauss/data
 export PATH=$GS_HOME/bin:$PATH
 
-#安装openGauss，两次加压是由于官网下载的安装包是为官方安装工具准备的，经过两次压缩。
+# 安装openGauss，两次加压是由于官网下载的安装包是为官方安装工具准备的，经过两次压缩。
 mkdir tmp && cd tmp
 wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/1.0.0/x86/openGauss-1.0.0-CentOS-64bit.tar.gz
 tar xf openGauss-1.0.0-CentOS-64bit.tar.gz
@@ -56,7 +56,6 @@ rm -rf /home/gauss/tmp
 
 这里直接采用gs_initdb命令初始化。
 ```
-# 初始化数据库
 gs_initdb -w Aa123456 --nodename='sgnode'
 
 # 配置数据库
@@ -73,21 +72,19 @@ host    all             all             0.0.0.0/0               sha256
 
 ### 启动数据库
 ```
-    gaussdb
-#或
-    gs_ctl start -l logfile
+gs_ctl start -l logfile
 ```
 
 #初始化用户
 PS：初始化数据库的用户，是不能通过IP远程连接的哦，所以需要创建另外一个用户才能远程连接，不知道有没有其他参数可以解除初始化用户的远程连接限制。
 ```
-# openGauss是源于PG9.2的魔改数据库，保留默认的postgres数据库不变，所以指定一下再连接吧
+# openGauss是源于PostgreSQL的数据库，默认初始化postgres数据库不变，如果当前用户不是postgres就要指定数据库名登录
 gsql -dpostgres
 
-#修改初始化用户的密码（若需要），openGauss 加强安全，如果需要修改初始化数据库用户的密码，需要用REPLACE哦！
+# 修改初始化用户的密码（若需要），openGauss 加强安全，如果需要修改初始化数据库用户的密码，需要用REPLACE哦！
 postgres=#  ALTER ROLE gauss IDENTIFIED BY 'Aa1234567' REPLACE 'Aa123456';
 
-#创建用户(初始化数据库的用户不能进行远程连接，需要重新创建用户)
+# 创建用户(初始化数据库的用户不能进行远程连接，需要重新创建用户)
 postgres=# create user user1 with password 'Aa123456';
 postgres=# grant all PRIVILEGES to user1; 
 
@@ -97,7 +94,4 @@ postgres=# grant all PRIVILEGES to user1;
 gsql -dpostgres -h192.168.1.67 -Uuser1
 
 ### 总结
- openGauss数据库安装也可以参考postgresql的安装方式进行绿色安装。需要注意的是，openGauss对安全性进行了增强，所以在初始化数据库是需要数据密码，并且初始化数据库的用户是不能远程登录的，后面需要重新初始化一个远程登录使用的用户。
-
-
-
+openGauss数据库安装也可以参考postgresql的安装方式进行绿色安装。需要注意的是，openGauss对安全性进行了增强，所以在初始化数据库是需要数据密码，并且初始化数据库的用户是不能远程登录的，后面需要重新初始化一个远程登录使用的用户。
