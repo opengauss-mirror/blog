@@ -1,4 +1,13 @@
-+++ title = "openGauss数据库安装部署(单实例)" date = "2020-07-22" tags = ["openGauss安装部署"] archives = "2020-07" author = "贾军锋" summary = "openGauss安装部署" img = "/zh/post/jiajunfeng/img/DBlogo-20200722.png" times = "17:00" +++
++++
+title = "openGauss数据库安装部署(单实例)"
+date = "2020-07-22"
+tags = ["openGauss安装部署"]
+archives = "2020-07"
+author = "贾军锋"
+summary = "openGauss安装部署"
+img = "/zh/post/jiajunfeng/img/DBlogo-20200722.png"
+times = "17:00"
++++
 
 # openGauss单机部署文档(CentOS7.6+openGauss 1.0.0)<br>
 
