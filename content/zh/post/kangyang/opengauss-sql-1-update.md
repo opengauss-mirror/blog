@@ -22,6 +22,7 @@ times = "17:30"
 SQL引擎是数据库系统重要组成部分，它的主要职责是负责将应用程序输入的SQL在当前负载场景下生成高效的执行计划，在SQL的高效执行上扮演重要角色。SQL在SQL引擎里执行过程，如图1所示。
 
 **图1  SQL执行流程**
+
 ![](../figures/zh-cn_image_0262916291.png)
 
 
@@ -89,6 +90,7 @@ SELECT w_name FROM warehouse WHERE w_no = 1;
 语法分析会根据词法分析获得的词来匹配语法规则，最终生成一个抽象语法树（AST），每个词作为语法树的叶子结点出现，如图2所示。
 
 **图2  抽象语法树**
+
 ![](../figures/zh-cn_image_0262916293.png)
 
 
@@ -102,6 +104,7 @@ SELECT w_name FROM warehouse WHERE w_no = 1;
 在有效性检查的同时，语义分析的过程还是有效性语义绑定（Bind）的过程，通过语义分析的检查，抽象语法树就转换成一个逻辑执行计划，逻辑执行计划可以通过关系代数表达式的形式来表现，如图3所示。
 
 **图3  关系代数表达式**
+
 ![](../figures/zh-cn_image_0262916295.png)
 
 ### 3 查询优化
@@ -151,7 +154,7 @@ SQL语言是丰富多样的，非常的灵活，不同的开发人员依据经�
 
 <a name="table13886291122"></a>
 
-<table><tbody><tr id="row192243291224"><td class="cellrowborder" valign="top" width="34%"><p id="p142241294218"><a name="p142241294218"></a><a name="p142241294218"></a>等价变换</p>
+<table border='1'><tbody><tr id="row192243291224"><td class="cellrowborder" valign="top" width="34%"><p id="p142241294218"><a name="p142241294218"></a><a name="p142241294218"></a>等价变换</p>
 </td>
 <td class="cellrowborder" valign="top" width="82.89999999999999%"><p id="p82248294216"><a name="p82248294216"></a><a name="p82248294216"></a>内容</p>
 </td>
