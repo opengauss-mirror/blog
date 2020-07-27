@@ -261,19 +261,41 @@ html,body {
 }
 .post_detail {
     font-size: 16px;
+    word-break: break-all;
 }
 .tile h3,.tile p,.tile ul,.guidance h2 {
     color: #080808;
 }
+.tile h1,.tile h2,.tile h3,.tile h4,.tile h5,.tile pre,.tile table {
+    margin-bottom: 0.2rem;
+}
+.tile table {
+    width: 100%;
+    max-width: 100%;
+}
+.tile table th,
+.tile table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    white-space: normal;
+    word-break: break-all;
+}
 .tile p,.tile ul {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
     line-height: 0.52rem;
+}
+.tile img {
+    width: 100%;
 }
 .post-comment {
     margin-top: 0.6rem;
 }
 .leancloud-visitors-count {
     font-weight: 500;
+}
+.tile pre {
+    padding: 30px 12px;;
 }
 
 /* -------------------------guidance------------------------ */

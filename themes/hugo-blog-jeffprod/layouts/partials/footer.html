@@ -3,7 +3,7 @@
 <input id="iframeUrl" type="text" style="display: none;" value={{ .Params.iframeUrl }}>
 {{ end }}
 {{ end }}
-<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+<script defer src="{{ .Site.BaseURL }}js/all.js"></script>
 <script src="{{ .Site.BaseURL }}js/flexible.js"></script>
 <script>
   const hash = window.location.search,
