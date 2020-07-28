@@ -1,7 +1,9 @@
 ﻿+++      
 title = "openGauss数据库核心技术-SQL引擎（2）" 
 
-date = "2020-07-27" tags = ["openGauss数据库核心技术"] 
+date = "2020-07-27" 
+
+tags = ["openGauss数据库核心技术"] 
 
 archives = "2020-07" 
 
