@@ -82,6 +82,12 @@ html,body {
     border: none;
     border-radius: 2px;
 }
+ul{
+    margin-left: 20px;
+}
+li{
+    list-style-type: disc!important;
+}
 /* ------------------------blog 主页------------------------- */
 .article {
     display: flex;
