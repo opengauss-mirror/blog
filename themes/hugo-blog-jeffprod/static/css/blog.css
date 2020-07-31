@@ -88,6 +88,9 @@ ul{
 li{
     list-style-type: disc!important;
 }
+.pagination__item{
+    list-style-type: none!important;
+}
 /* ------------------------blog 主页------------------------- */
 .article {
     display: flex;
