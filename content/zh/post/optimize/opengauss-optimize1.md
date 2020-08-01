@@ -12,13 +12,13 @@ times = "19:30"
 
 ### 概述
 
-本文描述了opengauss数据库内核基于Taishan服务器，在openEuler操作系统上，为了达到数据库的极致性能，所依赖的关键系统级调优配置。
+本文描述了openGauss数据库内核基于Taishan服务器，在openEuler操作系统上，为了达到数据库的极致性能，所依赖的关键系统级调优配置。
 
 **硬件规格：** \
-CPU:	Kunpen-920 ARM aarch64 96核/128核 两路socket NUMA node 0-23,24-47,48-71,72-95 \
-内存:	256G \
-磁盘:	3T SSD * 4 \
-网卡:	1000Mb/s version: 1.9.37.2 Huawei Technologies Co., Ltd. HiSilicon PCI-PCI Bridge (rev 20) (prog-if 00 [Normal decode])
+CPU:	Kunpen-920(1620)  ARM aarch64  64核 * 2   \
+内存:	>=512G \
+磁盘:	Nvme SSD * 4(每块大于1TB) \
+网卡:	1822网卡  万兆网卡 Ethernet controller: Huawei Technologies Co., Ltd. Hi1822 Family (4*25GE) (rev 45)	
 
 **软件规格：** \
 操作系统:	openEuler 20.03 (LTS) \
@@ -35,47 +35,18 @@ ant: apache-ant-1.9.15
 
 benchmark htop iostat工具的安装使用请参照：[benchmark使用](/zh/post/optimize/opengauss-tpcc/)
 
-### 操作参考顺序
-
-配置bois -> 格式化磁盘 -> 安装数据库 -> 安装Java -> 安装ant -> 安装benchmark -> 修改中断优化 -> 修改benchmark内配置文件（建表，建索引，运行配置文件） -> 修改数据库GUC配置参数 -> 创建表空间-> 分盘 -> 安装htop，安装iostat -> 启动benchmark生成数据 -> 备份数据库gaussdata目录（拷贝过程分盘软连接也会跟着备份）-> 启动一次压力测试，查看iostat和htop效果，等待tpmc结果 -> stop数据库 -> 清空缓存 -> gaussdata数据恢复
-
-如上步骤完成一轮测试。修改GUC参数后，可重新启动进行下一轮测试
 
 ### BIOS配置
 
-重启服务器进入BIOS界面，修改配置并重启 (服务器管理系统以实际为准，本文章以huawei IBMC系统为例)
+登录服务器管理系统，重启服务器进入BIOS界面，修改BIOS相关配置并重启 (服务器管理系统以实际为准)。
 
-**1. 通过浏览器（推荐Chrome）登录BMC系统** \
-**2. 进入服务器远程控制台（例如 BMC）**
-![](../images/loginibmc.png)
-**3. 通过远程控制台重启服务器**
-
-> 对于已经安装操作系统的机器 
-
-<1>  使用root账号登录到操作系统 \
-<2>   停止opengauss数据库服务 \
-<3>  执行命令重启操作系统 
-```shell
-
-[root@localhost ~]# sync; sync
-[root@localhost ~]# reboot
-
-```
-
-> 对于未安装操作系统情况
-
-强制下电再上电
-![](../images/stopvm.png)
-
-**4. 重启后登录BIOS**
-
-<1> 机器自检后，会提示启动选项
+**1.机器自检后，会提示启动选项**
 ![](../images/bios1.png)
-<2> 按“Del”键，进入BIOS
+**2.按“Del”键，进入BIOS**
 ![](../images/bios2.png)
-<3> 输入BIOS密码
+**3.输入BIOS密码**
 ![](../images/bios3.png)
-<4> 恢复出厂设置
+**4.恢复出厂设置**
 
 按下“F9”，恢复出厂设置  
 *重要：因为现有的BIOS可能被改动过诸多默认设置，为保险起见，建议首先恢复出厂设置*
@@ -103,8 +74,8 @@ benchmark htop iostat工具的安装使用请参照：[benchmark使用](/zh/post
 
 **1. 优化操作系统相关配置**
 
-关闭Irq balance：opengauss数据库抢占客户端的CPU，导致CPU使用不均衡；
-如果`htop`呈现出部分CPU压力很大，部分CPU很空闲时需要考虑是否关闭了irqbalance
+Irq balance关闭：为避免gaussdb与客户端抢用CPU，导致CPU使用不均衡。
+如果htop呈现出部分CPU压力很大，部分CPU很空闲时需要考虑是否关闭了irqbalance。
 ![](../images/os3.png)
 
 ```shell
@@ -169,7 +140,7 @@ mount /dev/nvme0n1 /data1
 
 **1. 多中断队列设置**
 
-针对泰山单核能力不足，核数又较多的情况，产品需要在服务器端，客户端均使用网卡多队列（默认16队列）的规格。 \
+针对泰山服务器核数较多的特征，产品需要在服务器端和客户端设置网卡多队列。
 当前推荐的配置为：服务器端网卡配置16中断队列，客户端网卡配置48中断队列。 
 
 多中断队列设置工具(1822-FW) \
@@ -195,10 +166,10 @@ https://support.huawei.com/enterprise/zh/intelligent-accelerator-components/in50
 ./hinicconfig hinic0 -f std_sh_4x25ge_dpdk_cfg_template0.ini
 
 ```
-重启生效，输入命令ethtool -l enp3s0查看（比如下图表示修改为32）
+重启操作系统生效，输入命令`ethtool -l enp3s0`查看（比如下图表示修改为32）
 ![](../images/netcf1.4.png)
 
-修改combined的值，输入命令`ethtool -L enp3s0 combined 48`（不同平台，不同应用的优化值可能不同，当前96核和128核平台，服务器端调优值为16，客户端调优值为48）
+修改combined的值，输入命令`ethtool -L enp3s0 combined 48`（不同平台，不同应用的优化值可能不同，当前128核平台，服务器端调优值为16，客户端调优值为48）
 
 **2. 中断调优**
 
@@ -240,7 +211,7 @@ bus-info: 0000:03:00.0
 
 > 网卡固件更新步骤
 
-<1> 上传附件至服务器
+<1> 上传网卡固件驱动至服务器
 Hi1822_nic_prd_1h_4x25G.bin
 
 <2> 使用root执行如下命令
@@ -252,7 +223,7 @@ hinicadm updatefw -i <物理网卡设备名> -f <固件文件路径>
 其中，“物理网卡设备名”为网卡在系统中的名称，例如“hinic0”表示第一张网卡，“hinic1”表示第二张网卡，查找方法参见前文“多中断队列设置”。
 例如：
 ```
-
+# hinicadm updatefw -i <物理网卡设备名> -f <固件文件路径>
 Please do not remove driver or network device 
 Loading... 
 [>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>]  [100%] [\] 
@@ -278,22 +249,19 @@ bus-info: 0000:03:00.0
 ### 数据库服务端及客户端绑核
 
 安装数据库, 具体参考openGauss安装文档。
-这一节简单的说就是： \
-1、停止数据库 \
-2、修改postgresql.conf文件，在最后添加业务场景/生产场景/极限场景配置，之后修改thread_pool_attr参数。 \
-3、以绑核方式启动数据库 ：`numactl -C 0-27,32-59,64-91,96-123 gaussdb --single_node -D /data1/gaussdata  -p 3625 &` 按照各自的路径和thread_pool_attr配置修改该启动命令 \
-4、修改启动benchmark的启动命令：`numactl -C 28-31,60-63,92-95,124-127 ./runBenchmark.sh 108_zzj_props.pg ` 按照自己的绑核配置和benchmark配置文件执行此命令。这里的绑核参数是在数据库绑核参数的空隙。 \
-5、安装htop工具  https://www.cnblogs.com/paul8339/p/5802423.html \
-6、`iostat –xm 1` 1s显示一次磁盘io状态 \
-7、每经过一次测试，为保证下次数据可靠性进行一次清空缓存的操作，如下： \
-```shell
 
-free -g
-ipcs -m | awk '$2 ~/[0-9]+/ {print $2}' | while read s; do ipcrm -m $s; done
-echo 3 > /proc/sys/vm/drop_caches    ##清空缓存（更多的用内存，降低io压力）
-free -g
+大概步骤如下：
 
-```
+1、停止数据库
+
+2、修改postgresql.conf参数。
+
+3、以绑核方式启动数据库：
+`numactl --interleave=all bin/gaussdb  -D ${DATA_DIR} --single_node`
+
+4、以绑核方式启动benchmark：
+`numactl -C 0-19,32-51,64-83,96-115 ./runBenchmark.sh props.pg` \
+按照自己的绑核配置和benchmark配置文件执行此命令。这里的绑核参数是在数据库绑核参数的空隙
 
 **1. 服务器端绑核设置**
 
@@ -307,27 +275,11 @@ free -g
 
 ```shell
 
-numactl -C 0-27,32-59,64-91,96-123 gaussdb --single_node -D /data1/gaussdata  -p 3625 &
+numactl -C 0-27,32-59,64-91,96-123 gaussdb --single_node -D {DATA_DIR} -p {PORT} &
 或者：
-numactl --interleave=all gaussdb --single_node -D /data1/gaussdata -p 3625 &
+numactl --interleave=all gaussdb --single_node -D {DATA_DIR} -p {PORT} &
 
 ```
-
-<!-- ```shell
-
-numactl --interleave=all 
-numactl -C 0-27,32-59,64-91,96-123 gaussdb --single_node -D /ssd/ommd/gaussdata  -p 3629 &
-numactl -C 0-25,32-57,64-89,96-121 gaussdb --single_node -D /ssd/omm108/gaussdata  -p 3630 &
-
-```
-```
-0-25,32-57,64-89,96-121  gaussdb
-26-31,58-63,90-95,122-127  tpcc
-0-23,32-55,64-87,96-119  gaussdb   （最高103W）
-24-31,56-63,88-95,120-127  tpcc
-0-24,32-56,64-88,96-120  gaussdb   （102W）
-25-31,57-63,89-95,121-127  tpcc
-``` -->
 
 **2. 服务器端参数设置**
 
@@ -337,6 +289,94 @@ postgresql.conf中新增如下参数：
 - `numa_distribute_mode = 'all'` \
 此参数目前有all和none两个取值。all表示启用NUMA优化，将工作线程和对应的PGPROC、WALInsertlock进行统一分组，分别绑定到对应的NUMA Node下，以减少关键路径上的CPU远端访存。默认取值为none，表示不启用NUMA分布特性。只有在涉及到多个NUMA节点，且远端访存代价明显高于本地访存时使用。当前建议在性能压力测试情况下开启。
 
+thread_pool_attr线程池配置 \
+`thread_pool_attr = '812,4,(cpubind: 0-27,32-59,64-91,96-123)'`
+
+相关参数：
+```
+
+max_connections = 4096
+allow_concurrent_tuple_update = true
+audit_enabled = off
+checkpoint_segments = 1024
+checkpoint_timeout = 15min
+cstore_buffers = 16MB
+enable_alarm = off
+enable_codegen = false
+enable_data_replicate = off
+full_page_writes = on
+max_files_per_process = 100000
+max_prepared_transactions = 2048
+shared_buffers = 350GB   
+use_workload_manager = off  
+wal_buffers = 1GB
+work_mem = 1MB
+log_min_messages = FATAL
+transaction_isolation = 'read committed'
+default_transaction_isolation = 'read committed'
+synchronous_commit = on
+fsync = on
+maintenance_work_mem = 2GB
+vacuum_cost_limit = 2000
+autovacuum = on
+autovacuum_mode = vacuum
+autovacuum_max_workers = 5
+autovacuum_naptime = 20s
+autovacuum_vacuum_cost_delay = 10
+xloginsert_locks = 48
+update_lockwait_timeout = 20min
+
+enable_mergejoin = off
+enable_nestloop = off
+enable_hashjoin = off
+enable_bitmapscan = on
+enable_material = off
+
+wal_log_hints = off
+log_duration = off
+checkpoint_timeout = 15min
+autovacuum_vacuum_scale_factor = 0.1
+autovacuum_analyze_scale_factor = 0.02
+enable_save_datachanged_timestamp = false
+
+log_timezone = 'PRC' 
+timezone = 'PRC'              
+lc_messages = 'C'			
+lc_monetary = 'C'			
+lc_numeric = 'C'			
+lc_time = 'C'				             
+
+enable_thread_pool = on  
+thread_pool_attr = '812,4,(cpubind:0-27,32-59,64-91,96-123)'
+enable_double_write = off
+enable_incremental_checkpoint = on
+enable_opfusion = on
+advance_xlog_file_num = 10
+numa_distribute_mode = 'all'  
+
+track_activities = off
+enable_instr_track_wait = off
+enable_instr_rt_percentile = off
+track_counts = on
+track_sql_count = off
+enable_instr_cpu_timer = off
+
+plog_merge_age = 0
+session_timeout = 0
+
+enable_instance_metric_persistent = off
+enable_logical_io_statistics = off
+enable_page_lsn_check = off
+enable_user_metric_persistent = off
+enable_xlog_prune = off
+
+enable_resource_track = off
+instr_unique_sql_count=0
+enable_beta_opfusion=on
+enable_beta_nestloop_fusion=on
+
+```
+
 **3. TPCC客户端绑核设置**
 
 客户端通过 numactl 将客户端绑定在除网卡外的核上，下图以 128 核环境举例，共80个核用于处理业务逻辑，剩余48个核处理网络中断。
@@ -345,13 +385,12 @@ postgresql.conf中新增如下参数：
 
 对应tpmc程序应该使用为：
 
-```
+```shell
 
-numactl -C 0-27,32-59,64-91,96-123 ./runBenchmark.sh props.pg ## 26-31,58-63,90-95,122-127 这些核用来处理网络中断
-或者
-numactl --interleave=all
+numactl -C 0-19,32-51,64-83,96-115 ./runBenchmark.sh props.pg
 
 ```
+其他核用来处理网络中断
 
 ### 构建TPCC初始数据
 
@@ -418,15 +457,31 @@ osCollectorInterval=1
 [tableCreates.sql](../images/tableCreates.sql)
 使用该文件替换benchmarkSQL中的文件, 路径为
 benchmarksql-5.0/run/sql.common/ \
-*该文件主要增加了两个表空间和一些附加数据属性*
+该文件主要做了如下修改：\
+1.增加了两个表空间
+```sql
+CREATE TABLESPACE example2 relative location 'tablespace2';
+CREATE TABLESPACE example3 relative location 'tablespace3';
+```
+2.删除序列`bmsql_hist_id_seq`
+
+3.给每一个表增加FACTOR属性
+```sql
+create table bmsql_stock (
+  s_w_id       integer       not null,
+  .....
+  s_dist_10    char(24)
+) WITH (FILLFACTOR=80) tablespace example3;
+```
 
 <2> 修改索引indexCreates.sql
+
 修改run/sql.common/indexCreates.sql文件
 ![](../images/index1.png) \
 修改上图中红框中的内容如下： \
 ![](../images/index2.png)
 
-同时，该文件中添加红色内容，可以在benchmark自动生成数据的时候自动生成到不同的数据表空间，如果未添加可以在benchmark生成数据之后再数据库端修改。用于分盘。
+在该文件中添加下图中红色内容，可以在benchmark自动生成数据的时候自动生成到不同的数据表空间，如果未添加可以在benchmark生成数据之后再数据库端修改。用于分盘。
 ![](../images/index3.png)
 
 <3> 修改runDatabaseBuild.sh文件
@@ -460,7 +515,8 @@ wait $job1 $job2 $job3 $job0
 ```
 **5. 数据分盘**
 
-在性能测试过程中, 为了增加IO的吞吐量, 需要将数据分散到不同的存储介质上, 由于我们机器上有4块NVME盘, 可以将数据分散到不同的盘上. 我们主要将pg_xlog, tablespace2, tablespace3这三个目录放置在其他3个NVME盘上, 并在原有的位置给出指向真实位置的软连接. pg_xlog位于数据库目录下, tablespace2, tablespace3分别位于数据库目录pg_location下. 对tablespace2分盘的示例命令如下
+在性能测试过程中, 为了增加IO的吞吐量, 需要将数据分散到不同的存储介质上。
+由于我们机器上有4块NVME盘, 可以将数据分散到不同的盘上。 我们主要将pg_xlog, tablespace2, tablespace3这三个目录放置在其他3个NVME盘上, 并在原有的位置给出指向真实位置的软连接. pg_xlog位于数据库目录下, tablespace2, tablespace3分别位于数据库目录pg_location下。 对tablespace2分盘的示例命令如下：
 ```shell
 
 mv $DATA_DIR/pg_location/tablespace2 $TABSPACE2_DIR/tablespace2
@@ -468,56 +524,6 @@ cd $DATA_DIR/pg_location/
 ln -svf $TABSPACE2_DIR/tablespace2 ./
 
 ```
-举例：
-将数据库安装目录，pg_xlog，tablespace2，tablespace3分别链接到三个ssd盘。
-
-1. 格式化ssd盘，见格式化ssd盘章节。
-
-2. 进入tpcc数据库
-
-3. 创建两个数据表空间
-```sql
-
-CREATE TABLESPACE example2 relative location 'tablespace2';
-CREATE TABLESPACE example3 relative location 'tablespace3';
-
-```
-    
-建立新表或删除原表的原索引再新建索引。参考以下：
-
-```sql
-
-\d+ bmsql_new_order  ##进入表
-alter table bmsql_new_order drop constraint bmsql_new_order_pkey;  ##删除原有索引
-alter table bmsql_new_order add constraint bmsql_new_order_pkey primary key(no_w_id, no_d_id, no_o_id)using index tablespace tablespace2;  ##新建索引
-alter table 某表 add constraint 某表_pkey primary key (no_w_id, no_d_id, no_o_id) using index tablespace example2;
-alter table 某表 constraint 某表_pkey primary key (no_w_id, no_d_id, no_o_id) using index tablespace example3
-
-```
-注*
-针对下面第4步的重要标志（第4步分盘操作容易出现软连接错误，或在忘记关闭数据库的情况下进行分盘导致数据库崩溃，因此可以通过另外一种方式来实现：
-1：为要分盘的目标路创建权限。\
-2：针对pg_xlog的分盘，可通过在数据库初始化时添加 “-X 分盘后pg_xlog路径”参数来实现。`Eg：gs_initdb -w ****** -D /data/ommzzj/gaussdata --nodename='datanode' --dbcompatibility=A -X  /ssd2/sopengauss`  \
-3：针对表空间分盘，可以通过在创建表空间时添加参数来实现，`eg：CREATE TABLESPACE example2 LOCATION '/ssd3/sopengauss1/tablespace2'; CREATE TABLESPACE example3 LOCATION '/ssd4/sopengauss1/tablespace3';）`。
-
-4. 移动数据库目录/pg_xlog到要分盘到的目录/pg_xlog
-```shell
-
-cd 数据库目录/
-ln –svf 要分盘到的目录/ pg_xlog  ./
-
-mv 数据库目录/tablespace2  要分盘到的目录/tablespace2
-cd 数据库目录/
-ln –svf 要分盘到的目录/tablespace2  ./
-
-mv 数据库目录/tablespace3  要分盘到的目录/tablespace3
-cd 数据库目录/
-ln –svf 要分盘到的目录/tablespace3  ./
-    
-```
-创建完成后效果如下
-![](../images/tpcc3.png)
-![](../images/tpcc4.png)
 
 **6. 运行TPCC程序**
 
@@ -533,14 +539,12 @@ numactl –C 0-19,32-51,64-83,96-115 ./runBenchmark.sh props.opengauss.1000w
 ![](../images/monitor.png)
 上图中黄线框中的是处理网络中断的CPU
 
+**8. 调优后的监控状态**
+
+经过调优后的htop状态呈现这种状态是比较可靠的状态
+![](../images/htop1.png)
+
 数据库调优是一个繁琐的工作，需要不断去修改配置，运行TPCC，反复去调试以达到最优性能配置。
 
-### 附
-
-**针对128核服务器的绑核建议**
-
-0-23,32-55,64-87,96-119      gaussdb   （最高103W） \
-24-31,56-63,88-95,120-127      tpcc
-
-0-24,32-56,64-88,96-120      gaussdb   （102W） \
-25-31,57-63,89-95,121-127      tpcc
+TPCC运行结果：
+![](../images/tpmc1.png)
