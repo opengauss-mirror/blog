@@ -546,5 +546,5 @@ numactl –C 0-19,32-51,64-83,96-115 ./runBenchmark.sh props.opengauss.1000w
 
 数据库调优是一个繁琐的工作，需要不断去修改配置，运行TPCC，反复去调试以达到最优性能配置。
 
-TPCC运行结果：
-![](../images/tpmc1.png)
+**TPCC运行结果：**
+![](../images/150wtpmc.png)
