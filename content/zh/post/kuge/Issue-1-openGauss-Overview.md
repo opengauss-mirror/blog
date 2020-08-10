@@ -10,6 +10,4 @@ times = "17:30"
 
 +++
 
-# 【一张图看懂openGauss】第1期 openGauss概述
-
 ![](../img/Issue_1_openGauss_Overview.jpg)
