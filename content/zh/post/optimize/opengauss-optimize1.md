@@ -454,9 +454,9 @@ osCollectorInterval=1
 **2. TPCC导入数据前准备**
 
 <1> 替换tableCreats.sql文件
-[tableCreates.sql](../images/tableCreates.sql)
-使用该文件替换benchmarkSQL中的文件, 路径为
-benchmarksql-5.0/run/sql.common/ \
+
+下载文件tableCreates.sql (https://blog.opengauss.org/zh/post/optimize/images/tableCreates.sql)。
+使用该文件替换benchmarkSQL中路径 benchmarksql-5.0/run/sql.common/ 下的对应文件。\
 该文件主要做了如下修改：\
 1.增加了两个表空间
 ```sql
