@@ -1,6 +1,6 @@
 +++
 title = "【一张图看懂openGauss】第5期 openGauss高安全特性" 
-date = "2020-08-8" 
+date = "2020-08-28" 
 tags = ["一张图看懂openGauss"] 
 archives = "2020-08" 
 author = "酷哥" 
