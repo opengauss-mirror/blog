@@ -1,6 +1,6 @@
 +++
 title = "兼容多版本Python的第三方库编译说明"
-date = "2020-11-9"
+date = "2020-11-09"
 tags = ["兼容多版本Python的第三方库编译说明"]
 archives = "2020-11"
 author = "Ricardo.Cui"
@@ -12,7 +12,7 @@ times = "19:30"
 
 ### 概述
 
-本文描述了openGauss数据库的第三方库，如何在CentOS系统上编译出支持多版本python环境的第三方库。
+本文描述了如何在CentOS系统上编译出支持多版本python环境的openGauss-third_party第三方库。
 
 **硬件规格：**  
 CPU:	Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz 7核  
