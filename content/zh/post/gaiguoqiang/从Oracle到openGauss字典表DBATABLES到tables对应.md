@@ -1,16 +1,16 @@
 +++
 
-title = "从Oracle到openGauss：字典表DBA\_TABLES到tables对应" 
+title = "从Oracle到openGauss：字典表DBATABLES到tables对应" 
 
 date = "2020-11-19" 
 
-tags = ["从Oracle到openGauss：字典表DBA\_TABLES到tables对应"] 
+tags = ["从Oracle到openGauss：字典表DBATABLES到tables对应"] 
 
 archives = "2020-11" 
 
 author = "盖国强" 
 
-summary = "从Oracle到openGauss：字典表DBA\_TABLES到tables对应"
+summary = "从Oracle到openGauss：字典表DBATABLES到tables对应"
 
 img = "/zh/post/gaiguoqiang/title/title.png" 
 
@@ -18,7 +18,7 @@ times = "14:30"
 
 +++
 
-# 从Oracle到openGauss：字典表DBA\_TABLES到tables对应<a name="ZH-CN_TOPIC_0293240557"></a>
+# 从Oracle到openGauss：字典表DBATABLES到tables对应<a name="ZH-CN_TOPIC_0293240557"></a>
 
 从Oracle数据库向其他数据库过度时，很多朋友会自然而然的寻找属性都过度方式，例如字典表。
 
