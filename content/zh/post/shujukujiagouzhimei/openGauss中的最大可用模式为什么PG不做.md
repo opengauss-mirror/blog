@@ -4,7 +4,7 @@ title = "openGauss中的最大可用模式为什么PG不做"
 
 date = "2020-11-25" 
 
-tags = ["openGauss中的最大可用模式为什么PG不做"] 
+tags = ["openGauss与PG对比"] 
 
 archives = "2020-11" 
 
