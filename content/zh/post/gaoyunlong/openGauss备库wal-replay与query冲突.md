@@ -4,7 +4,7 @@ title = "openGauss备库wal replay与query冲突"
 
 date = "2020-11-25" 
 
-tags = ["openGauss备库wal replay与query冲突"] 
+tags = ["openGauss故障处理"] 
 
 archives = "2020-11" 
 
