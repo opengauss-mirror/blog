@@ -4,7 +4,7 @@ title = "openGauss1.0.1部分新特性测试"
 
 date = "2020-11-25" 
 
-tags = ["openGauss1.0.1部分新特性测试"] 
+tags = ["openGauss功能测试"] 
 
 archives = "2020-11" 
 
