@@ -1,6 +1,6 @@
 +++
 
-title = "不使用华为om工具如何手工部署openGauss主从流复制环境" 
+title = "不使用om工具如何手工部署openGauss主从流复制环境" 
 
 date = "2020-11-27" 
 
@@ -10,7 +10,7 @@ archives = "2020-11"
 
 author = "数据库架构之美" 
 
-summary = "不使用华为om工具如何手工部署openGauss主从流复制环境"
+summary = "不使用om工具如何手工部署openGauss主从流复制环境"
 
 img = "/zh/post/shujukujiagouzhimei/title/title.PNG" 
 
@@ -18,7 +18,7 @@ times = "14:30"
 
 +++
 
-# 不使用华为om工具如何手工部署openGauss主从流复制环境<a name="ZH-CN_TOPIC_0293240559"></a>
+# 不使用om工具如何手工部署openGauss主从流复制环境<a name="ZH-CN_TOPIC_0293240559"></a>
 
 ## 背景<a name="section84151858112416"></a>
 
