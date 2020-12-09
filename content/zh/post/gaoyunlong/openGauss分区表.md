@@ -1,6 +1,6 @@
 +++
 
-title = "openGauss 分区表" 
+title = "openGauss分区表" 
 
 date = "2020-12-09" 
 
@@ -10,7 +10,7 @@ archives = "2020-12"
 
 author = "高云龙" 
 
-summary = "openGauss 分区表"
+summary = "openGauss分区表"
 
 img = "/zh/post/gaoyunlong/title/title.PNG" 
 
@@ -18,7 +18,7 @@ times = "16:30"
 
 +++
 
-# openGauss 分区表<a name="ZH-CN_TOPIC_0000001071348602"></a>
+# openGauss分区表<a name="ZH-CN_TOPIC_0000001071348602"></a>
 
 ## 概述<a name="section62442111132"></a>
 
