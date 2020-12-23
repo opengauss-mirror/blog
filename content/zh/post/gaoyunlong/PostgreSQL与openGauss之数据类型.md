@@ -20,12 +20,12 @@ times = "18:00"
 
 # PostgreSQL与openGauss之数据类型<a name="ZH-CN_TOPIC_0000001070670275"></a>
 
-opengauss是基于postgresql 9.2.4 内核版本开发的，且opengauss的兼容性很强，包括兼容oracle、mysql、tidb及postgresql,如果习惯了postgresql的用法再来维护opengauss数据库，在日常维护使用过程中经常会出现不支持或者语法错误，现在整理一下两个数据库常用数据类型的差异，可快速在postgresql 和 opengauss 两个数据库之间进行切换，减少出错的概率。
+openGauss是基于PostgreSQL 9.2.4 内核版本开发的，且openGauss的兼容性很强，包括兼容oracle、mysql、tidb及PostgreSQL,如果习惯了PostgreSQL的用法再来维护openGauss数据库，在日常维护使用过程中经常会出现不支持或者语法错误，现在整理一下两个数据库常用数据类型的差异，可快速在PostgreSQL 和 openGauss 两个数据库之间进行切换，减少出错的概率。
 
 数据库对比版本如下：
 
--   postgresql 版本 12.2
--   opengauss 版本 1.0.1
+-   PostgreSQL版本 12.2
+-   openGauss 版本 1.0.1
 
 ## 数字类型<a name="section12747627142013"></a>
 

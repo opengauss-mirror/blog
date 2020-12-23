@@ -20,7 +20,7 @@ times = "16:40"
 
 # PostgreSQL与openGauss之关键字<a name="ZH-CN_TOPIC_0000001071508200"></a>
 
-日常数据库运维的过程中可能对数据库关键字关注点并不是很高，但在程序开发的过程中，数据库对象建模要尽可能的避开数据库关键字的使用，否则在后续开发过程中需要用到各种转译的方法来将关键字转换为普通字符，会非常的麻烦。最近在openGauss上执行date函数后报语法错误，经查询openGauss是支持date函数的，但却用不了，真对这个问题，分别在postgresql12.2数据库和opengauss（1.0.1）数据库进行问题复现并问题分析。
+日常数据库运维的过程中可能对数据库关键字关注点并不是很高，但在程序开发的过程中，数据库对象建模要尽可能的避开数据库关键字的使用，否则在后续开发过程中需要用到各种转译的方法来将关键字转换为普通字符，会非常的麻烦。最近在openGauss上执行date函数后报语法错误，经查询openGauss是支持date函数的，但却用不了，真对这个问题，分别在PostgreSQL12.2数据库和openGauss（1.0.1）数据库进行问题复现并问题分析。
 
 在openGauss执行结果如下：
 
@@ -123,5 +123,5 @@ times = "16:40"
 </tbody>
 </table>
 
-通过对比两个数据库的保留关键字，在opengauss中"date"和"number" 虽然不是保留关键字，但是不可用于函数或类型操作，"isnull"和"LATERAL"变为非保留关键字，"maxvalue"和"procedure"变为保留关键字，“TABLESAMPLE”、“XMLNAMESPACES"及"XMLTABLE”不再做限制。
+通过对比两个数据库的保留关键字，在openGauss中"date"和"number" 虽然不是保留关键字，但是不可用于函数或类型操作，"isnull"和"LATERAL"变为非保留关键字，"maxvalue"和"procedure"变为保留关键字，“TABLESAMPLE”、“XMLNAMESPACES"及"XMLTABLE”不再做限制。
 
