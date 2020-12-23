@@ -12,7 +12,7 @@ author = "多米爸比"
 
 summary = "openGauss1.0.1支持docker主备搭建"
 
-img = "/zh/post/duomibabi/title/title.png" 
+img = "/zh/post/duomibabi/title/img26.png" 
 
 times = "17:30"
 

@@ -5,7 +5,7 @@ tags = ["一张图看懂openGauss"]
 archives = "2020-08" 
 author = "酷哥" 
 summary = "openGauss架构和部署" 
-img = "/zh/post/kuge/title/title.jpg" 
+img = "/zh/post/kuge/title/img11.png" 
 times = "17:30" 
 
 +++

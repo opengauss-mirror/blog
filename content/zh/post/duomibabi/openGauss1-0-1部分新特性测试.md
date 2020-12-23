@@ -12,7 +12,7 @@ author = "多米爸比"
 
 summary = "openGauss1.0.1部分新特性测试"
 
-img = "/zh/post/duomibabi/title/title.png" 
+img = "/zh/post/duomibabi/title/img31.png" 
 
 times = "11:30"
 

@@ -5,7 +5,7 @@ tags = ["openGauss入门"]
 archives = "2020-07"
 author = "hemny"
 summary = "openGauss入门"
-img = "/zh/post/hemny/img/openGauss_logo.png"
+img = "/zh/post/hemny/title/img3.png"
 times = "22:30"
 +++
 

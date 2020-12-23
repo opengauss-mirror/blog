@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "_iconfont";
+    src: url("//at.alicdn.com/t/font_2057696_oufcx8a9u4l.eot?t=1599707778754");
+    /* IE9 */
+    src: url("//at.alicdn.com/t/font_2057696_oufcx8a9u4l.eot?t=1599707778754#iefix") format("embedded-opentype"), url("data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALAAAsAAAAABrAAAAJxAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBDIEMATYCJAMMCwgABCAFhHkHNhveBciemjwJ1MKAYmHdqAUAcIqH//b7/T4zcy8qUVSSV5JJIlEaiQQt/NW9pN+9hHe1dJfQ6vi245PuomhNVft177/vX6UIw8Q3oaORCIvD43BYhp4AZP63ephSQZ5hGbtDAzyZLScbzyfunTaBAn4YAMw1bEzhKA1wrEERdZ8oIW6RXcSduIjTBFoNaagdn93cs2UFmhSIlyTy2HLBoyhGvFmoG1YW8aHSnN5SeI+Ij//WYpmkytDM8+fTkB38il+v2YbuOImXIK+vkLGAKcRDY+TKnDAYc1ol893ptSKkufyNiTi+qMZ/eCRB1FBuO5hRoolfQDmZNMu8u45luDtmRjHz9P5bQ/RsZ5P2NuM4UDhat2tE43qm8ElMZ0//oPDqrSBiavuznRn7YipYGk4ssU9PDa7Pq/BX0z5ByvQZ/wSk7+mHQPDW37XO1sFfc1sBP/0jRaoClk2zBJj7s7jAtuLzkTYXl0M5oS3rAZgSMsu0a0COXt/jFQM3lAgtBkY4mgzdnK3FZEYu9CVU2myj1uIQreZdr2/Tx5oTpQVzhhJCr3cknX4g6/VFLvQfVAb9o9YbG2h1EcM7tpkKs3ok0dMYgv8CSUAlJ3a9+pgU3mJkck8WBfG0R5QqoRK6rU41fo4lynnmKBv1tObAJRVwpp2HeU5QSUox0K1Y62rQbvOmD7UCKtiqIxLyaCgEfC9AIkBKnPfXVj1WibuFIkbOI7tqeJWPkKQkxmCgq6UDIZ9LSljVPb2jWJEeTeMAJ5ECODOGoVyOgKp5WAoFtJZ4RKgy0MbdOFTSWl9WfOUeaIUOy5EiR1GfSTJVc+7VEGMAAAA=") format("woff2"), url("//at.alicdn.com/t/font_2057696_oufcx8a9u4l.woff?t=1599707778754") format("woff"), url("//at.alicdn.com/t/font_2057696_oufcx8a9u4l.ttf?t=1599707778754") format("truetype"), url("//at.alicdn.com/t/font_2057696_oufcx8a9u4l.svg?t=1599707778754#_iconfont") format("svg");
+    /* iOS 4.1- */
+}
+
+._iconfont {
+    font-family: "_iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.iconGroup-:before {
+    content: "\e683";
+}
+
+.iconzuo:before {
+    content: "\e601";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+._page_container {
+    margin-top: 50px;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-size: 13px;
+    height: 28px;
+    line-height: 28px;
+    user-select: none;
+}
+
+._page_container input[type=number] {
+    -moz-appearance: textfield;
+}
+
+._page_container input[type=number]::-webkit-inner-spin-button,
+._page_container input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+._page_container ._pages {
+    display: inline-block;
+}
+
+._page_container ._pages li {
+    display: inline-block;
+    list-style: none;
+    vertical-align: top;
+    color: #303133;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+._page_container ._pages li:hover {
+    color: #7d32ea;
+}
+
+._page_container ._pages li:first-child,
+._page_container ._pages li:last-child {
+    font-size: 14px;
+}
+
+._page_container ._pages ._prev,
+._page_container ._pages ._next,
+._page_container ._pages ._home,
+._page_container ._pages ._last {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 0 8px;
+}
+
+._page_container ._jumper {
+    display: inline-block;
+    color: #606266;
+    margin-left: 10px;
+}
+
+._page_container ._jumper ._count {
+    margin-right: 10px;
+}
+
+._page_container ._jumper ._jumper_input {
+    display: inline-block;
+    font-size: 14px;
+    color: #606266;
+    width: 50px;
+    height: 26px;
+    text-align: center;
+    margin: 0 5px;
+    padding: 3px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    background: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+._page_container ._jumper ._jumper_input:focus {
+    border-color: #7d32ea;
+}
+
+._pages_1 li {
+    background-color: #f4f4f5;
+}
+
+._active_1 {
+    color: #fff !important;
+    background-color: #7d32ea !important;
+}
+
+._active_2 {
+    color: #7d32ea !important;
+}
+
+._disabled_c {
+    color: #c0c4cc !important;
+}

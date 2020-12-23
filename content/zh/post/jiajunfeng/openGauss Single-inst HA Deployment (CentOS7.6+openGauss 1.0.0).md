@@ -5,7 +5,7 @@ tags = ["openGauss安装部署"]
 archives = "2020-07" 
 author = "贾军锋" 
 summary = "openGauss 单实例 HA 安装部署" 
-img = "/zh/post/jiajunfeng/img/DBlogo-20200722.png" 
+img = "/zh/post/jiajunfeng/title/img4.png" 
 times = "19:00" 
 +++
 

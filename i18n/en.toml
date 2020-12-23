@@ -57,3 +57,12 @@ other = "https://test.opengauss.org/en/"
 
 [blog_title]
 other = "Blog"
+
+[blog_view_more]
+other = "Read More"
+
+[post_blog]
+other = "Post Your Blog"
+
+[post_filter]
+other = "Filter"

@@ -12,7 +12,7 @@ author = "张玉龙"
 
 summary = "openGauss1.0.1双机管理"
 
-img = "/zh/post/zhangyulong/title/title.png" 
+img = "/zh/post/zhangyulong/title/img36.png" 
 
 times = "10:30"
 

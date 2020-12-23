@@ -12,7 +12,7 @@ author = "高云龙"
 
 summary = "openGauss分区表"
 
-img = "/zh/post/gaoyunlong/title/title.PNG" 
+img = "/zh/post/gaoyunlong/title/img38.png" 
 
 times = "16:30"
 

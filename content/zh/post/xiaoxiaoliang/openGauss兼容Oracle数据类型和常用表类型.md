@@ -12,7 +12,7 @@ author = "小小亮"
 
 summary = "openGauss兼容Oracle数据类型和常用表类型"
 
-img = "/zh/post/xiaoxiaoliang/title/title.PNG" 
+img = "/zh/post/xiaoxiaoliang/title/img23.png" 
 
 times = "13:30"
 

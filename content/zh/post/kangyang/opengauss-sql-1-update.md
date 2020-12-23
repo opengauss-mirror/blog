@@ -5,7 +5,7 @@ tags = ["openGauss数据库核心技术"]
 archives = "2020-07"
 author = "kangyang"
 summary = "以技术连载的方式陆续介绍openGauss数据库的各项核心技术，包括SQL引擎、优化器、存储引擎、事务处理、数据库安全等。本期开始介绍openGauss SQL引擎技术"
-img = "/zh/post/kangyang/title/title.jpg"
+img = "/zh/post/kangyang/title/img5.png"
 times = "17:30"
 
 +++

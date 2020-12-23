@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $lan := index (split .URL "/") 1 }}
 {{ $archive := lower .Title }}
 
 <div class="container">
@@ -7,27 +8,33 @@
             <div class="column is-9">
                 <div class="tile is-child box">
                     <div class="content">
-        {{ range $key, $value := .Site.Taxonomies.archives }}{{ if eq $key $archive }}{{ range $value.Pages }}
-                        <article class="article">
-                            <div class="article_left">
-                                <a href="{{ .Permalink }}"><img src="{{ .Params.img }}"></a>
+                    {{ range $key, $value := .Site.Taxonomies.archives }}{{ if eq $key $archive }}{{ range $value.Pages }}
+                    <article class="article">
+                        <div class="article_right">
+                            <a href="{{ .Permalink }}"><h3 class="blog-h3">{{ .LinkTitle }}</h3></a>
+                            <div class="prop-content">
+                                <img src="/img/icon-date.svg">
+                                <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
+                                <img src="/img/icon-author.svg">
+                                <span class="article_right_author">{{ .Params.author }}</span>
+                                <img src="/img/icon-view.svg">
+                                <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .LinkTitle }}">
+                                    <i class="leancloud-visitors-count"></i>                     
+                                </span>
                             </div>
-
-                            <div class="article_right">
-                                <a href="{{ .Permalink }}"><h3>{{ .LinkTitle }}</h3></a>
-                                <div>
-                                    <span class="article_right_author">{{ .Params.author }}</span>
-                                    {{ partial "svgs/ico_date.svg" }}
-                                    <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
-                                    {{ partial "svgs/ico_read.svg" }}
-                                    <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .LinkTitle }}">
-                                        <i class="leancloud-visitors-count"></i>                     
-                                    </span>
-                                </div>
-                                <a href="{{ .Permalink }}"><p>{{ .Params.summary }}...</p></a>
+                            <div class="tags">
+                                <img src="/img/icon-tag.svg">
+                                {{ range .Params.tags }}
+                                <a href="/{{$lan}}/tags/{{.|urlize}}">{{ . }}</a>
+                                {{ end }}
                             </div>
-                        </article>
-        {{ end }}{{ end }}{{ end }}
+                            <a href="{{ .Permalink }}"><img class="blog-img" src="{{ .Params.img }}"></a>
+                            <div class="more">
+                                <p>{{ .Params.summary }}...</p><a href="{{ .Permalink }}">查看全文</a>
+                            </div>
+                        </div>
+                    </article>
+                    {{ end }}{{ end }}{{ end }}
                     </div>
                 </div>
             </div>

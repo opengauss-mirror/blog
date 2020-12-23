@@ -12,7 +12,7 @@ author = "数据库架构之美"
 
 summary = "openGauss中的最大可用模式为什么PG不做"
 
-img = "/zh/post/shujukujiagouzhimei/title/title2.png" 
+img = "/zh/post/shujukujiagouzhimei/title/img32.png" 
 
 times = "10:30"
 

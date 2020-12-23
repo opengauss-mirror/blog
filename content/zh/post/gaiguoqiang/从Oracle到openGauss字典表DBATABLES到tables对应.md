@@ -12,7 +12,7 @@ author = "盖国强"
 
 summary = "从Oracle到openGauss：字典表DBATABLES到tables对应"
 
-img = "/zh/post/gaiguoqiang/title/title.png" 
+img = "/zh/post/gaiguoqiang/title/img28.png" 
 
 times = "14:30"
 

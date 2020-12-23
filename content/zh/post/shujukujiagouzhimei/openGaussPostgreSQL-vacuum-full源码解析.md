@@ -12,7 +12,7 @@ author = "数据库架构之美"
 
 summary = "openGauss/PostgreSQL vacuum full源码解析"
 
-img = "/zh/post/shujukujiagouzhimei/title/title1.png" 
+img = "/zh/post/shujukujiagouzhimei/title/img30.png" 
 
 times = "10:30"
 

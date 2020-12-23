@@ -3,7 +3,7 @@ baseurl = "http://blog.openGauss.org"
 author = "@JeffProd"
 copyright = "Copyright © 2008–2018, @JeffProd"
 canonifyurls = true
-paginate = 10
+paginate = 5
 
 theme = "hugo-blog-jeffprod"
 
@@ -43,3 +43,4 @@ defaultContentLanguageInSubdir = true
 
 #编译参数
 #uglyURLs = true
+

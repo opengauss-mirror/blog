@@ -5,7 +5,7 @@ tags = ["兼容多版本Python的第三方库编译说明"]
 archives = "2020-11"
 author = "Ricardo.Cui"
 summary = "兼容多版本Python的第三方库编译说明"
-img = "/zh/post/lijun/title/title.png" 
+img = "/zh/post/Ricardo/title/img20.png" 
 times = "19:30"
 +++
 

@@ -12,7 +12,7 @@ author = "数据库架构之美"
 
 summary = "openGauss中的并行回放以及和PG的对比"
 
-img = "/zh/post/shujukujiagouzhimei/title/title.PNG" 
+img = "/zh/post/shujukujiagouzhimei/title/img22.png" 
 
 times = "14:30"
 

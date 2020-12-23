@@ -1,10 +1,30 @@
 {{ define "main" }}
-{{ partial "detail-banner" }}
+{{ $lan := index (split .URL "/") 1 }}
 <div class="container">
-    <div class="columns">
-        <div class="is-9 post_detail">
-            <div class="tile is-child box">
-                <div class="content">
+    <div class="columns blog-detail">
+        <div class="post_detail">
+            <div class="is-child box">
+                <div class="breadCrumb"><a href="\{{$lan}}\">{{ i18n "blog_title" }}/</a></div>
+                <div class="blog-detail-header">
+                    <h1>{{ .Title }}</h1>
+                    <div class="blog-detail-prop">
+                        <img src="/img/icon-date.svg">
+                        <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
+                        <img src="/img/icon-author.svg">
+                        <span class="article_right_author">{{ .Params.author }}</span>
+                        <img src="/img/icon-view.svg">
+                        <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .LinkTitle }}">
+                            <i class="leancloud-visitors-count"></i>                     
+                        </span>
+                    </div>
+                    <div class="blog-detail-tags">
+                        <img src="/img/icon-tag.svg">
+                        {{ range .Params.tags }}
+                        <a>{{ . }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+                <div class="content blog-content">
                     {{ .Content }}
                 </div>
             </div>
@@ -16,15 +36,21 @@
                 {{ partial "comments.html" . }}
             </div>
         </div>
-        <div class="column is-3 isPc">
-            {{ partial "widget-tags.html" . }}<br>
-            {{ partial "widget-recent.html" . }}<br>
-            {{ partial "widget-related.html" . }}<br>
-            {{ partial "widget-archives.html" . }}
-        </div>
     </div>
 </div>
-
+<script>
+    $(function (){
+        var query = new AV.Query('Counter');
+        query.equalTo('url', decodeURIComponent('{{.Permalink | relURL}}'));
+        query.find().then(function (data) {
+            if(data.length && (data[0].attributes.author === 'openGauss')){
+                var counter = AV.Object.createWithoutData('Counter', data[0].id);
+                counter.set('author', '{{.Params.author}}');
+                counter.save();
+            }
+        })
+    })
+</script>
 
 
 {{ end }}

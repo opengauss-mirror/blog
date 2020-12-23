@@ -1,41 +1,7 @@
-{{ if eq .Type "page" }}
-<section class="hero is-info is-medium">
-    <div class="hero-warp">
-        <div class="has-text-centered">
-            <h1 class="title is-size-1">
-                {{ i18n "blog_title" }}
-            </h1>
-        </div>
-    </div>
-</section>
-{{ else if .Title }}
-<section class="hero is-info is-medium">
-    <div class="hero-warp">
-        <div class="has-text-centered">
-            <h1 class="title is-size-1">
-                <!-- {{ i18n "main_cards_title" }} -->
-                {{ if eq .Type "tags" }}
-                    #{{ .Title }}
-                {{ else if eq .Type "archives" }}
-                    Archive {{ .Title }}
-                {{ else if eq .Type "guidance" }}
-                    Post a blog
-                {{ else }}
-                    {{ .Title }}
-                {{ end }}
-            </h1>
-            {{ if eq .Type "post" }}
-                <div>
-                    <span class="article_right_author">{{ .Params.author }}</span>
-                    {{ partial "svgs/ico_date_white.svg" }}
-                    <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
-                    {{ partial "svgs/ico_read_white.svg" }}
-                    <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-                        <i class="leancloud-visitors-count"></i>                     
-                    </span>
-                </div>
-            {{ end }}
-        </div>
-    </div>
-</section>
+{{ if ne .Type "post" }}
+<div class="blog-banner">
+    <h1>{{ i18n "blog_title" }}</h1>
+    <img class="pc-banner" src="/img/blog-banner-pc.png">
+    <img class="h5-banner" src="/img/blog-banner-h5.png">
+</div>
 {{ end }}

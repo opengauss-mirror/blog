@@ -12,7 +12,7 @@ author = "数据库架构之美"
 
 summary = "不使用om工具如何手工部署openGauss主从流复制环境"
 
-img = "/zh/post/shujukujiagouzhimei/title/title.PNG" 
+img = "/zh/post/shujukujiagouzhimei/title/img35.png" 
 
 times = "14:30"
 

@@ -14,10 +14,12 @@
 
     <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" /> -->
-    <link rel="stylesheet" href="{{ "css/commen.css" | absURL }}" />
-    <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}" />
-    <link rel="stylesheet" href="{{ "css/mobile.css" | absURL }}" />
+    <link rel="stylesheet" href="{{ "css/commen.css" | absURL }}?t={{ mul 1000 (time now).Unix }}" />
+    <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}?t={{ mul 1000 (time now).Unix }}" />
+    <link rel="stylesheet" href="{{ "css/mobile.css" | absURL }}?t={{ mul 1000 (time now).Unix }}" />
+    <link rel="stylesheet" href="{{ "css/pagination.css" | relURL}}?t={{ mul 1000 (time now).Unix }}">
     {{ if .RSSLink }}
   <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
   <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />

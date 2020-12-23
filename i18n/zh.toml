@@ -57,3 +57,12 @@ other = "https://test.opengauss.org/zh/"
 
 [blog_title]
 other = "博客"
+
+[blog_view_more]
+other = "查看全文"
+
+[post_blog]
+other = "欢迎投稿"
+
+[post_filter]
+other = "筛选"

@@ -12,7 +12,7 @@ author = "高云龙"
 
 summary = "openGauss与postgresql日常使用差异"
 
-img = "/zh/post/gaoyunlong/title/title.PNG" 
+img = "/zh/post/gaoyunlong/title/img21.png" 
 
 times = "12:40"
 

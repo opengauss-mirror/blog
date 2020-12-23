@@ -12,7 +12,7 @@ author = "民生运维人"
 
 summary = "openGauss的MVCC以及vacuum机制源码解析—CSN LOG"
 
-img = "/zh/post/minshengyunwei/title/title.png" 
+img = "/zh/post/minshengyunwei/title/img37.png" 
 
 times = "17:30"
 

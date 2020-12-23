@@ -1,55 +1,95 @@
 {{ define "main" }}
+{{ $lan := index (split .URL "/") 1 }}
 {{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
+<div class="mask hide"></div>
+{{ $tag := .Title }}
+{{ $lan := index (split .URL "/") 1 }}
+<div class="tags-filter-content">
+    <div class="h5-tag">
+        <div class="h5-tag-header">
+            {{ if eq (len (where .Data.Pages "Type" "post")) 0}}
+            <span class="filter gray"><img src="/img/icon-tag-gray.svg">Tags{{ i18n "post_filter" }}</span>
+            {{ else }}
+            <span class="filter"><img src="/img/icon-tag.svg">Tags{{ i18n "post_filter" }}</span>
+            {{ end }}
+            <span class="add-blog"><img src="/img/icon-author.svg"><a href="/{{$lan}}/guidance/index.html">{{ i18n "post_blog" }}</a></span>
+        </div>
+        <div class="h5-tag-content hide">
+            <h3 class="h5-tags">Tags</h3>
+            <div class="tags">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            {{ if eq ($tag|urlize) ($name|urlize) }}
+                <span class="tag"><a href="/{{$lan}}/" class="active">{{ $name }}</a></span>
+            {{ else }}
+                <span class="tag"><a href="/{{ i18n "blog_tags_url" }}/{{ $name | urlize }}/">{{ $name }}</a></span>
+            {{ end }}
+            {{ end }}
+            </div>          
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="columns">
         <div class="is-9">
             <div class="tile is-child">
                 <div class="content">
+                    {{ if eq (len (where .Data.Pages "Type" "post")) 0}}
+                    <div class="empty-blogs-status"><div class="empty-desc">Call for contributions ...</div></div>
+                    {{ end }}
                     {{ range $paginator.Pages }}
                         <article class="article">
-                            <div class="article_left">
-                                <a href="{{ .Permalink }}"><img src="{{ .Params.img }}"></a>
-                            </div>
-
                             <div class="article_right">
-                                <a href="{{ .Permalink }}"><h3>{{ .LinkTitle }}</h3></a>
-                                <div>
-                                    <span class="article_right_author">{{ .Params.author }}</span>
-                                    {{ partial "svgs/ico_date.svg" }}
+                                <a href="{{ .Permalink }}"><h3 class="blog-h3">{{ .LinkTitle }}</h3></a>
+                                <div class="prop-content">
+                                    <img src="/img/icon-date.svg">
                                     <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
-                                    {{ partial "svgs/ico_read.svg" }}
+                                    <img src="/img/icon-author.svg">
+                                    <span class="article_right_author">{{ .Params.author }}</span>
+                                    <img src="/img/icon-view.svg">
                                     <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .LinkTitle }}">
                                         <i class="leancloud-visitors-count"></i>                     
                                     </span>
                                 </div>
-                                <a href="{{ .Permalink }}"><p>{{ .Params.summary }}...</p></a>
+                                <div class="tags">
+                                    <img src="/img/icon-tag.svg">
+                                    {{ range .Params.tags }}
+                                    <a href="/{{$lan}}/tags/{{.|urlize}}/">{{ . }}</a>
+                                    {{ end }}
+                                </div>
+                                <a href="{{ .Permalink }}"><img class="blog-img" src="{{ .Params.img }}"></a>
+                                <div class="more">
+                                    <p>{{ .Params.summary }}...</p><a href="{{ .Permalink }}">{{ i18n "blog_view_more" }}</a>
+                                </div>
                             </div>
                         </article>
                     {{ end }}
                 </div>
             </div>
+            {{ if ne (len (where .Data.Pages "Type" "post")) 0}}
+            <div id="pagination"></div>
+            {{ end }}
         </div>
         <div class="column is-3 isPc">
+            <a href="/{{$lan}}/guidance/index.html" class="post-blog"><img src="/img/icon-author-post.svg">{{ i18n "post_blog" }}</a>
+            {{ if ne (len (where .Data.Pages "Type" "post")) 0}}
             {{ partial "widget-tags.html" . }}<br>
             {{ partial "widget-recent.html" . }}<br>
             {{ partial "widget-archives.html" . }}
-        </div>
-    </div>
-    <div class="columns">
-        <div class="column is-9">
-            <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">{{ i18n "main_cards_previous" }}</a>{{ end }}
-                {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">{{ i18n "main_cards_next" }}</a>{{ end }}
-                <ul class="pagination-list">
-                    {{ range $paginator.Pagers }}
-                    <li class="pagination__item">
-                        <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
-                    </li>
-                    {{ end }}
-                </ul>
-            </nav>
+            {{ end }}
         </div>
     </div>
 </div>
-
+<script>
+    var curPage = {{ $paginator.PageNumber }};
+    var total = {{ len (where .Data.Pages "Type" "post") }};
+    var lang = {{ $lan }};
+    {{ range where $.Page.Site.Pages "Type" "iframeurl" }}
+    {{ if .Params }}
+        var iUrl = {{ .Params.iframeUrl }};
+    {{ end }}
+    {{ end }}
+</script>
+<script src="{{ "js/pagination.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
+<script src="{{ "js/pagination-fn.js" | relURL }}?t={{ mul 1000 (time now).Unix }}"></script>
 {{ end }}

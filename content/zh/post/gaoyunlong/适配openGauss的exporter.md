@@ -12,7 +12,7 @@ author = "高云龙"
 
 summary = "适配openGauss的exporter"
 
-img = "/zh/post/gaoyunlong/title/title.PNG" 
+img = "/zh/post/gaoyunlong/title/img25.png" 
 
 times = "13:30"
 

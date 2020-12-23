@@ -1,17 +1,15 @@
 <div class="card">
-    <div class="card-content">
-        <h1 class="title is-5">Recent posts</h1>
-        {{ range first 5 (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
-            <p><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></p>
-            <div>
-                {{ partial "svgs/ico_date.svg" }}
-                <span class="article_right_date">{{ .Date.Format "2006-01-02" }}</span>
-                {{ partial "svgs/ico_read.svg" }}
-                <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-                    <i class="leancloud-visitors-count"></i>                     
-                </span>
-            </div>
-        {{ end }}
+    <div class="card-content top-content">
+        <h1 class="title is-5 card-tags">Top posts</h1>
+        <div class="clone-dom top-dom hide">
+            <p><a href="">title</a></p>
+            <div class="top-info">
+                <img src="/img/icon-author.svg">
+                <span class="name">name</span>
+                <img src="/img/icon-view.svg">
+                <span class="count">count</span>
+            </div>  
+        </div>
     </div>
 </div>
-    
+<script src="{{ "js/blog.js" | absURL }}?t={{ mul 1000 (time now).Unix }}"></script>

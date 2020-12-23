@@ -5,7 +5,7 @@ tags = ["openGauss社区开发入门"]
 archives = "2020-12"
 author = "openGauss"
 summary = "如何向openGauss社区提交你的第一篇博客"
-img = "/zh/post/opengaussblog/title/title.png"
+img = "/zh/post/opengaussblog/title/img39.png"
 times = "15:30"
 
 +++

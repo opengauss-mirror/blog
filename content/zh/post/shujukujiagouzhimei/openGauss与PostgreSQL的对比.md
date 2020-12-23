@@ -12,7 +12,7 @@ author = "数据库架构之美"
 
 summary = "openGauss与PostgreSQL的对比"
 
-img = "/zh/post/shujukujiagouzhimei/title/title1.png" 
+img = "/zh/post/shujukujiagouzhimei/title/img34.png" 
 
 times = "17:30"
 

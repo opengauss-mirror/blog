@@ -4,6 +4,54 @@
  */
 !function (window) {
 
+    var pageurl = window.location.href;
+    var langss = document.querySelector("html").lang === "zh-cn" ? "zh" : "en";
+
+
+
+    var url = document.getElementById("iframeUrl").value;
+    var domLoadFlag = 1;
+
+    function observe(el, options, callback) {
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+        var observer = new MutationObserver(callback)
+        observer.observe(el, options)
+    }
+
+    var options = {
+        childList: true,
+        subtree: true,
+        characterData: true
+    }
+    observe(document.body, options, (records, instance) => {
+        setTimeout(function () {
+            var height = $("body").height();
+            domLoadFlag && parent.postMessage(height, url);
+        }, 500)
+        setTimeout(function () {
+            domLoadFlag = 0;
+        }, 7000)
+    })
+    if (pageurl.split(langss + "/")[1]) parent.postMessage(pageurl.split(langss + "/")[1], url);
+
+
+    if (document.querySelector("#notFound")) parent.postMessage("我404了", url);
+
+    if (langss=== "zh") {
+        $('h1,h2,h3,h4,h5,div,p,a,li,span').each(function () {
+            if (!$(this).attr('style')) {
+                $(this).attr("style", "font-family:FZLTHJW !important");
+            }
+        })
+    } else {
+        $('h1,h2,h3,h4,h5,div,p,a,li,span').each(function () {
+            if (!$(this).attr('style')) {
+                $(this).attr("style", "font-family:Roboto-Regular !important");
+            }
+        })
+    }
+
+
     /* 设计图文档宽度 */
     var docWidth = 750;
 
@@ -11,7 +59,7 @@
         docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
 
-    var recalc = (function refreshRem () {
+    var recalc = (function refreshRem() {
         var clientWidth = docEl.getBoundingClientRect().width;
 
         /* 8.55：小于320px不再缩小，11.2：大于420px不再放大 */

@@ -12,7 +12,7 @@ author = "高云龙"
 
 summary = "openGauss备库wal replay与query冲突"
 
-img = "/zh/post/gaoyunlong/title/title1.png" 
+img = "/zh/post/gaoyunlong/title/img33.png" 
 
 times = "15:30"
 

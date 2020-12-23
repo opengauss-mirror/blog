@@ -5,7 +5,7 @@ tags = ["openGauss社区开发入门"]
 archives = "2020-10"
 author = "justbk"
 summary = "openGauss社区开发入门"
-img="/zh/post/justbk/title/title.png"
+img="/zh/post/justbk/title/img19.png"
 times = "17:30"
 
 +++

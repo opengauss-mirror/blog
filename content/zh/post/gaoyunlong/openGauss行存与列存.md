@@ -12,7 +12,7 @@ author = "高云龙"
 
 summary = "openGauss行存与列存"
 
-img = "/zh/post/gaoyunlong/title/title.PNG" 
+img = "/zh/post/gaoyunlong/title/img24.png" 
 
 times = "12:30"
 

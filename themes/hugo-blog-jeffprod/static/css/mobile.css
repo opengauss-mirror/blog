@@ -4,6 +4,7 @@
   }
   .container {
     width: 100%;
+    max-width: unset;
   }
   .prepare {
       align-items: center;
@@ -13,9 +14,6 @@
   }
   .has-text-centered {
       width: 100%;
-  }
-  .container {
-    width: 95%;
   }
   .has-text-centered h1,
   .has-text-centered div {
@@ -48,6 +46,7 @@
   }
   .container {
       width: 95%;
+      max-width: unset;
   }
   body {
       font-size: 0.24rem;
@@ -82,7 +81,6 @@
     width: 100%;
   }
   .article {
-    height: 2rem;
     margin-top: 0.3rem;
   }
   .article_left {

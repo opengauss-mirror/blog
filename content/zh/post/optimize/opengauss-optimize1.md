@@ -5,7 +5,7 @@ tags = ["openGauss数据库性能调优"]
 archives = "2020-07"
 author = "zhijing"
 summary = "openGauss数据库性能调优"
-img = "/zh/post/xingchen/title/title.jpg"
+img = "/zh/post/optimize/title/img9.png"
 times = "19:30"
 +++
 

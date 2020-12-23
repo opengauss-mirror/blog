@@ -5,7 +5,7 @@ tags = ["benchmark使用"]
 archives = "2020-07"
 author = "zhijing"
 summary = "benchmark使用"
-img = "/zh/post/xingchen/title/title.jpg"
+img = "/zh/post/optimize/title/img6.png"
 times = "19:30"
 +++
 

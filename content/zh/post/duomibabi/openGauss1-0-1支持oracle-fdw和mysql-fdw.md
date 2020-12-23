@@ -12,7 +12,7 @@ author = "多米爸比"
 
 summary = "openGauss1.0.1支持oracle-fdw和mysql-fdw"
 
-img = "/zh/post/duomibabi/title/title.png" 
+img = "/zh/post/duomibabi/title/img27.png" 
 
 times = "18:30"
 

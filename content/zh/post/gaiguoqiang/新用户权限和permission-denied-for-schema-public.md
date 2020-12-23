@@ -12,7 +12,7 @@ author = "盖国强"
 
 summary = "新用户权限和permission denied for schema public"
 
-img = "/zh/post/gaiguoqiang/title/title.png" 
+img = "/zh/post/gaiguoqiang/title/img29.png" 
 
 times = "15:30"
 
