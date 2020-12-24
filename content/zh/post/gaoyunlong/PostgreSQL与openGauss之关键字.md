@@ -12,7 +12,7 @@ author = "高云龙"
 
 summary = "PostgreSQL与openGauss之关键字"
 
-img = "/zh/post/gaoyunlong/title/title.PNG" 
+img = "/zh/post/gaoyunlong/title/img25.png" 
 
 times = "16:40"
 
