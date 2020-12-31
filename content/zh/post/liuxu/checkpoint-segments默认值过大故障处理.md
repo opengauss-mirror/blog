@@ -12,7 +12,7 @@ author = "刘旭"
 
 summary = "checkpoint-segments默认值过大故障处理"
 
-img = "/zh/post/liuxu/title/title.png" 
+img = "/zh/post/liuxu/title/img123.jpg" 
 
 times = "15:30"
 

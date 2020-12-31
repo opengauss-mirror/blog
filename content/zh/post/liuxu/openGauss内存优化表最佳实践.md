@@ -12,7 +12,7 @@ author = "刘旭"
 
 summary = "openGauss内存优化表最佳实践"
 
-img = "/zh/post/liuxu/title/title.png" 
+img = "/zh/post/liuxu/title/img122.png" 
 
 times = "18:30"
 
