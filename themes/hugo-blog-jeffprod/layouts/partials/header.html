@@ -9,13 +9,7 @@
     <!-- Favicon and apple touch icons-->
     <link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{ "img/apple-touch-icon.png" | relURL }}" />
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" /> -->
+    <script src="{{ "js/jquery.js" | absURL }}"></script>
     <link rel="stylesheet" href="{{ "css/commen.css" | absURL }}?t={{ mul 1000 (time now).Unix }}" />
     <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}?t={{ mul 1000 (time now).Unix }}" />
     <link rel="stylesheet" href="{{ "css/mobile.css" | absURL }}?t={{ mul 1000 (time now).Unix }}" />
@@ -35,5 +29,5 @@
     </script>
 </head>
 <body>
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script src="{{ "js/av-min.js" | absURL }}"></script>
+  <script src="{{ "js/Valine.min.js" | absURL }}"></script>
