@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $lan := index (split .URL "/") 1 }}
 <div class="container">
-    <div class="columns blog-detail">
+    <div class="blog-detail">
         <div class="post_detail">
             <div class="is-child box">
                 <div class="breadCrumb"><a href="\{{$lan}}\">{{ i18n "blog_title" }}/</a></div>

@@ -604,6 +604,9 @@ li{
 .blog-detail-tags img {
     margin-right: 10px;
 }
+.hide {
+    display: none;
+}
 @media screen and (max-width: 768px) {
     .guidance {
         margin-bottom: 60px;
