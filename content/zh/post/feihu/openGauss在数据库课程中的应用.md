@@ -12,7 +12,7 @@ author = "feihu"
 
 summary = "openGauss在数据库课程中的应用"
 
-img = "/zh/post/feihu/title/img123.png" 
+img = "/zh/post/feihu/title/img123.jpg" 
 
 times = "18:00"
 

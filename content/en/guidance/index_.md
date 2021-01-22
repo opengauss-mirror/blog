@@ -17,7 +17,7 @@ title = "Guidance to Post a Blog"
 ## Understand blog format
 
 The blog is written in markdown format.
-You can read <https://gitee.com/opengauss/blog/blob/master/design/content_posts.md> to get understand how the blog is designed.
+You can read <https://gitee.com/opengauss/blog/blob/master/content/en/design/content_posts.md> to get understand how the blog is designed.
 
 The head includes the following information:
 ```
