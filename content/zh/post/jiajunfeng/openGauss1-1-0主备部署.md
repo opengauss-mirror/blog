@@ -1,7 +1,7 @@
 
 +++
 
-title = "openGauss1.1.0主备部署\(1主+2备+1级联备\)" 
+title = "openGauss1.1.0主备部署" 
 
 date = "2021-01-29" 
 
@@ -11,7 +11,7 @@ archives = "2021-01"
 
 author = "贾军锋" 
 
-summary = "openGauss1.1.0主备部署\(1主+2备+1级联备\)"
+summary = "openGauss1.1.0主备部署"
 
 img = "/zh/post/jiajunfeng/title/img33.png" 
 
@@ -19,7 +19,7 @@ times = "17:30"
 
 +++
 
-# openGauss1.1.0主备部署\(1主+2备+1级联备\)<a name="ZH-CN_TOPIC_0000001116503041"></a>
+# openGauss1.1.0主备部署<a name="ZH-CN_TOPIC_0000001116503041"></a>
 
 **openGauss 1.1.0 版本介绍:**
 
