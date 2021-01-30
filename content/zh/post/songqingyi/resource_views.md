@@ -48,7 +48,8 @@ openGauss提供了query级别和算子级别的资源监控历史视图用例查
 | resource_track_duration | 设置资源监控实时视图中记录的语句执行结束后进行历史信息转存的最小执行时间。 | 1min   |
 | enable_resource_record  | 是否开启资源记录功能。on表示打开资源记录；off表示关闭资源记录。 | off    |
 
-##### 2.1 系统视图 DBE_PERF.STATEMENT_COMPLEX_HISTORY
+
+### 2.1 系统视图 DBE_PERF.STATEMENT_COMPLEX_HISTORY
 
 DBE_PERF 相关视图定义：src/common/backend/catalog/performance_views.sql
 
