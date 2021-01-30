@@ -5,7 +5,7 @@ tags = ["openGauss资源监控"]
 archives = "2021-01"
 author = "songqingyi"
 summary = "openGauss资源监控视图"
-img = "/zh/post/hemny/images/img31.png"
+img = "/zh/post/songqingyi/images/img31.png"
 times = "23:30"
 +++
 
