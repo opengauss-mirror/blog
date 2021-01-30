@@ -15,7 +15,8 @@ times = "23:30"
 
 DBE_PERF Schema内视图主要用来诊断性能问题，也是WDR Snapshot的数据来源。数据库安装后，默认只有初始用户和监控管理员具有模式dbe_perf的权限。若是由旧版本升级而来，为保持权限的前向兼容，模式dbe_perf的权限与旧版本保持一致。
 
-##### 1.实时 TOP SQL 
+
+### 1.实时 TOP SQL 
 
 openGauss提供了query级别和算子级别的资源监控实时视图用来查询实时TopSQL。资源监控实时视图记录了查询作业运行时的资源使用情况(包括内存、下盘、CPU时间、IO等)以及性能告警信息。
 
@@ -31,7 +32,8 @@ postgres=# select * from dbe_perf.STATEMENT_COMPLEX_RUNTIME;
 postgres=# select * from dbe_perf.OPERATOR_RUNTIME;
 ```
 
-##### 2.历史TOP SQL
+
+### 2.历史TOP SQL
 
 openGauss提供了query级别和算子级别的资源监控历史视图用例查询历史TopSQL。资源监控历史视图记录了查询作业运行结束时的资源使用情况(包括内存、下盘、CPU时间、IO等)和运行状态信息(包括报错、终止、异常等)以及性能告警信息。但对于由于FATAL、PANIC错误导致查询异常结束时，状态信息列只显示aborted，无法记录详细异常信息。默认三分钟gs_wlm_session_history的数据会转储到gs_wlm_session_info中。
 
@@ -67,7 +69,8 @@ resource_track_level = 'query'
 postgres=# select * from DBE_PERF.STATEMENT_COMPLEX_HISTORY;
 ```
 
-##### 2.2 系统视图 DBE_PERF.STATEMENT_COMPLEX_HISTORY_TABLE
+
+### 2.2 系统视图 DBE_PERF.STATEMENT_COMPLEX_HISTORY_TABLE
 
 STATEMENT_COMPLEX_HISTORY_TABLE 系统视图显示数据库主节点执行作业结束后的负载管理记录，显示的数据是从内核中转储到系统表中的数据。当设置GUC参数enable_resource_record为on时，系统会定时（周期为3分钟）将中的记录DBE_PERF.STATEMENT_COMPLEX_HISTORY转储到系统表中。
 
@@ -76,7 +79,7 @@ STATEMENT_COMPLEX_HISTORY_TABLE 系统视图显示数据库主节点执行作业
 postgres=# select * from DBE_PERF.STATEMENT_COMPLEX_HISTORY_TABLE;
 ```
 
-##### 3. STATEMENT
+### 3. 系统视图 DBE_PERF.STATEMENT
 
 获得当前节点的执行语句(归一化SQL)的信息。查询视图必须具有sysadmin权限。数据库主节点上可以看到此数据库主节点接收到的归一化的SQL的全量统计信息（包含数据库节点）；数据库节点上仅可看到归一化的SQL的此节点执行的统计信息。
 
@@ -91,7 +94,7 @@ enable_resource_track = on
 instr_unique_sql_count > 0
 ```
 
-##### 4. WAIT_EVENTS
+### 4. 系统视图 DBE_PERF.WAIT_EVENTS
 
 WAIT_EVENTS显示当前节点的event的等待相关的统计信息。
 
