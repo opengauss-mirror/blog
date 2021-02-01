@@ -12,7 +12,7 @@ author = "贾军锋"
 
 summary = "openGauss1.1.0主备集群节点的添加和删除"
 
-img = "/zh/post/jiajunfeng/title/img22.png" 
+img = "/zh/post/jiajunfeng/title/img22.jpg" 
 
 times = "16:30"
 
