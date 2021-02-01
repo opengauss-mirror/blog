@@ -396,7 +396,7 @@ cat >> /soft/openGauss/cluster_config.xml << EOF
         <PARAM name="dataNum" value="1"/>
         <!--DBnode端口号-->
         <PARAM name="dataPortBase" value="26000"/>
-        <!--DBnode监听IP-->
+        <!--DBnode侦听IP-->
         <PARAM name="dataListenIp1" value="192.168.0.11,192.168.0.12,192.168.0.13,192.168.0.14"/>
         <!--DBnode主节点上数据目录，及备机数据目录-->
         <PARAM name="dataNode1" value="/gauss/data/db1,stb1.opengauss.com,/gauss/data/db1,stb2.opengauss.com,/gauss/data/db1,casstb.opengauss.com,/gauss/data/db1"/>
