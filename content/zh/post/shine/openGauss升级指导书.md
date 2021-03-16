@@ -111,6 +111,8 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 -   升级过程中，必须保持内核版本与om版本一致才可执行om操作。这里的一致是指，内核代码和om代码都来自同一个软件包。如果执行了升级包的前置脚本却没有升级，或者升级回滚后没有执行基线包的前置脚本，就会造成内核代码和om代码的不一致。
 -   升级过程中如果系统表新增了字段，升级后通过**\\d**命令将查看不到这些新增的字段。此时通过**select**命令可以查到这些新增的字段。
 -   升级需要guc参数enable\_stream\_replication=on，该参数为off时不允许升级。
+-   灰度升级中，业务并发要小于200并发读加200并发写的情况。
+-   一主多备的集群，在升级到openGauss1.1.0之后的版本后，如果修改了配置文件中的listen_addresses为“\*”，则需要修改对应的replconninfo1,......replconninfo\*中的localport的值为原有的值再加5，例如，原有的值为16000，现在需要修改为16005，否则会导致重启集群失败。
 
 # # 升级<a name="ZH-CN_TOPIC_0305491357"></a>
 
@@ -159,7 +161,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </td>
 <td class="cellrowborder" valign="top" width="19.408059194080593%" headers="mcps1.2.6.1.4 "><p id="p1946215493216"><a name="p1946215493216"></a><a name="p1946215493216"></a>与操作时长一致，一般不会超过30分钟。</p>
 </td>
-<td class="cellrowborder" valign="top" width="13.218678132186781%" headers="mcps1.2.6.1.5 "><p id="zh-cn_topic_0059783606_p7684821145645"><a name="zh-cn_topic_0059783606_p7684821145645"></a><a name="zh-cn_topic_0059783606_p7684821145645"></a>依据指导书开始升级，该操作要求暂停业务。</p>
+<td class="cellrowborder" valign="top" width="13.218678132186781%" headers="mcps1.2.6.1.5 "><p id="zh-cn_topic_0059783606_p7684821145645"><a name="zh-cn_topic_0059783606_p7684821145645"></a><a name="zh-cn_topic_0059783606_p7684821145645"></a>依据指导书开始升级。</p>
 </td>
 </tr>
 <tr id="row786055223420"><td class="cellrowborder" valign="top" width="25.477452254774523%" headers="mcps1.2.6.1.1 "><p id="p744624011202"><a name="p744624011202"></a><a name="p744624011202"></a>升级验证</p>
@@ -197,6 +199,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </tr>
 </tbody>
 </table>
+
 
 
 ## 升级前准备与检查<a name="ZH-CN_TOPIC_0305491450"></a>
@@ -375,7 +378,7 @@ https://opengauss.org/zh/download.html
 
 ### 检查数据库节点磁盘使用率<a name="ZH-CN_TOPIC_0305491447"></a>
 
-数据库节点磁盘使用率低于80%时才可以执行升级操作。
+建议数据库节点磁盘使用率低于80%时再执行升级操作。
 
 ### 检查数据库状态<a name="ZH-CN_TOPIC_0305491426"></a>
 
