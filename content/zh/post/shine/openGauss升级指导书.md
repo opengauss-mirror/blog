@@ -47,7 +47,7 @@ times = "15:40"
 
 就地升级：升级期间需停止业务进行，一次性升级所有节点。
 
-灰度升级：灰度升级支持全业务操作，也是一次性升级所有节点。\(openGuass1.1.0版本之后的版本支持该功能\)
+灰度升级：灰度升级支持全业务操作，也是一次性升级所有节点。\(openGauss1.1.0版本之后的版本支持该功能\)
 
 ## 升级前的版本要求（升级路径）<a name="ZH-CN_TOPIC_0305491359"></a>
 
@@ -64,7 +64,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </tr>
 <tr id="row5917164"><td class="cellrowborder" valign="top" width="41.410000000000004%"><p id="p138378421424"><a name="p138378421424"></a><a name="p138378421424"></a>openGauss1.0.1版本之前的版本</p>
 </td>
-<td class="cellrowborder" valign="top" width="58.589999999999996%"><p id="p33594135"><a name="p33594135"></a><a name="p33594135"></a>可以升级到openGuass1.0.1之前的任意版本。</p>
+<td class="cellrowborder" valign="top" width="58.589999999999996%"><p id="p33594135"><a name="p33594135"></a><a name="p33594135"></a>可以升级到openGauss1.0.1之前的任意版本</p>
 </td>
 </tr>
 <tr id="row1699043202811"><td class="cellrowborder" valign="top" width="41.410000000000004%"><p id="p16990230282"><a name="p16990230282"></a><a name="p16990230282"></a>openGauss1.0.1版本</p>
@@ -79,6 +79,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </tr>
 </tbody>
 </table>
+
 
 
 >![](public_sys-resources/icon-note.gif) **说明：** 
@@ -148,7 +149,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </td>
 <td class="cellrowborder" valign="top" width="24.937506249375062%" headers="mcps1.2.6.1.3 "><p id="p1772193042017"><a name="p1772193042017"></a><a name="p1772193042017"></a>约2～3小时。</p>
 </td>
-<td class="cellrowborder" valign="top" width="19.408059194080593%" headers="mcps1.2.6.1.4 "><p id="p1846295453213"><a name="p1846295453213"></a><a name="p1846295453213"></a>对业务无影响</p>
+<td class="cellrowborder" valign="top" width="19.408059194080593%" headers="mcps1.2.6.1.4 "><p id="p1846295453213"><a name="p1846295453213"></a><a name="p1846295453213"></a>对业务无影响。</p>
 </td>
 <td class="cellrowborder" valign="top" width="13.218678132186781%" headers="mcps1.2.6.1.5 "><p id="zh-cn_topic_0059783606_p40357438145645"><a name="zh-cn_topic_0059783606_p40357438145645"></a><a name="zh-cn_topic_0059783606_p40357438145645"></a>升级前检查和备份数据、校验软件包等操作。</p>
 </td>
@@ -202,6 +203,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 
 
 
+
 ## 升级前准备与检查<a name="ZH-CN_TOPIC_0305491450"></a>
 
 
@@ -224,7 +226,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </tr>
 <tr id="row49544030"><td class="cellrowborder" valign="top" width="6.29%"><p id="p17992330193012"><a name="p17992330193012"></a><a name="p17992330193012"></a>1</p>
 </td>
-<td class="cellrowborder" valign="top" width="21.42%"><p id="p599243013301"><a name="p599243013301"></a><a name="p599243013301"></a>收集节点信息。</p>
+<td class="cellrowborder" valign="top" width="21.42%"><p id="p599243013301"><a name="p599243013301"></a><a name="p599243013301"></a>收集节点信息</p>
 </td>
 <td class="cellrowborder" valign="top" width="32.29%"><p id="p1799215303302"><a name="p1799215303302"></a><a name="p1799215303302"></a>收集到数据库涉及节点的名称、IP地址，root、omm用户密码等环境信息。</p>
 </td>
@@ -252,7 +254,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </td>
 <td class="cellrowborder" valign="top" width="20%"><p id="p17993143018306"><a name="p17993143018306"></a><a name="p17993143018306"></a>升级前一天</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%"><p id="p79931230123014"><a name="p79931230123014"></a><a name="p79931230123014"></a>备份数据量和方案不同，耗时也不同。</p>
+<td class="cellrowborder" valign="top" width="20%"><p id="p79931230123014"><a name="p79931230123014"></a><a name="p79931230123014"></a>备份数据量和方案不同，耗时也不同</p>
 </td>
 </tr>
 <tr id="row1360191311596"><td class="cellrowborder" valign="top" width="6.29%"><p id="p1061292910599"><a name="p1061292910599"></a><a name="p1061292910599"></a>4</p>
@@ -302,6 +304,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 </tbody>
 </table>
 
+
 >![](public_sys-resources/icon-note.gif) **说明：** 
 >“耗时”依不同环境（包括现场数据量、服务器性能等原因）会存在一定差异。
 
@@ -350,9 +353,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 
 ### 获取升级包<a name="ZH-CN_TOPIC_0305491428"></a>
 
-https://opengauss.org/zh/download.html
-
-在该网站获取想要升级的升级包
+https://opengauss.org/zh/download.html 在该网站获取想要升级的升级包。
 
 ### 健康检查<a name="ZH-CN_TOPIC_0305491441"></a>
 
