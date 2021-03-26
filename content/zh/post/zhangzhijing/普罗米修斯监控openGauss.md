@@ -56,7 +56,7 @@ cd pushgateway-1.2.0.linux-arm64
 
 ​    网页显示效果如下
 
-![pushGateway](..\images\pushGateway.png)
+![pushGateway](../images/pushGateway.png)
 
 
 
