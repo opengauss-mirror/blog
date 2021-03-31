@@ -1,6 +1,6 @@
 +++
 
-title = "openGauss监控之opengauss\_exporter部署" 
+title = "openGauss监控之exporter部署" 
 
 date = "2021-03-31" 
 
@@ -10,7 +10,7 @@ archives = "2021-03"
 
 author = "高云龙" 
 
-summary = "openGauss监控之opengauss\_exporter部署"
+summary = "openGauss监控之exporter部署"
 
 img = "/zh/post/gaoyunlong/title/img38.png" 
 
@@ -18,7 +18,7 @@ times = "16:30"
 
 +++
 
-# openGauss监控之opengauss\_exporter部署<a name="ZH-CN_TOPIC_0000001095342200"></a>
+# openGauss监控之exporter部署<a name="ZH-CN_TOPIC_0000001095342200"></a>
 
 ## 概述<a name="section15081758493"></a>
 
