@@ -1,3 +1,14 @@
++++
+title = "普罗米修斯监控openGauss"
+date = "2021-04-08"
+tags = ["普罗米修斯监控openGauss"]
+archives = "2021-04"
+author = "zhangzhijing"
+summary = "普罗米修斯监控openGauss"
+img = "/zh/post/xingchen/title/img1.png"
+times = "20:30"
++++
+
 # 普罗米修斯监控openGauss
 
 ## 1、前期准备
