@@ -12,7 +12,7 @@ author = "贾军锋"
 
 summary = "openGauss+KeepAlived"
 
-img = "/zh/post/jiajunfeng/title/img33.jpg" 
+img = "/zh/post/jiajunfeng/title/img33.png" 
 
 times = "12:30"
 
