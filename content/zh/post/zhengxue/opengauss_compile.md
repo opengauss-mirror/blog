@@ -24,6 +24,10 @@ times = "9:30"
   - [3.1.准备openGauss-server源码以及代码修改](#3.1.准备openGauss-server源码以及代码修改)
   - [3.2.环境变量](#3.2.环境变量)
   - [3.3.数据库编译与打包](#3.3.数据库编译与打包)
+- [4. 安装数据库](#4.安装数据库)
+  - [4.1.编译安装](#4.1.编译安装)
+  - [4.2.OM安装](#4.2.OM安装)
+- [5. 下载链接](#5.下载链接)
 
 
 <!-- /TOC -->
@@ -267,8 +271,7 @@ sh build_dependency.sh
 
 将编译好的 `gmp mpfr mpc isl gcc` 目录拷贝到`openGauss-third_party/output/buildtools/${platform}/gcc7.3`下，output目录即为完整的三方库二级制。将output目录拷贝出去，重命名为binarylibs，便可以使用它进行数据库编译。
 
-`Tips`: 对于学生，不建议自己编译三方库，可直接使用提供的三方库二进制包 \
-        ubuntu三方库二进制包：
+`Tips`: 对于学生，不建议自己编译三方库，可直接使用提供的三方库二进制包，ubuntu三方库二进制包可在博客第5节中下载。
 
 ## 3.编译数据库
 
@@ -421,6 +424,88 @@ sh build.sh -m release -3rd /usr3/zxgauss/binarylibs -pkg （参数-pkg表示打
 
 `Tips`: 三方库和数据库编译过程中出现的问题请参考：[编译问题解决](/zh/post/zhengxue/problem_solution/)
 
+## 4.安装数据库
+
+以下介绍如何进行openGauss在ubuntu系统上安装
+
+### 4.1.编译安装
+
+(1) 切换到普通用户omm，导入3.2节环境变量  
+(2) 选择一个版本进行配置
+```
+debug版本：
+./configure --gcc-version=7.3.0 CC=g++ CFLAGS='-O0' --prefix=$GAUSSHOME --3rd=$BINARYLIBS --enable-debug --enable-cassert --enable-thread-safety --without-zlib
+
+release版本：
+
+./configure --gcc-version=7.3.0 CC=g++ CFLAGS="-O2 -g3" --prefix=$GAUSSHOME --3rd=$BINARYLIBS --enable-thread-safety --with-readline --without-zlib
+
+```
+(3) make -sj && make install –sj
+      
+(4) 初始化数据库
+
+```
+mkdir $data/dn1  (其中$data指数据目录)
+
+gs_initdb $data/dn1 --nodename single_node -w "opengauss@123"
+```
+
+(5) 启动数据库
+
+```
+gaussdb -D $data/dn1 &
+```
+`Tips`：端口默认安装时5432，如果启动端口占用，在$data/dn1/postgresql.conf下文件中修改port参数。或者使用如下命令，指定端口启动：
+
+```
+gaussdb -D $data/dn1 & -p 12345
+```
+
+(6) 连接数据库
+
+```
+gsql -d postgres -p 12345 -r
+```
+### 4.2.OM安装
+(1) 下载OM包，放到指定目录$ompackage中，其中$ompackage是用户自建目录，将OM安装包放入该目录下。OM安装包可自己编译打包出包，或者可直接使用提供的OM安装包，OM安装包可在博客第5节中下载。
+
+```
+mkdir -p $ompackage
+tar -zvf openGauss-2.0.0-Ubuntu-64bit-all.tar.gz
+chmod 755 -R $ompackage
+```
+
+(2) 准备xml文件，可参照官网安装文档：https://opengauss.org/zh/docs/2.0.0/docs/installation/%E5%88%9B%E5%BB%BAXML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html
+
+(3) 在root用户下进入$ompackage/script目录下
+
+(4) 执行预安装 
+```
+gs_preinstall -U omm -G omm -X clusterconfig.xml --sep-env-file=/usr/env
+```
+`Tips`：`"--sep-env-file"`参数是分离环境变量，目录可自定义。
+
+(5) 切换到omm，导入环境变量
+```
+su - omm
+source /usr/env
+```
+(6) 执行安装
+```
+gs_install -X clusterconfig.xml
+```
+`Tips`：如有问题，安装细节请参照官网：https://opengauss.org/zh/docs/2.0.0/docs/installation/%E5%AE%89%E8%A3%85openGauss.html
 
 
+## 5.下载链接
+针对ubuntu18.04_x86_64系统，提供二进制包如下：
+
+三方库二进制包: https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/binarylibs.tar.gz
+
+OM安装包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/openGauss-2.0.0-Ubuntu-64bit-all.tar.gz
+
+JDBC二进制包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/openGauss-2.0.0-JDBC.tar.gz
+
+ODBC二进制包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/GaussDB-Kernel-V500R001C20-UBUNTU-64bit-Odbc.tar.gz
 
