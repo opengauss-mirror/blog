@@ -94,7 +94,7 @@ openGauss数据库的编译需要依赖许多三方库，在社区 `openGauss-th
 
 针对 `centos`和`openEuler`操作系统已经提供了编译好的二进制三方库，可直接使用社区提供的编译好的文件[openGauss-third_party_binarylibs.tar.gz](https://opengauss.obs.cn-south-1.myhuaweicloud.com/1.1.0/openGauss-third_party_binarylibs.tar.gz)。
 
-针对Ubuntu操作系统，社区不提供编译好的三方库二进制文件，需用户自己编译，也可使用博客中已编译好的三方库二进制文件[openGauss-third_party_binarylibs.tar.gz](链接)。基于Ubuntu系统的三方库编译步骤如下：
+针对Ubuntu操作系统，社区不提供编译好的三方库二进制文件，需用户自己编译，也可使用博客中已编译好的三方库二进制文件[openGauss-third_party_binarylibs.tar.gz](https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/binarylibs.tar.gz)。基于Ubuntu系统的三方库编译步骤如下：
 
 ### 2.1.编译步骤概述
 
@@ -509,3 +509,4 @@ JDBC二进制包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binar
 
 ODBC二进制包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/GaussDB-Kernel-V500R001C20-UBUNTU-64bit-Odbc.tar.gz
 
+***Notice:提供的基于ubuntu系统的二进制文件包仅供于学习和使用，不推荐直接用于生产环境***
