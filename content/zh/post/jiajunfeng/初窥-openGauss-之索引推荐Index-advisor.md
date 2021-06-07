@@ -8,7 +8,7 @@ archives = "2021-06"
 
 author = "贾军锋" 
 
-summary = "初窥 openGauss 之索引推荐\(Index-advisor\)"
+summary = "初窥 openGauss 之索引推荐Index-advisor)"
 
 img = "/zh/post/jiajunfeng/title/img4.png" 
 
@@ -16,7 +16,7 @@ times = "12:30"
 
 +++
 
-# 初窥 openGauss 之索引推荐\(Index-advisor\)<a name="ZH-CN_TOPIC_0000001095702076"></a>
+# 初窥 openGauss 之索引推荐Index-advisor<a name="ZH-CN_TOPIC_0000001095702076"></a>
 
 TPC-H 是一个面向分析型业务\(AP\)的基准测试，它由一系列热点查询组成，这些热点查询都是高度复杂的，因此执行时间往往都比较长。
 

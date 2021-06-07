@@ -8,7 +8,7 @@ archives = "2021-06"
 
 author = "贾军锋" 
 
-summary = "初窥openGauss 之参数自调优\(X-Tuner\)"
+summary = "初窥openGauss 之参数自调优X-Tuner)"
 
 img = "/zh/post/jiajunfeng/title/img2.png" 
 
@@ -18,7 +18,7 @@ times = "12:30"
 
 
 
-# **初窥openGauss 之参数自调优\(X-Tuner\)**<a name="ZH-CN_TOPIC_0000001095662048"></a>
+# **初窥openGauss 之参数自调优X-Tuner\**<a name="ZH-CN_TOPIC_0000001095662048"></a>
 
 TPC-H 是一个面向分析型业务\(AP\)的基准测试，它由一系列热点查询组成，这些热点查询都是高度复杂的，因此执行时间往往都比较长。   在本次实验测试中，将手动向数据库加载TPC-H数据，并保存在名为 tpch 的数据库中。默认TPC-H数据库的表缺少索引，数据库的参数并没有做任何优化，因此执行效率会比较差。   本实验比较浅显，使用openGauss的参数自调优\(X-Tuner：gs\_xtuner\)功能，对数据库进行参数优化，以提升数据库运行性能，让大家对X-Tuner参数自调优有一个初步的了解。
 
