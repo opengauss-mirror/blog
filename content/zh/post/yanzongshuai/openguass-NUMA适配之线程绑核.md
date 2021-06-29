@@ -16,7 +16,7 @@ times = "19:30"
 
 +++
 
-# **MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构**<a name="ZH-CN_TOPIC_0000001142262039"></a>openguass NUMA适配之线程绑核<a name="ZH-CN_TOPIC_0000001124544422"></a>
+# openguass NUMA适配之线程绑核<a name="ZH-CN_TOPIC_0000001124544422"></a>
 
 ## 1、多核NUMA结构<a name="section5398112810112"></a>
 

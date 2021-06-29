@@ -1,4 +1,4 @@
-title = "MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构化" 
+title = "MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构" 
 
 date = "2021-06-29" 
 
