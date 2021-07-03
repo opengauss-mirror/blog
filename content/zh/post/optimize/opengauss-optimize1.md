@@ -122,7 +122,7 @@ xfs_info /data1
 
 用户注意根据需要，将所需数据备份至其他磁盘或其他机器
 
-<3> 重新格式化磁盘，设置block大小8k
+<3> 重新格式化磁盘，设置block大小8k （X86环境不需执行此步骤）
 
 以/dev/nvme0n1盘，加载点为/data1为例，相关参考命令如下
 
@@ -138,7 +138,7 @@ mount /dev/nvme0n1 /data1
 
 ### 网络配置
 
-**1. 多中断队列设置**
+**1. 多中断队列设置** （X86环境不需执行此步骤）
 
 针对泰山服务器核数较多的特征，产品需要在服务器端和客户端设置网卡多队列。
 当前推荐的配置为：服务器端网卡配置16中断队列，客户端网卡配置48中断队列。 
@@ -187,7 +187,7 @@ ethtool –K enp3s0 gso on
 
 ```shell
 
-sh bind_net_irq.sh  16
+sh bind_net_irq.sh  16 （X86环境不需执行此步骤）
 
 ```
 
@@ -256,10 +256,10 @@ bus-info: 0000:03:00.0
 
 2、修改postgresql.conf参数。
 
-3、以绑核方式启动数据库：
+3、以绑核方式启动数据库：（X86环境不需执行此步骤）
 `numactl --interleave=all bin/gaussdb  -D ${DATA_DIR} --single_node`
 
-4、以绑核方式启动benchmark：
+4、以绑核方式启动benchmark：（X86环境不需执行此步骤）
 `numactl -C 0-19,32-51,64-83,96-115 ./runBenchmark.sh props.pg` \
 按照自己的绑核配置和benchmark配置文件执行此命令。这里的绑核参数是在数据库绑核参数的空隙
 
@@ -284,8 +284,8 @@ numactl --interleave=all gaussdb --single_node -D {DATA_DIR} -p {PORT} &
 **2. 服务器端参数设置**
 
 postgresql.conf中新增如下参数：
-- `advance_xlog_file_num = 10` \
-此参数表示后台线程BackgroundWALWriter周期性地提前检测并初始化未来10个XLog文件，避免事务提交时才去执行XLog文件初始化，从而降低事务提交时延。只有在性能压力测试时作用才会体现出来，一般不用配置。默认为0，即不进行提前初始化。
+- `advance_xlog_file_num = 100` \
+此参数表示后台线程BackgroundWALWriter周期性地提前检测并初始化未来100个XLog文件，避免事务提交时才去执行XLog文件初始化，从而降低事务提交时延。只有在性能压力测试时作用才会体现出来，一般不用配置。默认为0，即不进行提前初始化。
 - `numa_distribute_mode = 'all'` \
 此参数目前有all和none两个取值。all表示启用NUMA优化，将工作线程和对应的PGPROC、WALInsertlock进行统一分组，分别绑定到对应的NUMA Node下，以减少关键路径上的CPU远端访存。默认取值为none，表示不启用NUMA分布特性。只有在涉及到多个NUMA节点，且远端访存代价明显高于本地访存时使用。当前建议在性能压力测试情况下开启。
 
@@ -298,86 +298,89 @@ thread_pool_attr线程池配置 \
 max_connections = 4096
 allow_concurrent_tuple_update = true
 audit_enabled = off
-checkpoint_segments = 1024
-checkpoint_timeout = 15min
 cstore_buffers = 16MB
 enable_alarm = off
 enable_codegen = false
 enable_data_replicate = off
-full_page_writes = on
+full_page_writes = off
 max_files_per_process = 100000
 max_prepared_transactions = 2048
-shared_buffers = 350GB   
-use_workload_manager = off  
+shared_buffers = 350GB
+use_workload_manager = off
 wal_buffers = 1GB
 work_mem = 1MB
-log_min_messages = FATAL
 transaction_isolation = 'read committed'
 default_transaction_isolation = 'read committed'
 synchronous_commit = on
 fsync = on
 maintenance_work_mem = 2GB
-vacuum_cost_limit = 2000
+vacuum_cost_limit = 10000
 autovacuum = on
 autovacuum_mode = vacuum
-autovacuum_max_workers = 5
-autovacuum_naptime = 20s
+autovacuum_max_workers = 20
+autovacuum_naptime = 5s
 autovacuum_vacuum_cost_delay = 10
-xloginsert_locks = 48
 update_lockwait_timeout = 20min
-
 enable_mergejoin = off
 enable_nestloop = off
 enable_hashjoin = off
-enable_bitmapscan = on
 enable_material = off
-
 wal_log_hints = off
 log_duration = off
 checkpoint_timeout = 15min
 autovacuum_vacuum_scale_factor = 0.1
 autovacuum_analyze_scale_factor = 0.02
 enable_save_datachanged_timestamp = false
-
-log_timezone = 'PRC' 
-timezone = 'PRC'              
-lc_messages = 'C'			
-lc_monetary = 'C'			
-lc_numeric = 'C'			
-lc_time = 'C'				             
-
-enable_thread_pool = on  
-thread_pool_attr = '812,4,(cpubind:0-27,32-59,64-91,96-123)'
-enable_double_write = off
+enable_double_write = on
 enable_incremental_checkpoint = on
 enable_opfusion = on
-advance_xlog_file_num = 10
-numa_distribute_mode = 'all'  
-
+advance_xlog_file_num = 100
+numa_distribute_mode = 'all' （X86环境不需执行此步骤）
 track_activities = off
 enable_instr_track_wait = off
 enable_instr_rt_percentile = off
 track_counts = on
 track_sql_count = off
 enable_instr_cpu_timer = off
-
 plog_merge_age = 0
 session_timeout = 0
-
 enable_instance_metric_persistent = off
 enable_logical_io_statistics = off
 enable_page_lsn_check = off
 enable_user_metric_persistent = off
 enable_xlog_prune = off
-
 enable_resource_track = off
 instr_unique_sql_count=0
+remote_read_mode=non_authentication
+wal_level = archive
+hot_standby = off
+hot_standby_feedback = off
+client_min_messages = ERROR
+log_min_messages = FATAL
+enable_asp = off
+enable_bbox_dump = off
+bgwriter_flush_after = 32
+minimum_pool_size = 200
+wal_keep_segments = 1025
+enable_bitmapscan = off
+enable_seqscan = off
 enable_beta_opfusion=on
-enable_beta_nestloop_fusion=on
+enable_thread_pool = on   （X86环境不需执行此步骤）
+checkpoint_segments=8000
+enable_stmt_track=false
+bgwriter_thread_num = 1
+bgwriter_delay = 5s
+incremental_checkpoint_timeout = 5min
+thread_pool_attr = '464,4,(cpubind:1-27,32-59,64-91,96-123)' （X86环境不需执行此步骤）
+xloginsert_locks = 16
+wal_writer_cpu=0
+wal_file_init_num = 20
+xlog_idle_flushes_before_sleep = 500000000
+pagewriter_sleep = 10ms
 
 ```
 
-**3. TPCC客户端绑核设置**
+**3. TPCC客户端绑核设置** （X86环境不需执行此步骤）
 
 客户端通过 numactl 将客户端绑定在除网卡外的核上，下图以 128 核环境举例，共80个核用于处理业务逻辑，剩余48个核处理网络中断。
 
@@ -420,11 +423,11 @@ warehouses=1000
 loadWorkers=200
 
 // 设置最大并发数量, 跟服务端最大work数对应
-terminals=812
+terminals=696
 //To run specified transactions per terminal- runMins must equal zero
 runTxnsPerTerminal=0
 //To run for specified minutes- runTxnsPerTerminal must equal zero
-runMins=5
+runMins=60
 //Number of total transactions per minute
 limitTxnsPerMin=0
 
@@ -465,13 +468,140 @@ CREATE TABLESPACE example3 relative location 'tablespace3';
 ```
 2.删除序列`bmsql_hist_id_seq`
 
-3.给每一个表增加FACTOR属性
+3.给每一个表增加FACTOR属性，完整tableCreate.sql如下：
 ```sql
+CREATE TABLESPACE example2 relative location 'tablespace2';
+CREATE TABLESPACE example3 relative location 'tablespace3';
+create table bmsql_config (
+  cfg_name    varchar(30),
+  cfg_value   varchar(50)
+);-- DISTRIBUTE BY REPLICATION;
+
+create table bmsql_warehouse (
+  w_id        integer   not null,
+  w_ytd       decimal(12,2),
+  w_tax       decimal(4,4),
+  w_name      varchar(10),
+  w_street_1  varchar(20),
+  w_street_2  varchar(20),
+  w_city      varchar(20),
+  w_state     char(2),
+  w_zip       char(9)
+)WITH (FILLFACTOR=80);-- DISTRIBUTE BY hash(w_id);
+
+create table bmsql_district (
+  d_w_id       integer       not null,
+  d_id         integer       not null,
+  d_ytd        decimal(12,2),
+  d_tax        decimal(4,4),
+  d_next_o_id  integer,
+  d_name       varchar(10),
+  d_street_1   varchar(20),
+  d_street_2   varchar(20),
+  d_city       varchar(20),
+  d_state      char(2),
+  d_zip        char(9)
+ )WITH (FILLFACTOR=80);-- DISTRIBUTE BY hash(d_w_id);
+
+create table bmsql_customer (
+  c_w_id         integer        not null,
+  c_d_id         integer        not null,
+  c_id           integer        not null,
+  c_discount     decimal(4,4),
+  c_credit       char(2),
+  c_last         varchar(16),
+  c_first        varchar(16),
+  c_credit_lim   decimal(12,2),
+  c_balance      decimal(12,2),
+  c_ytd_payment  decimal(12,2),
+  c_payment_cnt  integer,
+  c_delivery_cnt integer,
+  c_street_1     varchar(20),
+  c_street_2     varchar(20),
+  c_city         varchar(20),
+  c_state        char(2),
+  c_zip          char(9),
+  c_phone        char(16),
+  c_since        timestamp,
+  c_middle       char(2),
+  c_data         varchar(500)
+)WITH (FILLFACTOR=80) 
+tablespace example2;
+--DISTRIBUTE BY hash(c_w_id);
+
+-- create sequence bmsql_hist_id_seq;
+
+create table bmsql_history (
+  hist_id  integer,
+  h_c_id   integer,
+  h_c_d_id integer,
+  h_c_w_id integer,
+  h_d_id   integer,
+  h_w_id   integer,
+  h_date   timestamp,
+  h_amount decimal(6,2),
+  h_data   varchar(24)
+)WITH (FILLFACTOR=80);-- DISTRIBUTE BY hash(h_w_id);
+
+create table bmsql_new_order (
+  no_w_id  integer   not null,
+  no_d_id  integer   not null,
+  no_o_id  integer   not null
+)WITH (FILLFACTOR=80);-- DISTRIBUTE BY hash(no_w_id);
+
+create table bmsql_oorder (
+  o_w_id       integer      not null,
+  o_d_id       integer      not null,
+  o_id         integer      not null,
+  o_c_id       integer,
+  o_carrier_id integer,
+  o_ol_cnt     integer,
+  o_all_local  integer,
+  o_entry_d    timestamp
+)WITH (FILLFACTOR=80);-- DISTRIBUTE BY hash(o_w_id);
+
+create table bmsql_order_line (
+  ol_w_id         integer   not null,
+  ol_d_id         integer   not null,
+  ol_o_id         integer   not null,
+  ol_number       integer   not null,
+  ol_i_id         integer   not null,
+  ol_delivery_d   timestamp,
+  ol_amount       decimal(6,2),
+  ol_supply_w_id  integer,
+  ol_quantity     integer,
+  ol_dist_info    char(24)
+)WITH (FILLFACTOR=80);-- DISTRIBUTE BY hash(ol_w_id);
+
+create table bmsql_item (
+  i_id     integer      not null,
+  i_name   varchar(24),
+  i_price  decimal(5,2),
+  i_data   varchar(50),
+  i_im_id  integer
+);-- DISTRIBUTE BY REPLICATION;
+
 create table bmsql_stock (
   s_w_id       integer       not null,
-  .....
+  s_i_id       integer       not null,
+  s_quantity   integer,
+  s_ytd        integer,
+  s_order_cnt  integer,
+  s_remote_cnt integer,
+  s_data       varchar(50),
+  s_dist_01    char(24),
+  s_dist_02    char(24),
+  s_dist_03    char(24),
+  s_dist_04    char(24),
+  s_dist_05    char(24),
+  s_dist_06    char(24),
+  s_dist_07    char(24),
+  s_dist_08    char(24),
+  s_dist_09    char(24),
   s_dist_10    char(24)
-) WITH (FILLFACTOR=80) tablespace example3;
+)WITH (FILLFACTOR=80) 
+tablespace example3;
+--DISTRIBUTE BY hash(s_w_id);
 ```
 
 <2> 修改索引indexCreates.sql
@@ -483,10 +613,44 @@ create table bmsql_stock (
 
 在该文件中添加下图中红色内容，可以在benchmark自动生成数据的时候自动生成到不同的数据表空间，如果未添加可以在benchmark生成数据之后再数据库端修改。用于分盘。
 ![](../images/index3.png)
+完整insexCreate.sql如下：
+```sql
+alter table bmsql_warehouse add constraint bmsql_warehouse_pkey
+  primary key (w_id);
+
+alter table bmsql_district add constraint bmsql_district_pkey
+  primary key (d_w_id, d_id);
+
+alter table bmsql_customer add constraint bmsql_customer_pkey
+  primary key (c_w_id, c_d_id, c_id);
+
+create index bmsql_customer_idx1
+  on  bmsql_customer (c_w_id, c_d_id, c_last, c_first);
+
+alter table bmsql_oorder add constraint bmsql_oorder_pkey
+  primary key (o_w_id, o_d_id, o_id);
+
+create index bmsql_oorder_idx1
+   on  bmsql_oorder (o_w_id, o_d_id, o_c_id);
+
+alter table bmsql_new_order add constraint bmsql_new_order_pkey
+  primary key (no_w_id, no_d_id, no_o_id) using index tablespace example2;
+
+alter table bmsql_order_line add constraint bmsql_order_line_pkey
+  primary key (ol_w_id, ol_d_id, ol_o_id, ol_number);
+
+alter table bmsql_stock add constraint bmsql_stock_pkey
+  primary key (s_w_id, s_i_id);
+
+alter table bmsql_item add constraint bmsql_item_pkey
+  primary key (i_id);
+
+```
 
 <3> 修改runDatabaseBuild.sh文件
 修改下图内容可避免生产数据时候的外键不支持错误
 ![](../images/index4.png)
+ATTER_LOAD="indexCreates buildFinish"
 
 **3. 导入数据**
 
@@ -525,7 +689,7 @@ ln -svf $TABSPACE2_DIR/tablespace2 ./
 
 ```
 
-**6. 运行TPCC程序**
+**6. 运行TPCC程序** （X86环境不需携带numactl -C 0-19,32-51,64-83,96-115）
 
 ```shell
 
