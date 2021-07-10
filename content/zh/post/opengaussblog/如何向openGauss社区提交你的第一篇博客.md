@@ -27,7 +27,7 @@ openGauss社区源代码以及官方网站和博客都托管在码云Gitee上面
 
 在该过程中，你需要填写一个表单，其中邮箱需要填写你之前在码云上设置的主邮箱地址。
 
-![](../figures/20201209-095220(WeLinkPC).png)
+![](figures/20201209-095220(WeLinkPC).png)
 
 ## 提交你的博客<a name="section18740152218539"></a>
 
@@ -35,17 +35,17 @@ openGauss社区源代码以及官方网站和博客都托管在码云Gitee上面
 
 找到https://gitee.com/opengauss/blog仓库，点击右上角的Fork。
 
-![](../figures/640.png)
+![](figures/640.png)
 
 在弹窗中选择你的个人仓库，并点击 “确定（Confirm）”。
 
-![](../figures/1.png)
+![](figures/1.png)
 
 **将个人仓库Clone到本地**
 
 访问你个人账号的blog仓库：https://gitee.com/\(user\)/blog，点击“克隆或下载”按钮，复制HTTPS地址。
 
-![](../figures/2.png)
+![](figures/2.png)
 
 在你本地机器上进入你想要存放blog的路径，输入
 
@@ -105,7 +105,7 @@ times：完成时间，如“17:30”
 
 官方网站效果如下：
 
-![](../figures/3.png)
+![](figures/3.png)
 
 **提交修改**
 
@@ -125,17 +125,17 @@ git push –f origin new_branch_name
 
 **提交Pull Request**
 
-![](../figures/640-0.png)
+![](figures/640-0.png)
 
 回到码云的\(user\)/blog仓库中，在页签中找到Pull Request，点击新建一个Pull Request。
 
-![](../figures/4.png)
+![](figures/4.png)
 
 在创建界面将你的提交Commit的分支和openGauss blog master分支进行比较，完成创建Pull Request。
 
 以上全部流程可参照下图。
 
-![](../figures/5.png)
+![](figures/5.png)
 
 **完成合入**
 
