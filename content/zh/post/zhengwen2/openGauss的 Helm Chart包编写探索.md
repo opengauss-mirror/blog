@@ -10,7 +10,7 @@ archives = "2021-07"
 
 author = "华军" 
 
-summary = openGauss的Helm Chart包编写探索"
+summary = " openGauss的Helm Chart包编写探索"
 
 img = "/zh/post/zhengwen2/img/img29.jpg" 
 
