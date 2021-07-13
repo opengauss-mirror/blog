@@ -1,6 +1,6 @@
 ﻿+++
 
-title =  “openGauss索引详解" 
+title =  "openGauss索引详解" 
 
 date = "2021-07-10" 
 
