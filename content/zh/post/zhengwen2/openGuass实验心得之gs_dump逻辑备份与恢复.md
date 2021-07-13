@@ -1,16 +1,16 @@
 ﻿+++
 
-title =  “openGuass实验心得之gs_dump逻辑备份与恢复" 
+title =  “openGauss实验心得之gs_dump逻辑备份与恢复" 
 
 date = "2021-07-10" 
 
-tags = ["openGuass实验心得之gs_dump逻辑备份与恢复"] 
+tags = ["openGauss实验心得之gs_dump逻辑备份与恢复"] 
 
 archives = "2021-07" 
 
 author = "Mia" 
 
-summary = "openGuass实验心得之gs_dump逻辑备份与恢复"
+summary = "openGauss实验心得之gs_dump逻辑备份与恢复"
 
 img = "/zh/post/zhengwen2/img/img24.jpg" 
 
@@ -18,9 +18,9 @@ times = "12:30"
 
 +++
 
-# openGuass实验心得之gs_dump逻辑备份与恢复<a name="ZH-CN_TOPIC_0000001085018737"></a>
+# openGauss实验心得之gs_dump逻辑备份与恢复<a name="ZH-CN_TOPIC_0000001085018737"></a>
 
-&nbsp;2021年4月份开始接触openGuass并做openGuass的有关实验，今天记下gs_dump逻辑备份的实验经历，以免未来忘记。（部分内容可能有疏漏，望包容和指出）<br />
+&nbsp;2021年4月份开始接触openGauss并做openGauss的有关实验，今天记下gs_dump逻辑备份的实验经历，以免未来忘记。（部分内容可能有疏漏，望包容和指出）<br />
 注：实验的设计思路参考于华为openGauss的指导手册。</p>
 
 <h2><a id="1_2"></a>1，数据库逻辑备份介绍</h2>

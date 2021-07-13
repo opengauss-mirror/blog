@@ -4,7 +4,7 @@ title =  “opengauss快速安装方法（docker）"
 
 date = "2021-07-09" 
 
-tags = ["opengauss快速安装方法（docker）"] 
+tags = [ "opengauss快速安装方法（docker）"] 
 
 archives = "2021-10" 
 
