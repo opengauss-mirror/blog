@@ -1,4 +1,6 @@
-﻿title = "【openGauss】Virtualbox+openEuler部属openGauss数据库" 
+﻿+++
+
+title = "【openGauss】Virtualbox+openEuler部属openGauss数据库" 
 
 date = "2021-07-09" 
 

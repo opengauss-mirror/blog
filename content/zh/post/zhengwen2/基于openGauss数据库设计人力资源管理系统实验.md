@@ -1,4 +1,6 @@
-﻿title =  “基于openGauss数据库设计人力资源管理系统实验" 
+﻿+++
+
+title =  “基于openGauss数据库设计人力资源管理系统实验" 
 
 date = "2021-07-10" 
 
@@ -6,7 +8,7 @@ tags = ["基于openGauss数据库设计人力资源管理系统实验"]
 
 archives = "2021-07" 
 
-author = **"瓜西西***" 
+author = "瓜西西" 
 
 summary = "基于openGauss数据库设计人力资源管理系统实验"
 

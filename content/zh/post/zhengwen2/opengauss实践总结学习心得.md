@@ -1,4 +1,6 @@
-﻿title =  “opengauss实践总结学习心得" 
+﻿+++
+
+title =  “opengauss实践总结学习心得" 
 
 date = "2021-07-09" 
 

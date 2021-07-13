@@ -1,4 +1,6 @@
-﻿title =  “openGauss的 Helm Chart包编写探索" 
+﻿+++
+
+title =  “openGauss的 Helm Chart包编写探索" 
 
 date = "2021-07-10" 
 
@@ -6,7 +8,7 @@ tags = ["openGauss的 Helm Chart包编写探索"]
 
 archives = "2021-07" 
 
-author = "**华军**" 
+author = "华军" 
 
 summary = openGauss的 Helm Chart包编写探索"
 

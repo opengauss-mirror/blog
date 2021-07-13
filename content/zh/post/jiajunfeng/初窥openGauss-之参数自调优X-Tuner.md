@@ -10,7 +10,7 @@ author = "贾军锋"
 
 summary = "初窥openGauss 之参数自调优X-Tuner)"
 
-img = "/zh/post/jiajunfeng/title/img2.png" 
+img = "/zh/post/jiajunfeng/title/img33.png" 
 
 times = "12:30"
 

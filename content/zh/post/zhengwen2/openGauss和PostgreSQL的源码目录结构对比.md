@@ -1,4 +1,6 @@
-﻿title =  “openGauss和PostgreSQL的源码目录结构对比" 
+﻿+++
+
+title =  “openGauss和PostgreSQL的源码目录结构对比" 
 
 date = "2021-07-09" 
 

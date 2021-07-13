@@ -1,4 +1,6 @@
-﻿title = "openGauss 备份恢复gs_probackup" 
+﻿+++
+
+title = "openGauss 备份恢复gs_probackup" 
 
 date = "2021-07-09" 
 
