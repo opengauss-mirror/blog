@@ -1,6 +1,6 @@
 ﻿+++
 
-title =  “openGauss实验心得之gs_dump逻辑备份与恢复" 
+title =  "openGauss实验心得之gs_dump逻辑备份与恢复" 
 
 date = "2021-07-10" 
 

@@ -1,6 +1,6 @@
 ﻿+++
 
-title =  “openGauss在kubernetes集群环境上的部署" 
+title =  "openGauss在kubernetes集群环境上的部署" 
 
 date = "2021-07-10" 
 

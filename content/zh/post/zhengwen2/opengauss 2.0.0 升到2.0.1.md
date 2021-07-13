@@ -1,6 +1,6 @@
 +++
 
-title = opengauss 2.0.0 升到2.0.1" 
+title = "opengauss 2.0.0 升到2.0.1" 
 
 date = "2021-06-29" 
 
