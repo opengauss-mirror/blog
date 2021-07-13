@@ -1,6 +1,6 @@
 ﻿+++
 
-title =  “基于openGauss数据库设计人力资源管理系统实验" 
+title = "基于openGauss数据库设计人力资源管理系统实验" 
 
 date = "2021-07-10" 
 
