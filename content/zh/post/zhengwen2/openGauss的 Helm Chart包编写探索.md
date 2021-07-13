@@ -22,7 +22,7 @@ times = "12:30"
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helm 是 Kubernetes 的包管理器,包管理器类似于我们在 Ubuntu 中使用的apt、Centos中使用的yum一样，能快速查找、下载和安装软件包,本篇文章探索编写openGauss的 Helm Chart的包,方便openGauss的在Kubernetes的快速部署.
 
-##### 1.环境清单
+# 1.环境清单
 #检查k8s运行环境
 
 ```powershell
@@ -46,14 +46,14 @@ NAME                  PROVISIONER      RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOW
 managed-nfs-storage   fuseim.pri/ifs   Delete          Immediate           false                  157m
 ```
 
-##### 2.创建openGauss的包管理模板
+# 2.创建openGauss的包管理模板
 
 ```powershell
 [root@n-k8s-m helm]# helm create opengauss
 Creating opengauss
 ```
 
-##### 3.查看包管理模板
+# 3.查看包管理模板
 
 ```powershell
 [root@n-k8s-m helm]# tree opengauss
@@ -74,7 +74,7 @@ opengauss
 └── values.yaml
 ```
 
-##### 4.编写变量文件values.yaml
+# 4.编写变量文件values.yaml
 
 ```powershell
 [root@n-k8s-m helm]#cat values.yaml
@@ -182,7 +182,7 @@ tolerations: []
 affinity: {}
 ```
 
-##### 5.编写deployment.yaml
+# 5.编写deployment.yaml
 
 ```powershell
 [root@n-k8s-m templates]# cat deployment.yaml
@@ -258,7 +258,7 @@ spec:
             claimName: {{ include "opengauss.fullname" . }}
 ```
 
-#####  6.编写Service.yaml
+#  6.编写Service.yaml
 
 ```powershell
 [root@n-k8s-m helm]#vim Service.yaml
@@ -280,7 +280,7 @@ spec:
     {{- include "opengauss.selectorLabels" . | nindent 4 }}
 ```
 
-##### 7.编写pvc.yaml
+# 7.编写pvc.yaml
 
 ```powershell
 [root@n-k8s-m templates]# cat pvc.yaml
@@ -315,7 +315,7 @@ spec:
 {{- end }}
 ```
 
-##### 8.通过helm安装openGauss数据库
+# 8.通过helm安装openGauss数据库
 
 ```powershell
 [root@n-k8s-m helm]# helm install opengauss2 opengauss/
@@ -339,7 +339,7 @@ opengauss2      default         1               2021-07-09 06:36:50.181491555 -0
 1.16.0
 ```
 
-##### 9.检查k8s的相关资源
+# 9.检查k8s的相关资源
 
 ```powershell
 [root@n-k8s-m helm]# kubectl get pvc
@@ -358,7 +358,7 @@ kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP          351d
 opengauss2   NodePort    10.101.6.139    <none>        5432:30118/TCP   63m
 ```
 
-##### 10.连接opengauss数据库
+# 10.连接opengauss数据库
 
 ```powershell
 [root@n-k8s-m helm]# kubectl exec -it opengauss2-6f5747d6dc-7ps4b sh
@@ -390,20 +390,20 @@ Non-SSL connection (SSL connection is recommended when requiring high-security)
 You are now connected to database "omm" as user "omm".
 ```
 
-##### 11.打包openGauss
+# 11.打包openGauss
 ```powershell
 [root@n-k8s-m helm]# helm package opengauss
 Successfully packaged chart and saved it to: /root/helm/opengauss-0.1.0.tgz
 ```
 
-##### 12.通过helm卸载openGauss数据库
+# 12.通过helm卸载openGauss数据库
 
 ```powershell
 [root@n-k8s-m helm]# helm uninstall opengauss2
 release "opengauss2" uninstalled
 ```
 
-##### 13.通过openGauss包安装数据库
+# 13.通过openGauss包安装数据库
 
 ```powershell
 [root@n-k8s-m helm]# helm install opengauss3 opengauss-0.1.0.tgz
@@ -423,7 +423,7 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 opengauss3      default         1               2021-07-09 08:03:06.589888037 -0400 EDT deployed        opengauss-0.1.0 1.16.0
 ```
 
-##### 14.最后就可以把opengauss-0.1.0.tgz上传的Helm仓库,方便openGauss的在Kubernetes的快速部署.
+# 14.最后就可以把opengauss-0.1.0.tgz上传的Helm仓库,方便openGauss的在Kubernetes的快速部署.
 
 
 
