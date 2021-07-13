@@ -1,16 +1,16 @@
 ﻿+++
 
-title = "openGauss的 Helm Chart包编写探索"  
+title = "openGauss的Helm Chart包编写探索"  
 
 date = "2021-07-10" 
 
-tags = ["openGauss的 Helm Chart包编写探索"] 
+tags = ["openGauss的Helm Chart包编写探索"] 
 
 archives = "2021-07" 
 
 author = "华军" 
 
-summary = openGauss的 Helm Chart包编写探索"
+summary = openGauss的Helm Chart包编写探索"
 
 img = "/zh/post/zhengwen2/img/img29.jpg" 
 
@@ -18,9 +18,9 @@ times = "12:30"
 
 +++
 
-# openGauss的 Helm Chart包编写探索<a name="ZH-CN_TOPIC_0000001085018737"></a> 
+# openGauss的Helm Chart包编写探索<a name="ZH-CN_TOPIC_0000001085018737"></a> 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helm 是 Kubernetes 的包管理器,包管理器类似于我们在 Ubuntu 中使用的apt、Centos中使用的yum一样，能快速查找、下载和安装软件包,本篇文章探索编写openGauss的 Helm Chart的包,方便openGauss的在Kubernetes的快速部署.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helm 是 Kubernetes 的包管理器,包管理器类似于我们在 Ubuntu 中使用的apt、Centos中使用的yum一样，能快速查找、下载和安装软件包,本篇文章探索编写openGauss的Helm Chart的包,方便openGauss的在Kubernetes的快速部署.
 
 # 1.环境清单
 #检查k8s运行环境
