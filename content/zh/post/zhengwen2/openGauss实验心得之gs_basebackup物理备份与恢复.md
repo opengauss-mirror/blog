@@ -1,6 +1,8 @@
-﻿title = "openGauss实验心得之gs_basebackup物理备份与恢复" 
+﻿+++
 
-date = "2021-07-09" 
+title = "openGauss实验心得之gs_basebackup物理备份与恢复" 
+
+date = "2021-07-10" 
 
 tags = ["openGauss实验心得之gs_basebackup物理备份与恢复"] 
 
@@ -10,7 +12,7 @@ author = "Mia"
 
 summary = "openGauss实验心得之gs_basebackup物理备份与恢复"
 
-img = "/zh/post/zhengwen2/img/img24.jpg" " 
+img = "/zh/post/zhengwen2/img/img24.jpg"  
 
 times = "12:30"
 
@@ -21,11 +23,9 @@ times = "12:30"
 2021年4月份开始接触openGauss并做openGauss的有关实验，今天记下gs_basebackup物理备份的实验经历:-D，以免未来忘记。（部分内容可能有疏漏，望包容和指出）
 注：实验的设计思路参考于华为openGauss的指导手册。
 
-## **1.数据库物理备份介绍**
+# 1.数据库物理备份介绍
 
 数据库物理备份指的是对数据库一些关键文件如日志、配置文件、关键数据等进行备份在数据库遭到破坏时能从备份处进行恢复。同时gs_basebackup备份的是数据库的二进制文件，因此在恢复是可以直接拷贝替换原有的文件或者直接在备份的库启动数据库。
-
-
 
 ## 2.gs_basebackup实验
 

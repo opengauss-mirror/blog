@@ -1,4 +1,6 @@
-﻿title = "openGauss在docker上的安装，连接以及java连接" 
+﻿+++
+
+title = "openGauss在docker上的安装，连接以及java连接" 
 
 date = "2021-07-09" 
 

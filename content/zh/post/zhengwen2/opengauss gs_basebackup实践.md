@@ -1,4 +1,6 @@
-﻿title =  “opengauss gs_basebackup实践" 
+﻿+++
+
+title = "opengauss gs_basebackup实践" 
 
 date = "2021-07-09" 
 

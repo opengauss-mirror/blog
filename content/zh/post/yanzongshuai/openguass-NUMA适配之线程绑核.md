@@ -1,14 +1,14 @@
-title = "openguass NUMA适配之线程绑核" 
+title = "opengauss NUMA适配之线程绑核" 
 
 date = "2021-06-29" 
 
-tags = ["openguass NUMA适配之线程绑核"] 
+tags = ["opengauss NUMA适配之线程绑核"] 
 
 archives = "2021-06" 
 
 author = "闫宗帅" 
 
-summary = "openguass NUMA适配之线程绑核构"
+summary = "opengauss NUMA适配之线程绑核构"
 
 img = "/zh/post/lihongda/title/title.png" 
 
@@ -16,7 +16,7 @@ times = "19:30"
 
 +++
 
-# openguass NUMA适配之线程绑核<a name="ZH-CN_TOPIC_0000001124544422"></a>
+# opengauss NUMA适配之线程绑核<a name="ZH-CN_TOPIC_0000001124544422"></a>
 
 ## 1、多核NUMA结构<a name="section5398112810112"></a>
 
@@ -24,7 +24,7 @@ NUMA（Non-uniform memory access，非统一内存访问架构）出现前，CPU
 
 ## 2、NUMA绑核优化思路<a name="section8804437717"></a>
 
-避免线程在运行中在不同核上漂移，从而引起访问NUMA远端内存。Openguass通过配置参数thread\_pool\_attr控制CPU绑核分配，该参数仅在enable\_thread\_pool打开后生效。参数分为3部分：’thread\_num,group\_num,cpubind\_info’。
+避免线程在运行中在不同核上漂移，从而引起访问NUMA远端内存。openGauss通过配置参数thread\_pool\_attr控制CPU绑核分配，该参数仅在enable\_thread\_pool打开后生效。参数分为3部分：’thread\_num,group\_num,cpubind\_info’。
 
 其中thread\_num：线程池中线程总数，取值0-4096。0表示根据CPU核数量自动配置线程池中线程数。如果大于0，线程池中线程数等于该值
 
@@ -111,7 +111,7 @@ CPU_SET(m_groupCpuArr[i], &m_nodeCpuSet);//循环将CPU加入CPU集合
 
 **NUMA优化相关函数**
 
-Opengauss中所有numa相关函数都可以通过宏定义ifdef \_\_USE\_NUMA找到其定义及调用的地方。
+openGauss中所有numa相关函数都可以通过宏定义ifdef \_\_USE\_NUMA找到其定义及调用的地方。
 
 ```
 int numa_available(void)：NUMA的API是否可以在平台上正常使用

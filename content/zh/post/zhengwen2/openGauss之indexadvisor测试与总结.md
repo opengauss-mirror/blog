@@ -1,8 +1,10 @@
-﻿title = "openGauss之indexadvisor测试与总结" 
+﻿+++
+
+title = "openGauss之indexadvisor测试与总结" 
 
 date = "2021-07-09" 
 
-tags = [openGauss之indexadvisor测试与总结"] 
+tags = ["openGauss之indexadvisor测试与总结"] 
 
 archives = "2021-07" 
 

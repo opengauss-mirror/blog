@@ -1,8 +1,10 @@
-﻿title =  “openGauss内存管理初探" 
+﻿+++
+
+title = "openGauss内存管理初探" 
 
 date = "2021-07-10" 
 
-tags = ["openGauss内存管理初探"] 
+tags = [ "openGauss内存管理初探"] 
 
 archives = "2021-07" 
 

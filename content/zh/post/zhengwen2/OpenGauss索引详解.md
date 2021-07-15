@@ -1,8 +1,10 @@
-﻿title =  “OpenGauss索引详解" 
+﻿+++
+
+title =  "openGauss索引详解" 
 
 date = "2021-07-10" 
 
-tags = ["OpenGauss索引详解"] 
+tags = [ "openGauss索引详解"] 
 
 archives = "2021-07" 
 
@@ -16,12 +18,12 @@ times = "12:30"
 
 +++
 
-# OpenGauss索引详解<a name="ZH-CN_TOPIC_0000001085018737"></a> 
+# openGauss索引详解<a name="ZH-CN_TOPIC_0000001085018737"></a> 
 
 
 <html data-n-head-ssr>
 
-<div class="emcs-page-content" data-v-229ac844><div class="main-box" data-v-229ac844><div class="db-detail-content emcs-table" data-v-229ac844><div class="editor-content-styl" data-v-229ac844><p>本文主要介绍OpenGauss中常见的索引结构，索引相关元数据，并结合代码重点讲解B-tree索引使用过程中的重要流程，希望对大家理解OpenGauss中的索引有所帮助。</p>
+<div class="emcs-page-content" data-v-229ac844><div class="main-box" data-v-229ac844><div class="db-detail-content emcs-table" data-v-229ac844><div class="editor-content-styl" data-v-229ac844><p>本文主要介绍openGauss中常见的索引结构，索引相关元数据，并结合代码重点讲解B-tree索引使用过程中的重要流程，希望对大家理解openGauss中的索引有所帮助。</p>
 <h2><a id="_2"></a>索引方法</h2>
 <h3><a id="BTree_3"></a>B-Tree索引</h3>
 <p>B-tree索引适合比较查询和范围查询，当查询条件使用(&gt;,=,&lt;,&gt;=,&lt;=)时，可以使用B-tree索引。B-tree索引是PostgreSQL和OpenGauss的默认索引方式。<br />

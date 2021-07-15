@@ -1,4 +1,6 @@
-﻿title = "MogDB_openGauss 生态工具-MTK(Migration ToolKit) 数据库迁移" 
+﻿+++
+
+title = "MogDB_openGauss 生态工具-MTK(Migration ToolKit) 数据库迁移" 
 
 date = "2021-07-09" 
 

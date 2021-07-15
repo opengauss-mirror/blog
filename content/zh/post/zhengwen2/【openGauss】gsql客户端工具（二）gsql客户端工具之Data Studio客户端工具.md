@@ -1,8 +1,10 @@
-﻿title =  ”【openGauss】gsql客户端工具（二）gsql客户端工具之Data Studio客户端工具" 
+﻿+++
+
+title = "【openGauss】gsql客户端工具（二）gsql客户端工具之Data Studio客户端工具" 
 
 date = "2021-07-09" 
 
-tags = ["【openGauss】gsql客户端工具（二）gsql客户端工具之Data Studio客户端工具"] 
+tags = [ "【openGauss】gsql客户端工具（二）gsql客户端工具之Data Studio客户端工具"] 
 
 archives = "2021-07" 
 

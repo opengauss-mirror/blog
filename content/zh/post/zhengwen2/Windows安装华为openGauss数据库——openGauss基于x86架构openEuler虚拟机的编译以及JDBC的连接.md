@@ -1,4 +1,6 @@
-﻿title = "Windows安装华为openGauss数据库——openGauss基于x86架构openEuler虚拟机的编译以及JDBC的连接" 
+﻿+++
+
+title = "Windows安装华为openGauss数据库——openGauss基于x86架构openEuler虚拟机的编译以及JDBC的连接" 
 
 date = "2021-07-09" 
 

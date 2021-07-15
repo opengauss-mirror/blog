@@ -1,3 +1,5 @@
++++
+
 title = "PostgreSQL/openGauss数据库易犯的十大错误" 
 
 date = "2021-06-30" 
@@ -10,7 +12,7 @@ author = "彭冲"
 
 summary = "PostgreSQL/openGauss数据库易犯的十大错误"
 
-img = "/zh/post/lihongda/title/title.png" 
+img = "/zh/post/.pngpengchong/title/img6.png" 
 
 times = "10:30"
 

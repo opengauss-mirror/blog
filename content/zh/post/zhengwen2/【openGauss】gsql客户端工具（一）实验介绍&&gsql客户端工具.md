@@ -1,4 +1,6 @@
-﻿title = "【openGauss】gsql客户端工具（一）实验介绍&&gsql客户端工具.md" 
+﻿+++
+
+title = "【openGauss】gsql客户端工具（一）实验介绍&&gsql客户端工具.md" 
 
 date = "2021-07-09" 
 
