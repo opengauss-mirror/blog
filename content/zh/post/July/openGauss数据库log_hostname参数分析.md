@@ -1,4 +1,4 @@
-++++
++++
 
 title =  "openGauss数据库log\_hostname参数分析" 
 
@@ -16,7 +16,7 @@ img = "/zh/post/July/title/img3.png\"
 
 times = "12:30"
 
-++++
++++
 
 # openGauss数据库log\_hostname参数分析<a name="ZH-CN_TOPIC_0000001133332490"></a>
 

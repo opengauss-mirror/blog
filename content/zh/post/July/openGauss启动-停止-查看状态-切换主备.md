@@ -1,4 +1,4 @@
-++++
++++
 
 title =  "openGauss启动、停止、查看状态、切换主备" 
 
@@ -16,7 +16,7 @@ img = "/zh/post/July/title/img2.png\"
 
 times = "12:30"
 
-++++
++++
 
 # openGauss启动、停止、查看状态、切换主备<a name="ZH-CN_TOPIC_0000001179212179"></a>
 

@@ -1,4 +1,4 @@
-++++
++++
 
 title =  "openGauss一主一备一级安装" 
 
@@ -16,7 +16,7 @@ img = "/zh/post/July/title/img5.png\"
 
 times = "12:30"
 
-++++
++++
 
 # openGauss一主一备一级安装<a name="ZH-CN_TOPIC_0000001133332488"></a>
 

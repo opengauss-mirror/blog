@@ -1,4 +1,4 @@
-++++
++++
 
 title =  "openGauss B-tree索引读写并发原理" 
 
