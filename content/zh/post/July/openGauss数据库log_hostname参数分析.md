@@ -1,16 +1,16 @@
 +++
 
-title =  "openGauss数据库log\_hostname参数分析" 
+title =  "openGauss数据库log_hostname参数分析"
 
 date = "2021-07-14" 
 
-tags = [ "openGauss数据库log\_hostname参数分析"] 
+tags = [ "openGauss数据库log_hostname参数分析"] 
 
 archives = "2021-07" 
 
 author = "民生运维人" 
 
-summary = "openGauss数据库log\_hostname参数分析"
+summary = "openGauss数据库log_hostname参数分析"
 
 img = "/zh/post/July/title/img3.png\" 
 
@@ -18,7 +18,7 @@ times = "12:30"
 
 +++
 
-# openGauss数据库log\_hostname参数分析<a name="ZH-CN_TOPIC_0000001133332490"></a>
+# openGauss数据库log_hostname参数分析<a name="ZH-CN_TOPIC_0000001133332490"></a>
 
 本文主要借助技术文档、源代码、实验三个方面的内容，分析openGauss数据库log\_hostname参数的作用及影响范围。
 

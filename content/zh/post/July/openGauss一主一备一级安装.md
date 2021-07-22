@@ -12,7 +12,7 @@ author = "Walrus"
 
 summary = "openGauss一主一备一级安装"
 
-img = "/zh/post/July/title/img5.png\" 
+img = "/zh/post/July/title/img5.png" 
 
 times = "12:30"
 

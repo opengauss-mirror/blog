@@ -12,7 +12,7 @@ author = "sung"
 
 summary = "openGauss B-tree索引读写并发原理"
 
-img = "/zh/post/July/title/img1.png\" 
+img = "/zh/post/July/title/img1.png" 
 
 times = "12:30"
 

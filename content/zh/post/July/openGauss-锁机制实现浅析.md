@@ -12,7 +12,7 @@ author = "Walrus"
 
 summary = "openGauss 锁机制实现浅析"
 
-img = "/zh/post/July/title/img4.png\" 
+img = "/zh/post/July/title/img4.png"
 
 times = "12:30"
 
