@@ -12,7 +12,7 @@ author = "民生运维人"
 
 summary = "openGauss数据库log_hostname参数分析"
 
-img = "/zh/post/July/title/img3.png\" 
+img = "/zh/post/July/title/img3.png" 
 
 times = "12:30"
 
