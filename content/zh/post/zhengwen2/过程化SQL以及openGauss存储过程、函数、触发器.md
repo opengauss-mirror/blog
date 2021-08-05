@@ -12,7 +12,7 @@ author = "CR7"
 
 summary = "过程化SQL以及openGauss存储过程、函数、触发器"
 
-img = "/zh/post/zhengwen2/img/img33.jpg" 
+img = "/zh/post/zhengwen2/img/img33.png" 
 
 times = "12:30"
 

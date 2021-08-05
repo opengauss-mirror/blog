@@ -12,7 +12,7 @@ author = "滋味"
 
 summary = "openGauss索引查询和索引规则实验"
 
-img = "/zh/post/zhengwen2/img/img28.jpg" 
+img = "/zh/post/zhengwen2/img/img28.png" 
 
 times = "12:30"
 

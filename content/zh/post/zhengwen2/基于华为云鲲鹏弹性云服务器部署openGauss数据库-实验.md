@@ -12,7 +12,7 @@ author = "许玉冲"
 
 summary = "基于华为云鲲鹏弹性云服务器部署openGauss数据库-实验"
 
-img = "/zh/post/zhengwen2/img/img38.jpg" 
+img = "/zh/post/zhengwen2/img/img38.png" 
 
 times = "12:30"
 

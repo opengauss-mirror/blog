@@ -12,7 +12,7 @@ author = "华军"
 
 summary = " openGauss的Helm Chart包编写探索"
 
-img = "/zh/post/zhengwen2/img/img29.jpg" 
+img = "/zh/post/zhengwen2/img/img29.png" 
 
 times = "12:30"
 
@@ -20,10 +20,11 @@ times = "12:30"
 
 # openGauss的Helm Chart包编写探索<a name="ZH-CN_TOPIC_0000001085018737"></a> 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helm 是 Kubernetes 的包管理器,包管理器类似于我们在 Ubuntu 中使用的apt、Centos中使用的yum一样，能快速查找、下载和安装软件包,本篇文章探索编写openGauss的Helm Chart的包,方便openGauss的在Kubernetes的快速部署.
+Helm 是 Kubernetes 的包管理器,包管理器类似于我们在 Ubuntu 中使用的apt、Centos中使用的yum一样，能快速查找、下载和安装软件包,本篇文章探索编写openGauss的Helm Chart的包,方便openGauss的在Kubernetes的快速部署.
 
 # 1.环境清单
-#检查k8s运行环境
+
+##  检查k8s运行环境
 
 ```powershell
 [root@n-k8s-m ~]# kubectl get node
@@ -31,14 +32,14 @@ NAME       STATUS     ROLES    AGE    VERSION
 n-k8s-m    Ready      master   349d   v1.18.0
 ```
 
-#检查Helm运行环境
+## 检查Helm运行环境
 
 ```powershell
 [root@n-k8s-m ~]# helm version
 version.BuildInfo{Version:"v3.6.0", GitCommit:"7f2df6467771a75f5646b7f12afb408590ed1755", GitTreeState:"clean", GoVersion:"go1.16.3"}
 ```
 
-#查看存储类
+## 查看存储类
 
 ```powershell
 [root@n-k8s-m ~]#kubectl get sc

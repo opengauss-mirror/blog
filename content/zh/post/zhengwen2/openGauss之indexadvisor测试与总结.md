@@ -12,7 +12,7 @@ author = "三五七言"
 
 summary = "openGauss之indexadvisor测试与总结"
 
-img = "/zh/post/zhengwen2/img/img29.jpg" 
+img = "/zh/post/zhengwen2/img/img29.png" 
 
 times = "12:30"
 

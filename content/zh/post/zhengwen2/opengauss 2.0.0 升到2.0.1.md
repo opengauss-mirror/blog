@@ -12,7 +12,7 @@ author = "张兴龙"
 
 summary = "opengauss 2.0.0 升到2.0.1"
 
-img = "/zh/post/zhengwen2/img/img28.jpg" 
+img = "/zh/post/zhengwen2/img/img28.png" 
 
 times = "19:30"
 

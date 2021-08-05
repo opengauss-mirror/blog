@@ -12,7 +12,7 @@ author = "DSLS"
 
 summary = "opengauss快速安装方法（docker）"
 
-img = "/zh/post/zhengwen2/img/img20.jpg" 
+img = "/zh/post/zhengwen2/img/img20.png" 
 
 times = "12:30"
 

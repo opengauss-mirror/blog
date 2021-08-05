@@ -12,7 +12,7 @@ author = "安徽大学计算机科学与技术学院 何迪亚，顾宇轩"
 
 summary = "Windows安装华为openGauss数据库——openGauss基于x86架构openEuler虚拟机的编译以及JDBC的连接"
 
-img = "/zh/post/zhengwen2/img/img29.jpg" 
+img = "/zh/post/zhengwen2/img/img29.png" 
 
 times = "12:30"
 

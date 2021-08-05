@@ -12,7 +12,7 @@ author = "Anacesthesia"
 
 summary = "openGauss 备份恢复gs_probackup"
 
-img = "/zh/post/zhengwen2/img/img21.jpg" 
+img = "/zh/post/zhengwen2/img/img21.png" 
 
 times = "12:30"
 

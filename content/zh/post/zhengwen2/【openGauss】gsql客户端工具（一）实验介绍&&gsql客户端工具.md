@@ -12,7 +12,7 @@ author = "SogK1997"
 
 summary = "【openGauss】gsql客户端工具（一）实验介绍&&gsql客户端工具.md"
 
-img = "/zh/post/zhengwen2/img/img4.jpg" 
+img = "/zh/post/zhengwen2/img/img4.png" 
 
 times = "12:30"
 
