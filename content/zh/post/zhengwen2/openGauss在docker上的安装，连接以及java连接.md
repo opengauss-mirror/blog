@@ -12,7 +12,7 @@ author = "ZeroRains"
 
 summary = "openGauss在docker上的安装，连接以及java连接"
 
-img = "/zh/post/zhengwen2/img/img28.jpg" 
+img = "/zh/post/zhengwen2/img/img28.png" 
 
 times = "12:30"
 

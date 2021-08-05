@@ -12,7 +12,7 @@ author = "Mia"
 
 summary = "openGauss实验心得之gs_basebackup物理备份与恢复"
 
-img = "/zh/post/zhengwen2/img/img24.jpg"  
+img = "/zh/post/zhengwen2/img/img24.png"  
 
 times = "12:30"
 

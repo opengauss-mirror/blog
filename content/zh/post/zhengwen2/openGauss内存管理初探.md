@@ -12,7 +12,7 @@ author = "李士福"
 
 summary = "openGauss内存管理初探"
 
-img = "/zh/post/zhengwen2/img/img5.jpg" 
+img = "/zh/post/zhengwen2/img/img5.png" 
 
 times = "12:30"
 

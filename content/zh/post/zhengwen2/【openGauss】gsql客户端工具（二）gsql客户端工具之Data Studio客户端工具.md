@@ -12,7 +12,7 @@ author = "SogK1997"
 
 summary = "【openGauss】gsql客户端工具（二）gsql客户端工具之Data Studio客户端工具"
 
-img = "/zh/post/zhengwen2/img/img5.jpg" 
+img = "/zh/post/zhengwen2/img/img5.png" 
 
 times = "12:30"
 
@@ -95,3 +95,4 @@ postgres<span class="token operator">&#61;</span><span class="token comment"># \
 <p>在Data Studio主界面的主菜单上点击帮助下的用户手册&#xff0c;具体如下&#xff1a;<br /> <img src="https://img-blog.csdnimg.cn/20210602213133268.png" alt="在这里插入图片描述" /></p> 
 <p>点击后即可得到使用手册&#xff0c;如下&#xff1a;<br /> <img src="https://img-blog.csdnimg.cn/20210602213142163.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpdmU2Njg&#61;,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p> 
 <p>本实验结束。</p>
+

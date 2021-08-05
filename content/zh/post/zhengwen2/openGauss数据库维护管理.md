@@ -12,7 +12,7 @@ author = "七月"
 
 summary = "openGauss数据库维护管理.md"
 
-img = "/zh/post/zhengwen2/img/img25.jpg" 
+img = "/zh/post/zhengwen2/img/img25.png" 
 
 times = "12:30"
 

@@ -12,7 +12,7 @@ author = "SonK1997"
 
 summary = "【openGauss】Virtualbox+openEuler部属openGauss数据库接"
 
-img = "/zh/post/zhengwen2/img/img20.jpg" 
+img = "/zh/post/zhengwen2/img/img20.png" 
 
 times = "12:30"
 

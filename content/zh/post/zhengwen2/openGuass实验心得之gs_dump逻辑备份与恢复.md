@@ -12,7 +12,7 @@ author = "Mia"
 
 summary = "openGauss实验心得之gs_dump逻辑备份与恢复"
 
-img = "/zh/post/zhengwen2/img/img24.jpg" 
+img = "/zh/post/zhengwen2/img/img24.png" 
 
 times = "12:30"
 
@@ -20,8 +20,8 @@ times = "12:30"
 
 # openGauss实验心得之gs_dump逻辑备份与恢复<a name="ZH-CN_TOPIC_0000001085018737"></a>
 
-&nbsp;2021年4月份开始接触openGauss并做openGauss的有关实验，今天记下gs_dump逻辑备份的实验经历，以免未来忘记。（部分内容可能有疏漏，望包容和指出）<br />
-注：实验的设计思路参考于华为openGauss的指导手册。</p>
+&nbsp;2021年4月份开始接触openGauss并做openGauss的有关实验，今天记下gs_dump逻辑备份的实验经历，以免未来忘记。（部分内容可能有疏漏，望包容和指出）
+注：实验的设计思路参考于华为openGauss的指导手册。
 
 <h2><a id="1_2"></a>1，数据库逻辑备份介绍</h2>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库逻辑备份指将数据库对象和文件导出到文件的格式。那么物理备份和逻辑备份的区别在哪呢？做过物理备份实验gs_basebackup（在小编的上一篇文章也有哦）不难发现物理备份是将数据库关键文件转储，在恢复数据库时利用转储文件和cp命令进行恢复。而此次的逻辑备份指的是对数据库对象进行文件导出。逻辑备份是对象级备份，可移植性会更高，而且在逻辑备份中导出的文件格式可以自己指定哦。<br />

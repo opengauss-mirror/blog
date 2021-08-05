@@ -12,7 +12,7 @@ author = "邹阳"
 
 summary = "opengauss gs_basebackup实践"
 
-img = "/zh/post/zhengwen2/img/img38.jpg" 
+img = "/zh/post/zhengwen2/img/img38.png" 
 
 times = "12:30"
 

@@ -12,16 +12,13 @@ author = "瓜西西"
 
 summary = "基于openGauss数据库设计人力资源管理系统实验"
 
-img = "/zh/post/zhengwen2/img/img33.jpg" 
+img = "/zh/post/zhengwen2/img/img33.png" 
 
 times = "12:30"
 
 +++
 
 # 基于openGauss数据库设计人力资源管理系统实验<a name="ZH-CN_TOPIC_0000001085018737"></a> 
-
-<html data-n-head-ssr>
-  <body >
 
 <div class="info-item flex" data-v-229ac844><i class="cs-eye" data-v-229ac844></i> <span class="ml4" data-v-229ac844></span></div></div></div> <div class="emcs-page-content" data-v-229ac844><div class="main-box" data-v-229ac844><div class="db-detail-content emcs-table" data-v-229ac844><div class="editor-content-styl" data-v-229ac844><p><span style="font-size: 1em;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文主要面向openGauss数据库初学者，帮助初学者完成一些简单的数据库管理以及GUI，设计一个简单的人力资源管理系统。本文只包含部分代码，读者需要结合自己的数据库弹性公网、数据库用户及其密码等自身信息做出相应的修改。</span><br></p><h1>一、实验环<span style="font-weight: normal;"></span>境</h1><p>使用程序：putty.exe；
 </p><p>IntelliJ IDEA 2021.1.1；

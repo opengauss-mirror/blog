@@ -12,7 +12,7 @@ author = "poohanyuzuru"
 
 summary = "opengauss实践总结学习心"
 
-img = "/zh/post/zhengwen2/img/img22.jpg" 
+img = "/zh/post/zhengwen2/img/img22.png" 
 
 times = "12:30"
 
