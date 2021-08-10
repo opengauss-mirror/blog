@@ -1,16 +1,16 @@
 +++
 
-title =  "openGauss物理备份恢复之gs\_basebackup" 
+title =  "openGauss物理备份恢复之gs basebackup" 
 
 date = "2021-08-09" 
 
-tags = [ "openGauss物理备份恢复之gs\_basebackup"] 
+tags = [ "openGauss物理备份恢复之gs basebackup"] 
 
 archives = "2021-08" 
 
 author = "Walrus" 
 
-summary = "openGauss物理备份恢复之gs\_basebackup"
+summary = "openGauss物理备份恢复之gs basebackup"
 
 img = "/zh/post/July/title/img8.png" 
 

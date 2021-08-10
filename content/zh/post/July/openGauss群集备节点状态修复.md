@@ -1,16 +1,16 @@
 +++
 
-title =  "openGauss群集备节点Standby Need repair\(Disconnected\)状态修复" 
+title =  "openGauss群集备节点状态修复" 
 
 date = "2021-08-08" 
 
-tags = [ "openGauss群集备节点Standby Need repair\(Disconnected\)状态修复"] 
+tags = [ "openGauss群集备节点状态修复"] 
 
 archives = "2021-08" 
 
 author = "Walrus" 
 
-summary = "openGauss群集备节点Standby Need repair\(Disconnected\)状态修复"
+summary = "openGauss群集备节点状态修复"
 
 img = "/zh/post/July/title/img7.png" 
 
