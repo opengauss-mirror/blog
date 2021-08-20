@@ -12,7 +12,7 @@ author = "吴松"
 
 summary = "OpenGauss索引详解"
 
-img = "/zh/post/zhengwen2/img/img22.png" 
+img = "/zh/post/zhengwen2/img/img22.jpg" 
 
 times = "12:30"
 

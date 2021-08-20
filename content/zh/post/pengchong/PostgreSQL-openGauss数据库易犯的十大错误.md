@@ -12,7 +12,7 @@ author = "彭冲"
 
 summary = "PostgreSQL/openGauss数据库易犯的十大错误"
 
-img = "/zh/post/.pngpengchong/title/img6.png" 
+img = "/zh/post/pengchong/title/img9.png" 
 
 times = "10:30"
 

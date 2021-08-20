@@ -12,7 +12,7 @@ author = "YAN左使"
 
 summary = "openGauss和PostgreSQL的源码目录结构对比"
 
-img = "/zh/post/zhengwen2/img/img22.png" 
+img = "/zh/post/zhengwen2/img/img29.png" 
 
 times = "12:30"
 
