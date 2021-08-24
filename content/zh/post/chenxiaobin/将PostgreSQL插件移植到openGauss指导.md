@@ -17,7 +17,7 @@ PostgreSQL社区提供了丰富的插件，但由于openGauss和PostgreSQL存在
 
 ## 2 约束
 
-由于openGauss与PostgreSQL在内核上存在不少差异，这篇文档未能覆盖所有这些差异，因此仅依赖该文档有可能无法实现PG插件的完全迁移，部分差异需要开发者深入内核源码识别，然后可将识别出来的差异补充到该博客的第9章对应小节的表格中（博客对应的gitee地址：[PG插件移植指导 ](https://gitee.com/chenxiaobin19/blog/tree/master/content/zh/post/chenxiaobin/PG插件移植指导.md)，具体操作可见blog仓库的`README.md`），有任何问题可在博客下方留言讨论。
+由于openGauss与PostgreSQL在内核上存在不少差异，这篇文档未能覆盖所有这些差异，因此仅依赖该文档有可能无法实现PG插件的完全迁移，部分差异需要开发者深入内核源码识别，然后可将识别出来的差异补充到该博客的第9章对应小节的表格中（博客对应的gitee地址：[将PostgreSQL插件移植到openGauss指导](https://gitee.com/opengauss/blog/blob/master/content/zh/post/chenxiaobin/%E5%B0%86PostgreSQL%E6%8F%92%E4%BB%B6%E7%A7%BB%E6%A4%8D%E5%88%B0openGauss%E6%8C%87%E5%AF%BC.md)，具体操作可见blog仓库的`README.md`），有任何问题可在博客下方留言讨论。
 
 ## 3 移植步骤
 
