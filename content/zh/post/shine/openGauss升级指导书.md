@@ -113,7 +113,7 @@ openGauss升级版本要求如[表1](#table7961729)所示。
 -   升级过程中如果系统表新增了字段，升级后通过**\\d**命令将查看不到这些新增的字段。此时通过**select**命令可以查到这些新增的字段。
 -   升级需要guc参数enable\_stream\_replication=on，该参数为off时不允许升级。
 -   灰度升级中，业务并发要小于200并发读加200并发写的情况。
--   若在openGauss2.0.0之前的版本中使用了MOT表，则不支持升级到openGauss2.0.0版本。
+-   若在openGauss2.1.0之前的版本中使用了MOT表，则不支持升级到openGauss2.1.0版本。
 -   执行gs_upgradectl -t auto-upgrade 之后，没有提交之前，不能执行快照生成，即升级过程中不能执行快照生成。
 
 # # 升级<a name="ZH-CN_TOPIC_0305491357"></a>
