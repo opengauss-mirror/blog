@@ -1,3 +1,13 @@
++++
+title = "在K8S上面搭建一主两备openGauss"
+date = "2021-09-10"
+tags = ["openGauss分布式解决方案"]
+archives = "2021-03"
+author = "buter"
+summary = "openGauss分布式解决方案"
+times = "17:30"
+
++++
 
 # 在K8S上面搭建一主两备openGauss
 ##  初始化环境（以下操作需在master和node节点执行）
