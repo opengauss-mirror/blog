@@ -23,11 +23,14 @@ proxy实现分布式的核心原理是，使用netty捕获客户端(gsql或jdbc)
 
 # 二、 shardingSphere-proxy获取
 
-proxy默认支持PostgreSQL协议，openGauss也采用的是PostgreSQL协议，但是二者的认证方式和批量插入协议有区别。为了能使proxy正常工作，需要将proxy中涉及的PostgreSQL的jdbc驱动替换为openGauss的jdbc驱动。
+proxy默认支持PostgreSQL协议，openGauss也采用的是PostgreSQL协议，但是二者的认证方式和批量插入协议有区别。为了能使proxy正常工作，需要向lib目录中增加openGauss的jdbc驱动，此驱动可以从maven中央仓库下载，坐标是:
 
-获得proxy二进制包:[链接](https://shardingsphere.apache.org/document/current/cn/downloads/ "proxy下载链接")，需要额外的适配。
+```xml
+<groupId>org.opengauss</groupId>
+<artifactId>opengauss-jdbc</artifactId>
+```
 
-你也可以从专门适配openGauss的分支上自行编译出包:[链接](https://github.com/apache/shardingsphere/tree/opengauss_adapt "proxy_opengauss-adapt")，本示例为从openGauss分支上 自己编译出包。
+目前需要从master分支自行编译:[链接](https://github.com/apache/shardingsphere/tree/master "proxy_opengauss-master")，本示例为从openGauss分支上 自己编译出包。
 
 # 三、 搭建openGauss分布式环境
 
