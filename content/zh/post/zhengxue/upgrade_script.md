@@ -1,6 +1,6 @@
 +++
 title = "openGauss升级脚本撰写"
-date = "2021-04-20"
+date = "2021-09-30"
 tags = ["openGauss升级脚本撰写"]
 archives = "2021-09-30"
 author = "shirley_zhengx"
