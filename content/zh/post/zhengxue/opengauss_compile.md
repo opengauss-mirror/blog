@@ -29,8 +29,10 @@ times = "9:30"
   - [4.2.OM安装](#4.2.OM安装)
 - [5. 下载链接](#5.下载链接)
 
-
 <!-- /TOC -->
+
+
+
 # openGauss数据库编译指导
 
 openGauss数据库的编译需要依赖许多三方库，在社区 `openGauss-third_party` 仓库中存放了主要的依赖，首先依赖特定的gcc版本编译完三方库后，就可使用已编译好的三方库来编译数据库。
@@ -156,7 +158,7 @@ openGauss数据库的编译需要依赖许多三方库，在社区 `openGauss-th
 (1) gcc (推荐使用 `7.3.0` 版本) 
     
 	gcc编译请参照：[gcc编译指导](/zh/post/xingchen/gcc_compile/)
-    
+
 (2) cmake (cmake推荐 `>=3.16`（如果系统中的cmake版本>=3.16则直接使用系统自带cmake即可) \
     下载源码：`https://github.com/Kitware/CMake/releases` \
     解压源码：tar cmake-3.18.5.tar.gz \
@@ -165,10 +167,10 @@ openGauss数据库的编译需要依赖许多三方库，在社区 `openGauss-th
     导入环境变量：
 	
 		export CMAKE_PATH=/usr/local/cmake318 
-
-    	export LD_LIBRARY_PATH=$CMAKE_PATH/lib:$LD_LIBRARY_PATH
-
-    	export PATH=$CMAKE_PATH/bin:$PATH
+	
+		export LD_LIBRARY_PATH=$CMAKE_PATH/lib:$LD_LIBRARY_PATH
+	
+		export PATH=$CMAKE_PATH/bin:$PATH
 
 
 (3) python \
@@ -222,7 +224,7 @@ Failed
 
 /openGauss-third_party/dependency/masstree/build.sh修改rename命令
 
-    
+
     ```
     $PLATFORM = "$(bash $(pwd)/../../build/get_PlatForm_str.sh"
     If [ "$PLATFORM"x = "ubuntu18.04_x86_64"x ];then
@@ -231,9 +233,9 @@ Failed
         rename ".cc" ".cpp" $MASSTREE_MEGRED_SOURCES_DIR/*.cc
     fi 
     ```
-    
+
 /openGauss-third_party/dependency/snappy/build.sh修改mv命令
- 
+
     ```
     LIB_PATH=install_comm/lib64
     if [ -d "$LIB_PATH" ];then
