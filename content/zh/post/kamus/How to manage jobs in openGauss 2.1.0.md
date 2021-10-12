@@ -1,3 +1,14 @@
++++
+title = "How to manage jobs in openGauss 2.1.0" 
+date = "2021-10-12" 
+tags = ["openGauss 2.1.0"] 
+archives = "2021-10" 
+author = "Kamus" 
+summary = "openGauss 2.1.0版本中新增了数据库任务创建，可以在数据库中设定和执行定时任务。"
+img = "/zh/post/kamus/title/img-title.png" 
+times = "21:30"
++++
+
 ## 创建测试表
 ```
 gaussdb@postgres> create table t_job (value TIMESTAMP);
