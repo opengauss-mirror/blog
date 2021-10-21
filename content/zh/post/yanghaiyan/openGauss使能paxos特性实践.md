@@ -7,7 +7,7 @@ GaussDB(for openGauss)推出了基于Paxos协议的DCF高可用组件，该组�
 (3)提升主备间节点日志复制效率，提升系统的最大吞吐能力。
 借助GaussDB(for openGauss)的DCF高可用组件，用户不仅可以免去系统脑裂的风险，还可以提升可用性。
 #### 社区版本说明
-GaussDB(for openGauss)当前930开源计划已实施，包括正式推出了基于Paxos协议的DCF高可用组件内核新特性，但当前社区OM、CM功能受制于后续的同步开源计划节奏，使得现在的社区版本使能paxos特性对用户操作并非很友好；在此本文详细说明了openGauss使能paxos特性实践操作流程,让用户通过自适配能够使能paxos特性，体检集群高可用增强能力。
+GaussDB(for openGauss)当前930开源计划已实施，包括正式推出了基于Paxos协议的DCF高可用组件内核新特性; 在此本文详细说明了openGauss使能paxos特性实践操作流程,让用户通过自适配能够使能paxos特性，体检集群高可用增强能力。
 
 #### 使能paxos特性实践
 ##### 1、安装适配
