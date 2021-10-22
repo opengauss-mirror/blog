@@ -1,4 +1,20 @@
-# openGauss使能paxos特性实践
++++
+title = "openGauss使能paxos特性实践"
+
+date = "2021-10-21"
+
+tags = ["openGauss使能paxos特性"]
+
+archives = "2021-10"
+
+author = "yanghaiyan"
+
+summary = "openGauss使能paxos"
+
+img = "/zh/post/yanghaiyan/title/img1.png"
+
+times = "17:00"
++++
 
 #### 前言
 GaussDB(for openGauss)推出了基于Paxos协议的DCF高可用组件，该组件使得GaussDB(for openGauss)在保证数据一致性的同时，在高可用方面可进一步得到增强，包括：
