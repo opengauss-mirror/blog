@@ -16,6 +16,8 @@ img = "/zh/post/yanghaiyan/title/img1.png"
 times = "17:00"
 +++
 
+# openGauss使能paxos特性实践
+
 #### 前言
 GaussDB(for openGauss)推出了基于Paxos协议的DCF高可用组件，该组件使得GaussDB(for openGauss)在保证数据一致性的同时，在高可用方面可进一步得到增强，包括：
 (1)通过自仲裁、多数派选主能力摆脱第三方仲裁组件，极大缩短RTO时间，且可预防任何故障下的脑裂双主；
