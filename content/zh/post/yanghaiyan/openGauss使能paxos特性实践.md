@@ -52,17 +52,24 @@ dcf_data_path = '/xxx/cluster/data1/dn1/dcf_data'
 dcf_config = '[{"stream_id":1,"node_id":1,"ip":"x.x.x.21","port":xx,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"x.x.x.22","port":xx,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"x.x.x.23","port":xx,"role":"FOLLOWER"}]'
 ```
 ##### 3、集群paxos模式运行
-重启集群，此时由于涉及到quorum到dcf模式切换，集群节点启动参数变更和可能的build过程误触发，在此通过以下手动启动和操作流程来恢复集群paxos模式正常运行;
-- 手动启动节点1并且设置为少数派模式运行
+- 切换到用户角色，依次启动节点1/2/3：
 ```c{.line-num}
-/xxx/cluster_app/app/bin/gaussdb -D /xxx/cluster/data1/dn1 -M standby &
+gaussdb -D /xxx/cluster/data1/dn1 -M standby &
+```
+待集群多数派节点启动成功后，即可以paxos模式运行；
+通过：gs_om -t status --detail指令可查询节点状态信息；
+
+##### 4、（可选）集群故障模式下通过少数派和节点重建恢复流程（供参考）
+集群故障模式下，可通过以下少数派和重建流程来恢复集群paxos模式正常运行：
+- 手动设置存活节点为少数派模式运行
+```c{.line-num}
 gs_ctl setrunmode -D PATH  -v 1 -x minority
 ```
 - 集群其他节点主动重建拉起
 ```c{.line-num}
 gs_ctl build -b full -Z single_node -D PATH
 ```
-- 节点1重回多数派
+- 存活节点重回多数派
 ```c{.line-num}
 gs_ctl setrunmode -D PATH -x normal
 ```
