@@ -34,7 +34,7 @@ GaussDB(for openGauss)当前930开源计划已实施，包括正式推出了基�
 script/gspylib/component/Kernel/DN_OLAP/DN_OLAP.py；修改函数：initInstance<br>
 修改示例：
 ```c{.line-num}
-cmd = "%s/gs_initdb --locale=C -D %s -X %s --nodename=%s %s  **-c**  -C %s"
+cmd = "%s/gs_initdb --locale=C -D %s -X %s --nodename=%s %s  -c  -C %s"
 ```
 - 预置和正式安装
 （备注： 如果本地是euler2.9环境，当前社区版本安装过程遇到互信建立问题（ssh不支持rsa），可将script/gs_sshexkey文件中的 -t rsa改成-t ed25519）
@@ -42,10 +42,13 @@ cmd = "%s/gs_initdb --locale=C -D %s -X %s --nodename=%s %s  **-c**  -C %s"
 通过修改postgresql.conf文件配置使能paxos dcf特性<br>
 配置示例（在此以集群3节点配置为例, 注意每个节点都需要修改该配置）:
 ```c{.line-num}
-enable_dcf = on  (使能dcf特性开关)
-dcf_node_id = 3  (当前节点id, 如果集群为3节点则每个节点可分别配置为1、2、3)
-dcf_data_path = '/xxx/cluster/data1/dn1/dcf_data'  (指定dcf数据目录)
-(指定dcf集群配置信息，每个节点上dcf_config内容一致，其中配置的ip/端口用于新指定dcf节点间通信链路信息，注意与其他已使用的ip/端口不要配置冲突)
+(1. 使能dcf特性开关)
+enable_dcf = on  
+(2. 当前节点id, 如果集群为3节点则每个节点可分别配置为1、2、3)
+dcf_node_id = 3  
+(3. 指定dcf数据目录)
+dcf_data_path = '/xxx/cluster/data1/dn1/dcf_data'  
+(4. 指定dcf集群配置信息，每个节点上dcf_config内容一致，其中配置的ip/端口用于新指定dcf节点间通信链路信息，注意与其他已使用的ip/端口不要配置冲突)
 dcf_config = '[{"stream_id":1,"node_id":1,"ip":"x.x.x.21","port":xx,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"x.x.x.22","port":xx,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"x.x.x.23","port":xx,"role":"FOLLOWER"}]'
 ```
 ##### 3、集群paxos模式运行
