@@ -10,7 +10,7 @@ archives = "2021-10"
 
 author = "这白开水咋没味啊" 
 
-summary = "VMware下CentOS7.6安装openGauss
+summary = "VMware下CentOS7.6安装openGauss"
 
 img = "/zh/post/July/title/img5.png" 
 
