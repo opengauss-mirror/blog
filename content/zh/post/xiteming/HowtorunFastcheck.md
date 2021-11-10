@@ -5,6 +5,7 @@ tags = ["openGauss如何跑Fastcheck"]
 archives = "2021-11-09"
 author = "xiteming"
 summary = "如何跑Fastcheck"
+img = "/zh/post/xingchen/title/img1.png"
 +++
 
 ## 如何进行Fastcheck？
