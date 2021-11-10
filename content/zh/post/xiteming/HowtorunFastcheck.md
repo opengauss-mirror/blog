@@ -8,6 +8,17 @@ summary = "如何跑Fastcheck"
 +++
 
 ## 如何进行Fastcheck？
+首先，导入环境变量：
+```
+export CODE_BASE=/data/openGauss-server
+export BINARYLIBS=/data/openGauss-third_party_binarylibs
+export GAUSSHOME=$CODE_BASE/dest/
+export GCC_PATH=$BINARYLIBS/buildtools/openeuler_aarch64/gcc7.3/
+export CC=$GCC_PATH/gcc/bin/gcc
+export CXX=$GCC_PATH/gcc/bin/g++
+export LD_LIBRARY_PATH=$GAUSSHOME/lib:$GCC_PATH/gcc/lib64:$GCC_PATH/isl/lib:$GCC_PATH/mpc/lib/:$GCC_PATH/mpfr/lib/:$GCC_PATH/gmp/lib/:$LD_LIBRARY_PATH
+export PATH=$GAUSSHOME/bin:$GCC_PATH/gcc/bin:$PATH
+```
 需要准备好的文件有：testname.sql和testname.out；
 第一步：将testname.sql放入/src/test/regress/sql路径下，同时将testname.out放入/src/test/regress/expected路径下。
 Tip1：执行完本步后，需要注意两个问题：
@@ -17,7 +28,7 @@ Tip1：执行完本步后，需要注意两个问题：
 test：testname
 第三步：进入源码根目录进行configure：
 ```
-./configure --gcc-version=7.3.0 CC=g++ CFLAGS='-O0 -D__USE_NUMA' --prefix=$GAUSSHOME --3rd=$BINARYLIBS --enable-debug --enable-cassert --enable-thread-safety --with-readline --without-zlib
+./configure --gcc-version=7.3.0 CC=g++ CFLAGS='-O0' --prefix=$GAUSSHOME --3rd=$BINARYLIBS --enable-debug --enable-cassert --enable-thread-safety --with-readline --without-zlib
 ```
 第四步：在源码根目录下编译及安装
 make -sj
