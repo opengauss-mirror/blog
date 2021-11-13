@@ -41,6 +41,7 @@ times = "19:30"
   ```
 * 归档
   ```
+  https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/iso/CentOS-7-x86_64-DVD-2003.iso
   ```
 
 #### openEuler-20.03-LTS x86_64 操作系统ISO镜像
@@ -52,6 +53,7 @@ times = "19:30"
   ```
 * 归档
   ```
+  https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/iso/openEuler-20.03-LTS-x86_64-dvd.iso
   ```
 
 ### 虚拟机部署文档
