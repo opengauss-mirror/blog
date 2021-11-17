@@ -10,7 +10,7 @@ title = "Guidance to Post a Blog"
 
 2. Set your primary mail box in gitee settings <a href="https://gitee.com/profile/emails" target="_blank">https: //gitee.com/profile/emails</a>.
 
-3. Sign your CLA in <https://opengauss.org/zh/cla.html>.
+3. Sign your CLA in <https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZ2F1c3M=>.
 
 4. Prepare your git environment refering to <a href="http://git.mydoc.io/?t=180692" target="_blank">http: //git.mydoc.io/?t=180692</a>.
 
