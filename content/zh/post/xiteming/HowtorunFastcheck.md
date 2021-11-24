@@ -25,7 +25,7 @@ export PATH=$GAUSSHOME/bin:$GCC_PATH/gcc/bin:$PATH
 Tip1：执行完本步后，需要注意两个问题：
 （1） 文件权限问题，相关命令关键字：chmod，chown；
 （2） 文件格式问题，相关命令关键字：dos2unix。
-第二步：在/src/test/regress/parallel_schedule中添加你的测试用例：
+第二步：在/src/test/regress/parallel_schedule0中添加你的测试用例：
 test：testname
 第三步：进入源码根目录进行configure：
 ```
