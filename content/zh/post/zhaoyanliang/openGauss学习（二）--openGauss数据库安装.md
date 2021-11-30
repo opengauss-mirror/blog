@@ -1,17 +1,14 @@
-```
 +++
-title = "openGauss学习（二）--openGauss数据库安装"
-date = "2021-11-27"
+title = "openGauss学习（二）openGauss数据库安装"
+date = "2021-11-30"
 tags = ["openGauss社区开发入门"]
 archives = "2021-11"
 author = "zhaoyanliang"
 summary = "openGauss社区开发入门"
 img = "/zh/post/zhaoyanliang/title/title.jpg"
-times = "17:30"
+times = "13:30"
+
 +++
-```
-
-
 
 ## opengauss安装教程（二）
 
