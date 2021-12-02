@@ -124,13 +124,13 @@ SQL命令 --(词法和语法分析)--> 分析树 --(语义分析)--> 查询树
 
 头文件、宏定义等：
 
-![image-20211113113829772](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113113829772.png)
+![image-20211113113829772](typora-user-images\image-20211113113829772.png)
 
 %option 此部分是Flex（词法工具）支持的一些参数，通过%option 来设置
 
-![image-20211113113850972](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113113850972.png)
+![image-20211113113850972](typora-user-images\image-20211113113850972.png)
 
-![image-20211113114005056](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113114005056.png)
+![image-20211113114005056](typora-user-images\image-20211113114005056.png)
 
 %option reentrant 可重入词法分析器：传统词法分析器只能一次处理一个输入流，所以很多变量都定义的为静态变量这样分析器才能记住上次分析的地方继而可以继续分析。但是不能同时处理多个输入流。为了解决这个问题引入了可重入词法分析器。通过参数reentrant来控制。
 
@@ -144,7 +144,7 @@ bison的发展和flex的发展沟通并不是很密切，导致二者对yyles的
 
 词法规则制定：采用正则表达式规定可接受的字符组合
 
-![image-20211113114229404](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113114229404.png)
+![image-20211113114229404](typora-user-images\image-20211113114229404.png)
 
 
 
@@ -152,7 +152,7 @@ bison的发展和flex的发展沟通并不是很密切，导致二者对yyles的
 
 表示匹配到了某字符组合该执行什么动作：
 
-![image-20211113114352188](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113114352188.png)
+![image-20211113114352188](typora-user-images\image-20211113114352188.png)
 
 
 
@@ -167,11 +167,11 @@ bison的发展和flex的发展沟通并不是很密切，导致二者对yyles的
 
 **总体流程**：
 
-![image-20211113115728294](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113115728294.png)
+![image-20211113115728294](typora-user-images\image-20211113115728294.png)
 
 **具体流程**：
 
-![image-20211113115755438](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113115755438.png)
+![image-20211113115755438](typora-user-images\image-20211113115755438.png)
 
 
 
@@ -181,7 +181,7 @@ bison的发展和flex的发展沟通并不是很密切，导致二者对yyles的
 
 基本设置：
 
-![image-20211113115919830](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113115919830.png)
+![image-20211113115919830](typora-user-images\image-20211113115919830.png)
 
 
 
@@ -195,25 +195,25 @@ bison的发展和flex的发展沟通并不是很密切，导致二者对yyles的
 
 union表示联合体：
 
-![image-20211113120551288](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113120551288.png)
+![image-20211113120551288](typora-user-images\image-20211113120551288.png)
 
 %union{} 定义yylval类型，在flex中通过yylval的返回匹配的值。
 
 type表示非终结符：
 
-![image-20211113120618565](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113120618565.png)
+![image-20211113120618565](typora-user-images\image-20211113120618565.png)
 
 非终结符用于文法产生式，为生成语法分析树服务
 
 优先级定义：
 
-![image-20211113120715393](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113120715393.png)
+![image-20211113120715393](typora-user-images\image-20211113120715393.png)
 
 优先级和左右结合的定义可以解决一些语法上的矛盾。
 
 具体文法产生式：
 
-![image-20211113120741461](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113120741461.png)
+![image-20211113120741461](typora-user-images\image-20211113120741461.png)
 
 Opengauss总的文法产生式极其复杂，这里只节选。
 
@@ -233,13 +233,13 @@ PostgresMain->exec_simple_query->pg_parse_query->raw_parser->base_yyparse(yyscan
 
 词法匹配（SCAN.I)：
 
-![image-20211113120940437](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113120940437.png)
+![image-20211113120940437](typora-user-images\image-20211113120940437.png)
 
 Identifier可以匹配到insert。
 
 根据规则执行动作：
 
-![image-20211113121016189](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113121016189.png)
+![image-20211113121016189](typora-user-images\image-20211113121016189.png)
 
 代码中keywordopengauss内置的关键字，像insert就是一个关键字keyword。
 
@@ -247,7 +247,7 @@ Identifier可以匹配到insert。
 
 在yylex返回INSERT 这个token.然后分析gram.y中这个token 对应的规则 由于flex 默认向前查看一个token, 根据第二部可知第二个token 为INTO.在规则段中找到如下规则：
 
-![image-20211113121303515](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113121303515.png)
+![image-20211113121303515](typora-user-images\image-20211113121303515.png)
 
 opt_with_clause 可以为空，并且后面跟着一个INSERT INTO, 所以即匹配上这个规则。
 
@@ -255,5 +255,5 @@ opt_with_clause 可以为空，并且后面跟着一个INSERT INTO, 所以即匹
 
 结果放到InsertStmt中，后面继续根据以下规则做规约处理，由于在规则段中第一个出现的非终结符号，stmtblock是我们要的结果。通过不断的规约即reduce,最后的分析结果即剩下stmtblock这一个符号即开始符号，所以是匹配成功的。
 
-![image-20211113121416459](C:\Users\赵小黑\AppData\Roaming\Typora\typora-user-images\image-20211113121416459.png)
+![image-20211113121416459](typora-user-images\image-20211113121416459.png)
 
