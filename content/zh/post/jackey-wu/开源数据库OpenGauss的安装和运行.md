@@ -114,11 +114,11 @@ EOF
 以下为预先编辑好的配置文件内容，我通过WinSCP直接进行了修改和覆盖（最开始做实验的时候是XShell配合着WinSCP用的）。
 <br>![](/figures/1-3.png "配置文件内容")<br>
 2. **下载安装包（1.0.0版本）**
-下载地址
+<br>下载地址
 ```
 https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.1/x86/openGauss-2.1.0-openEuler-64bit.tar.bz2
 ```
-下载完之后提前传到虚拟机中并记录好路径。
+下载完之后提前传到虚拟机中并记录好路径。<br>
 3. **创建用户组和目录**
 ```
 [root@node1 ~]# groupadd dbgrp
