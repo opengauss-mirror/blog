@@ -59,14 +59,14 @@ openGauss采用flex和bison两个工具来完成词法分析和语法分析的�
 2. **scan.l(词法分析)**
 openGauss中的词法文件是scan.l，它根据SQL语言标准对SQL语言中的关键字、标识符、操作符、常量、终结符进行了定义和识别。代码如下：<br>
 **定义数值类型**<br>
-![](/figures/2-3.png "定义数值类型")
+![](/figures/2-3.png "定义数值类型")<br>
 **定义操作符**<br>
 ![](/figures/2-4.png "定义操作符")<br>
 其中的operator即为操作符的定义，从代码中可以看出，operator是由多个op_chars组成的，而op_chars则是[~!@#^&|`?+-*/%<>=]中的任意一个符号。但这样的定义还不能满足SQL的词法分析的需要，因为并非多个op_chars的组合就能形成一个合法的操作符，因此在scan.l中会对操作符进行更明确的定义（或者说检查）。<br>
 **operator**<br>
 ![](/figures/2-5.png "operator")<br>
 词法分析其实就是将一个SQL划分成多个不同的token，每个token会有自己的词性，在scan.l中定义了如下词性。<br>
-**词法分析词性说明**
+**词法分析词性说明**<br>
 ![](/figures/2-6.png "词法分析词性说明")<br>
 
 ### 语法分析
