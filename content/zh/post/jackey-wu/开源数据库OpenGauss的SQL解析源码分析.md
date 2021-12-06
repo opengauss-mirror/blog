@@ -42,7 +42,7 @@ openGauss中参照SQL语言标准实现了大部分SQL的主要语法功能，�
 优化主要分成了逻辑优化和物理优化两个部分，从关系代数和物理执行两个角度对SQL进行优化，进而结合自底向上的动态规划方法和基于随机搜索的遗传算法对物理路径进行搜索，从而获得较好的执行计划。
 
 ## SQL解析源码解读
-**SQL解析主流程**
+**SQL解析主流程**<br>
 ![](/figures/2-2.png "SQL解析主流程")
 
 ### 代码文件
@@ -58,12 +58,12 @@ src/common/backend/parser/analyze.cpp		语义分析的主入口文件，入口�
 openGauss采用flex和bison两个工具来完成词法分析和语法分析的主要工作。对于用户输入的每个SQL语句，它首先交由flex工具进行词法分析。flex工具通过对已经定义好的词法文件进行编译，生成词法分析的代码。<br><br>
 2. **scan.l(词法分析)**
 openGauss中的词法文件是scan.l，它根据SQL语言标准对SQL语言中的关键字、标识符、操作符、常量、终结符进行了定义和识别。代码如下：<br>
-**定义数值类型**
+**定义数值类型**<br>
 ![](/figures/2-3.png "定义数值类型")
-**定义操作符**
+**定义操作符**<br>
 ![](/figures/2-4.png "定义操作符")<br>
 其中的operator即为操作符的定义，从代码中可以看出，operator是由多个op_chars组成的，而op_chars则是[~!@#^&|`?+-*/%<>=]中的任意一个符号。但这样的定义还不能满足SQL的词法分析的需要，因为并非多个op_chars的组合就能形成一个合法的操作符，因此在scan.l中会对操作符进行更明确的定义（或者说检查）。<br>
-**operator**
+**operator**<br>
 ![](/figures/2-5.png "operator")<br>
 词法分析其实就是将一个SQL划分成多个不同的token，每个token会有自己的词性，在scan.l中定义了如下词性。<br>
 **词法分析词性说明**
@@ -73,14 +73,14 @@ openGauss中的词法文件是scan.l，它根据SQL语言标准对SQL语言中�
 1. **gram.y**<br>
 在openGauss中，定义了一系列表达Statement的结构体，这些结构体通常以Stmt作为命名后缀，用来保存语法分析结果。<br>
 以SELECT查询为例，它对应了一个Statement结构体，这个结构体可以看作一个多叉树，每个叶子节点都表达了SELECT查询语句中的一个语法结构，对应到gram.y中，它会有一个SelectStmt，代码如图所示。<br>
-**SelectStmt**
+**SelectStmt**<br>
 ![](/figures/2-7.png "SelectStmt")<br>
 simple_select除了上面的基本形式，还可以表示为其他形式，如VALUES子句、关系表达式、多个SELECT语句的集合操作等，这些形式会进一步的递归处理，最终转换为基本的simple_select形式。代码如图所示。<br>
-**递归集合**
+**递归集合**<br>
 ![](/figures/2-8.png "递归集合")<br>
 在成功匹配simple_select语法结构后，将会创建一个Statement结构体，将各个子句进行相应的赋值。对simple_select而言，目标属性、FROM子句、WHERE子句是最重要的组成部分。<br>
 以目标属性为例分析，对应语法定义中的target_list，由若干个target_el组成。target_el可以定义为表达式、取别名的表达式和“*”等。当成功匹配到一个target_el后，会创建一个ResTarget结构体，用于存储目标对象的全部信息。代码如图所示。<br>
-**ResTarget**
+**ResTarget**<br>
 ![](/figures/2-9.png "ResTarget")<br><br>
 2. **parser.y**<br>
 simple_select的其他子句，如distinctClause、groupClause、havingClause等，语法分析方式类似。而其他SQL命令，如CREATE、INSERT、UPDATE、DELETE等，处理方式与SELECT命令类似。<br>
@@ -88,7 +88,7 @@ simple_select的其他子句，如distinctClause、groupClause、havingClause等
 
 ### 语义分析
 在完成词法分析和语法分析后，parse_analyze 函数会根据语法树的类型调用transformSelectStmt 将parseTree 改写为查询树。在重写过程中，parse_analyze不仅会检查SQL命令是否满足语义要求，还会根据语法树对象获取更利于执行的信息，如表的OID、列数、 等等。在某一示实例中，查询树对应的内存组织结构如图所示。目标属性、FROM 子句和WHERE子句的语义分析结果将分别存储在结构TargetEntry、RangeTblEntry、FromExpr中。<br>
-**查询树内存组织结构图**
+**查询树内存组织结构图**<br>
 ![](/figures/2-10.png "查询树内存组织结构图")<br>
 在完成语义分析后，SQL解析过程也就完成，SQL引擎开始执行查询优化。
 1. **analyze.cpp（语义分析）**<br>
@@ -96,11 +96,11 @@ simple_select的其他子句，如distinctClause、groupClause、havingClause等
 2. **ParseState 结构体**<br>
 ParseState保存了许多语义分析的中间信息，如原始SQL命令、范围表、连接表达式、原始WINDOW子句、FOR UPDATE/FOR SHARE子句等。<br>
 ParseState结构体在语义分析入口函数parse_analyze下被初始化，在transformStmt函数下根据不同的Stmt存储不同的中间信息，完成语义分析后再被释放。ParseState结构图所示。<br>
-**ParseState**
+**ParseState**<br>
 ![](/figures/2-11.png "ParseState")<br><br>
 3. **ParseTree 语法树——Node结构**<br>
 在语义分析过程中，语法树parseTree使用Node节点进行包装。Node结构只有一个类型为NodeTag枚举变量的字段，用于识别不同的处理情况。如图所示。<br>
-**Node结构体（nodes.h）**
+**Node结构体（nodes.h）**<br>
 ![](/figures/2-12.png "ParseState")<br>
 以SelectStmt为例， 其对应的NodeTag值为T_SelectStmt。<br>
 transformStmt函数会根据NodeTag的值，将语法树转化为不同的Stmt结构体，调用对应的语义分析函数进行处理。<br>
