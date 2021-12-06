@@ -108,5 +108,5 @@ openGauss在语义分析阶段处理的NodeTag情况有九种，参照着不同�
 
 ## References & Thanks
 <https://blog.csdn.net/GaussDB/article/details/116132257>;<br>
-<https://blog.csdn.net/GaussDB/article/details/119594313>;
+<https://blog.csdn.net/GaussDB/article/details/119594313>;<br>
 <https://blog.csdn.net/GaussDB/article/details/119668883>.
