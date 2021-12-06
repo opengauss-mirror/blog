@@ -201,7 +201,7 @@ Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令
 4. **示例：基于openGauss提供的JDBC接口连接数据库。**<br>
 ![](/figures/1-4.png "使用JDBC接口连接数据库")
 ![](/figures/1-5.png "使用JDBC接口连接数据库")
-
+ 
 ## 遇到的问题和解决办法
 1. **通过SSH连接虚拟机进行操作时提示access denied无法成功连接**<br>
 ![](/figures/1-6.png "access denied")
