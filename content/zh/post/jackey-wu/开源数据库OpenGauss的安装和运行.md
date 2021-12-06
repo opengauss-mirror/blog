@@ -112,7 +112,7 @@ EOF
 [root@node1 ~]# vim /opt/clusterconfig.xml
 ```
 以下为预先编辑好的配置文件内容，我通过WinSCP直接进行了修改和覆盖（最开始做实验的时候是XShell配合着WinSCP用的）。
-![](/figures/1-3.png "配置文件内容")
+<br>![](/figures/1-3.png "配置文件内容")<br>
 2. **下载安装包（1.0.0版本）**
 下载地址
 ```
