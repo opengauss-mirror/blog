@@ -112,8 +112,8 @@ EOF
 [root@node1 ~]# vim /opt/clusterconfig.xml
 ```
 以下为预先编辑好的配置文件内容，我通过WinSCP直接进行了修改和覆盖（最开始做实验的时候是XShell配合着WinSCP用的）。
-**配置文件内容**
-![](/figures/1-3.png "配置文件内容")
+**配置文件内容**<br>
+![](/figures/1-3.png "配置文件内容")<br>
 2. **下载安装包（1.0.0版本）**<br>
 下载地址
 ```
@@ -129,15 +129,18 @@ https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.1/x86/openGauss-2.1.0-ope
 [root@node1 ~]# chmod 755 -R /opt/software
 [root@node1 ~]# chown -R omm:dbgrp /opt/software/openGauss
 ```
+<br>
 4. **解压安装包到指定目录**
 ```
 [root@node1 ~]# tar -xvf /mnt/hgfs/share/ openGauss-2.1.0-openEuler-64bit.tar.bz2 /opt/software/openGauss
 ```
+<br>
 5. **设置lib库**
 ```
 [root@node1 ~]# vim /etc/profile
    export LD_LIBRARY_PATH=/opt/software/openGauss/script/gspylib/clib:$LD_LIBRARY_PATH
 ```
+<br>
 6. **预安装**
 ```
 [root@node1 ~]# cd /opt/software/script
@@ -147,18 +150,19 @@ https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.1/x86/openGauss-2.1.0-ope
    遇到[yes/no]，就选yes；
    让输入root密码，就输入root密码；
    让输入omm密码，就输入omm密码。
-Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令 查看失败原因
+Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令 查看失败原因<br><br>
 7. **安装openGauss**
 ```
 [root@node1 ~]# su - omm
 [omm@node1 ~]# gs_install -X /opt/clusterconfig.xml
 ```
-执行的时候需要设置初始密码，复杂度要求和openEuler系统一样比较高，要至少三种字符和最少8个字符。
+执行的时候需要设置初始密码，复杂度要求和openEuler系统一样比较高，要至少三种字符和最少8个字符。<br><br>
 8. **重启数据库**
 ```
 [root@node1 ~]# su - omm
 [omm@node1 ~]# gs_ctl start -D "/opt/huawei/install/data/db1"
 ```
+<br>
 9. **登录数据库**
 ```
 [root@node1 ~]# gsql -d postgres -p 26000
