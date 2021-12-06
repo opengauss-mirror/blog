@@ -107,6 +107,6 @@ transformStmt函数会根据NodeTag的值，将语法树转化为不同的Stmt�
 openGauss在语义分析阶段处理的NodeTag情况有九种，参照着不同地NodeTag情况去调用transformStmt函数，继而完成语义分析工作。<br>
 
 ## References & Thanks
-<https://blog.csdn.net/GaussDB/article/details/116132257>;
+<https://blog.csdn.net/GaussDB/article/details/116132257>;<br>
 <https://blog.csdn.net/GaussDB/article/details/119594313>;
 <https://blog.csdn.net/GaussDB/article/details/119668883>.
