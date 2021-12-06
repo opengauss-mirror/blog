@@ -146,13 +146,13 @@ https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.1/x86/openGauss-2.1.0-ope
    遇到[yes/no]，就选yes；
    让输入root密码，就输入root密码；
    让输入omm密码，就输入omm密码。
-Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令 查看失败原因
+Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令 查看失败原因<br>
 7. **安装openGauss**
 ```
 [root@node1 ~]# su - omm
 [omm@node1 ~]# gs_install -X /opt/clusterconfig.xml
 ```
-执行的时候需要设置初始密码，复杂度要求和openEuler系统一样比较高，要至少三种字符和最少8个字符。
+执行的时候需要设置初始密码，复杂度要求和openEuler系统一样比较高，要至少三种字符和最少8个字符。<br>
 8. **重启数据库**
 ```
 [root@node1 ~]# su - omm
@@ -204,7 +204,7 @@ Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令
  
 ## 遇到的问题和解决办法
 1. **通过SSH连接虚拟机进行操作时提示access denied无法成功连接**<br>
-![](/figures/1-6.png "access denied")
+![](/figures/1-6.png "access denied")<br>
 这个问题很早就出现过，我最开始考虑的自然是密码输错了，后来查阅资料发现是前面提到过的sshd_config文件的配置有问题，主要是这几个点：<br>
    UsePAM yes #需要打开
    PasswordAuthentication yes #需要打开
