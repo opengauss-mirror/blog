@@ -23,7 +23,7 @@ https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.1/x86/openGauss-2.1.0-ope
 虚拟机软件版本：16.1.2 build-17966106
 虚拟机配置信息：内存8GB、处理器1核、硬盘40GB
 
-![](/figures/1-1.png "虚拟机信息")
+![](../figures/1-1.png "虚拟机信息")
 
 ### 操作系统信息
 openEuler-20.03-LTS
