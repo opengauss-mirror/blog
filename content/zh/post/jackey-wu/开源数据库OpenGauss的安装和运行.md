@@ -46,7 +46,7 @@ https://mirror.iscas.ac.cn/openeuler/openEuler-20.03-LTS/ISO/x86_64/openEuler-20
 安装完成后以预设用户登录即可。
 需要说明的是，我选择了使用无图形界面的openEuler，并通过SSH连接的方式在MobaXterm软件中对服务器（也就是部署好openEuler的虚拟机）进行操作。
 
-![](/figures/1-2.png "安装好的openEuler")
+![](../figures/1-2.png "安装好的openEuler")
 
 ### 系统环境配置
 1. **关闭防火墙**
@@ -112,7 +112,7 @@ EOF
 [root@node1 ~]# vim /opt/clusterconfig.xml
 ```
 以下为预先编辑好的配置文件内容，我通过WinSCP直接进行了修改和覆盖（最开始做实验的时候是XShell配合着WinSCP用的）。
-<br>![](/figures/1-3.png "配置文件内容")<br>
+<br>![](../figures/1-3.png "配置文件内容")<br>
 2. **下载安装包（1.0.0版本）**
 <br>下载地址
 ```
@@ -199,12 +199,12 @@ Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令
    ii.	DriverManager.getConnection(String url, Properties info);
    iii.	DriverManager.getConnection(String url, String user, String password);<br><br>
 4. **示例：基于openGauss提供的JDBC接口连接数据库。**<br>
-![](/figures/1-4.png "使用JDBC接口连接数据库")
-![](/figures/1-5.png "使用JDBC接口连接数据库")
+![](../figures/1-4.png "使用JDBC接口连接数据库")
+![](../figures/1-5.png "使用JDBC接口连接数据库")
  
 ## 遇到的问题和解决办法
 1. **通过SSH连接虚拟机进行操作时提示access denied无法成功连接**<br>
-![](/figures/1-6.png "access denied")<br>
+![](../figures/1-6.png "access denied")<br>
 这个问题很早就出现过，我最开始考虑的自然是密码输错了，后来查阅资料发现是前面提到过的sshd_config文件的配置有问题，主要是这几个点：<br>
    UsePAM yes #需要打开
    PasswordAuthentication yes #需要打开
