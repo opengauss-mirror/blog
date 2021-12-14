@@ -1,5 +1,5 @@
 +++
-sqltitle = "openGauss升级脚本撰写经验总结"
+title = "openGauss升级脚本撰写经验总结"
 date = "2021-09-30"
 tags = ["openGauss升级脚本撰写经验总结"]
 archives = "2021-09-30"
