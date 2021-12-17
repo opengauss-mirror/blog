@@ -57,7 +57,15 @@
                                     <a href="/{{$lan}}/tags/{{.|urlize}}/">{{ . }}</a>
                                     {{ end }}
                                 </div>
-                                <a href="{{ .Permalink }}"><img class="blog-img" src="{{ .Params.img }}"></a>
+                                
+                                <a href="{{ .Permalink }}">
+                                    {{ if .Params.img}}
+                                        <img class="blog-img" src="{{ .Params.img }}">
+                                    {{ else }}
+                                        <img class="blog-img" src="/img/default.png">
+                                    {{ end }}
+                                </a>
+                                
                                 <div class="more">
                                     <p>{{ .Params.summary }}...</p><a href="{{ .Permalink }}">{{ i18n "blog_view_more" }}</a>
                                 </div>
