@@ -1,5 +1,5 @@
 +++
-sqltitle = "openGauss Sqlines 使用指导"
+title = "openGauss Sqlines 使用指导"
 date = "2021-12-13"
 tags = ["sqlines"]
 archives = "2021-12-13"
