@@ -1,5 +1,5 @@
 +++
-sqltitle = "如何在openGauss中使用zhparser"
+title = "如何在openGauss中使用zhparser"
 date = "2021-11-05"
 tags = ["如何在openGauss中使用zhparser"]
 archives = "2021-11-05"

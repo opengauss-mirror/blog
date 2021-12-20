@@ -419,11 +419,12 @@ li{
     font-family: FZLTHJW;
 }
 .container .tags {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    max-height: 600px;
+    overflow: hidden auto;
 }
 .container .tags img {
-    vertical-align: text-bottom;
-    margin-right: 10px;
+    vertical-align: text-bottom; 
 }
 .container .tags a {
     text-decoration: none;
@@ -525,7 +526,8 @@ li{
 .blog-detail-prop span {
     margin-right: 40px;
 }
-.blog-detail-tags {
+.blog-detail-header {
+    padding-bottom: 20px;
     margin-bottom: 40px;
 }
 .blog-content a {
@@ -559,10 +561,23 @@ li{
 }
 .blog-content p {
     font-size: 14px;
-    line-height: 32px;
+    line-height:24px;
     color: #4d4d4d;
     word-break: break-all;
     white-space: pre-wrap;
+    margin-bottom: 6px;
+}
+.blog-content p ~ul{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.blog-content ul li,.blog-content ol li{
+    line-height: 24px;
+    margin-bottom: 6px;
+}
+.blog-content ul li img,.blog-content ol li img{
+    display: block;
+    margin: 10px 0;
 }
 .blog-content pre, .blog-content code {
     word-break: break-all;
@@ -791,4 +806,53 @@ li{
     .is-9 .tile, .guidance {
         margin-top: 40px;
     }
+}
+
+
+
+pre {
+    display: block;
+    padding: 16px;
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f6f8fa;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;  
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0
+}
+.blog-detail-header{
+    border-bottom: 1px solid;
+}
+
+table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+} 
+
+table th,table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    white-space: inherit;
+} 
+table tbody>tr:nth-child(2n)>td{
+    background-color: rgba(102,128,153,.05)
 }
