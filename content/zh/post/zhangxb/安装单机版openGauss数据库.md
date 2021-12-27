@@ -1,8 +1,8 @@
 +++
 title = "安装单机版openGauss数据库"
-date = "2021-12-18"
+date = "2021-12-27"
 tags = ["安装单机版openGauss数据库"]
-archives = "2021-12-18"
+archives = "2021-12-27"
 author = "zhangxb"
 summary = "安装单机版openGauss数据库"
 img = "/zh/post/zhangxb/title/img.png"
