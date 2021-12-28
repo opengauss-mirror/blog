@@ -1,8 +1,8 @@
 +++
 title = "openGauss学习（一）--centos安装"
-date = "2021-12-30"
+date = "2021-11-30"
 tags = ["openGauss社区开发入门"]
-archives = "2021-12-30"
+archives = "2021-11-30"
 author = "zhaoyanliang"
 summary = "openGauss社区开发入门"
 img = "/zh/post/zhaoyanliang/title/title.jpg"
