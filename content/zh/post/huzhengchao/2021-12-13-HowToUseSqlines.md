@@ -24,16 +24,16 @@ Sqlines是一款开源软件，支持多种数据库之间的SQL语句语法的�
 
 1、在社区下载代码到任意位置：[openGauss/openGauss-tools-sqlines (gitee.com)](https://gitee.com/opengauss/openGauss-tools-sqlines)
 
-2、进入sqlines/sqlines文件夹执行编译命令生成可执行文件： 
+2、进入代码根目录下, 执行脚本编译安装sqlines： 
 
 ```
-[user@openGauss33 sqlines]$ make clean && make
+[user@openGauss33 sqlines]$ sh build.sh -i
 ```
 
-3、将可执行文件添加到环境变量：
+3、sqlines将安装到根目录下的/bin文件夹下，可将其添加到环境变量方便使用：
 
 ```
-[user@openGauss33 sqlines]$ export PATH=$PATH:`pwd`
+[user@openGauss33 sqlines]$ export PATH=$PATH:`pwd`/bin
 ```
 
 4、使用sqlines
@@ -75,6 +75,14 @@ Convert script.sql file from Oracle to openGauss
 
  
 
+5、执行脚本卸载sqlines：
+
+```
+[user@openGauss33 sqlines]$ sh build.sh -m
+```
+
+
+
 ## PostgreSQL to openGauss
 
 ### 删除IF
@@ -111,6 +119,8 @@ openGauss中很多语法暂时不支持 if not exists判断，因此在转换时
 | TINYTEXT       | TEXT               |          |
 | MEDIUMTEXT     | TEXT               |          |
 | LONGTEXT       | TEXT               |          |
+| BINARY         | BYTEA              |          |
+| VARBINARY      | BYTEA              |          |
 
  Mysql中很多数据类型与openGauss有差别，对于表中的数据类型，可以进行转换成为openGauss的数据类型。
 
@@ -201,7 +211,15 @@ create_specification:
 
 若不存在or replace则自动添加。
 
+在 AS后的函数体部分，前后自动添加 $$ 符号。
 
+语言属性自动添加或修改为 language plpgsql;
+
+SQL%NOTFOUND  =>  NOT FOUND
+
+SQL%FOUND  =>  FOUND
+
+SQL%ROWCOUNT  =>  V_SQLROWCOUNT
 
  
 
@@ -328,7 +346,6 @@ select_expr, ...
 [HAVING where_definition]
 [ORDER BY {col_name | expr | position}  [ASC | DESC] , ...]
 [LIMIT {[offset,] row_count | row_count OFFSET offset}]
-[PROCEDURE procedure_name(argument_list)]
 [FOR UPDATE | LOCK IN SHARE MODE]]
 ```
 
@@ -341,26 +358,14 @@ openGauss 不支持 [HIGH_PRIORITY] [STRAIGHT_JOIN] [SQL_SMALL_RESULT] [SQL_BIG_
 ### RENAME
 
 ```
-RENAME TABLE tbl_name TO new_tbl_name [, tbl_name2 TO new_tbl_name2] ...
+RENAME TABLE tbl_name TO new_tbl_name;
 ```
 
  支持将rename语法转换为 alter table rename语法
 
 ​     如： RENAME TABLE tba TO tbb； =>  ALTER TABLE tba RENAME TO tbb;
 
- 
 
-### 存储过程
-
-#### create function/procdure
-
-在 AS后的函数体部分，前后自动添加 $$ 符号。
-
-语言属性自动添加或修改为 language plpgsql;
-
-DECLARE 部分，openGauss 多个变量之间用分号隔离，MYSQL用逗号，会进行转换。
-
-RETURN 关键字转换为 RETURNS
 
 
 
@@ -368,46 +373,67 @@ RETURN 关键字转换为 RETURNS
 
 ### 数据类型
 
-| **ORACLE**                    | **OPENGAUSS**             | 备注 |
-| ----------------------------- | ------------------------- | ---- |
-| BINARY_FLOAT                  | REAL                      |      |
-| BINARY_DOUBLE                 | DOUBLE PRECISION          |      |
-| BLOB                          | BYTEA                     |      |
-| CLOB                          | TEXT                      |      |
-| DATE                          | TIMESTAMP                 |      |
-| FLOAT                         | DOUBLE PRECISION          |      |
-| INTERVAL  YEAR(4) TO MONTH    | INTERVAL YEAR TO  MONTH   |      |
-| INTERVAL  DAY(4) TO SECOND(8) | INTERVAL DAY TO SECOND(8) |      |
-| LONG                          | TEXT                      |      |
-| LONG RAW                      | BYTEA                     |      |
-| NCHAR(8)                      | CHAR(8)                   |      |
-| NCHAR VARYING(7)              | VARCHAR(7)                |      |
-| NCLOB                         | TEXT                      |      |
-| NUMBER(8)                     | INT                       |      |
-| NUMBER(1,0)                   | SMALLINT                  |      |
-| NUMBER(4,0)                   | SMALLINT                  |      |
-| NUMBER(8,0)                   | INT                       |      |
-| NUMBER(12,0)                  | BIGINT                    |      |
-| NUMBER(20,0)                  | DECIMAL(20,0)             |      |
-| NUMBER(10,2)                  | DECIMAL(10,2)             |      |
-| NUMBER                        | DOUBLE PRECISION          |      |
-| NUMBER(\*)                    | DOUBLE PRECISION          |      |
-| NVARCHAR2(12)                 | VARCHAR(12)               |      |
-| RAW(8)                        | BYTEA                     |      |
-| REAL                          | DOUBLE PRECISION          |      |
-| SMALLINT                      | DECIMAL(38)               |      |
-| UROWID(16)                    | VARCHAR(16)               |      |
-| VARCHAR2(18)                  | VARCHAR(18)               |      |
-| BFILE                         | VARCHAR(255)              |      |
-| ROWID                         | CHAR(10)                  |      |
-| SYS_REFCURSOR                 | REFCURSOR                 |      |
-| XMLTYPE                       | XML                       |      |
+| **ORACLE**                     | **OPENGAUSS**             | 备注 |
+| ------------------------------ | ------------------------- | ---- |
+| BINARY_FLOAT                   | REAL                      |      |
+| BINARY_DOUBLE                  | DOUBLE PRECISION          |      |
+| BLOB                           | BYTEA                     |      |
+| CLOB                           | TEXT                      |      |
+| DATE                           | TIMESTAMP                 |      |
+| FLOAT                          | DOUBLE PRECISION          |      |
+| INTERVAL  YEAR(4) TO MONTH     | INTERVAL YEAR TO  MONTH   |      |
+| INTERVAL  DAY(4) TO SECOND(8)  | INTERVAL DAY TO SECOND(8) |      |
+| TIMESTAMP WITH LOCAL TIME ZONE | TIMESTAMP WITH TIME ZONE  |      |
+| LONG                           | TEXT                      |      |
+| LONG RAW                       | BYTEA                     |      |
+| NCHAR(8)                       | CHAR(8)                   |      |
+| NCHAR VARYING(7)               | VARCHAR(7)                |      |
+| NCLOB                          | TEXT                      |      |
+| NUMBER(8)                      | INT                       |      |
+| NUMBER(1,0)                    | SMALLINT                  |      |
+| NUMBER(4,0)                    | SMALLINT                  |      |
+| NUMBER(8,0)                    | INT                       |      |
+| NUMBER(12,0)                   | BIGINT                    |      |
+| NUMBER(20,0)                   | DECIMAL(20,0)             |      |
+| NUMBER(10,2)                   | DECIMAL(10,2)             |      |
+| NUMBER                         | DOUBLE PRECISION          |      |
+| NUMBER(\*)                     | DOUBLE PRECISION          |      |
+| NVARCHAR2(12)                  | VARCHAR(12)               |      |
+| RAW(8)                         | BYTEA                     |      |
+| REAL                           | DOUBLE PRECISION          |      |
+| SMALLINT                       | DECIMAL(38)               |      |
+| UROWID(16)                     | VARCHAR(16)               |      |
+| VARCHAR2(18)                   | VARCHAR(18)               |      |
+| BFILE                          | VARCHAR(255)              |      |
+| ROWID                          | CHAR(10)                  |      |
+| SYS_REFCURSOR                  | REFCURSOR                 |      |
+| XMLTYPE                        | XML                       |      |
 
  
 
 ### CREATE FUNCTION/PROCDURE
 
 没有or replace时会给自动添加上。
+
+在 AS后的函数体部分，前后自动添加 $$ 符号。
+
+函数的语言属性自动修改或添加为 language plpgsql;
+
+函数的 RETURN 关键字转换为 RETURNS
+
+DBMS_OUTPUT.PUT_LINE('err');    =>    RAISE NOTICE '%','err';
+
+调用传参操作符 => 会转换为 :=
+
+EXISTS IF NOT FOUND => EXISTS
+
+SQL%NOTFOUND  =>  NOT FOUND
+
+SQL%FOUND  =>  FOUND
+
+SQL%ROWCOUNT  =>  V_SQLROWCOUNT
+
+SYS_REFCURSOR   =>   REFCURSOR
 
 
 
@@ -461,7 +487,7 @@ AS subquery [ subquery_restriction_clause ]
 
 
 
-### CREATE VIEW
+### CREATE SEQUENCE
 
 ```
 CREATE SEQUENCE [ schema. ] sequence
@@ -713,23 +739,7 @@ TRUNCATE TABLE [schema.] table
 
 转换时最多仅会保留 truncate table name cascade；其他都会删除。
 
- 
 
-### 存储过程
-
-#### create function/procdure
-
-在 AS后的函数体部分，前后自动添加 $$ 符号。
-
-函数的语言属性自动修改或添加为 language plpgsql;
-
-RETURN 关键字转换为 RETURNS
-
-DBMS_OUTPUT.PUT_LINE('err');    =>    RAISE NOTICE '%','err';
-
-调用传参操作符 => 会转换为 :=
-
-`EXISTS IF NOT FOUND => EXISTS
 
  
 
@@ -747,9 +757,6 @@ DBMS_OUTPUT.PUT_LINE('err');    =>    RAISE NOTICE '%','err';
 | Getdate()                 | Now()                    |      |
 | ISNULL(expr,  replace)    | COALESCE(expr,  replace) |      |
 | NVL(expr,  expr)          | COALESCE(expr, expr)     |      |
-| SQL%NOTFOUND              | NOT FOUND                |      |
-| SQL%FOUND                 | FOUND                    |      |
-| SQL%ROWCOUNT              | V_SQLROWCOUNT            |      |
 | SYSDATE()                 | CURRENT_TIMESTAMP()      |      |
 | SYSTIMESTAMP              | CURRENT_TIMESTAMP        |      |
 
