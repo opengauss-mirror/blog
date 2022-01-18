@@ -1,16 +1,16 @@
 +++
 
-title =  "MOGDB/openGauss的txid\_snapshot 数据类型和相关函数" 
+title =  "MOGDB/openGauss的txid snapshot 数据类型和相关函数" 
 
 date = "2021-12-20" 
 
-tags = [ "MOGDB/openGauss的txid\_snapshot 数据类型和相关函数"] 
+tags = [ "MOGDB/openGauss的txid snapshot 数据类型和相关函数"] 
 
 archives = "2021-12" 
 
 author = "阎书利" 
 
-summary = "MOGDB/openGauss的txid\_snapshot 数据类型和相关函数"
+summary = "MOGDB/openGauss的txid snapshot 数据类型和相关函数"
 
 img = "/zh/post/2022/title/img5.png" 
 

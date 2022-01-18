@@ -1,16 +1,16 @@
 +++
 
-title =  "node\_exporter 自定义监控指标" 
+title =  "node exporter 自定义监控指标" 
 
 date = "2021-12-16" 
 
-tags = [ "node\_exporter 自定义监控指标"] 
+tags = [ "node exporter 自定义监控指标"] 
 
 archives = "2021-12" 
 
 author = "高云龙" 
 
-summary = "node\_exporter 自定义监控指标"
+summary = "node exporter 自定义监控指标"
 
 img = "/zh/post/2022/title/img10.png" 
 

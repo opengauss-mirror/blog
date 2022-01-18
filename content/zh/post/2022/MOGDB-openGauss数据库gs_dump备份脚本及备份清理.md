@@ -1,16 +1,16 @@
 +++
 
-title =  "MOGDB/openGauss数据库gs\_dump备份脚本及备份清理" 
+title =  "MOGDB/openGauss数据库gs dump备份脚本及备份清理" 
 
 date = "2022-1-7" 
 
-tags = [ "MOGDB/openGauss数据库gs\_dump备份脚本及备份清理"] 
+tags = [ "MOGDB/openGauss数据库gs dump备份脚本及备份清理"] 
 
 archives = "2022-1" 
 
 author = "阎书利" 
 
-summary = "MOGDB/openGauss数据库gs\_dump备份脚本及备份清理"
+summary = "MOGDB/openGauss数据库gs dump备份脚本及备份清理"
 
 img = "/zh/post/2022/title/img8.png" 
 

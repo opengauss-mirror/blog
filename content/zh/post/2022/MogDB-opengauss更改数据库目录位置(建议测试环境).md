@@ -1,16 +1,16 @@
 +++
 
-title =  "MogDB/opengauss更改数据库目录位置\(建议测试环境\)" 
+title =  "MogDB/opengauss更改数据库目录位置建议测试环境" 
 
 date = "2021-12-15" 
 
-tags = [ "MogDB/opengauss更改数据库目录位置\(建议测试环境\)"] 
+tags = [ "MogDB/opengauss更改数据库目录位置建议测试环境"] 
 
 archives = "2021-12" 
 
 author = "张凡" 
 
-summary = "MogDB/opengauss更改数据库目录位置\(建议测试环境\)"
+summary = "MogDB/opengauss更改数据库目录位置建议测试环境"
 
 img = "/zh/post/2022/title/img6.png" 
 
