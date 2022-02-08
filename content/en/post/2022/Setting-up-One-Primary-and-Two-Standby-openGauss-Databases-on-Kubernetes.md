@@ -12,7 +12,7 @@ author = "Bin Zhou"
 
 summary = "Setting up One Primary and Two Standby openGauss Databases on Kubernetes"
 
-img = "/ch/post/2022/title/img2.png"
+img = "/en/post/2022/title/img2.png"
 
 times = "12:30"
 
