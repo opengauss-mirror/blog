@@ -4,7 +4,7 @@ title = "Automatic Test Framework  YAT"
 
 date = "2021-11-19"
 
-tags = \[ "Automatic Test Framework"\]
+tags = [ "Automatic Test Framework  YAT"]
 
 archives = "2021-11"
 

@@ -4,7 +4,7 @@ title = "Setting up One Primary and Two Standby openGauss Databases on Kubernete
 
 date = "2021-10-9"
 
-tags = \[ "Setting up One Primary and Two Standby openGauss Databases on Kubernetes"\]
+tags = [ "Setting up One Primary and Two Standby openGauss Databases on Kubernetes"]
 
 archives = "2021-10"
 
