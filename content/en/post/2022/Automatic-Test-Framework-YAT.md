@@ -1,16 +1,16 @@
 +++
 
-title = "Automatic Test Framework — YAT"
+title = "Automatic Test Framework  YAT"
 
 date = "2021-11-19"
 
-tags = \[ "Automatic Test Framework — YAT"\]
+tags = \[ "Automatic Test Framework YAT"\]
 
 archives = "2021-11"
 
 author = "Yansong LI"
 
-summary = "Automatic Test Framework — YAT"
+summary = "Automatic Test Framework  YAT"
 
 img = "/en/post/2022/title/img1.png"
 
