@@ -1,10 +1,10 @@
 +++
 
-title = "Using pg\_chameleon to Migrate Data from MySQL to openGauss"
+title = "Using pg chameleon to Migrate Data from MySQL to openGauss"
 
 date = "2021-6-17"
 
-tags = [ "Using pg\_chameleon to Migrate Data from MySQL to openGauss"]
+tags = [ "Using pg chameleon to Migrate Data from MySQL to openGauss"]
 
 archives = "2021-6"
 
