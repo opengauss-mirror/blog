@@ -10,7 +10,7 @@ archives = "2021-8"
 
 author = "Rongrong Song"
 
-summary = "Permission Management Model of the openGauss Database \(Continued\)"
+summary = "Permission Management Model of the openGauss Database (Continued)"
 
 img = "/en/post/2022/title/img3.png"
 

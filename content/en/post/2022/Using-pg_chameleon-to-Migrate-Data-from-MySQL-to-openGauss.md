@@ -10,7 +10,7 @@ archives = "2021-6"
 
 author = "Ju Peng"
 
-summary = "Using pg\_chameleon to Migrate Data from MySQL to openGauss"
+summary = "Using pg chameleon to Migrate Data from MySQL to openGauss"
 
 img = "/en/post/2022/title/img15.png"
 
