@@ -4,7 +4,7 @@ title = "Segment-Page Feature of openGauss for Solving File Storage Problems"
 
 date = "2021-10-20"
 
-tags = \[ "Segment-Page Feature of openGauss for Solving File Storage Problems"\]
+tags = [ "Segment-Page Feature of openGauss for Solving File Storage Problems"]
 
 archives = "2021-10"
 

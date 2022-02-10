@@ -4,7 +4,7 @@ title = "Using the Python Driver psycopg2 of openGauss"
 
 date = "2021-4-2"
 
-tags = \[ "Using the Python Driver psycopg2 of openGauss"\]
+tags = [ "Using the Python Driver psycopg2 of openGauss"]
 
 archives = "2021-4"
 

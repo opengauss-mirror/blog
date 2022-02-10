@@ -1,10 +1,10 @@
 +++
 
-title = "Permission Management Model of the openGauss Database \(Continued\)"
+title = "Permission Management Model of the openGauss Database Continued"
 
 date = "2021-8-2"
 
-tags = \[ "Permission Management Model of the openGauss Database \(Continued\)"\]
+tags = [ "Permission Management Model of the openGauss Database"]
 
 archives = "2021-8"
 

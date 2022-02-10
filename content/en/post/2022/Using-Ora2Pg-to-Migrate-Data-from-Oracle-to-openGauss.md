@@ -4,7 +4,7 @@ title = "Using Ora2Pg to Migrate Data from Oracle to openGauss"
 
 date = "2021-6-9"
 
-tags = \[ "Using Ora2Pg to Migrate Data from Oracle to openGauss"\]
+tags = [ "Using Ora2Pg to Migrate Data from Oracle to openGauss"]
 
 archives = "2021-6"
 

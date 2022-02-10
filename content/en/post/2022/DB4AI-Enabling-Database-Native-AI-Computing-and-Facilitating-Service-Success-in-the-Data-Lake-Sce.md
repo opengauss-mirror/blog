@@ -4,7 +4,7 @@ title = "DB4AI: Enabling Database Native AI Computing and Facilitating Service S
 
 date = "2021-9-27"
 
-tags = \[ "DB4AI: Enabling Database Native AI Computing and Facilitating Service Success in the Data Lake Scenario"\]
+tags = [ "DB4AI: Enabling Database Native AI Computing and Facilitating Service Success in the Data Lake Scenario"]
 
 archives = "2021-9"
 

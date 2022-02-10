@@ -4,7 +4,7 @@ title = "Using pgloader to Migrate Data from MySQL to openGauss"
 
 date = "2021-5-27"
 
-tags = \[ "Using pgloader to Migrate Data from MySQL to openGauss"\]
+tags = [ "Using pgloader to Migrate Data from MySQL to openGauss"]
 
 archives = "2021-5"
 

@@ -4,7 +4,7 @@ title = "Discussion on openGauss Memory Management"
 
 date = "2021-9-13"
 
-tags = \[ "Discussion on openGauss Memory Management"\]
+tags = [ "Discussion on openGauss Memory Management"]
 
 archives = "2021-9"
 

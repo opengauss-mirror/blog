@@ -4,7 +4,7 @@ title = "Guide to Adapting HAProxy to openGauss"
 
 date = "2021-9-18"
 
-tags = \[ "Guide to Adapting HAProxy to openGauss"\]
+tags = [ "Guide to Adapting HAProxy to openGauss"]
 
 archives = "2021-9"
 

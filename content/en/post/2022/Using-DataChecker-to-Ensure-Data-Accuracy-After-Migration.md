@@ -4,7 +4,7 @@ title = "Using DataChecker to Ensure Data Accuracy After Migration"
 
 date = "2021-6-25"
 
-tags = \[ "Using DataChecker to Ensure Data Accuracy After Migration"\]
+tags = [ "Using DataChecker to Ensure Data Accuracy After Migration"]
 
 archives = "2021-6"
 

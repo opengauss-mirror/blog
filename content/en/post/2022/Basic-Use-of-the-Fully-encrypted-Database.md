@@ -4,7 +4,7 @@ title = "Basic Use of the Fully-encrypted Database"
 
 date = "2021-10-16"
 
-tags = \[ "Basic Use of the Fully-encrypted Database"\]
+tags = [ "Basic Use of the Fully-encrypted Database"]
 
 archives = "2021-10"
 
