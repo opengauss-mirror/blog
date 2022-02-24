@@ -4,7 +4,7 @@ title = "Full-encryption Upgrade and Unaware Encryption/Decryption Principle Ana
 
 date = "2021-10-13"
 
-tags = \[ "Full-encryption Upgrade and Unaware Encryption/Decryption Principle Analysis"\]
+tags = [ "Full-encryption Upgrade and Unaware Encryption/Decryption Principle Analysis"]
 
 archives = "2021-10"
 

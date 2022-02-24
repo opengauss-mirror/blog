@@ -4,7 +4,7 @@ title = "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers
 
 date = "2021-3-3"
 
-tags = \[ "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers"\]
+tags = [ "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers"]
 
 archives = "2021-3"
 

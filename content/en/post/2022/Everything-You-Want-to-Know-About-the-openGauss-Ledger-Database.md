@@ -4,7 +4,7 @@ title = "Everything You Want to Know About the openGauss Ledger Database"
 
 date = "2021-10-22"
 
-tags = \[ "Everything You Want to Know About the openGauss Ledger Databases"\]
+tags = [ "Everything You Want to Know About the openGauss Ledger Databases"]
 
 archives = "2021-10"
 

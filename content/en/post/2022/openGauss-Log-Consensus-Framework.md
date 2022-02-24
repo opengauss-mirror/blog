@@ -4,7 +4,7 @@ title = "openGauss Log Consensus Framework"
 
 date = "2021-9-29"
 
-tags = \[ "openGauss Log Consensus Framework"\]
+tags = [ "openGauss Log Consensus Framework"]
 
 archives = "2021-9"
 
