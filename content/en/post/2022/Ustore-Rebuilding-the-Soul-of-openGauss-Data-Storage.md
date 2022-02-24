@@ -1,10 +1,10 @@
 +++
 
-title = "Ustore, Rebuilding the "Soul" of openGauss Data Storage"
+title = "Ustore, Rebuilding the 'Soul' of openGauss Data Storage"
 
 date = "2021-10-11"
 
-tags = [ "Ustore, Rebuilding the "Soul" of openGauss Data Storage"]
+tags = [ "Ustore, Rebuilding the 'Soul' of openGauss Data Storage"]
 
 archives = "2021-10"
 
