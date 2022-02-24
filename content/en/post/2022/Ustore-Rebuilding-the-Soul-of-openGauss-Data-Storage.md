@@ -10,7 +10,7 @@ archives = "2021-10"
 
 author = "Qiang Li"
 
-summary = "Ustore, Rebuilding the "Soul" of openGauss Data Storage"
+summary = "Ustore, Rebuilding the ‘Soul’ of openGauss Data Storage"
 
 img = "/en/post/2022/title/img10.png"
 
