@@ -10,7 +10,7 @@ archives = "2020-10"
 
 author = "Tianqing Wang"
 
-summary = The Combination of openGauss Database and AI"
+summary = "The Combination of openGauss Database and AI"
 
 img = "/en/post/2022/title/img8.png"
 

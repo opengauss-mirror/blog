@@ -1,6 +1,6 @@
 +++
 
-title = "Core Technologies of openGauss Database \(II)"
+title = "Core Technologies of openGauss Database"
 
 date = "2020-7-30"
 
