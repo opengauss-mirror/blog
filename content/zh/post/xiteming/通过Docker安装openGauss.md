@@ -107,7 +107,7 @@ docker images
 #### 开启openGauss实例
 
 ```
-docker run --name OG1 --privileged=true -d -e GS_PASSWORD=huawei@123 –e GS_NODENAME=test –e GS_USERNAME=test –p 8888:5432 opengauss:2.1.0
+docker run --name OG1 --privileged=true -d -e GS_PASSWORD=openGauss@123 –e GS_NODENAME=test –e GS_USERNAME=test –p 8888:5432 opengauss:2.1.0
 ```
 
 #### 进入docker
