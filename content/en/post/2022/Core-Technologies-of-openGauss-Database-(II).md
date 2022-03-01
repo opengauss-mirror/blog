@@ -4,13 +4,13 @@ title = "Core Technologies of openGauss Database"
 
 date = "2020-7-30"
 
-tags = [ "Core Technologies of openGauss Database \(II)"]
+tags = [ "Core Technologies of openGauss Database (II)"]
 
 archives = "2020-7"
 
 author = "Shujie Zhang"
 
-summary = "Core Technologies of openGauss Database \(II)"
+summary = "Core Technologies of openGauss Database (II)"
 
 img = "/en/post/2022/title/img6.png"
 
