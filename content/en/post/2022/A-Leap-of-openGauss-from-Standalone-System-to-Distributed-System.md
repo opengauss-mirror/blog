@@ -26,7 +26,7 @@ Since June 2020, the openGauss standalone database has received wide attention f
 
 ## **Distributed solution**<a name="section178098561689"></a>
 
-![](figures/21.png)
+![](../figures/21.png)
 
 Figure 1 Overall architecture of the distributed solution
 
