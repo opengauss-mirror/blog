@@ -2,11 +2,11 @@
 
 title = "DB4AI: Enabling Database Native AI Computing and Facilitating Service Success in the Data Lake Scenario"
 
-date = "2021-9-27"
+date = "2021-09-27"
 
 tags = [ "DB4AI: Enabling Database Native AI Computing and Facilitating Service Success in the Data Lake Scenario"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Wen Nie"
 
@@ -131,7 +131,7 @@ The following is a simple example:
 
     The K-means clustering algorithm is used as an example.
 
-    ![](figures/zh-cn_image_0000001251917015.jpg)
+    ![](../figures/zh-cn_image_0000001251917015.jpg)
 
     The training syntax consists of four parts: model name, algorithm type, training set, and hyperparameter setting.
 
@@ -141,13 +141,13 @@ The following is a simple example:
 
     The model has been written into the  **gs\_model\_warehouse**  system catalog. You can view the model information by querying the table.
 
-    ![](figures/zh-cn_image_0000001252197021.jpg)
+    ![](../figures/zh-cn_image_0000001252197021.jpg)
 
 -   \(2\) Run  **PREDICT BY**  for inference.
 
     Use the saved model to perform inference tasks. An example is provided as follows:
 
-    ![](figures/zh-cn_image_0000001207677032.jpg)
+    ![](../figures/zh-cn_image_0000001207677032.jpg)
 
     In the PREDICT BY syntax, you only need to specify the model name, test set, and feature name to complete the inference task.
 

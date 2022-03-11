@@ -2,11 +2,11 @@
 
 title = "Using DataChecker to Ensure Data Accuracy After Migration"
 
-date = "2021-6-25"
+date = "2021-06-25"
 
 tags = [ "Using DataChecker to Ensure Data Accuracy After Migration"]
 
-archives = "2021-6"
+archives = "2021-06"
 
 author = "Wenhao Zhao"
 
@@ -37,7 +37,7 @@ Code repository: https://gitee.com/opengauss/openGauss-tools-datachecker
 
     The architecture of DataChecker consists of two parts: Extractor and Applier.
 
-    ![](figures/zh-cn_image_0000001251852313.png)
+    ![](../figures/zh-cn_image_0000001251852313.png)
 
     Extractor is used to extract data from the source database. Data is extracted in batches based on the sequence of the data in the source table.
 
@@ -360,19 +360,19 @@ Code repository: https://gitee.com/opengauss/openGauss-tools-datachecker
 
     Create a table in the  **mysql**  schema in MySQL, as shown in the following figure.
 
-    ![](figures/zh-cn_image_0000001252252279.png)
+    ![](../figures/zh-cn_image_0000001252252279.png)
 
     Assume that after data is migrated to openGauss, only four of the five data records are successfully migrated, as shown in the following figure.
 
-    ![](figures/zh-cn_image_0000001206972348.png)
+    ![](../figures/zh-cn_image_0000001206972348.png)
 
     **Configuring gauss.properties**
 
-    ![](figures/zh-cn_image_0000001206812360.png)
+    ![](../figures/zh-cn_image_0000001206812360.png)
 
     **Running startup.bat or startup.sh**
 
-    ![](figures/zh-cn_image_0000001207132328.png)
+    ![](../figures/zh-cn_image_0000001207132328.png)
 
     **Viewing Logs**
 
@@ -380,11 +380,11 @@ Code repository: https://gitee.com/opengauss/openGauss-tools-datachecker
 
     Access  **/logs/mysql.test/**  to view details.
 
-    ![](figures/zh-cn_image_0000001206972352.png)
+    ![](../figures/zh-cn_image_0000001206972352.png)
 
     There are four log files. You can mainly view  **check.log**.
 
-    ![](figures/zh-cn_image_0000001252252281.png)
+    ![](../figures/zh-cn_image_0000001252252281.png)
 
     The record whose ID is 5 and whose name is 5 fails to be migrated.
 

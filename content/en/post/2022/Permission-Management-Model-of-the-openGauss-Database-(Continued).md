@@ -2,11 +2,11 @@
 
 title = "Permission Management Model of the openGauss Database Continued"
 
-date = "2021-8-2"
+date = "2021-08-02"
 
 tags = [ "Permission Management Model of the openGauss Database"]
 
-archives = "2021-8"
+archives = "2021-08"
 
 author = "Rongrong Song"
 
@@ -78,7 +78,7 @@ In actual services, users may be allowed to view only rows that meet specific co
 
 You can create a row-level security policy for a data table. The policy defines an expression that takes effect only for specific database users and SQL operations. When a database user accesses the data table, rows that meet the policy conditions are visible to the user, and rows that do not meet the policy conditions are invisible to the user. In this way, row-level access control is implemented for the user.
 
-![](figures/zh-cn_image_0000001251894929.jpg)
+![](../figures/zh-cn_image_0000001251894929.jpg)
 
 openGauss provides the CREATE, ALTER, and DROP ROW LEVEL SECURITY statements to create, modify, and delete row-level access control policies.
 

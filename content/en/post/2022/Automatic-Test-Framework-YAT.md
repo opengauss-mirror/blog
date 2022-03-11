@@ -24,7 +24,7 @@ The Yet another test \(YAT\) framework is an automatic test framework based on P
 
 YAT is the automatic test framework used for openGauss database specification monitoring. openGauss 2.1.0 not only releases open-source YAT, but also contributes over 30,000 automatic test cases to enhance the test capability of the openGauss community, enrich the openGauss ecosystem and attract more developers to participate in community construction. YAT code repository:  [https://gitee.com/opengauss/Yat](https://gitee.com/opengauss/Yat)
 
-![](figures/zh-cn_image_0000001206146876.jpg)
+![](../figures/zh-cn_image_0000001206146876.jpg)
 
 Figure 1 Overall YAT framework
 
@@ -157,7 +157,7 @@ Figure 1 Overall YAT framework
     -   **schedule**  directory, which stores the schedule files.
     -   **testcase**  directory, which stores test case files.
 
-    ![](figures/zh-cn_image_0000001206626828.jpg)
+    ![](../figures/zh-cn_image_0000001206626828.jpg)
 
     Figure 2 Directory structure of the test suite
 

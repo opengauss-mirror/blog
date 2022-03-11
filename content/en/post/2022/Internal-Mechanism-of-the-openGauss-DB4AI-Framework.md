@@ -2,11 +2,11 @@
 
 title = "Internal Mechanism of the openGauss DB4AI Framework"
 
-date = "2021-9-26"
+date = "2021-09-26"
 
 tags = [ "Internal Mechanism of the openGauss DB4AI Framework"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Wen Nie"
 
@@ -45,7 +45,7 @@ In addition to avoiding the problems caused by data migration, the AI framework 
 
     Compared with many AIinDB projects, openGauss embeds model computing into the database by adding AI operators. Taking algorithm training as an example, data reading, model calculation and update, and final model storage are completed in an executor of the database. In this way, the computing capability of the database is fully utilized and released. The technical roadmap deep into the kernel makes our features faster than other higher-level invocation methods.
 
-    ![](figures/24.png)
+    ![](../figures/24.png)
 
 
 Figure 1 Performance comparison with MADlib
@@ -54,7 +54,7 @@ Figure 1 Performance comparison with MADlib
 
 -   1\)    DB4AI-Snapshot
 
-    ![](figures/zh-cn_image_0000001207516746.png)
+    ![](../figures/zh-cn_image_0000001207516746.png)
 
     The DB4AI.snapshot feature requires users to specify the data to be filled in the SQL query statement for operating data storage, so as to create a snapshot. The initial snapshot is always created as a real and reusable copy of the operated data, making the specific state of the data immutable. Therefore, the initial snapshot serves as the starting point for subsequent data collation, but it always allows backtracking to the exact state of the original data at the time when the initial snapshot was created.
 
@@ -82,11 +82,11 @@ Figure 1 Performance comparison with MADlib
 
         After the model training is complete, the executor transfers the model data in the form of tuples to the storage module and saves the model to the gs\_model\_warehouse system catalog.
 
-        ![](figures/241.png)
+        ![](../figures/241.png)
 
         The following uses CREATE MODEL as an example to describe how to implement the query statement used for model training.
 
-        ![](figures/zh-cn_image_0000001253422853.png)
+        ![](../figures/zh-cn_image_0000001253422853.png)
 
         -   Step 1: Perform lexical and syntax analysis \(Lex and Yacc\) on the query. Generate an analysis tree by identifying pattern categories and pattern combinations to check whether syntax errors exist in statements.
         -   Step 2: The database performs semantic analysis and rewriting on each obtained analysis tree. In the process of generating a query tree through semantic analysis, for a createmodelStmt command case, the database first checks the algorithm type to determine whether the algorithm belongs to supervised learning or unsupervised learning. Then, based on the judgment result, the system further checks whether the attributes, hyperparameters, and model names entered in the query statement are invalid. After the verification is complete, the semantic analysis generates a query tree and transfers it to the database executor.

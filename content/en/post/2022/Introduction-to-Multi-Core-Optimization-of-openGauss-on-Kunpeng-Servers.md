@@ -2,11 +2,11 @@
 
 title = "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers"
 
-date = "2021-3-3"
+date = "2021-03-03"
 
 tags = [ "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers"]
 
-archives = "2021-3"
+archives = "2021-03"
 
 author = "Wengang Tian"
 
@@ -26,11 +26,11 @@ The second phase is to increase the number of CPU cores. If the frequency of a s
 
 The third phase is to achieve non-uniform memory access \(NUMA\) for CPU cores. To resolve the bottleneck of the memory controller that reads memory in the northbridge, the memory may be evenly allocated to each die. However, this causes asymmetric delays when different CPU cores access different memory. The reason is that although the memory is directly attached to the CPU, the response time is short when the CPU accesses the local address corresponding to the attached memory, while to access the memory data attached to other CPUs, which is called remote access, you need to access the memory data through the inter-connect channel, and the response time is relatively long. This is the origin of NUMA. In the NUMA architecture, the physical distance between the processor and the memory block of a NUMA node is called NUMA distance. You can use the numactl tool to query the CPU access distance. A Kunpeng server is used as an example, as shown in the following figure.
 
-![](figures/zh-cn_image_0000001206801884.png)
+![](../figures/zh-cn_image_0000001206801884.png)
 
 A NUMA-based CPU brings not only surging computing power to servers, but also great challenges to software development. From the perspective of the entire IT software stack, the first thing to support NUMA is the operating system. Currently, most enterprises use Linux. After NUMA appears, Linux also provides targeted optimization solutions to preferentially attempt to allocate space in the local memory of the CPU where the request thread is located. If the local memory is insufficient, useless pages in the local memory are eliminated first. However, NUMA provided by Linux is not suitable for databases because a database is a data-intensive and high-concurrency application and has many kernel data structures inside. These data structures are accessed by both the local CPU core and the remote CPU core. To improve data access performance, the database has its own shared data buffers, which are randomly accessed by service threads on each CPU core. From the perspective of the IT software stack, databases are the core of enterprise applications, and many applications have a database in the background. The database performance determines the overall throughput of many applications. As such, if the database performance cannot be maximized in NUMA and is not in a linear ratio to the number of cores, no enterprise is willing to pay for NUMA-based CPUs though they provide rich computing power.
 
-![](figures/10.png)
+![](../figures/10.png)
 
 Nevertheless, NUMA is an inevitable trend in CPU development. If an enterprise-level database cannot adapt to hardware development, this database would be eliminated in enterprise database selection.
 
@@ -38,20 +38,20 @@ openGauss is an open-source relational database management system. It optimizes 
 
 ## 1 Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers<a name="section178601443232"></a>
 
-![](figures/zh-cn_image_0000001207121854.png)
+![](../figures/zh-cn_image_0000001207121854.png)
 
 A database is a software system with high concurrency and severe data access conflicts.  _Staring into the Abyss: An Evaluation of Concurrency Control with One Thousand Cores_  published by Michael Stonebraker et al., Turing Award winners in the database field in 2014, shows that the transaction processing mechanism of a traditional database cannot effectively use the processing capabilities of dozens to hundreds of cores. Through a more in-depth analysis on the database, it is found that the causes lie in both the concurrency control algorithm and the implementation mechanism. To implement concurrency, the database uses many locks internally, such as Clog, WALInsert, WALWrite, ProcArray, and XidGen in openGauss. These locks are performance bottlenecks, while the essence of the locks is to protect kernel data structures. Therefore, openGauss needs to adjust and optimize these data structures to cope with multi-core concurrency in the NUMA architecture on Kunpeng servers. The main purposes are to implement nearby CPU access, eliminate single-point bottlenecks, and evenly allocate and access shared data.
 
 -   1.1 Binding Threads to Cores to Prevent Thread Offsets Between Cores
 
-    ![](figures/101.png)
+    ![](../figures/101.png)
 
     To implement nearby access to a CPU core, a thread needs to be fixed to a specific core first. The GUC parameter  **numa\_distribute\_mode**  in openGauss is used to control CPU core affinity. By setting this parameter, the service processing threads can be bound to specific NUMA nodes. openGauss adopts the client-server structure. The client and server interact with each other frequently through the network. To prevent network interruption and service processing from interfering with each other, core binding is required for network interruption. In addition, the core binding area for network interruption must be separated from that for background service threads.
 
 
 -   1.2 Reconstructing NUMA-based Data to Reduce Cross-Core Access
 
-    ![](figures/102.png)
+    ![](../figures/102.png)
 
     WALInsertLock is used to perform concurrency protection on WAL Insert operations. You can configure multiple WALInsertLocks, for example, 16. There are two types of access: \(1\) Xlog insert, each of which requires an Insert Lock. \(2\) Traversal and access to all WALInsertLocks, which is used to check whether unacknowledged information exists during Xlog flushing.
 
@@ -61,7 +61,7 @@ A database is a software system with high concurrency and severe data access con
 
 -   1.3 Partitioning Data to Reduce Thread Access Conflicts
 
-    ![](figures/zh-cn_image_0000001207121858.png)
+    ![](../figures/zh-cn_image_0000001207121858.png)
 
     As an auxiliary of Xlog, Clog records the final state of transactions and is used to accelerate the process of determining transaction states based on logs.
 
@@ -71,11 +71,11 @@ A database is a software system with high concurrency and severe data access con
 
     Similarly, other internal key shared data structures are also partitioned.
 
-    ![](figures/zh-cn_image_0000001206961884.png)
+    ![](../figures/zh-cn_image_0000001206961884.png)
 
 -   1.4 Adjusting Concurrency Control Algorithms to Reduce Single-Point Bottlenecks
 
-    ![](figures/zh-cn_image_0000001251841849.png)
+    ![](../figures/zh-cn_image_0000001251841849.png)
 
     Before optimization, ProcArrayLock is required for obtaining transaction snapshots when a transaction starts, and for clearing transaction snapshots when the transaction ends. With the increase of concurrent connections, the snapshots obtained by the global transaction manager expand.
 
@@ -83,7 +83,7 @@ A database is a software system with high concurrency and severe data access con
 
 -   1.5 Using ARM Atomic Instructions to Reduce the Computing Overhead
 
-    ![](figures/zh-cn_image_0000001206801888.png)
+    ![](../figures/zh-cn_image_0000001206801888.png)
 
     The atomic operation of a traditional compiler uses the load-linked/store-conditional \(LL/SC\) atomic instructions by default. To obtain the write permission on shared variables, any core must obtain the ownership of all shared variables in an exclusive manner. That is, the modification operation can be performed only after the latest data is loaded to the L1 cache where the core is located. In the case of multiple CPUs, the system performance deteriorates due to fierce contention.
 
@@ -92,5 +92,5 @@ A database is a software system with high concurrency and severe data access con
 
 ## 2 Multi-Core Optimization Result of openGauss on Kunpeng Servers<a name="section1580174219259"></a>
 
-![](figures/zh-cn_image_0000001206801890.png)  The running of the database system involves multiple resources, including the CPU, memory, network I/O, and disk I/O. The ultimate goal of performance optimization is that each resource usage exactly reaches the bottleneck. However, in actual optimization, the environment may consist of different hardware. As such, the optimization objectives may be different, while the basic objective of system optimization is to fully utilize the CPU capabilities. After optimizing the NUMA architecture, openGauss runs on the Kunpeng 920 processor, the TPC-C test performance reaches 1,500,000 tpmC, and the CPU efficiency is close to 95%. The data shows that openGauss fully utilizes the multi-computing capabilities of CPUs.
+![](../figures/zh-cn_image_0000001206801890.png)  The running of the database system involves multiple resources, including the CPU, memory, network I/O, and disk I/O. The ultimate goal of performance optimization is that each resource usage exactly reaches the bottleneck. However, in actual optimization, the environment may consist of different hardware. As such, the optimization objectives may be different, while the basic objective of system optimization is to fully utilize the CPU capabilities. After optimizing the NUMA architecture, openGauss runs on the Kunpeng 920 processor, the TPC-C test performance reaches 1,500,000 tpmC, and the CPU efficiency is close to 95%. The data shows that openGauss fully utilizes the multi-computing capabilities of CPUs.
 

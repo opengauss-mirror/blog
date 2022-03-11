@@ -2,11 +2,11 @@
 
 title = "Permission Management Model of the openGauss Database"
 
-date = "2021-7-26"
+date = "2021-07-26"
 
 tags = [ "Permission Management Model of the openGauss Database"]
 
-archives = "2021-7"
+archives = "2021-07"
 
 author = "Rongrong Song"
 
@@ -32,11 +32,11 @@ With the development of databases and expansion of service scenarios, higher req
 
 In the logical structure of the object layout in the openGauss database system, multiple databases can be created under each instance, multiple schemas can be created under each database, and multiple objects can be created under each schema, such as tables, functions, views, and indexes, and each table can be measured by row and column to form the following logical levels:
 
-![](figures/3.png)
+![](../figures/3.png)
 
 The permission system of the openGauss database is constructed based on the preceding logical distribution, as shown in the following figure. Each layer has its own permission control.
 
-![](figures/31.png)
+![](../figures/31.png)
 
 For example, if a user wants to view data in a row of a data table, the user must have the LOGIN permission for logging in to the database, CONNECT permission for connecting to the database where the table is stored, USAGE permission for using the schema of the table, and SELECT permission for viewing the table; in addition, the row level security requirements for the row of data must be met. For details about permission concepts and classification, see the next section.
 
@@ -318,7 +318,7 @@ openGauss provides the GRANT and REVOKE statements to grant and revoke object pe
 
 According to the permission management mechanism of the openGauss database, a user has the union of the following types of permissions:
 
-![](figures/32.png)
+![](../figures/32.png)
 
 In actual service applications, you are advised to configure accounts based on the least privilege principle and assign the minimum permissions to users on the basis that service requirements are met.
 

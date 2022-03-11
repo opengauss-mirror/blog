@@ -2,11 +2,11 @@
 
 title = "SQL Engine Source Parsing"
 
-date = "2021-8-27"
+date = "2021-08-27"
 
 tags = [ "SQL Engine Source Parsing"]
 
-archives = "2021-8"
+archives = "2021-08"
 
 author = "Shujie Zhang"
 
@@ -148,7 +148,7 @@ Taking predicate transfer closure and predicate pushdown as examples, predicate 
 
 For example, if two tables t1 and t2 each contain a total of 100 rows of data \[1,2,3, ..100\], the query statement  **SELECT t1.c1, t2.c1 FROM t1 JOIN t2 ON t1.c1=t2.c1 WHERE t1.c1=1**  may be optimized by select pushdown and equivalent inference, as shown in Figure 1.
 
-![](figures/62.png)
+![](../figures/62.png)
 
 Figure 1 Comparison before and after query rewriting
 
@@ -156,7 +156,7 @@ As shown in Figure 1 \(1\), 100 rows of data in tables t1 and t2 are scanned and
 
 At the code level, the architecture of query rewriting is roughly shown in Figure 2.
 
-![](figures/41.png)
+![](../figures/41.png)
 
 Figure 2 Architecture of query rewriting
 
@@ -219,7 +219,7 @@ Figure 2 Architecture of query rewriting
 
   Figure 3 shows the interface functions related to pulling up sublinks.
 
-  ![](figures/42.png)
+  ![](../figures/42.png)
 
   Figure 3 Interface functions related to sublinks
 
@@ -892,7 +892,7 @@ For details about the calculation method of non-simple constraint selectivity, r
 
     Because the constraint added for query is PRIZE < '100', the restriction\_selectivity function will call the scalargtsel function based on the operator type and attempt to calculate the selectivity using the information in the PG\_STATISTIC system catalog. The values that meet the condition <'100' may exist in the MCV and EH respectively. Therefore, values need to be collected in the two structures respectively. Compared with that in the MCV, the process of collecting the values that meet the conditions in the EH is more complex. Based on the order of keys in the EH, openGauss uses binary search to quickly search for values that meet the conditions, sums up the total proportion of the values, and records the sum as selec\_histogram. Note that the EH does not record the frequency of '100' separately. Instead, it combines '100' and adjacent values into a bucket \(recorded as bucket  _B_\) and records only the total frequency \(_F<sub>b</sub>_\) of the values in bucket  _B_. To solve this problem, openGauss assumes that the frequencies of elements in the bucket are the same and uses the following formula:
 
-    ![](figures/zh-cn_image_0000001257142015.gif)
+    ![](../figures/zh-cn_image_0000001257142015.gif)
 
     To estimate the proportion of values that meet the conditions in  _B_. The specific code of this process is implemented in the ineq\_histogram\_selectivity function. Finally, the selectivity value returned by the restriction\_selectivity function is  **selec**  =  **selec\_mcv**  +  **selec\_histogram**, where  **selec\_mcv**  is the percentage of MCVs that meet the conditions.
 
@@ -1088,7 +1088,7 @@ After logical decomposition and optimization, tables in the statement are flatte
 
 First, the dynamic programming method is applicable to an optimal solution problem including a large quantity of repeated sub-problems. By memorizing the optimal solution to each sub-problem, same sub-problems are solved only once, and a record of solving the previous same sub-problem may be reused next time. As such, it is required that the optimal solutions to these sub-problems can form the optimal solution to the whole problem, that is, they should have the property of the optimal substructure. For statement join optimization, the optimal solution to an entire statement join is the optimal solution to a block of statement join. In a planning process, a local optimal solution cannot be repeatedly calculated, and the local optimal solution calculated last time is directly used.
 
-![](figures/zh-cn_image_0000001257142943.jpg)![](figures/zh-cn_image_0000001211903080.jpg)
+![](../figures/zh-cn_image_0000001257142943.jpg)![](../figures/zh-cn_image_0000001211903080.jpg)
 
 FIG. 1 Optimal solution to a repeated sub-problem
 
@@ -1096,7 +1096,7 @@ For example, the join operation of A x B in two join trees in Figure 1 is a repe
 
 The code of the multi-table join dynamic programming algorithm starts from the make\_rel\_from\_joinlist function, as shown in Figure 2.
 
-![](figures/zh-cn_image_0000001256862995.jpg)
+![](../figures/zh-cn_image_0000001256862995.jpg)
 
 Figure 2 Multi-table join dynamic programming algorithm
 
@@ -1157,7 +1157,7 @@ Figure 2 Multi-table join dynamic programming algorithm
 
   The join\_search\_one\_level function is mainly used to generate all RelOptInfos in one layer, as shown in Figure 3. To generate RelOptInfo of the  _N_th layer, there are mainly three manners: one is to attempt to generate a left-deep tree and a right-deep tree, one is to attempt to generate a bushy tree, and the other is to attempt to generate a join path of a Cartesian product \(commonly referred to as a traversal attempt\).
 
-  ![](figures/43.png)
+  ![](../figures/43.png)
 
   Figure 3 Manners of generating RelOptInfo of the Nth layer
 
@@ -1167,7 +1167,7 @@ Figure 2 Multi-table join dynamic programming algorithm
 
     As shown in Figure 4, two RelOptInfos to be selected need to be joined to generate A x B x C, and the left-deep tree is to exchange positions of AxB and C. A x B is used as an inner table to form a left-deep tree, and A x B is used as an outer table to form a right-deep tree.
 
-    ![](figures/44.png)
+    ![](../figures/44.png)
 
     Figure 4 Schematic diagram of a left-deep tree and a right-deep tree
 
@@ -1835,7 +1835,7 @@ Table 6-18 Process of generating a chromosome
 
 After a chromosome is randomly generated for a plurality of times, a pool is obtained. It is assumed that there are four chromosomes in total in the pool, and a structure of the pool is described by using a diagram, as shown in Figure 6-13.
 
-![](figures/45.png)
+![](../figures/45.png)
 
 Figure 6-13 Chromosome structure
 
@@ -1843,7 +1843,7 @@ Then, fitness \(worth\) is calculated for each chromosome. A process of calculat
 
 In the openGauss database, each chromosome uses a left-deep tree by default. Therefore, after gene encoding of each chromosome is determined, a join tree of the chromosome is determined accordingly. For example, for a chromosome \{2, 4, 3, 1\}, the corresponding join tree is \(\(t2, t4\), t3\), t1\), as shown in Figure 6-14.
 
-![](figures/zh-cn_image_0000001212089804.png)
+![](../figures/zh-cn_image_0000001212089804.png)
 
 Figure 6-14 Chromosome join tree
 
@@ -1991,33 +1991,33 @@ second = linear_rand(root, pool->size, bias);
 
 To generate a random number \(x\) based on a certain probability distribution, you need to know the probability distribution function or probability density function \(PDF\) first. The PDF  ![](figures/zh-cn_image_0000001212063076.gif)used by the openGauss database is as follows:
 
-![](figures/zh-cn_image_0000001257142945.gif)
+![](../figures/zh-cn_image_0000001257142945.gif)
 
 The following cumulative distribution function \(CDF\) is obtained by using the PDF:
 
-![](figures/zh-cn_image_0000001211903084.gif)
+![](../figures/zh-cn_image_0000001211903084.gif)
 
 Then, a random number that conforms to the probability distribution can be obtained by using the PDF and the inverse function method.
 
 Function:
 
-![](figures/zh-cn_image_0000001256862999.gif)
+![](../figures/zh-cn_image_0000001256862999.gif)
 
 Inverse function:
 
-![](figures/zh-cn_image_0000001212223058.gif)
+![](../figures/zh-cn_image_0000001212223058.gif)
 
 This is consistent with the implementation of the linear\_rand function in the source code.
 
-![](figures/zh-cn_image_0000001256982939.png)
+![](../figures/zh-cn_image_0000001256982939.png)
 
 The code of probability-based random number generation algorithm is extracted for calculation and verification, and the characteristics of random number generation are analyzed. It is assumed that bias is 2.0, and then the PDF is used to calculate the theoretical probability value of each interval for analysis. For example, for a range from 0.6 to 0.7, the theoretical probability is calculated as follows:
 
-![](figures/zh-cn_image_0000001257063005.gif)
+![](../figures/zh-cn_image_0000001257063005.gif)
 
 Figure 6-15 shows the theoretical probability values in each range.
 
-![](figures/46.png)
+![](../figures/46.png)
 
 Figure 6-15 Theoretical probability value of random number generation
 
@@ -2031,7 +2031,7 @@ The openGauss provides a plurality of crossover methods, including edge combinat
 
 It is assumed that the gene code of the selected father chromosome is \{1, 3, 2, 4\} with a fitness of 100, and the gene code of the selected mother chromosome is \{2, 3, 1, 4\} with a fitness of 200. When a child chromosome is not generated and is in an uninitialized state, the statuses of these chromosomes are shown in Figure 6-16.
 
-![](figures/47.png)
+![](../figures/47.png)
 
 Figure 6-16 Chromosome status
 
@@ -2055,13 +2055,13 @@ city_table[(int) tour1[pos]].used = 1;
 
 It is assumed that the father chromosome needs to inherit two genes to the child chromosome, to respectively transmit gene 1 and gene 2. In this case, the status of the child chromosome is shown in Figure 6-17.
 
-![](figures/48.png)
+![](../figures/48.png)
 
 Figure 6-17 Current chromosome status
 
 Currently, the child chromosome already has two genes: 3 and 2. After the mother chromosome excludes the two genes, there are still two genes: 1 and 4. The two genes are written into the child chromosome according to the sequence in the mother chromosome, and a new child chromosome is generated, as shown in Figure 6-18.
 
-![](figures/49.png)
+![](../figures/49.png)
 
 Figure 6-18 New chromosome status
 

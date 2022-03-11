@@ -2,11 +2,11 @@
 
 title = "Transaction Mechanism Source Code Analysis"
 
-date = "2021-7-5"
+date = "2021-07-5"
 
 tags = [ "Transaction Mechanism Source Code Analysis"]
 
-archives = "2021-7"
+archives = "2021-07"
 
 author = "Jiangjun Jiang"
 
@@ -37,7 +37,7 @@ Figure 5-1 shows the overall structure of the transaction module.
 
 Overall structure
 
-![](figures/171.png)
+![](../figures/171.png)
 
 In openGauss, the implementation of transactions is closely related to the implementation of the storage engine. The code is mainly stored in the  **src/gausskernel/storage/access/transam**  and  **src/gausskernel/storage/lmgr**  directories. Figure 5-1 shows the key files.
 
@@ -98,7 +98,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
             Figure 5-2：State machine of a transaction block
 
-            ![](figures/172.png)
+            ![](../figures/172.png)
 
             Table 1 lists the values in the transaction state machine structure corresponding to the transaction block states in Figure 5-2.
 
@@ -177,7 +177,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
             } TransState;
             ```
 
-            ![](figures/173.png)
+            ![](../figures/173.png)
 
             Figure 5-3 Lower-layer transaction states
 
@@ -205,7 +205,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
             **Figure 5-4**  Overall execution process
 
-            ![](figures/174.png)
+            ![](../figures/174.png)
 
             2\) Execution process of the BEGIN statement \(Figure 5-5\)
 
@@ -217,7 +217,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
             \(4\) The  **finish\_xact\_command**  function ends a QUERY statement, calls the  **CommitTransactionCommand**  function to change the upper-layer state of the transaction block from TBLOCK\_BEGIN to TBLOCK\_INPROGRESS, and waits for reading the next statement.
 
-            ![](figures/175.png)
+            ![](../figures/175.png)
 
             Figure 5-6 Execution process of the BEGIN statement
 
@@ -231,7 +231,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
             \(4\) The finish\_xact\_command function ends the QUERY statement and calls the CommitTransactionCommand function. The current upper-layer state of the transaction block is still TBLOCK\_INPROGESS, and the current upper-layer state and lower-layer state of the transaction are not changed.
 
-            ![](figures/176.png)
+            ![](../figures/176.png)
 
             Figure 5-7 Execution process of the SELECT statement
 
@@ -245,7 +245,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
             \(4\) The finish\_xact\_command function ends the QUERY statement and calls the CommitTransactionCommand function. The current state of the transaction block is TBLOCK\_END. Then, this function calls the CommitTransaction function to commit the transaction, sets the lower-layer state of the transaction to TRANS\_COMMIT, commits the transaction, and clears transaction resources. After the cleanup, the lower-layer state of the transaction is set to TRANS\_DEFAULT, and the CommitTansactionCommand function is returned. The upper-layer state of the transaction block is set to TBLOCK\_DEFAULT, and the entire transaction block ends.
 
-            ![](figures/177.png)
+            ![](../figures/177.png)
 
             Figure 5-8 Execution process of the END statement
 
@@ -411,56 +411,58 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
     To distinguish different transactions in the database, openGauss allocates unique identifiers to the transactions, that is, transaction IDs \(XIDs\). An XID is a monotonically increasing number of the uint64 type. After a transaction ends, Clogs are used to record whether the transaction is committed, and CSNlogs are used to record the sequence number of the committed transaction for visibility determination.
 
-    -   64-Bit XID Allocation
+    - 64-Bit XID Allocation
 
-        openGauss assigns a unique XID to each write transaction. When a transaction is inserted, the transaction information is written to the  **xmin**  field in the tuple header, indicating the XID of tuple insertion. When a transaction is updated or deleted, the current transaction information is written to the  **xmax**  field in the tuple header, indicating the XID of tuple deletion. Currently, XIDs are allocated as uint64 numbers that monotonically increase. To save space and be compatible with earlier versions, the  **xmin**  and  **xmax**  fields in the tuple header are stored in two parts. The values of the  **xmin**  and  **xmax**  fields in the tuple header are both uint32 numbers. The page header stores the 64-bit  **xid\_base**  field, which is the  **xid\_base**  field of the current page.
+      openGauss assigns a unique XID to each write transaction. When a transaction is inserted, the transaction information is written to the  **xmin**  field in the tuple header, indicating the XID of tuple insertion. When a transaction is updated or deleted, the current transaction information is written to the  **xmax**  field in the tuple header, indicating the XID of tuple deletion. Currently, XIDs are allocated as uint64 numbers that monotonically increase. To save space and be compatible with earlier versions, the  **xmin**  and  **xmax**  fields in the tuple header are stored in two parts. The values of the  **xmin**  and  **xmax**  fields in the tuple header are both uint32 numbers. The page header stores the 64-bit  **xid\_base**  field, which is the  **xid\_base**  field of the current page.
 
-        Figure 5-8 shows the tuple structure, and Figure 5-9 shows the page header structure. The formula for calculating the values of the  **xmin**  and  **xmax**  fields of each tuple is as follows: Value of  **xmin**/Value of  **xmax**  in the tuple header + Value of  **xid\_base**  in the page header.
+      Figure 5-8 shows the tuple structure, and Figure 5-9 shows the page header structure. The formula for calculating the values of the  **xmin**  and  **xmax**  fields of each tuple is as follows: Value of  **xmin**/Value of  **xmax**  in the tuple header + Value of  **xid\_base**  in the page header.
 
-        ![](figures/zh-cn_image_0000001252563289.png)
+      ![](../figures/zh-cn_image_0000001252563289.png)
 
-        Figure 5-9 Tuple structure
+      Figure 5-9 Tuple structure
 
-        ![](figures/zh-cn_image_0000001207963344.png)Figure 5-9 Page header structure
+      ![](../figures/zh-cn_image_0000001207963344.png)
 
-        When larger XIDs are continuously inserted into the page, the XID may exceed the value of  **xid\_base**  + 2<sup>32</sup>. In this case, you need to adjust the value of  **xid\_base**  to ensure that the values of the  **xmin**  and  **xmax**  fields of all tuples can be calculated based on the value of  **xid\_base**  and the tuple header value. For details about the logic, see section \(3\) in section 3\) "Key functions" in 5.2.2.4 "Clogs and CSNlogs".
+      Figure 5-9 Page header structure
 
-        To prevent XIDs from being consumed too quickly, openGauss allocates XIDs only to write transactions and does not allocate extra XIDs to read-only transactions. That is, XIDs are allocated only when they are required. If an XID has not been allocated to a transaction when an XID is allocated to its sub-transaction, the system allocates an XID to the transaction first to ensure that the XID of the sub-transaction is greater than that of the transaction. Theoretically, 64-bit XIDs are sufficient. If transactions per second \(TPS\) of the database are 10 million, that is, 10 million transactions can be processed per second, 64-bit XIDs can be used for 580,000 years.
+      When larger XIDs are continuously inserted into the page, the XID may exceed the value of  **xid\_base**  + 2<sup>32</sup>. In this case, you need to adjust the value of  **xid\_base**  to ensure that the values of the  **xmin**  and  **xmax**  fields of all tuples can be calculated based on the value of  **xid\_base**  and the tuple header value. For details about the logic, see section \(3\) in section 3\) "Key functions" in 5.2.2.4 "Clogs and CSNlogs".
+
+      To prevent XIDs from being consumed too quickly, openGauss allocates XIDs only to write transactions and does not allocate extra XIDs to read-only transactions. That is, XIDs are allocated only when they are required. If an XID has not been allocated to a transaction when an XID is allocated to its sub-transaction, the system allocates an XID to the transaction first to ensure that the XID of the sub-transaction is greater than that of the transaction. Theoretically, 64-bit XIDs are sufficient. If transactions per second \(TPS\) of the database are 10 million, that is, 10 million transactions can be processed per second, 64-bit XIDs can be used for 580,000 years.
 
     -   **Clogs and CSNlogs**
 
         Clogs and CSNlogs are used to maintain the mapping between XIDs and Clogs and that between XIDs and CSNlogs, respectively. Because memory resources are limited and long transactions may exist in the system, not all mappings can be stored in the memory. In this case, the mappings need to be written to disks as physical files. Therefore, Clog files \(XID - \> CommitLog Map\) and CSNlog files \(XID -\> CommitSeqNoLog Map\) are generated. Both CSNlogs and Clogs use the simple least recently used \(SLRU\) mechanism to read files and flush data to disks.
 
         1\) Clogs are used to record the commit status of XIDs. In openGauss, four bits are used to identify the status of each XID. The code of Clogs is as follows:
-
+    
         ```
         #define CLOG_XID_STATUS_IN_PROGRESS 0x00: The transaction has not started or is in progress (crash may occur).
         #define CLOG_XID_STATUS_COMMITTED 0x01: The transaction has been committed.
         #define CLOG_XID_STATUS_ABORTED 0x02: The transaction has been rolled back.
-        #define CLOG_XID_STATUS_SUB_COMMITTED 0x03: The sub-transaction has been committed but the status of its transaction is unknown.
+    #define CLOG_XID_STATUS_SUB_COMMITTED 0x03: The sub-transaction has been committed but the status of its transaction is unknown.
         ```
 
         Figure 5-10 shows the physical structure of a Clog page.
 
-        ![](figures/178.png)
+        ![](../figures/178.png)
 
         Figure 5-10 Physical structure of a Clog page
 
         Figure 5-10 shows that transactions 1, 4, and 5 are still in progress, transaction 2 has been committed, and transaction 3 has been rolled back.
 
         2\) CSNlogs are used to record the sequence number of transaction commit. openGauss allocates an 8-byte CSN of the uint64 type to each XID. Therefore, an 8-KB page can store the CSNs of 1000 transactions. When the size of the CSNlogs reaches a certain value, the logs are divided into file blocks. The size of each CSNlog file block is 256 KB. Similar to the XIDs, several special numbers are reserved for the CSNs. The code of CSNlogs is as follows:
-
+    
         ```
         #define COMMITSEQNO_INPROGRESS UINT64CONST(0x0): The transaction has not been committed or rolled back.
         #define COMMITSEQNO_ABORTED UINT64CONST(0x1): The transaction has been rolled back.
         #define COMMITSEQNO_FROZEN UINT64CONST(0x2): The transaction has been committed and is visible to any snapshot.
         #define COMMITSEQNO_FIRST_NORMAL UINT64CONST(0x3): start value of the CSN of the transaction
-        #define COMMITSEQNO_COMMIT_INPROGRESS (UINT64CONST(1) << 62): The transaction is being committed.
+    #define COMMITSEQNO_COMMIT_INPROGRESS (UINT64CONST(1) << 62): The transaction is being committed.
         ```
 
         Similar to the Clogs, the physical structure of the CSNlogs is shown in Figure 5-11.
 
-        ![](figures/179.png)
+        ![](../figures/179.png)
 
         Figure 5-11 Physical structure of CSNlogs
 
@@ -489,7 +491,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
          Process each tuple based on  **oldestxid**.
 
         \(3\)  **Heap\_page\_shift\_base**: This function is used to update the value of  **xid\_base**  and adjust the values of  **xmin**  and  **xmax**  in each tuple header on the page.
-
+    
         \(4\)  **GetNewTransactionId**: This function is used to obtain the latest XID.
 
 
@@ -694,7 +696,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
         1\) Working principles of CSNs \(Figure 5-12\)
 
-        ![](figures/zh-cn_image_0000001208473690.png)
+        ![](../figures/zh-cn_image_0000001208473690.png)
 
         Figure 5-12 Working principles of CSNs
 
@@ -704,7 +706,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
         When a snapshot is obtained, the minimum active XID is recorded as the value of  **snapshot.xmin**. The XID of the latest committed transaction \(specified by  **latestCompleteXid**\) + 1 is recorded as the value of  **snapshot.xmax**. The CSN of the latest committed transaction + 1 \(**NextCommitSeqNo**\) is recorded as the value of  **snapshot.csn**. Figure 5-13 shows the process of determining visibility.
 
-        ![](figures/1710.png)
+        ![](../figures/1710.png)
 
         Figure 5-13 Process for determining visibility by using MVCC snapshots
 
@@ -718,7 +720,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
 
         Figure 5-14 shows the transaction commit process.
 
-        ![](figures/1711.png)
+        ![](../figures/1711.png)
 
         Figure 5-14 Commit process
 
@@ -1039,7 +1041,7 @@ The transaction concurrency control mechanism is used to ensure the ACID propert
         };
         ```
 
-        ![](figures/1712.png)
+        ![](../figures/1712.png)
 
         Figure 5-15 Transaction information
 
@@ -1586,7 +1588,7 @@ In a database, concurrency control on public resources is implemented by using l
 
     The  **waitLock**  field in the t\_thrd.proc structure records the lock that the thread is waiting for. The  **procLocks**  field in the structure associates all lock-related holders and waits. Figure 5-16 shows the queue relationship.
 
-    ![](figures/zh-cn_image_0000001252803745.png)
+    ![](../figures/zh-cn_image_0000001252803745.png)
 
     Figure 5-16  Queue relationship of the t\_thrd.proc structure
 
@@ -1602,7 +1604,7 @@ In a database, concurrency control on public resources is implemented by using l
 
     A deadlock occurs because process B needs to access the resources of process A, but process A does not release the resources occupied by its lock due to various reasons. As a result, the database is always in the blocked state. As shown in Figure 5-17, T1 uses resource R1 and requests resource R2, while T2 holds resource R2 and requests resource R1.
 
-    ![](figures/1713.png)
+    ![](../figures/1713.png)
 
     Figure 5-17 Deadlock status
 
@@ -1612,7 +1614,7 @@ In a database, concurrency control on public resources is implemented by using l
 
         openGauss uses an independent monitoring thread to detect, diagnose, and release deadlocks of LWLocks. A worker thread writes a timestamp value before successfully requesting a LWLock. After successfully obtaining the lock, the worker thread sets the timestamp to 0. The monitoring thread can quickly compare the timestamp values to locate the thread that fails to obtain the lock resource for a long time. This process is fast and lightweight. Diagnosis of deadlock detection is triggered only when a long lock wait is detected. This prevents frequent diagnosis from affecting service execution. Once a deadlock loop is confirmed, the monitoring thread records the deadlock information in the log, and then takes recovery measures to recover the deadlock. That is, the monitoring thread selects a thread in the deadlock loop to report an error and then exit. Figure 5-18 shows the mechanism.
 
-        ![](figures/1714.png)
+        ![](../figures/1714.png)
 
         Figure 5-18 Deadlock detection and self-healing of LWLocks
 
@@ -1669,7 +1671,7 @@ In a database, concurrency control on public resources is implemented by using l
 
         If no conflict occurs when openGauss obtains a lock, openGauss directly locks the lock. If a conflict occurs, openGauss sets a timer and waits. After the specified period of time, openGauss is called by the timer to detect deadlock. If process T2 is behind process T1 in the waiting queue of a lock, and the lock that process T2 needs to obtain conflicts with the lock that process T1 needs to obtain, there is a soft edge from T2 to T1. If the lock request from process T2 conflicts with the lock held by process T1, a hard edge exists. The overall idea is, by calling functions recursively, to start from the thread that is waiting for a lock currently and move forward along the waiting edge to check whether a loop exists. If a soft edge exists in the loop, the two processes in the loop are waiting for the lock. In this case, sort the lock waiting queue again to try to solve the deadlock conflict. If there is no soft edge, only the transaction waiting for the current lock can be terminated to solve the deadlock loop. As shown in Figure 5-19, the dashed line indicates a soft edge, and the solid line indicates a hard edge. Thread A waits for thread B, thread B waits for thread C, and thread C waits for thread A. Because thread A waits for thread B on a soft edge, the wait relationship is adjusted, as shown in Figure 5-19. In this case, thread A waits for thread C, and thread C waits for thread A. There is no soft edge, and a deadlock is detected.
 
-        ![](figures/1715.png)
+        ![](../figures/1715.png)
 
         Figure 5-19 Deadlock detection for regular locks
 
@@ -1833,7 +1835,7 @@ In a database, concurrency control on public resources is implemented by using l
 
         The redo log cache system of the database refers to the write cache for database redo log persistency. Database redo logs are written to the log cache before being written to disks for persistency. The write efficiency of the log cache is the main factor that determines the overall throughput of the database. To ensure that logs are written in sequence, lock contention occurs when threads write logs. As such, lock contention becomes the main performance bottleneck. Based on the CPU characteristics of ARM-based Kunpeng servers, openGauss inserts logs in groups to reduce lock contention and improve the efficiency of inserting WALs, thereby improving the throughput performance of the entire database. Figure 5-20 shows the process of inserting logs in groups.
 
-        ![](figures/1716.png)
+        ![](../figures/1716.png)
 
         Figure 5-20 Inserting logs in groups
 
@@ -1967,7 +1969,7 @@ In a database, concurrency control on public resources is implemented by using l
 
         A main idea involved in optimization is to replace an atomic lock with the information about the two 64-bit global data locations through 128-bit atomic operations, eliminating costs of cross-CPU access, backoff, and cache consistency of the atomic lock. For details, see Figure 5-21.
 
-        ![](figures/zh-cn_image_0000001208315958.gif)
+        ![](../figures/zh-cn_image_0000001208315958.gif)
 
         Figure 5-21 Lock-free critical section protection by using 128-bit CAS operations
 
@@ -2031,11 +2033,11 @@ In a database, concurrency control on public resources is implemented by using l
 
         For details about Clogs, see section 5.2.2 XID Allocation, Clogs, and CSNlogs. Each transaction has four states:  **IN\_PROGRESS**,  **COMMITED**,  **ABORTED**, and  **SUB\_COMMITED**. Each log occupies 2 bits. Clogs need to be stored on disks. One page \(occupying 8 KB\) can contain 2<sup>15</sup>  logs, and each log file \(segment = 256 x 8 KB\) can contain 226 logs. Currently, access to Clogs is implemented through a buffer pool. A unified SLRU buffer pool is used in the code.
 
-        ![](figures/1717.png)
+        ![](../figures/1717.png)
 
         Figure 5-22 Clog buffer pool before optimization
 
-        ![](figures/1718.png)
+        ![](../figures/1718.png)
 
         Figure 5-23 Clog buffer pool after optimization
 
@@ -2145,7 +2147,7 @@ In a database, concurrency control on public resources is implemented by using l
 
         1\)Global PGPROC array optimization
 
-        ![](figures/1719.png)
+        ![](../figures/1719.png)
 
         Figure 5-24 Global PGPROC array optimization
 
@@ -2180,13 +2182,13 @@ In a database, concurrency control on public resources is implemented by using l
 
         WALInsertLocks are used to perform concurrency protection on WAL Insert operations. You can configure multiple WALInsertLocks, for example, 16. Before optimization, all WALInsertLocks are in the same global array and are allocated by using the shared memory. When a transaction thread is running, one of the WALInsertLocks in the entire global array is allocated for use. Therefore, there is a high probability that remote memory access is involved. That is, there is cross-node and cross-package contention among multiple threads. WALInsertLocks can also allocate memory separately by NUMA node, and each transaction thread uses only the WALInsertLock in the local node group. In this way, data contention can be limited to the same NUMA node. Figure 5-25 shows the basic principles.
 
-        ![](figures/1720.png)
+        ![](../figures/1720.png)
 
         Figure 5-25 Global WALInsertLock array optimization principles
 
         For example, if 16 WALInsertLocks and four NUMA nodes are configured, the original array with 16 elements will be split into four arrays, and each array has four elements. The global structure is WALInsertLockPadded \*\*GlobalWALInsertLocks. The local WALInsertLocks of the thread point to WALInsertLock\[4\] on the current node. Different NUMA nodes have WALInsertLock subarrays with different addresses. GlobalWALInsertLocks are used to trace WALInsertLock arrays under multiple nodes to facilitate traversal. Figure 5-26 shows the WALInsertLock grouping diagram.
 
-        ![](figures/zh-cn_image_0000001208124506.png)
+        ![](../figures/zh-cn_image_0000001208124506.png)
 
         Figure 5-26 WALInsertLock grouping diagram
 

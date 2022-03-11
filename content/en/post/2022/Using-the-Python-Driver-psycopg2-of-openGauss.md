@@ -2,11 +2,11 @@
 
 title = "Using the Python Driver psycopg2 of openGauss"
 
-date = "2021-4-2"
+date = "2021-04-2"
 
 tags = [ "Using the Python Driver psycopg2 of openGauss"]
 
-archives = "2021-4"
+archives = "2021-04"
 
 author = "Tianqing Wang"
 
@@ -28,7 +28,7 @@ psycopg2 is a Python driver of PostgreSQL. It is the only Python driver specifie
 
 openGauss is evolved from PostgreSQL XC \(PGXC\) and performs security hardening on native PostgreSQL communication protocols. Therefore, it is incompatible with the default PostgreSQL communication protocols, and by default, the native PostgreSQL that uses psycpog2 cannot connect to GaussDB. An error similar to the following is reported:
 
-![](figures/zh-cn_image_0000001252248517.jpg)
+![](../figures/zh-cn_image_0000001252248517.jpg)
 
 ## Solution 1: Modifying the GUC Parameter<a name="section23131436133613"></a>
 

@@ -2,11 +2,11 @@
 
 title = "Compilation Guide for openGauss Under Heterogeneous Conditions"
 
-date = "2021-7-7"
+date = "2021-07-7"
 
 tags = [ "Compilation Guide for openGauss Under Heterogeneous Conditions"]
 
-archives = "2021-7"
+archives = "2021-07"
 
 author = "Yansong LI"
 

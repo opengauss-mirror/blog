@@ -2,11 +2,11 @@
 
 title = "Core Technologies of openGauss Database I"
 
-date = "2020-7-23"
+date = "2020-07-23"
 
 tags = [ "Core Technologies of openGauss Database (I)"]
 
-archives = "2020-7"
+archives = "2020-07"
 
 author = "Shujie Zhang"
 
@@ -30,7 +30,7 @@ An SQL engine is an important part of a database system. It is responsible for g
 
 SQL execution process
 
-![](figures/61.png)
+![](../figures/61.png)
 
 As shown in the preceding figure, the SQL statement needs to be parsed to generate a logical execution plan, and the physical execution plan needs to be generated through query optimization. Then, the physical execution plan is transferred to the query execution engine for executing the physical operator.
 
@@ -86,7 +86,7 @@ During syntax analysis, words obtained through lexical analysis are matched with
 
 Abstract syntax tree
 
-![](figures/zh-cn_image_0000001251458611.jpg)
+![](../figures/zh-cn_image_0000001251458611.jpg)
 
 The semantics expressed by the AST is limited to ensuring that the applied SQL statements comply with the SQL standard specifications. However, the validity of the internal meaning of the SQL statements needs to be checked.
 
@@ -100,7 +100,7 @@ During the validity check, the semantic analysis process is the same as the vali
 
 Relational algebraic expression
 
-![](figures/zh-cn_image_0000001207138590.jpg)
+![](../figures/zh-cn_image_0000001207138590.jpg)
 
 ## **03**  Query Optimization<a name="section1110310854913"></a>
 
@@ -193,7 +193,7 @@ In recent years, AI technologies, especially in the deep learning field, have de
 
         Comparison before and after query rewriting
 
-        ![](figures/62-0.png)
+        ![](../figures/62-0.png)
 
     -   Outer Join Elimination
 

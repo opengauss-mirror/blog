@@ -30,7 +30,7 @@ Then, can we use blockchains to replace databases? The answer is no. The blockch
 
 A blockchain is usually divided into seven layers in terms of the architecture model: application layer, query layer, contract layer, actuator layer, consensus layer, network layer, and data layer. The following figure shows the technical points of each layer.
 
-![](figures/311.png)
+![](../figures/311.png)
 
 Figure 1 Blockchain infrastructure model
 
@@ -38,7 +38,7 @@ The database absorbs the tamper-proof capability of the blockchain. Naturally, t
 
 ## 2      Principles of the openGauss Ledger Database<a name="section65651078913"></a>
 
-![](figures/312.png)
+![](../figures/312.png)
 
 Figure 2 New modules in the ledger database
 
@@ -46,7 +46,7 @@ When a client sends an SQL statement to modify data in the database, the communi
 
 -   2.1      Tamper-proof User Table
 
-    ![](figures/zh-cn_image_0000001207772870.png)
+    ![](../figures/zh-cn_image_0000001207772870.png)
 
     Figure 3 Structure of the tamper-proof user table
 
@@ -56,7 +56,7 @@ When a client sends an SQL statement to modify data in the database, the communi
 
 -   2.2      User History Table
 
-    ![](figures/zh-cn_image_0000001252412855.png)
+    ![](../figures/zh-cn_image_0000001252412855.png)
 
     Figure 4 Structure of the user history table
 
@@ -96,7 +96,7 @@ When a client sends an SQL statement to modify data in the database, the communi
 
     **pre\_hash**  combines the data of the current row and the pre\_hash data of the previous row in the history table to generate the data summary of the current user's history table. The calculation formula is as follows:
 
-    ![](figures/zh-cn_image_0000001252700965.gif)
+    ![](../figures/zh-cn_image_0000001252700965.gif)
 
     **i**  indicates the  _i_th row in the user history table, and  **rowdata\_i**  indicates the data concatenated by  **xid || hash\_ins || hash\_del**  in the  _i_th row.![](figures/zh-cn_image_0000001252341007.gif)
 
@@ -104,7 +104,7 @@ When a client sends an SQL statement to modify data in the database, the communi
 
 -   2.3      Structure of the Global Blockchain Table
 
-    ![](figures/313.png)
+    ![](../figures/313.png)
 
     Figure 5 Structure of the global blockchain table
 
@@ -112,7 +112,7 @@ When a client sends an SQL statement to modify data in the database, the communi
 
 -   2.4      Tampering Check Algorithm
 
-    ![](figures/314.png)
+    ![](../figures/314.png)
 
     Figure 6 Generation of tamper-proof user table verification information
 
@@ -122,7 +122,7 @@ When a client sends an SQL statement to modify data in the database, the communi
 
     Figure 7 shows the overall verification information about the change records generated in the user history table. According to the structure of the user history table, the non-null elements in the  **hash\_ins**  column indicate the increase of data verification information caused by all operations, and the non-null elements in the  **hash\_del**  column indicate the decrease of verification data. A set of remaining check information is obtained by performing a difference set on two columns of elements. Then, the exchangeable verification information aggregation algorithm is used to obtain the overall verification information of the change records caused by the record operation in the user history table. In this process, due to the interchangeability of the aggregation algorithm,  **hash\_ins – hash\_del**  may be performed on each row first, and then information is continuously stacked and generated during scanning. Herein, generation of the overall verification information of the change records may also be completely parallel.
 
-    ![](figures/315.png)
+    ![](../figures/315.png)
 
     Figure 7 Generating the verification information of the user history table
 

@@ -2,11 +2,11 @@
 
 title = "Core Technologies of openGauss Database"
 
-date = "2020-7-30"
+date = "2020-07-30"
 
 tags = [ "Core Technologies of openGauss Database (II)"]
 
-archives = "2020-7"
+archives = "2020-07"
 
 author = "Shujie Zhang"
 
@@ -30,13 +30,13 @@ The core problem of the optimizer is to obtain the optimal solution for an SQL s
 
 **Bottom-up Mode**
 
-![](figures/zh-cn_image_0000001251754525.gif)
+![](../figures/zh-cn_image_0000001251754525.gif)
 
 As shown in the preceding figure, in bottom-up mode, the logical execution plan is split. A table scan operator is created first, and then a connection operator is formed by the scan operator. Finally, a physical execution plan is formed. In this process, there are multiple types of physical scan operators and physical join operators. Therefore, multiple physical execution paths are generated. The optimizer selects an execution plan with the lowest cost based on the estimated cost of each execution path, and then transfers the execution plan to the executor for execution.
 
 **Top-down Mode**
 
-![](figures/zh-cn_image_0000001251954519.gif)
+![](../figures/zh-cn_image_0000001251954519.gif)
 
 As shown in the preceding figure, this mode uses the object-oriented idea to objectify the core functions of the optimizer and generate a logical plan after lexical analysis, syntax analysis, and semantic analysis. Based on the logical plan, an object-based optimization rule is applied to generate a plurality of to-be-selected logical plans. The logical plans are traversed by using a top-down method, and an optimal execution path is obtained by combining dynamic planning, cost estimation, and branch and bound technologies.
 

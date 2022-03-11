@@ -2,11 +2,11 @@
 
 title = "Dynamic Data Masking of openGauss"
 
-date = "2021-3-24"
+date = "2021-03-24"
 
 tags = [ "Dynamic Data Masking of openGauss"]
 
-archives = "2021-3"
+archives = "2021-03"
 
 author = "Meiting Xu"
 
@@ -34,7 +34,7 @@ times = "12:30"
 
     **Figure 1-1**  Static and dynamic data masking
 
-    ![](figures/110.png)
+    ![](../figures/110.png)
 
     Dynamic data masking and static data masking are applicable to different scenarios. You can select one based on the application scenario. The latest openGauss officially supports dynamic data masking. The following sections describe the dynamic data masking mechanism of openGauss.
 
@@ -86,24 +86,24 @@ openGauss has defined a complete built-in security policy model from version 1.1
 
     Check whether the built-in security policy is enabled.
 
-    ![](figures/zh-cn_image_0000001206967370.png)
+    ![](../figures/zh-cn_image_0000001206967370.png)
 
     Prepare two tables containing the sensitive columns  **creditcard**  and  **customername**.
 
-    ![](figures/111.png)
+    ![](../figures/111.png)
 
     **Policy Configuration**
 
     Log in to the database as a policy administrator \(with the  **poladmin**  permission\) and add the sensitive columns in the two data tables to the resource labels  **creditcard\_label**  and  **customer\_label**  for management.
 
-    ![](figures/zh-cn_image_0000001252127325.png)
+    ![](../figures/zh-cn_image_0000001252127325.png)
 
     Create the following two masking policies:
 
     -   **mask\_card\_pol**: Columns in the  **creditcard\_label**  label are masked by using the  **creditcardmasking**  function only when the  **user1**  user uses gsql to access the tables using the IP address 10.11.12.13.
     -   **mask\_name\_pol**: By default, columns in the  **customer\_label**  label are masked by using the  **maskall**  function for all query users.
 
-        ![](figures/zh-cn_image_0000001206807380.png)
+        ![](../figures/zh-cn_image_0000001206807380.png)
 
     **Triggering Data Masking Policies**
 
@@ -113,7 +113,7 @@ openGauss has defined a complete built-in security policy model from version 1.1
 
     **Figure 2-1**  Dynamic data masking architecture of openGauss
 
-    ![](figures/112.png)
+    ![](../figures/112.png)
 
     Based on the cases described in section "Configuring Masking Policies", you can query the data table to trigger the masking policy.
 
@@ -121,11 +121,11 @@ openGauss has defined a complete built-in security policy model from version 1.1
 
     If the  **user1**  user uses gsql to log in to the database and query sensitive data in compliance with the  **mask\_card\_pol**  policy, the system returns the masked data. However, the  **user2**  user does not comply with the policy. Therefore, the data queried by this user is not masked.
 
-    ![](figures/113.png)
+    ![](../figures/113.png)
 
     When the  **user1**  user or the  **user2**  user queries the  **order**  table, the  **mask\_name\_pol**  masking policy is triggered. Therefore, the  **customername**  column is masked.
 
-    ![](figures/zh-cn_image_0000001251847329.png)
+    ![](../figures/zh-cn_image_0000001251847329.png)
 
 
 ## 3 Advantages of openGauss Dynamic Data Masking<a name="section17225451122816"></a>
@@ -134,13 +134,13 @@ The dynamic data masking feature of openGauss focuses on identifying users who a
 
 **Figure 3-1**  Data masking of openGauss based on filter criteria
 
-![](figures/114.png)
+![](../figures/114.png)
 
 The dynamic data masking feature of openGauss focuses more on batch management of database resources. In the security policy model, database resources to be managed and controlled are classified into labels. Operations on labels are operations on a specified cluster of resources, which greatly simplifies the management process and improves management efficiency. The dynamic data masking feature of other databases is based on a single column or table. The masking policy corresponds to the database resource. Even if you want to use the same masking function, you need to configure multiple masking policies for different database resources, which increases the policy configuration cost as well as the difficulty in subsequent O&M and batch resource policy management. Therefore, allocating database resources to be managed in batches to resource labels is the basis and one of the advantages of the dynamic data masking feature of openGauss.
 
 **Figure 3-2**  Batch policy configuration for openGauss resource labels
 
-![](figures/115.png)
+![](../figures/115.png)
 
 The openGauss kernel is equipped with dynamic data masking, which ensures the security of data transmission paths to some extent. However, external plug-ins may be bypassed. After an external plug-in rewrites the SQL statements sent from the client or the result set returned by the server, attackers can bypass the plug-in to directly send SQL statements to the database or intercept the source data result set returned by the database. As a result, the masking plug-in becomes invalid. Therefore, compared with masking by using external plug-ins, the dynamic data masking feature of openGauss can reduce the risk of sensitive data leakage on the transmission path to some extent.
 
