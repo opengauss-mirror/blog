@@ -14,7 +14,7 @@ summary = "openGauss Log Consensus Framework"
 
 img = "/en/post/2022/title/img9.png"
 
-times = "12:30"s
+time = "12:30"
 
 +++
 
