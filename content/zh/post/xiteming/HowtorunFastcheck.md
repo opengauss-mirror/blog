@@ -1,11 +1,12 @@
-﻿+++
-title = "如何跑Fastcheck"
++++
+title = "如何跑各种check"
 date = "2021-11-09"
-tags = ["openGauss如何跑Fastcheck"]
+tags = ["openGauss如何跑各种check"]
 archives = "2021-11-09"
-author = "xiteming"
-summary = "如何跑Fastcheck"
+author = "xiteming, pengjiong"
+summary = "如何跑各种check"
 img = "/zh/post/xingchen/title/img1.png"
+
 +++
 
 ## 如何进行Fastcheck？
@@ -38,3 +39,37 @@ make install –sj
 make fastcheck_single
 经验技巧：
 1.如何确定期望输出：对于期望输出，如果你的测试用例的输出是确定的，那么一个最简单的方法就是先创建一个parallel_scheduleYYY的临时文件，里面只包含你要添加的测试用例，然后运行一次make fastcheck_single，这样得到的diffs中就包含是你的期望输出。
+
+## 如何进行memcheck？
+memcheck并不是一个新的check，只是编译openGauss时，编译一个memcheck版的，然后通过跑fastcheck_single来发现代码中的内存问题。
+编译方式和编译普通的openGauss基本一致，只是在configure时，添加一个 ```--enable-memory-check``` 参数，编译出来的就是memcheck版本的openGauss。
+```
+./configure --gcc-version=7.3.0 CC=g++ CFLAGS='-O0' --prefix=$GAUSSHOME --3rd=$BINARYLIBS --enable-debug --enable-cassert --enable-thread-safety --with-readline --without-zlib --enable-memory-check
+```
+跑memcheck之前，需要设置环境变量：
+```shell
+ulimit -v unlimited
+```
+设置完环境变量后，正常跑fastcheck_single即可，跑完后，会在 ```~/memchk/asan/```路径下生成文件名为runlog.xxx的memcheck报告。根据memcheck报告分析是否有内存问题。如何分析memcheck报告可自行网上搜索memcheck报告分析、asan报告分析等关键字。
+
+## 如何进行hacheck？
+hacheck是对openGauss主备功能进行测试的check，openGauss的编译方式同fastcheck，编译完成后，进入 ```src/test/ha```目录，修改standby_env.sh文件，在文件最前面新增一行
+```shell
+export prefix=$GAUSSHOME
+```
+脚本中将尝试通过ifconfig命令获取本机IP，如果本机网卡的名称不是eth0、eth1、ens4f0、enp2s0f0、enp2s0f1、enp125s0f0之一的话，获取IP将失败，此时可以在
+```
+enp125s0f0=`/sbin/ifconfig enp125s0f0|sed -n 2p |awk  '{ print $2 }'`
+```
+的下面手动添加本机IP地址：
+```
+enp125s0f0=`/sbin/ifconfig enp125s0f0|sed -n 2p |awk  '{ print $2 }'`
+eth0ip=1.1.1.1
+```
+配置好脚本后，执行hacheck脚本：
+```shell
+sh run_ha_multi_single.sh
+sh run_ha_single.sh
+```
+运行是否成功会在屏幕打印 ok/failed，运行日志在 ```src/test/ha/results```目录下。
+
