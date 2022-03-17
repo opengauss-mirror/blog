@@ -2,7 +2,7 @@
 
 title = "Compilation Guide for openGauss Under Heterogeneous Conditions"
 
-date = "2021-07-7"
+date = "2021-07-07"
 
 tags = [ "Compilation Guide for openGauss Under Heterogeneous Conditions"]
 

@@ -2,7 +2,7 @@
 
 title = "Using the Python Driver psycopg2 of openGauss"
 
-date = "2021-04-2"
+date = "2021-04-02"
 
 tags = [ "Using the Python Driver psycopg2 of openGauss"]
 
