@@ -2,11 +2,11 @@
 
 title = "Core Technologies of openGauss Database I"
 
-date = "2020-7-23"
+date = "2020-07-23"
 
 tags = [ "Core Technologies of openGauss Database (I)"]
 
-archives = "2020-7"
+archives = "2020-07"
 
 author = "Shujie Zhang"
 

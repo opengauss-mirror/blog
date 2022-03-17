@@ -2,11 +2,11 @@
 
 title =  "openGauss向量化引擎--hash join" 
 
-date = "2022-1-7" 
+date = "2022-01-07" 
 
 tags = [ "openGauss向量化引擎--hash join"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "yanzongshuaiDBA" 
 

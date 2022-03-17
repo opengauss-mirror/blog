@@ -2,11 +2,11 @@
 
 title = "Dynamic Data Masking of openGauss"
 
-date = "2021-3-24"
+date = "2021-03-24"
 
 tags = [ "Dynamic Data Masking of openGauss"]
 
-archives = "2021-3"
+archives = "2021-03"
 
 author = "Meiting Xu"
 

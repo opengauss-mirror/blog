@@ -2,11 +2,11 @@
 
 title = "Using pg chameleon to Migrate Data from MySQL to openGauss"
 
-date = "2021-6-17"
+date = "2021-06-17"
 
 tags = [ "Using pg chameleon to Migrate Data from MySQL to openGauss"]
 
-archives = "2021-6"
+archives = "2021-06"
 
 author = "Ju Peng"
 

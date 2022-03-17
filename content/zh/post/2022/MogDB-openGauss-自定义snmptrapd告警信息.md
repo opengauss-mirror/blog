@@ -2,11 +2,11 @@
 
 title =  "MogDB/openGauss 自定义snmptrapd告警信息" 
 
-date = "2022-1-6" 
+date = "2022-01-06" 
 
 tags = [ "MogDB/openGauss 自定义snmptrapd告警信息"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "高云龙" 
 

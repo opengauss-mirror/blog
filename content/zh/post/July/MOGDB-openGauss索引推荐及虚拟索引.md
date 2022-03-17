@@ -2,7 +2,7 @@
 
 title =  "MOGDB/openGauss索引推荐及虚拟索引" 
 
-date = "2021-12-4" 
+date = "2021-12-04" 
 
 tags = [ "MOGDB/openGauss索引推荐及虚拟索引"] 
 

@@ -1,8 +1,8 @@
-\+++
++++
 
 title = "openGauss事务管理系统分析"
 
-date = "2021-12-4"
+date = "2021-12-04"
 
 tags = ["openGauss系统源码分析"]
 
@@ -16,7 +16,7 @@ img = "/zh/post/foreverdragon/title/title2.jpg"
 
 times = "19:25"
 
-\+++
++++
 
 Opengauss事务管理系统分析
 

@@ -2,11 +2,11 @@
 
 title = "Transaction Mechanism Source Code Analysis"
 
-date = "2021-7-5"
+date = "2021-07-05"
 
 tags = [ "Transaction Mechanism Source Code Analysis"]
 
-archives = "2021-7"
+archives = "2021-07"
 
 author = "Jiangjun Jiang"
 

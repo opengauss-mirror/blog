@@ -2,11 +2,11 @@
 
 title = "Permission Management Model of the openGauss Database Continued"
 
-date = "2021-8-2"
+date = "2021-08-02"
 
 tags = [ "Permission Management Model of the openGauss Database"]
 
-archives = "2021-8"
+archives = "2021-08"
 
 author = "Rongrong Song"
 

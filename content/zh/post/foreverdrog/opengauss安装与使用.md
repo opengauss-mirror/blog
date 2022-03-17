@@ -1,8 +1,8 @@
-\+++
++++
 
 title = "openGauss安装与使用"
 
-date = "2021-12-4"
+date = "2021-12-04"
 
 tags = ["openGauss开发入门"]
 
@@ -16,7 +16,7 @@ img = "/zh/post/foreverdragon/title/title1.jpg"
 
 times = "19:20"
 
-\+++
++++
 
 **一、opengauss数据库安装：**
 

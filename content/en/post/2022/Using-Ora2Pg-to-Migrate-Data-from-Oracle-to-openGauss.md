@@ -2,11 +2,11 @@
 
 title = "Using Ora2Pg to Migrate Data from Oracle to openGauss"
 
-date = "2021-6-9"
+date = "2021-06-09"
 
 tags = [ "Using Ora2Pg to Migrate Data from Oracle to openGauss"]
 
-archives = "2021-6"
+archives = "2021-06"
 
 author = "Xiaobin Chen"
 

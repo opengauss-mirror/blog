@@ -2,11 +2,11 @@
 
 title =  "openGauss gsql 常用元命令 二" 
 
-date = "2022-1-10" 
+date = "2022-01-10" 
 
-tags = [ "openGauss gsql 常用元命令 二"] 
+tags = ["openGauss gsql 常用元命令 二"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "晨辉" 
 

@@ -2,11 +2,11 @@
 
 title = "openGauss Database Performance Optimization"
 
-date = "2020-8-13"
+date = "2020-08-13"
 
 tags = [ "openGauss Database Performance Optimization"]
 
-archives = "2020-8"
+archives = "2020-08"
 
 author = "Yansong LI"
 

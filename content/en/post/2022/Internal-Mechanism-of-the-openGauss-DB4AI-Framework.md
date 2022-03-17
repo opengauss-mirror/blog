@@ -2,11 +2,11 @@
 
 title = "Internal Mechanism of the openGauss DB4AI Framework"
 
-date = "2021-9-26"
+date = "2021-09-26"
 
 tags = [ "Internal Mechanism of the openGauss DB4AI Framework"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Wen Nie"
 

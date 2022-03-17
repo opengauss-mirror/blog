@@ -2,11 +2,11 @@
 
 title = "openGauss AI4DB and DB4AI"
 
-date = "2021-1-19"
+date = "2021-01-19"
 
 tags = [ "openGauss AI4DB and DB4AI"]
 
-archives = "2021-1"
+archives = "2021-01"
 
 author = "Tianqing Wang"
 
