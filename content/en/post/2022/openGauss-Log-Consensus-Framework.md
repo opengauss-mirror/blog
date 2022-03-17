@@ -2,11 +2,11 @@
 
 title = "openGauss Log Consensus Framework"
 
-date = "2021-9-29"
+date = "2021-09-29"
 
 tags = [ "openGauss Log Consensus Framework"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Xilin Hu"
 

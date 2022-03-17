@@ -2,11 +2,11 @@
 
 title = "SQL Engine Source Parsing"
 
-date = "2021-8-27"
+date = "2021-08-27"
 
 tags = [ "SQL Engine Source Parsing"]
 
-archives = "2021-8"
+archives = "2021-08"
 
 author = "Shujie Zhang"
 

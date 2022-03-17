@@ -2,11 +2,11 @@
 
 title = "A Leap of openGauss from Standalone System to Distributed System"
 
-date = "2021-9-14"
+date = "2021-09-14"
 
 tags = [ "A Leap of openGauss from Standalone System to Distributed Systems"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Bin Zhou"
 

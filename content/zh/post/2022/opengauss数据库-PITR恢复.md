@@ -2,11 +2,11 @@
 
 title =  "opengauss数据库-PITR恢复" 
 
-date = "2022-1-5" 
+date = "2022-01-05" 
 
 tags = [ "opengauss数据库-PITR恢复"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "周琦放" 
 

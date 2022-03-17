@@ -1,10 +1,14 @@
++++
+
 title = "OpenGauss解析器"
-date = "2021-12-5"
+date = "2021-12-05"
 tags = ["OpenGauss解析器"]
 archives = "2021-12"
 author = "zhou-yuxiang"
 summary = "openGauss社区开发入门"
 times = "17:30"
+
++++
 
 openGauss解析器实验报告
 

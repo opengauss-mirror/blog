@@ -2,11 +2,11 @@
 
 title = "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers"
 
-date = "2021-3-3"
+date = "2021-03-03"
 
 tags = [ "Introduction to Multi-Core Optimization of openGauss on Kunpeng Servers"]
 
-archives = "2021-3"
+archives = "2021-03"
 
 author = "Wengang Tian"
 

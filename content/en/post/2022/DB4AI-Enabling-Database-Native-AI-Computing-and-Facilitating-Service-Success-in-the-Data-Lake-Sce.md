@@ -2,11 +2,11 @@
 
 title = "DB4AI: Enabling Database Native AI Computing and Facilitating Service Success in the Data Lake Scenario"
 
-date = "2021-9-27"
+date = "2021-09-27"
 
 tags = [ "DB4AI: Enabling Database Native AI Computing and Facilitating Service Success in the Data Lake Scenario"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Wen Nie"
 

@@ -2,7 +2,7 @@
 
 title =  "MogDB/openGauss常用查询汇总" 
 
-date = "2021-12-4" 
+date = "2021-12-04" 
 
 tags = [ "MogDB/openGauss常用查询汇总"] 
 

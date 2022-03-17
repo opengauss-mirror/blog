@@ -2,11 +2,11 @@
 
 title = "Guide to Adapting HAProxy to openGauss"
 
-date = "2021-9-18"
+date = "2021-09-18"
 
 tags = [ "Guide to Adapting HAProxy to openGauss"]
 
-archives = "2021-9"
+archives = "2021-09"
 
 author = "Xin Dou"
 

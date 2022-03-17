@@ -2,11 +2,11 @@
 
 title =  "MOGDB/openGauss数据库gs dump备份脚本及备份清理" 
 
-date = "2022-1-7" 
+date = "2022-01-07" 
 
 tags = [ "MOGDB/openGauss数据库gs dump备份脚本及备份清理"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "阎书利" 
 
