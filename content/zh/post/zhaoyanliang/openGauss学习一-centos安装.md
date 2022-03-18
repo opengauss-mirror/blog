@@ -5,7 +5,6 @@ tags = ["openGauss社区开发入门"]
 archives = "2021-11-30"
 author = "zhaoyanliang"
 summary = "openGauss社区开发入门"
-img = "/zh/post/zhaoyanliang/title/title.jpg"
 times = "13:30"
 
 +++

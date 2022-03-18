@@ -1,4 +1,21 @@
-# OpenGauss内存引擎中的索引
++++
+
+title = "openGauss内存引擎中的索引" 
+
+date = "2021-12-11" 
+
+tags = ["openGauss内存引擎中的索引"] 
+
+archives = "2021-12" 
+
+author = "yushanXD" 
+
+summary = "openGauss内存引擎中的索引"
+
+times = "17:30"
+
++++
+
 
 ## 一、索引
 

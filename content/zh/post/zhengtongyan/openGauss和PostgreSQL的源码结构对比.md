@@ -1,12 +1,14 @@
 +++
+
 title = "openGauss和PostgreSQL的源码目录结构对比"
 date = "2021-07-10"
 tags = ["openGauss源码目录结构"]
 archives = "2021-07"
 author = "zhengtongyan"
 summary = "openGauss和PostgreSQL的源码目录结构对比"
-img = "/zh/post/zhengtongyan/title/img.png"
+img = "/zh/post/zhengtongyan/titles/img.png"
 times = "23:00"
+
 +++
 
 # **openGauss和PostgreSQL的源码目录结构对比**

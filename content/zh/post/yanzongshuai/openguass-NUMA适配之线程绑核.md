@@ -1,22 +1,22 @@
-title = "opengauss NUMA适配之线程绑核" 
++++
+
+title = "openGauss NUMA适配之线程绑核" 
 
 date = "2021-06-29" 
 
-tags = ["opengauss NUMA适配之线程绑核"] 
+tags = ["openGauss NUMA适配之线程绑核"] 
 
 archives = "2021-06" 
 
 author = "闫宗帅" 
 
-summary = "opengauss NUMA适配之线程绑核构"
-
-img = "/zh/post/lihongda/title/title.png" 
+summary = "openGauss NUMA适配之线程绑核构"
 
 times = "19:30"
 
 +++
 
-# opengauss NUMA适配之线程绑核<a name="ZH-CN_TOPIC_0000001124544422"></a>
+# openGauss NUMA适配之线程绑核<a name="ZH-CN_TOPIC_0000001124544422"></a>
 
 ## 1、多核NUMA结构<a name="section5398112810112"></a>
 

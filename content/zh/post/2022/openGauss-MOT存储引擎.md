@@ -12,7 +12,7 @@ author = "ORA-DBA"
 
 summary = "openGauss MOT存储引擎"
 
-img = "/zh/post/2022/title/img15.png" 
+img = "/zh/post/2022/title/img15.jpg" 
 
 times = "12:30"
 

@@ -1,14 +1,16 @@
-title = "MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构" 
++++
+
+title = "MogDB/openGauss 手动部署(非OM工具)单机，主备，主备级联架构" 
 
 date = "2021-06-29" 
 
-tags = ["MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构"] 
+tags = ["MogDB/openGauss 手动部署(非OM工具)单机，主备，主备级联架构"] 
 
 archives = "2021-06" 
 
 author = "李宏达" 
 
-summary = "MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构"
+summary = "MogDB/openGauss 手动部署(非OM工具)单机，主备，主备级联架构"
 
 img = "/zh/post/lihongda/title/title.png" 
 
@@ -16,7 +18,7 @@ times = "19:30"
 
 +++
 
-# **MogDB/openGauss 手动部署\(非OM工具\)单机，主备，主备级联架构**<a name="ZH-CN_TOPIC_0000001142262039"></a>
+# **MogDB/openGauss 手动部署(非OM工具)单机，主备，主备级联架构**<a name="ZH-CN_TOPIC_0000001142262039"></a>
 
 ## 一、前期准备<a name="section1235751411246"></a>
 
