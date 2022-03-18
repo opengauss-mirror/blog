@@ -1,7 +1,20 @@
-Opengauss单机部署
++++
 
-[TOC]
+title = "openGauss单机部署" 
 
+date = "2021-12-11" 
+
+tags = ["openGauss单机部署"] 
+
+archives = "2021-12" 
+
+author = "yushanXD" 
+
+summary = "openGauss单机部署"
+
+times = "17:30"
+
++++
  
 
 ## 一、安装环境

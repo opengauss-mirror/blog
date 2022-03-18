@@ -1,12 +1,15 @@
 ﻿+++
-title = "OpenGauss数据库的安装运行（OpenGauss2.0.1）"
-date = "2021-12-6"
-tags = ["OpenGauss数据库的安装运行"]
+
+title = "openGauss数据库的安装运行（openGauss2.0.1）"
+date = "2021-12-06"
+tags = ["openGauss数据库的安装运行"]
 archives = "2021-12"
 author = "mqq"
-summary = "OpenGauss数据库的安装运行"
+summary = "openGauss数据库的安装运行"
 img = "/zh/post/mqq/title/title.png"
+
 +++
+
 # 环境准备
 <br/>
 

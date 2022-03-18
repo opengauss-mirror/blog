@@ -1,11 +1,13 @@
-```
++++
+
 title = "openGauss中的AI技术————慢SQL的检测"
 date = "2021-11-30"
 tags = ["openGauss社区开发入门"]
 archives = "2021-11"
 author = "chen-yiming-cs"
 summary = "openGauss社区开发入门"
-```
+
++++
 
 # 一、概念部分
 
