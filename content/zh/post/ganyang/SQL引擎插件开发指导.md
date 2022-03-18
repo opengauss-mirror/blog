@@ -49,15 +49,21 @@ times = "16:30"
 
  
 
-## 插件安装自测、使用方法
+## 插件安装、使用方法
 
 将b_sql_plugin文件夹放入数据库的contrib目录下，并使用make -sj && make install -sj完成编译安装，随后创建一个B兼容性的数据库，通过语句create extension b_sql_plugin即可使用。
 
-随后将测试用的.sql文件放入sql文件夹 预期结果放入expected文件夹。
+![](../image/CREATE.png)
+
+
+## fastcheck自测方法
+
+将测试用的.sql文件放入sql文件夹 预期结果放入expected文件夹。
+![](../image/FASTCHECK.png)
 
 通过make installcheck命令就能进行自测,如提示变量值不对需要手动修改pg_regress.cpp中相应值。
 
-![](../image/PG_REGRESS1)
+![](../image/PG_REGRESS1.png)
 
 ![](../image/PG_REGRESS2.png)
 
@@ -71,7 +77,7 @@ times = "16:30"
 
 下面提供一些模板样例用于参考：
 
-```c++
+```sql
 --CREATE TYPE
 
 DROP TYPE IF EXISTS pg_catalog.year CASCADE;
