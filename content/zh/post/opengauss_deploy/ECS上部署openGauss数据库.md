@@ -1,14 +1,14 @@
++++
 
-<!-- +++
 title = "在ECS上安装部署openGauss数据库指导手册"
 date = "2021-11-13"
 tags = ["在ECS上安装部署openGauss数据库指导手册"]
 archives = "2021-11-13"
-author = "xingchen"
+author = "opengauss_deploy"
 summary = "在ECS上安装部署openGauss数据库指导手册"
-img = "/zh/post/xingchen/title/img1.png"
 times = "19:30"
-+++ -->
+
++++
 
 ## 在ECS上安装部署openGauss数据库指导手册
 

@@ -32,6 +32,10 @@ Gcc的编译依赖 `gmp` `isl` `mpc` `mpfr` ，需要先编译这四个库。
         <td>http://ftp.gnu.org/gnu/gmp/gmp-6.1.1.tar.xz</td>
     </tr>
     <tr>
+        <td>mpfr</td>
+        <td>http://ftp.gnu.org/gnu/mpfr/mpfr-4.0.2.tar.gz</td>
+    </tr>
+    <tr>
         <td>mpc</td>
         <td>http://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz</td>
     </tr>

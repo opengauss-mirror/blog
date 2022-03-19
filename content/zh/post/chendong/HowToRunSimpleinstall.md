@@ -1,3 +1,21 @@
++++
+
+title = "openGauss简化安装脚本" 
+
+date = "2020-12-16" 
+
+tags = ["openGauss简化安装脚本"] 
+
+archives = "2020-12" 
+
+author = "chendong" 
+
+summary = "openGauss简化安装脚本"
+
+times = "15:30"
+
++++
+
 ## 1 概述
 
 本文主要介绍采用openGauss简化安装脚本（以下简称安装脚本），一键式安装openGauss数据库所必须的系统环境及安装步骤。

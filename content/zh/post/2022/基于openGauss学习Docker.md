@@ -2,11 +2,11 @@
 
 title =  "基于openGauss学习Docker" 
 
-date = "2022-1-7" 
+date = "2022-01-07" 
 
 tags = [ "基于openGauss学习Docker"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "张玉龙 " 
 

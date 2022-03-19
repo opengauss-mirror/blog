@@ -1,4 +1,5 @@
-```
++++
+
 title = "openGauss数据库安装与使用"
 date = "2021-11-30"
 tags = ["openGauss社区开发入门"]
@@ -6,7 +7,9 @@ archives = "2021-11"
 author = "chen-yiming-cs"
 summary = "openGauss社区开发入门" 
 times = "17:30"
-```
+
++++
+
 # 一、相关说明
   使用VMware虚拟机，安装CentOS7.9 64位系统（因为找不到7.6的安装包了），设置此系统的基础参数如下（这里内存需要设置大一点，不然可能会无法运行OpenGauss）：
 

@@ -18,7 +18,7 @@ times = "20:30"
 | 依赖开源工程     | 工程链接                                       |
 | ---------------- | ---------------------------------------------- |
 | 普罗米修斯       | https://github.com/prometheus/pushgateway      |
-| opengauss_export | https://github.com/enmotech/opengauss_exporter |
+| opengauss_export | https://gitee.com/opengauss/openGauss-prometheus-exporter |
 | pushgateway      | https://github.com/prometheus/pushgateway      |
 | openGauss        | https://gitee.com/opengauss/openGauss-server   |
 

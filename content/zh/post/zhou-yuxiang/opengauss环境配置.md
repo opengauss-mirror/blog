@@ -1,12 +1,14 @@
-```
++++
+
 title = "OpenGauss环境配置实验"
-date = "2021-12-5"
+date = "2021-12-05"
 tags = ["OpenGauss环境配置实验"]
 archives = "2021-12"
 author = "zhou-yuxiang"
 summary = "openGauss社区开发入门"
 times = "17:30"
-```
+
++++
 
  
 

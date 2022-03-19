@@ -1,6 +1,6 @@
 +++
 title = "Vmware15+CentOS7.9安装openGauss"
-date ="2021-12-1"
+date ="2021-12-01"
 tags =["openGauss安装"]
 archives ="2021-12"
 author ="baikaishui"

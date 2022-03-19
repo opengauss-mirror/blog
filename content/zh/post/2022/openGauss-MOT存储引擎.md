@@ -2,17 +2,17 @@
 
 title =  "openGauss MOT存储引擎" 
 
-date = "2022-1-7" 
+date = "2022-01-07" 
 
 tags = [ "openGauss MOT存储引擎"] 
 
-archives = "2022-1" 
+archives = "2022-01" 
 
 author = "ORA-DBA" 
 
 summary = "openGauss MOT存储引擎"
 
-img = "/zh/post/2022/title/img15.png" 
+img = "/zh/post/2022/title/img15.jpg" 
 
 times = "12:30"
 
