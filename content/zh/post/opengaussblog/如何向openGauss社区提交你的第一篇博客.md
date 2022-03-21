@@ -19,7 +19,7 @@ openGauss社区的博客板块对外完全开放，以方便参与者分享个�
 
 openGauss社区源代码以及官方网站和博客都托管在码云Gitee上面，组织仓库地址https://gitee.com/opengauss。
 
-首先请参考http://git.mydoc.io/?t=179267，完成Gitee账号的注册，然后需要前往http://gitee.com/profile/emails绑定你的主邮箱。
+首先请参考https://gitee.com/help/articles/4113，完成Gitee账号的注册，然后需要前往http://gitee.com/profile/emails绑定你的主邮箱。
 
 ## 签署贡献者协议CLA<a name="section7998165454612"></a>
 
