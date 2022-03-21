@@ -49,7 +49,7 @@ Considering the preceding restrictions, openGauss develops its own database para
 
     Tests show that the X-Tuner parameter tuning framework based on reinforcement learning and heuristic algorithms can greatly improve system performance with the minimum memory usage. Figure 1 shows the parameter tuning process.
 
-    ![](figures/zh-cn_image_0000001251969031.jpg)Figure 1 X-Tuner parameter tuning process
+    ![](../figures/zh-cn_image_0000001251969031.jpg)Figure 1 X-Tuner parameter tuning process
 
 
 With the X-Tuner technology, HUAWEI CLOUD DAS can intelligently recommend parameters based on the historical load of user databases. Tests show that the overall performance is improved by about 20%, greatly saving cloud computing resources and reducing production costs.
@@ -64,7 +64,7 @@ Different from the preceding solution, SQLDiag focuses on a historical SQL state
 -   SQLDiag is widely used in many scenarios and can even be used in NoSQL after reconstruction, while many other algorithms in the industry only target at a scenario, such as, OLTP or OLAP.
 -   The framework is robust and easy to understand. Users can design their own prediction models by simply modifying the framework.
 
-    ![](figures/zh-cn_image_0000001251839693.png)
+    ![](../figures/zh-cn_image_0000001251839693.png)
 
 
 Figure 2 shows the SQLDiag prediction result.
@@ -107,13 +107,13 @@ The intelligent optimizer has the following features:
 
 According to actual tests, the prediction accuracy of query performance is improved by 40% compared with the native PostgreSQL model.
 
-![](figures/zh-cn_image_0000001207089084.gif)
+![](../figures/zh-cn_image_0000001207089084.gif)
 
 Figure 3 Predicted query performance of openGauss compared with the native PostgreSQL database
 
 According to the distribution of the prediction accuracy, the accuracy of the 95th percentile is improved by 3e5 times, and the accuracy of the 75th percentile is improved by 124 times. The overall prediction reliability is greatly improved.
 
-![](figures/zh-cn_image_0000001207249058.gif)
+![](../figures/zh-cn_image_0000001207249058.gif)
 
 Figure 4 Prediction accuracy distribution of openGauss and PostgreSQL
 

@@ -32,7 +32,7 @@ To resolve the foregoing problems, openGauss introduces a segment-page storage m
 
 With the segment-page storage management, tablespaces and data files are logically organized into segments, extents, and pages/blocks for storage allocation and management, as shown in the following figure. Specifically, a database \(in a tablespace\) has only one segment space. The actual physical storage may be a file or may be split into multiple files. Data is allocated to all tables in the database from this space. Therefore, the number of tables is irrelevant to the number of physical files. Each table has a logical segment, and all data in the table is stored in the segment. Multiple extents are mounted to each segment. Each extent is a continuous physical page. Extent sizes can be flexibly adjusted based on service requirements to avoid storage space waste.
 
-![](figures/zh-cn_image_0000001207699778.jpg)
+![](../figures/zh-cn_image_0000001207699778.jpg)
 
 Figure 1 Segment-page storage design
 
@@ -122,13 +122,13 @@ When using the CREATE TABLE statement to create a table, you can specify  **segm
 
     create table t1\(a int, b int, PRIMARY KEY\(a,b\)\) with\(segment=on\);
 
-    ![](figures/zh-cn_image_0000001207539820.jpg)
+    ![](../figures/zh-cn_image_0000001207539820.jpg)
 
 -   Set  **hashbucket**  to  **on**  to create a segment-page hash bucket table.
 
     create table t1\(a int, b int, PRIMARY KEY\(a,b\)\) with\(hashbucket=on\);
 
-    ![](figures/zh-cn_image_0000001252579733.jpg)
+    ![](../figures/zh-cn_image_0000001252579733.jpg)
 
     To help users better use the segment-page storage function, openGauss provides two built-in system functions to display the extent usage. Users can use the two views to determine whether to reclaim data and which part of the data to be reclaimed.
 
@@ -176,7 +176,7 @@ When using the CREATE TABLE statement to create a table, you can specify  **segm
     </tbody>
     </table>
 
-    ![](figures/zh-cn_image_0000001207699780.jpg)
+    ![](../figures/zh-cn_image_0000001207699780.jpg)
 
 
 -   **pg\_stat\_segment\_extent\_usage\(Oid tablespace, Oid databse, uint32 extent\_type\);**specifies the usage information of each allocated extent in an extent group returned each time.**extent\_type**  indicates the type of the extent group. The value is an integer ranging from 1 to 5.If the value is not within the range, an error is reported.

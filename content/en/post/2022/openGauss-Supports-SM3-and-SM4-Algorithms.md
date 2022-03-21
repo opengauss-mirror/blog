@@ -45,19 +45,19 @@ To create a user supporting SM3 authentication, perform the following steps:
 
 \(1\) Set  **password\_encryption\_type**  to  **3**  in the  **postgresql.conf**  file and restart the database for the parameter to take effect. Then, the SM3 algorithm will be used to encrypt plaintext passwords for newly created users.
 
-![](figures/zh-cn_image_0000001252703087.png)
+![](../figures/zh-cn_image_0000001252703087.png)
 
 \(2\) Create a user.
 
 In the following example, a user  **test**  is created. You can view the encryption type during user creation in the  **rolpassword**  field of the  **pg\_authid**  system catalog. The following figure shows that the SM3 algorithm is used for encryption.
 
-![](figures/zh-cn_image_0000001252343171.png)\(3\) In the  **pg\_hba.conf**  file, set the authentication method to SM3.
+![](../figures/zh-cn_image_0000001252343171.png)\(3\) In the  **pg\_hba.conf**  file, set the authentication method to SM3.
 
-![](figures/zh-cn_image_0000001252703155.png)
+![](../figures/zh-cn_image_0000001252703155.png)
 
 In this case, the  **test**  user can pass the authentication through remote login.
 
-![](figures/zh-cn_image_0000001252343211.png)
+![](../figures/zh-cn_image_0000001252343211.png)
 
 A user created by using the SM3 encryption algorithm can pass the authentication only when both the encryption algorithm and authentication method are SM3.
 
@@ -75,7 +75,7 @@ The procedure for creating a user by using other authentication methods is simil
 
     The following figure shows the RFC 5802 key derivation process.
 
-    ![](figures/zh-cn_image_0000001252343303.png)
+    ![](../figures/zh-cn_image_0000001252343303.png)
 
     ```
       SaltedPassword := PBKDF2 (password, salt, i)
@@ -101,7 +101,7 @@ The procedure for creating a user by using other authentication methods is simil
 
     The following figure shows the standard RFC 5802 password authentication process.
 
-    ![](figures/320.png)
+    ![](../figures/320.png)
 
     1. The client sends the username to the server.
 
@@ -130,7 +130,7 @@ The gs\_encrypt\_aes128 and gs\_decrypt\_aes128 functions are described as follo
 
 ​       Description: Decrypts  **decryptstr**  strings using  **keystr**  as the key and returns decrypted strings.
 
-![](figures/zh-cn_image_0000001207863420.png)The gs\_encrypt and gs\_decrypt functions are described as follows:
+![](../figures/zh-cn_image_0000001207863420.png)The gs\_encrypt and gs\_decrypt functions are described as follows:
 
 - gs\_encrypt\(encryptstr, keystr, algorithm\)
 
@@ -140,11 +140,11 @@ The gs\_encrypt\_aes128 and gs\_decrypt\_aes128 functions are described as follo
 
 ​       Description: Decrypts  **decryptstr**  strings using  **keystr**  as the key and returns the decrypted strings. The options are  **sm4**  and  **aes128**.
 
-![](figures/zh-cn_image_0000001252343507.png)The following figures show how to encrypt and decrypt table data using the SM4 algorithm.
+![](../figures/zh-cn_image_0000001252343507.png)The following figures show how to encrypt and decrypt table data using the SM4 algorithm.
 
-![](figures/zh-cn_image_0000001252463513.png)
+![](../figures/zh-cn_image_0000001252463513.png)
 
-![](figures/zh-cn_image_0000001252703473.png)
+![](../figures/zh-cn_image_0000001252703473.png)
 
 openGauss supports SM3 for user authentication and SM4 for data encryption and decryption.
 

@@ -30,7 +30,7 @@ Ustore stores valid data of the latest version and junk data of historical versi
 
 Ustore works with the UNDO space to implement more efficient and comprehensive flashback query and recycle bin mechanisms, quickly rolls back misoperations, and provides rich enterprise-level functions for openGauss.
 
-![](figures/ustore.png)
+![](../figures/ustore.png)
 
 Ustore data storage: The latest data is stored on the original page, and the old data is managed in the UNDO space.
 
@@ -91,7 +91,7 @@ In the future, openGauss will use the AI autonomy technology to optimize Ustore 
 
     Assume that the  **test**  table structure is as follows and a UBtree index is to be added to the  **age**  column of the  **test**  table.
 
-    ![](figures/zh-cn_image_0000001207529644.jpg)
+    ![](../figures/zh-cn_image_0000001207529644.jpg)
 
     Method 1: If the index type is not specified, a UBtree index is created by default.
 
@@ -99,7 +99,7 @@ In the future, openGauss will use the AI autonomy technology to optimize Ustore 
     create index ubt_idx on test(age);
     ```
 
-    ![](figures/zh-cn_image_0000001252089553.jpg)
+    ![](../figures/zh-cn_image_0000001252089553.jpg)
 
     Method 2: When creating an index, use the  **using**  keyword to set the index type to  **ubtree**.
 
@@ -107,6 +107,6 @@ In the future, openGauss will use the AI autonomy technology to optimize Ustore 
     create index ubt_idx on test using ubtree(age);
     ```
 
-    ![](figures/zh-cn_image_0000001207369652.jpg)
+    ![](../figures/zh-cn_image_0000001207369652.jpg)
 
 

@@ -38,7 +38,7 @@ The AI4DB feature enables openGauss through AI technologies, simplifies database
 
     You can use the  **gs\_index\_advise**  system function of openGauss to recommend single-column and combined indexes. A specific example is as follows. The recommendation result of the index includes the corresponding table name and column name.
 
-    ![](figures/zh-cn_image_0000001207280996.jpg)
+    ![](../figures/zh-cn_image_0000001207280996.jpg)
 
 -   2. Virtual index
 
@@ -48,17 +48,17 @@ The AI4DB feature enables openGauss through AI technologies, simplifies database
 
     -   Use the  **hypopg\_create\_index**  system function to create a virtual index. The input parameter is the SQL statement for creating the index.
 
-        ![](figures/zh-cn_image_0000001251841009.jpg)
+        ![](../figures/zh-cn_image_0000001251841009.jpg)
 
     -   By executing EXPLAIN for a specific query statement, you can evaluate the index performance based on the execution plan provided by the optimizer.
 
         The execution plan before the virtual index is created is as follows:
 
-        ![](figures/zh-cn_image_0000001207121020.jpg)
+        ![](../figures/zh-cn_image_0000001207121020.jpg)
 
         After the virtual index is created, the execution plan is changed as follows:
 
-        ![](figures/zh-cn_image_0000001206961046.jpg)
+        ![](../figures/zh-cn_image_0000001206961046.jpg)
 
         By comparing the two execution plans, you can find that the index will reduce the execution time of the specified query statement. Based on this conclusion, you can create a real index.
 
@@ -67,7 +67,7 @@ The AI4DB feature enables openGauss through AI technologies, simplifies database
 
     With the workload consisting of multiple DML statements as the input, the algorithm can recommend a batch of indexes to be created. These indexes can be used to optimize the overall workload. The following figure shows the process of the algorithm.
 
-    ![](figures/zh-cn_image_0000001252121009.png)
+    ![](../figures/zh-cn_image_0000001252121009.png)
 
     Based on the preceding two features, this feature compresses the workload, filters out a batch of typical SQL statements, and generates candidate indexes for each SQL statement using the index recommendation function of a single query statement. Finally, further filtering is performed by using the virtual index function, and the index that has the largest positive contribution to the workload is used as the output.
 
@@ -83,7 +83,7 @@ The AI4DB feature enables openGauss through AI technologies, simplifies database
 
     The following figure shows the anomaly-detection structure.
 
-    ![](figures/zh-cn_image_0000001207280998.jpg)
+    ![](../figures/zh-cn_image_0000001207280998.jpg)
 
     This tool consists of an agent and a detector. Agent is a data collection module that collects database metric data and pushes the data to the detector. Detector is an exception detection module. It has three functions: 1. Collect data pushed by the agent and store the data locally. 2. Perform exception detection on the collected metric data. 3. Push exception information to users.
 

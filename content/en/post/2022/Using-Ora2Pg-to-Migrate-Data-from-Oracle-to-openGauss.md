@@ -224,7 +224,7 @@ Ora2Pg provides the  **ora2pg**  command to complete these processes. Generally,
 
     Modify the export type of  **export\_schema.sh**. In this migration, tables and functions are exported.
 
-    ![](figures/zh-cn_image_0000001207289100.jpg)
+    ![](../figures/zh-cn_image_0000001207289100.jpg)
 
     Run the export script and wait until the migration is complete. A DDL file of the corresponding type is generated in the  **schema**  and  **source**  subdirectories, and the command for exporting table data is provided at the end.
 
@@ -232,17 +232,17 @@ Ora2Pg provides the  **ora2pg**  command to complete these processes. Generally,
      sh export_schema.sh
     ```
 
-    ![](figures/zh-cn_image_0000001252129111.jpg)
+    ![](../figures/zh-cn_image_0000001252129111.jpg)
 
     In addition, a migration report in HTML format is generated in the  **reports**  directory.
 
-    ![](figures/zh-cn_image_0000001252009063.jpg)
+    ![](../figures/zh-cn_image_0000001252009063.jpg)
 
     Before running the import script, perform the following operations:
 
     1.  Create a database in openGauss, create a user in the database, and set the owner of  **mydb**  to the user. \(In  **import\_all.sh**,  **createuser**  and  **createdb**  of PostgreSQL are used to create users and databases.\)
 
-        ![](figures/zh-cn_image_0000001206809156.jpg)
+        ![](../figures/zh-cn_image_0000001206809156.jpg)
 
     2.  Create the environment variable in the  **bin**  directory of openGauss, so that the client tool gsql can be used.
     3.  Change  **psql**  in  **import\_all.sh**  to  **gsql**.
@@ -256,13 +256,13 @@ Ora2Pg provides the  **ora2pg**  command to complete these processes. Generally,
 
         After the script is executed, the system prompts you whether to import the object structures and data, as shown in the following figure. \(In the preceding information, the  **-w**  option is added by manually modifying the  **import\_all.sh**  script.\)
 
-        ![](figures/zh-cn_image_0000001206809160.jpg)
+        ![](../figures/zh-cn_image_0000001206809160.jpg)
 
         For table indexes and constraints, you can import them after data is imported.
 
         Log in to openGauss to view the migration result.
 
-        ![](figures/zh-cn_image_0000001252249073.jpg)
+        ![](../figures/zh-cn_image_0000001252249073.jpg)
 
 
 

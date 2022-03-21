@@ -152,7 +152,7 @@ In the HAProxy configuration file, two listen modules are defined:  **opengauss*
 
     In the preceding configuration, you can access http://ip:7000/ to view the monitoring page.  _ip_  indicates the IP address of the host where HAProxy is deployed. The following figure shows the page information.
 
-    ![](figures/zh-cn_image_0000001252065761.gif)
+    ![](../figures/zh-cn_image_0000001252065761.gif)
 
     In the preceding figure, the cluster consists of one primary node and three standby nodes. The first module  **opengauss**  corresponds to the write operation and the green column indicates the primary node in the cluster. The second module  **opengauss\_balance**  corresponds to the read operation, and the green columns indicate the standby nodes in the cluster.
 

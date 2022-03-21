@@ -30,7 +30,7 @@ openGauss is compatible with PostgreSQL communication protocols and most syntaxe
 
 openGauss performs security hardening on native PostgreSQL communication protocols. As a result, it is incompatible with the default PostgreSQL communication protocols, and by default, the native PostgreSQL that uses pgloader cannot connect to openGauss. An error similar to the following is reported:
 
-![](figures/zh-cn_image_0000001252128947.jpg)
+![](../figures/zh-cn_image_0000001252128947.jpg)
 
 The solution is to modify the GUC parameter. The involved GUC parameter is  **password\_encryption\_type**. By default, PostgreSQL uses MD5 encryption, which is insecure. To improve the security capabilities of openGauss, openGauss uses SHA256 encryption by default. Therefore, the preceding error is reported. openGauss does not delete MD5 encryption and its verification logic. As such, MD5 encryption can be enabled by setting the GUC parameter.
 
@@ -107,13 +107,13 @@ Note that the user must have the permission to remotely connect to MySQL and ope
 
 This section describes how to create users and databases in openGauss required for migration.
 
-![](figures/zh-cn_image_0000001251848955.jpg)
+![](../figures/zh-cn_image_0000001251848955.jpg)
 
 ## Runing pgloader to Migrate Data<a name="section188779282414"></a>
 
 The following shows how to install pgloader by using Docker images. Name the prepared configuration file  **openGauss.loader**.
 
-![](figures/zh-cn_image_0000001251848959.jpg)
+![](../figures/zh-cn_image_0000001251848959.jpg)
 
 Run the  **docker run -tid --name pgloader\_test dimitri/pgloader**  command to start Docker.
 
@@ -121,13 +121,13 @@ Run the  **docker cp ./openGauss.loader pgloader\_test:/**  command to copy the 
 
 Run the  **docker exec -it pgloader\_test /bin/bash**  command to access Docker.
 
-![](figures/zh-cn_image_0000001252248915.jpg)
+![](../figures/zh-cn_image_0000001252248915.jpg)
 
 Run the  **pgloader openGauss.loader**  command to start pgloader, wait until the data migration is complete, and view the migration result report.
 
-![](figures/zh-cn_image_0000001252008911.jpg)
+![](../figures/zh-cn_image_0000001252008911.jpg)
 
 View the migration result in openGauss.
 
-![](figures/zh-cn_image_0000001206968992.jpg)
+![](../figures/zh-cn_image_0000001206968992.jpg)
 

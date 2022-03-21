@@ -56,15 +56,15 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
 
 -   1. After the machine self-check, startup options are displayed.
 
-    ![](figures/zh-cn_image_0000001251960129.jpg)
+    ![](../figures/zh-cn_image_0000001251960129.jpg)
 
 -   2. Press  **Del**  to enter the BIOS screen.
 
-    ![](figures/zh-cn_image_0000001206760224.jpg)
+    ![](../figures/zh-cn_image_0000001206760224.jpg)
 
 -   3. Enter the BIOS password.
 
-    ![](figures/zh-cn_image_0000001206920214.jpg)
+    ![](../figures/zh-cn_image_0000001206920214.jpg)
 
 -   4. Restore to factory settings.
 
@@ -80,13 +80,13 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
     # Choose BIOS > Advanced > Memory Config and set Die Interleaving to Disable.
     ```
 
-    ![](figures/zh-cn_image_0000001251640179.jpg)![](figures/zh-cn_image_0000001251640181.jpg)
+    ![](../figures/zh-cn_image_0000001251640179.jpg)![](../figures/zh-cn_image_0000001251640181.jpg)
 
 -   **6. **Save the BIOS settings and restart the server.
 
     Press  **F10**  to save the settings and exit. Restart the system.
 
-    ![](figures/zh-cn_image_0000001206760228.jpg)
+    ![](../figures/zh-cn_image_0000001206760228.jpg)
 
 
 ## OS Configuration<a name="section13600125221711"></a>
@@ -95,7 +95,7 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
 
     **irqbalance**  disabled: If a GaussDB process and a client preempt CPU resources, the CPU usage is unbalanced. If the htop shows that some CPUs are overloaded and some are idle, check whether  **irqbalance**  is disabled.
 
-    ![](figures/zh-cn_image_0000001206760226.jpg)
+    ![](../figures/zh-cn_image_0000001206760226.jpg)
 
     ```
     service irqbalance stop
@@ -124,7 +124,7 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
 
     xfs\_info /data1
 
-    ![](figures/zh-cn_image_0000001251800179.gif)
+    ![](../figures/zh-cn_image_0000001251800179.gif)
 
     In the preceding figure, the block size is 8 KB and does not need to be changed. If the data block size is not 8 KB, back up and format the data.
 
@@ -157,11 +157,11 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
 
     -   \(1\) Decompress  **Hi1822-NIC-FW.zip**, go to the directory, and install hinicadm as user  **root**.
 
-        ![](figures/zh-cn_image_0000001251960131.gif)
+        ![](../figures/zh-cn_image_0000001251960131.gif)
 
     -   \(2\) Determine the NIC to which the currently connected physical port belongs. The network port and NIC name vary according to the hardware platform. In the following example, the private network port enp3s0 is used and belongs to the hinic0 NIC.
 
-        ![](figures/zh-cn_image_0000001251960133.gif)![](figures/zh-cn_image_0000001206920220.gif)
+        ![](../figures/zh-cn_image_0000001251960133.gif)![](../figures/zh-cn_image_0000001206920220.gif)
 
     -   \(3\) Go to the  **config**  directory and use the hinicconfig tool to configure the interrupt queue firmware configuration file.
 
@@ -175,7 +175,7 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
 
         Restart the OS for the modification to take effect. Run the  **ethtool -l enp3s0**  command to view the result. In the following figure, 32 is displayed.
 
-        ![](figures/zh-cn_image_0000001206760230.gif)
+        ![](../figures/zh-cn_image_0000001206760230.gif)
 
         Run the  **ethtool -L enp3s0 combined 48**  command to change the value of  **combined**. \(The optimized value varies according to the platform and application. For the 128-core platform, the optimized value on the server is  **16**  and that on the client is  **48**.\)
 
@@ -193,7 +193,7 @@ Log in to a server management system, restart a server, enter the BIOS screen, m
 
     Take the 1620 platform as an example. The NIC interrupts are bound to the last four cores on each NUMA node, and each core is bound to three interrupts. The core binding interrupt script is as follows. This script is called by gs\_preinstall during the openGauss installation. For details, see the product installation guide.
 
-    ![](figures/zh-cn_image_0000001251960135.gif)
+    ![](../figures/zh-cn_image_0000001251960135.gif)
 
     ```
     sh bind_net_irq.sh  16
@@ -269,7 +269,7 @@ Run the preceding command based on the core binding configuration and benchmark 
 
     \(2\) The thread pool mechanism is introduced in openGauss. When the database is started, the thread pool creates a specified number of threads to provide services. When a thread is created, it is bound to a core. Therefore, the core binding information of the NIC needs to be transferred through the GUC parameter, to facilitate core binding configuration during system running. The following figure shows the parameters when 128 cores are used.
 
-    ![](figures/7.png)
+    ![](../figures/7.png)
 
     Total number of threads = \(Number of CPUs – Number of CPUs processing the network\) x Number of threads per core \(7.25 is recommended\) = \(128 – 16\) x 7.25 = 812. The number of NUMA nodes is 4, and the number of cores for processing interrupts is 16.
 
@@ -386,7 +386,7 @@ Run the preceding command based on the core binding configuration and benchmark 
 
     The client uses numactl to bind the client to cores except the NIC. The following figure uses a 128-core environment as an example. A total of 80 cores are used to process service logic, and the remaining 48 cores are used to process network interruption.
 
-    ![](figures/zh-cn_image_0000001207080190.gif)
+    ![](../figures/zh-cn_image_0000001207080190.gif)
 
     The corresponding tpmC program is as follows:
 
@@ -479,19 +479,19 @@ Run the preceding command based on the core binding configuration and benchmark 
 
     Modify the  **run/sql.common/indexCreates.sql**  file.
 
-    ![](figures/zh-cn_image_0000001207240170.gif)
+    ![](../figures/zh-cn_image_0000001207240170.gif)
 
     Modify the content in the red box in the preceding figure as follows:
 
-    ![](figures/zh-cn_image_0000001206920224.gif)
+    ![](../figures/zh-cn_image_0000001206920224.gif)
 
     Add the content in red in the following figure to the file so that the data can be automatically generated in different data tablespaces when the benchmark tool automatically generates data. If the content is not added, modify the data in the database after the benchmark tool generates data for disk division.
 
-    ![](figures/zh-cn_image_0000001251800185.jpg)
+    ![](../figures/zh-cn_image_0000001251800185.jpg)
 
     \(3\) Modify the  **runDatabaseBuild.sh**  file. Modify the content in the following figure to avoid unsupported foreign keys during data generation.
 
-    ![](figures/zh-cn_image_0000001251800187.jpg)
+    ![](../figures/zh-cn_image_0000001251800187.jpg)
 
 -   **3. **Import data.
 
@@ -538,7 +538,7 @@ Run the preceding command based on the core binding configuration and benchmark 
 
     Use htop to monitor the CPU usage of the database server and TPC-C client. In the extreme performance test, the CPU usage of each service is greater than 90%. If the CPU usage does not meet the requirement, the core binding mode may be incorrect and needs to be adjusted.
 
-    ![](figures/zh-cn_image_0000001251760151.jpg)
+    ![](../figures/zh-cn_image_0000001251760151.jpg)
 
     In the preceding figure, the CPU in the yellow box is used to process network interruption.
 
@@ -546,12 +546,12 @@ Run the preceding command based on the core binding configuration and benchmark 
 
     The htop state after tuning is reliable.
 
-    ![](figures/zh-cn_image_0000001251760153.jpg)
+    ![](../figures/zh-cn_image_0000001251760153.jpg)
 
     Database tuning is a tedious task. You need to continuously modify configurations, run TPC-C, and perform commissioning to achieve the optimal performance configuration.
 
     TPC-C running result:
 
-    ![](figures/zh-cn_image_0000001206760240.gif)
+    ![](../figures/zh-cn_image_0000001206760240.gif)
 
 

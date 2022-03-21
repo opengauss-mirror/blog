@@ -123,11 +123,11 @@ The following describes the migration procedure.
 
 The following shows how to create the users and databases in openGauss required for migration.
 
-![](figures/zh-cn_image_0000001252011743.jpg)
+![](../figures/zh-cn_image_0000001252011743.jpg)
 
 The following shows how to create the users in MySQL required for migration and grant related permissions to the users.
 
-![](figures/zh-cn_image_0000001252131781.jpg)
+![](../figures/zh-cn_image_0000001252131781.jpg)
 
 ## Enabling the Replication Function of MySQL<a name="section20692152017586"></a>
 
@@ -192,7 +192,7 @@ After the modification, restart MySQL for the configurations to take effect.
 
     You can view the replication result in openGauss.
 
-    ![](figures/zh-cn_image_0000001207291774.jpg)
+    ![](../figures/zh-cn_image_0000001207291774.jpg)
 
 7.  Enable online real-time replication.
 
@@ -200,11 +200,11 @@ After the modification, restart MySQL for the configurations to take effect.
 
     After real-time replication is enabled, insert a data record into MySQL.
 
-    ![](figures/zh-cn_image_0000001207131798.jpg)
+    ![](../figures/zh-cn_image_0000001207131798.jpg)
 
     View the data in the  **test\_decimal**  table in openGauss.
 
-    ![](figures/zh-cn_image_0000001252131783.jpg)
+    ![](../figures/zh-cn_image_0000001252131783.jpg)
 
     The newly inserted data record is successfully copied to openGauss.
 

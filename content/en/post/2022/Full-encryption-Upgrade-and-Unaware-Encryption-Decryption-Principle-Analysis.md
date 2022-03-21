@@ -26,7 +26,7 @@ The most secure protection for data confidentiality and personal privacy is encr
 
 The core of openGauss full-encryption is to parse all input and output statements of users on the client, identify defined sensitive data, and perform automatic encryption and decryption. The whole process of using a fully-encrypted database is as follows: A user inputs the syntax. A client sends the input to a server. The server executes and returns the result to the client. During the process, the only two steps that the user can perceive are inputting syntax and obtaining the result. The technical core of the fully-encrypted database is divided into several modules such as key management, parsing layer, encryption and decryption driver, implicit conversion layer, and data cache. Figure 1 shows the architecture of the fully-encrypted database. The following describes the modules related to user perception.
 
-![](figures/28.png)
+![](../figures/28.png)
 
 Figure 1 Fully-encrypted database architecture
 
@@ -36,11 +36,11 @@ In the openGauss fully-encrypted database, a lightweight parser is added to the 
 
 In the upgraded openGauss fully-encrypted database, the client parses the syntax in functions and provides an API for decrypting the record data returned by functions. When functions are created, after the syntax of function bodies is parsed at the parsing layer, values to be encrypted in the function bodies are encrypted in the function processors by using the encryption driver. When functions are executed, after the syntax is parsed at the parsing layer, the syntax enters different processors according to the called functions, and parameters are encrypted by using an encryption driver. Users are unaware of the entire parsing and encryption process. The entire process is fully automated, and users do not need to perform other operations.
 
-![](figures/282.png)
+![](../figures/282.png)
 
 Figure 2 Creating a function/procedure by using a function or stored procedure in an encrypted equality query
 
-![](figures/283.png)
+![](../figures/283.png)
 
 Figure 3 Executing a function/procedure by using a function or stored procedure in an encrypted equality query
 
@@ -50,7 +50,7 @@ The encrypted columns and the original data types of encrypted columns are store
 
 In the fully-encrypted openGauss database after the upgrade, when a user creates an encrypted function, the server verifies the parameter type in the function parsing module. If the data is encrypted or the column is encrypted, the server converts the input, output, and returned parameters in the optimization module. The server converts the parameter type of the function to the encrypted column type \(binary type\) and saves the original data type of the function parameter in the database. Users are unaware of the parsing, encryption, and implicit data type conversion in the entire process. They do not even need to modify the function syntax.
 
-![](figures/284.png)
+![](../figures/284.png)
 
 Figure 4 New modules for supporting functions in a fully-encrypted database
 
@@ -62,7 +62,7 @@ Performance has always been a challenge for fully-encrypted databases. In the op
 
 Considering the migration of tasks between different databases, more users prefer unified access APIs, such as JDBC. In earlier versions, openGauss only allows gsql to use a fully-encrypted database. JDBC is supported in the upgraded openGauss fully-encrypted database. The JDBC client reuses the original encryption driver through the Java native interface \(JNI\). The encryption driver is reconstructed so that it can obtain data from the server through a set of interfaces compatible with libpq/JDBC. The encryption and decryption process when users call JDBC is the same as that of gsql. Users are unaware of data encryption and decryption in the encryption driver during query.
 
-![](figures/285.png)
+![](../figures/285.png)
 
 Figure 5 New JDBC modules supported by the encrypted equality query
 

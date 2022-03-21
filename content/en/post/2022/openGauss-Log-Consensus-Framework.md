@@ -14,7 +14,7 @@ summary = "openGauss Log Consensus Framework"
 
 img = "/en/post/2022/title/img9.png"
 
-times = "12:30"
+time = "12:30"
 
 +++
 
@@ -32,7 +32,7 @@ Its full name is distributed consensus framework. Typical algorithms for resolvi
 
 DCF is a high-performance, highly mature, reliable, scalable, and easy-to-use independent basic library. Other systems can easily interconnect with DCF through APIs to obtain the strong consistency, high availability, and automatic disaster recovery capabilities provided by the Paxos algorithm.
 
-![](figures/图片1.png)
+![](../figures/图片1.png)
 
 As shown in the preceding figure, DCF consists of the algorithm module, storage module, communication module, and service layer.
 
@@ -83,7 +83,7 @@ As shown in the preceding figure, DCF consists of the algorithm module, storage 
 
 The flow control algorithm process is as follows:
 
-![](figures/26-openGauss-Log-Consensus-Framework.png)
+![](../figures/26-openGauss-Log-Consensus-Framework.png)
 
 The core algorithm process is as follows:
 
@@ -143,7 +143,7 @@ The following values are examples and can be replaced as required. Each line is 
     # gs_ctl query -D /nvme0/gaussdb/cluster/nvme0/dn1
     ```
 
-    ![](figures/zh-cn_image_0000001251920351.png)
+    ![](../figures/zh-cn_image_0000001251920351.png)
 
     In the preceding information,  **dcf\_replication\_info**  indicates the DCF information of the current node.
 
