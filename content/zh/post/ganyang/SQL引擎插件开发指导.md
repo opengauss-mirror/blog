@@ -54,13 +54,13 @@ times = "16:30"
 
 将b_sql_plugin文件夹放入数据库的contrib目录下，并使用make -sj && make install -sj完成编译安装，随后创建一个B兼容性的数据库，通过语句create extension b_sql_plugin即可使用。
 
-![](../image/CREATE.png)
-
+![](../image/CREATE.PNG)
+![](../image/INSTALL.png)
 
 ## fastcheck自测方法
 
 将测试用的.sql文件放入sql文件夹 预期结果放入expected文件夹。
-![](../image/FASTCHECK.png)
+![](../image/FASTCHECK.PNG)
 
 通过make installcheck命令就能进行自测,如提示变量值不对需要手动修改pg_regress.cpp中相应值。
 
