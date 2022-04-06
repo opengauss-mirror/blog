@@ -8,7 +8,7 @@ tags = ["openGauss备份与恢复"]
 
 archives = "2021-01" 
 
-author = "ysl" 
+author = "阎书利" 
 
 summary = "openGauss1.1.0测试：全量备份和恢复&增量备份和恢复"
 
