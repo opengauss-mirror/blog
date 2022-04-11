@@ -38,7 +38,7 @@ Psycopg是一种用于执行SQL语句的PythonAPI，可以为PostgreSQL、GaussD
 
 注:这里驱动在https://opengauss.org/zh/download.html这里下载，可以根据操作系统版本下载对应的驱动
 
-![image20220330140613272.png](https://oss-emcsprod-public.modb.pro/image/editor/20220330-26a4d82f-650b-49dc-a859-630df55c0aa2.png)
+![image20220330140613272.png](../images/20220330-26a4d82f-650b-49dc-a859-630df55c0aa2.png)
 
 ## 4.安装驱动
 
