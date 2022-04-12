@@ -19,6 +19,10 @@ times = "10:20"
 
 # MogDB/openGauss数据完整性约束简介
 
+本文出处：https://www.modb.pro/db/124910
+
+
+
 创建基本表的同时，还可以指定表中数据完整性约束，例如在创建warehouse基本表时，通过分析可以得到如下结论：
 
 1. 不同仓库必须有不同的w_id，且w_id不能为NULL。
