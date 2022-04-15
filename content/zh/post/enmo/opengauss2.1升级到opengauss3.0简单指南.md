@@ -10,7 +10,7 @@ archives = "2022-04"
 
 author = "云和恩墨"
 
-summary =“opengauss2.1升级到opengauss3.0简单指南
+summary = "opengauss2.1升级到opengauss3.0简单指南"
 
 img = "/zh/post/enmo/title/img6.png" 
 
