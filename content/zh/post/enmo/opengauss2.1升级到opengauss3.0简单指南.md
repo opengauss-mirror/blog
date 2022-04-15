@@ -19,7 +19,7 @@ times = "10:20"
 
 # opengauss2.1升级到opengauss3.0简单指南
 
-本文出处：https:https://www.modb.pro/db/391240
+本文出处：[https://www.modb.pro/db/391240](https://www.modb.pro/db/391240)
 
 <br/>
 
