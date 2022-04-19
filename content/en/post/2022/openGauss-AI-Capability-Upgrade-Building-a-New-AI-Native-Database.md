@@ -4,7 +4,7 @@ title = "openGauss AI Capability Upgrade, Building a New AI-Native Database"
 
 date = "2022-03-15"
 
-tags = \[" AI-Native Database"\]
+tags = [" AI-Native Database"]
 
 archives = "2022-03"
 

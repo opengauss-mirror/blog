@@ -4,7 +4,7 @@ title = "New Feature of openGauss 3.0.0: Parallel Decoding"
 
 date = "2022-03-15"
 
-tags = \[" Parallel Decoding"\]
+tags = [" Parallel Decoding"]
 
 archives = "2022-03"
 
