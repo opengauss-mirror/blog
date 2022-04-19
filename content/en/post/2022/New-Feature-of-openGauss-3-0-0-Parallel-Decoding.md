@@ -14,11 +14,9 @@ summary = "New Feature of openGauss 3.0.0: Parallel Decoding"
 
 img = "/en/post/2022/title/img16.png"
 
-times = "17:30
+times = "17:30"
 
 +++
-
-
 
 # New Feature of openGauss 3.0.0: Parallel Decoding<a name="ZH-CN_TOPIC_0000001279394761"></a>
 
