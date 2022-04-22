@@ -10,7 +10,7 @@ archives = "2022-04"
 
 author = "云和恩墨" 
 
-openGauss每日一练（普通表索引）
+summary = "openGauss每日一练（普通表索引）"
 
 img = "/zh/post/enmo/title/img.png" 
 
