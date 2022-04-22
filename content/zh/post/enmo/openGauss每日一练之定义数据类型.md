@@ -1,23 +1,23 @@
 +++
 
-title = "openGauss每日一练（定义数据类型）" 
+title = "openGauss每日一练之定义数据类型" 
 
 date = "2022-04-21" 
 
-tags = ["openGauss每日一练（定义数据类型）"] 
+tags = ["openGauss每日一练之定义数据类型"] 
 
 archives = "2022-04" 
 
 author = "云和恩墨" 
 
-openGauss每日一练（定义数据类型）
+summary = "openGauss每日一练之定义数据类型"
 
 img = "/zh/post/enmo/title/img.png" 
 
 times = "10:20"
 +++
 
-# openGauss每日一练（定义数据类型）
+# openGauss每日一练之定义数据类型
 
 本文出处：[https://www.modb.pro/db/222625](https://www.modb.pro/db/222625)
 
