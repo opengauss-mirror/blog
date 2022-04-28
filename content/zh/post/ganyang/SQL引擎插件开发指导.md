@@ -1,11 +1,11 @@
 ﻿+++
-date = "2022-03-18"
+date = "2022-04-28"
 tags = ["SQL引擎插件开发指导"]
-archives = "2022-03-18"
+archives = "2022-04-28"
 author = "ganyang"
 summary = "SQL引擎插件开发指导"
 img = "/zh/post/xiteming/title/img1.png"
-times = "16:30"
+times = "20:00"
 +++
 
 
@@ -68,6 +68,14 @@ times = "16:30"
 
 ![](../image/PG_REGRESS2.png)
 
+memcheck:memcheck并不是一个新的check，只是编译openGauss时，编译一个memcheck版的，然后通过跑fastcheck来发现代码中的内存问题。
+编译方式和编译普通的openGauss基本一致，只是在configure时，添加一个 --enable-memory-check 参数，编译出来的就是memcheck版本的openGauss。
+./configure --gcc-version=7.3.0 CC=g++ CFLAGS='-O0' --prefix=$GAUSSHOME --3rd=$BINARYLIBS --enable-debug --enable-cassert --enable-thread-safety --with-readline --without-zlib --enable-memory-check
+installcheck需要自己设置asan option
+export HOME=~
+ulimit -v unlimited
+export ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:alloc_dealloc_mismatch=0:log_path=$HOME/memchk/memcheck
+设置完环境变量后，正常跑fastcheck即可，跑完后，会在 $HOME/memchk/memcheck路径下生成文件名为runlog.xxx的memcheck报告。根据memcheck报告分析是否有内存问题。如何分析memcheck报告可自行网上搜索memcheck报告分析、asan报告分析等关键字。
  
 
 ## 新增函数
