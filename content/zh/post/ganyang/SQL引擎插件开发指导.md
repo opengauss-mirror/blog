@@ -75,7 +75,7 @@ installcheck需要自己设置asan option
 export HOME=~
 ulimit -v unlimited
 export ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:alloc_dealloc_mismatch=0:log_path=$HOME/memchk/memcheck
-设置完环境变量后，正常跑fastcheck即可，跑完后，会在 ~/memchk/asan/路径下生成文件名为runlog.xxx的memcheck报告。根据memcheck报告分析是否有内存问题。如何分析memcheck报告可自行网上搜索memcheck报告分析、asan报告分析等关键字。
+设置完环境变量后，正常跑fastcheck即可，跑完后，会在 $HOME/memchk/memcheck路径下生成文件名为runlog.xxx的memcheck报告。根据memcheck报告分析是否有内存问题。如何分析memcheck报告可自行网上搜索memcheck报告分析、asan报告分析等关键字。
  
 
 ## 新增函数
