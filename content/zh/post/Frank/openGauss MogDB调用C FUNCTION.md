@@ -1,3 +1,22 @@
++++
+
+title = "openGauss/MogDB调用C FUNCTION"
+
+date = "2022-05-16"
+
+tags = ["openGauss/MogDB调用C FUNCTION"]
+
+archives = "2020-05"
+
+author = "xingchen"
+
+summary = "openGauss/MogDB调用C FUNCTION"
+
+img = "/zh/post/xingchen/title/8f11c785-f027-47b5-a1ba-726edaacb2f2.png"
+
+times = "18:40"
+
++++
 # openGauss/MogDB调用C FUNCTION
 # 摘要
 > 之前写过一篇关于[postgresql自定义函数实现，通过contrib模块进行扩展](https://blog.csdn.net/xk_xx/article/details/123011397 "postgresql自定义函数实现，通过contrib模块进行扩展")的帖子，今天和恩墨工程师进行了一些交流，在MogDB中也可以实现同样的功能，原以为需要完整的openGauss的源码才能完成，但在恩墨工程师的指点下，了解到，通过既有官网版本的安装包就可以进行插件开发。而且，使用postgres的C FUNCTION要比开发插件更加容易些。也感谢恩墨专家提供的线索和思路:+1: :+1:
