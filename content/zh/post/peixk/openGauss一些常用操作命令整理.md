@@ -1,24 +1,4 @@
-+++
-
-title = "openGauss一些常用操作命令整理"
-
-date = "2022-05-18"
-
-tags = ["openGauss一些常用操作命令整理"]
-
-archives = "2022-05-18"
-
-author = "peixk"
-
-summary = "openGauss一些常用操作命令整理"
-
-img = "/zh/post/xingchen/title/title.jpg"
-
-times = "16:25"
-
-+++
-
-整理了一些openGauss/MogDB的常用操作，给与我一样的新手参考。
+整理了一些openGauss/MogDB的常用操作
 
 ### 1、启停服务
 ```shell
@@ -45,8 +25,6 @@ gs_checkperf -i pmk -U omm
 gs_checkperf -i pmk -U omm --detail
 ```
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220516-701ca582-709c-4e53-b26a-4c39ca3b38a1.png)
-
 ### 4、查看数据库端口号
 不确定端口的情况，可以到postgresql.conf 或者安装数据库时的xml中找一下
 ```shell
@@ -58,7 +36,6 @@ cat /mogdb/data/db1/postgresql.conf | grep port
 su - omm
 gsql -d postgres -p 26000 -l 
 ```
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220516-5d1a7e84-260a-4435-9724-204e6124be23.png)
 
 postgres为openGauss安装完成后默认生成的数据库。初始可以连接到此数据库进行新数据库的创建。
 
