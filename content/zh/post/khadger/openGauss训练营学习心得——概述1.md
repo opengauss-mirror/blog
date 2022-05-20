@@ -6,6 +6,8 @@ archives = "2020-05"
 author = "khadger"
 summary = "openGauss训练营学习心得"
 
+img = "/zh/post/xingchen/title/title.jpg"
+
 times = "11:00"
 
 +++
