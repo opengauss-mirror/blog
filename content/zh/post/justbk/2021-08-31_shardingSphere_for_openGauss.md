@@ -32,6 +32,8 @@ proxy默认支持PostgreSQL协议，openGauss也采用的是PostgreSQL协议，�
 
 目前需要从master分支自行编译:[链接](https://github.com/apache/shardingsphere/tree/master "proxy_opengauss-master")，本示例为从openGauss分支上 自己编译出包。
 
+**说明**:shardingsphere-5.1.1及以上版本又合入openGauss驱动,不需要再额外下载驱动。
+
 # 三、 搭建openGauss分布式环境
 
 ## 1 解压二进制包
@@ -40,7 +42,7 @@ proxy默认支持PostgreSQL协议，openGauss也采用的是PostgreSQL协议，�
 
 ![image-20210830155551388](../img/proxy-unzip-filelist.png "proxy解压文件列表")
 
-## 2 替换为openGauss jdbc
+## 2 替换为openGauss jdbc(5.1.1及以上版本忽略此步骤)
 
 进入到lib目录下，并且将原有的postgresql-42.2.5.jar删除，将opengauss-jdbc的jar放置在该目录下即可。
 
@@ -48,7 +50,7 @@ proxy默认支持PostgreSQL协议，openGauss也采用的是PostgreSQL协议，�
 
 进入conf目录, 该目录下已经有server.yaml文件的模板。该配置文件的主要作用是配置**前端**的认证数据库、用户名和密码, 以及连接相关的属性：包括分布式事务类型、sql日志等。
 
-当然proxy还支持governance配置中心,它可以从配置中心读取配置或者永久保存配置，本次使用暂不涉及其使用。
+当然proxy还支持zookeeper和etcd配置中心,它可以从配置中心读取配置或者永久保存配置，本次使用暂不涉及其使用。
 
 server.yaml最简配置如下:
 
@@ -123,11 +125,11 @@ rules:
       type: INLINE
     ts_t1_alg:
       props:
-        algorithm-expression: ds_${ts_id % 3}
+        algorithm-expression: ts_${ts_id % 3}
       type: INLINE
   tables:
     t1:
-      actualDataNodes: ds_${0..1}.t1_${0..2}
+      actualDataNodes: ds_${0..1}.ts_${0..2}
       databaseStrategy:
         standard:
           shardingAlgorithmName: ds_t1_alg
