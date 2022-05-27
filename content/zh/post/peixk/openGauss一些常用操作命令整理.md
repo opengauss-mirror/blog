@@ -6,7 +6,7 @@ archives = "2022-05"
 author = "peixk"
 summary = "openGauss基本操作"
 img = "/zh/post/xingchen/title/title.jpg"
-times = "15:51"
+times = "15:52"
 +++
 
 整理了一些openGauss/MogDB的常用操作
