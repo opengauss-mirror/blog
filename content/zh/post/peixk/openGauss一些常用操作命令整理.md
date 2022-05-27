@@ -1,3 +1,14 @@
++++
+title = "openGauss一些常用操作命令整理"
+date = "2022-05-27"
+tags = ["openGauss基本操作"]
+archives = "2022-05"
+author = "peixk"
+summary = "openGauss基本操作"
+img = "/zh/post/xingchen/title/title.jpg"
+times = "15:51"
++++
+
 整理了一些openGauss/MogDB的常用操作
 
 ### 1、启停服务
