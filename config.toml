@@ -23,8 +23,8 @@ defaultContentLanguageInSubdir = true
   # more info please open https://valine.js.org
   [params.valine]
     enable = true
-    appId = 'LywcwQSTr31SpyD0VJPB8kpg-gzGzoHsz'
-    appKey = '5zjVNi08GN27tIS6UHVG3MEc'
+    appId = '6wfgavgIRqmpC3hjHqQVtFWF-gzGzoHsz'
+    appKey = 'QRqrBDBB0p0YhrGe9IJ169ip'
     notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
     verify = false # Verification code
     avatar = 'mm'
