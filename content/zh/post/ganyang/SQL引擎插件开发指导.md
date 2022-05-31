@@ -1,11 +1,11 @@
 ﻿+++
-date = "2022-04-28"
+date = "2022-05-31"
 tags = ["SQL引擎插件开发指导"]
-archives = "2022-04-28"
+archives = "2022-05-31"
 author = "ganyang"
 summary = "SQL引擎插件开发指导"
 img = "/zh/post/xiteming/title/img1.png"
-times = "20:00"
+times = "15:00"
 +++
 
 
@@ -15,9 +15,7 @@ times = "20:00"
 
 ②   通过fastcheck自测以及CI门禁
 
-③   提供测试报告和开发文档
-
- 
+③   提供checkin测试报告和开发文档并通过SIG组评审
 
  
 
@@ -52,18 +50,18 @@ times = "20:00"
 
 ## 插件安装、使用方法
 
-将b_sql_plugin文件夹放入数据库的contrib目录下，并使用make -sj && make install -sj完成编译安装，随后创建一个B兼容性的数据库，通过语句create extension b_sql_plugin即可使用。
+将whale文件夹放入数据库的contrib目录下，并使用make -sj && make install -sj完成编译安装，随后创建一个B兼容性的数据库，随后插件会自动完成加载，之后即可使用。
 
 ![](../image/CREATE.PNG)
 ![](../image/INSTALL.png)
 
 ## fastcheck自测方法
 
-将测试用的.sql文件放入sql文件夹 预期结果放入expected文件夹。
+将测试用的.sql文件放入sql文件夹 预期结果放入expected文件夹。注意使用LF行尾序列避免格式问题。
 ![](../image/FASTCHECK.PNG)
 
-通过make installcheck命令就能进行自测,如提示变量值不对需要手动修改pg_regress.cpp中相应值。
-
+通过make installcheck p=xxx或者make check p=xxx命令就能进行自测,如提示变量值不对需要手动修改pg_regress.cpp中相应值。
+其中installcheck是使用现有的数据库，因此需要保证端口号p与当前开启的数据库一致，check则是会编译一个临时数据库用于测试，可以避免现有数据库的一些数据对结果产生的干扰，但速度会稍慢。
 ![](../image/PG_REGRESS1.png)
 
 ![](../image/PG_REGRESS2.png)
@@ -76,17 +74,27 @@ export HOME=~
 ulimit -v unlimited
 export ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:alloc_dealloc_mismatch=0:log_path=$HOME/memchk/memcheck
 设置完环境变量后，正常跑fastcheck即可，跑完后，会在 $HOME/memchk/memcheck路径下生成文件名为runlog.xxx的memcheck报告。根据memcheck报告分析是否有内存问题。如何分析memcheck报告可自行网上搜索memcheck报告分析、asan报告分析等关键字。
- 
+
+## 升级
+
+930为第一次正式版本，后续新增的写在SQL中的函数、类型等均需要同步写到升级脚本中。
+
 
 ## 新增函数
 
-将与新类型无关的新方法添加到插件的builtin.ini中，而由于插件内部不附带pg_type.h
+将与新类型无关的新方法添加到插件的builtin.ini中，builtin.ini指导：(https://mp.weixin.qq.com/s/UWHwhI4jHK6nxPSYeJPVfg)
+而由于插件内部不附带pg_type.h
 
 因此在创建新的兼容类型时，无法和之前内核开发一样直接写在头文件中，而是需要通过sql语句来create type，由于这样生成的类型OID是随机的，因此对于和该类型相关联的方法、CAST、操作符等均需要在SQL语句中生成，且SQL中调用的新增函数必须按上述开放接口函数，同时建议除了需要覆盖内核同名函数外，尽可能不要在builtin.ini中开发新函数，而是使用sql，因为这样可以避免和未来内核开发的函数OID冲突。
 
 下面提供一些模板样例用于参考：
 
 ```sql
+
+--对于可变长度可变类型的函数sql
+
+create or replace function pg_catalog.gs_interval(variadic arr "any") returns int language C immutable as '$libdir/dolphin', 'gs_interval';
+
 --CREATE TYPE
 
 DROP TYPE IF EXISTS pg_catalog.year CASCADE;
@@ -95,13 +103,13 @@ DROP TYPE IF EXISTS pg_catalog._year CASCADE;
 
 CREATE TYPE pg_catalog.year;
 
-CREATE OR REPLACE FUNCTION pg_catalog.year_in (cstring) RETURNS year LANGUAGE C STABLE STRICT as '$libdir/b_sql_plugin', 'year_in';
+CREATE OR REPLACE FUNCTION pg_catalog.year_in (cstring) RETURNS year LANGUAGE C STABLE STRICT as '$libdir/whale', 'year_in';
 
-CREATE OR REPLACE FUNCTION pg_catalog.year_out (year) RETURNS cstring LANGUAGE C STABLE STRICT as '$libdir/b_sql_plugin', 'year_out';
+CREATE OR REPLACE FUNCTION pg_catalog.year_out (year) RETURNS cstring LANGUAGE C STABLE STRICT as '$libdir/whale', 'year_out';
 
-CREATE OR REPLACE FUNCTION pg_catalog.yeartypmodin (cstring[]) RETURNS integer LANGUAGE C IMMUTABLE STRICT as '$libdir/b_sql_plugin', 'yeartypmodin';
+CREATE OR REPLACE FUNCTION pg_catalog.yeartypmodin (cstring[]) RETURNS integer LANGUAGE C IMMUTABLE STRICT as '$libdir/whale', 'yeartypmodin';
 
-CREATE OR REPLACE FUNCTION pg_catalog.yeartypmodout (integer) RETURNS cstring LANGUAGE C IMMUTABLE STRICT as '$libdir/b_sql_plugin', 'yeartypmodout';
+CREATE OR REPLACE FUNCTION pg_catalog.yeartypmodout (integer) RETURNS cstring LANGUAGE C IMMUTABLE STRICT as '$libdir/whale', 'yeartypmodout';
 
 CREATE TYPE pg_catalog.year (input=year_in, output=year_out, internallength=2, passedbyvalue, alignment=int2, TYPMOD_IN=yeartypmodin, TYPMOD_OUT=yeartypmodout);
 
@@ -494,7 +502,6 @@ select insert_year('year_ops', 2, 'year', 'year', '<=');
 
 drop function Insert_pg_amop_temp();
 ```
-
  
 
  
