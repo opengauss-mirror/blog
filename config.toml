@@ -1,5 +1,5 @@
 title = "openGauss Blog"
-baseurl = "http://blog.openGauss.org"
+baseurl = "https://blog.openGauss.org"
 author = "@JeffProd"
 copyright = "Copyright © 2008–2018, @JeffProd"
 canonifyurls = true
