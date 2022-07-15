@@ -533,7 +533,7 @@ tar zcf dbmind.tar.gz gs_dbmind dbmind
 </td>
 <td class="cellrowborder" valign="top" width="45.14451445144515%" headers="mcps1.1.4.1.2 "><p id="p18583956174118"><a name="p18583956174118"></a><a name="p18583956174118"></a>系统网卡丢包率异常</p>
 </td>
-<td class="cellrowborder" valign="top" width="35.973597359735976%" headers="mcps1.1.4.1.3 "><p id="p8583155624117"><a name="p8583155624117"></a><a name="p8583155624117"></a>NETWORK DROP RATE大于用户设定阈值（默认0阈值：0.01）。</p>
+<td class="cellrowborder" valign="top" width="35.973597359735976%" headers="mcps1.1.4.1.3 "><p id="p8583155624117"><a name="p8583155624117"></a><a name="p8583155624117"></a>NETWORK DROP RATE大于用户设定阈值（默认阈值：0.01）。</p>
 </td>
 </tr>
 <tr id="row12583656104114"><td class="cellrowborder" valign="top" width="18.88188818881888%" headers="mcps1.1.4.1.1 "><p id="p125836563413"><a name="p125836563413"></a><a name="p125836563413"></a>网卡错误率</p>
