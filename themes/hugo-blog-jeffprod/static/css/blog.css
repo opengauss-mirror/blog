@@ -1,7 +1,8 @@
-html,body {
-    /* font-family: FZLTHJW-GB1-0; */
+html,body { 
     background: #ffffff;
     font-size: 14px;
+    font-family: 'Helvetica', 'Arial', 'PingFang SC', 'Microsoft YaHei',
+    sans-serif;
     }
 .hero-body {
     background-position: center;
@@ -339,7 +340,7 @@ li{
 }
 .boxs h1,
 .boxs h2 {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+     
     font-weight: 900;
     line-height: 1.1;
 }
@@ -353,8 +354,7 @@ li{
     margin-top: 40px;
 }
 .btn {
-    font-weight: 700;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 700; 
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 6px 12px;
@@ -393,13 +393,13 @@ li{
     top: 80px;
     font-size: 40px;
     color: #000000;
-    font-family: FZLTHJW;
+    
 }
 .container .blog-h3 {
     font-size: 24px;
     font-weight: normal;
     color: #000000;
-    font-family: FZLTHJW;
+    
     margin-bottom: 20px;
     max-width: 620px;
     line-height: 32px;
@@ -416,7 +416,7 @@ li{
     color: #4d4d4d;
     line-height: 32px;
     font-size: 14px;
-    font-family: FZLTHJW;
+    
 }
 .container .tags {
     margin-bottom: 10px;
@@ -432,7 +432,7 @@ li{
     color: #4d4d4d;
     line-height: 32px;
     font-size: 14px;
-    font-family: FZLTHJW;
+    
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #f9fafa;
@@ -451,27 +451,27 @@ li{
     font-size: 14px;
     line-height: 32px;
     color: #4d4d4d;
-    font-family: FZLTHJW;
+    
 }
 .more a {
     font-size: 14px;
     line-height: 32px;
     color: #7d32ea;
-    font-family: FZLTHJW;
+    
 }
 .container .card-tags {
     margin-bottom: 20px;
     font-size: 18px;
     line-height: 24px;
     color: #000000;
-    font-family: FZLTHJW;
+    
 }
 .top-dom a {
     text-decoration: none;
     color: #4d4d4d;
     font-size: 14px;
     line-height: 32px;
-    font-family: FZLTHJW;
+    
 
 }
 .top-dom .top-info img {
@@ -495,7 +495,7 @@ li{
     color: #4d4d4d;
     line-height: 32px;
     font-size: 14px;
-    font-family: FZLTHJW;
+    
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #f9fafa;

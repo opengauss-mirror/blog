@@ -37,19 +37,19 @@
 
     if (document.querySelector("#notFound")) parent.postMessage("我404了", url);
 
-    if (langss=== "zh") {
-        $('h1,h2,h3,h4,h5,div,p,a,li,span').each(function () {
-            if (!$(this).attr('style')) {
-                $(this).attr("style", "font-family:FZLTHJW !important");
-            }
-        })
-    } else {
-        $('h1,h2,h3,h4,h5,div,p,a,li,span').each(function () {
-            if (!$(this).attr('style')) {
-                $(this).attr("style", "font-family:Roboto-Regular !important");
-            }
-        })
-    }
+    // if (langss=== "zh") {
+    //     $('h1,h2,h3,h4,h5,div,p,a,li,span').each(function () {
+    //         if (!$(this).attr('style')) {
+    //             $(this).attr("style", "font-family:FZLTHJW !important");
+    //         }
+    //     })
+    // } else {
+    //     $('h1,h2,h3,h4,h5,div,p,a,li,span').each(function () {
+    //         if (!$(this).attr('style')) {
+    //             $(this).attr("style", "font-family:Roboto-Regular !important");
+    //         }
+    //     })
+    // }
 
 
     /* 设计图文档宽度 */
