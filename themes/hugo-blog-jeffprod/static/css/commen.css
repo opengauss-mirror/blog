@@ -36,7 +36,8 @@ h5 {
 body {
     background-color: #FFFFFF;
     color: #666666;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica', 'Arial', 'PingFang SC', 'Microsoft YaHei',
+    sans-serif;
     font-size: 14px;
     padding: 0;
     text-align: left;
@@ -119,12 +120,4 @@ li {
 table td {
     word-break: keep-all;
     white-space: nowrap;
-}
-@font-face {
-    font-family: "FZLTHJW";
-    src: url(../fonts/FZLTHJW.ttf);
-}
-@font-face {
-    font-family: "Roboto-Regular";
-    src: url(../fonts/Roboto-Regular.ttf);
-}
+} 

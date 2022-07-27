@@ -40,7 +40,7 @@ times = "12:30"
 </h2><p>     我们使用 SSH 工具PuTTY，从本地电脑通过配置弹性云服务器的弹性公网 IP地址来连接 ECS，并使用 ROOT 用户来登录。 
 </p><p>（1）点击putty.exe,打开putty
 </p><p><img src="https://oss-emcsprod-public.modb.pro/image/editor/20210710-91f7f344-2fbf-468e-ade6-48dcab5166db.png" style="max-width:100%;"><br></p><p>（2）输入弹性公网IP，点击open，连接弹性云服务器
-</p><p><img src="https://oss-emcsprod-public.modb.pro/image/editor/20210710-24486cb1-ca2c-437c-92a9-38f7d68fd7da.png" style="max-width:100%;"><br></p><p><span style="color: inherit; font-family: inherit; font-size: 1.17em;">2.1.2 启动、停止和连接数据库</span><br></p><h4>2.1.1.1 启动数据库
+</p><p><img src="https://oss-emcsprod-public.modb.pro/image/editor/20210710-24486cb1-ca2c-437c-92a9-38f7d68fd7da.png" style="max-width:100%;"><br></p><p><span style="color: inherit;   font-size: 1.17em;">2.1.2 启动、停止和连接数据库</span><br></p><h4>2.1.1.1 启动数据库
 </h4><p>（1）使用root登录
 </p><p><img src="https://oss-emcsprod-public.modb.pro/image/editor/20210710-8ca88de2-745e-4b7a-a36d-4f331aeccf41.png" style="max-width:100%;"><br></p><p>（2）切换至omm操作系统用户环境
 </p><p>使用语句切换至omm操作系统用户环境
