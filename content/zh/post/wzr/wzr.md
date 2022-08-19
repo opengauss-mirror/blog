@@ -6,7 +6,7 @@ archives=“2022-08”
 author=“wangrururu”
 summary="openGauss社区开发入门"
 img="/zh/post/wzr/title/title.jpg"
-times="10:06"**<br />
+times="10:06"
 +++
 
 1.事务概念：	
