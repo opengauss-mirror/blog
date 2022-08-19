@@ -2,8 +2,8 @@
 title="openGauss社区入门(opengauss-事务管理小结)"
 date="2022-08-11"
 tags=["openGauss社区开发入门"]
-archives=“2022-08”
-author=“wangrururu”
+archives="2022-08"
+author="wangrururu"
 summary="openGauss社区开发入门"
 img="/zh/post/wzr/title/title.jpg"
 times="10:06"
