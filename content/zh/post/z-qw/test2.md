@@ -1,4 +1,4 @@
-### +++
++++
 
  title = "openGauss社区入门（openGauss-对象管理）" 
 
