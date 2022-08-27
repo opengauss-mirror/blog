@@ -33,7 +33,7 @@ times = "15:00"
 ![](../image/DLL.png)
 
 ![](../image/INFO_V1.png)
- 
+
 
 ## Makefile需要添加相对应.o
 
@@ -503,6 +503,428 @@ select insert_year('year_ops', 2, 'year', 'year', '<=');
 
 drop function Insert_pg_amop_temp();
 ```
- 
 
- 
+# 终结符与非终结符相关
+
+由于要开发表名、用户名大小写敏感且不影响其他的对象名，需要对一些终结符与非终结符进行改造，这种改造会与原openGauss产生一定的差异，容易引起后续开发者在开发过程中产生一定的不适应，因此发布文档对这些被改造的终结符、非终结符进行描述。
+
+（详情见PR：[https://gitee.com/opengauss/Plugin/pulls/238](https://gitee.com/opengauss/Plugin/pulls/238)）
+
+## 终结符
+
+### IDENT
+
+IDENT终结符是一个用于表示对象名称的字符串类型终结符。
+
+在原来词法分析中，如果词法分析匹配到一个非关键字的标识符，就会将该字符串进行转小写、截断的操作，并将处理完成后的字符串绑定到yylval的str字段中，并借此传递到语法解析层面。
+
+现在，如果词法分析匹配到一个非关键字的标识符，将不会进行转小写的操作，而是直接经历截断操作，并绑定到yylval的str中进行传递。
+
+因此，如果在开发的过程中使用到这个终结符，可以通过如下所示的方法将其转换为小写：
+
+```
+normal_ident:		IDENT							{ $$ = downcase_str($1, is_quoted()); };
+```
+
+这里新建了一个名为downcase_str的函数对字符串类型的标识符进行小写转换，其实际的内容为：
+
+```
+#define is_quoted()  pg_yyget_extra(yyscanner)->core_yy_extra.ident_quoted
+static char* downcase_str(char* ident, bool is_quoted)
+{
+	if (ident == NULL || is_quoted) {
+		return ident;
+	}
+	int i;
+	bool enc_is_single_byte = (pg_database_encoding_max_length() == 1);
+	int len = strlen(ident);
+	for (i = 0; i < len; i++) {
+		ident[i] = (char)GetLowerCaseChar((unsigned char)ident[i], enc_is_single_byte);
+	}
+
+	return ident;
+}
+```
+
+其中，is_quoted表示该字符串是否为引用，true则为引用，不进行强制转小写操作，false则为非引用，会进行转小写的操作。由于is_quoted()返回的内容是一个全局的变量，在同一个语句中前一个词的pg_yyget_extra(yyscanner)->core_yy_extra.ident_quoted会被后一个词覆盖，导致没有办法得到正确的结果。因此在使用的过程中，更推荐用normal_ident对IDENT进行替换，其内容如下所示：
+
+```
+normal_ident:		IDENT							{ $$ = downcase($1); };
+```
+
+这样的话就能够保证每次获取到的ident_quoted就是当前IDENT的，从而能够正确地识别该词是否被引用。
+
+### 关键字
+
+关键字在词法分析时是和IDENT终结符一起处理的，因为两者都能被同一个正则表达式匹配。
+
+由于非保留关键字可以当做表名进行使用，所以也对关键字进行了大小写敏感处理，如果需要用到对应关键字的值，则需要对关键字进行转小写操作，如下所示：
+
+```
+ColId:		IDENT									{ $$ = downcase_str($1, is_quoted()); }
+			| unreserved_keyword					{ $$ = downcase_str(pstrdup($1), is_quoted()); }
+			| col_name_keyword						{ $$ = downcase_str(pstrdup($1), is_quoted()); }
+```
+
+可以看到，在ColId中，对unreserved_keyword和col_name_keyword的返回值都进行了转小写的处理，用于适配原来关键字的字符串必为小写的行为。值得注意的是，关键字其实并不会被引用，所以进行转换时可以让关键字的is_quoted直接置为false，如下所示：
+
+```
+ColId:		IDENT									{ $$ = downcase($1); }
+			| unreserved_keyword					{ $$ = downcase_str(pstrdup($1), false); }
+			| col_name_keyword						{ $$ = downcase_str(pstrdup($1), false); }
+		;
+```
+
+## 非终结符
+
+由于有些非终结符可以表示不同对象的标识符，所以对于非终结符，一般用替换的方式进行处理。
+
+在替换的过程中可能会出现IDENT中所说的情况，在同一个语句中前一个词的pg_yyget_extra(yyscanner)->core_yy_extra.ident_quoted会被后一个词覆盖，所以使用了一个新的结构体去保留非关键字的值以及引用情况，如下所示：
+
+```
+typedef struct DolphinString
+{
+	Node* node;
+	char* str;
+	bool is_quoted;
+} DolphinString;
+```
+
+node用来保存节点（主要是Value或者A_Indices类型的结点），str用于保存字符串的值，is_quoted（保存非Value类型的时候会直接置为false）则表示该词是否被引用。如果要生成一个DolphinString结点，可以通过以下函数生成：
+
+```
+static DolphinString* MakeDolphinString(char* str, Node* node, bool is_quoted)
+{
+	DolphinString* result = (DolphinString*)palloc(sizeof(DolphinString));
+	result->str = str;
+	result->node = node;
+	result->is_quoted = is_quoted;
+	return result;
+}
+
+static inline DolphinString* MakeDolphinStringByChar(char* str, bool is_quoted)
+{
+	return MakeDolphinString(str, (Node*)makeString(str), is_quoted);
+}
+
+static inline DolphinString* MakeDolphinStringByNode(Node* node, bool is_quoted)
+{
+	return MakeDolphinString(IsA(node, Value) ? strVal(node) : NULL, node, is_quoted);
+}
+```
+
+具体的使用方法如下所示：
+
+```
+dolphin_indirection_el:
+			'.' DolphinColLabel
+				{
+					$$ = $2;
+				}
+			| ORA_JOINOP
+				{
+					$$ = MakeDolphinStringByNode((Node *) makeString("(+)"), false);
+				}
+			| '.' '*'
+				{
+					$$ = MakeDolphinStringByNode((Node *) makeNode(A_Star), false);
+				}
+			| '[' a_expr ']'
+				{
+					A_Indices *ai = makeNode(A_Indices);
+					ai->lidx = NULL;
+					ai->uidx = $2;
+					$$ = MakeDolphinStringByNode((Node *) ai, false);
+				}
+			| '[' a_expr ':' a_expr ']'
+				{
+					A_Indices *ai = makeNode(A_Indices);
+					ai->lidx = $2;
+					ai->uidx = $4;
+					$$ = MakeDolphinStringByNode((Node *) ai, false);
+				}
+			| '[' a_expr ',' a_expr ']'
+				{
+					A_Indices *ai = makeNode(A_Indices);
+					ai->lidx = $2;
+					ai->uidx = $4;
+					$$ = MakeDolphinStringByNode((Node *) ai, false);
+				}
+		;
+```
+
+### 替换情况
+
+前面已经说了，针对非终结符一般采用在特定语法进行替换的方式实现区分，这里主要介绍一下新建的非终结符及其替换方案。
+
+#### ColId -> DolphinColId
+
+主要用于替换ColId，为DolphinString类型的非终结符，定义如下所示：
+
+```
+DolphinColId:		IDENT							{ $$ = MakeDolphinStringByChar($1, is_quoted()); }
+					| unreserved_keyword			{ $$ = MakeDolphinStringByChar(pstrdup($1), is_quoted()); }
+					| col_name_keyword				{ $$ = MakeDolphinStringByChar(pstrdup($1), is_quoted()); }
+		;
+```
+
+#### ColLabel -> DolphinColLabel
+
+用于替换DolphinColLabel，为DolphinString类型的非终结符，定义如下所示：
+
+```
+DolphinColLabel:	IDENT									{ $$ = MakeDolphinStringByChar($1, is_quoted()); }
+					| unreserved_keyword					{ $$ = MakeDolphinStringByChar(pstrdup($1), is_quoted()); }
+					| col_name_keyword						{ $$ = MakeDolphinStringByChar(pstrdup($1), is_quoted()); }
+					| type_func_name_keyword				{ $$ = MakeDolphinStringByChar(pstrdup($1), is_quoted()); }
+					| reserved_keyword
+						{
+							/* ROWNUM can not be used as alias */
+							if (DolphinObjNameCmp($1, "rownum", is_quoted())) {
+								const char* message = "ROWNUM cannot be used as an alias";
+								InsertErrorMessage(message, u_sess->plsql_cxt.plpgsql_yylloc);
+								ereport(errstate,
+									(errcode(ERRCODE_SYNTAX_ERROR),
+										errmsg("ROWNUM cannot be used as an alias"),
+												parser_errposition(@1)));
+							}
+							$$ = MakeDolphinStringByChar(pstrdup($1), is_quoted());
+						}
+		;
+```
+
+#### indirection_el -> dolphin_indirection_el
+
+用于在dolphin_indirection中对indirection_el进行替换，其为DolphinString类型，定义如下所示：
+
+```
+dolphin_indirection_el:
+			'.' DolphinColLabel
+				{
+					$$ = $2;
+				}
+			| ORA_JOINOP
+				{
+					$$ = MakeDolphinStringByNode((Node *) makeString("(+)"), false);
+				}
+			| '.' '*'
+				{
+					$$ = MakeDolphinStringByNode((Node *) makeNode(A_Star), false);
+				}
+			| '[' a_expr ']'
+				{
+					A_Indices *ai = makeNode(A_Indices);
+					ai->lidx = NULL;
+					ai->uidx = $2;
+					$$ = MakeDolphinStringByNode((Node *) ai, false);
+				}
+			| '[' a_expr ':' a_expr ']'
+				{
+					A_Indices *ai = makeNode(A_Indices);
+					ai->lidx = $2;
+					ai->uidx = $4;
+					$$ = MakeDolphinStringByNode((Node *) ai, false);
+				}
+			| '[' a_expr ',' a_expr ']'
+				{
+					A_Indices *ai = makeNode(A_Indices);
+					ai->lidx = $2;
+					ai->uidx = $4;
+					$$ = MakeDolphinStringByNode((Node *) ai, false);
+				}
+		;
+```
+
+#### index_name -> dolphin_index_name
+
+这个替换主要是用于解决CLUSTER语法中索引名和表名的语法冲突，仍为字符串类型，定义如下所示：
+
+```
+dolphin_index_name: DolphinColId					{ $$ = downcase_str($1->str, $1->is_quoted); };
+```
+
+#### func_name -> dolphin_func_name
+
+该替换主要用于处理a_expr处的语法冲突，类型与func_name一样为list类型，定义如下所示：
+
+```
+dolphin_func_name:	type_function_name
+						{ $$ = list_make1(makeString($1)); }
+					| DolphinColId dolphin_indirection
+						{
+							$$ = check_func_name(lcons(makeString(downcase_str($1->str, $1->is_quoted)),
+													GetNameListFromDolphinString($2)), yyscanner);
+						}
+		;
+```
+
+#### qualified_name -> dolphin_qualified_name
+
+该替换主要用于区分表名和索引名、快照名以及序列名等的标识符，相较于qualified_name，拥有大小写敏感的特性，且会根据是否开启大小写敏感、对应标识符是否引用、对应标识符是否为表名这几种情况决定是否对标识符进行小写转换，定义如下所示：
+
+```
+dolphin_qualified_name:
+			DolphinColId
+				{
+					$$ = makeRangeVar(NULL, GetDolphinObjName($1->str, $1->is_quoted), @1);
+				}
+			| DolphinColId dolphin_indirection
+				{
+					check_dolphin_qualified_name($2, yyscanner);
+					$$ = makeRangeVar(NULL, NULL, @1);
+					const char* message = "improper qualified name (too many dotted names)";
+					DolphinString* first = NULL;
+					DolphinString* second = NULL;
+					switch (list_length($2))
+					{
+						case 1:
+							$$->catalogname = NULL;
+							$$->schemaname = downcase_str($1->str, $1->is_quoted);
+							first = (DolphinString*)linitial($2);
+							$$->relname = strVal(first->node);
+							break;
+						case 2:
+							$$->catalogname = downcase_str($1->str, $1->is_quoted);
+							first = (DolphinString*)linitial($2);
+							second = (DolphinString*)lsecond($2);
+							$$->schemaname = downcase_str(strVal(first->node), first->is_quoted);
+							$$->relname = strVal(second->node);
+							break;
+						default:
+							InsertErrorMessage(message, u_sess->plsql_cxt.plpgsql_yylloc);
+							ereport(errstate,
+									(errcode(ERRCODE_SYNTAX_ERROR),
+									 errmsg("improper qualified name (too many dotted names): %s",
+											NameListToString(lcons(makeString($1->str), GetNameListFromDolphinString($2)))),
+									 parser_errposition(@1)));
+							break;
+					}
+				}
+		;
+```
+
+get_dolphin_obj_name会根据lower_case_table_names是否为0决定需不需要调用小写转换函数，如果为0，则表示大小写敏感，不需要转小写，>0则大小写不敏感，需要调用小写转换函数。
+
+#### name_list -> dolphin_name_list
+
+用于替换name_list，为list类型，仅在drop user语法中替换使用，定义为：
+
+```
+dolphin_name_list:	RoleId
+					{ $$ = list_make1(makeString($1)); }
+			| dolphin_name_list ',' RoleId
+					{ $$ = lappend($1, makeString($3)); }
+		;
+```
+
+#### qualified_name_list -> dolphin_qualified_name_list
+
+用于替换qualified_name_list ，是dolphin_qualified_name的链表，为list类型，定义如下所示：
+
+```
+dolphin_qualified_name_list:
+			dolphin_qualified_name										{ $$ = list_make1($1); }
+			| dolphin_qualified_name_list ',' dolphin_qualified_name	{ $$ = lappend($1, $3); }
+		;
+```
+
+#### any_name -> dolphin_any_name
+
+仅用于在COMMENT语法中替换any_name，为list类型，定义如下所示：
+
+```
+dolphin_any_name:	DolphinColId						{ $$ = list_make1(makeString(GetDolphinObjName($1->str, $1->is_quoted))); }
+			| DolphinColId dolphin_attrs
+			{
+				List* list = $2;
+				List* result = list_make1(makeString(downcase_str($1->str, $1->is_quoted)));
+				ListCell * cell = NULL;
+				int length = list_length($2);
+				int count = 1;
+				foreach (cell, list) {
+					DolphinString* dolphinString = (DolphinString*)lfirst(cell);
+					Value* value = (Value*)(dolphinString->node);
+					char* str = strVal(value);
+					bool is_quoted = dolphinString->is_quoted;
+					if (length == 1 && count == 1) {
+						/* schema_name.table_name */
+						result = lappend(result, makeString(GetDolphinObjName(str, is_quoted)));
+					} else if (count == 2) {
+						/* category_name.schema_name.table_name */
+						result = lappend(result, makeString(GetDolphinObjName(str, is_quoted)));
+					} else {
+						/* other_names */
+						result = lappend(result, makeString(downcase_str(str, is_quoted)));
+					}
+					count++;
+				}
+				$$ = result;
+			}
+		;
+```
+
+#### any_name_list -> dolphin_any_name_list
+
+仅用于在drop table语句中对any_name_list进行替换，为dolphin_any_name的链表，定义如下所示：
+
+```
+dolphin_any_name_list:
+			dolphin_any_name										{ $$ = list_make1($1); }
+			| dolphin_any_name_list ',' dolphin_any_name			{ $$ = lappend($1, $3); }
+		;
+```
+
+#### attrs -> dolphin_attrs
+
+用于在dolphin_any_name中对attrs进行替换，为list类型，定义如下所示：
+
+```
+dolphin_attrs:		'.' DolphinColLabel
+						{ $$ = list_make1($2); }
+					| dolphin_attrs '.' DolphinColLabel
+						{ $$ = lappend($1, $3); }
+		;
+```
+
+#### indirection -> dolphin_indirection
+
+用于对dolphin_qualified_name以及dolphin_func_name中的indirection进行替换，类型为list，定义如下所示：
+
+```
+dolphin_indirection:
+			dolphin_indirection_el									{ $$ = list_make1($1); }
+			| dolphin_indirection dolphin_indirection_el			{ $$ = lappend($1, $2); }
+		;
+```
+
+#### alias_clause -> dolphin_alias_clause
+
+用于对表别名进行替换，类型为alias类型，定义如下所示：
+
+```
+dolphin_alias_clause:
+			AS DolphinColId '(' name_list ')'
+				{
+					$$ = makeNode(Alias);
+					$$->aliasname = GetDolphinObjName($2->str, $2->is_quoted);
+					$$->colnames = $4;
+				}
+			| AS DolphinColId
+				{
+					$$ = makeNode(Alias);
+					$$->aliasname = GetDolphinObjName($2->str, $2->is_quoted);
+				}
+			| DolphinColId '(' name_list ')'
+				{
+					$$ = makeNode(Alias);
+					$$->aliasname = GetDolphinObjName($1->str, $1->is_quoted);
+					$$->colnames = $3;
+				}
+			| DolphinColId
+				{
+					$$ = makeNode(Alias);
+					$$->aliasname = GetDolphinObjName($1->str, $1->is_quoted);
+				}
+		;
+```
+
