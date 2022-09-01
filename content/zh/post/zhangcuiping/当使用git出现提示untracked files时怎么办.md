@@ -41,7 +41,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ```
 
-报错原因：未进入到正确目录下，要进入到untracked file的文件夹下即可
+**报错原因**：未进入到正确目录下，要进入到untracked file的文件夹下即可
 
 **解决办法**：
 
