@@ -20,8 +20,7 @@ times = "8:50"
 
  
 openGauss高可用架构包括一主一备(主备HA)、一主多备（最多8个备）、主备级联备。主备复制是通过WAL（redo）日志物理复制的形式从主库传送到备库。
-openGauss主备HA架构如下图，在局域网高带宽同网段建议采用一主一备或者一主多备的模式。结合高可用的需求和传输方式，可输出多种组合复制传输方式。
-![20210915-598dc744-f19e-441a-8b29-e3a55242da35.png](https://cdn.nlark.com/yuque/0/2022/png/29767082/1661124279073-2d7d6c17-b61b-44b3-b047-3b52ee1f3156.png#clientId=u9e92ef01-37ff-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=265&id=u5e81bee0&margin=%5Bobject%20Object%5D&name=20210915-598dc744-f19e-441a-8b29-e3a55242da35.png&originHeight=331&originWidth=621&originalType=binary&ratio=1&rotation=0&showTitle=false&size=58738&status=done&style=none&taskId=u2cff9be4-597a-400c-9e6c-2d182751477&title=&width=496.8)
+openGauss在局域网高带宽同网段建议采用一主一备或者一主多备的模式。结合高可用的需求和传输方式，可输出多种组合复制传输方式。
 1 异步方式
 对于主机的性能要求很高的OLTP系统，备库可以采用异步同步的模式，配置参数默认synchronous_commit=on，如果为off,可能会发生主库日志未完全落库的情况。主库Primary日志数据写入缓存，并向备库发送WAL日志，不需要等待备库反馈，主库日志写入磁盘完成，反馈给客户端事务提交完成，保证了主库最大性能。高速局域网内，几乎可以保证RPO=0，RTO<10s。
 异步模式，参数synchronous_standby_names不需要配置备机名称。
