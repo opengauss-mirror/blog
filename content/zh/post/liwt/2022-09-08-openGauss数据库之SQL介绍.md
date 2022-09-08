@@ -1,6 +1,6 @@
 +++
 
-title = "数据库之SQL介绍"
+title = "openGauss数据库之SQL介绍"
 
 date = "2020-09-08"
 
