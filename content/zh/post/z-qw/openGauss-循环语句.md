@@ -1,6 +1,6 @@
 +++
 
- title = "openGauss社区入门（openGauss-定时任务）" 
+title = "openGauss社区入门（openGauss-循环语句）" 
 
 date = "2022-09-09" 
 
