@@ -44,7 +44,7 @@ NAME="Ubuntu" VERSION="20.04.4 LTS (Focal Fossa)" ID=ubuntu ID_LIKE=debian PRETT
 docker pull swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0 
 ```
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-65ac5e4d-7251-4090-9f06-8a8dde449d3d.png)
+![image.png](.\figures\rust1.png)
 
 - 启动容器
 
@@ -52,9 +52,9 @@ docker pull swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
 docker run --name mogdb --privileged=true -d -e GS_PASSWORD=Enmo@123 -v C:\mogdb:/var/lib/mogdb -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0 
 ```
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-9195910f-6b9f-4ef3-a7cd-83af66fd5e7b.png)
+![image.png](.\figures\rust2.png)
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-33f4aaad-ca9f-4d73-93bd-e72e64aab573.png)
+![image.png](.\figures\rust3.png)
 
 - 进入容器
 
@@ -62,7 +62,7 @@ docker run --name mogdb --privileged=true -d -e GS_PASSWORD=Enmo@123 -v C:\mogdb
 docker exec -it mogdb bash 
 ```
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-57b914b6-8aa1-4ac3-a228-8b2a0ce38f22.png)
+![image.png](.\figures\rust4.png)
 可参考广泛文档中的“[容器化安装](https://docs.mogdb.io/zh/mogdb/v3.0/docker-installation)”.
 
 # 应用开发
@@ -81,7 +81,7 @@ frank@LAPTOP-4OF1323N:~/project/rust/test$ cd rust-pg/ frank@LAPTOP-4OF1323N:~/p
 
 - 修改`Cargo.toml` 文件，增加依赖`postgres = "0.19.3"` 。
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-1879c548-b4f5-4e30-b460-79298e5b63cb.png)
+![image.png](.\figures\rust5.png)
 
 - src/main.rs代码
 
@@ -205,11 +205,11 @@ frank@LAPTOP-4OF1323N:~/project/rust/test/rust-pg$ cargo build
 cargo run 
 ```
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-e972442b-1f38-4e20-8b4b-850d8d11fd58.png)
+![image.png](.\figures\rust6.png)
 
 - 验证
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220822-fe57d397-fc2c-40f3-9036-17e3f115463e.png)
+![image.png](.\figures\rust7.png)
 
 - 说明
 
