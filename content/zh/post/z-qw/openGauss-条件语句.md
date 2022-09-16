@@ -21,7 +21,19 @@ times = "19:30"
 ## 条件语句
 判断参数/语句是否满足给定的条件，根据判定结果，执行对应的操作。<br />条件语句可在存储过程中，自定义函数中，与循环语句结合等情况下使用。
 ### 1.IF...THEN
-若果条件为真，语句被执行，否则，忽略该语句。<br />举例1：<br />创建存储过程<br />CREATE OR REPLACE PROCEDURE prc1(n int) as<br />BEGIN<br />IF n>10 THEN<br />raise info 'this is %. ', n; <br />END IF;<br />END;<br />/<br />调用存储过程<br />CALL prc1(15);<br />CALL prc1(1);<br />显示信息<br />INFO: this is 15.<br />prc1<br />(1 row)<br />prc1<br />(1 row)
+若果条件为真，语句被执行，否则，忽略该语句。<br />举例1：<br />创建存储过程<br />
+`CREATE OR REPLACE PROCEDURE prc1(n int) as
+BEGIN
+IF n>10 THEN
+raise info 'this is %. ', n; 
+END IF;
+END;
+//<br />调用存储过程<br />`CALL prc1(15);
+CALL prc1(1);`<br />显示信息<br />`INFO: this is 15.
+prc1
+(1 row)
+prc1
+(1 row)`
 
 举例2：<br />创建存储过程中带有循环函数<br />CREATE OR REPLACE PROCEDURE prc2(n in int,a out int) as<br />i int:=0;<br />BEGIN<br />label: loop<br />n=n-1;<br />i=i+1;<br />raise info '循环进行 %次. ', i; <br />IF n<3 then<br />leave label;<br />END IF;<br />END LOOP;<br />a=n;<br />END;<br />/<br />调用存储过程<br />CALL prc2(6,1);<br />显示信息<br />INFO:循环进行1次.<br />INFO:循环进行2次.<br />INFO:循环进行3次.<br />INFO:循环进行4次.<br />a<br />2<br />(1 row)
 ### 2.IF...THEN...ELSE
