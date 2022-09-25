@@ -12,7 +12,7 @@ author = "z-qw"
 
 summary = "openGauss社区开发入门" 
 
-img = "/zh/post/z-qw/title/title.jpg" 
+img = "/zh/post/z-qw/title-条件/title.jpg" 
 
 times = "19:30" 
 
