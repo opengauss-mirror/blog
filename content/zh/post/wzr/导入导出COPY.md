@@ -1,4 +1,5 @@
-+++title="openGauss社区入门(opengauss-导入导出（copy）)"  
++++  
+title="openGauss社区入门(opengauss-导入导出（copy）)"  
 date="2022-09-23"  
 tags=["openGauss社区开发入门"]   
 archives="2022-09"  
