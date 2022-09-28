@@ -12,7 +12,7 @@ author = "伊织鸟"
 
 summary = "使用MTK迁移Mysql源库后主键自增列导致数据无法插入问题 "
 
-img = "/zh/post/zhangcuiping/title/img.png" 
+img = "/zh/post/liuxu/title/img.png" 
 
 times = "10:20"
 
