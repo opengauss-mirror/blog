@@ -54,25 +54,25 @@ https://gitee.com/darkathena/mogeaver-docker
 
 > https://www.docker.com/get-started/
 
-1. 下载VcXsrv
+2. 下载VcXsrv
 
 > https://sourceforge.net/projects/vcxsrv/
 
-1. 安装VcXsrv，一路下一步，然后打开XLaunch，一路下一步
-2. 下载mogdb和mogeaver压缩包，放到本文件夹
+3. 安装VcXsrv，一路下一步，然后打开XLaunch，一路下一步
+4. 下载mogdb和mogeaver压缩包，放到本文件夹
 
 ```
 wget https://cdn-mogdb.enmotech.com/mogeaver/22.1.5/mogeaver-ce-22.1.5-linux.gtk.x86_64.tar.gz
 wget https://cdn-mogdb.enmotech.com/mogdb-media/3.0.1/MogDB-3.0.1-CentOS-x86_64.tar.gz
 ```
 
-1. 进入本目录，执行构建镜像命令
+5. 进入本目录，执行构建镜像命令
 
 ```
 docker build -t mogeaver-docker:latest .
 ```
 
-1. 构建完成后，执行run_mogeaver.bat即可启动mogeaver
+6. 构建完成后，执行run_mogeaver.bat即可启动mogeaver
 
 ## 个性化修改说明
 
@@ -89,7 +89,9 @@ docker build -t mogeaver-docker:latest .
 ## 使用截图
 
 1. 构建
+
    ![image-1662550269020](./images/16bcc5b476ab328016746560d331ea19.png)
+   
 2. 软件打开界面
    ![image-1662550350017](./images/e9f0ab7b1e4c1b98f58b42333b74f5db.png)
 3. 执行备份
