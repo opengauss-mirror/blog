@@ -25,7 +25,7 @@ Mall4j商城系统技术亮点：
 
 
 
-| ![img](images\px8qmwwai4pa.png) | **开源版**        | **银河版**           | **宇宙版**            | **白洞版**           |          |
+| ![img](images/px8qmwwai4pa.png) | **开源版**        | **银河版**           | **宇宙版**            | **白洞版**           |          |
 | ------------------------------- | ----------------- | -------------------- | --------------------- | -------------------- | -------- |
 | **业务模式**                    | B2C               | B2C                  | B2B2C                 | S2B2C                |          |
 | **适用群体**                    | 个人、初学者      | 自营店、小规模企业   | 自营+入驻、中小型企业 | 自营+供应商/商家入驻 |          |
@@ -540,7 +540,7 @@ alter table tz_sys_log alter column id set default nextval('public.tz_sys_log_id
 **创建用户成功后**
 mytest=# select *  from  tz_sys_log   where  id = 846;
 
-![image.png](images\20221007-861fad61-a4bb-4954-9f23-a4818a7e77a9.png)
+![image.png](images/20221007-861fad61-a4bb-4954-9f23-a4818a7e77a9.png)
 
 ![image.png](images/20221007-eede3ceb-9322-4bfb-b5a3-82761e7d825f.png)
 
