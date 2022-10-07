@@ -317,22 +317,26 @@ DEMO代码
 无论是UserControler还是  UserEntityControler 都需要底层数据库对应用支持友好。
 确定opengauss的用户、密码、端口及相关IP
 
-![image.png](images\20220929-ee2bedb5-bd57-4892-8a7e-90aa80754fc4.png)
+![输入图片说明](images/20220929-ee2bedb5-bd57-4892-8a7e-90aa80754fc4.png)
 
 启动服务
 
-![image.png](images\20220929-6055a33c-36bd-4f5a-a6b6-4b580be3cde6.png)
+
+![输入图片说明](images/20220929-6055a33c-36bd-4f5a-a6b6-4b580be3cde6.png)
+
+
 
 服务正在运行中
-![image.png](images\20220929-2384156a-cbba-41a8-8dcf-ae104b11b024.png)
+![输入图片说明](images/20220929-2384156a-cbba-41a8-8dcf-ae104b11b024.png)
+
+
 
 查看用户实体1
+
 ![输入图片说明](images/20220929-0ee816b0-e5a9-4525-9aff-3b8369c3737a.png)
 
 
-
 查看用户实体2
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20220929-4025d92e-d454-444d-81fa-9930f2caa446.png)
 ![输入图片说明](images/20220929-4025d92e-d454-444d-81fa-9930f2caa446.png)
 
 源代码下载:    
