@@ -69,6 +69,8 @@ only supported for 8.2 and later servers.
 
 ![image.png](images/20220930-8253a3d9-0fb9-4b92-a568-a958855d0dc9.png)
 
+![输入图片说明](images/20220929-6055a33c-36bd-4f5a-a6b6-4b580be3cde6.png)
+
 
 如下，发现数据能够写入了，但是写入的数据没有id列为空值。
 
