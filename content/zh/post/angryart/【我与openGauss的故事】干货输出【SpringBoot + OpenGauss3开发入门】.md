@@ -309,10 +309,10 @@ DEMO代码
 |   |   |           \---service	       实现服务类
 
 注意UserControler是首先调用的service，继而去调用实体操作。
-![image.png](images\20220929-6e2d52d3-297c-4669-b22f-3fb17be4fa3a.png)
+![image.png](images/20220929-6e2d52d3-297c-4669-b22f-3fb17be4fa3a.png)
 
 而UserEntityControler是通过mapper的封装去调用  DAO的CRUD的操作，如下
-![image.png](images\20220929-6fba2d08-a10b-401f-b34d-8d548ca53fca.png)
+![image.png](images/20220929-6fba2d08-a10b-401f-b34d-8d548ca53fca.png)
 
 无论是UserControler还是  UserEntityControler 都需要底层数据库对应用支持友好。
 确定opengauss的用户、密码、端口及相关IP
