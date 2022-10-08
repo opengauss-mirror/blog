@@ -2,7 +2,9 @@
 
 title = "【我与openGauss的故事】干货输出【SpringBoot + OpenGauss3开发入门】" 
 
-date = "2022-10-8" tags = ["openGauss技术文章征集"] 
+date = "2022-10-8" 
+
+tags = ["openGauss技术文章征集"] 
 
 archives = "2022-10" 
 
@@ -515,4 +517,4 @@ mybatis.type-aliases-package=com.main.model
 ## 最后总结
 
 openGauss对业界知名的spring支持还算友好，直接用传统的postgresql驱动就可以接入使用，也有自己的opengauss驱动。如果使用顺利，还可以支持分布式配置、服务路由、负载均衡、熔断限流、链路监控这些功能，事实上在微服务的技术框架上也是支持的。
-
+ 
