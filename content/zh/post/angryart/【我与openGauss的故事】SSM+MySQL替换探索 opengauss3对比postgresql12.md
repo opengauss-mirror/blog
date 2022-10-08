@@ -1,3 +1,18 @@
++++
+
+title = "【我与openGauss的故事】SSM+MySQL替换探索 opengauss3对比postgresql12"
+
+date = "2022-10-8" tags = ["openGauss技术文章征集"]
+
+archives = "2022-10"
+
+author = "大数据模型"
+
+summary = "开发人员 习惯用SSM+mysql，现在有一个选择，可以使用SSM+openGauss"
+
++++
+
+
 ## SSM介绍
 
 
