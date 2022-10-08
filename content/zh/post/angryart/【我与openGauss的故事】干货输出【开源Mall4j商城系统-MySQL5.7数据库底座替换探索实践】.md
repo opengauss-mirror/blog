@@ -1,5 +1,3 @@
-+++
-
 title = "【我与openGauss的故事】干货输出【开源Mall4j商城系统-MySQL5.7数据库底座替换探索实践】"
 
 date = "2022-10-8" tags = ["openGauss技术文章征集"]
@@ -210,9 +208,9 @@ Mall4j商城系统复杂，涉及的技术组件多，我们准备用OpenGauss�
 ```
 
 
-#### pom.xml
+### pom.xml
 
-/opt/projects/yami-b2b2c/yami-shop-common目录,  pom.xml内容如下，需要注释
+/opt/projects/yami-b2b2c/yami-shop-common目录,  pom.xml内容如下，关于mysql的jdbc需要注释
 
 ```properties
                 <!--<dependency>-->
@@ -235,7 +233,7 @@ Mall4j商城系统复杂，涉及的技术组件多，我们准备用OpenGauss�
 
 ```
 
-#### logback-prod.xml
+### logback-prod.xml
 
 
 /opt/projects/yami-b2b2c/yami-shop-admin/src/main/resources/logback/logback-prod.xml
@@ -251,7 +249,7 @@ Mall4j商城系统复杂，涉及的技术组件多，我们准备用OpenGauss�
 
 
 
-#### application-dev.yml与 application-prod.yml
+### application-dev.yml与 application-prod.yml
 
 dev是开发环境的配置参数
 prod是生产环境的配置参数
@@ -303,21 +301,34 @@ HOT.jar
  -Dspring.profiles.active=prod   意味着用生产模式运行
 
 
+
+以下命令启动后台服务,运行成功会发现8085端口打开
+
 nohup java -jar -Dspring.profiles.active=dev "/opt/projects/yami-b2b2c/yami-shop-admin/target/yami-shop-admin-0.0.1-SNAPSHOT.jar" > "/opt/projects/yami-b2b2c/yami-shop-admin/target/log/yami-shop-admin-console.log" &
+
+
+
+以下命令启动前端服务,运行成功会发现8086端口打开
+
+
 
 
 nohup java -jar -Dspring.profiles.active=dev "/opt/projects/yami-b2b2c/yami-shop-api/target/yami-shop-api-0.0.1-SNAPSHOT.jar" > "/opt/projects/yami-b2b2c/yami-shop-api/target/log/yami-shop-api-console.log" &
 
 
+
+
 查看控制台日志输出
 
-# 后台日志
+### 后台服务日志
 
 tail -f ${PROJECT_PATH}/log/admin.log
 
-# 前端接口日志
+### 前端服务日志
 
 tail -f ${PROJECT_PATH}/log/api.log
+
+
 
 
 启动后端服务管理平台 
@@ -327,17 +338,23 @@ tail -f ${PROJECT_PATH}/log/api.log
 
 ![image.png](images/20221007-30859585-d134-436e-bf5f-efeafc633dd5.png)
 
-## 数据库梳理
+
+
+直接访问http://192.168.30.65:9528，它会直接与后台服务8085以及前端服务8086连线。
 
 
 
-### ER图
+### 数据库梳理
 
-一共有56个表
+
+
+#### ER图
+
+Mall4j一共有56个表
 
 ![yami_shops.png](images/20221007-1f70a47b-29bd-4279-93ab-387ea039879f.png)
 
-## 示例MySQL表
+#### 示例MySQL表
 
 相关56个表都要做不同程度的修改，要修改替换的地方，举例MySQL表。
 
@@ -369,7 +386,7 @@ CREATE TABLE `qrtz_job_details` (
 ```
 
 
-### 数据类型
+#### 数据类型
 
 数据类型的改造是一段工作量
 
@@ -381,7 +398,7 @@ bigint(10)  改成     bigint
 double(12,2)   改成     double precision 
 datetime  改成   date
 
-### 数据索引
+#### 数据索引
 
 openGauss的数据索引与MySQL的不一样
 
@@ -394,7 +411,7 @@ openGauss的数据索引与MySQL的不一样
 
 
 
-### 数据注释
+#### 数据注释
 
 openGauss的数据注释与MySQL的不一样
 
@@ -407,7 +424,7 @@ comment on column qrtz_job_details.file_type is '文件类型';
 
 
 
-### 自增ID表
+#### 自增ID表
 
 openGauss的自增ID与MySQL不一样 ，与主流的Postgresql的一模一样，它用自己的序列函数。
 
@@ -420,7 +437,7 @@ alter table tz_sys_log alter column id set default nextval('public.tz_sys_log_id
 ```
 
 
-### UUID表
+#### UUID表
 
 tz_user表有user_id使用的是uuid
 
@@ -453,19 +470,18 @@ mytest=# select  sys_guid()  ;
 
 ```
 
-### mybatis的SQL表达XML
+#### mybatis的SQL表达XML
 
 由于openGauss语法对符号 ``  不识别，要把     ``  的特殊符号都去掉
 /opt/projects/yami-b2b2c/yami-shop-sys/src/main/resources/mapper/SysMenuMapper.xml
 
 SysMenuMapper.xml   把  ``  的特殊符号都去掉。
 
-
-举例一个增加会员的涉及的逻辑操作
+## 举例一个增加会员的涉及的数据库相关的修改操作
 
 ![image.png](images/20221007-fb7a321b-c2cc-45f2-9069-abda3d701c6b.png)
 
-**点击管理员列表，再单击新增**，  会触发数据库新增数据，直接转发请求到后端服务yami-shop-admin
+**现在在后台管理页面，点击管理员列表，再单击新增**，  直接转发请求到后端服务yami-shop-admin，会触发数据库新增数据
 
 查看后端服务日志
 tailf   /opt/projects/yami-b2b2c/yami-shop-admin/target/log/yami-shop-admin-console.log
@@ -515,7 +531,7 @@ ERROR: null value Caused by: org.postgresql.util.PSQLException: ERROR: null valu
 
 ```
 
-**ERROR: null value  原因是自增ID的问题，通过以下方法实现自增ID。**
+**以上报错ERROR: null value  原因是自增ID的问题，通过以下方法实现自增ID。**
 
 ```sql
 create sequence public.tz_sys_user_id start with 2 increment by 1 no minvalue no maxvalue cache 1;
@@ -552,7 +568,7 @@ alter table tz_sys_log alter column id set default nextval('public.tz_sys_log_id
 
 
 **创建用户成功后**
-mytest=# select *  from  tz_sys_log   where  id = 846 ;
+mytest=# select *  from  tz_sys_log   where  id = 846;
 
 ![image.png](images/20221007-861fad61-a4bb-4954-9f23-a4818a7e77a9.png)
 
