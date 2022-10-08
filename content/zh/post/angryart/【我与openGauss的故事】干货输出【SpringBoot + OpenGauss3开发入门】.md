@@ -1,3 +1,18 @@
++++ 
+
+title = "【我与openGauss的故事】干货输出【SpringBoot + OpenGauss3开发入门】" 
+
+date = "2022-10-8" tags = ["openGauss技术文章征集"] 
+
+archives = "2022-10" 
+
+author = "大数据模型" 
+
+summary = "SpringBoot+openGauss开发入门" 
+
++++
+
+
 本文介绍如何快速安装OpenGauss3，OpenGauss3的安装这是笔者浓缩提炼的，并且在SpringBoot中集成使用OpenGauss3数据库。
 
 
