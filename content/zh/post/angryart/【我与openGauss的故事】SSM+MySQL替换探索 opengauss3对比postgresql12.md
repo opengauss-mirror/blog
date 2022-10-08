@@ -2,7 +2,9 @@
 
 title = "【我与openGauss的故事】SSM+MySQL替换探索 opengauss3对比postgresql12"
 
-date = "2022-10-8" tags = ["openGauss技术文章征集"]
+date = "2022-10-8" 
+
+tags = ["openGauss技术文章征集"]
 
 archives = "2022-10"
 
@@ -162,6 +164,6 @@ alter table user1 alter column id set default nextval('public.userid_seq');
 链接：https://pan.baidu.com/s/1AwWzu7vXdhEIyr1LZrMePw 
 提取码：0kwg
 
-## 最后总结
+## 最后总结 
 
 这是SSM开发中比较低端的DEMO代码，但是从中可见openGauss用心的包容,在接口层适配了mybatis,遇到自增ID提高了容错性，相对于postgresql多了一道方便。
