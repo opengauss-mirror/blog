@@ -552,7 +552,7 @@ alter table tz_sys_log alter column id set default nextval('public.tz_sys_log_id
 
 
 **创建用户成功后**
-mytest=# select *  from  tz_sys_log   where  id = 846;
+mytest=# select *  from  tz_sys_log   where  id = 846 ;
 
 ![image.png](images/20221007-861fad61-a4bb-4954-9f23-a4818a7e77a9.png)
 
