@@ -576,6 +576,6 @@ mytest=# select *  from  tz_sys_log   where  id = 846;
 
 
 
-## 最后总结
+## 最后总结 
 
 开源Mall4j商城系统的数据库底座替换，把MySQL改成OpenGauss，对业务逻辑相关的代码侵入不大，主要工作量是数据库表结构方面重构，OpenGauss对微服务的功能是支持的。
