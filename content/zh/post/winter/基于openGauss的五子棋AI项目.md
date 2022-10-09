@@ -29,7 +29,7 @@ openGauss是一款全面友好开放的企业级开源关系型数据库。openG
 
 # 3 架构设计
 
-![image.png](images/2.png)
+![image.png](images/1.png)
 
 其中对弈数据库采用`openGauss`数据库
 
@@ -37,24 +37,24 @@ openGauss是一款全面友好开放的企业级开源关系型数据库。openG
 
 棋盘数据表的表头如图所示
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221007-b18f5306-099e-4b41-9f6b-2b0a7282642a.png)
+![image.png](images/2.png)
 
 为将二维棋盘状态存入数据库中，令棋盘按 轴方向展开为一维序列
 
 
 玩家数据表的表头如图所示
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221007-07fb082b-837a-4b2f-bc8f-82161c2d41e9.png)
+![image.png](images/3.png)
 
 走子数据表的表头如图所示
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221007-65eed40c-1330-492f-9b9d-a2ed9f573142.png)
+![image.png](images/4.png)
 
 # 5 代码结构
 
 如图所示，依据模块化程序设计的基本思想，将整个项目按照功能划分为若干个小程序模块，每个小程序模块完成一个确定的功能，自顶向下、逐步分解、分而治之，各模块相对独立、功能单一、结构清晰。同时，在这些模块之间建立必要的联系，通过模块的互相协作完成整个功能的程序设计
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221007-890ae16a-bb3e-4f38-a8f7-739654d4ab42.png)
+![image.png](images/5.png)
 
 各模块具体设计如下：
 - main.py：启动文件。
@@ -67,7 +67,7 @@ openGauss是一款全面友好开放的企业级开源关系型数据库。openG
 
 # 6 项目演示
 
-![cc86c5f031564851a11ce8cbc347e083.gif](https://oss-emcsprod-public.modb.pro/image/editor/20221007-8a282f4c-6bf0-404a-af7c-7eb0205edd1e.gif)
+![cc86c5f031564851a11ce8cbc347e083.gif](images/6.gif)
 
 # 7 总结
 
