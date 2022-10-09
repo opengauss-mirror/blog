@@ -29,7 +29,7 @@ openGauss是一款全面友好开放的企业级开源关系型数据库。openG
 
 # 3 架构设计
 
-![image.png](images/1.png)
+![image.png](images/2.png)
 
 其中对弈数据库采用`openGauss`数据库
 
