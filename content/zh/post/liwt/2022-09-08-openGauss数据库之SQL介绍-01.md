@@ -85,3 +85,5 @@ IEC:国际电工委员会(International Electrotechnical Commission）。
  **4、openGauss数据库的“SQL”** 
 
 openGauss数据库支持的SQL标准，默认支持SQL2、SQL3和SQL4的主要特性。
+
+![输入图片说明](images/openGauss.png)
