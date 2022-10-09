@@ -29,7 +29,7 @@ openGauss是一款全面友好开放的企业级开源关系型数据库。openG
 
 # 3 架构设计
 
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221007-e21fa4f1-c633-47cb-a345-2c87b7257919.png)
+![image.png](images/1.png)
 
 其中对弈数据库采用`openGauss`数据库
 
