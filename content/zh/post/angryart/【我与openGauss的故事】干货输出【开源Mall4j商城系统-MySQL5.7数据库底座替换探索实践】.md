@@ -177,7 +177,7 @@ H5商城【HTML5】
 
 ## Mall4j商城系统替换因素考虑
 
-Mall4j商城系统复杂，涉及的技术组件多，我们准备用OpenGauss替换MySQL5.7，改动的的东西涉及项目依赖文件、配置文件、解析文件，尤其数据库的内核能力以及对 应用框架的兼容 程度非常重要，假设开发者要大费周章大面积的改动，或者要动jar包的配置，估计OpenGauss替换MySQL5.7的计划就要搁浅或者放弃了。
+Mall4j商城系统复杂，涉及的技术组件多，我们准备用OpenGauss替换MySQL5.7，改动的的东西涉及项目依赖文件、配置文件、解析文件，尤其数据库的内核能力以及对 应用框架的兼容 程度非常重要，假设开发者要大费周章大面积的改动，或者要动jar包的配置，估计OpenGauss替换MySQL5.7的计划就要搁浅或者放弃了。<mark>**这不仅仅是一个MySQL5.7往openGauss3.0数据迁移的事，还是业务应用系统往新的数据库适应环境的事，openGauss3.0必须要输出给力，除了能够替代MySQL5.7，迁移成本也必须低，运维成本也低**.</mark>
 
 代码结构
 
@@ -582,4 +582,32 @@ mytest=# select *  from  tz_sys_log   where  id = 846;
 
 ## 最后总结 
  
-开源Mall4j商城系统的数据库底座替换，把MySQL改成OpenGauss，对业务逻辑相关的代码侵入不大，主要工作量是数据库表结构方面重构，OpenGauss对微服务的功能是支持的。
+
+开源Mall4j商城系统的数据库底座替换，把MySQL5.7改成OpenGauss3，两者都是单机型管理系统，OpenGauss3在postgreSQL9.2.4基础上开发，应用接口延续了postgreSQL的语法和词法，数据类型、表操作与MySQL的重合度不高，56个表都需要经过调整。但是对业务逻辑相关的代码【主要是Mybatis】侵入不大，甚至相对postgresql对于ORM的配置做了兼容 ，开源Mall4j商城系统主要工作量是数据库表结构方面重构，OpenGauss对微服务的技术架构是支持的。
+
+
+
+归纳一下OpenGauss3替换MySQL5.7涉及Mall4j商城系统代码需要修改的地方
+
+| 差异类型 | 差异原因                  | 差异内容                               | 解决之道                                                     |
+| -------- | ------------------------- | -------------------------------------- | ------------------------------------------------------------ |
+| 数据库   | 数据类型不一致            | 整型、浮精度、二进制类型报错           | blob     改成   bytea<br/>tinyint(2)  改成    smallint<br/>smallint(10)  改成   smallint<br/>int(10)   改成     int<br/>bigint(10)  改成     bigint<br/>double(12,2)   改成     double precision <br/>datetime  改成   date |
+| 数据库   | 语法问题 ，数据库建表报错 | ENGINE=InnoDB DEFAULT CHARSET=utf8;    | openGauss建表的全部去掉                                      |
+| 数据库   | 建数据索引的方式不同      | 索引建立方式差异                       | create  index  xxx索引名称   on XX表(SCHED_NAME,JOB_GROUP);  |
+| 数据库   | 注释不同                  | 注释方式不同                           | comment on column 表名.列名 is '注释名称';                   |
+| 数据库   | 自增ID不同                | 自增ID方式不同                         | 通过定义sequence，并把它赋矛给指定的表上                     |
+| 数据库   | UUID                      | 实现UUID的方式不同                     | 通过  CREATE  FUNCTION生成一个UUID函数                       |
+| 应用     | 应用识别语法不同          | opengauss不识别映射表里面的`` 特殊字符 | 需要把相关XML里面的``去掉，例如/src/main/resources/mapper/SysMenuMapper.xml里面的 特殊字符去掉 |
+|          |                           |                                        |                                                              |
+
+
+
+最后补几个图
+![输入图片说明](images/dksdkdkds.pngimage.png)
+
+![输入图片说明](images/image2image.png)
+
+
+## 源代码体验
+
+[mall4j-with-oepngauss3](https://gitee.com/angryart/mall4j-with-oepngauss3)

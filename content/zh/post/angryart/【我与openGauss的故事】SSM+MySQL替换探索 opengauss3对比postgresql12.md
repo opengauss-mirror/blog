@@ -159,11 +159,13 @@ alter table user1 alter column id set default nextval('public.userid_seq');
 
 
 
-**体验源代码: **
 
-链接：https://pan.baidu.com/s/1AwWzu7vXdhEIyr1LZrMePw 
-提取码：0kwg
 
 ## 最后总结 
 
 这是SSM开发中比较低端的DEMO代码，但是从中可见openGauss用心的包容,在接口层适配了mybatis,遇到自增ID提高了容错性，相对于postgresql多了一道方便。
+
+
+## 体验源代码
+
+https://gitee.com/angryart/ssm-opengauss
