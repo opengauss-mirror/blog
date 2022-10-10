@@ -356,10 +356,7 @@ DEMO代码
 查看用户实体2
 ![输入图片说明](images/20220929-4025d92e-d454-444d-81fa-9930f2caa446.png)
 
-源代码下载:    
-
-链接：https://pan.baidu.com/s/1XnDM5Y5006njtJpwqUBR3w 
-提取码：5wjd
+    
 
 ## springboot集成opengauss的FAQ
 
@@ -510,11 +507,14 @@ mybatis.type-aliases-package=com.main.model
 
 
    
-
-
-
-
 ## 最后总结
 
 openGauss对业界知名的spring支持还算友好，直接用传统的postgresql驱动就可以接入使用，也有自己的opengauss驱动。如果使用顺利，还可以支持分布式配置、服务路由、负载均衡、熔断限流、链路监控这些功能，事实上在微服务的技术框架上也是支持的。
+
+## 源代码下载:    
+
+https://gitee.com/angryart/springboot-opengauss
+
  
+
+
