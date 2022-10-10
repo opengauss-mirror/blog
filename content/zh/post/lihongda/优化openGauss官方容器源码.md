@@ -1521,14 +1521,14 @@ To https://gitee.com/lee1002/openGauss-server.git
 ## 4. 社区提交
 
 - Pull Requests
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221009-82667024-4773-4f33-9951-0703238262e4.png)
+![image.png](figures/20221009-82667024-4773-4f33-9951-0703238262e4.png)
 
 
 - 创建 Pull Request
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221009-4e05fce3-e437-4b48-aa9a-bda54c6aebad.png)
+![image.png](figures/20221009-4e05fce3-e437-4b48-aa9a-bda54c6aebad.png)
 
 - 等待commit审查合入
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221009-7cb7fc14-ebc6-4877-980e-7254cafb6876.png)
+![image.png](figures/20221009-7cb7fc14-ebc6-4877-980e-7254cafb6876.png)
 
 
 # 五 优化总结
