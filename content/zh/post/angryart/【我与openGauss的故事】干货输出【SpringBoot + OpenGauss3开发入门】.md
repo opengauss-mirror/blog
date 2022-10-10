@@ -292,6 +292,7 @@ export GS_CLUSTER_NAME=dbCluster
 
 简而言之**SOA可以消除信息孤岛并实现共享业务重用**，我们通过SOA可以打造下图的复杂系统，其中**蓝色用户服务** ，我们可以通过**springboot +  OpenGauss**  技术实现。
 
+![输入图片说明](images/image.png)
 我们使用OpenGauss作为具体数据存储，使用开发工具创建一个数据库mysqltest，并在mysqltest数据库中创建一张表userennity和user1，创建语句如下：
 
 
@@ -511,7 +512,7 @@ mybatis.type-aliases-package=com.main.model
 
 openGauss对业界知名的spring支持还算友好，直接用传统的postgresql驱动就可以接入使用，也有自己的opengauss驱动。如果使用顺利，还可以支持分布式配置、服务路由、负载均衡、熔断限流、链路监控这些功能，事实上在微服务的技术框架上也是支持的。
 
-## 源代码下载:    
+## 源代码体验下载:    
 
 https://gitee.com/angryart/springboot-opengauss
 
