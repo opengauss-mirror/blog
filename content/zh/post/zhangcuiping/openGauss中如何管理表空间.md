@@ -84,7 +84,7 @@ times = "14:20"
 
 - 删除表空间
 
-  注意：表空间下存在对象（表）时，无法删除。
+  **注意**：表空间下存在对象（表）时，无法删除。
 
   ```sql
   openGauss=# DROP TABLESPACE fspace;
