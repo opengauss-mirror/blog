@@ -129,7 +129,7 @@ times = "10:15"
     >**说明：**
     >WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
 
-- 5.WDR报告解读
+# WDR报告解读
 
     > **说明：**
     >为了使得WDR报告内容不空洞，本次在测试环境使用BenchmarkSQL5.0对openGauss数据库进行100warehouse，100并发压力测试。 本次的WDR报告样例来自于此时手工创建的快照数据。
@@ -146,7 +146,8 @@ times = "10:15"
 
     - 5）以下是解读WDR报告
 
-      开头介绍了一下当前wdr报告概况信息：
+      当前wdr报告概况信息：
+
     | 信息分类        | 信息描述                                                   |
 |-------------|--------------------------------------------------------|
 | 报告采集类型      | Summary + Detail，即汇总数据+明细数据                            |
@@ -165,20 +166,10 @@ times = "10:15"
 |         | Host_CPU                         | 主机CPU的负载情况   |
 |         | IO Profile                       | 描述了openGauss在快照期间的IO负载情况    |
 |         | Memory_Statistics                | 描述了节点内存的变化信息    |
+| Report Details | Time Model     | 描述了数据库各种状态所消耗的时间                                                                           |
+|                | SQL Statistics | 从SQL执行时间、SQL消耗CPU的时间、SQL返回的行数、SQL扫描的行数、SQL执行的次数、SQL物理读的次数、SQL逻辑读的次数等多维度对两次快照期间的SQL执行情况进行统计 |
+|                | Wait Events    | 从等待时长、等待次数这两个维度对等待事件进行统计                                                                   |
+|                | Cache IO Stats | 根据Heap block的命中率排序统计用户表的IO活动状态                                                             |
+|                | Utility status | 描述的是后台写操作的统计信息                                                                             |
+|                | Object stats   | 描述用户表状态的统计信息                                                                               |
 
-
-类别	分类明细	作用
-Summary	Instance Efficiency Percentages	实例的效率百分比
-Top 10 Events by Total Wait Time	事件等待时间排名前10
-Wait Classes by Total Wait Time	按照等待类型分类
-Host_CPU	主机CPU的负载情况
-IO Profile	描述了openGauss在快照期间的IO负载情况
-Memory_Statistics	描述了节点内存的变化信息
-Report Details	Time Model	描述了数据库各种状态所消耗的时间
-SQL Statistics	从SQL执行时间、SQL消耗CPU的时间、SQL返回的行数、SQL扫描的行数、SQL执行的次数、SQL物理读的次数、SQL逻辑读的次数等多维度对两次快照期间的SQL执行情况进行统计
-Wait Events	从等待时长、等待次数这两个维度对等待事件进行统计
-Cache IO Stats	根据Heap block的命中率排序统计用户表的IO活动状态
-Utility status	描述的是后台写操作的统计信息
-Object stats	描述用户表状态的统计信息
-Configuration settings	描述的是数据库参数配置信息
-SQL Detail	描述的是SQL语句的详细信息
