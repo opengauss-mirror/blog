@@ -114,11 +114,15 @@ times = "10:15"
 
     - 4)目录下生成对应的wdr报告，cd /home/opegauss生成报告的指定路径进行查看。
 
+     ![](./images/9.png)    
+
 - 3.手工创建快照信息
 
     当在openGauss数据库执行性能测试，数据库默认每小时自动执行一次snapshot操作。生成指定时间段内的WDR报告，查询快照视图后选取指定开始时间的快照id，结束时间的快照id。通过函数generate_wdr_report生成wdr报告。但是有些情况，固定时间段的WDR报告，就需要使用具有sysadmin权限用户手工创建快照信息，需要执行两次。具体操作步骤如下：
 
     - 1）首先确认一下，当前的快照信息视图snapshot.snapshot中的时间节点。
+
+      ![](./images/10.png)
 
     - 2）执行函数create_wdr_snapshot()创建快照
 
@@ -127,10 +131,17 @@ times = "10:15"
     ```
     select create_wdr_snapshot();
     ```
+    
+      ![](./images/11.png)
 
     - 3）等待10分钟以后再次执行函数create_wdr_snapshot()，手工创建结束快照。
+    
+      ![](./images/12.png)
 
     - 4）执行操作步骤第二步：生成WDR报告，执行如下图步骤，生成节点node级别wdr报告（其中dn_6001客户端gsql登录数据show pgxc_node_name查询的结果）。
+
+      ![](./images/13.png)
+      ![](./images/14.png)
 
 - 4.WDR涉及的数据表
 
