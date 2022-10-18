@@ -39,7 +39,7 @@ times = "17:30"
 # 3.按esc键退出输入模式，输入:wq!退出
 ```
 
-![image-20221007165721358](.\image\image-20221007165721358.png)
+![image-20221007165721358](figures/image-20221007165721358.png)
 
 
 
@@ -55,9 +55,9 @@ times = "17:30"
 # 3.修改加密方式password_encryption_type = 0，如图所示
 ```
 
-![image-20221007170043591](.\image\image-20221007170043591.png)
+![image-20221007170043591](.\figures\image-20221007170043591.png)
 
-![image-20221007170203051](.\image\image-20221007170203051.png)
+![image-20221007170203051](.\figures\image-20221007170203051.png)
 
 ### 重启服务
 
@@ -117,10 +117,10 @@ alter user test identified by 'openGauss@1234'
 
 1. 打开navicat点击新建连接选择postgresSQL连接
 
-<img src=".\image\image-20221007170612801.png" alt="image-20221007170612801" style="zoom:50%;" />
+<img src=".\figures\image-20221007170612801.png" alt="image-20221007170612801" style="zoom:50%;" />
 
 2. 输入ip、端口号等参数
 
-![image-20221007170456969](.\image\image-20221007170456969.png)
+![image-20221007170456969](.\figures\image-20221007170456969.png)
 
-![image-20221007170913902](.\image\image-20221007170913902.png)
+![image-20221007170913902](.\figures\image-20221007170913902.png)
