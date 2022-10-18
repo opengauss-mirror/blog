@@ -146,14 +146,25 @@ times = "10:15"
 
     - 5）以下是解读WDR报告
 
-     开头介绍了一下当前wdr报告概况信息：
+      开头介绍了一下当前wdr报告概况信息：
+    | 信息分类        | 信息描述                                                   |
+|-------------|--------------------------------------------------------|
+| 报告采集类型      | Summary + Detail，即汇总数据+明细数据                            |
+| Snapshot信息  | 使用snapshot_id为24和25的快照采集2022-10-09(15:28 ~ 15:39)的运行信息 |
+| 硬件配置        | X*Xc/GB                                                |
+| 节点名         | dn_6001                                                |
+| openGauss版本 | openGauss 3.0.0                                        |
 
-信息分类	信息描述
-报告采集类型	Summary + Detail，即汇总数据+明细数据
-Snapshot信息	使用snapshot_id为24和25的快照采集2022-10-09(15:28 ~ 15:39)的运行信息
-硬件配置	X*Xc/GB
-节点名	dn_6001
-openGauss版本	openGauss 3.0.0
+
+
+| 类别      | 分类明细                             | 作用 |
+|---------|----------------------------------|----|
+| Summary | Instance Efficiency Percentages  | 实例的效率百分比   |
+|         | Top 10 Events by Total Wait Time | 事件等待时间排名前10   |
+|         | Wait Classes by Total Wait Time  | 按照等待类型分类   |
+|         | Host_CPU                         | 主机CPU的负载情况   |
+|         | IO Profile                       | 描述了openGauss在快照期间的IO负载情况    |
+|         | Memory_Statistics                | 描述了节点内存的变化信息    |
 
 
 类别	分类明细	作用
