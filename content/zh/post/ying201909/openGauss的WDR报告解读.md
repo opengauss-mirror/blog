@@ -122,8 +122,12 @@ times = "10:15"
 
 - 4.WDR涉及的数据表
 
-    **说明：**
-    WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
+    >**说明：**
+    >|   |                        |                |
+|---|------------------------|----------------|
+|   | Configuration settings | 描述的是数据库参数配置信息  |
+|   | SQL Detail             | 描述的是SQL语句的详细信息 |
+WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
 
 # WDR报告解读
 
