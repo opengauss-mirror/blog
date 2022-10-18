@@ -59,7 +59,7 @@ times = "10:15"
     \a \t \o /home/opengauss/wdrTest.html
     ```
 
-**上述命令涉及参数说明如下：**
+    **上述命令涉及参数说明如下：**
 
     ```
     \a：切换非对齐模式。
@@ -85,19 +85,20 @@ times = "10:15"
     **函数说明：generate_wdr_report**
 
     > **语法:**
+    >
     > select generate_wdr_report(begin_snap_id bigint, end_snap_id bigint, report_type cstring, report_scope cstring, node_name cstring);
+    >
     > **选项：**
-    >begin_snap_id：查询时间段开始的snapshot的id（表snapshot.snaoshot中的snapshot_id）
-
-    end_snap_id： 查询时间段结束snapshot的id。默认end_snap_id大于begin_snap_id（表snapshot.snaoshot中的snapshot_id）
-
-    report_type： 指定生成report的类型。例如，summary/detail/all，其中：summary\[汇总数据\]/detail\[明细数据\]/all\[包含summary和detail\]
-
-    report_scope： 指定生成report的范围，可以为cluster或者node，其中：cluster是数据库级别的信息，node是节点级别的信息。
-
-    node_name： 当report_scope指定为node时，需要把该参数指定为对应节点的名称。当report_scope为cluster时，该值可以省略或者指定为空或NULL。node[节点名称]、cluster[省略/空/NULL]
-
-
+    >
+    > begin_snap_id：查询时间段开始的snapshot的id（表snapshot.snaoshot中的snapshot_id）
+    >
+    > end_snap_id： 查询时间段结束snapshot的id。默认end_snap_id大于begin_snap_id（表snapshot.snaoshot中的snapshot_id）
+    >
+    > report_type： 指定生成report的类型。例如，summary/detail/all，其中：summary\[汇总数据\]/detail\[明细数据\]/all\[包含summary和detail\]
+    >
+    > report_scope： 指定生成report的范围，可以为cluster或者node，其中：cluster是数据库级别的信息，node是节点级别的信息。
+    >
+    > node_name： 当report_scope指定为node时，需要把该参数指定为对应节点的名称。当report_scope为cluster时，该值可以省略或者指定为空或NULL。node[节点名称]、cluster[省略/空/NULL]
 
 4)目录下生成对应的wdr报告，cd /home/opegauss生成报告的指定路径进行查看。
 
