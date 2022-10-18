@@ -43,36 +43,36 @@ times = "10:15"
 
 - 1.执行以下SQL命令,查询已经生成的快照信息。
 
-```
-select * from snapshot.snapshot;
-```
+    ```
+    select * from snapshot.snapshot;
+    ```
 
-- snapshot.snapshot 【记录当前系统中存储的WDR快照信息】
+    - snapshot.snapshot 【记录当前系统中存储的WDR快照信息】
 
 - 2.生成WDR报告。执行如下步骤，生成节点node级别wdr报告。
 
-- 1）查询 pgxc_node_name参数值，或者使用查询视图：pg_node_env。
+    - 1）查询 pgxc_node_name参数值，或者使用查询视图：pg_node_env。
 
-- 2） \a \t \o 服务器文件路径生成格式化性能报告
+    - 2） \a \t \o 服务器文件路径生成格式化性能报告
 
-```
-\a \t \o /home/opengauss/wdrTest.html
-```
+    ```
+    \a \t \o /home/opengauss/wdrTest.html
+    ```
 
 **上述命令涉及参数说明如下：**
 
-```
-\a：切换非对齐模式。
-\t：切换输出的字段名的信息和行计数脚注。
-\o：把所有的查询结果发送至服务器文件里。
-服务器文件路径：生成性能报告文件存放路径。用户需要拥有此路径的读写权限。
-```
+    ```
+    \a：切换非对齐模式。
+    \t：切换输出的字段名的信息和行计数脚注。
+    \o：把所有的查询结果发送至服务器文件里。
+    服务器文件路径：生成性能报告文件存放路径。用户需要拥有此路径的读写权限。
+    ```
 
-如果不退出当前登录gsql客户端，进行执行其他SQL，关闭格式化输出命令：
+    **如果不退出当前登录gsql客户端，进行执行其他SQL，关闭格式化输出命令：**
 
-```
-\o \a \t
-```
+    ```
+    \o \a \t
+    ```
 
 - 3）向性能报告wdrTest.html中写入数据，从snapshot.snapshot视图中选取要生成WDR报告的时间点。例如：127和128两个时间点。
 
@@ -82,12 +82,12 @@ select * from snapshot.snapshot;
     select generate_wdr_report(127,128,'all','node','dn_6001');
     ```
 
-**函数说明：generate_wdr_report**
+    **函数说明：generate_wdr_report**
 
-    **语法:**
-    select generate_wdr_report(begin_snap_id bigint, end_snap_id bigint, report_type cstring, report_scope cstring, node_name cstring);
-    **选项：**
-    begin_snap_id：查询时间段开始的snapshot的id（表snapshot.snaoshot中的snapshot_id）
+    > **语法:**
+    > select generate_wdr_report(begin_snap_id bigint, end_snap_id bigint, report_type cstring, report_scope cstring, node_name cstring);
+    > **选项：**
+    >begin_snap_id：查询时间段开始的snapshot的id（表snapshot.snaoshot中的snapshot_id）
 
     end_snap_id： 查询时间段结束snapshot的id。默认end_snap_id大于begin_snap_id（表snapshot.snaoshot中的snapshot_id）
 
