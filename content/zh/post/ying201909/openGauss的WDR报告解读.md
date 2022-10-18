@@ -76,14 +76,12 @@ select * from snapshot.snapshot;
 
 - 3）向性能报告wdrTest.html中写入数据，从snapshot.snapshot视图中选取要生成WDR报告的时间点。例如：127和128两个时间点。
 
-```
-gsql -d postgres -p 6000 -r -c"select generate_wdr_report(快照id1,快照id2,‘all’,‘node’,‘pgxc_node_name参数值’);"
-```
-```
-select generate_wdr_report(127,128,'all','node','dn_6001');
-```
+    ```
+    gsql -d postgres -p 6000 -r -c"select generate_wdr_report(快照id1,快照id2,‘all’,‘node’,‘pgxc_node_name参数值’);"
+   
+    select generate_wdr_report(127,128,'all','node','dn_6001');
+    ```
 
-```
 **函数说明：generate_wdr_report**
 
     **语法:**
@@ -98,7 +96,6 @@ select generate_wdr_report(127,128,'all','node','dn_6001');
     report_scope： 指定生成report的范围，可以为cluster或者node，其中：cluster是数据库级别的信息，node是节点级别的信息。
 
     node_name： 当report_scope指定为node时，需要把该参数指定为对应节点的名称。当report_scope为cluster时，该值可以省略或者指定为空或NULL。node[节点名称]、cluster[省略/空/NULL]
-```
 
 
 
