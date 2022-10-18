@@ -123,11 +123,7 @@ times = "10:15"
 - 4.WDR涉及的数据表
 
     >**说明：**
-    >|   |                        |                |
-|---|------------------------|----------------|
-|   | Configuration settings | 描述的是数据库参数配置信息  |
-|   | SQL Detail             | 描述的是SQL语句的详细信息 |
-WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
+    >WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
 
 # WDR报告解读
 
@@ -172,4 +168,6 @@ WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据�
 |                | Cache IO Stats | 根据Heap block的命中率排序统计用户表的IO活动状态                                                             |
 |                | Utility status | 描述的是后台写操作的统计信息                                                                             |
 |                | Object stats   | 描述用户表状态的统计信息                                                                               |
+|   | Configuration settings | 描述的是数据库参数配置信息  |
+|   | SQL Detail             | 描述的是SQL语句的详细信息 |
 
