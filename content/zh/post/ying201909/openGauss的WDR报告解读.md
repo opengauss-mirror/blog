@@ -48,6 +48,10 @@ times = "10:15"
     ```
 
     **snapshot.snapshot 【记录当前系统中存储的WDR快照信息】**
+    
+    ![](./images/1.png)
+    ![](./images/3.png)
+    ![](./images/3.png)
 
 - 2.生成WDR报告。执行如下步骤，生成节点node级别wdr报告。
 
