@@ -30,6 +30,8 @@ times = "10:15"
 
 生成WDR报告的前提条件是，打开参数enable_wdr_snapshot。确认当前已按照的openGauss数据库是否打开WDR报告的参数，需要通过下图登录数据库进行查询。enable_wdr_snapshot的值为on表示打开，off表示关闭
 
+![](./images/1.png)
+
 **以下介绍WDR报告的参数：**
 
 | 序号 | 参数                          | 参数说明                                                                          | 取值范围                                                 |
@@ -49,13 +51,16 @@ times = "10:15"
 
     **snapshot.snapshot 【记录当前系统中存储的WDR快照信息】**
     
-    ![](./images/1.png)
+    ![](./images/2.png)
     ![](./images/3.png)
-    ![](./images/3.png)
+    ![](./images/4.png)
 
 - 2.生成WDR报告。执行如下步骤，生成节点node级别wdr报告。
 
     - 1）查询 pgxc_node_name参数值，或者使用查询视图：pg_node_env。
+
+    ![](./images/5.png)
+    ![](./images/6.png)
 
     - 2） \a \t \o 服务器文件路径生成格式化性能报告
 
