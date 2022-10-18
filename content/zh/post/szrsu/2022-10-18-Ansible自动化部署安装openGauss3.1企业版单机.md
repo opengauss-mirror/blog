@@ -7,25 +7,34 @@ author = "szrsu"
 summary = "本文基于ansible工具实现openGauss的一键批量部署"
 +++
 
-一、背景
+### 一、背景
+
 由于IT建设的快速发展，当数据中心业务突增，需要快速部署多套的数据库时，给运维工作带来了不小的压力和挑战，作为运维人员该如何面对面对这种困境呢？另外由于个人的习惯等也会导致所部署的环境不一定与规划完全一致，那么对以后的运维也会产生一定的负面影响。很显然，这种传统的方式已经无法适应当前的情景了，自动化运维应运而生，ansible在自动化运维和devops 的应用中崭露头角。
 
 本文基于ansible工具实现 openGauss 的一键批量部署，传统的部署方式是先修改系统配置、安装依赖包、创建omm用户和组、配置环境变量、上传安装包以及解压、安装等步骤。
 
 按照这个流程和思路，我们把这些操作弄成剧本编排(playbook)，交给ansible来做。
 
-二、环境准备
+### 二、环境准备
+
+
 2台主机：
 一台为Ansible的管理主机(10.10.10.142)，操作系统为CentOS Linux release 7.9.2009 (Core)；
 另外一台为需要部署openGauss的主机(10.10.10.150)，操作系统为CentOS Linux release 7.9.2009 (Core)。
 
-三、具体实施步骤
-3.1、安装ansible
+### 三、具体实施步骤
+
+
+### 3.1、安装ansible
+
+
 –在10.10.10.142上进行安装Ansible
 yum install epel-release -y
 yum install ansible –y
 
 –配置/etc/ansible/ansible.cfg
+
+```
 
 # grep -v '^#' /etc/ansible/ansible.cfg |sed '/^$/d'
 [defaults]
@@ -47,8 +56,14 @@ bin_ansible_callbacks = True
 log_folder=/tmp/ansible/hosts/
 
 
-3.2、配置主机清单
+```
+
+### 3.2、配置主机清单
+
+
 修改主机清单/etc/ansible/hosts，添加主机列表
+
+```
 
 # cat /etc/ansible/hosts
 [openGaussdb]
@@ -57,12 +72,20 @@ log_folder=/tmp/ansible/hosts/
 ###10.10.10.150为本次需要安装openGauss的主机
 
 
-3.3、测试主机连通性
+```
+
+### 3.3、测试主机连通性
+
+
 # ansible -i /etc/ansible/hosts openGaussdb -m ping
 
 ![输入图片说明](../../../../ping.png)
 
-3.4、创建相关目录
+### 3.4、创建相关目录
+
+```
+
+
 [root@cs79-mysql:~]# cd /etc/ansible/roles/
 [root@cs79-mysql:/etc/ansible/roles]# mkdir -p openGauss_Install/{files,vars,tasks,templates}
 [root@cs79-mysql:/etc/ansible/roles]# tree openGauss_Install/
@@ -79,9 +102,15 @@ files：存放需要同步到异地服务器的安装文件或者配置文件；
 tasks：openGauss安装过程需要进行的执行的任务；
 templates：用于执行openGauss安装的模板文件，一般为脚本；
 vars：安装openGauss定义的变量；
+```
 
-3.5、下载openGauss软件包到files目录
+
+### 3.5、下载openGauss软件包到files目录
+
+
 安装包下载地址：https://opengauss.org/zh/download.html
+
+```
 
 [root@cs79-mysql:/etc/ansible/roles]# cd openGauss_Install/files/
 [root@cs79-mysql:/etc/ansible/roles/openGauss_Install/files]# # wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/3.1.0/x86/openGauss-3.1.0-CentOS-64bit-all.tar.gz
@@ -96,7 +125,13 @@ Saving to: ‘openGauss-3.1.0-CentOS-64bit-all.tar.gz’
 
 2022-10-09 21:42:04 (37.1 MB/s) - ‘openGauss-3.1.0-CentOS-64bit-all.tar.gz’ saved [123022609/123022609]
 
-3.6、创建变量文件
+```
+
+### 3.6、创建变量文件
+
+
+```
+
 [root@cs79-mysql:~]# vi /etc/ansible/roles/openGauss_Install/vars/main.yml
 
 #安装包名称
@@ -107,8 +142,14 @@ install_dir: /opt/software/openGauss
 omm_password: openGauss@123
 #数据库密码
 db_password: openGauss@123
+```
 
-3.7、创建安装时需要的xml模板
+
+### 3.7、创建安装时需要的xml模板
+
+```
+
+
 [root@cs79-mysql:~]# vi /etc/ansible/roles/openGauss_Install/templates/cluster_config.j2
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -155,8 +196,14 @@ db_password: openGauss@123
 </ROOT>
 
 
+```
 
-3.8、创建任务文件
+
+### 3.8、创建任务文件
+
+```
+
+
 [root@cs79-mysql:~]# vi /etc/ansible/roles/openGauss_Install/tasks/main.yml
 - name: 关闭防火墙
   shell: systemctl disable firewalld.service && systemctl stop firewalld.service
@@ -244,7 +291,12 @@ db_password: openGauss@123
   tags: 10_db_start
 
 
-3.9、创建剧本调用文件
+```
+
+### 3.9、创建剧本调用文件
+
+```
+
 [root@cs79-mysql:~]# vi /etc/ansible/playbook/InstallopenGauss.yml 
 
 - name: Install openGauss
@@ -253,23 +305,30 @@ db_password: openGauss@123
   roles:
   - openGauss_Install
 
+```
 
-四、执行自动化安装
-4.1、校验语法
+
+### 四、执行自动化安装
+
+
+### 4.1、校验语法
+
 # ansible-playbook -C /etc/ansible/playbook/InstallopenGauss.yml 
 
 ![输入图片说明](../../../../play1.png)
 
 校验语法通过后，执行下一步安装
 
-4.2、自动化安装openGauss
+### 4.2、自动化安装openGauss
+
 # ansible-playbook /etc/ansible/playbook/InstallopenGauss.yml
 
 ![输入图片说明](../../../../play2.png)
 ![输入图片说明](../../../../play3.png)
 ![输入图片说明](../../../../play4.png)
 
-4.3、安装完成后验证
+### 4.3、安装完成后验证
+
 ![输入图片说明](../../../../play5.png)
 
 至此，整个自动化部署openGauss完毕，如果有多台机器需要部署，添加主机相关信息到/etc/ansible/hosts，再执行ansible-playbook即可。
