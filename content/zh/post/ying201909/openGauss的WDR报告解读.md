@@ -129,12 +129,12 @@ times = "10:15"
 
     - 2）执行函数create_wdr_snapshot()创建快照
 
-    **手工创建wdr报告快照执行语句：**
+       **手工创建wdr报告快照执行语句：**
 
-    ```
-    select create_wdr_snapshot();
-    ```
-    
+       ```
+       select create_wdr_snapshot();
+       ```
+
       ![](./images/11.png)
 
     - 3）等待10分钟以后再次执行函数create_wdr_snapshot()，手工创建结束快照。
