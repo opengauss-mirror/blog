@@ -52,7 +52,9 @@ times = "10:15"
     **snapshot.snapshot 【记录当前系统中存储的WDR快照信息】**
     
     ![](./images/2.png)
+
     ![](./images/3.png)
+
     ![](./images/4.png)
 
 - 2.生成WDR报告。执行如下步骤，生成节点node级别wdr报告。
@@ -60,6 +62,7 @@ times = "10:15"
     - 1）查询 pgxc_node_name参数值，或者使用查询视图：pg_node_env。
 
     ![](./images/5.png)
+
     ![](./images/6.png)
 
     - 2） \a \t \o 服务器文件路径生成格式化性能报告
@@ -141,12 +144,17 @@ times = "10:15"
     - 4）执行操作步骤第二步：生成WDR报告，执行如下图步骤，生成节点node级别wdr报告（其中dn_6001客户端gsql登录数据show pgxc_node_name查询的结果）。
 
       ![](./images/13.png)
+
       ![](./images/14.png)
 
 - 4.WDR涉及的数据表
 
     >**说明：**
     >WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
+
+    ![](./images/15.png)
+
+    ![](./images/16.png)
 
 # WDR报告解读
 
@@ -157,11 +165,19 @@ times = "10:15"
 
 - 1）下图是执行前tpcc表信息：
 
+  ![](./images/17.png)
+
 - 2）以下是手工创建的快照开始时间点：
 
+  ![](./images/18.png)
+
 - 3）开始执行benchmarksql，运行10分钟完成后。手工再次生成wdr报告的结束快照。
+  
+  ![](./images/19.png)
 
 - 4）生成wdr报告如下图：
+  
+  ![](./images/20.png)
 
 - 5）以下是解读WDR报告
 
