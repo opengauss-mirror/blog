@@ -47,7 +47,7 @@ times = "10:15"
     select * from snapshot.snapshot;
     ```
 
-    - snapshot.snapshot 【记录当前系统中存储的WDR快照信息】
+    **snapshot.snapshot 【记录当前系统中存储的WDR快照信息】**
 
 - 2.生成WDR报告。执行如下步骤，生成节点node级别wdr报告。
 
@@ -74,7 +74,7 @@ times = "10:15"
     \o \a \t
     ```
 
-- 3）向性能报告wdrTest.html中写入数据，从snapshot.snapshot视图中选取要生成WDR报告的时间点。例如：127和128两个时间点。
+    - 3）向性能报告wdrTest.html中写入数据，从snapshot.snapshot视图中选取要生成WDR报告的时间点。例如：127和128两个时间点。
 
     ```
     gsql -d postgres -p 6000 -r -c"select generate_wdr_report(快照id1,快照id2,‘all’,‘node’,‘pgxc_node_name参数值’);"
@@ -84,81 +84,69 @@ times = "10:15"
 
     **函数说明：generate_wdr_report**
 
-    > **语法:**
-    >
-    > select generate_wdr_report(begin_snap_id bigint, end_snap_id bigint, report_type cstring, report_scope cstring, node_name cstring);
-    >
-    > **选项：**
-    >
-    > begin_snap_id：查询时间段开始的snapshot的id（表snapshot.snaoshot中的snapshot_id）
-    >
-    > end_snap_id： 查询时间段结束snapshot的id。默认end_snap_id大于begin_snap_id（表snapshot.snaoshot中的snapshot_id）
-    >
-    > report_type： 指定生成report的类型。例如，summary/detail/all，其中：summary\[汇总数据\]/detail\[明细数据\]/all\[包含summary和detail\]
-    >
-    > report_scope： 指定生成report的范围，可以为cluster或者node，其中：cluster是数据库级别的信息，node是节点级别的信息。
-    >
-    > node_name： 当report_scope指定为node时，需要把该参数指定为对应节点的名称。当report_scope为cluster时，该值可以省略或者指定为空或NULL。node[节点名称]、cluster[省略/空/NULL]
+     > **语法:**
+     >
+     > select generate_wdr_report(begin_snap_id bigint, end_snap_id bigint, report_type cstring, report_scope cstring, node_name cstring);
+     >
+     > **选项：**
+     >
+     > begin_snap_id：查询时间段开始的snapshot的id（表snapshot.snaoshot中的snapshot_id）
+     >
+     > end_snap_id： 查询时间段结束snapshot的id。默认end_snap_id大于begin_snap_id（表snapshot.snaoshot中的snapshot_id）
+     >
+     > report_type： 指定生成report的类型。例如，summary/detail/all，其中：summary\[汇总数据\]/detail\[明细数据\]/all\[包含summary和detail\]
+     >
+     > report_scope： 指定生成report的范围，可以为cluster或者node，其中：cluster是数据库级别的信息，node是节点级别的信息。
+     >
+     > node_name： 当report_scope指定为node时，需要把该参数指定为对应节点的名称。当report_scope为cluster时，该值可以省略或者指定为空或NULL。node[节点名称]、cluster[省略/空/NULL]
 
-4)目录下生成对应的wdr报告，cd /home/opegauss生成报告的指定路径进行查看。
-
-
-
-3.手工创建快照信息
-当在openGauss数据库执行性能测试，数据库默认每小时自动执行一次snapshot操作。生成指定时间段内的WDR报告，查询快照视图后选取指定开始时间的快照id，结束时间的快照id。通过函数generate_wdr_report生成wdr报告。但是有些情况，固定时间段的WDR报告，就需要使用具有sysadmin权限用户手工创建快照信息，需要执行两次。具体操作步骤如下：
-
-1）首先确认一下，当前的快照信息视图snapshot.snapshot中的时间节点。
+    - 4)目录下生成对应的wdr报告，cd /home/opegauss生成报告的指定路径进行查看。
 
 
 
-2）执行函数create_wdr_snapshot()创建快照
+- 3.手工创建快照信息
 
-手工创建wdr报告快照执行语句：
+    当在openGauss数据库执行性能测试，数据库默认每小时自动执行一次snapshot操作。生成指定时间段内的WDR报告，查询快照视图后选取指定开始时间的快照id，结束时间的快照id。通过函数generate_wdr_report生成wdr报告。但是有些情况，固定时间段的WDR报告，就需要使用具有sysadmin权限用户手工创建快照信息，需要执行两次。具体操作步骤如下：
 
-select create_wdr_snapshot();
+    - 1）首先确认一下，当前的快照信息视图snapshot.snapshot中的时间节点。
 
+    - 2）执行函数create_wdr_snapshot()创建快照
 
+    **手工创建wdr报告快照执行语句：**
 
-3）等待10分钟以后再次执行函数create_wdr_snapshot()，手工创建结束快照。
+    ```
+    select create_wdr_snapshot();
+    ```
 
-
-
-4）执行操作步骤第二步：生成WDR报告，执行如下图步骤，生成节点node级别wdr报告（其中dn_6001客户端gsql登录数据show pgxc_node_name查询的结果）。
-
-
-
-4.WDR涉及的数据表
-
-说明：WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图。
+    - 3）等待10分钟以后再次执行函数create_wdr_snapshot()，手工创建结束快照。
 
 
 
+    - 4）执行操作步骤第二步：生成WDR报告，执行如下图步骤，生成节点node级别wdr报告（其中dn_6001客户端gsql登录数据show pgxc_node_name查询的结果）。
 
+- 4.WDR涉及的数据表
 
-5.WDR报告解读
-说明：为了使得WDR报告内容不空洞，本次在测试环境使用BenchmarkSQL5.0对openGauss数据库进行100warehouse，100并发压力测试。 本次的WDR报告样例来自于此时手工创建的快照数据。
+    >**说明：**
+    >WDR的数据表保存在snapshot这个schema下以snap_开头的表，其数据来源于dbe_perf这个schema内的视图，总共61张视图
 
-手工生成WDR报告后，通过浏览器查看。opengauss的wdr报告类似于oracle的awr，拥有资源消耗、等待事件、TOPSQL，以及参数设置等。
+- 5.WDR报告解读
 
-1）下图是执行前tpcc表信息：
+    > **说明：**
+    >为了使得WDR报告内容不空洞，本次在测试环境使用BenchmarkSQL5.0对openGauss数据库进行100warehouse，100并发压力测试。 本次的WDR报告样例来自于此时手工创建的快照数据。
 
+    - 手工生成WDR报告后，通过浏览器查看。opengauss的wdr报告类似于oracle的awr，拥有资源消耗、等待事件、TOPSQL，以及参数设置等。
 
+    - 1）下图是执行前tpcc表信息：
 
-2）以下是手工创建的快照开始时间点：
+    - 2）以下是手工创建的快照开始时间点：
 
+    - 3）开始执行benchmarksql，运行10分钟完成后。手工再次生成wdr报告的结束快照。
 
+    - 4）生成wdr报告如下图：
 
-3）开始执行benchmarksql，运行10分钟完成后。手工再次生成wdr报告的结束快照。
+    - 5）以下是解读WDR报告
 
-
-
-4）生成wdr报告如下图：
-
-
-
-5）以下是解读WDR报告
-
-开头介绍了一下当前wdr报告概况信息：
+     开头介绍了一下当前wdr报告概况信息：
 
 信息分类	信息描述
 报告采集类型	Summary + Detail，即汇总数据+明细数据
