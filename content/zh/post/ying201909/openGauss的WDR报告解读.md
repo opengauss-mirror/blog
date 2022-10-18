@@ -1,3 +1,22 @@
++++
+title = "openGauss的WDR报告解读" 
+
+date = "2022-10-18" 
+
+tags = ["我和openGauss的故事", "openGauss"]
+
+archives = "2022-10" 
+
+author = "怕晒的太阳" 
+
+summary = "openGauss的WDR报告解读"
+
+img = "/zh/post/ying201909/title/img.png" 
+
+times = "10:15"
+
++++
+
 # openGauss的WDR报告解读
 
 本文出处：[https://www.modb.pro/db/500742](https://www.modb.pro/db/500742)
