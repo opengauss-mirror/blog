@@ -31,6 +31,7 @@ times = "10:15"
 生成WDR报告的前提条件是，打开参数enable_wdr_snapshot。确认当前已按照的openGauss数据库是否打开WDR报告的参数，需要通过下图登录数据库进行查询。enable_wdr_snapshot的值为on表示打开，off表示关闭
 
 ![](./images/1.png)
+![输入图片说明](images/1.png)
 
 **以下介绍WDR报告的参数：**
 
