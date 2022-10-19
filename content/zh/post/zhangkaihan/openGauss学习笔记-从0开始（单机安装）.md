@@ -1,13 +1,16 @@
-缘起，2021年底有个客户计划采购华为的分布式数据库GuassDB（openGauss），于是去官方翻了翻文档，发现有点难以理解，我本人之前对PG派系的数据库一无所知，看上去就更吃力。后来客户选择了其他厂商的分布式数据库也就没有进行学习研究。
-第二次接触openGauss是通过MogDB的征文活动，不仅可以学习MogDB数据库，还能赚几包烟钱，写了十多篇学习笔记，对MogDB有了一个大致的了解，因为MogDB是openGauss的一个商业发行版本，在学习的时候也去翻阅了一些openGauss的支持，所有也算间接的学习了openGauss。
-第三次接触就是现在和将来，感谢官方推出了这次的征文活动，既可以学习opengauss又可以加深自己对MogDB的了解，学习的过程还能顺便买一包烟。本人也想通过这两次学习，可以进一步学习华为的分布式数据库GuassDB for openGauss。
+    缘起，2021年底有个客户计划采购华为的分布式数据库GuassDB（openGauss），于是去官方翻了翻文档，发现有点难以理解，我本人之前对PG派系的数据库一无所知，看上去就更吃力。后来客户选择了其他厂商的分布式数据库也就没有进行学习研究。
+    第二次接触openGauss是通过MogDB的征文活动，不仅可以学习MogDB数据库，还能赚几包烟钱，写了十多篇学习笔记，对MogDB有了一个大致的了解，因为MogDB是openGauss的一个商业发行版本，在学习的时候也去翻阅了一些openGauss的支持，所有也算间接的学习了openGauss。
+    第三次接触就是现在和将来，感谢官方推出了这次的征文活动，既可以学习opengauss又可以加深自己对MogDB的了解，学习的过程还能顺便买一包烟。本人也想通过这两次学习，可以进一步学习华为的分布式数据库GuassDB for openGauss。
 高可用、高性能、主从、备份恢复等概念所有的关系型数据基本一致，这里学习还是本着先实战再总结的思路出发，附一张我本人openGauss的学习图谱，IT圈子里一直有一个PG和Mysql孰高孰低的讨论，为什么总是对比这两个关系型数据库，个人认为因为他们量级差不多，并且都是开源，很多理念都有一些相同的架构。
+![输入图片说明](image.png)
 
 安装企业版
 1、准备Linux服务器
-这里就不在赘述Linux的安装和配置了，可以参考《https://www.modb.pro/db/453770》，我的Linux操作系统是CentOS，选择操作系统的时候候去官网查看支持的操作系统。
+    这里就不在赘述Linux的安装和配置了，可以参考《https://www.modb.pro/db/453770》，我的Linux操作系统是CentOS，选择操作系统的时候候去官网查看支持的操作系统。
+
 2、下载openGauss数据库企业版
-下载地址：https://opengauss.org/zh/download.html
+    下载地址：https://opengauss.org/zh/download.html
+
 3、上传包并解压
 [root@localhost ~]# cd /soft/
 [root@localhost soft]# ls
@@ -21,25 +24,32 @@ openGauss-3.0.0-CentOS-64bit-om.sha256
 openGauss-3.0.0-CentOS-64bit.sha256
 upgrade_sql.tar.gz
 upgrade_sql.sha256
+
 4、安装依赖包
 
 yum install libaio-devel flex bison ncurses-devel glibc-devel patch redhat-lsb-core readline-devel libnsl python3
+
 5、关闭防火墙
 systemctl status firewalld.service
 systemctl stop firewalld.service
 systemctl status firewalld.service
 systemctl disable firewalld.service
 6、禁用selinux
+
 vi /etc/selinux/config
 #修改“SELINUX”的值“disabled”
 #需要重启生效，也可以使用命令临时生效：setenforce 0
+
 7、配置本机root到root的互信
+
 [root@localhost ~]# ssh-keygen -t rsa
 [root@localhost ~]# cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 #使用ssh命令不需要输入密码的时候就表示互信成功
 [root@localhost .ssh]# ssh 172.20.10.8
 Last login: Wed Sep 14 17:40:53 2022 from opengauss
+
 8、创建安装openGauss的配置文件
+
 #单节点安装
 [root@opengauss soft]# cat cluster_config.xml 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -84,7 +94,9 @@ Last login: Wed Sep 14 17:40:53 2022 from opengauss
         </DEVICE>
     </DEVICELIST>
 </ROOT>
+
 9、解压可执行程序所在的包
+
 tar -zxvf openGauss-3.0.0-CentOS-64bit-all.tar.gz
 tar -zxvf openGauss-3.0.0-CentOS-64bit-om.tar.gz
 #会解压出script文件夹
@@ -139,6 +151,7 @@ Fixing server package owner.
 Setting finish flag.
 Successfully set finish flag.
 Preinstallation succeeded.
+
 11、执行安装
 切换到omm用户,期间要输入数据库的密码
 su - omm
@@ -181,7 +194,9 @@ Successfully started cluster.
 Successfully installed application.
 end deploy..
 [omm@opengauss ~]$ 
+
 12、连接数据库
+
 [omm@opengauss ~]$ gsql -d postgres -p 15400
 gsql ((openGauss 3.0.0 build 02c14696) compiled at 2022-04-01 18:12:34 commit 0 last mr  )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
