@@ -1,12 +1,12 @@
 ﻿+++
 title = "SQL引擎插件开发指导"
-date = "2022-08-12"
+date = "2022-11-2"
 tags = ["SQL引擎插件开发指导"]
-archives = "2022-08-12"
+archives = "2022-11-2"
 author = "ganyang"
 summary = "SQL引擎插件开发指导"
 img = "/zh/post/xiteming/title/img1.png"
-times = "15:00"
+times = "17:00"
 +++
 
 
@@ -48,13 +48,49 @@ times = "15:00"
 对于新增的模块如果不在内核现存hook的引擎部分需要在内核加新的hook。
 
  
+## 新增代码添加DOLPHIN宏
+
+对于内核已有的文件进行的改动，需要添加相应的DOLPHIN宏
+添加：
+#ifdef DOLPHIN
+新增内容
+#endif
+
+修改：
+#ifdef DOLPHIN
+修改内容
+#else
+原内容
+#endif
+
+删除：
+#ifndef DOLPHIN
+删除内容
+#endif
 
 ## 插件安装、使用方法
 
-将whale文件夹放入数据库的contrib目录下，并使用make -sj && make install -sj完成编译安装，随后创建一个B兼容性的数据库，随后插件会自动完成加载，之后即可使用。
+当前dolphin插件支持自动加载，只需要在安装好插件文件后，只需要创建B库并使用初始用户连接B库即可加载。
 
-![](../image/CREATE.PNG)
-![](../image/INSTALL.png)
+### 编译安装
+
+1. 编译安装openGauss。
+
+2. 将dolphin源码拷贝到openGauss源码contrib目录下。
+
+3. 进去dolphin目录执行make install。
+
+4. 创建B库并使用初始用户连接B库。
+
+### OM安装
+
+1. om安装的openGauss。
+
+2. 拷贝插件所需文件：
+        dolphin.so 路径： app/lib/postgresql/。
+        dolphin.control和dolphin--1.0.sql 路径 app/share/postgresql/extension。
+
+3. 创建B库并使用初始用户连接B库。
 
 ## fastcheck自测方法
 
@@ -78,15 +114,15 @@ export ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:alloc_dealloc_mismatch=0:log_
 
 ## 升级
 
-930为第一次正式版本，后续新增的写在SQL中的函数、类型等均需要同步写到升级脚本中。
+1230后续新增的写在SQL中的函数、类型等均需要同步写到升级脚本中。
 
 
 ## 新增函数
 
-将与新类型无关的新方法添加到插件的builtin.ini中，builtin.ini指导：(https://mp.weixin.qq.com/s/UWHwhI4jHK6nxPSYeJPVfg)
-而由于插件内部不附带pg_type.h
+需要覆盖内核函数的在插件的builtin.ini中进行修改，builtin.ini指导：(https://mp.weixin.qq.com/s/UWHwhI4jHK6nxPSYeJPVfg)
 
-因此在创建新的兼容类型时，无法和之前内核开发一样直接写在头文件中，而是需要通过sql语句来create type，由于这样生成的类型OID是随机的，因此对于和该类型相关联的方法、CAST、操作符等均需要在SQL语句中生成，且SQL中调用的新增函数必须按上述开放接口函数，同时建议除了需要覆盖内核同名函数外，尽可能不要在builtin.ini中开发新函数，而是使用sql，因为这样可以避免和未来内核开发的函数OID冲突。
+其他新增函数均通过create function的方式来实现。
+
 
 下面提供一些模板样例用于参考：
 
