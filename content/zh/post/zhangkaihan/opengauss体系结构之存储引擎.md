@@ -12,12 +12,12 @@
 <font size=2>&emsp;&emsp;属于磁盘存储引擎，数据按照列的格式存储在物理磁盘中，行存储引擎适合OLAP交易类系统。</font>
 ## <font size=3>行存列存区别</font>
 <font size=2>&emsp;&emsp;opengauss既支持行存也支持列存，也就是目前所说的HTAP交易分析类系统，据我所知目前有部分厂商虽然都支持行存和列寸，但是需要额外的付费。用两张图展示一下一个表在行存和列存模式在物理磁盘上的存储形式：</font>
-id|name|age
---|--|--
-1|张三|32
-2|李四|22
-4|王五|42
-5|赵六|52
+|id|name|age|
+|--|--|--|
+|1|张三|32|
+|2|李四|22|
+|4|王五|42|
+|5|赵六|52|
 <font size=2>行存磁盘存储格式如下：</font>
 ![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221104-8d29de7c-9363-4e3b-8498-2ba32e591d4c.png)
 <font size=2>列存磁盘存储格式如下：</font>
