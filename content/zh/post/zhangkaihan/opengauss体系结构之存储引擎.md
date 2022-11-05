@@ -1,6 +1,6 @@
 # <font size=4>存储引擎概述</font>
 <font size=2>&emsp;&emsp;存储引擎顾名思义就是数据的存放方式，比如mysql有myisam和innodb存储引擎，他们都是行存，只是myisam不支持事务。另外存储引擎还有列模式、行模式、内存数据库等等，openguass的存储引擎关系可以用以下图来表示：
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221104-f4b2cb1c-045d-4a3c-82ed-1d8e32e947da.png)
+![](https://fileserver.developer.huaweicloud.com/FileServer/getFile/cmtybbs/4b4/9b2/97b/e97de91d5b4b49b297bcdc90b5809ed2.20221104132456.28043051289216648016857533562900:20221105020914:2400:3658AA61E7E49F7BBBC9313FA18C722E424A21B0FEDCF69FD9CA0C90DC8CF6C5.png)
 下面分别介绍以下这几种存储引擎的区别：</font>
 ## <font size=3>磁盘存储引擎</font>
 <font size=2>&emsp;&emsp;顾名思义是数据按照一定格式存放在物理磁盘的数据块中，opengauss的最小存储单位是page页，类似于Oracle的最小存储单位block，写入磁盘则把page页里的内容写入到物理磁盘block中。</font>
@@ -12,23 +12,25 @@
 <font size=2>&emsp;&emsp;属于磁盘存储引擎，数据按照列的格式存储在物理磁盘中，行存储引擎适合OLAP交易类系统。</font>
 ## <font size=3>行存列存区别</font>
 <font size=2>&emsp;&emsp;opengauss既支持行存也支持列存，也就是目前所说的HTAP交易分析类系统，据我所知目前有部分厂商虽然都支持行存和列寸，但是需要额外的付费。用两张图展示一下一个表在行存和列存模式在物理磁盘上的存储形式：</font>
-|id|name|age|
-|--|--|--|
-|1|张三|32|
-|2|李四|22|
-|4|王五|42|
-|5|赵六|52|
+id|name|age
+--|--|--
+1|张三|32
+2|李四|22
+4|王五|42
+5|赵六|52
+
 <font size=2>行存磁盘存储格式如下：</font>
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221104-8d29de7c-9363-4e3b-8498-2ba32e591d4c.png)
+![](https://fileserver.developer.huaweicloud.com/FileServer/getFile/cmtybbs/4b4/9b2/97b/e97de91d5b4b49b297bcdc90b5809ed2.20221104132529.36868928272142565720973439885414:20221105020914:2400:97CD7280C51329F4F02401C741C986E7923B221FADDCFA51D312DDE949C43E26.png)
+
 <font size=2>列存磁盘存储格式如下：</font>
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221104-a514f468-e890-4971-9843-1e5ebf83865f.png)
+![](https://fileserver.developer.huaweicloud.com/FileServer/getFile/cmtybbs/4b4/9b2/97b/e97de91d5b4b49b297bcdc90b5809ed2.20221104132543.83988437154148413332454435784234:20221105020914:2400:83D05CF7191B84F3D0AD356047A7A7543184FF5F77884D7F1D04A02842B6DDBD.png)
 <font size=2>可见列寸更适合统计分析类交易，比如max、min等等，另外更便于压缩存放。
 ## <font size=3>Ustroe存储引擎</font>
 <font size=2>&emsp;&emsp;Ustore是原地更新(in-place update)设计，支持 MVCC(Multi- Version Concurrency Control，多版本并发控制)，类似于Oracle的设计，最新的数据（已提交）与前版本数据（undo）分开存储，支持闪回查询等操作。但是现在这个存储引擎不是opengauss的默认存储引擎，估计后续版本稳定以后会默认此存储引擎。
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221104-75ced743-c389-475c-9701-d0bec96a1193.png)
+![](https://fileserver.developer.huaweicloud.com/FileServer/getFile/cmtybbs/4b4/9b2/97b/e97de91d5b4b49b297bcdc90b5809ed2.20221104132608.06559355574627220447118702457397:20221105020914:2400:3F2EA25C8F08CE0615A997B4D70E86B8CFC776552124A19C6A522B30A4313618.png)
 ## <font size=3>Astroe存储引擎</font>
 <font size=2>&emsp;&emsp;采用追加更新模式，及同一个page页中既存在前映像也存在当前值，只是前映像会被标记为删除，当前是opengauss的默认存储引擎，Astroe存储引擎由于同一个块中包含太多的前映像，如果频繁的更新操作会导致大量的磁盘“垃圾”，因为在执行查询操作的时候即使标记了删除也会扫描，所以大大的降低性能，建议定期执行VACUUM或者VACUUM full进行清理。
-![image.png](https://oss-emcsprod-public.modb.pro/image/editor/20221104-5cf6e1bd-469b-40c8-8983-96400560591e.png)
+![](https://fileserver.developer.huaweicloud.com/FileServer/getFile/cmtybbs/4b4/9b2/97b/e97de91d5b4b49b297bcdc90b5809ed2.20221104132617.65399143963934781683477916064580:20221105020914:2400:4896D903DE1A19E1EA504D3E1279DCF78EF8F0EA61AEADC415983E5584DF5323.png)
 # <font size=4>和存储引擎相关的参数</font>
 ## <font size=3>概述</font>
 <font size=2>&emsp;&emsp;正常情况下在执行一条sql查询的时候数据库从物理磁盘读取整个数据块到内存，然后在内存中进行过滤返回满足条件的行，当然在某些情况下可以把算子下推，来减少加载到内存的数据块数量，因此就需要在内存中开辟一块区域来存放从磁盘读取出来的块，这个类似于oracle的块高速缓冲区mysql的innodb_buffer_pool等，几乎所有的RDBMS数据库在内存中都有一块这样的区域。</font>
