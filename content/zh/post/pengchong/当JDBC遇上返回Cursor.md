@@ -151,7 +151,7 @@ procedure返回游标的jdbc代码跟上面function测试类似：
 ```
 
 不过执行上面的代码客户端会报下面的错误：
-![image.png](../images/20220506-c82e9ad3-60c5-4041-9539-970abf9072e8.png)
+![image.png](./images/20220506-c82e9ad3-60c5-4041-9539-970abf9072e8.png)
 
 错误信息提示并不是很明确，查找资料发现大概与escapeSyntaxCallMode参数有关，该参数的官方链接如下：https://jdbc.postgresql.org/documentation/head/connect.html
 
@@ -167,12 +167,12 @@ jdbc:postgresql://192.168.137.251:1402/postgres?escapeSyntaxCallMode=call
 
 则可正常执行
 
-![image.png](../images/20220506-9fe0185e-139e-48cc-8c01-51b3b40c3863.png)
+![image.png](./images/20220506-9fe0185e-139e-48cc-8c01-51b3b40c3863.png)
 
 #### MogDB(openGauss)
 
 procedure返回游标的jdbc代码与function测试类似，并且也不需要设置escapeSyntaxCallMode参数。
-![image.png](../images/20220506-df18f7fb-340a-4564-9f65-36efa85cf789.png)
+![image.png](./images/20220506-df18f7fb-340a-4564-9f65-36efa85cf789.png)
 
 procedure创建语法有差异，代码如下：
 
@@ -223,12 +223,12 @@ jdbc代码如下：
 ```
 
 测试结果如下：
-![image.png](../images/20220506-950bbc00-54c2-4d4b-b00e-b391fe3218ea.png)
+![image.png](./images/20220506-950bbc00-54c2-4d4b-b00e-b391fe3218ea.png)
 
 #### MogDB(openGauss)
 
 与测试二类似，不需要设置escapeSyntaxCallMode参数。
-![image.png](../images/20220506-d68be5cb-1ba1-4ff6-b61a-e85733d3fa88.png)
+![image.png](./images/20220506-d68be5cb-1ba1-4ff6-b61a-e85733d3fa88.png)
 
 procedure创建语法有差异，代码如下：
 

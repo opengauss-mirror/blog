@@ -54,7 +54,7 @@ enmotech=# select * from v$nls_parameters;
 
 生僻字的示范：
 
-![img](../images/20211011-905a5181-b2c0-4501-86b4-8b2c9b3e3179.png)
+![img](./images/20211011-905a5181-b2c0-4501-86b4-8b2c9b3e3179.png)
 
 
 
@@ -84,7 +84,7 @@ enmotech=#
 我们来进一步解释一下。在很多人的认知里，通常 ”㼆“更容易被正确存入数据库中，E3 BC 86 正是其在 UTF8 字符集下的正确编码。查看字符编码的网站：https://www.qqxiuzi.cn/bianma/zifuji.php
 
 
-![img](../images/20211008-c36e1bc0-17f4-49f4-8cb1-61971b9bf0e5.png)
+![img](./images/20211008-c36e1bc0-17f4-49f4-8cb1-61971b9bf0e5.png)
 
 
 
@@ -110,7 +110,7 @@ enmotech=#
 
 㼆 字位于 A 区，而其简化形态 “王莹”则是位于 E区，大部分系统并不支持。
 
-![img](../images/20211011-2e1b2224-df8b-42c0-bf47-07bd596320c8.png)
+![img](./images/20211011-2e1b2224-df8b-42c0-bf47-07bd596320c8.png)
 
 也就是说，这个字的[编码：U+2C386](http://yedict.com/zscontent.asp?uni=2C386) 已经给出，但是对于客户端，如果不支持这个显示，则无法正常展示出来。
 
@@ -118,13 +118,13 @@ enmotech=#
 
 所以对于一个字符的支持，是包括数据库和客户端两部分的。现在有些输入法可以打出这些生僻字，但是系统不一定能够支持，也就给使用带来了很多麻烦。
 
-![img](../images/v2-d37a6b5dfaf2110eaa75523cf1fce375_1440w.png)
+![img](./images/v2-d37a6b5dfaf2110eaa75523cf1fce375_1440w.png)
 
 
 
 在一些字典上这个字是存在的：
 
-![《新华字典》不收[王莹]字考证](../images/v2-e89e625dcef1890e1d948e3758d4a1b1_1440w.jpg)
+![《新华字典》不收[王莹]字考证](./images/v2-e89e625dcef1890e1d948e3758d4a1b1_1440w.jpg)
 
 对于上面所展示的“王莹”，已经分配了编码，其 UTF-8 编码是 **F0AC8E86** ，只要我们将这个编码存入数据库（字符集如果是 AL32UTF8，可以直接存储），剩下的就是看客户端是否支持，如果支持，则查询后可以正常显示，如果不支持则将无法显示，出现一个替代符号或者乱码。
 
@@ -134,13 +134,13 @@ enmotech=#
 
 例如，[巴贝斯通汉](https://www.maoken.com/freefonts/2803.html) 就支持了这些扩展区域的字符。
 
-![img](../images/maoken06_猫啃网-1.png)
+![img](./images/maoken06_猫啃网-1.png)
 
 
 
 如果你在客户端安装了这个字体，那么如下[一个网页](https://unicode-table.com/en/2C386/)，你将能够看到这个汉字“王莹”，我在这里包含了这个字“𬎆”，没有字体支持你就看不到：
 
-![img](../images/20211009-db9569b9-e3ab-49df-b39c-6a2cfa344fda.png)
+![img](./images/20211009-db9569b9-e3ab-49df-b39c-6a2cfa344fda.png)
 
 
 
@@ -148,13 +148,13 @@ enmotech=#
 
 其实很多生僻字都是用在名字中的，没有受过名字的苦，不足以谈人生。我看到很多人在这个事情上遭受的磨难，为了名字能够正常出现，很多网友是穷尽了心力：
 
-![img](../images/20211012-1cb258f3-fe1d-41c2-a35c-41ed8b99e30d.png)
+![img](./images/20211012-1cb258f3-fe1d-41c2-a35c-41ed8b99e30d.png)
 
-![img](../images/20211012-d99030e5-33ac-4163-88b6-dfd55a0d3a83.png)
+![img](./images/20211012-d99030e5-33ac-4163-88b6-dfd55a0d3a83.png)
 
-![img](../images/20211012-90b3dd56-2f34-4bdc-89aa-66e9af91719f.png)
+![img](./images/20211012-90b3dd56-2f34-4bdc-89aa-66e9af91719f.png)
 
-![img](../images/20211012-99845bb4-af10-4be6-8821-5ce4d2def343.png)
+![img](./images/20211012-99845bb4-af10-4be6-8821-5ce4d2def343.png)
 
 
 

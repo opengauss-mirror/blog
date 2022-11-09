@@ -170,7 +170,7 @@ Time: 0.039s
 
 - 查看函数
 
-![image.png](../images/20220406-a79f0a2a-ab08-44e7-9e1c-e9724aef0293.png)
+![image.png](./images/20220406-a79f0a2a-ab08-44e7-9e1c-e9724aef0293.png)
 
 - 调用函数
 

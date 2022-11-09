@@ -31,7 +31,7 @@ Mogila适用于MogDB 2.1及更高版本。
 
 下图展示了Mogila数据库表和视图的概览。您可以查看不同表之间如何通过各个字段相互关联。例如，`film`表具有`title`和`description`列。它还通过列`language_id`和`original_language_id`与`language`表相关联。因此您可以联结这两个表来获取每部电影的语言，或者列出特定语言的所有电影。
 
-![img](../images/mogila-erm.png)
+![img](./images/mogila-erm.png)
 
 ## 在MogDB容器版中使用Mogila
 

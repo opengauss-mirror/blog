@@ -654,9 +654,9 @@ EOF
 
 **3）使用DS客户端登录容器数据库：**
 
-![](../figures/001.png)
+![](./figures/001.png)
 
-![](../figures/002.png)
+![](./figures/002.png)
 
 END
 

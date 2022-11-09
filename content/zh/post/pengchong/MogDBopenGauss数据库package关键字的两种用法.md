@@ -92,7 +92,7 @@ end employee_management;
 call employee_management.hire_emp('tom','teacher',1,localtimestamp,1,1,1); 
 ```
 
-![image.png](../images/20220113-26ad3133-6232-463a-babd-c0199c1cb88e.png)
+![image.png](./images/20220113-26ad3133-6232-463a-babd-c0199c1cb88e.png)
 通过上面示例，我们可以看到第一种用法，创建package包接口，里面可以创建不同的程序体，包括变量、函数、存储过程等。
 
 ## 二、package属性
@@ -132,7 +132,7 @@ ERROR:  cannot change whether a procedure has output parameters HINT:  Use DROP 
 ```
 
 测试截图如下
-![image.png](../images/20220113-9b619d9d-d87c-4b6e-aaa4-a5472f95b7ea.png)
+![image.png](./images/20220113-9b619d9d-d87c-4b6e-aaa4-a5472f95b7ea.png)
 
 上面的测试在MogDB数据库里也是同样的效果，不能通过输出参数来对存储过程进行重载，上面第一个myproc是有输出参数，第二个myproc没有输出参数。
 
@@ -161,7 +161,7 @@ end ;
 ```
 
 最终我们的结果是只能看到最后一个两个输入参数为integer类型的myproc2，截图如下。
-![image.png](../images/20220113-cd0cf621-d2ff-41e4-b01f-aabce51fbe44.png)
+![image.png](./images/20220113-cd0cf621-d2ff-41e4-b01f-aabce51fbe44.png)
 
 接下面我们对第一个输入参数为varchar类型的myproc2使用package属性进行重载(加到as关键字前面)
 
@@ -182,7 +182,7 @@ end ;
 ERROR:  Do not allow package function overload not package function. 
 ```
 
-![image.png](../images/20220113-52ebc3c8-4185-4422-b3c7-4caf1ee2e52e.png)
+![image.png](./images/20220113-52ebc3c8-4185-4422-b3c7-4caf1ee2e52e.png)
 可以看出我们不能使用后加package属性的myproc2(输入参数类型为varchar)去重载非package属性的myproc2(输入参数类型为integer)。
 
 最后测试正确的示例：
@@ -211,7 +211,7 @@ end ;
 
 下面的截图可以看到符合我们的预期。
 
-![image.png](../images/20220113-7d865eca-1576-4443-9d09-a0859b736b9b.png)
+![image.png](./images/20220113-7d865eca-1576-4443-9d09-a0859b736b9b.png)
 
 ## 三、结论
 

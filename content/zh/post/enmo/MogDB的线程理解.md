@@ -56,4 +56,4 @@ autovacuum_vacuum_scale_factor* reltuples(表上记录数) +autovacuum_vacuum_th
 
 ## MogDB的内部线程图观察
 
-![微信截图_20220216123148.png](../images/20220216-522745f1-010b-4ada-9c96-ada272ed6d31.png)
+![微信截图_20220216123148.png](./images/20220216-522745f1-010b-4ada-9c96-ada272ed6d31.png)

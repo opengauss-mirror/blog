@@ -28,7 +28,7 @@ times = "10:20"
  wget https://cdn-mogdb.enmotech.com/mogdb-stack/v1.0.0/client-setup.sh --no-check-certificate
 ```
 
-![image.png](../figures/20220719-f0b657f7-1b3a-45ab-aa1c-ff778dcaf052.png)
+![image.png](./figures/20220719-f0b657f7-1b3a-45ab-aa1c-ff778dcaf052.png)
 安装mgo客户端
 
 ```
@@ -36,7 +36,7 @@ chmod +x client-setup.sh
 ./client-setup.sh
 ```
 
-![image.png](../figures/20220719-50679076-aab7-4b85-a9a0-382fb8cb2d69.png)
+![image.png](./figures/20220719-50679076-aab7-4b85-a9a0-382fb8cb2d69.png)
 
 添加环境变量
 
@@ -59,7 +59,7 @@ source ~/.bashrc
 mgo version
 ```
 
-![image.png](../figures/20220719-d28099ab-9b7c-462f-b18a-c630f332ff9d.png)
+![image.png](./figures/20220719-d28099ab-9b7c-462f-b18a-c630f332ff9d.png)
 
 # 二、mgo使用
 
@@ -69,4 +69,4 @@ mgo version
 mgo create cluster cluster1
 ```
 
-![image.png](../figures/20220719-83127217-0872-4497-86dd-02bd57b5f7e1.png)
+![image.png](./figures/20220719-83127217-0872-4497-86dd-02bd57b5f7e1.png)

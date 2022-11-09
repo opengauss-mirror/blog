@@ -32,7 +32,7 @@ times = "10:20"
 select datid,dbname,schemaname,username,block_time,start_time,duration,estimate_total_time,estimate_left_time,min_dn_time,max_dn_time,average_dn_time,min_cpu_time,max_cpu_time,total_cpu_time,queryid,query,query_plan from dbe_perf.global_statement_complex_runtime;
 ```
 
-![image.png](../figures/20220331-d9db98ca-66fb-470b-9e80-4774ccd0cab3.png)
+![image.png](./figures/20220331-d9db98ca-66fb-470b-9e80-4774ccd0cab3.png)
 
 ## 二、显示和当前用户执行作业正在运行时的负载管理相关信息（单位：s）
 
@@ -43,9 +43,9 @@ select datid,datname,threadid,usesysid,usename,block_time,elapsed_time,total_cpu
 ```
 
 我们在一个终端用pg_sleep()模拟一个慢SQL
-![image.png](../figures/20220331-98b179b6-20a4-4d42-9b32-22f825220533.png)
+![image.png](./figures/20220331-98b179b6-20a4-4d42-9b32-22f825220533.png)
 在另一个终端可以查询这个SQL到目前为止的执行时间，可以查看当前查询时刻，这个未完成的SQL的实际运行时间等。
-![image.png](../figures/20220331-b5fb66b0-95d4-49a5-8a83-f943ca50625e.png)
+![image.png](./figures/20220331-b5fb66b0-95d4-49a5-8a83-f943ca50625e.png)
 
 ## 三、统计workload（业务负载）上的DML的最大，最小，总时间花费（单位：微秒）。
 
@@ -53,8 +53,8 @@ select datid,datname,threadid,usesysid,usename,block_time,elapsed_time,total_cpu
 select * from dbe_perf.workload_sql_elapse_time; 
 ```
 
-![image.png](../figures/20220331-13faf984-6b73-489a-9555-7845c340c078.png)
-![image.png](../figures/20220331-49e215b6-640a-486b-94b1-ade088207adf.png)
+![image.png](./figures/20220331-13faf984-6b73-489a-9555-7845c340c078.png)
+![image.png](./figures/20220331-49e215b6-640a-486b-94b1-ade088207adf.png)
 
 ## 四、查看当前数据库节点下的各种时间消耗信息（单位：微秒）
 
@@ -62,7 +62,7 @@ select * from dbe_perf.workload_sql_elapse_time;
 select * from dbe_perf.instance_time; 
 ```
 
-![image.png](../figures/20220331-b17b1585-d3de-4c92-834d-3e2faf635e10.png)
+![image.png](./figures/20220331-b17b1585-d3de-4c92-834d-3e2faf635e10.png)
 
 > DB_TIME：作业在多核下的有效时间花销。
 > CPU_TIME：CPU的时间花销。
@@ -81,4 +81,4 @@ select * from dbe_perf.instance_time;
 select * from dbe_perf.session_time;
 ```
 
-![img](../figures/20220331-10ca4255-8a32-4508-bccd-4cb80f3123ec.png)
+![img](./figures/20220331-10ca4255-8a32-4508-bccd-4cb80f3123ec.png)

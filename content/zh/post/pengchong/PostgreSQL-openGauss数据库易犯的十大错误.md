@@ -209,5 +209,4 @@ ERROR:  relation "a" already exists
 
 但请注意有walsender或者数据库中能查到pg\_stat\_replication视图并不能断定是主库，仅在一主一备环境可以这样简单判断，下面的图可以看出，虽然有walsender，但它也是个备库。
 
-![](figures/20210603-9b70ba89-658c-4902-818a-099c359808b4.png)
-
+![img](./images/20210603-9b70ba89-658c-4902-818a-099c359808b4.png)

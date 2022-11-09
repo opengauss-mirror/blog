@@ -38,7 +38,7 @@ MogDB 是 EnMotech openGauss DataBase Enterprise Edition 的缩写，是云和�
 [MogDB官方文档](https://docs.mogdb.io/zh/mogdb/v2.0.1/overview)
 
 [MogDB线上免费实操](https://www.modb.pro/terminal)
-![image.png](../images/20211102-0ab6692e-6bb4-498b-a2e9-58fe4f0b720d.png)
+![image.png](./images/20211102-0ab6692e-6bb4-498b-a2e9-58fe4f0b720d.png)
 
 # 二、入门实操
 

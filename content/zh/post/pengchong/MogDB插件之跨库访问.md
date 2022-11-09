@@ -22,7 +22,7 @@ times = "10:20"
 本文出处：[https://www.modb.pro/db/336337](https://www.modb.pro/db/336337)
 
 MogDB数据库从2.1版本开始将插件和工具包进行了封装，我们可以随时方便的进行集成。从官网https://www.mogdb.io/downloads/mogdb/的这个页面可以进行下载：
-![image.png](../images/20220301-fea20923-c6e0-4fa8-92c6-81979a109dcf.png)
+![image.png](./images/20220301-fea20923-c6e0-4fa8-92c6-81979a109dcf.png)
 
 本文将在Centos平台首先演示dblink插件的使用方法：
 

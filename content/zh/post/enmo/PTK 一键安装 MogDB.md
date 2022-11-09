@@ -170,13 +170,13 @@ Please installed the above missing packages first before do other operations
 --执行系统检查，不但会将不符合安装需求的检查项列出来，还会生成一个修复脚本，脚本的格式为root_fix_os.%Y.%m%d.%H%M%S.sh
 ```
 
-![image.png](../images/20220706-db6b1c38-e3b7-4567-aab8-a39abd68e4e8.png)
+![image.png](./images/20220706-db6b1c38-e3b7-4567-aab8-a39abd68e4e8.png)
 
 ```
 --执行修复脚本 在集群内所有节点执行，脚本内容略 [root@node1 .ptk]# bash root_fix_os.2022.0707.000721.sh 
 ```
 
-![image.png](../images/20220707-9deaa73b-f46b-41b4-b39d-1d713136cbae.png)
+![image.png](./images/20220707-9deaa73b-f46b-41b4-b39d-1d713136cbae.png)
 
 #### 集群安装验证
 

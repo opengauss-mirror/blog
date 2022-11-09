@@ -58,7 +58,7 @@ $ gs_ctl start -D data -M primary
 ```
 
 启动完成之后查看进程可以看到启动模式为primary
-![](../images/20211124-cc72a2d2-2d38-4bba-b79a-0e3b8ddbc7ff.png)
+![](./images/20211124-cc72a2d2-2d38-4bba-b79a-0e3b8ddbc7ff.png)
 
 备库启动命令：
 

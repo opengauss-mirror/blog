@@ -66,7 +66,7 @@ pq-master
 复制
 ```
 
-![image20220331094632736.png](../images/20220331-af3ac54a-3daf-41db-b682-f65ac99c4596.png)
+![image20220331094632736.png](./images/20220331-af3ac54a-3daf-41db-b682-f65ac99c4596.png)
 
 我选择的是github.com/bmizerany/pq这个驱动，所以需要在src下建立github.com/bmizerany/pq文件夹
 

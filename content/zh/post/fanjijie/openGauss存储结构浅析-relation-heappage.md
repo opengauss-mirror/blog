@@ -24,7 +24,7 @@ times = "15:30"
 
 openGauss基于pg9.2开发,在存储数据结构上基本上沿用PG的数据结构，并稍微修改。整体布局上这里盗了一张PG的图，进行介绍。
 
-![](../figures/fan1.png)
+![img](./figures/fan1.png)
 
 这张page结构图中少了在page尾部的special space数据区，一般存放与索引相关的特定数据，table relation没有该区域。
 
@@ -82,7 +82,7 @@ pg的PageHeaderData为20字节,openguass的HeapPageHeaderData在此基础上增�
 
 ## linp array<a name="section1358104635615"></a>
 
-![](../figures/fan2.png)
+![img](./figures/fan2.png)
 
 ```
 typedef struct ItemIdData {
@@ -125,9 +125,9 @@ tuple header
 
 -   Tuple头部是由23byte固定大小的前缀和可选的NullBitMap构成。
 
-![](../figures/66.png)
+![img](./figures/66.png)
 
-![](../figures/77.png)
+![](./figures/77.png)
 
 -   t\_xmin：代表插入此元组的事务xid；
 -   t\_xmax：代表更新或者删除此元组的事务xid，如果该元组插入后未进行更新或者删除，t\_xmax=0；

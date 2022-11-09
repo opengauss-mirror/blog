@@ -35,8 +35,8 @@ Mogdb主备环境，备机检查发现Standby Need repair(WAL)故障。
 
 ## 主备状态检查
 
-![img](../images/20220512-6b05767d-e69a-450b-89e2-ef3a98cc24dd.png)
+![img](./images/20220512-6b05767d-e69a-450b-89e2-ef3a98cc24dd.png)
 
 ## 修复后结果展示
 
-![img](../images/20220512-e61af498-f6ce-4dd2-a96b-3b57e1500d96.png)
+![img](./images/20220512-e61af498-f6ce-4dd2-a96b-3b57e1500d96.png)

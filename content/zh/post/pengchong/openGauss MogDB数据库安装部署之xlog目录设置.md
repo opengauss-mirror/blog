@@ -70,7 +70,7 @@ gs_initdb --nodename=og_69 \
 xml参数说明请参考官网[https://docs.mogdb.io/zh/mogdb/v2.0.1/4-installing-mogdb](https://docs.mogdb.io/zh/mogdb/v2.0.1/4-installing-mogdb)
 
 参考如下片段
-![image.png](../images/20211124-d1ecad30-f82d-4b04-937d-f587b5cf68bc.png)
+![image.png](./images/20211124-d1ecad30-f82d-4b04-937d-f587b5cf68bc.png)
 
 注意dataNode1数据目录的格式里有各个主机的hostname名称，dataNodeXlogPath1参数里只需要重复配置多个xlog的路径即可，不需要有各主机hostname的设置。这点需要注意一样。
 

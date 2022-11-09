@@ -25,7 +25,7 @@ times = "10:20"
 
 1. 从Docker Hub查找镜像
 
-![image.png](../images/20220412-14115c27-04ae-40a5-9e46-30a2d96da03d.png)
+![image.png](./images/20220412-14115c27-04ae-40a5-9e46-30a2d96da03d.png)
 
 1. 从镜像仓库中拉取或者更新指定镜像
 
@@ -133,7 +133,7 @@ echo "OpenGauss Database Slave1 Docker Container created."
 
 1. 安装成功
 
-![image.png](../images/20220412-bf4a0c4a-7b3b-4c5b-9770-d97d85fbf128.png)
+![image.png](./images/20220412-bf4a0c4a-7b3b-4c5b-9770-d97d85fbf128.png)
 
 1. 安装完成后分别进入主备
 
@@ -149,30 +149,30 @@ echo "OpenGauss Database Slave1 Docker Container created."
 $ gs_ctl query  
 ```
 
-![image.png](../images/20220412-9af92e2d-9172-4c8d-b3ae-a7ce82107375.png)
+![image.png](./images/20220412-9af92e2d-9172-4c8d-b3ae-a7ce82107375.png)
 
 查看pg_stat_replication
 
-![image.png](../images/20220412-0b6a8c86-dae6-4fd6-bd75-f7cc342b9d53.png)
+![image.png](./images/20220412-0b6a8c86-dae6-4fd6-bd75-f7cc342b9d53.png)
 
 查看pg_hba.conf文件
-![image.png](../images/20220412-59c437c1-227e-492b-8c05-9ffca010e9a5.png)
+![image.png](./images/20220412-59c437c1-227e-492b-8c05-9ffca010e9a5.png)
 
 查看数据库加密方式，为md5加密
 
-![image.png](../images/20220412-190d47ff-2390-479a-99da-8685f519fcd6.png)
+![image.png](./images/20220412-190d47ff-2390-479a-99da-8685f519fcd6.png)
 
 查看用户密码，omm的加密方式默认为sha256
 
-![image.png](../images/20220412-f0cf7187-0379-4746-9aa2-8d8d84fab8e0.png)
+![image.png](./images/20220412-f0cf7187-0379-4746-9aa2-8d8d84fab8e0.png)
 
 可修改数据库加密方式为1，或者加密方式为2，再更新原有md5加密方式的用户密码
 
-![image.png](../images/20220412-863aac27-a9ad-4ba1-bdcd-645521ecab34.png)
+![image.png](./images/20220412-863aac27-a9ad-4ba1-bdcd-645521ecab34.png)
 
 修改pg_hba.conf文件
 
-![image.png](../images/20220412-2d7e1422-d8db-4aa8-819a-e21478581f41.png)
+![image.png](./images/20220412-2d7e1422-d8db-4aa8-819a-e21478581f41.png)
 
 重新加载
 
