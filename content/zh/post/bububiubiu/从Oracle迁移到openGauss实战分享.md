@@ -1,14 +1,14 @@
-介绍
+## 介绍
 ora2og是一个将Oracle数据库迁移至openGauss的工具，主要编程语言为perl，通过perl DBI模块连接Oracle数据库，自动扫描并提取其中的对象结构及数据，产生SQL脚本，通过手动或自动的方式应用到openGauss。此外，工具还提供丰富配置项，用户可以自定义迁移行为。ora2og初始代码源自ora2pg，一个将Oracle迁移至PostgreSQL的开源工具。版本为release v21.1：https://github.com/darold/ora2pg/tree/v21.1。
-优秀特性
+### 优秀特性
 支持导出数据库绝大多数对象类型，包括表、视图、序列、索引、外键、约束、函数、存储过程等。
 提供PL/SQL到PL/PGSQL语法的自动转换，一定程度避免了人工修正。
 可生成迁移报告，包括迁移难度评估、人天估算。
 可选对导出数据进行压缩，节约磁盘开销。
 配置选项丰富，可自定义迁移行为。
-执行迁移
+## 执行迁移
 
-环境
+### 环境
 本篇使用环境：
 Oracle ： 华为云服务器2核4G + CentoOS 7.6 +Oracle 11.2
 openGauss：华为云服务器2核4G + CentoOS 7.6 +openGauss 3.1.0极简版
@@ -18,7 +18,7 @@ Ora2og工具既可以安装在Oracle服务器上，也可以安装在openGauss�
 注意，如果安装在openGauss上时，需要在服务器上安装Oracle客户端。下载路径：
 https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html 
 
-软件安装
+### 软件安装
 Ora2Pg语言为perl，故需安装所需perl模块。
 
 # root用户下操作
@@ -50,7 +50,7 @@ cpan[2]> quit
 [root@oraclehost DBD-Oracle-1.83]# perl Makefile.PL
 [root@oraclehost DBD-Oracle-1.83]# make && make install
 
-ora2og工具安装
+### ora2og工具安装
 安装Ora2Pg <you_install_dir>为目标安装路径，<source_code_dir>为下载的代码路径。 如果服务器上没有git的话，可以从网站把源码包下载再解压。
 mkdir -p /opt/software/ora2pg
 git clone https://toscode.gitee.com/opengauss/openGauss-tools-ora2og.git
@@ -64,7 +64,7 @@ export PATH=$PATH:<your_install_dir>/usr/local/bin
 需要确保bin路径下有ora2pg这个文件，否则命令找不到。
 执行ora2pg --help查看命令是否正常   
 会返回一堆帮助信息
-创建迁移项目
+### 创建迁移项目
 ora2pg --init_project oramig
 创建迁移项目后会在当前目录下生成oramig目录模板，如下所示。其中主要包含两个脚本export_schema.sh和import_all.sh，后续导出和导入即使用这两个脚本。schema和sources目录存放各对象的DDL语句，区别在于schema存放PL/SQL语法转化为PL/PGSQL后的语句， sources目录存放转化前PL/SQL的语句，data目录存放表数据文件，config目录包含配置文件ora2pg.conf，reports目录存放迁移报告。
 
@@ -82,7 +82,7 @@ mydb=# alter database mydb owner to tuser;
 
 
 
-配置ora2pg.conf, 
+### 配置ora2pg.conf, 
 注意路径，后面执行sh的时候会找config/ora2pg.conf。
 
 cp <your_install_dir>/etc/ora2pg/ora2pg.conf.dist  <source_code_dir>/config/ora2pg.conf
@@ -104,7 +104,7 @@ https://ora2pg.darold.net/documentation.html
 
 测试一下配置：
 执行 ora2pg -t SHOW_VERSION -c config/ora2pg.conf  会返回连接的Oracle版本号。
-测试迁移
+### 测试迁移
 修改迁移工具oramig目录下export_schema.sh中导出类型EXPORT_TYPE和SOURCE_TYPE，本次迁移导出TABLE。
 
 在oramig目录下执行
@@ -129,10 +129,10 @@ reports/目录下生成的report报告
 
 
 
-Ora2Pg不足
+### Ora2Pg不足
 Ora2Pg对PL/SQL和PL/PGSQL的语法转换处理采用正则表达式和文本替换的方式，先天设计不足，很难覆盖所有的语法，目前仅支持部分转换。因此，Ora2Pg可以满足SQL简单的应用迁移，对于复杂的语法，并不能完全保证转换的正确性，需要对生成的SQL语句进行核对，必要时需要人工修正。
 
-FAQ
+## FAQ
 1.报错：Path to pg_config? /opt/software/openGauss/bin/pg_config
 /opt/software/openGauss/bin/pg_config: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory
 环境自带的是1.0.2，得升级libssl.so。
@@ -206,3 +206,4 @@ DBI connect('dbname=mydb;host=openGaussIP;port=5432','testuser',...) failed: con
 修改pg_hba.conf 中
 
 然后重启openGauss：gs_ctl restart -D /opt/software/openGauss/data/single_node
+
