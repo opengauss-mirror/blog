@@ -30,10 +30,10 @@ times = "10:20"
 mtk全称为 The Database Migration Toolkit，是一个云和恩墨自主研发的可以将Oracle/DB2/MySQL/openGauss数据库的数据结构，全量数据高速导入到MogDB的工具。
 
 逻辑对象统计如下
-![image.png](../figures/20220111-995ebb13-e718-432e-b15d-8f0bd7cf6c47.png)
+![image.png](./figures/20220111-995ebb13-e718-432e-b15d-8f0bd7cf6c47.png)
 
 MTK 截图部分展示
-![image.png](../figures/20220111-17b2f4e2-906c-4567-8ff1-4b738366e0b8.png)
+![image.png](./figures/20220111-17b2f4e2-906c-4567-8ff1-4b738366e0b8.png)
 
 其中两次迁移对比发现存储过程少了7个，去源端查询发现有7个完全同名的存储过程，即存在存储过程重载现象。
 
@@ -43,7 +43,7 @@ MTK 截图部分展示
 
 **MogDB 存储过程支持重载功能**
 
-![image.png](../figures/20220111-35a0fc57-0dce-49aa-a35e-b354c8ab66a5.png)
+![image.png](./figures/20220111-35a0fc57-0dce-49aa-a35e-b354c8ab66a5.png)
 
 # 4. 存储过程重载操作
 

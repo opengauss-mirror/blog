@@ -77,7 +77,7 @@ EOF
 vi /etc/fstab
 ```
 
-![](../figures/zh-cn_image_0000001084888373.jpg)****
+![](./figures/zh-cn_image_0000001084888373.jpg)****
 
 **临时关闭交换区命令：**
 
@@ -102,13 +102,13 @@ net.sctp.max_init_retransmits=10
 EOF
 ```
 
->![](public_sys-resources/icon-note.gif) **说明：** 
+>**说明：** 
 >如果对外工作的网卡万兆网卡ens33，需要设计最大MTU为8192。
 >虚拟机没有万兆网卡不能配置该项，否则认证报错！
 
 **配置NTPD（单机可以不用配置）**
 
-![](../figures/zh-cn_image_0000001085044025.jpg)
+![](./figures/zh-cn_image_0000001085044025.jpg)
 
 ```
 yum install ntp -y
@@ -130,7 +130,7 @@ fudge 127.127.1.0 stratum 10
 server node1
 ```
 
-![](../figures/zh-cn_image_0000001084888375.jpg)
+![](./figures/zh-cn_image_0000001084888375.jpg)
 
 \#启动ntpd时间服务器
 
@@ -321,7 +321,7 @@ EOF
 echo $LD_LIBRARY_PATH
 ```
 
-![](../figures/zh-cn_image_0000001085145131.jpg)
+![](./figures/zh-cn_image_0000001085145131.jpg)
 
 **安装前进行交互式检查**
 
@@ -354,12 +354,12 @@ cp ../clusterconfig.xml .
 gs_install -X /opt/software/openGauss/script/clusterconfig.xml
 ```
 
->![](public_sys-resources/icon-caution.gif) **注意：** 
+>**注意：** 
 >用户需根据提示输入数据库的密码，密码需要具有一定的复杂度，为保证用户正常使用该数据库，请记住输入的数据库密码。此处建议密码设置为huawei@1234。
 
 （16G内存创建就不会出错）
 
-![](../figures/zh-cn_image_0000001084889461.jpg)
+![](./figures/zh-cn_image_0000001084889461.jpg)
 
 【遇到问题】
 
@@ -436,7 +436,7 @@ alter role omm identified by 'Passw0rd@1234' replace 'huawei@1234';
 show server_version;
 ```
 
-![](../figures/zh-cn_image_0000001085145133.jpg)
+![](./figures/zh-cn_image_0000001085145133.jpg)
 
 SELECT version\(\);
 
@@ -450,13 +450,13 @@ inux-gnu, compiled by g++ (GCC) 8.2.0, 64-bit
 
 help
 
-![](../figures/zh-cn_image_0000001085045141.jpg)
+![](./figures/zh-cn_image_0000001085045141.jpg)
 
 退出
 
 \\q
 
-![](../figures/zh-cn_image_0000001085045143.jpg)
+![](./figures/zh-cn_image_0000001085045143.jpg)
 
 ## openGauss的简单维护<a name="section330292643810"></a>
 
@@ -466,7 +466,7 @@ help
 gs_om -t stop
 ```
 
-![](../figures/zh-cn_image_0000001085071395.jpg)
+![](./figures/zh-cn_image_0000001085071395.jpg)
 
 **查看数据库的状态**
 
@@ -493,8 +493,6 @@ node     node_ip         instance                      state
 ```
 gs_om -t start
 ```
-
-![](../figures/0111.png)
 
 再次查看数据库的状态
 
@@ -677,7 +675,7 @@ Install options:
 
 gs\_checkperf
 
-![](../figures/zh-cn_image_0000001084915757.jpg)
+![](./figures/zh-cn_image_0000001084915757.jpg)
 
 End
 

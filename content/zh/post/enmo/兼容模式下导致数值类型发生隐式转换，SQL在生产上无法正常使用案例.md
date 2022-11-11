@@ -50,7 +50,7 @@ LINE 2: ...,to_date('2022-05-13 11:05:00','YYYY-MM-DD HH24:MI:SS'),'');
 CONTEXT:  referenced column: position
 ```
 
-![图片.png](../images/20220513-706c424f-3e3b-4305-8798-706921389979.png)
+![图片.png](./images/20220513-706c424f-3e3b-4305-8798-706921389979.png)
 
 ## 处理思路
 
@@ -79,10 +79,10 @@ select * from t;
 
 ```
 
-![图片.png](../images/20220513-9759cb7a-7d71-46af-9ff9-bed99d762a0b.png)
+![图片.png](./images/20220513-9759cb7a-7d71-46af-9ff9-bed99d762a0b.png)
 
 ## 总结
 
 正好昨天杨明翰杨老师的恩墨直播培训提到了这里，杨老师的分析更加清晰，截图奉上：
 
-![图片.png](../images/20220513-2acdcd6a-b6f8-49fb-b718-9196894b7011.png)
+![图片.png](./images/20220513-2acdcd6a-b6f8-49fb-b718-9196894b7011.png)

@@ -35,12 +35,12 @@ openEuler20.03LTS内核基于Linux Kernel 4.19
 
 #### （1）在vmware软件上新建一个虚拟机：
 
-![clipboard.png](../images/20220318-011c2067-4051-4261-a831-80b2b141b1cd.png)
+![clipboard.png](./images/20220318-011c2067-4051-4261-a831-80b2b141b1cd.png)
 
 然后选择稍后安装,这里图片就略过了。
-![clipboard.png](../images/20220318-d23ff1be-cf6f-46c6-9c9b-4ffebb96b0b7.png)
+![clipboard.png](./images/20220318-d23ff1be-cf6f-46c6-9c9b-4ffebb96b0b7.png)
 
-![clipboard.png](../images/20220318-04836101-7d54-4bef-8994-024306391b9a.png)
+![clipboard.png](./images/20220318-04836101-7d54-4bef-8994-024306391b9a.png)
 
 配置虚拟机磁盘大小，并拆分为多个小文件：
   磁盘：50G   内存：2G   1个处理器2核
@@ -51,23 +51,23 @@ openEuler20.03LTS内核基于Linux Kernel 4.19
 ### 二、启动euler系统
 
 （1）启动euler，选择Install openEuler 20.03-LTS,然后回车：
-![clipboard.png](../images/20220318-66c121cd-b7c0-441f-9615-8dc1dfb32e5a.png)
+![clipboard.png](./images/20220318-66c121cd-b7c0-441f-9615-8dc1dfb32e5a.png)
 
 （2）选择系统语言，这里暂时选择中文，方便安装，然后点击继续：
-![y.png](../images/20220318-4521a38a-b196-4927-a829-7c763c288fb4.png)
+![y.png](./images/20220318-4521a38a-b196-4927-a829-7c763c288fb4.png)
 
 （3）进入配置主界面
-![clipboard.png](../images/20220318-01761e63-3e68-4b3e-a697-0f23c5c4f277.png)
+![clipboard.png](./images/20220318-01761e63-3e68-4b3e-a697-0f23c5c4f277.png)
 
 1）配置软件：软件选择——>最小安装——>标准，点击完成回到主界面：
-![clipboard.png](../images/20220318-3051f8d0-71a3-481d-9e51-819a03ed38b5.png)
+![clipboard.png](./images/20220318-3051f8d0-71a3-481d-9e51-819a03ed38b5.png)
 
 2）配置系统网络和主机名配置：
 配置网卡ens33,配置如下，然后保存:
-![clipboard.png](../images/20220318-175cb0d2-1c80-4b71-af9b-c6f791152fd2.png)
+![clipboard.png](./images/20220318-175cb0d2-1c80-4b71-af9b-c6f791152fd2.png)
 
 配置主机名为：EulerMog,点击应用，然后点击完成，最终配置如下：
-![clipboard.png](../images/20220318-cc30d307-edfb-413c-968b-8dcc66291e82.png)
+![clipboard.png](./images/20220318-cc30d307-edfb-413c-968b-8dcc66291e82.png)
 
 3）配置分区：系统，安装位置，选择自定义分区，点击完成之后，选择标准分区：
 /boot   1024M
@@ -75,15 +75,15 @@ openEuler20.03LTS内核基于Linux Kernel 4.19
 swap   2G
 /data   7G
 然后点击完成。新建的分区文件系统类型默认为ext4.那就默认吧！！
-![clipboard.png](../images/20220318-5d125685-1be9-4a1c-b066-8b2e60238801.png)
+![clipboard.png](./images/20220318-5d125685-1be9-4a1c-b066-8b2e60238801.png)
 
 （4）开始安装，设置root用户密码，有密码复杂读校验：
 Ysyx3579(一上一下，还比较好记)，
-![clipboard.png](../images/20220318-ba518c9a-6e53-4e56-a8b4-c5927382cc11.png)
+![clipboard.png](./images/20220318-ba518c9a-6e53-4e56-a8b4-c5927382cc11.png)
 
 其实安装和centOS挺像的，完全可以将安装centos的方法放在这里，只是euler在配置root用户的密码时要求挺严格的，而且长度不少于8个字符，弱密码完全通不过。不像centos，我给它123456，照样配置。
 好的，重启一下就可以使用euler系统了。
-![clipboard.png](../images/20220318-e5ccebd7-92e4-4791-bc27-3771f2d50f0d.png)
+![clipboard.png](./images/20220318-e5ccebd7-92e4-4791-bc27-3771f2d50f0d.png)
 
 这是，登录之后euler系统的界面，毕竟是最小化安装，就不要幻想图形界面了。不过还好，欢迎你之后，还将系统的一些基本信息告知主人。还算细心的啦。
 
@@ -91,11 +91,11 @@ Ysyx3579(一上一下，还比较好记)，
 
 #### 1.查看网络连通性。很不错，可以上网的：
 
-![clipboard.png](../images/20220318-0305ac7e-b890-4f85-8c28-1c226b8188c4.png)
+![clipboard.png](./images/20220318-0305ac7e-b890-4f85-8c28-1c226b8188c4.png)
 
 #### 2.查看ssh服务是否开启，可以使用systemctl进行服务进程的管理
 
-![clipboard.png](../images/20220318-f194257a-9887-48f7-b493-46a4d3a5a93b.png)
+![clipboard.png](./images/20220318-f194257a-9887-48f7-b493-46a4d3a5a93b.png)
 
 #### 3.ssh服务是开启的，那么就可以尝试使用xshell进行远程连接：
 
@@ -109,7 +109,7 @@ Ysyx3579(一上一下，还比较好记)，
   用户名：root
   密码：Ysyx3579
 然后连接，连接成功：
-![clipboard.png](../images/20220318-94b651be-68c2-457c-9f9e-269ce7b41d62.png)
+![clipboard.png](./images/20220318-94b651be-68c2-457c-9f9e-269ce7b41d62.png)
 
 #### 4.修改系统的字符集为英文字符集，en_US.UTF-8
 

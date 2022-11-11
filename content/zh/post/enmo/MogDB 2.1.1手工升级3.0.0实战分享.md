@@ -25,11 +25,11 @@ times = "10:20"
 
 MogDB 3.0.0版本于2022年6月30日发布。3.0.0版本基于2.1版本进一步增强，并合入了openGauss 3.0.0版本的新增特性。upgrade脚本是openGauss_3.0.0 轻量版中才会有的手动升级脚本。我们将4个shell脚本打包放入upgrade目录中。
 
-![image.png](../images/20220701-46a3e88a-fd87-4267-b4a3-de7bd4f81ec7.png)
+![image.png](./images/20220701-46a3e88a-fd87-4267-b4a3-de7bd4f81ec7.png)
 
 - **下载地址：**[https://www.opengauss.org/zh/download.html](https://www.opengauss.org/zh/download.html)
 
-  ![image.png](../images/20220701-148cd6fd-21f6-4e57-97db-15b1f38779d2.png)
+  ![image.png](./images/20220701-148cd6fd-21f6-4e57-97db-15b1f38779d2.png)
 
 ```
 [omm@node1 upgrade]$ ls -lrt 

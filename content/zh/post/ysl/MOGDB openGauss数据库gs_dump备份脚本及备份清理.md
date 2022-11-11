@@ -72,16 +72,18 @@ echo "`date "+%Y-%m-%d-%H%M"` end backup db "
 ## 2，脚本执行
 
 执行结果如下：
-![image.png](../figures/20220107-39368262-8b82-4c5d-973d-c268dab99042.png)
+![image.png](./figures/20220107-39368262-8b82-4c5d-973d-c268dab99042.png)
 去备份保存的目录下
-![image.png](../figures/20220107-154aa7ec-6a24-41aa-8fe4-0eee137d0982.png)
+![image.png](./figures/20220107-154aa7ec-6a24-41aa-8fe4-0eee137d0982.png)
 解压一个文件
-![image.png](../figures/20220107-2073c9b3-0749-4d3d-a577-cf9467225d37.png)
+![image.png](./figures/20220107-2073c9b3-0749-4d3d-a577-cf9467225d37.png)
 如下数据库的数据保存的文件名格式为（数据库名_日期时间.sql）
 全局对象保存的文件名格式为（global_data_数据库名_日期时间.sql）
-![image.png](../figures/20220107-6c96183e-8ed2-4eac-840d-6de2b6c9e746.png)
+![image.png](./figures/20220107-6c96183e-8ed2-4eac-840d-6de2b6c9e746.png)
 
-![image.png](../figures/20220107-62164f26-2335-4465-ad23-47148ecae8a1.png)
+
+
+ ![image.png](./figures/20220107-62164f26-2335-4465-ad23-47148ecae8a1.png)
 
 查看数据库对应的数据备份
 
@@ -89,14 +91,14 @@ echo "`date "+%Y-%m-%d-%H%M"` end backup db "
 [omm@node1 2022-01-07-1634]$ vim ysla_2022-01-07-1634.sql 
 ```
 
-![image.png](../figures/20220107-ee45e332-8e56-4b07-a765-b1e5ce6df6b9.png)
+![image.png](./figures/20220107-ee45e332-8e56-4b07-a765-b1e5ce6df6b9.png)
 查看数据库对应的全局对象备份
 
 ```
 [omm@node1 2022-01-07-1634]$ vim global_data_ysla_2022-01-07-1634.sql 
 ```
 
-![image.png](../figures/20220107-7b9036fd-66fb-44ff-9ad6-61a878d5940b.png)
+![image.png](./figures/20220107-7b9036fd-66fb-44ff-9ad6-61a878d5940b.png)
 
 # 二、备份脚本加到crontab
 

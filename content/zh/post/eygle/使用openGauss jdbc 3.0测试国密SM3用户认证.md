@@ -120,4 +120,4 @@ java
 
 运行结果测试正常
 
-![img](../images/20220413-bf279e19-eb33-475f-8319-9bd07aaefaf5.png)
+![img](./images/20220413-bf279e19-eb33-475f-8319-9bd07aaefaf5.png)

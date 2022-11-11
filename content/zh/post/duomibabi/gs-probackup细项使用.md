@@ -18,7 +18,7 @@ times = "15:30"
 
 +++
 
-# gs-probackup细项使用<a name="ZH-CN_TOPIC_0000001116221609"></a>
+# gs-probackup细项使用
 
 **gs\_probackup对gs\_basebackup的增强**
 
@@ -44,7 +44,7 @@ gs_probackup backup -B backup-path --instance=instance_name -b backup-mode
   -b, --backup-mode=backup-mode    backup mode=FULL|PTRACK
 ```
 
->![](public_sys-resources/icon-caution.gif) **注意：** 
+>**注意：** 
 >如果实例做过恢复，需要重新做一次FULL全备，才能接着使用增量备份。
 
 ptrack备份例子
@@ -60,7 +60,7 @@ $ gs_probackup backup \
 --password=XXX
 ```
 
->![](public_sys-resources/icon-caution.gif) **注意：** 
+>**注意：** 
 >需要设置enable\_cbm\_tracking = on。
 
 **2.恢复模式**
@@ -130,7 +130,7 @@ $ gs_probackup restore \
 --external-mapping='/home/omm/tblsp1=/home/omm/tblsp2'
 ```
 
->![](public_sys-resources/icon-caution.gif) **注意：** 
+>**注意：** 
 >1.gs\_probackup backup使用external-dirs选项，gs\_probackup restore使用external-mapping选项，不要混淆。
 >2.gs\_probackup restore需要同时使用external-dirs和external-mapping选项。
 >3.多个表空间选项可以使用多次，选项里面等号前后分别映射备份和恢复的表空间路径。

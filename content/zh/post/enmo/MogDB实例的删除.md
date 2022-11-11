@@ -22,7 +22,7 @@ times = "10:20"
 本文出处：[https://www.modb.pro/db/245460](https://www.modb.pro/db/245460)
 
 1 查询mogdb的实例进程
-![1.png](../images/20220206-c5a88d2a-a455-4473-ab40-4306878f1dd9.png)
+![1.png](./images/20220206-c5a88d2a-a455-4473-ab40-4306878f1dd9.png)
 
 2 根据clusterconfig.xml文件可以看出gaussdbAppPath，gaussdbLogPath，gaussdbToolPath，corePath，clusterType以及dataNode1的位置。
 

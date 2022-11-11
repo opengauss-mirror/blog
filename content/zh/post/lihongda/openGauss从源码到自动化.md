@@ -262,7 +262,7 @@ openGauss-server中的build.sh是编译过程中的重要脚本工具。该工�
 </tbody>
 </table>
 
->![](public_sys-resources/icon-note.gif) **说明：** 
+>**说明：** 
 >-   **-m \[debug | release | memcheck\]**表示有三个目标版本可以选择：
 >    -   **release**：生成release版本的二进制程序。此版本编译时，通过配置GCC高级优化选项，去除内核调试代码。此选项通常在生成环境或性能测试环境中使用。
 >    -   **debug**：表示生成debug版本的二进制程序。此版本编译时，增加了内核代码调试功能，一般用于开发自测环境。

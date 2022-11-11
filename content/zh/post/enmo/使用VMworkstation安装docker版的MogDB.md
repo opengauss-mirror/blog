@@ -35,7 +35,7 @@ DOCKER版本：20.10.9
 ### 下载地址
 
 [https://download.docker.com/linux/static/stable/x86_64/](https://download.docker.com/linux/static/stable/x86_64/)
-![图片.png](../images/20220629-4cddba36-0f3c-4381-99e5-e78aaa73378e.png)
+![图片.png](./images/20220629-4cddba36-0f3c-4381-99e5-e78aaa73378e.png)
 
 ### 解压缩
 
@@ -43,7 +43,7 @@ DOCKER版本：20.10.9
 # cd /opt/software # tar -xvf docker-20.10.9.tgz # cp docker/* /usr/bin/ # which docker 
 ```
 
-![图片.png](../images/20220629-4d70d1a3-b479-4231-b0c8-a8793f9a4190.png)
+![图片.png](./images/20220629-4d70d1a3-b479-4231-b0c8-a8793f9a4190.png)
 
 ### 配置sytemctl服务
 
@@ -85,7 +85,7 @@ WantedBy=multi-user.target
 # docker version
 ```
 
-![图片.png](../images/20220628-fcb7bef6-b296-4286-a030-fcbe7af05e95.png)
+![图片.png](./images/20220628-fcb7bef6-b296-4286-a030-fcbe7af05e95.png)
 
 ## 搭建数据库
 
@@ -95,9 +95,9 @@ WantedBy=multi-user.target
 # docker pull swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 # docker images 
 ```
 
-![图片.png](../images/20220628-d2ca51b3-3e6c-43d7-9869-829591f70c4c.png)
+![图片.png](./images/20220628-d2ca51b3-3e6c-43d7-9869-829591f70c4c.png)
 
-![图片.png](../images/20220628-c7f47465-86db-4180-a90a-63892577a4b5.png)
+![图片.png](./images/20220628-c7f47465-86db-4180-a90a-63892577a4b5.png)
 
 ### 单节点数据库
 
@@ -126,7 +126,7 @@ WantedBy=multi-user.target
 # docker ps
 ```
 
-![图片.png](../images/20220629-ccf529f2-e1d3-4ea7-8683-dbff12741680.png)
+![图片.png](./images/20220629-ccf529f2-e1d3-4ea7-8683-dbff12741680.png)
 
 ### 修改数据库登录参数
 
@@ -145,7 +145,7 @@ gsql -d postgres -p 5432 -r
 create user test with sysadmin password 'Test@1234';
 ```
 
-![图片.png](../images/20220629-6e52948e-efd7-4d3f-a2f0-915fe5dfa918.png)
+![图片.png](./images/20220629-6e52948e-efd7-4d3f-a2f0-915fe5dfa918.png)
 
 容器内使用gsql命令进行验证
 
@@ -153,10 +153,10 @@ create user test with sysadmin password 'Test@1234';
 gsql -d postgres -U test -W Test@1234 -h127.0.0.1 -p 5432 -r 
 ```
 
-![图片.png](../images/20220629-f5599c04-808a-40b7-9b10-3c0bdda1078c.png)
+![图片.png](./images/20220629-f5599c04-808a-40b7-9b10-3c0bdda1078c.png)
 
 容器外使用第三方工具链接
-![图片.png](../images/20220629-118f8a9c-c15a-4480-aa4c-654740d2d382.png)
+![图片.png](./images/20220629-118f8a9c-c15a-4480-aa4c-654740d2d382.png)
 
 ### 搭建主从节点数据库
 
@@ -192,9 +192,9 @@ swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M primary
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
 ```
 
-![图片.png](../images/20220628-0a807cce-5f1c-4f0b-9d94-81334f889ff3.png)
+![图片.png](./images/20220628-0a807cce-5f1c-4f0b-9d94-81334f889ff3.png)
 
-![图片.png](../images/20220629-fb47c6a5-5e84-49ed-95b5-0da3c28fdb58.png)
+![图片.png](./images/20220629-fb47c6a5-5e84-49ed-95b5-0da3c28fdb58.png)
 
 使用命令验证主从同步
 
@@ -231,10 +231,10 @@ select * from t1;
 ```
 
 主节点输出
-![图片.png](../images/20220629-ed985715-0ebf-49bf-9165-442a68f47680.png)
+![图片.png](./images/20220629-ed985715-0ebf-49bf-9165-442a68f47680.png)
 
 从节点输出
-![图片.png](../images/20220629-7416d9fb-0aaf-4837-baaf-3c3239161757.png)
+![图片.png](./images/20220629-7416d9fb-0aaf-4837-baaf-3c3239161757.png)
 
 ## docker常用命令
 

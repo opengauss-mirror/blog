@@ -97,9 +97,9 @@ database的权限与表、视图等对象权限之间隔着一层schema的权限
 ### Q4.为什么function不像schema那样需要授权就能直接访问呢？
 
 参考下面的操作步骤，schema需要授予权限后才可以访问，而function就可以直接调用呢？
-![image.png](../images/20220413-52da4846-5d24-4a95-b24e-86dc22032a03.png)
+![image.png](./images/20220413-52da4846-5d24-4a95-b24e-86dc22032a03.png)
 因为不同的数据库对象有不同的默认权限，可以参考下面PG文档里的这张图
-![image.png](../images/20220413-ba76382b-6682-4b86-8830-f93d14f127a0.png)
+![image.png](./images/20220413-ba76382b-6682-4b86-8830-f93d14f127a0.png)
 
 ### Q5.如何像MySQL数据库那样设置readonly只读用户？
 

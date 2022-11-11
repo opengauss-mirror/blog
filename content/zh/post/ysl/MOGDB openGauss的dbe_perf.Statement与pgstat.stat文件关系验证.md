@@ -46,7 +46,7 @@ select count(*) from dbe_perf.STATEMENT_WLMSTAT_COMPLEX_RUNTIME;
 
 # 二、第一轮测试
 
-![image.png](../figures/20211230-745cea46-2659-4095-b6c7-f97af7e3f8b3.png)
+![image.png](./figures/20211230-745cea46-2659-4095-b6c7-f97af7e3f8b3.png)
 
 ```
 select count(*) from dbe_perf.Statement;
@@ -127,11 +127,11 @@ postgres=# select count(*) from dbe_perf.STATEMENT_WLMSTAT_COMPLEX_RUNTIME;
 
 > use_workload_manager参数由off变为on状态后，不会统计off时的存储资源。如果需要统计off时用户使用的存储资源，请在数据库中执行以下命令：select gs_wlm_readjust_user_space(0);
 
-![image.png](../figures/20211230-a25fb65b-778f-47c9-992e-91e9596792ba.png)
+![image.png](./figures/20211230-a25fb65b-778f-47c9-992e-91e9596792ba.png)
 
 Stop 库后，删除pgstat.stat文件后再次查询
 
-![image.png](../figures/20211230-e5e1d3a5-b787-4062-9524-73b31a384755.png)
+![image.png](./figures/20211230-e5e1d3a5-b787-4062-9524-73b31a384755.png)
 
 ```
 postgres=# select count(*) from dbe_perf.Statement;

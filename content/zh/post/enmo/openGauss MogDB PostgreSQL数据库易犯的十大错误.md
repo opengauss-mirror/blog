@@ -191,4 +191,4 @@ ERROR:  relation "a" already exists
 通常我们从操作系统层查看主库有walsender，备库有walreceiver，并且walsender信息中可以看到备库的IP地址，可以初步判断主备状态正常。
 但请注意有walsender或者数据库中能查到pg_stat_replication视图并不能断定是主库，仅在一主一备环境可以这样简单判断，下面的图可以看出，虽然有walsender，但它也是个备库.
 
-![QQ截图20210603091354.png](../images/20210603-9b70ba89-658c-4902-818a-099c359808b4.png)
+![QQ截图20210603091354.png](./images/20210603-9b70ba89-658c-4902-818a-099c359808b4.png)

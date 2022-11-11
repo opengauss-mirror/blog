@@ -239,7 +239,7 @@ public class TestFailoverAndLoadbalance {
 
 ```
 
-![image.png](../images/20220603-6d3c61ac-e602-4d83-9fd5-b83efb97fdc6.png)
+![image.png](./images/20220603-6d3c61ac-e602-4d83-9fd5-b83efb97fdc6.png)
 可以看到写操作会连接主节点，即使我们把loadBalanceHosts设置为true。
 
 节点角色如果发生切换，应用层也是可以自动连接到写节点，这个可以再最后再测试，否则需要修复docker容器里的流复制关系。
@@ -254,9 +254,9 @@ loadBalanceHosts=true&targetServerType=preferSlave jdbc代码调整这两行 exe
 至少有一个备节点存活的场景下，两者没什么差别
 
 - targetServerType=slave
-  ![image.png](../images/20220603-29a73f66-9b99-4730-9c34-52db8c7159dc.png)
+  ![image.png](./images/20220603-29a73f66-9b99-4730-9c34-52db8c7159dc.png)
 - targetServerType=preferSlave
-  ![image.png](../images/20220603-25a30b8b-7a83-412c-82e5-e781ed720c09.png)
+  ![image.png](./images/20220603-25a30b8b-7a83-412c-82e5-e781ed720c09.png)
 
 没有可用备节点的场景下，preferSlave会尝试连接主库，而slave会报错。
 停止两个备节点mogdb2和mogdb3

@@ -128,7 +128,7 @@ In version 9.4（Postgre） or earlier, the parameter  _checkpoint\_segments_  i
 
 默认情况下，WAL Segment是一个16 MB的文件，它在内部分成8192字节（8 KB）的页面。第一页具有由结构XLogLongPageHeaderData定义的标头数据，而所有其他页的标题具有由结构XLogPageHeaderData定义的页信息。在页面标题之后，XLOG记录从头开始按降序写入每个页面。图例如下：
 
-![](../figures/11.png)
+![](./figures/11.png)
 
 -   WAL Segment文件管理
 

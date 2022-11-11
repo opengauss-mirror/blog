@@ -222,7 +222,7 @@ DETAIL:  Key (id, price) = (1, 4.30) already exists.
 
 检查了ODBC的文档，当进行绑定变量时，如果使用double/real/float等类型，而不是SQL_NUMERIC或者SQL_DECIMAL，精度信息并不会被使用。
 
-![img](../images/1.png) 
+![img](./images/1.png) 
 
 因此，的确可能产生上述推测的问题。
 
@@ -436,11 +436,11 @@ g++ -lodbc -o mergeTest a.cpp
 
 如4.3000002等
 
-![img](../images/2.png) 
+![img](./images/2.png) 
 
 用strace追踪客户端和数据库端的数据传输，也有同样发现：
 
-![img](../images/3.png) 
+![img](./images/3.png) 
 
 传入123456.01时，被转换成123456.00999999999
 

@@ -43,7 +43,7 @@ xlog是记录的Postgresql的WAL信息，也就是一些事务日志信息(trans
 - 当双机为异步传输时，以COPY方式连续导入4G以上数据需要增大wal_keep_segments配置。以T6000单板为例，如果导入数据量为50G，建议调整参数为1000。您可以在导入完成并且日志同步正常后，动态恢复此参数设置。
 - 若synchronous_commit级别小于LOCAL_FLUSH，重建备机时，建议调大改参数为1000，避免重建过程中，主机日志回收导致重建失败。
 
-![img](../images/20211129-a2ebfd4e-cf7c-46aa-ad62-bb6cacb4dcdd.png)
+![img](./images/20211129-a2ebfd4e-cf7c-46aa-ad62-bb6cacb4dcdd.png)
 
 该参数控制pg_xlog目录下的xlog日志问价最小保留数量，默认值为16个，生产业务环境推荐值为1024。
 
@@ -70,7 +70,7 @@ xlog是记录的Postgresql的WAL信息，也就是一些事务日志信息(trans
 
 该参数为控制是否打开数据库的归档模式，打开后会对数据库的xlog进行归档，归档完成后会记录在pg_xlog目录下的archive_status目录中记录xlog的归档状态为成功，格式为xlogname.done，并清除归档成功的xlog。
 
-![img](../images/20211129-bf8de33c-a36f-4771-9075-b0047052f2cf.png)
+![img](./images/20211129-bf8de33c-a36f-4771-9075-b0047052f2cf.png)
 
 想要归档正常进行还需要确保归档目录存在且磁盘空间充足。涉及到的参数为archive_dest。
 
@@ -89,7 +89,7 @@ xlog是记录的Postgresql的WAL信息，也就是一些事务日志信息(trans
 
 该参数设置归档日志存放的目录，需要确保目录存在且数据库所对应的系统用户有该目录的相关权限，并且有充足的空间，否则即使打开了归档模式也不能正常的进行归档，xlog也无法正常清理，然后导致xlog堆积，最后导致数据库挂掉。
 
-![img](../images/20211129-e220a45e-264d-4c26-adbc-a388ffcf1aee.png)
+![img](./images/20211129-e220a45e-264d-4c26-adbc-a388ffcf1aee.png)
 
 #### checkpoint_segments
 
@@ -103,6 +103,6 @@ xlog是记录的Postgresql的WAL信息，也就是一些事务日志信息(trans
 
 默认值：64
 
-![img](../images/20211129-059e38e8-318a-4d6b-814d-acf83808725f.png)
+![img](./images/20211129-059e38e8-318a-4d6b-814d-acf83808725f.png)
 
 该参数控制在checkpoint_timout周期内xlog的最小保存数量，checkpoint_timeout参数的默认值是15min。

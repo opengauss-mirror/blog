@@ -23,7 +23,7 @@ times = "10:20"
 
 前段时间在某客户生产环境优化PG查询性能时发现一个很有意思的现象，一个统计信息相关参数可以很大程度上影响SQL的性能。近期在学习MogDB，就对比PG和MogDB做了个小测试 。
 
-![image.png](../images/20220104-85af4021-ca8c-4e43-83f6-41d5478f3b3e.png)
+![image.png](./images/20220104-85af4021-ca8c-4e43-83f6-41d5478f3b3e.png)
 
 上图是对有性能问题的SQL做分析的截图，可以看到一个很奇怪的现象 Planning Time 占比较大，甚至远远大于具体执行的时间 Execution Time。
 
@@ -152,9 +152,9 @@ Term-00, Running Average tpmTOTAL: 92146.82    Current tpmTOTAL: 2988612    Memo
 
 ```
 
-![image.png](../images/20220104-f941652d-4591-4d7e-b6cc-e3f7600737f6.png)
-![image.png](../images/20220104-0174f2f5-1b8c-4be4-aebf-93c74fddbb70.png)
-![image.png](../images/20220104-b677c39a-a599-445d-961a-0990fd5349d0.png)
+![image.png](./images/20220104-f941652d-4591-4d7e-b6cc-e3f7600737f6.png)
+![image.png](./images/20220104-0174f2f5-1b8c-4be4-aebf-93c74fddbb70.png)
+![image.png](./images/20220104-b677c39a-a599-445d-961a-0990fd5349d0.png)
 
 清理测试数据
 
@@ -260,9 +260,9 @@ Term-00, Running Average tpmTOTAL: 20052.14    Current tpmTOTAL: 664776    Memor
 
 ```
 
-![image.png](../images/20220104-1d27a403-db46-4a88-bb2a-f4ed93a14344.png)
-![image.png](../images/20220104-61b0bd3e-a37c-4377-82b4-a5cf45597d76.png)
-![image.png](../images/20220104-8337a004-814f-411f-978a-eb186e873986.png)
+![image.png](./images/20220104-1d27a403-db46-4a88-bb2a-f4ed93a14344.png)
+![image.png](./images/20220104-61b0bd3e-a37c-4377-82b4-a5cf45597d76.png)
+![image.png](./images/20220104-8337a004-814f-411f-978a-eb186e873986.png)
 
 从测试结果看default_statistics_target=10000配置下tpmC 只有默认配置下的22.2%，TPS和事务的延迟也有明显差距。实验证明增大该参数会对实例的性能造成较大影响。
 
@@ -343,9 +343,9 @@ Term-00, Running Average tpmTOTAL: 36569.79    Current tpmTOTAL: 1185828    Memo
 
 ```
 
-![image.png](../images/20220104-d06be2cc-2529-43ab-af88-c49b532a2fab.png)
-![image.png](../images/20220104-d7d4c8de-04c5-488d-8b9e-b0aef0fef956.png)
-![image.png](../images/20220104-8083126f-9d2e-49f8-99fd-1a3e6bbd3087.png)
+![image.png](./images/20220104-d06be2cc-2529-43ab-af88-c49b532a2fab.png)
+![image.png](./images/20220104-d7d4c8de-04c5-488d-8b9e-b0aef0fef956.png)
+![image.png](./images/20220104-8083126f-9d2e-49f8-99fd-1a3e6bbd3087.png)
 
 清理测试数据
 

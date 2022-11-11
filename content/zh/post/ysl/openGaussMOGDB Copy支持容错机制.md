@@ -41,7 +41,7 @@ MOGDB/openGauss允许用户在使用Copy From指令时指定容错选项，使�
   与LOG ERROR选项共同使用，对COPY FROM的容错机制设置数值上限，一旦此COPY FROM语句错误数据超过选项指定条数，则会按照原有机制报错。
   取值范围：正整数（1-INTMAX），‘unlimited’（无最大值限制）
 
-![1646888448378.png](../figures/20220310-b33187c2-172b-4972-b6c9-711860ae28f7.png)
+![1646888448378.png](./figures/20220310-b33187c2-172b-4972-b6c9-711860ae28f7.png)
 
 # 二、Copy错误表创建函数
 
@@ -80,10 +80,10 @@ REVOKE ALL on FUNCTION pg_catalog.copy_error_log_create() FROM public;
 
 再执行copy命令，报错的copy数据会被记录到public.pgxc_copy_error_log 里而不会影响其他正确的数据的导入。
 
-![1646890609603.png](../figures/20220310-f2d4d537-1f04-42d2-ab98-7fa5a28cd118.png)
-![1646890472876.png](../figures/20220310-e345ddf5-9928-4bc7-92e3-e83709d835ce.png)
+![1646890609603.png](./figures/20220310-f2d4d537-1f04-42d2-ab98-7fa5a28cd118.png)
+![1646890472876.png](./figures/20220310-e345ddf5-9928-4bc7-92e3-e83709d835ce.png)
 
 **注意要指定REJECT LIMIT ‘limit’,且limit的值要足够大，否则当COPY FROM语句错误数据超过选项指定条数，则会按照原有机制报错。**
 
 表里记录的内容，是通过Log_copy_error_spi函数读取缓存文件中的每一行，并组装spi要执行的查询字符串,把将错误记录插入带有spi的copy_error_Log表中。
-![1646896503427.png](../figures/20220310-601f8ccb-9c12-43a5-82f5-59c779123d57.png)
+![1646896503427.png](./figures/20220310-601f8ccb-9c12-43a5-82f5-59c779123d57.png)

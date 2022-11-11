@@ -54,7 +54,7 @@ insert into t_refer1 values(11,'class 3');
 insert into t_refer2 values('test1',sysdate,11);
 ```
 
-![图片.png](../images/20220408-11f29897-a4b6-4f2e-a8c2-f679957fe730.png)
+![图片.png](./images/20220408-11f29897-a4b6-4f2e-a8c2-f679957fe730.png)
 
 ### 失能外键
 
@@ -69,7 +69,7 @@ insert into t_refer1 values(11,'class 3');
 insert into t_refer2 values('test1',sysdate,11);
 ```
 
-![图片.png](../images/20220408-0e8866ab-114c-42ab-9bb6-234f8a40acd3.png)
+![图片.png](./images/20220408-0e8866ab-114c-42ab-9bb6-234f8a40acd3.png)
 
 ### 使能外键
 
@@ -83,7 +83,7 @@ insert into t_refer1 values(12,'class 3');
 insert into t_refer2 values('test1',sysdate,12);
 ```
 
-![图片.png](../images/20220408-855d3678-23bd-4f69-bdaf-71f840096cd3.png)
+![图片.png](./images/20220408-855d3678-23bd-4f69-bdaf-71f840096cd3.png)
 
 ### 查询外键
 
@@ -114,9 +114,9 @@ select t.tgrelid::regclass as table_name,
 
 ```
 
-![图片.png](../images/20220408-75524765-1188-47d0-b432-664e001638a5.png)
+![图片.png](./images/20220408-75524765-1188-47d0-b432-664e001638a5.png)
 
-![图片.png](../images/20220408-685e0f51-303d-416a-970c-d73aea1bb48f.png)
+![图片.png](./images/20220408-685e0f51-303d-416a-970c-d73aea1bb48f.png)
 
 ## 操作外键的常见场景操作步骤：
 
