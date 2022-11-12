@@ -161,32 +161,46 @@ SALARY =  Rich-Mond
 
 ```
 - 说明python连接openGauss成功，能够读取出数据。
+
 ![image.png](images/openGauss/3.2-1.png)
+
 ![image.png](images/openGauss/3.2-2.png)
 # 四、PyCharm开发工具的使用
 ## 4.1 下载安装
 https://www.jetbrains.com/pycharm/download/#section=windows
+
 ![image.png](images/openGauss/4.1-1.png)
+
 - 有2个版本
 一个Professional版本，免费使用30天，然后收费，功能多。
 一个Community版本，免费的。相对来说功能少。
 > 说明：
 我选择了Community版本。所以Tools->Deployment->Browse Remote Host 这个功能不能用。
+
 ![image.png](images/openGauss/4.1-2.png)
+
 然后安装。
 点击一步一步安装即可。
 安装完成
 ## 4.2  开始连接openGauss
 ### 4.2.1 配置
+
 ![image.png](images/openGauss/4.2.1-1.png)
+
 - 新建projects
+
 ![image.png](images/openGauss/4.2.1-2.png)
 
 ![image.png](images/openGauss/4.2.1-3.png)
+
 - 创建包
+
 ![image.png](images/openGauss/4.2.1-4.png)
+
 - 创建python文件
+
 ![image.png](images/openGauss/4.2.1-5.png)
+
 创建完成后是这样的。
 ### 4.2.2 开始写代码
 ```
@@ -208,10 +222,15 @@ conn.commit()
 conn.close()
 ```
 ![image.png](images/openGauss/4.2.2-1.png)
+
 - 执行
+
 ![image.png](images/openGauss/4.2.2-2.png)
+
 - 结果
+
 ![image.png](images/openGauss/4.2.2-3.png)
+
 - 完成。
 # 五、Visual Studio Code开发工具的使用
 ## 5.1  下载
@@ -225,54 +244,86 @@ VSCodeSetup-x64-1.73.0.exe
 ## 5.2 安装
 点击软件一步一步安装即可。
 安装完后，打开是这样的。
+
 ![image.png](images/openGauss/5.2-1.png)
  
 
 ## 5.3  远程连接到Linux的python开发环境。
 ### 5.3.1 下载远程插件和python插件
 - 下载Remote Development插件
+
 ![image.png](images/openGauss/5.3.1-1.png)
+
 下载安装成功后，出现这个图标
+
 ![image.png](images/openGauss/5.3.1-2.png)
+
 - 下载python插件
+
 ![image.png](images/openGauss/5.3.1-3.png)
+
 ### 5.3.2 配置远程服务器
 在SSH TARGETS配置远程服务器，具体步骤如下：
 - 点击远程资源管理器
 - 点击齿轮图标
 - 打开弹出的config文件，分别配置Host、Hostname、User
+
 ![image.png](images/openGauss/5.3.2-1.png)
 
 - 选择SSH Targets
+
 ![image.png](images/openGauss/5.3.2-2.png)
+
 - 可以配置多个远程
+
 ![image.png](images/openGauss/5.3.2-3.png)
 
 - 配置文件
 host随便写，把hostname后面写上ip地址，user写操作系统的用户名
+
 ![image.png](images/openGauss/5.3.2-4.png)
+
 - 设置
 打开VS Code设置，搜索Show Login Terminal，勾选下方"Always reveal the SSH login terminal"，记得一定要操作这一步，不然会一直提示报错。
+
 ![image.png](images/openGauss/5.3.2-5.png)
+
 - 打开远程窗口
+
 ![image.png](images/openGauss/5.3.2-6.png)
+
 过程中需要输入root的密码。
 
 - 左下角可以看到远程连接
+
 ![image.png](images/openGauss/5.3.2-7.png)
+
 - 打开远程文件夹
+
 ![image.png](images/openGauss/5.3.2-8.png)
+
+
 - 要求输入密码
+
 ![image.png](images/openGauss/5.3.2-9.png)
+
 输入密码后，远程成功
+
 ![image.png](images/openGauss/5.3.2-10.png)
+
 ### 5.3.3 开始使用远程环境进行开发
 - 新建python开发文件open11.py
+
 ![image.png](images/openGauss/5.3.3-1.png)
+
 - 这样就可以开始开发了。
+
 ![image.png](images/openGauss/5.3.3-2.png)
+
 - 点击执行
+
 ![image.png](images/openGauss/5.3.3-3.png)
+
 结果输出正确。
 - 配置完成。
 # 总结
