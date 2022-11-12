@@ -162,7 +162,7 @@ SALARY =  Rich-Mond
 ```
 - 说明python连接openGauss成功，能够读取出数据。
 ![image.png](images/openGauss/3.2-1.png)
-![image.png](images/openGauss/3.2-2.pngg)
+![image.png](images/openGauss/3.2-2.png)
 # 四、PyCharm开发工具的使用
 ## 4.1 下载安装
 https://www.jetbrains.com/pycharm/download/#section=windows
