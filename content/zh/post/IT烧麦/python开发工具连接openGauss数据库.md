@@ -74,6 +74,7 @@ win+r或开始点右键 出来运行，输入cmd 回车
 ![image.png](images/openGauss/1.2.2-1.png)
 
 出来这个界面
+
 ![image.png](images/openGauss/1.2.2-2.png)
 
 ### 1.2.3 使用pip安装psycopg2包
