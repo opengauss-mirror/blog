@@ -6,7 +6,7 @@ date = "2022-11-12"
 
 tags = ["python", "openGauss", "开发工具"]
 
-archives = "2022-10"
+archives = "2022-11"
 
 author = "IT烧麦"
 
@@ -74,7 +74,7 @@ win+r或开始点右键 出来运行，输入cmd 回车
 ![image.png](images/openGauss/1.2.2-1.png)
 
 出来这个界面
-![image.png](images/openGauss/1.2.1-2.pngg)
+![image.png](images/openGauss/1.2.1-2.png)
 
 ### 1.2.3 使用pip安装psycopg2包
 然后开始安装psycopg2,使用清华的源
