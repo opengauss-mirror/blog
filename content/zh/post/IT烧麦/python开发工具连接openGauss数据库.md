@@ -55,7 +55,7 @@ Python 3.6.8 (default, Nov 16 2020, 16:55:22)
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
-![image.png](/zh/post/IT烧麦/images/openGauss/1.1.3-1.png)
+![image.png](/images/openGauss/1.1.3-1.png)
 
 
 ## 1.2 window下的python环境
