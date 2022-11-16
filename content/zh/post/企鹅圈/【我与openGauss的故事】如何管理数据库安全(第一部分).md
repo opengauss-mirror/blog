@@ -16,7 +16,7 @@ summary : "Just about everything you'll need to style in the theme: headings, pa
 
 2021年6月10日国家颁布数据安全法对我们国家来说具有重大意义
 
-![图片.png](https://oss-emcsprod-public.modb.pro/image/editor/20221115-e3dced81-7d9c-4ea4-8c2f-260b46df5e7d.png)
+![信息安全法](1.png)
 
 梳理几点重要意义：
 
