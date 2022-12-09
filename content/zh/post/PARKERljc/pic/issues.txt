@@ -1,6 +1,0 @@
-数据库密码:parker@123
-java:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64/jre/bin/java
-centos自带java只有运行环境，无开发环境
-通过yum安装后路径发生了改变
-新的下载后java:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.el7_9.x86_64/jre/bin/java
-重新修改配置文件  /etc/profile 运行javac无报错

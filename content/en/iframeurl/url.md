@@ -1,3 +1,0 @@
-+++
-iframeUrl = "https://opengauss.org/"
-+++
