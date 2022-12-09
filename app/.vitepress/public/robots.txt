@@ -1,0 +1,5 @@
+User-agent:*
+Allow: /
+
+Sitemap:https://www.openeuler.org/sitemap-zh.xml
+Sitemap:https://www.openeuler.org/sitemap-en.xml
