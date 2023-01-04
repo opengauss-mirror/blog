@@ -117,11 +117,11 @@ export ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:alloc_dealloc_mismatch=0:log_
 1230后续新增的写在SQL中的函数、类型等均需要同步写到升级脚本中。
 
 
-## 新增函数
+## 新增函数、操作符和类型等数据库对象
 
 需要覆盖内核函数的在插件的builtin.ini中进行修改，builtin.ini指导：(https://mp.weixin.qq.com/s/UWHwhI4jHK6nxPSYeJPVfg)
 
-其他新增函数均通过create function的方式来实现。
+其他新增函数均通过create function的方式来实现。此外，新增操作符通过create operator实现，类型通过create type实现，类型转换通过create cast实现，聚合函数通过create aggregate实现，等等。这些实现的SQL统一放在sql_script或sql_script_post目录下，两者的区别是放在后者的SQL语句会依赖前者，例如sql_script_post新增函数的参数类型是sql_script新增的类型，在执行时会先执行sql_script，后执行sql_script_post。注意应避免编写依赖sql_script_post下的脚本。
 
 
 下面提供一些模板样例用于参考：
