@@ -43,7 +43,7 @@ openGauss资源池化是openGauss推出的一种新型的集群架构.通过DMS�
 
   1. 环境预备: 仅需要一台单独的物理机, 剩余磁盘空间最好足够大, 建议大于2T, 不低于1T
   2. 环境预备: 假设已经自行使用编译方式编译出了openGauss带资源池化代码的debug版本的安装包, 可以通过确认生成的bin目录下是否有dssserver, dsscmd, lib目录下是否有libdms.so, libdssapi.so , libdssaio.so, 来判断
-  注意: 必须是debug版本,不能用release版本
+   - 注意: 必须是debug版本,不能用release版本
   下面是以2个节点为例
   3. 配置好环境变量/home/cctest/envfile, 参考示例, 其中DSS_HOME是dn实例1的dssserver运行时需要的目录, 需要手动新建
 
@@ -63,7 +63,8 @@ export DSS_HOME=/home/test/dss/dss0/dssdba
   mkdir -p dss/dss1/dssdba/log
   mkdir -p dss/dev
   ```
-  6. 用dd命令创建一个模拟的块设备文件(执行时间依赖于磁盘的性能), 下面的命令是建2T的命令, 请不用直接拷贝, 请务必根据自己需要的大小自己调整下bs和count的值, 否则磁盘会爆
+  6. 用dd命令创建一个模拟的块设备文件(执行时间依赖于磁盘的性能), 下面的命令是建2T的命令
+   - 请不要直接拷贝, 请务必根据自己需要的大小自己调整下bs和count的值, 否则磁盘会爆
   ```shell
   dd if=/dev/zero of=/home/test/dss/dev/dss-dba bs=2M count=1024000 >/dev/null 2>&1
   ```
@@ -152,7 +153,7 @@ ss_enable_log_level = on
 
 sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node1/postgresql.conf
 
-gs_intdb -D /home/test/data/node2 --nodename=node2 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:127.0.0.1:1613,1:127.0.0.1:1614" -I 0 --socketpath='UDS:/home/test/dss/dss1/.dss_unix_d_socket'
+gs_intdb -D /home/test/data/node2 --nodename=node2 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:127.0.0.1:1613,1:127.0.0.1:1614" -I 1 --socketpath='UDS:/home/test/dss/dss1/.dss_unix_d_socket'
 
 echo "ss_enable_ssl = off
 listen_addresses = '*'
