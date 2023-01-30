@@ -17,6 +17,10 @@ img = "/zh/post/luohaixiong/title/img.png"
 times = "10:20"
 +++
 
+本文出处：[https://www.modb.pro/db/606278](https://www.modb.pro/db/606278)
+
+
+
 MogDB(其实也包括Opengauss, 以后如果不特意说明，Opengauss也同理)中，SQL的相关统计信息保存在 dbe_perf.statement表中。
 
 值得注意的是，dbe_perf这个schema在一个实例的所有数据库中都可以访问到，且对应同一份数据。但权限控制比较严格，只有具有MonitorAdmin的用户有权限访问。甚至连授予了Sysadmin的用户都没有权限。当然，初始用户是有权限的，以至于有时用惯了初始用户，往往会忽略访问dbe_perf.*是需要额外权限的。
