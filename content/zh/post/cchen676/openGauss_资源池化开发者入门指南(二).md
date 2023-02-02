@@ -44,7 +44,10 @@ openGauss资源池化是openGauss推出的一种新型的集群架构.通过DMS�
   1. 环境预备: 仅需要一台单独的物理机, 剩余磁盘空间最好足够大, 建议大于2T, 不低于1T
   2. 环境预备: 假设已经自行使用编译方式编译出了openGauss带资源池化代码的debug版本的安装包, 可以通过确认生成的bin目录下是否有dssserver, dsscmd, lib目录下是否有libdms.so, libdssapi.so , libdssaio.so, 来判断
    - 注意: 必须是debug版本,不能用release版本
-  下面是以2个节点为例
+   - 三方库版本可能不是最新，此时需要手动更新DMS/DSS组件。方法为 a.下载最新版本CBB代码，编译安装替换三方库中的CBB; b.下载最新版本的DMS/DSS代码，并根据src/gausskernel/ddes/ddes_commit_id内的版本号，回退DMS/DSS至指定版本; c.编译安装替换三方库中的DMS/DSS组件
+
+下面是以2个节点为例
+
   3. 配置好环境变量/home/cctest/envfile, 参考示例, 其中DSS_HOME是dn实例1的dssserver运行时需要的目录, 需要手动新建
 
   ```shell
@@ -133,6 +136,7 @@ export DSS_HOME=/home/test/dss/dss0/dssdba
   dsscmd lsvg -U UDS:/home/test/dss/dss0/.dss_unix_d_socket
   dsscmd ls -m M -p +data -U UDS:/home/test/dss/dss0/.dss_unix_d_socket
   ```
+   - 注意: dss不支持启动后修改卷组配置，如涉及修改请重新执行上述步骤
 
   9. 手动执行多节点的initdb
 
@@ -148,7 +152,9 @@ port=12210
 ss_enable_reform = off
 ss_work_thread_count = 32
 enable_segment = on
-ss_enable_log_level = on
+ss_log_level = 255
+ss_log_backup_file_count = 100
+ss_log_max_file_size = 1GB
 " >> /home/test/data/node1/postgresql.conf
 
 sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node1/postgresql.conf
@@ -161,7 +167,9 @@ port=13210
 ss_enable_reform = off
 ss_work_thread_count = 32
 enable_segment = on
-ss_enable_log_level = on
+ss_log_level = 255
+ss_log_backup_file_count = 100
+ss_log_max_file_size = 1GB
 " >> /home/test/data/node2/postgresql.conf
 
 sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node2/postgresql.conf
@@ -175,9 +183,11 @@ sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/tes
 
   11. 部分补充说明:
   
-  - ss_enable_log_level配置成on, 可以在日志中打印DMS和DSS相关的日志, 日志目录在pg_log/DMS里面
+  - ss_log_level参数用于控制日志中打印DMS和DSS相关的日志, 日志目录在pg_log/DMS里面
   - 17102和18102是dssserver要用的端口
   - 1613和1614是dms通信要用的端口
   - 12210和13210是openGauss数据库提供服务需要用的端口
   - dssserver配置中INST_ID不能有冲突, 比如多个dssserver配置成相同的ID
   - 该方式搭建出来的环境不支持高可用, 不能测试倒换和failover
+  - 如果启动时报错，提示如“dms library version is not matched”等报错，表示DMS/DSS组件版本号错误，请参考第三章步骤2重新编译
+  - 非CM环境下，限制了0节点为主节点，因此需要确保initdb阶段0节点创建成功
