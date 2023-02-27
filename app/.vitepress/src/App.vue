@@ -5,7 +5,6 @@ import { computed } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
 import LayoutBlog from '@/layouts/LayoutBlog.vue';
-import LayoutNews from '@/layouts/LayoutNews.vue';
 
 import categories from '@/data/common/category';
 
@@ -15,7 +14,6 @@ const compMapping: {
   [name: string]: Component;
 } = {
   blog: LayoutBlog,
-  news: LayoutNews,
 };
 
 const isCustomLayout = computed(() => {
