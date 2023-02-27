@@ -3098,6 +3098,7 @@ packages:
     version: 4.7.4
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
 
   registry.npmmirror.com/unplugin-icons/0.14.1_@vue+compiler-sfc@3.2.37:
     resolution: {integrity: sha512-drZFbMctvT3ZJPfdCgBv5+LKO8hGbZApRCoBRAUhQFRJQVNGUhGThrOKs+CvWq3XDBPptGNBmst8WyObbr4xiQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-icons/-/unplugin-icons-0.14.1.tgz}

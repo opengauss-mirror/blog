@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-import { useCommon } from '@/stores/common';
-
 import notFoundImg_light from '@/assets/404.png';
-import notFoundImg_dark from '@/assets/404_dark.png';
-import { computed } from 'vue';
-const { lang } = useData();
-const commonStore = useCommon();
-
-const notFoundImg = computed(() =>
-  commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
-);
 </script>
 
 <template>
   <div class="nofound">
-    <img class="nofound-img" :src="notFoundImg" alt="404" />
+    <img class="nofound-img" :src="notFoundImg_light" alt="404" />
     <p class="nofound-text">
-      <slot name="title">
-        404 Not Found
-      </slot>
+      <slot name="title"> 404 Not Found </slot>
     </p>
   </div>
 </template>

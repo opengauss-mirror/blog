@@ -1,64 +1,105 @@
-# openGauss
+## 准备
 
-[openGauss 社区官网](https://openGauss.org)的源码仓库
+1. 参考 http://git.mydoc.io/?t=179267 注册 Gitee 账号。
 
-## 目录结构
+2. 在 Gitee 个人设置中设置主邮箱地址，在此 https://gitee.com/profile/emails。
 
-官网使用`vitepress`作为基础框架搭建，采用`vue3`+`typescript`。大部分功能仅通过静态文件渲染，只有少部分功能模块（日历、CVE、搜索、筛选）需要后端部署配合运行。
+3. 签署贡献者协议，https://www.opengauss.org/zh/contribution/。
 
-```text
-  app
-    ├─ .vitepress
-      ├─ public // 静态资源文件，不参与打包编译
-      ├─ src // 业务
-        ├─ api // 接口
-        ├─ assets // 资源文件
-        ├─ components // 组件
-        ├─ i18 // 国际化
-        ├─ shared // 公用方法/样式
-        ├─ stores // 状态管理
-        ├─ views // 业务vue文件
-    ├─ en // 英文页面
-    ├─ zh // 中文页面
+4. 参考 http://git.mydoc.io/?t=180692 准备你的 git 环境
+
+## 理解博客格式
+
+openGauss 是用 markdown 格式写博客的。
+
+文件头需要包含如下信息：
+
+```
+---
+title: "Sample Post"
+date: '2020-03-03'
+category: 'blog'
+tags: ['openGauss']
+archives: '2020-03'
+author:'openGaussBlog Maintainer'
+summary: "Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more."
+---
+
+Here you can edit your blog.
 ```
 
-## 参与贡献
+小提示：你可以复制 [https://gitee.com/opengauss/website/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md](https://gitee.com/opengauss/website/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md) 到你的工作路径下然后继续编辑。
 
-1. Fork 本仓库
-2. 新建 `feat/xxx` 分支
-3. 提交代码
-4. 新建 Pull Request
+### 关于格式
 
-注意：请使用`git rebase -i`合并 commit，确保每次 pr 只有一次 commit。操作流程请参考[相关文档](https://zhuanlan.zhihu.com/p/429214913)
+**站点使用了 vitepress 框架提供了更好的 SEO，及更快的加载速度,但也有更严格的打包规则，以下规则非常重要我们建议你花几分钟阅读：**
 
-## 规范说明
+- md 文件的文件名中禁止包含 **+** 号。
+- 图片命名禁止 **空格** 、且大小写敏感，建议统一使用小写命名加中划线连接。如 blog-example.png。
+- &lt;font&gt; &lt;/font&gt; &lt;center&gt; &lt;/center&gt; 属于已弃用标签，vitepress 将不再支持，如有需要可以使用 &lt;div align=center&gt; &lt;/div&gt;。
+- md 中如需使用 HTML 标签，该标签需要闭合，如&lt;div&gt; &lt;/div&gt;。
+- 暂不支持 c++ 语言代码块，如果你有 c++代码需要展示，请不要指定代码块语言，而是采用默认语言。
+- 如果您的博客中包含代码、文件路径、键名、命令请使用代码块将其包裹。
 
-### 命名
+## 提交博客
 
-#### 命名形式
+博客的提交利用了 Gitee 的 PR(Pull Request)。
 
-1. `camelCase`: 驼峰式
-2. `kebab-case`: 短横线连接式
-3. `PascalCase`: 帕斯卡命名式
-4. `Snake`: 下划线连接式
+1. Fork openGauss 博客项目 <https://gitee.com/opengauss/blog/tree/v2> 到你自己的 Gitee 上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
 
-#### 说明
+2. Clone 代码
 
-1. 文件夹以及文件命名(除 Vue SFC)采用`kebab-case`
-2. Vue SFC 文件命名使用`PascalCase`, 在该文件中使用的 Vue 组件也使用`PascalCase`
-3. Vue 组件中`emit`事件使用`kebab-case`
-4. 变量以及方法命名使用`camelCase`, 资源文件使用`Snake`表明 light/dark, zh/en/ru，，`eg: homeBanner_light_zh`, 其中风格在前，语言在后
-5. CSS 使用`kebab-case`命名
-6. Icon 组件引入时增加 Icon 前缀，eg:`import IconDownload from '~icons/app/download'`
+```
+git clone https://gitee.com/<your-gitee-id>/openGauss-blog
+```
 
-### 开发规范
+3. 创建分支
 
-1. 所有接口类方法请写在`app/.vitepress/src/api`中，并按照[jsdoc 注释规范](https://www.shouce.ren/api/view/a/13232)给出注释，不同模块接口请按文件进行区分, eg: `api-cve.ts`
-2. 公共 utils 方法请按[jsdoc 注释规范](https://www.shouce.ren/api/view/a/13232)给出注释
-3. 变量命名做到见名知义，方法命名使用动词或动宾结构, eg: `import warningImg from '@/assets/icons/warning.png`, `const getUserEmail=()=>{}`
-4. 调用接口获取数据请使用`try {} catch(error) {}`进行校验
-5. 约束`for...in`的使用, 可以使用`Object.keys().forEach`
-6. 使用`prettier`插件作为格式化工具
-7. 提交之前请先进行 eslint 检查： 执行脚本，运行`pnpm lint`。确认无问题后提交。项目工程的git hooks 已配置相关校验，如`git commit`不成功，请查看相关错误信息，并进行修改
-8. `git commit`信息请尽量参照[相关规范](https://zhuanlan.zhihu.com/p/182553920)
-9. 其他注意事项请参考业界相关通用[开发规范说明](https://github.com/airbnb/javascript)
+```
+git checkout -b <branch-name>
+```
+
+4. 创建工作路径
+
+如果你发表中文博客，工作路径是 `app/zh/blogs` 。
+假设你要写一个中文博客：
+
+```
+cd app/zh/blogs
+mkdir <your-gitee-id>
+cd <your-gitee-id>
+touch YEAR-MONTH-DAY-title.md
+```
+
+你可以以你的 md 文档名来命名你的资源文件，方便使用。例如：
+
+```
+YEAR-MONTH-DAY-title-NN.MARKUP
+```
+
+其中，YEAR, MONTH, DAY, 和 title 和你的博客 md 文件名一致。NN 是 01、02、03 这样的序号。MARKUP 文件扩展名。如下例子：
+
+```
+2020-01-01-new-years-is-coming.md
+2020-01-01-new-years-is-coming-01.png
+2020-01-01-new-years-is-coming-02.gif
+2020-01-01-new-years-is-coming-03.pdf
+```
+
+使用 HTML \<img\> 标签嵌入图片， 但你的图片资源需要放入当前目录下（即 your-gitee-id 目录下），输入图片名称作为 src 值：
+
+```
+<img src = "./2020-01-01-new-years-is-coming-01.png">
+```
+
+1. Commit 你的博客
+
+```
+git add <file-path>
+git commit -m "<message>"
+git push origin <branch-name>:<branch-name>
+```
+
+2. 参考 <http://git.mydoc.io/?t=153749> 提交你的 PR
+
+3. 等待评审和合入。

@@ -34,7 +34,5 @@ export default defineConfig({
       },
     }),
   ],
-  server: {
-    proxy: {},
-  },
+  server: {},
 });

@@ -1,29 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRouter, useData } from 'vitepress';
-import { useCommon } from '@/stores/common';
-
 import logo_light from '@/assets/logo.svg';
-import logo_dark from '@/assets/logo_dark.svg';
-
-const router = useRouter();
-const { lang } = useData();
-const commonStore = useCommon();
-
-const logo = computed(() =>
-  commonStore.theme === 'light' ? logo_light : logo_dark
-);
-
-// 返回首页
-const goHome = () => {
-  router.go(`/${lang.value}/`);
-};
 </script>
 
 <template>
   <header class="app-header">
     <div class="app-header-body">
-      <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
+      <img class="logo" alt="openEuler logo" :src="logo_light" />
     </div>
   </header>
 </template>

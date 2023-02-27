@@ -19,17 +19,19 @@ const resolveDate = (date: any) => {
     <h2 class="page-title">{{ frontmatter.title }}</h2>
     <div v-if="frontmatter.author" class="info">
       <template v-if="Array.isArray(frontmatter.author)">
-        <span v-for="item in frontmatter.author" :key="item" class="author"
-          >{{ item }}
+        <span v-for="item in frontmatter.author" :key="item" class="author">
+          {{ item }}
         </span>
       </template>
       <span v-else class="author">{{ frontmatter.author }} </span>
-      <span v-if="frontmatter.date" class="date"
-        >{{ resolveDate(frontmatter.date) }}
+      <span v-if="frontmatter.date" class="date">
+        {{ resolveDate(frontmatter.date) }}
       </span>
-      <OTag v-for="item in frontmatter.tags" :key="item" size="small">{{
-        item
-      }}</OTag>
+      <template v-if="frontmatter.tags">
+        <span v-for="item in frontmatter.tags" :key="item" class="">
+          {{ item }}
+        </span>
+      </template>
     </div>
   </div>
 </template>
