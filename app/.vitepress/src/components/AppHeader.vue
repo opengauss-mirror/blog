@@ -5,7 +5,7 @@ import logo_light from '@/assets/logo.svg';
 <template>
   <header class="app-header">
     <div class="app-header-body">
-      <img class="logo" alt="openEuler logo" :src="logo_light" />
+      <img class="logo" alt="openGauss logo" :src="logo_light" />
     </div>
   </header>
 </template>
