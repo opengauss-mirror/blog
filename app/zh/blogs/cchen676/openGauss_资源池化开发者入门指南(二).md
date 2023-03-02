@@ -30,7 +30,7 @@ openGauss 资源池化是 openGauss 推出的一种新型的集群架构.通过 
 2. 对磁阵有一定的了解
 3. 对传统的 openGauss 编译方式十分熟悉
 
-### 二、开发自验证编译安装指南
+### 三、开发自验证编译安装指南
 
 1. 资源池化架构参考:
    ![图1](./title/dms1.jpg '图1')
@@ -39,17 +39,24 @@ openGauss 资源池化是 openGauss 推出的一种新型的集群架构.通过 
 4. 这里介绍一种可以用于开发者自己学习或开发的编译环境搭建方式, 不需要 cm 和 om, 不需要磁阵, 仅需要一台普通的物理机就可以搭建出资源池化的环境.
 5. 需要注意的是, 因为没用到 cm, 这种方式搭建的环境不能用于调试主备倒换或 failover 场景, 只能用于验证集群正常运行时的场景
 
-### 三、独立编译安装指南
+### 四、独立编译安装指南
 
-注意: 以下请勿用于生产环境
+**注意:** 
+   - 以下请勿用于生产环境
+   - 必须是debug版本,不能用release版本
+   - 因为本博客介绍的安装方式为非cm安装，需要对DSS组件使用Dsstest方式进行编译，因此在编译数据库之前，需要下载DSS对应代码并自行采用dsstest方式对DSS进行编译。方法为 a.下载最新版本CBB代码，编译安装替换三方库中的CBB; b.下载最新版本的DSS代码，并根据src/gausskernel/ddes/ddes_commit_id内的版本号，回退DSS至指定版本; c.编译安装替换三方库中的DSS组件，命令如下：
+```shell
+#-3rd后面跟三方库对应的绝对路径
+sh build.sh -3rd /xxx/.../binarylibs -t cmake -m DebugDsstest
+```
+   - 三方库版本可能不是最新，此时需要手动更新DMS组件。方法为 a.下载最新版本CBB代码，编译安装替换三方库中的CBB(上条操作已经执行过); b.下载最新版本的DMS代码，并根据src/gausskernel/ddes/ddes_commit_id内的版本号，回退DMS至指定版本; c.编译安装替换三方库中的DMS组件
+   - 当编译完DSS、DMS、CBB之后，会自动更新到三方库，不需要手动拷贝，只需要按正常流程编译数据库就行了
 
-1. 环境预备: 仅需要一台单独的物理机, 剩余磁盘空间最好足够大, 建议大于 2T, 不低于 1T
-2. 环境预备: 假设已经自行使用编译方式编译出了 openGauss 带资源池化代码的 debug 版本的安装包, 可以通过确认生成的 bin 目录下是否有 dssserver, dsscmd, lib 目录下是否有 libdms.so, libdssapi.so , libdssaio.so, 来判断
+  1. 环境预备: 仅需要一台单独的物理机, 剩余磁盘空间最好足够大, 建议大于2T, 如果没有太大业务量，最小大于等于100G
+  2. 环境预备: 假设已经自行使用编译方式编译出了openGauss带资源池化代码的debug版本的安装包, 可以通过确认生成的bin目录下是否有dssserver, dsscmd, lib目录下是否有libdms.so, libdssapi.so , libdssaio.so, 来判断，同时要保证已经编译出的安装包使用的是Dsstest方式的DSS组件
 
-- 注意: 必须是 debug 版本,不能用 release 版本
-  下面是以 2 个节点为例
-
-3. 配置好环境变量/home/cctest/envfile, 参考示例, 其中 DSS_HOME 是 dn 实例 1 的 dssserver 运行时需要的目录, 需要手动新建
+下面是以2个节点为例
+  3. 配置好环境变量/home/cctest/envfile, 参考示例, 其中DSS_HOME是dn实例1的dssserver运行时需要的目录, 需要手动新建
 
 ```shell
 export GAUSSHOME=/home/test/openGauss-server/dest/
@@ -91,7 +98,7 @@ dss 实例 1 的内容如下:
 ```shell
 INST_ID=0
 _LOG_LEVEL=255
-DSS_NODES_LIST=0:127.0.0.1:17102, 1:127.0.0.1:18102
+DSS_NODES_LIST=0:127.0.0.1:17102,1:127.0.0.1:18102
 DISK_LOCK_FILE_PATH=/home/test/dss/dss0
 LSNR_PATH=/home/test/dss/dss0
 _LOG_MAX_FILE_SIZE=20M
@@ -121,7 +128,7 @@ dss 实例 2 的内容如下, 注意 DISK_LOCK_FILE_PATH 配置的与 1 一致:
 ```shell
 INST_ID=1
 _LOG_LEVEL=255
-DSS_NODES_LIST=0:127.0.0.1:17102, 1:127.0.0.1:18102
+DSS_NODES_LIST=0:127.0.0.1:17102,1:127.0.0.1:18102
 DISK_LOCK_FILE_PATH=/home/test/dss/dss0
 LSNR_PATH=/home/test/dss/dss1
 _LOG_MAX_FILE_SIZE=20M

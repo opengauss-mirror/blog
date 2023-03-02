@@ -94,6 +94,6 @@ sh run_ha_single.sh
 ## 如何进行发布订阅的check？
 发布订阅是openGauss实现集群间数据实时同步的一个关键特性，由于该特性的测试需要部署多个集群，因此有独立的测试目录。openGauss的编译方式同fastcheck，编译完成后，进入```src\test\subscription```目录，执行
 ```shell
-make check p={port}
+make check p={port} dbcompatibility={dbcompatibility}
 ```
-port参数指定运行的端口号，该check会部署两个一主两备的集群，端口分别是port、port+3、port+6、port+9、port+12和port+15。运行是否成功会在屏幕打印 ok/failed，运行日志在```src\test\subscription\results```目录下，创建的数据库目录在```src\test\subscription\tmp_check```目录下。
+port参数指定运行的端口号，默认取值是25800，该check会部署两个一主两备的集群，端口分别是port、port+3、port+6、port+9、port+12和port+15。dbcompatibility参数指定database的兼容性，默认取值是A，可选范围是A、B、C、PG。运行是否成功会在屏幕打印 ok/failed，运行日志在```src\test\subscription\results```目录下，创建的数据库目录在```src\test\subscription\tmp_check```目录下。
