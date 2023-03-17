@@ -162,7 +162,7 @@ ss_log_backup_file_count = 100
 ss_log_max_file_size = 1GB
 " >> /home/test/data/node1/postgresql.conf
 
-sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node1/postgresql.conf
+sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node1/pg_hba.conf
 
 gs_intdb -D /home/test/data/node2 --nodename=node2 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:127.0.0.1:1613,1:127.0.0.1:1614" -I 1 --socketpath='UDS:/home/test/dss/dss1/.dss_unix_d_socket'
 
@@ -177,7 +177,7 @@ ss_log_backup_file_count = 100
 ss_log_max_file_size = 1GB
 " >> /home/test/data/node2/postgresql.conf
 
-sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node2/postgresql.conf
+sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node2/pg_hba.conf
   ```
 
   10. 依次启动节点1和节点2
@@ -196,3 +196,9 @@ sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/tes
   - 该方式搭建出来的环境不支持高可用, 不能测试倒换和failover
   - 如果启动时报错，提示如“dms library version is not matched”等报错，表示DMS/DSS组件版本号错误，请参考第三章步骤2重新编译
   - 非CM环境下，限制了0节点为主节点，因此需要确保initdb阶段0节点创建成功
+  - 如果安装过程出现报错，再次initdb时候可能会提示目录不为空。此时需要清理文件系统及DSS中的残留文件。文件系统可以通过rm命令直接删除node文件夹，DSS中可以对模拟的块设备文件头部写0（DSS将元数据信息记录在头部），之后重新从第8步开始执行
+  ```shell
+  rm -rf /home/test/data/node1 /home/test/data/node2
+  dd if=/dev/zero of=/home/test/dss/dev/dss-dba bs=2M count=10 conv=notrunc >/dev/null 2>&1
+
+  ```
