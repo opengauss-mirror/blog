@@ -114,7 +114,7 @@ ModuleNotFoundError: No module named '_common_types'
    
    cd openssl-1.1.1a/
    
-   ./config --prefix=/usr/local/openssl shared enable-ssl3 enable-sslib
+   ./config shared enable-ssl3 enable-ssl3-method
    
    make install
    ```
@@ -130,7 +130,7 @@ ModuleNotFoundError: No module named '_common_types'
 3. 使用编译好的libssl.so.1.1替换原来的libssl.so.1.1。
 
    ```bash
-   [root@mc0-0002 openssl-1.1.1a]# cp  /etc/openssl-1.1.1a/libssl.so.1.1  /usr/local/lib/
+   [root@mc0-0002 openssl-1.1.1a]# cp  /etc/openssl-1.1.1a/libssl.so.1.1  /usr/local/etc/lib/
    cp: overwrite '/usr/local/lib/libssl.so.1.1'? y
    ```
 
@@ -139,7 +139,7 @@ ModuleNotFoundError: No module named '_common_types'
 4. 使用yum安装unixODBC。
 
    ```bash
-   [root@mc0-0002 odbc_connection]# yum install unixODBC
+   [root@mc0-0002 odbc_connection]# yum install -y unixODBC
    Last metadata expiration check: 0:12:31 ago on Thu 23 Mar 2023 05:33:19 PM CST.
    Dependencies resolved.
    ==================================================================================================
