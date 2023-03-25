@@ -4,7 +4,7 @@ title = "openGauss的高效数据压缩算法"
 
 date = "2022-11-15"
 
-tags = \[ "高效数据压缩算法"\]
+tags = ["高效数据压缩算法"]
 
 archives = "2022-11"
 
