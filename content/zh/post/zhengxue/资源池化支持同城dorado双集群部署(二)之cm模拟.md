@@ -1,10 +1,10 @@
 +++
-title = "资源池化支持同城dorado双集群部署(一)----dd模拟"
+title = "资源池化支持同城dorado双集群部署(二)----cm模拟"
 date = "2023-04-01"
-tags = ["资源池化支持同城dorado双集群部署(一)----dd模拟"]
+tags = ["资源池化支持同城dorado双集群部署(二)----cm模拟"]
 archives = "2023-04-01"
 author = "shirley_zhengx"
-summary = "资源池化支持同城dorado双集群部署(一)----dd模拟"
+summary = "资源池化支持同城dorado双集群部署(二)----cm模拟"
 img = "/zh/post/zhengxue/title/img1.png"
 times = "9:30"
 +++
@@ -29,14 +29,14 @@ times = "9:30"
 
 
 
-# 资源池化支持同城dorado双集群部署(一)----dd模拟
+# 资源池化支持同城dorado双集群部署(二)----cm模拟
 
 资源池化支持同城dorado双集群部署方式：dd模拟(手动部署+无cm)、cm模拟(手动部署dd模拟+有cm)、磁阵(手动部署)、集群管理工具部署
           
 
 ## 1.环境描述
 
-    针对dd模拟(手动部署+无cm)作出指导，环境描述如下：
+    针对cm模拟(手动部署dd模拟+有cm)作出指导，环境描述如下：
 
 ### &nbsp;&nbsp;1.1.组网方式
 <table>
@@ -68,7 +68,7 @@ times = "9:30"
 
 ## 2. 环境搭建
 
-针对资源池化双集群部署之《资源池化dd模拟搭建(手动部署) + dorado同步复制》作出指导，无cm部署，环境搭建如下：
+针对资源池化双集群部署之《资源池化cm模拟搭建(手动部署dd模拟+有cm) + dorado同步复制》作出指导，模拟cm部署，环境搭建如下：
 
 ### &nbsp;&nbsp;2.1.创建lun
 
@@ -129,7 +129,7 @@ rescan-scsi-bus.sh       upadmin show vlun         lsscsi -is
 chown zx:zx /dev/sgi
 ```
 ### &nbsp;&nbsp;2.2.下载源码编译
-&emsp;如果用已打包好的openGauss-server包则跳过该步骤，进行2.3，如果修改代码开发中，则进行代码更新并编译，如下步骤：
+&emsp;需要重新编译代码，不能跳过该步骤，步骤如下：
 
 (1) 下载三方库
 &emsp;根据平台操作系统下载对应三方库，三方库下载地址：https://gitee.com/opengauss/openGauss-server 主页上README.md中查找需要的三方库binarylibs
@@ -138,182 +138,172 @@ chown zx:zx /dev/sgi
 ```
 wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/latest/binarylibs/openGauss-third_party_binarylibs_openEuler_x86_64.tar.gz
 ```
+
 (2) 下载cbb并编译
 ```
 git clone https://gitee.com/opengauss/CBB.git -b master cbb
-cd CBB/build/linux/opengauss
+cd cbb/build/linux/opengauss
 sh build.sh -3rd $binarylibsDir -m Debug
 ```
 &emsp;编译成功会自动将二进制放入三方库openGauss-third_party_binarylibs_openEuler_x86_64/kernel/component目录下
+
 (3) 下载dss并编译
 ```
 git clone https://gitee.com/opengauss/DSS.git -b master dss
-cd CBB/build/linux/opengaussDSS
-sh build.sh -3rd $binarylibsDir -m Debug
+cd dss/build/linux/opengaussDSS
+sh build.sh -3rd $binarylibsDir -m DebugDsstest
 ```
 
 (4) 下载dms并编译
 ```
 git clone https://gitee.com/opengauss/DMS.git -b master dms
-cd CBB/build/linux/opengauss
-sh build.sh -3rd $binarylibsDir -m Debug
+
+cd dms/build/linux/opengauss
+
+sh build.sh -3rd $binarylibsDir -m DMSTest
 ```
 
 (5) 下载openGauss-server并编译
 &emsp;编译过程需要cbb、dss、dms的二进制，会从openGauss-third_party_binarylibs_openEuler_x86_64/kernel/component中获取
 ```
 git clone https://gitee.com/opengauss/openGauss-server.git -b master openGauss-server
+
+修改dms代码：vim src/gausskernel/storage/dss/fio_dss.cpp
+int dss_set_server_status_wrapper()
+{
+    // return g_dss_device_op.dss_set_main_inst();
+    return GS_SUCCESS;
+}
+
 sh build.sh -3rd $binarylibsDir -m Debug
 ```
 &emsp;编译完之后的二进制存放在openGauss-server/mppdb_temp_install/目录下
 
 
 ### &nbsp;&nbsp;2.3.环境变量
-由于机器资源不足，这里以一个业务计算服务器上部署一主一备为例
-(1) 主集群主节点对应的ss_env0
+由于机器资源不足，这里以一个业务计算服务器上部署双集群，主备集群都是一主一备
+(1) 主集群环境变量ss_env0
 
 环境变量
 ```
 export HOME=/opt/omm
 export GAUSSHOME=${HOME}/openGauss-server/mppdb_temp_install/
-export GAUSSLOG=${HOME}/cluster/gausslog0
-export SS_DATA=${HOME}/cluster/ss_data
-export DSS_HOME=${HOME}/cluster/ss_data/dss_home0
 export LD_LIBRARY_PATH=$GAUSSHOME/lib:$LD_LIBRARY_PATH
 export PATH=$GAUSSHOME/bin:$PATH
+export DSS_HOME=/home/omm/ss_hatest/dss_home0
+export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config.ini
 ```
 `Tips`: 环境变量里面一定要写export，即使`echo $GCC_PATH`存在，也要写export才能真正导入路径
 
 参数说明：
 HOME 为用户自己创建的工作目录；
 GAUSSHOME 为编译完成的目标文件路径，包含openGauss的bin、lib等；
-GAUSSLOG 为运行时的日志目录，包含dss、dms等日志
-SS_DATA 为共享存储的根目录，即dss相关配置的根目录
-DSS_HOME 为dssserver配置对应的目录
+CM_CONFIG_PATH 用于主集群cm模拟部署下的集群内节点切换
 
-(2) 主集群备节点对应的ss_env1
-环境变量
+(2) 备集群环境变量ss_env1
 ```
 export HOME=/opt/omm
 export GAUSSHOME=${HOME}/openGauss-server/mppdb_temp_install/
-export GAUSSLOG=${HOME}/cluster/gausslog1
-export SS_DATA=${HOME}/cluster/ss_data
-export DSS_HOME=${HOME}/cluster/ss_data/dss_home1
 export LD_LIBRARY_PATH=$GAUSSHOME/lib:$LD_LIBRARY_PATH
 export PATH=$GAUSSHOME/bin:$PATH
+export DSS_HOME=/home/omm/ss_hatest/dss_home0
+export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config_standby.ini
 ```
 
-(3) 备集群环境变量与主集群一样，存放在备集群的一个业务计算服务器上
-
-### &nbsp;&nbsp;2.4.dss配置-dd模拟
-配置两个节点的dss，脚本dss_autoscript.sh如下：
-
-dss_autoscript.sh
-```
-#!/bin/bash
-source /opt/omm/ss_env0
-
-DSS_HOME_ONE=${SS_DATA}/dss_home0
-DSS_HOME_TWO=${SS_DATA}/dss_home1
-
-function clean_dir()
-{
-    ps ux | grep dssserver | grep -v grep | awk -F ' ' '{print $2}' | xargs kill -9
-    rm -rf ${SS_DATA}
-    mkdir -p ${SS_DATA}
-    rm -rf /opt/omm/cluster/*
-}
-
-function create_one_device()
-{
-    mkdir -p ${DSS_HOME_ONE}
-    mkdir -p ${DSS_HOME_ONE}/cfg
-    mkdir -p ${DSS_HOME_ONE}/log
-    touch ${DSS_HOME_ONE}/cfg/dss_vg_conf.ini
-    echo "data:${DSS_HOME_ONE}/dss-data" > ${DSS_HOME_ONE}/cfg/dss_vg_conf.ini
-    echo "INST_ID = 0" > ${DSS_HOME_ONE}/cfg/dss_inst.ini 
-    echo "_LOG_BACKUP_FILE_COUNT = 128" >> ${DSS_HOME_ONE}/cfg/dss_inst.ini 
-    echo "_LOG_MAX_FILE_SIZE = 20M" >> ${DSS_HOME_ONE}/cfg/dss_inst.ini 
-    echo "LSNR_PATH = ${DSS_HOME_ONE}" >> ${DSS_HOME_ONE}/cfg/dss_inst.ini 
-    echo "_log_LEVEL = 255" >> ${DSS_HOME_ONE}/cfg/dss_inst.ini
-    
-    dd if=/dev/zero of=${DSS_HOME_ONE}/dss-data bs=100k count=1048576 >/dev/null 2>&1
-}
-
-function create_two_device()
-{
-    mkdir -p ${DSS_HOME_TWO}
-    mkdir -p ${DSS_HOME_TWO}/cfg
-    mkdir -p ${DSS_HOME_TWO}/log
-    touch ${DSS_HOME_TWO}/cfg/dss_vg_conf.ini
-    echo "data:${DSS_HOME_ONE}/dss-data" > ${DSS_HOME_TWO}/cfg/dss_vg_conf.ini
-    echo "INST_ID = 1" > ${DSS_HOME_TWO}/cfg/dss_inst.ini 
-    echo "_LOG_BACKUP_FILE_COUNT = 128" >> ${DSS_HOME_TWO}/cfg/dss_inst.ini 
-    echo "_LOG_MAX_FILE_SIZE = 20M" >> ${DSS_HOME_TWO}/cfg/dss_inst.ini 
-    echo "LSNR_PATH = ${DSS_HOME_TWO}" >> ${DSS_HOME_TWO}/cfg/dss_inst.ini 
-    echo "_log_LEVEL = 255" >> ${DSS_HOME_TWO}/cfg/dss_inst.ini
-}
-
-function create_vg()
-{
-    echo ">dsscmd cv data ${DSS_HOME_ONE}/dss-data"
-    dsscmd cv -g data -v ${DSS_HOME_ONE}/dss-data -s 2048 -D {DSS_HOME_ONE}
-}
-
-function start_dsserver()
-{
-    dssserver -D /opt/omm/cluster/ss_data/dss_home0 &
-    sleep 1
-    dssserver -D /opt/omm/cluster/ss_data/dss_home1 &
-    sleep 1
-}
-
-if [ "$1" == "first_create" ]; then
-    clean_dir
-    create_one_device
-    create_two_device
-    create_vg
-    start_dssserver
-esle
-    echo "Have dd, you can reset volume"
-    reset_vg
-fi
+### &nbsp;&nbsp;2.4.资源池化双集群部署
+&emsp;通过源码中的ha_test.sh脚本搭建
+&emsp;(1) 资源池化双集群cm模拟部署
+&emsp;&emsp;注释ha_test.sh倒数2行
+![](./images/cm模拟/主集群ha_test.png)
 
 ```
-&emsp;<font color='red'>@Notice Thing!@</font>：主备集群都执行dss_autoscript.sh脚本配置dss, 用户需要自行修改脚本中的/opt/omm/ss_env0环境变量、DSS_HOME_ONE 和 DSS_HOME_TWO目录，将其配置成自己的目录。
-
-### &nbsp;&nbsp;2.5 数据库部署
-#### &nbsp;&nbsp;&nbsp;2.5.1 主集群(生产中心)
-&emsp;(1) 主集群主节点0初始化
-&emsp;<font color='blue'>@Precondition!@</font>：节点0对应的dssserver必须提前拉起，即dsserver进程存在
-
-```
-gs_initdb -D /opt/omm/cluster/dn0 --nodename=node1 -U omm -w opengauss@123 --vgname=+data --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdj
+sh ha_test.sh dual_cluster
 ```
 
-(2)配置主集群主节点0
+&emsp;ha_test.sh脚本适配了双集群模拟, 执行的时候带上dual_cluster就是双集群，不带就是单集群。脚本会自动将数据库拉起，执行完该脚本后，就相当于部署了2套独立的资源池化
+
+&emsp;(2) 集群状态查询
+因为是在一个机器上模拟双集群，所以开两个窗口，一个窗口导入主集群环境变量ss_env0，一个窗口导入备集群环境变量ss_env1
+```
+主集群节点0
+[omm@nodename dn0]$ gs_ctl query -D /home/omm/ss_hatest/dn0
+[2023-04-15 15:34:21.475][568656][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest/dn0
+ HA state:
+        local_role                     : Primary
+        static_connections             : 1
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+No information
+
+主集群备节点1
+[omm@nodename dn1]$ gs_ctl query -D /home/omm/ss_hatest/dn1
+[2023-04-15 15:34:21.475][568656][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest/dn1
+ HA state:
+        local_role                     : Standby
+        static_connections             : 1
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+No information
+
+备集群节点0
+[omm@nodename dn0]$ gs_ctl query -D /home/omm/ss_hatest1/dn0
+[2023-04-15 15:34:21.475][568656][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest1/dn0
+ HA state:
+        local_role                     : Primary
+        static_connections             : 1
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+No information
+
+备集群备节点1
+[omm@nodename dn1]$ gs_ctl query -D /home/omm/ss_hatest1/dn1
+[2023-04-15 15:34:21.475][568656][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest1/dn1
+ HA state:
+        local_role                     : Standby
+        static_connections             : 1
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+No information
+
+```
+### &nbsp;&nbsp;2.5 资源池化双集群容灾搭建
+#### &nbsp;&nbsp;2.5.1 手动容灾搭建
+##### &nbsp;&nbsp;&nbsp;2.5.1.1 主集群(生产中心)
+(1) 配置主集群主节点0的dorado容灾参数
 &emsp;<font color='red'>postgresql.conf文件</font>
 ```
-port = 44100
-listen_addresses = 'localhost, 10.10.10.10'
-ss_enable_reform = off
-xlog_file_path = '/dev/sdj'
-xlog_lock_file_path = '/opt/omm/cluster/dn0/redolog.lock'
-cross_cluster_replconninfo1='localhost=10.10.10.10 localport=44100 remotehost=10.10.10.20 remoteport=44100'
+port = 6600
+xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
+xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_primary'
+application_name = 'dn_master_0'
+cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9600'
+cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9700'
 cluster_run_mode = 'cluster_primary'
 ha_module_debug = off
 ss_log_level = 255
 ss_log_backup_file_count = 100
 ss_log_max_file_size = 1GB
 ```
-&emsp;参数解释：
-+ ss_enable_reform     dms reform功能，没有cm的情况下，设置该参数为off
-+ xlog_file_path
-+ xlog_lock_file_path  配置dorado xlog lock文件，不需要手动创建，启动时会自动创建
-+ cross_cluster_replconninfo1   配置dorado双集群复制连接通道
-+ cluster_run_mode     运行集群模式，是主集群，还是备集群
 
-
+```
+xlog_file_size = 68719476736 
+```
 &emsp;<font color='red'>pg_hba.conf文件</font>
 ```
 host all omm 10.10.10.10/32 trust
@@ -323,59 +313,29 @@ host all all 10.10.10.10/32 sha256
 host all all 10.10.10.20/32 sha256
 ```
 
-(3)主集群备节点1初始化
+(2) 以primary模式重启主集群主节点0
 ```
-gs_initdb -D /opt/omm/cluster/dn1 --nodename=node2 -U omm -w opengauss@123 --vgname=+data --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 1 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home1/.dss_unix_d_socket'
+gs_ctl start -D /home/omm/ss_hatest/dn0 -M primary
 ```
-
-主集群备节点1配置参数
-port = 48100
-listen_addresses = 'localhost, 10.10.10.10'
-ss_enable_reform = off
-ss_log_level = 255
-ss_log_backup_file_count = 100
-ss_log_max_file_size = 1GB
-
-(4)主集群启动
-```
-主节点0启动
-gs_ctl start -D /opt/omm/cluster/dn0 -M primary
+执行build前一定要给主集群主节点0配置容灾参数并以primary模式重启主集群主节点0
 
 
-备节点1启动
-gs_ctl start -D /opt/omm/cluster/dn0
-```
-
-
-#### &nbsp;&nbsp;&nbsp;2.5.2 备集群(容灾中心)
-&emsp;(1) 备集群首备节点0初始化
-```
-gs_initdb -D /opt/omm/cluster/dn0 --nodename=node1 -U omm -w opengauss@123 --vgname=+data --enable-dss --dms_url="0:10.10.10.20:4411,1:10.10.10.20:4412" -I 0 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdi
-```
-
-&emsp;(2) 配置备集群首备节点0
-
+##### &nbsp;&nbsp;&nbsp;2.5.1.2 备集群(容灾中心)
+(1) 配置备集群首备节点0的容灾参数
 &emsp;<font color='red'>postgresql.conf文件</font>
 ```
-port = 44100
-listen_addresses = 'localhost, 10.10.10.20'
-ss_enable_reform = off
-xlog_file_path = '/dev/sdi'
-xlog_lock_file_path = '/opt/omm/cluster/dn0/redolog.lock'
-cross_cluster_replconninfo1='localhost=10.10.10.20 localport=44100 remotehost=10.10.10.10 remoteport=44100'
+port = 9600
+xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
+xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_standby'
+application_name = 'dn_standby_0'
+cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6600'
+cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6700'
 cluster_run_mode = 'cluster_standby'
 ha_module_debug = off
 ss_log_level = 255
 ss_log_backup_file_count = 100
 ss_log_max_file_size = 1GB
 ```
-&emsp;参数解释：
-+ ss_enable_reform
-+ xlog_file_path
-+ xlog_lock_file_path
-+ cross_cluster_replconninfo1
-+ cluster_run_mode
-
 
 &emsp;<font color='red'>pg_hba.conf文件</font>
 ```
@@ -386,40 +346,121 @@ host all all 10.10.10.10/32 sha256
 host all all 10.10.10.20/32 sha256
 ```
 
-&emsp;(3) 首备全量build
-&emsp; build之前，主集群主节点0和备集群首备必须配置流复制相关参数(cross_cluster_replconninfo1等)，即第(2)步必须在build之前操作
+(2) 执行build
+必须先执行build，否则首备节点0会报错是无效值，原因是因为备集群第一次初始化启动部署的时候，是资源池化的单机normal模式，一直为0，当主集群主节点0
 
 ```
-gs_ctl build -D /opt/omm/cluster/dn0 -b cross_cluster_full -g 0 --vgname=+data --enable-dss --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -q
-```
-参数解释：
-+ -b cross_cluster_full
-+ -g 0   指资源池化的节点0，表明是对节点0进行build
-+ -q
-
-&emsp;(4)备集群从备节点1初始化
-&emsp;<font color='red'>@shirley_zhengx tell you in secret that is very important!@</font>：备集群第一次初始化的时候，一定要初始化首备节点0并对首备做完build之后，再初始化备集群其它从备节点，即第(3)要在第(4)之前执行 <font color='red'>@very very important!@</font>：
-
-```
-gs_initdb -D /opt/omm/cluster/dn1 --nodename=node2 -U omm -w opengauss@123 --vgname=+data --enable-dss --dma-url="0:10.10.10.20:4411,1:10.10.10.20:4412" -I 1 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home1/.dss_unix_d_socket'
+gs_ctl build -D /home/zx/ss_hatest1/dn0 -b cross_cluster_full -g 0 --vgname=+data --enable-dss --socketpath='UDS:/home/zx/ss_hatest1/dss_home0/.dss_unix_d_socket' -q
 ```
 
-备集群从备节点1配置参数
-port = 48100
-listen_addresses = 'localhost, 10.10.10.20'
-ss_enable_reform = off
-ss_log_level = 255
-ss_log_backup_file_count = 100
-ss_log_max_file_size = 1GB
-
-&emsp;(5)备集群启动
+(3) 以standby模式重启备集群首备节点0
 ```
-首备节点0启动
-gs_ctl start -D /opt/omm/cluster/dn0 -M standby
+gs_ctl start -D /home/omm/ss_hatest1/dn0 -M standby
+```
+#### &nbsp;&nbsp;2.5.2 自动化容灾搭建
+同2.5.1 手动容灾搭建效果一致，只是用shell脚本自动化执行
+```
+cd openGauss_server/src/test/ss/dual_cluster_single_shared_storage
 
+sh standby_full_build_reconnect.sh
+```
 
-从备节点1启动
-gs_ctl start -D /opt/omm/cluster/dn0
+#### &nbsp;&nbsp;&nbsp;2.5.3 主备集群查询
+(1) 主集群主节点
+```
+[omm@nodename dn0]$ gs_ctl query -D /home/omm/ss_hatest/dn0
+[2023-04-18 09:38:34.397][1498175][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest/dn0
+ HA state:
+        local_role                     : Primary
+        static_connections             : 1
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+        sender_pid                     : 1456376
+        local_role                     : Primary
+        peer_role                      : StandbyCluster_Standby
+        peer_state                     : Normal
+        state                          : Streaming
+        sender_sent_location           : 2/5C8
+        sender_write_location          : 2/5C8
+        sender_flush_location          : 2/5C8
+        sender_replay_location         : 2/5C8
+        receiver_received_location     : 2/5C8
+        receiver_write_location        : 2/5C8
+        receiver_flush_location        : 2/5C8
+        receiver_replay_location       : 2/5C8
+        sync_percent                   : 100%
+        sync_state                     : Async
+        sync_priority                  : 0
+        sync_most_available            : Off
+        channel                        : 127.0.0.1:6600-->127.0.0.1:43350
+
+ Receiver info:
+No information
+```
+
+(2) 主集群备节点
+```
+[omm@nodename pg_log]$ gs_ctl query -D /home/omm/ss_hatest/dn1
+[2023-04-18 11:42:09.475][2857388][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest/dn1
+ HA state:
+        local_role                     : Standby
+        static_connections             : 0
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+No information
+```
+
+(3) 备集群首备节点
+```
+备集群首备
+[omm@nodename pg_log]$ gs_ctl query -D /home/omm/ss_hatest1/dn0
+[2023-04-18 11:33:09.288][2760315][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest1/dn0
+ HA state:
+        local_role                     : Standby
+        static_connections             : 1
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+        receiver_pid                   : 1901181
+        local_role                     : Standby
+        peer_role                      : Primary
+        peer_state                     : Normal
+        state                          : Normal
+        sender_sent_location           : 2/A458
+        sender_write_location          : 2/A458
+        sender_flush_location          : 2/A458
+        sender_replay_location         : 2/A458
+        receiver_received_location     : 2/A458
+        receiver_write_location        : 2/A458
+        receiver_flush_location        : 2/A458
+        receiver_replay_location       : 2/A458
+        sync_percent                   : 100%
+        channel                        : 127.0.0.1:41952<--127.0.0.1:6600
+```
+
+(4) 备集群从备节点
+```
+[omm@nodename pg_log]$ gs_ctl query -D /home/omm/ss_hatest1/dn1
+[2023-04-18 11:42:09.475][2857388][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest1/dn1
+ HA state:
+        local_role                     : Standby
+        static_connections             : 0
+        db_state                       : Normal
+        detail_information             : Normal
+
+ Senders info:
+No information
+ Receiver info:
+No information
 ```
 
 ## 3. 主备集群功能验证
@@ -548,4 +589,11 @@ select * from test01;
 ```
 
 
+常用命令
+(1) 查看pg_control文件
+```
+pg_controldata -I 0 --enable-dss --socketpath=UDS:$DSS_HOME/.dss_unix_d_socket +data
+```
+
+(2)
 ***Notice:不推荐直接用于生产环境***
