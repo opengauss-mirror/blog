@@ -37,6 +37,8 @@ times = "9:30"
     基于《资源池化+同城dorado双集群》部署方式，集群间切换设计如下：
 
 ### &nbsp;&nbsp;1.1.主备集群状态
+前提条件：已经部署资源池化同城双集群环境
+
 <table>
 <tbody>
     <tr>
@@ -60,7 +62,7 @@ times = "9:30"
         <td rowspan='2'>容灾中心</td>
         <td rowspan='2'>备端</td>
         <td>首备节点0</td>
-        <td>standby</td>
+        <td>Main Standby</td>
         <td>standby(资源池化+传统备)</td>
     </tr>
         <td>从备节点1</td>
@@ -78,10 +80,42 @@ openGauss=# select * from pg_stat_get_stream_replications();
 (1 row)
 ```
 
-run mode 指数据库内核运行模式是primary还是standby还是normal，是t_thrd.postmaster_cxt.HaShmData->current_mode或t_thrd.xlog_cxt.server_mode参数指代的主备运行模式类型
+`Tips`:run mode 指数据库内核运行模式是primary还是standby还是normal，是t_thrd.postmaster_cxt.HaShmData->current_mode或t_thrd.xlog_cxt.server_mode参数指代的主备运行模式类型
 
 ### &nbsp;&nbsp;1.2.failover
-&emsp;基于cm模拟部署方式，因此没有管控平台切换同步复制对方向的操作。
+&emsp;以下提到的/home/omm/ss_hatest/dn0为数据库dn目录，解释如下：
+<table>
+<tbody>
+    <tr>
+        <td>集群中心</td>
+        <td>端</td>
+        <td>节点类型</td>
+        <td>local role</td>
+        <td>dn目录</td>
+    </tr>
+    <tr>
+        <td rowspan='2'>生产中心</td>
+        <td rowspan='2'>主端</td>
+        <td>主节点0</td>
+        <td>primary</td>
+        <td>/home/omm/ss_hatest/dn0</td>
+    </tr>
+        <td>备节点1</td>
+        <td>standby</td>
+        <td>/home/omm/ss_hatest/dn1</td>
+    <tr>
+        <td rowspan='2'>容灾中心</td>
+        <td rowspan='2'>备端</td>
+        <td>首备节点0</td>
+        <td>Main Standby</td>
+        <td>/home/omm/ss_hatest1/dn0</td>
+    </tr>
+        <td>从备节点1</td>
+        <td>standby</td>
+        <td>/home/omm/ss_hatest1/dn1</td>
+</tbody>
+</table>
+
 &emsp;双集群间failover即主集群故障，备集群升为主集群的过程，操作过程如下：
 
 (1) kill 主集群
@@ -95,18 +129,25 @@ gs_ctl stop -D /home/omm/ss_hatest1/dn1
 ```
 gs_guc set -Z datanode -D /home/omm/ss_hatest1/dn0 -c "cluster_run_mode=cluster_primary"
 ```
-(4) 以主集群模式重启备集群的节点
+
+(4) 切换远程同步复制主从端
+&emsp;如果是cm模拟部署方式(博客：博客资源池化同城dorado双集群部署二之cm模拟部署)，不需要在管控平台切换同步复制对方向的操作。
+
+&emsp;如果是om部署方式(博客：资源池化同城dorado双集群部署四之om部署)，则在拉起集群之前，需要在管控平台切换同步复制对方向的操作，操作如下：
+&emsp;登录到备存储管控平台，操作data protection -> luns -> remote replication pairs(远程复制对) -> 找到远程同步复制xlog对应的lun -> More -> Primary/Standby Switchover，操作完后，即可看到Local Resource从Secondary变成Primary。
+
+(5) 以主集群模式重启备集群的节点
 ```
 gs_ctl start -D /home/omm/ss_hatest1/dn0 -M primary
 gs_ctl start -D /home/omm/ss_hatest1/dn1
 ```
-(5) 查询新主集群
+
+(6) 查询新主集群
 ```
 gs_ctl query -D /home/omm/ss_hatest1/dn0
 ```
 
 ### &nbsp;&nbsp;1.2.switchover
-&emsp;基于cm模拟部署方式，因此没有管控平台切换同步复制对方向的操作。
 &emsp;双集群间switchover即主集群降为备集群，备集群升为主集群的过程，操作过程如下：
 
 (1) stop 主集群
@@ -123,7 +164,14 @@ gs_ctl stop -D /home/omm/ss_hatest1/dn1
 ```
 gs_guc set -Z datanode -D /home/omm/ss_hatest1/dn0 -c "cluster_run_mode=cluster_primary"
 ```
-(4) 以主集群模式重启备集群的节点
+
+(4) 切换远程同步复制主从端
+&emsp;如果是cm模拟部署方式(博客：博客资源池化同城dorado双集群部署二之cm模拟部署)，不需要在管控平台切换同步复制对方向的操作。
+
+&emsp;如果是om部署方式(博客：资源池化同城dorado双集群部署四之om部署)，则在拉起集群之前，需要在管控平台切换同步复制对方向的操作，操作如下：
+&emsp;登录到备存储管控平台，操作data protection -> luns -> remote replication pairs(远程复制对) -> 找到远程同步复制xlog对应的lun -> More -> Primary/Standby Switchover，操作完后，即可看到Local Resource从Secondary变成Primary。
+
+(5) 以主集群模式重启备集群的节点
 ```
 gs_ctl start -D /home/omm/ss_hatest1/dn0 -M primary
 gs_ctl start -D /home/omm/ss_hatest1/dn1
@@ -150,7 +198,7 @@ gs_ctl query -D /home/omm/ss_hatest/dn0
 
 
 ### &nbsp;&nbsp;2.1.failover
-&emsp;基于cm模拟部署方式
+&emsp;该章节介绍基于cm模拟部署方式的集群内切换，om部署方式的双集群和资源池化原有集群内切换方法一样。
 &emsp;主集群内failover即主集群主节点降为备节点，备节点升为主节点的过程，操作过程如下：
 
 &emsp;(1) 检查节点状态
@@ -203,7 +251,7 @@ No information
 备集群首备节点0
 gs_ctl query -D /home/omm/ss_hatest1/dn0
 HA state:
-        local_role                     : Standby
+        local_role                     : Main Standby
         static_connections             : 1
         db_state                       : Normal
         detail_information             : Normal
@@ -317,7 +365,7 @@ export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config.ini
 
 **说明**：模拟主节点0故障，REFORMER_ID模拟reform锁被备节点1抢到，即为将要做failover的节点，BITMAP_ONLINE模拟cm获取的在线节点是节点1(bitmap = 2 = 0b10)
 
-### &nbsp;&nbsp;2.1.failover
+### &nbsp;&nbsp;2.2.switchover
 &emsp;基于cm模拟部署方式
 &emsp;主集群内failover即主集群主节点降为备节点，备节点升为主节点的过程，操作过程如下：
 
@@ -418,7 +466,7 @@ No information
 [zx@node1host54 pg_log]$ gs_ctl query -D /home/zx/ss_hatest1/dn0
 [2023-04-24 15:53:44.305][3878378][][gs_ctl]: gs_ctl query ,datadir is /home/zx/ss_hatest1/dn0
  HA state:
-        local_role                     : Standby
+        local_role                     : Main Standby
         static_connections             : 2
         db_state                       : Normal
         detail_information             : Normal
@@ -460,3 +508,4 @@ No information
 **说明**：switchover成功后，备集群的首备节点0与主集群新主节点1容灾关系自动连接成功，同步复制功能正常，备集群首备回放正常
 
 ***Notice:不推荐直接用于生产环境***
+***作者：Shirley_zhengx***
