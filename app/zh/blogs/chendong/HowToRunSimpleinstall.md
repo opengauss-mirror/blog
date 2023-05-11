@@ -80,7 +80,7 @@ times: '15:30'
 
 - 手动导入
 
-在[openGauss 官网](https://opengauss.org/zh/download.html)下载对应版本安装包拷贝至安装环境中，存放路径为安装脚本的上层目录。
+在[openGauss 官网](https://opengauss.org/zh/download/)下载对应版本安装包拷贝至安装环境中，存放路径为安装脚本的上层目录。
 
 - 自动导入
 

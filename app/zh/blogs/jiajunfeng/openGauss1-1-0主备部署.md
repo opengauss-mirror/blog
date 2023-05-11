@@ -452,7 +452,7 @@ cat /soft/openGauss/cluster_config.xml
 
 **3.2 上传并解压安装包**
 
-[openGauss 软件下载地址](https://opengauss.org/zh/download.html) https://opengauss.org/zh/download.html
+[openGauss 软件下载地址](https://opengauss.org/zh/download/) https://opengauss.org/zh/download/
 
 <img src='./figures/31.png'>
 

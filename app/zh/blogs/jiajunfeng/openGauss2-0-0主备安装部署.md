@@ -71,7 +71,7 @@ openGauss 2.0.0 于 2021 年 3 月 31 日正式发布，大部分对 openGauss �
 </tbody>
 </table>
 
-软件下载地址：https://opengauss.org/zh/download.html
+软件下载地址：https://opengauss.org/zh/download/
 
 <img src='./figures/20210402-933115a3-e28a-41ea-b721-ce28f0a6724b.png'>
 

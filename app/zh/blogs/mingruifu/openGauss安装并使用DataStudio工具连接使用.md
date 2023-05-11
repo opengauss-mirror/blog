@@ -96,7 +96,7 @@ vagrant reload
 
 ### 2.安装单机版 openGauss
 
-1. 访问`https://opengauss.org/zh/download.html`下载`openGauss_2.1.0 极简版`
+1. 访问`https://opengauss.org/zh/download/`下载`openGauss_2.1.0 极简版`
 2. 使用 vagrant 用户安装 openGauss
 
 ```shell
@@ -167,7 +167,7 @@ grant all privileges  to test;
 
 ### 3.下载安装 DataStudio
 
-1. 访问[https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html) 下载 DataStudio_2.1.0
+1. 访问[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/) 下载 DataStudio_2.1.0
 2. 打开 DataStudio 连接数据库
    <img src='./image/1.jpg'>
 3. 连接上之后可以看见 DataStudio 的功能操作界面

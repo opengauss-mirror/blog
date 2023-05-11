@@ -212,7 +212,7 @@ chmod 755 -R /opt/software
 
 **下载 openGauss 数据库软件**
 
-下载地址为：[https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html)
+下载地址为：[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/)
 
 **数据库安装包上传至 centos 上**
 

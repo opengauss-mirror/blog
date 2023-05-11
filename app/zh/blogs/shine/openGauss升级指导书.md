@@ -354,7 +354,7 @@ openGauss 升级版本要求如[表 1](#table7961729)所示。
 
 ### 获取升级包<a name="ZH-CN_TOPIC_0305491428"></a>
 
-[https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html)在该网站获取想要升级的升级包。
+[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/)在该网站获取想要升级的升级包。
 
 ### 健康检查<a name="ZH-CN_TOPIC_0305491441"></a>
 

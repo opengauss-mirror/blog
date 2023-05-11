@@ -12,7 +12,7 @@ times: '19:30'
 
 ## 概述
 
-openGauss 官方发布的镜像(https://opengauss.org/zh/download.html), 企业版镜像的安装支持如下系统：
+openGauss 官方发布的镜像(https://opengauss.org/zh/download/), 企业版镜像的安装支持如下系统：
 
 ```
 centos7.6          x86_64

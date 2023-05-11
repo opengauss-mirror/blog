@@ -1,29 +1,22 @@
 ---
-title: "当使用git出现错误 fatal: 'upstream' does not appear to be a git repository时怎么办？"
-
+title: '当使用git出现错误 upstream git repository时怎么办？'
 date: '2022-08-30'
-
 category: 'blog'
 tags: ['git', 'upstream']
-
 archives: '2022-08'
-
 author: '张翠娉'
-
-summary: "当使用git出现错误 fatal: 'upstream' does not appear to be a git repository时怎么办"
-
-img: '/zh/blogs/zhangcuiping/title/img.png'
-
+summary: '当使用git出现错误 upstream 时怎么办'
+img: ''
 times: '14:20'
 ---
 
 # 当使用 git 出现错误 fatal: 'upstream' does not appear to be a git repository 时怎么办？
 
-**背景介绍**：
+### 背景介绍：
 
 在使用 git 工具时，遇到如下错误。
 
-**报错内容**：
+### 报错内容：
 
 ```bash
 $ git fetch upstream
@@ -31,7 +24,7 @@ fatal: 'upstream' does not appear to be a git repository
 fatal: Could not read from remote repository.
 ```
 
-**解决办法**：
+### 解决办法：
 
 1. 执行如下命令添加 openGauss 社区 blog 仓为 upstream。
 

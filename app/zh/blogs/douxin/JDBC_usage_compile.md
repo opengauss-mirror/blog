@@ -24,7 +24,7 @@ times: '17:30'
 
   - Jar 包下载路径：
 
-    （1）[官网下载](https://opengauss.org/zh/download.html)
+    （1）[官网下载](https://opengauss.org/zh/download/)
 
     （2）[华为鲲鹏 maven 仓库](https://repo.huaweicloud.com/kunpeng/maven/org/opengauss/opengauss-jdbc/)
 

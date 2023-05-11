@@ -23,7 +23,7 @@ times: '12:30'
 
 下载 jdbc 驱动 openGauss-2.1.0-JDBC.tar.gz
 
-下载地址：https://opengauss.org/zh/download.html
+下载地址：https://opengauss.org/zh/download/
 
 ## 表 demo 案例<a name="section17791161919252"></a>
 

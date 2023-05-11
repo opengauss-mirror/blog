@@ -25,7 +25,7 @@ times: '12:30'
 
 ## 软件下载<a name="section1543871374410"></a>
 
-opengauss 下载地址：https://opengauss.org/zh/download.html
+opengauss 下载地址：https://opengauss.org/zh/download/
 
 ## 环境准备<a name="section141911336174418"></a>
 

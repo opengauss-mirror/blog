@@ -30,7 +30,7 @@ Dbeaver 是一款开源软件，代码托管在 github 上:
 
    2.下载 openGauss JDBC 驱动到本地
 
-​ 从 opengauss.org 官网获取:[链接](https://opengauss.org/zh/download.html)
+​ 从 opengauss.org 官网获取:[链接](https://opengauss.org/zh/download/)
 
 ## 四、Dbeaver 配置
 
