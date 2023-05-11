@@ -22,7 +22,7 @@ times: '10:20'
 本文出处：[https://www.modb.pro/db/77704](https://www.modb.pro/db/77704)
 
 驱动下载地址
-[https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html)
+[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/)
 <img src='./images/20210629-f0069048-4ae1-4de4-9891-bc626fbfc170.png'>
 DBEAVER 下载地址
 [https://dbeaver.io/download/](https://dbeaver.io/download/)

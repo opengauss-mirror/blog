@@ -21,7 +21,7 @@ times: '13:50'
 
 ### 1.获取 openGauss 安装包
 
-在 https://opengauss.org/zh/download.html 官网上下载安装包
+在 https://opengauss.org/zh/download/ 官网上下载安装包
 
 <img src='./figures/1.png'>
 

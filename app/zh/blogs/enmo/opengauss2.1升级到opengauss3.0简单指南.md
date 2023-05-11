@@ -39,7 +39,7 @@ Type "help" for help.
 
 ## 2.下载升级包，并解压
 
-下载地址:https://opengauss.org/zh/download.html
+下载地址:https://opengauss.org/zh/download/
 
 ```
 [root@mogdb-kernel-0003 gaussdb_upgrade]# wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/3.0.0/arm/openGauss-3.0.0-openEuler-64bit-all.tar.gz

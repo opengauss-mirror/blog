@@ -25,7 +25,7 @@ times: '12:30'
 
 - **1.1. 从 openGauss 开源社区下载对应平台的安装包。**
 
-  通过[https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html) 登录 openGauss 开源社区，选择 2.0.0 版本对应平台企业版安装包（openGauss-2.0.0-CentOS-64bit-all.tar.gz）。 单击“下载”。
+  通过[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/) 登录 openGauss 开源社区，选择 2.0.0 版本对应平台企业版安装包（openGauss-2.0.0-CentOS-64bit-all.tar.gz）。 单击“下载”。
 
 - **1.2. 检查安装包。**
 

@@ -4,7 +4,7 @@ title: '当使用git出现提示untracked files时怎么办？'
 date: '2022-09-01'
 
 category: 'blog'
-tags: ['当使用git出现提示untracked files时怎么办']
+tags: ['git']
 
 archives: '2022-09'
 

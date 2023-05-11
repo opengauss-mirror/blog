@@ -108,13 +108,59 @@ export ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:alloc_dealloc_mismatch=0:log_
 
 ## 升级
 
-1230 后续新增的写在 SQL 中的函数、类型等均需要同步写到升级脚本中。
+5.0.0版本之后，需要考虑插件的升级，新增的创建函数、类型等SQL语句均需写到升级脚本中。如dolphin插件版本为1.1，则需要写到升级脚本contrib/dolphin/upgrade_script/dolphin--1.0--1.1.sql中，与升级相对应的还有回滚，回滚需要还原到升级前的插件状态，回滚语句写到contrib/dolphin/upgrade_script/dolphin--1.1--1.0.sql中。
 
-## 新增函数
+例如1.0版本中有函数bool_text，入参为true时返回1，为false时返回0，假设在1.1版本中，我们将其修改为true时返回0，false时返回1，则dolphin--1.0--1.1.sql应如下先删除后以新的定义创建。
+``` sql
+drop function if exists pg_catalog.bool_text(a bool) cascade;
+CREATE OR REPLACE FUNCTION pg_catalog.bool_text(a bool)
+returns text
+as
+$$
+begin
+  IF a is null then
+    return null;
+  else
+    if a = true then
+      return '0';
+    else
+      return '1';
+    end if;
+  end if;
+end;
+$$
+language plpgsql;
+```
+回滚脚本dolphin--1.1--1.0.sql应创建回原先1.0版本的函数。
+``` sql
+drop function if exists pg_catalog.bool_text(a bool) cascade;
+CREATE OR REPLACE FUNCTION pg_catalog.bool_text(a bool)
+returns text
+as
+$$
+begin
+  IF a is null then
+    return null;
+  else
+    if a = true then
+      return '1';
+    else
+      return '0';
+    end if;
+  end if;
+end;
+$$
+language plpgsql;
+```
+如果是新增的对象，则在升级脚本中直接创建，回滚脚本中将其删除即可。
+
+升级步骤与正常数据库升级步骤一致，详见官方升级文档：https://docs.opengauss.org/zh/docs/latest/docs/DatabaseOMGuide/upgrade.html
+
+## 新增函数、操作符和类型等数据库对象
 
 需要覆盖内核函数的在插件的 builtin.ini 中进行修改，builtin.ini 指导：(https://mp.weixin.qq.com/s/UWHwhI4jHK6nxPSYeJPVfg)
 
-其他新增函数均通过 create function 的方式来实现。
+其他新增函数均通过 create function 的方式来实现。此外，新增操作符通过create operator实现，类型通过create type实现，类型转换通过create cast实现，聚合函数通过create aggregate实现，等等。这些实现的SQL统一放在sql_script或sql_script_post目录下，两者的区别是放在后者的SQL语句会依赖前者，例如sql_script_post新增函数的参数类型是sql_script新增的类型，在执行时会先执行sql_script，后执行sql_script_post。注意应避免编写依赖sql_script_post下的脚本。
 
 下面提供一些模板样例用于参考：
 

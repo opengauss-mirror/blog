@@ -27,7 +27,7 @@ MogDB 3.0.0 版本于 2022 年 6 月 30 日发布。3.0.0 版本基于 2.1 版�
 
 <img src='./images/20220701-46a3e88a-fd87-4267-b4a3-de7bd4f81ec7.png'>
 
-- **下载地址：**[https://www.opengauss.org/zh/download.html](https://www.opengauss.org/zh/download.html)
+- **下载地址：**[https://www.opengauss.org/zh/download/](https://www.opengauss.org/zh/download/)
 
   <img src='./images/20220701-148cd6fd-21f6-4e57-97db-15b1f38779d2.png'>
 

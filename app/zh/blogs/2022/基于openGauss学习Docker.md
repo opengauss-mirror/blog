@@ -614,7 +614,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
 
 ## DockerFile 制作 openGauss 镜像，源码中已经提供制作脚本，可以直接用<a name="section7470116165312"></a>
 
-- 下载安装包： [https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html)
+- 下载安装包： [https://opengauss.org/zh/download/](https://opengauss.org/zh/download/)
 
   <img src='./figures/20211204-eb905549-76da-4976-aaa6-dfef16877d00.png'>
 

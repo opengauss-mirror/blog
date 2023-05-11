@@ -4,7 +4,7 @@ title: '当使用git出现冲突提示时如果解决？'
 date: '2022-09-01'
 
 category: 'blog'
-tags: ['当使用git出现冲突提示时如果解决']
+tags: ['git']
 
 archives: '2022-09'
 

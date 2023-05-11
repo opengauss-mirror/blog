@@ -178,7 +178,7 @@ times: '12:30'
 
 - 2.11. 下载 openGauss 数据库软件
 
-  下载地址为：[<u>https://opengauss.org/zh/download.html</u>](https://opengauss.org/zh/download.html)
+  下载地址为：[<u>https://opengauss.org/zh/download/</u>](https://opengauss.org/zh/download/)
 
   下载完成后上传到 centos 中
 
@@ -471,7 +471,7 @@ times: '12:30'
   yum install unixODBC-devel  #非必须
   ```
 
-  下载 openGauss ODBC 驱动 ODBC_2.1.0：[https://opengauss.org/zh/download.html](https://opengauss.org/zh/download.html)
+  下载 openGauss ODBC 驱动 ODBC_2.1.0：[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/)
 
   下载之后上传到 centos 机器上/soft 路径（该路径不是必须） ，把驱动拷贝到指定目录下：
 
