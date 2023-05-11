@@ -90,3 +90,7 @@ git push origin <branch-name>:<branch-name>
 7. Refer to <a href="https://gitee.com/help/articles/4122" target="_blank">https://gitee.com/help/articles/4122</a>to submit your Pull Request
 
 8. Wait for reviewing and merging.
+
+
+
+<img src='./img/1.PNG' 
