@@ -31,7 +31,11 @@ times = "9:30"
 
 # 资源池化支持同城dorado双集群部署(二)----cm模拟
 
-资源池化支持同城dorado双集群部署方式：dd模拟(手动部署+无cm)、cm模拟(手动部署dd模拟+有cm)、磁阵(手动部署)、集群管理工具部署
+资源池化支持同城dorado双集群部署方式：
+(一) dd模拟(手动部署 + 无cm)
+(二) cm模拟(手动部署dd模拟 + 有cm)
+(三) 磁阵搭建(手动部署)
+(四) 集群管理工具部署(om + cm)
           
 
 ## 1.环境描述
@@ -186,8 +190,7 @@ sh build.sh -3rd $binarylibsDir -m Debug
 
 环境变量
 ```
-export HOME=/opt/omm
-export GAUSSHOME=${HOME}/openGauss-server/mppdb_temp_install/
+export GAUSSHOME=/openGauss-server/mppdb_temp_install/
 export LD_LIBRARY_PATH=$GAUSSHOME/lib:$LD_LIBRARY_PATH
 export PATH=$GAUSSHOME/bin:$PATH
 export DSS_HOME=/home/omm/ss_hatest/dss_home0
@@ -196,17 +199,16 @@ export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config.ini
 `Tips`: 环境变量里面一定要写export，即使`echo $GCC_PATH`存在，也要写export才能真正导入路径
 
 参数说明：
-HOME 为用户自己创建的工作目录；
 GAUSSHOME 为编译完成的目标文件路径，包含openGauss的bin、lib等；
 CM_CONFIG_PATH 用于主集群cm模拟部署下的集群内节点切换
+目录/home/omm中omm指自己创建的用户
 
 (2) 备集群环境变量ss_env1
 ```
-export HOME=/opt/omm
-export GAUSSHOME=${HOME}/openGauss-server/mppdb_temp_install/
+export GAUSSHOME=/openGauss-server/mppdb_temp_install/
 export LD_LIBRARY_PATH=$GAUSSHOME/lib:$LD_LIBRARY_PATH
 export PATH=$GAUSSHOME/bin:$PATH
-export DSS_HOME=/home/omm/ss_hatest/dss_home0
+export DSS_HOME=/home/omm/ss_hatest1/dss_home0
 export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config_standby.ini
 ```
 
@@ -220,6 +222,19 @@ export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config_standby.in
 sh ha_test.sh dual_cluster
 ```
 
+dssserver有可能存在端口冲突，执行sh ha_test.sh dual_cluster之前修改conf_start_dss_inst.sh脚本中dss端口
+```
+DSS_PORT_BASE=30000
+```
+
+数据库有可能存在端口冲突，执行sh ha_test.sh dual_cluster之前修改ha_test.sh脚本中数据库端口
+```
+PGPORT=(6600 6700)
+STANDBY_PGPORT=(9600 9700)
+
+nodedata_cfg="0:127.0.0.1:6611,1:127.0.0.1:6711"
+standby_nodedata_cfg="0:127.0.0.1:9611,1:127.0.0.1:9711"
+```
 &emsp;ha_test.sh脚本适配了双集群模拟, 执行的时候带上dual_cluster就是双集群，不带就是单集群。脚本会自动将数据库拉起，执行完该脚本后，就相当于部署了2套独立的资源池化
 
 &emsp;(2) 集群状态查询
@@ -289,11 +304,11 @@ No information
 &emsp;<font color='red'>postgresql.conf文件</font>
 ```
 port = 6600
-xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
-xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_primary'
+xlog_file_path = '/home/omm/ss_hatest/dorado_shared_disk'
+xlog_lock_file_path = '/home/omm/ss_hatest/shared_lock_primary'
 application_name = 'dn_master_0'
 cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9600'
-cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9700'
+cross_cluster_replconninfo2='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9700'
 cluster_run_mode = 'cluster_primary'
 ha_module_debug = off
 ss_log_level = 255
@@ -313,23 +328,45 @@ host all all 10.10.10.10/32 sha256
 host all all 10.10.10.20/32 sha256
 ```
 
-(2) 以primary模式重启主集群主节点0
+(2) 配置主集群备节点1的dorado容灾参数
+&emsp;<font color='red'>postgresql.conf文件</font>
+```
+port = 6700
+xlog_file_path = '/home/omm/ss_hatest/dorado_shared_disk'
+xlog_lock_file_path = '/home/omm/ss_hatest/shared_lock_primary'
+application_name = 'dn_master_1'
+cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6700 remotehost=127.0.0.1 remoteport=9600'
+cross_cluster_replconninfo2='localhost=127.0.0.1 localport=6700 remotehost=127.0.0.1 remoteport=9700'
+cluster_run_mode = 'cluster_primary'
+ha_module_debug = off
+ss_log_level = 255
+ss_log_backup_file_count = 100
+ss_log_max_file_size = 1GB
+```
+
+(3) 以primary模式重启主集群主节点0
 ```
 gs_ctl start -D /home/omm/ss_hatest/dn0 -M primary
 ```
 执行build前一定要给主集群主节点0配置容灾参数并以primary模式重启主集群主节点0
+如果是cm模拟方式，可以不用指定-M参数，reform会自动识别模式
 
+(4) 启动主集群备节点1
+
+```
+gs_ctl start -D /home/omm/ss_hatest/dn0
+```
 
 ##### &nbsp;&nbsp;&nbsp;2.5.1.2 备集群(容灾中心)
 (1) 配置备集群首备节点0的容灾参数
 &emsp;<font color='red'>postgresql.conf文件</font>
 ```
 port = 9600
-xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
-xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_standby'
+xlog_file_path = '/home/omm/ss_hatest/dorado_shared_disk'
+xlog_lock_file_path = '/home/omm/ss_hatest/shared_lock_standby'
 application_name = 'dn_standby_0'
 cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6600'
-cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6700'
+cross_cluster_replconninfo2='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6700'
 cluster_run_mode = 'cluster_standby'
 ha_module_debug = off
 ss_log_level = 255
@@ -353,10 +390,33 @@ host all all 10.10.10.20/32 sha256
 gs_ctl build -D /home/zx/ss_hatest1/dn0 -b cross_cluster_full -g 0 --vgname=+data --enable-dss --socketpath='UDS:/home/zx/ss_hatest1/dss_home0/.dss_unix_d_socket' -q
 ```
 
-(3) 以standby模式重启备集群首备节点0
+(3) 配置备集群从备节点1的容灾参数
+&emsp;<font color='red'>postgresql.conf文件</font>
+```
+port = 9700
+xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
+xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_standby'
+application_name = 'dn_standby_1'
+cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9700 remotehost=127.0.0.1 remoteport=6600'
+cross_cluster_replconninfo2='localhost=127.0.0.1 localport=9700 remotehost=127.0.0.1 remoteport=6700'
+cluster_run_mode = 'cluster_standby'
+ha_module_debug = off
+ss_log_level = 255
+ss_log_backup_file_count = 100
+ss_log_max_file_size = 1GB
+```
+
+(4) 以standby模式重启备集群首备节点0
 ```
 gs_ctl start -D /home/omm/ss_hatest1/dn0 -M standby
 ```
+如果是cm模拟方式，可以不用指定-M参数，reform会自动识别模式
+
+(5) 以standby模式重启备集群从备节点1
+```
+gs_ctl start -D /home/omm/ss_hatest1/dn0
+```
+
 #### &nbsp;&nbsp;2.5.2 自动化容灾搭建
 同2.5.1 手动容灾搭建效果一致，只是用shell脚本自动化执行
 ```
@@ -372,7 +432,7 @@ sh standby_full_build_reconnect.sh
 [2023-04-18 09:38:34.397][1498175][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest/dn0
  HA state:
         local_role                     : Primary
-        static_connections             : 1
+        static_connections             : 2
         db_state                       : Normal
         detail_information             : Normal
 
@@ -422,8 +482,8 @@ No information
 [omm@nodename pg_log]$ gs_ctl query -D /home/omm/ss_hatest1/dn0
 [2023-04-18 11:33:09.288][2760315][][gs_ctl]: gs_ctl query ,datadir is /home/omm/ss_hatest1/dn0
  HA state:
-        local_role                     : Standby
-        static_connections             : 1
+        local_role                     : Main Standby
+        static_connections             : 2
         db_state                       : Normal
         detail_information             : Normal
 
@@ -435,14 +495,14 @@ No information
         peer_role                      : Primary
         peer_state                     : Normal
         state                          : Normal
-        sender_sent_location           : 2/A458
-        sender_write_location          : 2/A458
-        sender_flush_location          : 2/A458
-        sender_replay_location         : 2/A458
-        receiver_received_location     : 2/A458
-        receiver_write_location        : 2/A458
-        receiver_flush_location        : 2/A458
-        receiver_replay_location       : 2/A458
+        sender_sent_location           : 2/5C8
+        sender_write_location          : 2/5C8
+        sender_flush_location          : 2/5C8
+        sender_replay_location         : 2/5C8
+        receiver_received_location     : 2/5C8
+        receiver_write_location        : 2/5C8
+        receiver_flush_location        : 2/5C8
+        receiver_replay_location       : 2/5C8
         sync_percent                   : 100%
         channel                        : 127.0.0.1:41952<--127.0.0.1:6600
 ```
@@ -471,7 +531,7 @@ gs_ctl query -D /opt/omm/cluster/dn0
 [2023-04-03 19:29:20.472][1324519][][gs_ctl]: gs_ctl query ,datadir is /opt/omm/cluster/dn0
  HA state:
         local_role                     : Primary
-        static_connections             : 1
+        static_connections             : 2
         db_state                       : Normal
         detail_information             : Normal
 
@@ -520,8 +580,8 @@ No information
 gs_ctl query -D /opt/omm/cluster/dn0
 [2023-04-03 19:29:20.472][2720317][][gs_ctl]: gs_ctl query ,datadir is /opt/omm/cluster/dn0
  HA state:
-        local_role                     : Standby
-        static_connections             : 1
+        local_role                     : Main Standby
+        static_connections             : 2
         db_state                       : Normal
         detail_information             : Normal
 
@@ -595,5 +655,6 @@ select * from test01;
 pg_controldata -I 0 --enable-dss --socketpath=UDS:$DSS_HOME/.dss_unix_d_socket +data
 ```
 
-(2)
+
 ***Notice:不推荐直接用于生产环境***
+***作者：Shirley_zhengx***
