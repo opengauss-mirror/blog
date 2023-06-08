@@ -79,7 +79,7 @@ times = "9:30"
 (1.2)创建lun组
 (1.3)创建lun
 如下图所示:
-![](./images/磁阵搭建/创建lun.jpg)
+![](../images/磁阵搭建/创建lun.jpg)
 步骤：Services -> LUN Groups -> LUN -> Create
 
 (2) 主存储对应的业务计算节点上查看挂好的lun
@@ -87,7 +87,7 @@ times = "9:30"
 rescan-scsi-bus.sh       upadmin show vlun         lsscsi -is
 ```
 
-![](./images/磁阵搭建/lun查询.jpg)
+![](../images/磁阵搭建/lun查询.jpg)
 
 lun说明：  zx_mpp_doradoxlog 指dorado同步复制需要的lun(可以理解为共享盘，盘符/dev/sdh)，zx_mpp_dssdata是资源池化主集群的数据盘(盘符/dev/sdn)，zx_mpp_dssxlog0是资源池化主集群节点0对应的xlog盘(盘符/dev/sdo)
 

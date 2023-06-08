@@ -103,7 +103,7 @@ times = "9:30"
 由于lun需要映射，当有多个业务计算节点(主机)，则可以通过创建lun组，将主机加入到lun组中，每次闯将lun的时候，只需要将lun加入到lun组中，则自动会映射到主机组中包含的所有业务计算节点ip(主机)
 + (1.3)创建lun
 如下图所示:
-![](./images/磁阵搭建/创建lun.jpg)
+![](../images/磁阵搭建/创建lun.jpg)
 步骤：Services -> LUN Groups -> LUN -> Create
 
 映射到业务节点的方式一：
@@ -117,7 +117,7 @@ times = "9:30"
 rescan-scsi-bus.sh       upadmin show vlun         lsscsi -is
 ```
 
-![](./images/om部署/lun查询.jpg)
+![](../images/om部署/lun查询.jpg)
 
 lun说明： 这里显示的是om部署资源池化需要用的lun，zx_mpp_dssdata是资源池化主集群的数据盘(盘符/dev/sdab)，zx_mpp_dssxlog0是资源池化主集群节点0对应的xlog盘(盘符/dev/sdac)，zx_mpp_dssxlog0是资源池化主集群节点1对应的xlog盘(盘符/dev/sdad)，zx_mpp_cm0是资源池化主集群cm对应的votingDiskPath盘(盘符/dev/sdae)，zx_mpp_cm0是资源池化主集群cm对应的shareDiskDir盘(盘符/dev/sdaf)
 
@@ -435,11 +435,11 @@ cm_ctl query -Cvidp
 &emsp; 在主存储管控平台(DeviceManager)登录：https://主存储ip:8088
 &emsp; data protection -> luns -> remote replication pairs(远程复制对) -> create ->选择主存储需要同步复制给备存储的lun -> next
 &emsp; <font color='green'> 请原谅这里截图工具的搓，标记笔太难用了，画的蓝圈圈很丑但很个性！</font> 
-![](./images/om部署/远程复制对创建.png)
+![](../images/om部署/远程复制对创建.png)
 图中第5步选择主存储上创建的dorado同步复制的lun，lun名称是zx_mpp_doradoxlog
 
 选择同步 -> Automatic -> 备存储的存储池名称 -> next
-![](./images/om部署/远程复制对创建1.jpg)
+![](../images/om部署/远程复制对创建1.jpg)
 
 最后会显示successful，表示成功
 
@@ -447,13 +447,13 @@ cm_ctl query -Cvidp
 &emsp; 在备存储管控平台(DeviceManager)登录：https://备存储ip:8088
 在备存储上做映射方式一：
 &emsp; Services -> LUNs -> zx_mpp_doradoxlog -> More -> Map -> 选择备存储对应的业务计算节点ip(例如1.1章节表格中的20.20.20.10)
-![](./images/om部署/doradoxlog映射.PNG)
+![](../images/om部署/doradoxlog映射.PNG)
 选择第(3)中和主存储做了远程复制对的lun，名称是zx_mpp_doradoxlog
 
 在备存储上做映射方式二：
 Services -> LUNs -> 双击zx_mpp_doradoxlog -> Mapping -> Operation -> map -> 择备存储对应的业务计算节点0的ip(例如1.1章节表格中的20.20.20.10)
 再次点击Operation -> map -> 择备存储对应的业务计算节点1的ip(例如1.1章节表格中的20.20.20.20)
-![](./images/om部署/doradoxlog映射1.PNG)
+![](../images/om部署/doradoxlog映射1.PNG)
 
 在业务计算节点上查看lun情况：
 ```
