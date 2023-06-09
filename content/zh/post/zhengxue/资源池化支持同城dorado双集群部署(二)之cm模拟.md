@@ -216,7 +216,7 @@ export CM_CONFIG_PATH=/opt/omm/openGauss-server/src/test/ss/cm_config_standby.in
 &emsp;通过源码中的ha_test.sh脚本搭建
 &emsp;(1) 资源池化双集群cm模拟部署
 &emsp;&emsp;注释ha_test.sh倒数2行
-![](./images/cm模拟/主集群ha_test.png)
+![](../images/cm模拟/主集群ha_test.png)
 
 ```
 sh ha_test.sh dual_cluster
