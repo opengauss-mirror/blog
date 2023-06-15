@@ -154,6 +154,10 @@ language plpgsql;
 ```
 如果是新增的对象，则在升级脚本中直接创建，回滚脚本中将其删除即可。
 
+升级脚本在直接安装流程中在A兼容环境下执行，在升级流程中在B兼容环境下执行，因此编写脚本时请使用二者共用的关键字。如类型timestamp，在A兼容下与timestamptz相对，代表timestamp without time zone；而在B兼容下与datetime相对，代表timestamp with time zone。在编写datetime相关内容时，请统一使用timestamp without time zone。
+
+升级前请先创建B兼容数据库，否则不会执行插件升级流程。
+
 升级步骤与正常数据库升级步骤一致，详见官方升级文档：https://docs.opengauss.org/zh/docs/latest/docs/DatabaseOMGuide/upgrade.html
 
 ## 新增函数、操作符和类型等数据库对象
