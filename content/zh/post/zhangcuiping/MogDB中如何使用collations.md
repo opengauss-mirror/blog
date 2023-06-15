@@ -50,7 +50,7 @@ oc=CTc/ommdoc
 (3 rows)
 ```
 
-在新建数据库的时候，可以指定数据库的默认的callation：
+在新建数据库的时候，可以指定数据库的默认的collation：
 
 ```sql
 MogDB=# CREATE DATABASE abce with LC_COLLATE ='en_US.UTF-8';
