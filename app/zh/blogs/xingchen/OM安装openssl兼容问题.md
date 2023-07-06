@@ -23,7 +23,7 @@ times: '10:30'
    ```
 
 2. 在一些高版本系统中，如 centos8 以上。安装完成数据库后，使用 ssh 报错：
-   ![](../images/opensslerror/ssherror.png)
+   ![](./images/opensslerror/ssherror.png)
 
 **问题原因**
 
@@ -58,7 +58,7 @@ export PATH=$PATH:/root/gauss_om/omm/script
 
 1. 对于 `symbol SSLv3_method not found`， 可以更新下三方库，在构建 openssl 的时候开启编译选项 `enable-ssl3-method`。
 
-   ![](../images/opensslerror/enable_sslv3.png)
+   ![](./images/opensslerror/enable_sslv3.png)
 
 2. 对于 OM 安装过程中出现 `undefined symbol EVP_KDF_ctrl` 问题，可以把系统上的 `libcrypto.so` 放到 `$TOOL/script/gspylib/clib `替换掉 om 包里面的 lib 文件
 

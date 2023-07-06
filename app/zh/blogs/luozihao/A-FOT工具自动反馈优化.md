@@ -58,7 +58,7 @@ export PATH=/tmp/autofdo/build:$PATH
 
 当你使用 create_gcov --version 时，打印如下所示就代表安装成功了：
 
-![create_gcov安装完成后的效果](.\image\17aca41c_7898503.png)
+![create_gcov安装完成后的效果](./image/17aca41c_7898503.png)
 
 5. 通过如下命令下载 A-FOT 工具
 
