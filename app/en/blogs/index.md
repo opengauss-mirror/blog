@@ -1,8 +1,8 @@
 ---
-title: '博客'
+title: 'Blog'
 ---
 
-<script setup lang="ts">
+<script setup>
   import TheBlogs from "@/views/blogs/TheBlogs.vue"
 </script>
 
