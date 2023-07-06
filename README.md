@@ -1,3 +1,7 @@
+## 介绍
+
+自 2023 年 07 月起，v2 分支 替代 master，作为 openGauss 官方博客仓库。
+
 ## 准备
 
 1. 参考 http://git.mydoc.io/?t=179267 注册 Gitee 账号。

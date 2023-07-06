@@ -10,7 +10,33 @@ img: '/zh/post/zhengxue/title/img1.png'
 times: '9:30'
 ---
 
-资源池化支持同城 dorado 双集群部署方式：dd 模拟(手动部署+无 cm)、cm 模拟(手动部署 dd 模拟+有 cm)、磁阵(手动部署)、集群管理工具部署
+<!-- TOC -->
+- [1. 环境描述](#1.环境描述)
+  - [1.1.组网方式](#1.1.组网方式)
+  - [1.2.环境配置](#1.2.环境配置)
+- [2. 环境搭建](#2.环境搭建)
+  - [2.1.创建lun](#2.1.创建lun)
+  - [2.2.下载源码编译](#2.2.下载源码编译)
+  - [2.3.环境变量](#2.3.环境变量) 
+  - [2.4.dss配置-dd模拟](#2.4.dss配置-dd模拟)
+  - [2.5.数据库部署](#2.5.数据库部署)
+- [3. 主备集群功能验证](#3.主备集群功能验证)
+  - [3.1.集群状态查询](#3.1.集群状态查询)
+  - [3.2.主集群一写多读](#3.2.主集群一写多读)
+  - [3.2.备集群只读](#3.2.备集群只读)
+
+<!-- /TOC -->
+
+
+
+# 资源池化支持同城dorado双集群部署(一)----dd模拟
+
+资源池化支持同城dorado双集群部署方式：
+(一) dd模拟(手动部署 + 无cm)
+(二) cm模拟(手动部署dd模拟 + 有cm)
+(三) 磁阵搭建(手动部署)
+(四) 集群管理工具部署(om + cm)
+          
 
 ## 1.环境描述
 
@@ -404,10 +430,9 @@ gs_ctl build -D /opt/omm/cluster/dn0 -b cross_cluster_full -g 0 --vgname=+data -
 ```
 
 参数解释：
-
-- -b cross_cluster_full
-- -g 0 指资源池化的节点 0，表明是对节点 0 进行 build
-- -q
++ -b cross_cluster_full
++ -g 0   指资源池化的节点0，表明是对节点0进行build
++ -q build成功后，不启动数据库
 
 &emsp;(4)备集群从备节点 1 初始化
 &emsp;@shirley_zhengx tell you in secret that is very important!@：备集群第一次初始化的时候，一定要初始化首备节点 0 并对首备做完 build 之后，再初始化备集群其它从备节点，即第(3)要在第(4)之前执行 @very very important!@：
@@ -494,7 +519,7 @@ No information
 gs_ctl query -D /opt/omm/cluster/dn0
 [2023-04-03 19:29:20.472][2720317][][gs_ctl]: gs_ctl query ,datadir is /opt/omm/cluster/dn0
  HA state:
-        local_role                     : Standby
+        local_role                     : Main Standby
         static_connections             : 1
         db_state                       : Normal
         detail_information             : Normal
@@ -564,4 +589,6 @@ gsql -d postgres -p 48100 -r
 select * from test01;
 ```
 
-**_Notice:不推荐直接用于生产环境_**
+
+***Notice:不推荐直接用于生产环境***
+***作者：Shirley_zhengx***
