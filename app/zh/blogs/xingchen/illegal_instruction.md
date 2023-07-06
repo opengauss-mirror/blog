@@ -47,7 +47,7 @@ sh build.sh -m release -3rd /sdb/binarylibs -pkg
 
 patch 如下图：
 
-![](../images/compile/withoutlse.png)
+![](./images/compile/withoutlse.png)
 
 ### 2. x86 服务器下 rdtscp 指令
 
