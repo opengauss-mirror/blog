@@ -61,13 +61,19 @@ export PATH=$PATH:$JAVA_HOME/bin
 export PATH=/data/dbmind:$PATH
 ```
 
-**注意**：必须确保环境变量中有如下三条数据，同时java包不能位于root用户下。
-
-```bash
-export JAVA_HOME=/data/mogdb1/java/jdk-1.8/jdk
-export PATH=$PATH:$JAVA_HOME/bin
-export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib
-```
+> **注意**：
+>
+> 1. 必须确保环境变量中有如下三条数据: 
+>
+>    ```bash
+>    export JAVA_HOME=/data/mogdb1/java/jdk-1.8/jdk
+>    export PATH=$PATH:$JAVA_HOME/bin
+>    export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib
+>    ```
+>
+> 2. java包不能位于root用户下。
+>
+> 3. 与jdbc 3.1.0驱动相一致的jdk版本为1.8，如果是jdk 20，会导致数据库连接失败。
 
 ## 解决办法
 
