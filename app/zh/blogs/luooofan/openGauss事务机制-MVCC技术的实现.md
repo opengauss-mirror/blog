@@ -473,8 +473,6 @@ recheck_xmax:
 
 [PostgreSql pageinspect 更深的理解 PG](https://www.modb.pro/db/24577)
 
-[openGauss 的 MVCC 以及 vacuum 机制源码解析—CSN LOG](https://blog.opengauss.org/zh/post/minshengyunwei/opengauss%E7%9A%84mvcc%E4%BB%A5%E5%8F%8Avacuum%E6%9C%BA%E5%88%B6%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90csn-log/)
-
 [浅谈数据库并发控制 - 锁和 MVCC](https://draveness.me/database-concurrency-control/)
 
 [PostgreSQL MVCC 可见性判断](https://cloud.tencent.com/developer/article/1598195)

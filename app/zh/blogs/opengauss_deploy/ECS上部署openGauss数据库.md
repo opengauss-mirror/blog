@@ -11,7 +11,7 @@ times: '19:30'
 
 ## 在 ECS 上安装部署 openGauss 数据库指导手册
 
-文档下载：[在 ECS 上安装部署 openGauss 数据库指导手册.docx](../docs/在ECS上安装部署openGauss数据库指导手册.docx)
+文档下载：[在 ECS 上安装部署 openGauss 数据库指导手册.docx](./docs/在ECS上安装部署openGauss数据库指导手册.docx)
 
 <!--
 

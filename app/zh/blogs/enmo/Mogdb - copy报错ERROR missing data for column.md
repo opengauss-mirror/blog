@@ -19,8 +19,6 @@ times: '10:20'
 
 # Mogdb - copy 报错 ERROR: missing data for column
 
-本文出处：[https://www.modb.pro/db/419967](https://www.modb.pro/db/419967)
-
 ### 故障现象
 
 使用 copy 命令在进行数据导入时，出现报错：ERROR: missing data for column “c2”

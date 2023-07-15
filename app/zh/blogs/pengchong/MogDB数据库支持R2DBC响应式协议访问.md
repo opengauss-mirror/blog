@@ -56,7 +56,7 @@ insert into product values(1,'PostgreSQL',0),
 
 ### Java 项目工程
 
-参考如下链接：https://github.com/vinsguru/vinsguru-blog-code-samples/tree/master/r2dbc/crud
+参考如下链接：https://github.com/vinsguru/vinsguru-blog-code-samples/tree/master/
 
 ### 配置 MogDB 数据库连接信息
 

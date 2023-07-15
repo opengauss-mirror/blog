@@ -46,8 +46,6 @@ openGauss 是华为旗下的国产数据库，我对着这个数据库的了解�
 
 - （3）chameleon 工具
 
-  下载地址：<https://opengauss.obs.cn-south-1.myhuaweicloud.com/latest/chameleon/chameleon-1.0.0-py3-none-any.whl>
-
   `pip3 install ./chameleon-1.0.0-py3-none-any.whl`（安装 chameleon 命令）
 
 - （4）安装

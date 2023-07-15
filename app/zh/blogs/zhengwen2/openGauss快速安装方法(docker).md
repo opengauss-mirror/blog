@@ -68,14 +68,14 @@ times: '12:30'
 
 ### docker 加速(可选)
 
-为了 pull 镜像更快，可以配置镜像加速服务器。镜像加速地址可以百度，暂时可以用我的加速地址：https://8h88nptu.mirror.aliyuncs.com。
+为了 pull 镜像更快，可以配置镜像加速服务器。镜像加速地址可以百度。
 顺便一提：阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors，登陆后，左侧菜单选中镜像加速器就可以看到你的专属地址了
 配置镜像地址，执行命令 `vi /etc/docker/daemon.json` 修改配置文件，如该文件不存在，则创建。
 
 在其中加入内容：
 
 ```
-{"registry-mirrors":["https://8h88nptu.mirror.aliyuncs.com"]}
+{"registry-mirrors":["加速地址"]}
 ```
 
 加速地址仅供参考

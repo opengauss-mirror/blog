@@ -58,8 +58,6 @@ times: '12:30'
     gs_dumpall[port='15400'][2021-07-27 15:39:10]: total time: 67481  ms
     ```
 
-    gs_dumpall 详细参数说请见官方文档：https://opengauss.org/zh/docs/1.1.0/docs/Toolreference/gs\_dumpall.html
-
 ## gs_dump<a name="section2284839162317"></a>
 
 1.  背景信息

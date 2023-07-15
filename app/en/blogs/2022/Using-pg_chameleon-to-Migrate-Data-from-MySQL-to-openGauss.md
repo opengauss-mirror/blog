@@ -161,7 +161,7 @@ After the modification, restart MySQL for the configurations to take effect.
 
     Download the source code of psycopg2 at https://github.com/psycopg/psycopg2, remove the restriction of checking the PostgreSQL version, and run the **python setup.py install** command to compile the source code and install the tool.
 
-    Download the source code of pg_chameleon at https://github.com/the4thdoctor/pg\_chameleon, solve the preceding issues in openGauss, and run the **python setup.py install** command to compile the source code and install the tool.
+    Download the source code of pg_chameleon, solve the preceding issues in openGauss, and run the **python setup.py install** command to compile the source code and install the tool.
 
 3.  Create the configuration file directory of pg_chameleon.
 
