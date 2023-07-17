@@ -19,8 +19,6 @@ times: '16:30'
 
 # step by step 之：install docker 版本 opengauss1.0.1 主备机群<a name="ZH-CN_TOPIC_0000001072944641"></a>
 
-参考文档：[https://www.modb.pro/db/34668](https://www.modb.pro/db/34668)
-
 **实验环境说明**：OS：2 颗 8 核心 8GB 内存。
 
 1.流程：

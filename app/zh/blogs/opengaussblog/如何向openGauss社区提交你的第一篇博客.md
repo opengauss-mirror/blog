@@ -24,7 +24,7 @@ openGauss 社区源代码以及官方网站和博客都托管在码云 Gitee 上
 
 ## 签署贡献者协议 CLA<a name="section7998165454612"></a>
 
-在正式提交博客前，你还需要签署 openGauss 社区贡献者许可协议（CLA）。CLA 签署网址：https://opengauss.org/zh/cla.html
+在正式提交博客前，你还需要签署 openGauss 社区贡献者许可协议（CLA）。CLA 签署网址：https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZ2F1c3M=
 
 在该过程中，你需要填写一个表单，其中邮箱需要填写你之前在码云上设置的主邮箱地址。
 

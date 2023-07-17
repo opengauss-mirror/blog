@@ -469,7 +469,3 @@ mybatis.type-aliases-package=com.main.model
 ## 最后总结
 
 openGauss 对业界知名的 spring 支持还算友好，直接用传统的 postgresql 驱动就可以接入使用，也有自己的 opengauss 驱动。如果使用顺利，还可以支持分布式配置、服务路由、负载均衡、熔断限流、链路监控这些功能，事实上在微服务的技术框架上也是支持的。
-
-## 源代码体验下载:
-
-https://gitee.com/angryart/springboot-opengauss

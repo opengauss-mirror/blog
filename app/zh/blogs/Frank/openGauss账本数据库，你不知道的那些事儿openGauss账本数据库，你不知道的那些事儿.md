@@ -586,8 +586,6 @@ gs_global_chain 主要处理流程：
 
 ## 你知道的那些事儿
 
-### [官方文档](https://www.opengauss.org/zh/docs/latest/docs/Developerguide/%E4%BF%AE%E5%A4%8D%E8%B4%A6%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%BA%93.html)
-
 前提条件：
 
 - 系统中需要有审计管理员或者具有审计管理员权限的角色。
@@ -613,8 +611,6 @@ omm=# SELECT pg_catalog.ledger_hist_repair('ledgernsp', 'usertable');
 (1 row)
 
 ```
-
-[drawio](rHmeQ8HWKS_RFXgP-oTUZINZguxBYqh2IV64Y0j5TAA.svg)
 
 #### 2、执行全局区块表修复操作
 

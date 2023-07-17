@@ -21,7 +21,7 @@ times: '12:30'
 
 ## **概述**<a name="section7728422181918"></a>
 
-我们已经介绍了[prometheus + grafana + opengauss_exporter](https://www.modb.pro/db/173483)完成对 MogDB/openGauss 数据库的监控,但这只是第一步，我们还需要通过 grafana 的 dashboard 查看各个关注的指标项，本文主要介绍 dashboard 的配置。
+我们已经介绍了prometheus + grafana + opengauss_exporter完成对 MogDB/openGauss 数据库的监控,但这只是第一步，我们还需要通过 grafana 的 dashboard 查看各个关注的指标项，本文主要介绍 dashboard 的配置。
 
 ## **监控指标汇总**<a name="section19632156141915"></a>
 

@@ -29,20 +29,6 @@ https://gitee.com/opengauss/openGauss-server/repository/archive/v2.0.0?ref=v2.0.
 
 opengauss-openGauss-third_party-2.0.0.zip \(source code package of all third-party libraries on which openGauss-server depends\)
 
-**Download link:**
-
-https://gitee.com/opengauss/openGauss-third\_party/repository/archive/v2.0.0.zip?ref=v2.0.0&sha=3a38c6c134e5b2e39d0557d575ec04302a83584a&format=zip&captcha\_type=yunpian
-
-openGauss-third_party_binarylibs.tar.gz \(medium packages of all third-party libraries on which openGauss-server depends\)
-
-**Download link:**
-
-https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.0/openGauss-third\_party\_binarylibs.tar.gz
-
-Note: This document is compiled by referring to the following official compilation document:
-
-https://opengauss.org/en/docs/2.0.0/docs/Quickstart/Quickstart.html
-
 ## **Precautions**<a name="section5439234155711"></a>
 
 Currently, 64-bit executable programs are generated.

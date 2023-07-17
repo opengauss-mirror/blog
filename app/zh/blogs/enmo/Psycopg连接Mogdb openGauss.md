@@ -35,7 +35,7 @@ Psycopg 是一种用于执行 SQL 语句的 PythonAPI，可以为 PostgreSQL、G
 [root@mogdb-kernel-0004 Psycopg]# wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.1.0/x86/openGauss-2.1.0-CentOS-x86_64-Python.tar.gz [root@mogdb-kernel-0004 Psycopg]# ls openGauss-2.1.0-CentOS-x86_64-Python.tar.gz [root@mogdb-kernel-0004 Psycopg]# tar -xf openGauss-2.1.0-CentOS-x86_64-Python.tar.gz [root@mogdb-kernel-0004 Psycopg]# ls lib  openGauss-2.1.0-CentOS-x86_64-Python.tar.gz  psycopg2 [root@mogdb-kernel-0004 Psycopg]#
 ```
 
-注:这里驱动在https://opengauss.org/zh/download/这里下载，可以根据操作系统版本下载对应的驱动
+注:这里驱动在[https://opengauss.org/zh/download/](https://opengauss.org/zh/download/)这里下载，可以根据操作系统版本下载对应的驱动
 <img src='./images/20220330-26a4d82f-650b-49dc-a859-630df55c0aa2.png'>
 
 ## 4.安装驱动

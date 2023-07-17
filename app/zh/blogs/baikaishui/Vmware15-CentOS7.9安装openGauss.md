@@ -193,7 +193,7 @@ cd 进根目录/mnt/hgfs，可以看到先前设置的主机共享文件夹
 <img src='https://oss-emcsprod-public.modb.pro/image/editor/20210927-e9daf0ee-25bf-4428-81a2-2b7dd01f1899.png'>
 <img src='https://oss-emcsprod-public.modb.pro/image/editor/20210927-9ab118b5-8063-4b1a-81e8-b3606e85cd4c.png'>
 但是可能是因为我的 xml 文件配置错误，又或者是其他原因，导致我的预安装指令没有反馈，不论成功还是报错都没有。这里我就犯了个错误，在没有反馈的情况下反复执行预安装指令，没有反馈重启终端再执行；还没有反馈重启虚拟机再执行。反复操作下我的 centos 开启过程开始报错 piix4_smbus: Host SMBus controller not enabled!；输入密码后从登录界面又跳回登录界面没法进入系统。
-在尝试了诸多解决方法之后，我发现这时我的 centos 重启后会丢失数据，按照网上的解决方法更改的文件无法保存，所以都没有发挥作用。在进行了一个下午的尝试后我放弃了，我选择重新配置一个新的虚拟机，按照上述步骤重来一次。现在想来可能是反复执行预安装命令产生大量重复的 root 用户和 openGauss 用户的互信信息导致磁盘占用率接近满值导致出现该问题。在重新配置虚拟机后我再次开始预安装，这次出现了报错反馈 Exception: [GAUSS-51900] The current OS is not supported. The current system is: centos7.9 这里提示我们 CentOS7.9 不支持 openGauss，所以我们需要降级到 7.6 版本，但 7.6 版本的镜像我在网上没能找到，据说 openGauss 相关书籍里会提供 7.6 版本镜像。但我这里使用的是 wget http://vault.centos.org/7.6.1810/os/x86_64/Packages/centos-release-7-6.1810.2.el7.centos.x86_64.rpm 指令来下载 centos7.6 版本 rpm 包
+在尝试了诸多解决方法之后，我发现这时我的 centos 重启后会丢失数据，按照网上的解决方法更改的文件无法保存，所以都没有发挥作用。在进行了一个下午的尝试后我放弃了，我选择重新配置一个新的虚拟机，按照上述步骤重来一次。现在想来可能是反复执行预安装命令产生大量重复的 root 用户和 openGauss 用户的互信信息导致磁盘占用率接近满值导致出现该问题。在重新配置虚拟机后我再次开始预安装，这次出现了报错反馈 Exception: [GAUSS-51900] The current OS is not supported. The current system is: centos7.9 这里提示我们 CentOS7.9 不支持 openGauss，所以我们需要降级到 7.6 版本，但 7.6 版本的镜像我在网上没能找到，据说 openGauss 相关书籍里会提供 7.6 版本镜像。但我这里使用的是 wget指令来下载 centos7.6 版本 rpm 包
 安装下载的 7.6 rpm 包
 rpm -ivh centos-release-7-6.1810.2.el7.centos.x86_64.rpm –force
 这时重新运行 rpm -qa | grep -i centos-release 就可以看到两个发行版本
