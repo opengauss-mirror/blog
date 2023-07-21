@@ -15,6 +15,7 @@ summary = "创建oracle_fdw扩展时提示could not load library "oracle_fdw.so"
 img = "/zh/post/zhangcuiping/title/img.png" 
 
 times = "10:20"
+
 +++
 
 # 创建oracle_fdw扩展时提示could not load library "oracle_fdw.so":libclntsh.so.19.1:cannot open shared object file?
