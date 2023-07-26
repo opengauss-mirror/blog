@@ -143,11 +143,11 @@ opengauss提供了gs_expansion工具对数据库的备机进行扩容。
 
 <img src='./images/3-3-2-2.png'>
 
-3.3主节点：修改xml文件，添加新节点信息
+3.3主节点操作：修改xml文件，添加新节点信息
 
 <img src='./images/3-3-3.png'>
 
-3.4主节点：执行gs_expansion完成扩容操作
+3.4主节点操作：执行gs_expansion完成扩容操作
 
 ./gs_expansion -U omm -G dbgrp -X /opt/opengauss/cluster_config.xml    -h 10.100.10.94
 
