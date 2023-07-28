@@ -1,6 +1,6 @@
 +++
 
-title = "创建oracle_fdw扩展时提示could not load library "oracle_fdw.so":libclntsh.so.19.1:cannot open shared object file" 
+title = "创建oracle_fdw扩展时提示cannot open shared object file" 
 
 date = "2023-07-20" 
 
@@ -10,7 +10,7 @@ archives = "2023-07"
 
 author = "张翠娉" 
 
-summary = "创建oracle_fdw扩展时提示could not load library "oracle_fdw.so":libclntsh.so.19.1:cannot open shared object file"
+summary = "创建oracle_fdw扩展时提示cannot open shared object file"
 
 img = "/zh/post/zhangcuiping/title/img.png" 
 
@@ -18,7 +18,7 @@ times = "10:20"
 
 +++
 
-# 创建oracle_fdw扩展时提示could not load library "oracle_fdw.so":libclntsh.so.19.1:cannot open shared object file?
+# 创建oracle_fdw扩展时提示cannot open shared object file
 
 ## 简介
 
