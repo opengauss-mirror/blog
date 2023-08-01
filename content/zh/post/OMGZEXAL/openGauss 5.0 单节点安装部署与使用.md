@@ -10,7 +10,7 @@
 vim /etc/selinux/config
 ```
 修改config文件，将SELINUX的值变为"disabled"
-![01.png](/zh/post/OMGZEXAL/image/1.png)
+![01.png](image/1.png)
 检测防火墙是否关闭  
 ```
 systemctl status firewalld
