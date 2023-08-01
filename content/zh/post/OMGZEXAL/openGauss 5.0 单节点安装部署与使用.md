@@ -10,14 +10,14 @@
 vim /etc/selinux/config
 ```
 修改config文件，将SELINUX的值变为"disabled"
-![Image](https://oss-emcsprod-public.modb.pro/image/editor/20230705-3de3549c-6534-41b8-b241-9658893ea91a.png)
+![01.png](image/1.png)
 检测防火墙是否关闭  
 ```
 systemctl status firewalld
 systemctl stop firewalld
 systemctl disable firewalld
 ```
-![Image](https://oss-emcsprod-public.modb.pro/image/editor/20230705-f3d683db-cd79-469a-aed8-6dc7bc877463.png)
+![02.png](image/2.png)
 
 ##### 1.3 设置字符集参数
 
@@ -31,7 +31,7 @@ export LANG=en_US.UTF-8
 
 ##### 1.5 关闭RemoveIPC
 <font color=red>(因为使用的环境为CentOS，默认关闭)</font>
-![Image](https://oss-emcsprod-public.modb.pro/image/editor/20230705-5d01f3cf-722d-4ee3-89e5-45d5a90755de.png)
+![03.png](image/3.png)
 
   
 
@@ -53,7 +53,7 @@ export LANG=en_US.UTF-8
 [opengauss@localhost simpleInstall]$ sh install.sh -w "52@openGauss" &&source ~/.bashrc  
 ```
 <font color=red>(注意：如果出现这种错误，请使用拥有root权限的用户执行`sysctl -w kernel.sem="250 85000 250 330"`即可)</font>
-![Image](https://oss-emcsprod-public.modb.pro/image/editor/20230705-0d56cb7c-217f-4470-a0bc-2ec4fb0fba1f.png)  
+![04.png](image/4.png)  
 
 ##### 2.3 检查进程，判断数据库是否启动
 ```
@@ -82,7 +82,7 @@ gs_ctl: server is running (PID: 4946)
 
 ##### 3.1 查看版本信息
 可以使用`select version()`查看数据库版本，使用`show server_version`查看pg基础版本 
-![Image](https://oss-emcsprod-public.modb.pro/image/editor/20230705-25e38786-8582-4e3e-bf4e-fff241e86710.png)
+![05.png](image/5.png)
 
 ##### 3.2 常用命令  
 `\l`查看当前有哪些数据库  
@@ -91,7 +91,7 @@ gs_ctl: server is running (PID: 4946)
 `\du`查看用户和角色  
 `\dn`查看当前数据库有哪些schema  
 `\dt`查看数据库中所有表
-![Image](https://oss-emcsprod-public.modb.pro/image/editor/20230705-7d0a36a9-e5af-4ba5-b7e0-9de2371cf64f.png)
+![06.png](image/6.png)
 
 ##### 3.3 创建用户并授予权限
 ```
@@ -100,7 +100,7 @@ CREATE ROLE
 openGauss=# ALTER USER test1 CREATEROLE;
 ALTER ROLE
 ```
-![image](https://oss-emcsprod-public.modb.pro/image/editor/20230707-f65ba4a8-84fd-48b7-b797-95ba8966770c.png)
+![07.png](image/7.png)
 
 ##### 3.4 创建表并插入数据
 ```
@@ -109,7 +109,7 @@ CREATE TABLE
 openGauss=# insert into test0707(id,update_user) values(1,'Bob');
 INSERT 0 1
 ```
-![image](https://oss-emcsprod-public.modb.pro/image/editor/20230707-da4d7ee1-d8d0-4c41-be84-30e502527c3e.png)
+![08.png](image/8.png)
 
 ##### 3.5 创建模式
 创建了两个schema
@@ -119,7 +119,7 @@ CREATE SCHEMA
 openGauss=# create schema t2 AUTHORIZATION test1;
 CREATE SCHEMA
 ```
-![image](https://oss-emcsprod-public.modb.pro/image/editor/20230707-fd01d684-efe1-4d8c-8b3d-eebfc066451d.png)
+![09.png](image/9.png)
 在不同schema下创建表名均为test01的表，插入不同数据
 ```
 openGauss=# create table t1.test01(id CHAR(2) NOT NULL,update_user VARCHAR(20) NOT NULL);
@@ -131,7 +131,7 @@ CREATE TABLE
 openGauss=# insert into t2.test01(id,update_user) values(3,'Nancy');
 INSERT 0 1
 ```
-![image](https://oss-emcsprod-public.modb.pro/image/editor/20230707-d889b1d2-ac17-40e9-92c2-6d8e2ea799c9.png)
+![10.png](image/10.png)
 通过结果可以看出，不切换对应schema，是无法进行查看其他schema的内容
 
 # 尾语
