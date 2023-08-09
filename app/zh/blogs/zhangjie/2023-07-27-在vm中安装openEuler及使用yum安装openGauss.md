@@ -4,7 +4,7 @@ date: '2023-07-27'
 category: 'blog'
 tags: ['openGauss']
 archives: '2023-07'
-author:'zhangjie'
+author: 'zhangjie'
 summary: "本文将通过使用vm+openEuale环境安装一个openGuass,作为我在学习openGuass道路上的一个总结."
 ---
 
