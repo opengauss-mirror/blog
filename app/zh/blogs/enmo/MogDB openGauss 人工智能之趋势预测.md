@@ -19,8 +19,6 @@ times: '10:20'
 
 # MogDB/openGauss 人工智能之趋势预测
 
-本文出处：[https://www.modb.pro/db/405803](https://www.modb.pro/db/405803)
-
 ### 概述
 
 趋势预测可以实现基于历史时序数据预测未来时序变化趋势，是 dbmind 功能中的一个服务，需要依赖 Prometheus 监控框架，基于 node_exporter、opengauss_exporter 和 reprocessing_exporter 进行监控指标收集及加工处理，默认预测时间是 3600s，由参数 forecasting_future_time 控制。
@@ -62,8 +60,6 @@ pip3 install -r requirements-x86.txt -i https://pypi.douban.com/simple
 ```
 
 #### 启动 prometheus
-
-参考 [Prometheus 部署](https://www.modb.pro/db/173483)
 
 可以使用自己部署的 opengauss_exporter，需要做好 opengauss_exporter 与 reprocessing_exporter 的指标映射关系，这里直接使用数据库自带的 exporter 做展示。
 

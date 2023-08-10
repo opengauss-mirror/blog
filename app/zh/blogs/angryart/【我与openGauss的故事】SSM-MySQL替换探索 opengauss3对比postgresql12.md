@@ -141,7 +141,3 @@ alter table user1 alter column id set default nextval('public.userid_seq');
 ## 最后总结
 
 这是 SSM 开发中比较低端的 DEMO 代码，但是从中可见 openGauss 用心的包容,在接口层适配了 mybatis,遇到自增 ID 提高了容错性，相对于 postgresql 多了一道方便。
-
-## 体验源代码
-
-https://gitee.com/angryart/ssm-opengauss

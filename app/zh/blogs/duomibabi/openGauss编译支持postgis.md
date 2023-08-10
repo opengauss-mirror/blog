@@ -23,7 +23,7 @@ times: '16:30'
 
 本文介绍 openGauss 如何支持 postgis 扩展。
 
-本文参考链接：https://gitee.com/opengauss/openGauss-server/tree/master/third\_party/dependency/postgis
+本文参考链接：https://gitee.com/opengauss/openGauss-server/tree/master/
 
 ## 系统环境<a name="section17436151614393"></a>
 
@@ -35,7 +35,7 @@ openGauss 源码编译的过程请参考文章：[《抢鲜体验 2：openGauss 
 
 ## 编译 postgis\(2.4.2\)<a name="section1169735173913"></a>
 
-[《安装依赖》](http://postgis.net/docs/manual-2.4/postgis_installation.html#install_requirements)：http://postgis.net/docs/manual-2.4/postgis\_installation.html\#install\_requirement
+[《安装依赖》](http://postgis.net/docs/manual-2.4/postgis_installation.html#install_requirements)
 
 ## 设置环境变量<a name="section985417285407"></a>
 

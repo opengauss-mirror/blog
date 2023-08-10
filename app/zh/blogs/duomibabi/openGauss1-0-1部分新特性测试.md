@@ -21,7 +21,7 @@ times: '11:30'
 
 ## 支持全局临时表<a name="section43741428104511"></a>
 
-PostgreSQL 原生不支持全局临时表，需要借助第三方插件。具体使用可参考：[PostgreSQL 全局临时表插件 pgtt 的使用](https://www.modb.pro/db/31555)
+PostgreSQL 原生不支持全局临时表，需要借助第三方插件。
 
 opengauss 原生支持全局临时表，下面进行测试。
 

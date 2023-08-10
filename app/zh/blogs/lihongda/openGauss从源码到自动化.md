@@ -281,8 +281,6 @@ openGauss-1.0.1-asianux-64bit-kernel.tar.gz  openGauss-1.0.1-asianux-64bit-symbo
 
 ## Install openGauss<a name="section1309192625810"></a>
 
-脚本下载链接 [enmo_install.zip](http://www.lihongda.club/wp-content/uploads/2020/12/enmo_install.zip)
-
 **OM tool Installation**
 
 - OM 安装为官方推荐安装方式。

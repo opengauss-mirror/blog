@@ -69,8 +69,6 @@ props:
   proxy-frontend-flush-threshold: 128 # The default value is 128.
 ```
 
-server.yaml 更多详细配置参考:[链接](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-proxy/configuration/ 'proxy-server-config')
-
 ## 4 修改 config-sharding.yaml
 
 进入 conf 目录，该目录下已经有 config-sharding.yaml 文件的模板。该文件主要作用是配置**后端**与 openGauss 数据库的连接属性，分库分表规则等。
@@ -141,8 +139,6 @@ rules:
 schemaName: sharding_db
 ```
 
-config-sharding.yaml 更多详细配置参考:[链接](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/configuration/yaml/ 'proxy-sharding-config')
-
 ## 5 启动 shardingSphere-proxy
 
 进入 bin 目录，以上配置完成后，使用`sh start.sh`即可启动 proxy 服务，默认绑定 3307 端口。可以在启动脚本时使用`sh start.sh 4000`修改为 4000 端口。
@@ -176,8 +172,6 @@ config-sharding.yaml 更多详细配置参考:[链接](https://shardingsphere.ap
 `select * from t1` 即可获取所有的数据，在 proxy 中简单的 select 语句几乎不需要修改语法即可执行。
 
 复杂的查询语法(如二次子查询)当前支持的不是很完整，可以持续向 shardingSphere 社区提交 issue 来更新。
-
-已经支持和未支持的 SQL 请参考:[链接](https://shardingsphere.apache.org/document/current/cn/features/sharding/use-norms/sql/ 'proxy-sql-support')
 
 ## 4 事务
 

@@ -22,8 +22,6 @@ times: '10:20'
 
 # FATAL: Connection to database failed: SCRAM authentication requires libpq version 10 or above
 
-本文出处：[https://www.modb.pro/db/249933](https://www.modb.pro/db/249933)
-
 ## 问题描述：
 
 在自定义安装好 mogdb2.1 的版本之后，使用 sysbench(sysbench 1.0.17)进行压测 mogdb 数据库时，出现一下的问题

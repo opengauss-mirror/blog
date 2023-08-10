@@ -19,8 +19,6 @@ times: '10:20'
 
 # MogDB 使用样本数据集 Mogila
 
-本文出处：[https://www.modb.pro/db/422387](https://www.modb.pro/db/422387)
-
 MogDB 提供了一个样本数据集 Mogila，本数据集借鉴了适用于 MySQL 的[Sakila 示例数据库](https://dev.mysql.com/doc/sakila/en/)。**Sakila**最初由 MySQL AB 文档团队的 Mike Hillyer 开发，其目的是提供一个可用于书籍、教程、文章、样本等示例的标准 schema。
 
 Mogila 数据集是一个关于 DVD 出租店信息的数据库，包含有关电影（如标题、类别、女演员）、出租店（如地址、工作人员、客户）和出租的信息。您可以使用 Mogila 数据库进行各种功能测试。

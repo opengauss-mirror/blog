@@ -44,8 +44,6 @@ pg_chameleon 通过 **~/.pg_chameleon/configuration** 下的配置文件 config-
 
 详细的配置项解读，可查看官网的说明：
 
-[https://pgchameleon.org/documents_v2/configuration_file.html](https://pgchameleon.org/documents_v2/configuration_file.html)
-
 下面是一份配置文件示例：
 
 ```

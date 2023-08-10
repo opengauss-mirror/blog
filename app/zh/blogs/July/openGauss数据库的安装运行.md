@@ -116,8 +116,6 @@ times: '12:30'
 
 - 如何使用脚本文件：创建脚本文件，xxx.sh，将上一步的脚本内容更改后保存到文件中 sh xxx.sh。编译 openGauss 需要 openGauss-server 和 binarylibs 两个组件。openGauss-server：openGauss 的主要代码。binarylibs：openGauss 依赖的第三方开源软件。通过以下网站获取编译好的 binarylibs。下载后解压缩并重命名为 binarylibs。
 
-  https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.0/openGauss-third\_party\_binarylibs.tar.gz
-
 - 已经拥有完整的 openGauss 代码，把它存储在以下目录中（以 sda 为例）。
 
   /sda/openGauss-server

@@ -19,12 +19,6 @@ times: '10:20'
 
 # openGauss 每日一练之定义数据类型
 
-本文出处：[https://www.modb.pro/db/222625](https://www.modb.pro/db/222625)
-
-## 学习地址
-
-[https://www.modb.pro/course/133](https://www.modb.pro/course/133)
-
 ## 学习目标
 
 **学习 openGauss 定义数据类型**

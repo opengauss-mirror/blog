@@ -11,10 +11,6 @@ times: '17:30'
 
 一、首先在虚拟机装入 centos 系统
 
-参考链接
-
-[openGauss——VMware 安装 | C1everF0x's Blog](https://c1everf0x.github.io/2021/04/10/openGauss——VMware安装/)
-
 创建用户
 
 <img src='./img/01/clip_image002.jpg'>

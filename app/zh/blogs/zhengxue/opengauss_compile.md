@@ -546,10 +546,4 @@ gs_install -X clusterconfig.xml
 
 三方库二进制包: https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/binarylibs.tar.gz
 
-OM 安装包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/openGauss-2.0.0-Ubuntu-64bit-all.tar.gz
-
-JDBC 二进制包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/openGauss-2.0.0-JDBC.tar.gz
-
-ODBC 二进制包：https://opengauss-beta.obs.cn-north-4.myhuaweicloud.com/binarylibs/GaussDB-Kernel-V500R001C20-UBUNTU-64bit-Odbc.tar.gz
-
 **_Notice:提供的基于 ubuntu 系统的二进制文件包仅供于学习和使用，不推荐直接用于生产环境_**

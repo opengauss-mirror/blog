@@ -137,7 +137,7 @@ WantedBy=multi-user.target
 
 2.1. 安装包下载
 
-软件下载地址：https://github.com/prometheus/node\_exporter/releases
+软件下载地址：https://github.com/prometheus/node_exporter/releases
 
 下载文件 node_exporter-1.2.2.linux-arm64.tar.gz
 
@@ -210,7 +210,7 @@ prometheus 配置文件 prometheus.yml 增加下面的内容
 
 3.1. 安装包下载
 
-下载地址：https://github.com/enmotech/opengauss\_exporter
+下载地址：https://github.com/prometheus/node_exporter/releases
 
 下载文件 node_exporter-1.2.2.linux-arm64.tar.gz
 

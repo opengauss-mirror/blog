@@ -12,7 +12,7 @@ times: '19:30'
 
 ### 概述
 
-在一些非官方指定的系统上面 (官方指定的系统：https://opengauss.org/zh/docs/latest/docs/Description/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.html), 使用官网提供的镜像安装数据库，有时会遇到一些 `"非法指令" "illegal instruction"` 的问题， 这些往往是由于 CPU 指令集不兼容导致的。
+在一些非官方指定的系统上面, 使用官网提供的镜像安装数据库，有时会遇到一些 `"非法指令" "illegal instruction"` 的问题， 这些往往是由于 CPU 指令集不兼容导致的。
 
 此处我们只说下在 ARM 上面安装失败的问题。
 

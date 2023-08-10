@@ -106,8 +106,7 @@ pid: 1783  tid: 3565
 
 gstrace analyze -f gstrace.log -o analyze.txt
 
-<img src='https://oss-emcsprod-public.modb.pro/image/editor/20211231-51a12427-664d-4add-9289-5053b41956d5.png'><img src='https://www.modb.pro/db/openGauss%E5%8F%AF%E7%94%A8%E5%8A%A8%E6%80%81%E8%B7%9F%E8%B8%AA%E5%B7%A5%E5%85%B7.assets/image-20211209192219550.png'>
-
+<img src='https://oss-emcsprod-public.modb.pro/image/editor/20211231-51a12427-664d-4add-9289-5053b41956d5.png'>
 gstrace detail -f gstrace.log -o detail.txt
 
 ```

@@ -19,7 +19,6 @@ times: '10:20'
 
 # 循序渐进 MogDB：使用 regexp_split_to_table 进行行列转换
 
-本文出处：[https://www.modb.pro/db/431518](https://www.modb.pro/db/431518)
 
 在数据库的数据处理中，进行行列转换是常见的需求。在 MogDB 中，可以通过 regexp_split_to_table 将数据项按照特定字符，切分成数据表形式，便于特定属性的数据提取；类似的 regexp_split_to_array 可以将特定数据转换成数组，从而可以通过数组进行特定偏移量的数据提取。
 

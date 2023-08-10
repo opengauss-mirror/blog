@@ -444,7 +444,7 @@ Run the preceding command based on the core binding configuration and benchmark 
 
   \(1\) Replace the **tableCreats.sql** file.
 
-  Download the **tableCreates.sql** file \(at https://blog.opengauss.org/zh/post/optimize/images/tableCreates.sql\). Use this file to replace the corresponding file in **benchmarksql-5.0/run/sql.common/** of the benchmark SQL.
+  Download the **tableCreates.sql** file. Use this file to replace the corresponding file in **benchmarksql-5.0/run/sql.common/** of the benchmark SQL.
 
   The file is modified as follows:
 

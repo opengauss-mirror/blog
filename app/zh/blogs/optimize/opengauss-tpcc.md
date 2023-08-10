@@ -53,7 +53,7 @@ export PATH=${PATH}:${ANT_HOME}/bin
 
 下载 benchmark
 
-点击 [benchmark 下载](../images/benchmarksql-5.0.zip)或者到（https://sourceforge.net/projects/benchmarksql/）下载benchmark，在linux服务器上解压。
+[点击benchmark 下载](./images/benchmarksql-5.0.zip)，在linux服务器上解压。
 
 **1. 替换 jdbc 驱动 jar 包**
 

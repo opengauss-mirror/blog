@@ -19,8 +19,6 @@ times: '10:20'
 
 # MogDB/openGauss 坏块测试-对启动的影响-测试笔记 1
 
-本文出处：[https://www.modb.pro/db/398511](https://www.modb.pro/db/398511)
-
 在 UPDATE 操作提交后，脏块落盘前 kill 掉 mogdb 数据库，然后对 UPDATE 修改的坏进行以下破坏操作，仍然能够启动数据库，数据未丢失。
 
 1、用旧数据文件替换，可以启动

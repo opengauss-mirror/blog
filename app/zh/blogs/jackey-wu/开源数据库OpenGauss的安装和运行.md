@@ -294,7 +294,7 @@ Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令
    如果成功连接则会显示类似如下的信息。
 
 ```
-gsql ((openGauss x.x.x build 290d125f) compiled at 2021-03-08 02:59:43 commit 2143 last mr 131
+gsql ((openGauss x.x.x build 290d125f) compiled at 2021-03-08 02:59:43 commit 2143 last mr 131)
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.
 ```
@@ -303,5 +303,4 @@ Type "help" for help.
 
 ## References & Thanks
 
-<https://developer.huaweicloud.com/hero/forum.php?mod=viewthread&tid=121436>;
 <https://opengauss.org/zh/docs/2.1.0/docs/installation/installation.html>.

@@ -26,21 +26,13 @@ times: '19:20'
 在 virtualbox.org/wiki/Downloads 上下载 WINDOS
 hosts 版本的安装包并安装（全部下一步默认安装）
 
-<!-- <img src='media/2897e5d2e80f1355a5b12fd9ad7dd511.png'> -->
-
 1.3Centos7.8 镜像下载
 
 在华为开源镜像站下载：<https://mirrors.huaweicloud.com/centos-vault/7.8.2003/isos/x86_64/>
 
-<!-- <img src='media/eb0b6463c550ce32bb7c57be4a305be6.png'> -->
-
 1.4 在 virtualbox 上安装 centos7.8
 
 ① 新建虚拟机：
-
-<!-- <img src='media/350d9e06fecc01aa00cc57781bb16886.png'>
-
-<img src='media/3dd46b4f5f324aa30da2ac3636237dc2.png'> -->
 
 设置虚拟机并安装：
 
@@ -54,13 +46,7 @@ hosts 版本的安装包并安装（全部下一步默认安装）
 
 5.  设置分区、在网络选项中如下设置：enp0s3,、enp0s8 介如下
 
-<!-- <img src='media/61f6f52d9cbf3ff117ca4ff819e3803a.png'>
-
-<img src='media/211c50736b67aca6eee093b295622585.png'> -->
-
 6 软件选择如下：
-
-<!-- <img src='media/c22c65f519cc9e38260e633d20d3a2a1.png'> -->
 
 7 创建用户，设置 root 密码
 
@@ -375,10 +361,6 @@ Type \`help' to learn how to use Xshell prompt.
 ```
 
 过段时间虚拟机重启好后，再次使用 SSH 工具（我用的 PuTTy）从本地电脑通过配置 enp0s3 网卡的 IP 地址（ifconfig 指令）（我是**192.168.56.101**）来连接虚拟机，并使用 ROOT 用户来登录，然后接着以下操作。
-
-<!-- <img src='media/f6a43d559eb5074679405e74158a96f0.png'>
-
-<img src='media/14de59bb91db841057b88f11c2f74f04.png'> -->
 
 先更新下权限。
 

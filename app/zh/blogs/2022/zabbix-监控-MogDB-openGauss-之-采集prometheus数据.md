@@ -21,7 +21,7 @@ times: '12:30'
 
 ## 前言<a name="section175561940132015"></a>
 
-市场上比较的监控方式有两种：zabbix 和 prometheus 架构，对于 MogDB/openGauss 数据库来说，已经通过[grafana + prometheus + opengauss_exporter](https://www.modb.pro/db/173483)的方式完成了监控部署，如何通过 zabbix 完成对 MogDB/openGauss 数据库完成监控呢，通过 zabbix 官网我们知道从 zabbix 4.2 版本开始支持了 Prometheus 数据源,那本篇文章先实现通过 zabbix 采集 prometheus 数据，zabbix 底层的数据存储采用 MogDB 数据库。
+市场上比较的监控方式有两种：zabbix 和 prometheus 架构，对于 MogDB/openGauss 数据库来说，已经通过grafana + prometheus + opengauss_exporter的方式完成了监控部署，如何通过 zabbix 完成对 MogDB/openGauss 数据库完成监控呢，通过 zabbix 官网我们知道从 zabbix 4.2 版本开始支持了 Prometheus 数据源,那本篇文章先实现通过 zabbix 采集 prometheus 数据，zabbix 底层的数据存储采用 MogDB 数据库。
 
 ## 软件信息<a name="section1230142917243"></a>
 

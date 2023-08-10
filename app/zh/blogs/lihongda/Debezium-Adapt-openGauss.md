@@ -77,13 +77,11 @@ Debezium connectors capture data changes with a range of related capabilities an
 
 openGauss 为开源数据库 PG for 9.2.4 基础上 deconding,wal2json 为 PG 的日志解析插件，将 wal 日志解析成 dml 语句以 json 的形式输出。云和恩墨基于 wal2json for pg 将该插件适配 openGauss 即 wal2json for openGauss.
 
-- [wal2json 下载地址](http://www.lihongda.club/wp-content/uploads/2020/12/wal2json.so)
-
+- wal2json
 ## openGauss install wal2json<a name="section53491246709"></a>
 
 关于 openGauss 的安装可参考
 
-- [一键安装](http://www.lihongda.club/index.php/2020/12/01/opengauss%e4%bb%8e%e6%ba%90%e7%a0%81%e5%88%b0%e8%87%aa%e5%8a%a8%e5%8c%96/)
 - [容器安装](https://github.com/enmotech/enmotech-docker-opengauss)
 
 **修改参数 wal_level,添加 hba**
@@ -248,7 +246,7 @@ postgres=>
 
 **替换 jar 文件**
 
-- [debezium-connector-postgres-1.4.0-SNAPSHOT.jar](http://www.lihongda.club/wp-content/uploads/2020/12/debezium-connector-postgres-1.4.0-SNAPSHOT.jar)
+- debezium-connector-postgres-1.4.0-SNAPSHOT.jar
 - [postgres.jar](https://opengauss.obs.cn-south-1.myhuaweicloud.com/1.0.1/x86/openGauss-1.0.1-JDBC.tar.gz)
 
 ```
@@ -471,11 +469,8 @@ Removing tutorial_opengauss_1 ... done
 Removing network tutorial_default
 ```
 
-- 原文链接：[http://www.lihongda.club/index.php/2020/12/07/debezium-adapt-opengauss/](http://www.lihongda.club/index.php/2020/12/07/debezium-adapt-opengauss/)
 - debezium 官网：[https://debezium.io/](https://debezium.io/)
 - debezium github：[https://github.com/debezium](https://github.com/debezium)
-- wal2json 下载地址：[http://www.lihongda.club/wp-content/uploads/2020/12/wal2json.so](http://www.lihongda.club/wp-content/uploads/2020/12/wal2json.so)
-- 一键安装：[http://www.lihongda.club/index.php/2020/12/01/opengauss%e4%bb%8e%e6%ba%90%e7%a0%81%e5%88%b0%e8%87%aa%e5%8a%a8%e5%8c%96/](http://www.lihongda.club/index.php/2020/12/01/opengauss%e4%bb%8e%e6%ba%90%e7%a0%81%e5%88%b0%e8%87%aa%e5%8a%a8%e5%8c%96/)
 - 容器安装：[https://github.com/enmotech/enmotech-docker-opengauss](https://github.com/enmotech/enmotech-docker-opengauss)
-- connect 组件 debezium-connector-postgres-1.4.0-SNAPSHOT.jar：[http://www.lihongda.club/wp-content/uploads/2020/12/debezium-connector-postgres-1.4.0-SNAPSHOT.jar](http://www.lihongda.club/wp-content/uploads/2020/12/debezium-connector-postgres-1.4.0-SNAPSHOT.jar)
+- connect 组件 debezium-connector-postgres-1.4.0-SNAPSHOT.jar
 - connect 组件 postgres.jar：[https://opengauss.obs.cn-south-1.myhuaweicloud.com/1.0.1/x86/openGauss-1.0.1-JDBC.tar.gz](https://opengauss.obs.cn-south-1.myhuaweicloud.com/1.0.1/x86/openGauss-1.0.1-JDBC.tar.gz)
