@@ -3,74 +3,90 @@ title: 'Guidance to Post a Blog'
 category: 'blog'
 ---
 
-## Preparation
+## 介绍
 
-1. Refer to <a href="https://gitee.com/help/articles/4113" target="_blank">https://gitee.com/help/articles/4113</a> to register Gitee account.
+**自 2023 年 07 月起，v2 分支 替代 master，作为 openGauss 官方博客仓库。**
 
-2. Set your primary mail box in gitee settings <a href="https://gitee.com/profile/emails" target="_blank">https://gitee.com/profile/emails</a>.
+## 准备
 
-3. Sign your CLA in <https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZ2F1c3M=>.
+1. 参考 <http://git.mydoc.io/?t=179267> 注册 Gitee 账号。
 
-4. Prepare your git environment refering to <a href="https://gitee.com/help/articles/4107" target="_blank">https://gitee.com/help/articles/4107</a>.
+2. 在 Gitee 个人设置中设置主邮箱地址，在此 <https://gitee.com/profile/emails>。
 
-## Understand blog format
+3. 签署贡献者协议，<https://www.opengauss.org/zh/contribution/>。
 
-The blog is written in markdown format.
-You can read <https://gitee.com/opengauss/blog/blob/master/content/zh/design/content_posts.md> to get understand how the blog is designed.
+4. 参考 <http://git.mydoc.io/?t=180692> 准备你的 git 环境。
 
-The head includes the following information:
+## 理解博客格式
+
+openGauss 是用 markdown 格式写博客的。
+
+文件头需要包含如下信息：
 
 ```
 ---
-title : "Sample Post"
-date : "2020-03-03"
-category: "blog"
-tags : ["Sample", "ABC", "cccc"]
-archives : "2020-03"
-author : "Blog Maintainer"
-summary : "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+title: "Sample Post"
+date: '2020-03-03'
+category: 'blog'
+tags: ['openGauss']
+archives: '2020-03'
+author:'openGaussBlog Maintainer'
+summary: "Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more."
 ---
 
 Here you can edit your blog.
 ```
 
-Tips: you can copy content/\_example/2020-03-03-sample-post.md to your folder and edit it.
+小提示：你可以复制 [https://gitee.com/opengauss/website/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md](https://gitee.com/opengauss/website/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md) 到你的工作路径下然后继续编辑。
 
-## Post your blog
+### 关于格式
 
-The blog posting follows the pull request of <a href="https://gitee.com" target="_blank">Gitee</a>.
+**站点使用了 vitepress 框架提供了更好的 SEO，及更快的加载速度,但也有更严格的打包规则，以下规则非常重要我们建议你花几分钟阅读：**
 
-1. Fork the blog project <https://gitee.com/opengauss/blog> to your own gitee. Refer to <https://gitee.com/help/articles/4122> for detailed guidance.
+- md 文件的文件名中禁止包含 **+** 号。
+- 图片命名禁止 **空格 、且大小写敏感**，建议统一使用小写命名加中划线连接。如 blog-example.png。
+- `<font> </font> <center> </center>` 属于已弃用标签，vitepress 将不再支持，如有需要可以使用 `<div style="align:center"></div>`;。
+- md 中如需使用 HTML 标签，该标签需要闭合，如`<div> </div>`。
+- 暂不支持 c++ 语言代码块，如果你有 c++代码需要展示，请不要指定代码块语言，而是采用默认语言。
+- 如果您的博客中包含代码、文件路径、键名、命令请使用代码块将其包裹。
 
-2. Clone the code to your local environment.
+## 提交博客
+
+博客的提交利用了 Gitee 的 PR(Pull Request)。
+
+1. Fork openGauss 博客项目 <https://gitee.com/opengauss/blog/tree/v2> 到你自己的 Gitee 上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
+
+2. Clone 代码
 
 ```
-git clone https://gitee.com/<your-gitee-id>/blog
+git clone https://gitee.com/<your-gitee-id>/openGauss-blog
 ```
 
-4. Create a branch
+3. 创建分支
 
 ```
 git checkout -b <branch-name>
 ```
 
-5. Create a folder in the blog floder
+4. 创建工作路径
+
+如果你发表中文博客，工作路径是 `app/zh/blogs` 。
+假设你要写一个中文博客：
 
 ```
-cd content\post
+cd app/zh/blogs
 mkdir <your-gitee-id>
 cd <your-gitee-id>
 touch YEAR-MONTH-DAY-title.md
 ```
 
-And You can put the resources in the same folder as your text file's, and name the resources as
+你可以以你的 md 文档名来命名你的资源文件，方便使用。例如：
 
 ```
 YEAR-MONTH-DAY-title-NN.MARKUP
 ```
 
-Where the YEAR, MONTH, DAY, and title are the same as your blog file, and NN is the serial number of the pictures, like 01, 02 and so on. The MARKUP is the file extension, and for pictures it is recommended to use png.
-The following are one example.
+其中，YEAR, MONTH, DAY, 和 title 和你的博客 md 文件名一致。NN 是 01、02、03 这样的序号。MARKUP 文件扩展名。如下例子：
 
 ```
 2020-01-01-new-years-is-coming.md
@@ -79,7 +95,13 @@ The following are one example.
 2020-01-01-new-years-is-coming-03.pdf
 ```
 
-6. Commit your post
+使用 HTML \<img\> 标签嵌入图片， 但你的图片资源需要放入当前目录下（即 your-gitee-id 目录下），输入图片名称作为 src 值：
+
+```
+<img src = "./2020-01-01-new-years-is-coming-01.png">
+```
+
+1. Commit 你的博客
 
 ```
 git add <file-path>
@@ -87,6 +109,6 @@ git commit -m "<message>"
 git push origin <branch-name>:<branch-name>
 ```
 
-7. Refer to <a href="https://gitee.com/help/articles/4122" target="_blank">https://gitee.com/help/articles/4122</a>to submit your Pull Request
+2. 参考 <http://git.mydoc.io/?t=153749> 提交你的 PR
 
-8. Wait for reviewing and merging.
+3. 等待评审和合入。
