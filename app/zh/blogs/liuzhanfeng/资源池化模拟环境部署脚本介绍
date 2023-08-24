@@ -1,0 +1,88 @@
+---
+title: '资源池化模拟环境部署脚本'
+date: '2023-07-27'
+category: 'blog'
+tags: ['openGauss使用增强']
+archives: '2023-07'
+author: 'liuzhanfeng'
+summary: 'openGauss资源池化开发者入门指南'
+img: ''
+times: '20:37'
+---
+
+# openGauss 资源池化模拟环境部署脚本
+
+### 一、内容简介
+
+参照博客 openGauss资源池化开发者入门指南（二）编写资源池化模拟环境部署脚本，简化操作流程，完成一主一备资源池化模拟环境部署
+
+### 二、准备条件
+
+1. 完成openGauss编译版debug版本安装 
+2. 检查主机内存是否足够，内存不足会导致部署失败
+
+### 三、安装步骤
+
+1.通过git安装CBB/DSS/DMS最新版本代码，下载目录与脚本当前目录相同
+
+2.编译安装三方库中CBB代码
+
+```shell
+cd xxxx/CBB/build/linux/openGauss
+#-3rd后面跟三方库对应的绝对路径
+sh build.sh -3rd /xxx/.../binarylibs -t cmake -m Debug
+```
+
+3.在openGauss-server目录下，查看src/gausskernel/ddes/ddes_commit_id文件，记录DSS/DMS需要回退的版本。
+
+4.进入DSS目录下，回退DSS版本后，编译替换三方库中的DSS
+
+```shell
+cd xxxx/DSS
+git reset --hard xxxxxxxxxxxxx
+cd build/linux/openGauss
+#-3rd后面跟三方库对应的绝对路径
+sh build.sh -3rd /xxx/.../binarylibs -t cmake -m DebugDsstest
+```
+
+5.进入到DMS目录下，回退DMS版本后，编译替换三方库中的DMS
+
+```shell
+cd xxxx/DMS
+git reset --hard xxxxxxxxxxxxx
+cd build/linux/openGauss
+#-3rd后面跟三方库对应的绝对路径
+sh build.sh -3rd /xxx/.../binarylibs -t cmake -m Debug
+```
+
+6.进入到openGauss-server目录下，重新编译
+
+```shell
+sh build.sh -3rd /xxx/.../binarylibs -m debug
+```
+
+7.切换目录，执行资源池化环境部署脚本
+
+```shell
+sh build.sh -w Huawei@123  #密码，长度至少8为，包含三种不同类型字符
+```
+
+8.脚本流程简单介绍
+
+检查输入密码，是否符合格式要求
+检查默认端口值是否被占用，若被占用则自动修改端口值
+检查是否回退DSS/DMS版本
+导入环境变量
+dd命令创建块设备，写入配置文件
+创建卷组
+启动dssserver
+初始化节点
+
+9.注意事项
+
+确保内存足够，否则会导致dss server启动失败,出现dssserver启动失败问题，可查看日志判断出错原因。
+脚本中部分参数是默认值，执行成功后再次执行会造成冲突，如需多次执行，请自行修改，如dssserver配置中INST_ID，并且每次执行会删除之前创建节点目录。
+每次部署时，会删除档期那目录下./data目录与./dss目录,请确保当前目录下无这两个目录
+若脚本出现多次执行报错，请参考博客 openGauss资源池化开发者入门指南（二）自行修改脚本或手动安装
+将openGauss-server目录/三方库目录/CBB/DSS/DMS 目录放在同一目录中
+环境变量在./env中，如需要可自行导入到.bashrc中
