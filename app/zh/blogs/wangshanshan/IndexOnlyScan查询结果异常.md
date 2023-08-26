@@ -1,14 +1,14 @@
-+++
-title = "一次线上查询结果问题分析诊断：Index Only Scan查询结果异常"
-date = "2023-08-25"
-tags = ["openGauss社区开发入门"]
-archives = "2023-08"
-author = "wangshanshan"
-summary = "一次线上查询结果问题分析诊断：Index Only Scan查询结果异常"
-img = "/zh/post/wangshanshan/title/img.png"
-times = "10:30"
-
-+++
+---
+title: '一次线上查询结果问题分析诊断：Index Only Scan查询结果异常'
+date: '2023-08-25'
+category: 'blog'
+tags: ['openGauss社区开发入门']
+archives: '2023-08'
+author: 'wangshanshan'
+summary: '一次线上查询结果问题分析诊断：Index Only Scan查询结果异常'
+img: ''
+times: '10:30'
+---
 中国移动磐维数据是基于openGauss定制开发的中国移动自用版OLTP数据库。自去年12月发布以来，受到广泛关注，目前已成功上线百余套。
 在产品落地的过程中，我们积累了大量的迁移、适配，以及问题分析诊断的经验。
 本文分享我们在用户环境发现的一个数据查询结果异常问题的分析诊断过程。
