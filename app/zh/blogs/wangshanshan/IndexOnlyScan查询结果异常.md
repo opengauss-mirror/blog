@@ -21,13 +21,13 @@ times: '10:30'
 ### 现象描述 
 查询表记录数，通过表扫描（Seq Scan）和纯索引扫描（Index Only Scan），查询结果不一致，如下图所示：
 
-![img_1.png](/zh/post/wangshanshan/images/img_1.png)
+![img_1.png](./images/img_1.png)
 ## **【2. 场景分析】**
 1. 表上定义有btree索引。
 2. 表上有较高并发的写，更新表和索引。
 3. 对表进行vacuum freeze后索引数据不一致问题恢复，但有warning报错，如下图所示：
 
-![img_2.png](/zh/post/wangshanshan/images/img_2.png)
+![img_2.png](./images/img_2.png)
 ## **【3. 问题复现】**
 ### 复现思路
 1. 采用用户环境相同的数据库配置。
@@ -66,18 +66,18 @@ times: '10:30'
     7. 在主从节点查询count(*)，可以看到主从节点查询结果出现差异
     select count(*) from wss_test.t_m_resource_monitor_test2;
     explain analyze select count(*) from wss_test.t_m_resource_monitor_test2;
-[insert.java](/zh/post/wangshanshan/files/insert.java)
+[insert.java](./files/insert.java)
 
-[update_dup.java](/zh/post/wangshanshan/files/update_dup.java)
+[update_dup.java](./files/update_dup.java)
 
-[update_diff.java](/zh/post/wangshanshan/files/update_diff.java)
+[update_diff.java](./files/update_diff.java)
 ### 复现结果
 #### 主节点
 
-![img_3.png](/zh/post/wangshanshan/images/img_3.png)
+![img_3.png](./images/img_3.png)
 #### 备节点
 
-![img_4.png](/zh/post/wangshanshan/images/img_4.png)
+![img_4.png](./images/img_4.png)
 ### 复现说明
 1. 复现过程中发现，主节点查询结果始终正确，仅备节点查询结果出现不一致。
 2. 仅在PanWeiDB 1.0.0（基于opengauss v3.0.1）复现，PanWeiDB 2.0.0（基于opengauss v5.0.0）未复现。
@@ -87,12 +87,12 @@ times: '10:30'
 即是否应该包含在结果集当中，因此怀疑VM文件的数据页可见性标志位是否准确。
 1. 查询数据表和索引的filepath。
 
-![img_5.png](/zh/post/wangshanshan/images/img_5.png)
+![img_5.png](./images/img_5.png)
 2. 用pagehack工具打印数据表，查看数据页标志位，发现主备节点有PD_ALL_VISIBLE标志的数据页均为42个。
 
 ```./pagehack -f /data/pwdb/data/base/24597/50856 -t heap -v```
 
-![img_6.png](/zh/post/wangshanshan/images/img_6.png)
+![img_6.png](./images/img_6.png)
 3. 用pagehack工具用十六进制的方式打印VM文件，查看数据页可见性标志位，发现主节点为42个完全可见页，备节点有72个。
 
 ## **【5. 代码分析】**
@@ -100,20 +100,20 @@ times: '10:30'
 因此怀疑备节点VM文件的数据页可见性标志位修改（清理）逻辑是否有问题。
 1. 相关的VM修改接口如下图所示：
 
-![img_7.png](/zh/post/wangshanshan/images/img_7.png)
+![img_7.png](./images/img_7.png)
 
-![img_8.png](/zh/post/wangshanshan/images/img_8.png)
+![img_8.png](./images/img_8.png)
 2. 由于复现过程中仅涉及insert、update两类操作，因此主要排查这两类xlog日志回放逻辑，
 其中clear清除接口在备节点回放insert、update xlog日志时都会被调用。
 
-![img_10.png](/zh/post/wangshanshan/images/img_10.png)
+![img_10.png](./images/img_10.png)
 3. 回放update时，会从update xlog日志头位置添加两个偏移量，分别是sizeof(TransactionId)和sizeof(CommitSeqNo)，
 然后读取日志的标志位，根据标志位判断是否修改VM文件，清理数据页可见性标志位，如下图所示：
 
-![img_12.png](/zh/post/wangshanshan/images/img_12.png)
+![img_12.png](./images/img_12.png)
 4. 然而在写update xlog日志时，CommitSeqNo字段写入位置是在日志数据的尾部，如下图所示：
 
-![img.png](/zh/post/wangshanshan/images/img.png)
+![img.png](./images/img.png)
 
 经排查发现，由于PanWeiDB 1.0.0（基于opengauss v3.0.1）在实现并行逻辑解码功能时，
 在执行DML操作时会在xlog的末尾追加写入CommitSeqNo（CSN），备节点回放xlog时读取，用于逻辑解码。
