@@ -1,0 +1,474 @@
+---
+title: "使用Ora2Pg迁移oracle数据到opengauss"
+date: '2023-07-31'
+category: 'blog'
+tags: ['openGauss']
+archives: '2023-07'
+author:'openGaussBlog Maintainer'
+summary: ""
+---
+
+
+
+
+下载说明：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Perl DBD： http://search.CPAN.org     #只需在搜索输入框中输入模块的全名（例如：DBD::Oracle、DBD::Pg）
+Ora2Pg：https://ora2pg.darold.net/start.html
+
+
+在Windows下，应该安装Strawberry Perl（http://strawberryperl.com）和操作系统对应的Oracle客户机。
+在Windows上从CPAN编译DBD::Oracle似乎是一件很困难的事情，而且关于这方面的文档很少（大部分都过时了，不能工作）。
+安装ActiveState Perl的免费版本（http://www.ActiveState.com/activeperl）可能会有所帮助，因为它们似乎已经打包好了DBD:：Oracle，易于安装。
+
+
+必须在系统上安装 Oracle Instant Client 或完整的 Oracle 安装。您可以从 Oracle 下载中心下载 RPM：
+    rpm -ivh oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
+    rpm -ivh oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
+    rpm -ivh oracle-instantclient12.2-jdbc-12.2.0.1.0-1.x86_64.rpm
+    rpm -ivh oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm
+或者只需从 Oracle 下载中心下载相应的 ZIP 存档并将它们安装在您想要的位置，例如：/opt/oracle/instantclient_12_2/
+
+
+需要一个现代的Perl发行版（perl 5.10及更高版本）。要连接到数据库并继续迁移，您需要 DBI Perl 模块> 1.614。
+要迁移 Oracle 数据库，您需要安装 DBD::Oracle Perl 模块。
+要迁移MySQL数据库，您需要DBD::MySQL Perl模块。
+这些模块用于连接到数据库，但如果要迁移 DDL 输入文件，则它们不是必需的。
+
+
+默认情况下，Ora2Pg 将导出转储到平面文件，要将它们加载到 PostgreSQL 数据库中，您需要 PostgreSQL 客户端(plsql)。
+如果在运行 Ora2Pg 的主机上没有该文件，则始终可以将这些文件传输到安装了 psql 客户端的主机上。
+如果你更喜欢“动态”加载导出，则需要perl模块DBD：:Pg。
+Ora2Pg 允许您将所有输出转储到压缩的 gzip 文件中，为此您需要 Compress::Zlib Perl 模块。
+如果您更喜欢使用 bzip2 压缩，则程序 bzip2 必须在您的 PATH 中可用。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+安装说明：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+执行以下命令安装：
+```bash
+yum -y install perl perl-CPAN gcc perf cpan
+```
+
+安装ora2pg:
+```bash
+tar xjf ora2pg-x.x.tar.bz2
+cd ora2pg-x.x/
+perl Makefile.PL
+make && make install
+```
+
+PS：这将把Ora2Pg.pm安装到站点Perl存储库中，Ora2Pg安装到/usr/local/bin/中，Ora2Pg.conf安装到/etc/Ora2Pg/中。
+
+
+安装ora2pg到其他目录:
+```bash
+tar xjf ora2pg-x.x.tar.bz2
+cd ora2pg-x.x/
+perl Makefile.PL PREFIX=<your_install_dir>
+make && make install
+export PERL5LIB=<your_install_dir>
+ora2pg -c config/ora2pg.conf -t TABLE -b outdir/
+```
+
+安装DBD::Oracle:
+-------------------------------
+将ORACLE_HOME和LD_LIBRARY_PATH环境变量设置为 root 用户后，安装 DBD::Oracle
+进入：http://search.CPAN.org/  搜索DBD::Oracle，下载；
+
+修改root用户的环境变量:
+```bash
+vi .bash_profile
+export LD_LIBRARY_PATH=/oracle/app/oracle/product/11.2.0/db_1/lib
+export ORACLE_HOME=/oracle/app/oracle/product/11.2.0/db_1
+export PATH=/oracle/app/oracle/product/11.2.0/db_1/bin:$PATH
+
+source /root/.bash_profile
+tar -zxvf DBD-Oracle-1.80.tar.gz
+
+cd DBD-Oracle-1.80
+perl Makefile.PL
+make
+make install
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+错误信息：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1、错误提示：
+-------------------------------
+[root@luozhonghua FCGI-0.71]# perl Makefile.PL
+
+can't locate ExtUtils/MakeMaker.pm in @INC (@INC contains: /usr/local/lib/perl5 /usr/local/share/perl5 
+/usr/lib/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5 /usr/share/perl5 .) at Makefile.PL line 3.
+BEGIN failed--compilation aborted at Makefile.PL line 3.
+
+解决方法：
+-------------------------------
+这句显示ExtUtils/MakeMaker.pm没有安装，
+执行以下命令安装：
+yum -y install perl perl-CPAN gcc
+
+2、错误提示：
+-------------------------------
+[root@oracle DBD-Oracle-1.80]# perl Makefile.PL 
+Can't locate DBI.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl
+5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) 
+at Makefile.PL line 20.BEGIN failed--compilation aborted at Makefile.PL line 20.
+
+解决方法：
+-------------------------------
+安装DBI-1.643   进入：http://search.CPAN.org/  搜索dbi，下载；
+tar -zxvf DBI-1.643.tar.gz
+cd DBI-1.643
+perl Makefile.PL
+make && make install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+生成迁移模板:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
+ora2pg --project_base /ora2pg --init_project test_project
+-------------------------------
+Creating project test_project.
+        /app/migration/test_project/
+                schema/
+                        dblinks/
+                        directories/
+                        functions/
+                        grants/
+                        mviews/
+                        packages/
+                        partitions/
+                        procedures/
+                        sequences/
+                        synonyms/
+                        tables/
+                        tablespaces/
+                        triggers/
+                        types/
+                        views/
+                sources/
+                        functions/
+                        mviews/
+                        packages/
+                        partitions/
+                        procedures/
+                        triggers/
+                        types/
+                        views/
+                data/
+                config/
+                reports/
+        Generating generic configuration file
+        Creating script export_schema.sh to automate all exports.
+        Creating script import_all.sh to automate all imports.
+
+示例生成了一个通用的配置文件，只需要在其中指定 Oracle 数据库连接信息；
+同时还生成了一个脚本文件 export_schema.sh。
+目录 sources/ 包含 Oracle 代码
+目录 schema/ 包含移植到 PostgreSQL 的代码
+目录 reports/  包含带有迁移成本评估的 html 报告
+
+如果要使用自己的默认配置文件，请使用-c选项指定该文件的路径。
+
+设置与 Oracle 数据库的连接后，可以执行脚本export_schema.sh 该脚本将从 Oracle 数据库导出所有对象类型，并将 DDL 文件输出到架构的子目录中。
+在导出结束时，它将在稍后完成并验证架构导入时为您提供导出数据的命令。
+您可以选择加载手动生成的 DDL 文件，也可以使用第二个脚本import_all.sh以交互方式导入这些文件。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+通过更新oracle上的统计信息，可能提高性能：
+```sql
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+BEGIN
+        DBMS_STATS.GATHER_SCHEMA_STATS
+        DBMS_STATS.GATHER_DATABASE_STATS 
+        DBMS_STATS.GATHER_DICTIONARY_STATS
+END;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+
+修改ora2pg.conf参考:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ORACLE_HOME	/u02/app/oracle/product/11.2.4/db1
+ORACLE_DSN	 dbi:Oracle:host=192.168.56.2;sid=orcl;port=1521;
+ORACLE_USER	system
+ORACLE_PWD	 system_123456
+SCHEMA         liuzitao      #需要导出的业务用户名称
+USER_GRANTS    0			 #ORACLE_USER 有DBA权限设置为0，否则1
+DEBUG		  0
+ORA_INITIAL_COMMAND
+EXPORT_SCHEMA	0
+CREATE_SCHEMA	1
+COMPILE_SCHEMA   0
+TYPE		     TABLE
+OUTPUT		   output.sql
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+ORACLE相关参数：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ORACLE_HOME
+	用于将环境变量设置为DBD：：Oracle Perl模块所需的Oracle库ORACLE_HOME。
+-------------------------------
+ORACLE_DSN
+	此指令用于以标准 DBI DSN 的形式设置数据源名称。例如：
+        dbi:Oracle:host=oradb_host.myhost.com;sid=DB_SID;port=1521或
+        dbi:Oracle:DB_SID 在 18c 上，例如：
+        dbi:Oracle:host=192.168.1.29;service_name=pdb1;port=1521
+	对于第二种表示法，SID 应在已知文件 $ORACLE_HOME/network/admin/tnsnames.ora 或提供给 TNS_ADMIN 环境变量的路径中声明。
+	对于MySQL，DSN将像这样运行：
+        dbi:mysql:host=192.168.1.10;database=sakila;port=3306   "SID"部分替换为"数据库"。
+-------------------------------
+ORACLE_USER and ORACLE_PWD
+	这两个指令用于定义 Oracle 数据库连接的用户和密码。请注意，最好以 Oracle 超级管理员身份登录，以避免在数据库扫描期间出现授权问题，并确保没有遗漏任何内容。
+	如果您没有提供带有ORACLE_PWD的凭据，并且您已经安装了 Term：：ReadKey Perl 模块，Ora2Pg 将以交互方式询问密码。如果未设置ORACLE_USER，也会以交互方式询问。
+	要连接到具有“sysdba”连接的本地 ORACLE 实例，您必须将ORACLE_USER设置为 "/" 并设置空密码。
+-------------------------------
+USER_GRANTS
+	如果以简单用户身份连接 Oracle 数据库并且没有足够的授权从 "DBA_" 中提取内容，请将此指令设置为 1。它将使用表 "ALL_" 相反。
+	警告：如果使用导出类型 GRANT，则必须将此配置选项设置为 0，否则它将不起作用。
+-------------------------------
+TRANSACTION
+	该选项用于修改数据导出事务的默认隔离级别。现在默认的设置是序列化事务隔离级别，用于保证导出数据的一致性。以下是一些支持的设置：
+		readonly: 'SET TRANSACTION READ ONLY',
+		readwrite: 'SET TRANSACTION READ WRITE',
+		serializable: 'SET TRANSACTION ISOLATION LEVEL SERIALIZABLE'
+		committed: 'SET TRANSACTION ISOLATION LEVEL READ COMMITTED',
+	6.2 版本之前的默认隔离级别为 READ ONLY，但是这种设置在某些情况下会破坏数据一致性，因此现在的默认设置为SERIALIZABLE。
+-------------------------------
+INPUT_FILE
+	该参数不是用于设置 Oracle 数据库连接，它指定了一个输入文件，并且禁用了 Oracle 数据库连接。
+	将该参数设置为一个包含了 Oracle PL/SQL 代码（例如函数、过程或者包）的文件，可以阻止 Ora2Pg 连接 Oracle 数据库，
+	而是从该文件 and just apply his conversion tool to the content of the file. 
+	该选项可以用于大部分的导出类型：TABLE、TRIGGER、PROCEDURE、VIEW、FUNCTION 或者 PACKAGE等。
+-------------------------------
+ORA_INITIAL_COMMAND
+	该选项用于建立 Oracle 数据库连接后，执行一个初始化命令。例如在读取对象信息之前关闭访问限制策略，或者设置某些会话参数。该选项支持多次设置。
+-------------------------------
+LOGFILE
+	默认情况下，所有的消息都会发送到标准输出。如果为该选项指定一个文件路径，所有的输出信息将会追加到该文件中。
+-------------------------------
+ORACLE_COPIES
+	此配置指令增加了多进程支持，以从 Oracle 提取数据。该值是用于并行化选择查询的进程数。默认值为禁用并行查询。
+	并行性建立在将作为值给出的内核数的查询拆分为ORACLE_COPIES，如下所示：
+		SELECT * FROM MYTABLE WHERE ABS(MOD(COLUMN, ORACLE_COPIES)) = CUR_PROC
+	其中 COLUMN 是一个技术键，类似于主键或唯一键，其中拆分将基于该键以及查询使用的当前核心 （CUR_PROC）。
+	在Windows操作系统下不起作用，它只是被禁用。
+-------------------------------
+DEFINED_PK
+	此指令用于定义技术密钥，用于在使用ORACLE_COPIES变量设置的内核数之间拆分查询。例如：
+        DEFINED_PK      EMPLOYEES:employee_id
+	假设 -J 或 ORACLE_COPIES 设置为 8 将使用的并行查询：
+        SELECT * FROM EMPLOYEES WHERE ABS(MOD(employee_id, 8)) = N
+	其中 N 是从 0 开始分叉的当前进程。
+-------------------------------
+PARALLEL_TABLES
+	此指令用于定义将并行处理以进行数据提取的表数。限制是计算机上的核心数。
+	Ora2Pg 将为每个并行表提取打开一个数据库连接。
+	当此指令大于 1 时，将使 ORACLE_COPIES 无效，但不会使 JOBS 无效，因此将使用的实际进程数为 PARALLEL_TABLES * JOBS。
+	请注意，如果要导出到文件，此指令在设置为 1 以上时也将自动启用 FILE_PER_TABLE 指令。这用于将表和视图导出到单独的文件中。
+-------------------------------
+DEFAULT_PARALLELISM_DEGREE
+	您可以通过为此指令设置一个大于 2 的值，强制 Ora1Pg 在用于从 Oracle 导出数据的每个查询中使用 /*+ PARALLEL（tbname， degree） */ 提示。
+	值为 0 或 1 将禁用并行提示。默认值已禁用。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Oracle 数据加密传输：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+如果 Oracle 客户端配置了加密连接，DBD:Oracle 也会使用该加密方式进行连接和数据传输。
+例如，将以下内容添加到 Oracle 客户端配置文件（sqlnet.ora 或 .sqlnet）：
+
+cat sqlnet.ora
+-------------------------------
+# Configure encryption of connections to Oracle
+SQLNET.ENCRYPTION_CLIENT = required
+SQLNET.ENCRYPTION_TYPES_CLIENT = (AES256, RC4_256)
+SQLNET.CRYPTO_SEED = 'should be 10-70 random characters'
+
+如果设置了上述加密传输，任何使用 Oracle 客户端连接到数据库的工具都会使用这种加密方式。
+
+例如，Perl 的 DBI 模块通过DBD-Oracle 连接 Oracle 数据库，后者使用 Oracle 客户端连接数据库。
+如果 Oracle 客户端配置了加密连接，Perl 同样使用加密的方式连接 Oracle 数据库。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+ORACLE相关参数：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ORACLE_HOME 	/u01/app/oracle/product/11.2.0/
+ORACLE_DSN 	 dbi:Oracle:host=oracleIP;sid=orcl;port=1521
+ORACLE_USER 	customerchat // 这里用的oracle普通用户和密码
+ORACLE_PWD 	 XXXXX
+SCHEMA 	 	customerchat //一般和用户名一样
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+openGauss相关参数：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PG_DSN 		 dbi:Pg:dbname=mydb;host=localhost;port=5432
+PG_USER 		tuser
+PG_PWD 		 自己定义的密码
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+工具自身参数：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DATA_LIMIT 	 默认是10000，如果oracle服务器内存较小，比如4G以下，可以修改为2500或5000,否则可能会报内存不足。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+连接测试：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+设置好 Oracle 数据库的 DSN 之后，可以执行以下命令测试数据库的连接：
+-------------------------------
+ora2pg -t SHOW_VERSION -c config/ora2pg.conf
+-------------------------------
+以上命令将会显示 Oracle 数据库的版本。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+测试迁移：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+修改 export_schema.sh 中导出类型 EXPORT_TYPE 和 SOURCE_TYPE ，本次迁移导出 TABLE 。
+-------------------------------
+sh export_schema.sh
+-------------------------------
+执行完成后 在schema/tables生成 table.sql ，里面是建表脚本。reports/目录下生成的report报告report.html
+
+
+导出COPY数据：
+```bash
+ora2pg -t COPY -o data.sql -b ./data -c ./config/ora2pg.conf
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+导入：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+为了使用openGauss命令行工具gsql，需要将数据库的bin和lib加在操作系统的环境变量PATH和LD_LIBRARY_PATH中。
+-------------------------------
+将 import_all.sh 里的 psql 修改为 gsql
+-------------------------------
+
+
+执行导入脚本，表示使用用户tuser登录openGauss中mydb的数据库，ip和端口，-f选项表示跳过用户和数据库是否需要创建的检查。
+```bash
+sh import_all.sh -d mydb -o tuser -h openGaussIP -p 5432 -f
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ora2pg只导入元数据：
+```bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./import_all.sh -a -d liuzitao -o liuzitao -p 5432
+./import_all.sh -a -d liuzitao -h 127.0.0.1 -o linl -n linl -p 5432
+./import_all.sh -a -h 127.0.0.1 -d liuzitao -o linl -p 5432
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+
+错误信息：
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.报错：Path to pg_config? /opt/software/openGauss/bin/pg_config/opt/software/openGauss/bin/pg_config:
+	 error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory 
+环境自带的是1.0.2，得升级libssl.so。
+
+openssl version -a
+-------------------------------
+OpenSSL 1.0.2k-fips  26 Jan 2017
+yum remove openssl
+
+获取新的版本并安装：
+-------------------------------
+wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz
+tar -zxvf openssl-1.1.1c.tar.gz
+cd openssl-1.1.1c
+./config --prefix=/usr/local/openssl   #如果此步骤报错,需要安装perl以及gcc包
+make && make install
+-------------------------------
+ln -s /usr/local/openssl/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1
+ln -s /usr/local/openssl/lib/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
+ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
+ln -s /usr/local/openssl/include/openssl /usr/include/openssl
+echo "/usr/local/openssl/lib" >> /etc/ld.so.conf
+ldconfig -v
+
+sudo  yum install postgresql-devel
+
+再重新执行  perl -MCPAN -e 'install DBD::Pg'
+
+
+-------------------------------
+2、perl 报错 Can’t locate JSON.pm in @INC
+解决：
+sudo perl -MCPAN -e 'install JSON'
+
+-------------------------------
+3、执行sh import_all.sh -d mydb -o tuser -h IP -p 5432 -f 提示Out of memory , 但是top显示还有1G多。
+解决办法：
+Opened ./config/ora2pg.conf and modfied set DATA_LIMIT 5000 or 2500 solved the issue.
+
+-------------------------------
+4、报错：DBD::Pg::db do failed: ERROR: permission denied for relation xxx
+解决办法：
+需要给openGauss的角色赋权限
+mydb=# grant all privileges to tuser;
+
+-------------------------------
+5、报错：DBI connect('dbname=mydb;host=openGaussIP;port=5432','testuser',…) failed: connection to server at “openGaussIP”, 
+port 5432 failed: none of the server’s SASL authentication mechanisms are supported at /opt/software/ora2pg/lib
+解决办法：
+这个错是openGauss返回的。需要修改 openGauss 的 pg_hba.conf 和 postgres.conf：
+修改 data/single_node/postgresql.conf 中 password_encryption_type = 1 。修改pg_hba.conf；
+
+然后重启openGauss：
+-------------------------------
+gs_ctl restart -D /opt/software/openGauss/data/single_node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
