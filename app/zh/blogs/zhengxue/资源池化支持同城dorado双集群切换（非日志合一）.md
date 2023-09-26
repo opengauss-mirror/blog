@@ -1,11 +1,11 @@
 ---
-title: '资源池化支持同城dorado双集群切换'
+title: '资源池化支持同城dorado双集群切换（非日志合一）'
 date: '2023-04-01'
 category: 'blog'
-tags: ['资源池化支持同城dorado双集群切换']
+tags: ['资源池化支持同城dorado双集群切换（非日志合一）']
 archives: '2023-04-01'
 author: 'shirley_zhengx'
-summary: '资源池化支持同城dorado双集群切换'
+summary: '资源池化支持同城dorado双集群切换（非日志合一）'
 img: '/zh/post/zhengxue/title/img1.png'
 times: '9:30'
 ---
@@ -14,7 +14,7 @@ times: '9:30'
 
 ## 1.集群间切换
 
-    基于《资源池化+同城dorado双集群》部署方式，集群间切换设计如下：
+    基于《资源池化+同城dorado双集群（非日志合一）》部署方式，集群间切换设计如下：
 
 ### &nbsp;&nbsp;1.1.主备集群状态
 前提条件：已经部署资源池化同城双集群环境
