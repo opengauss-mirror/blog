@@ -71,7 +71,7 @@ times: '16:30'
   `yum clean all`
   `yum makecache`
   `yum list`
-  `yum -y install libaio-devel flex bison ncurses-devel glibc-devel patch openeuler-lsb readline-devel unzip dos2unix vim git wget lrzsz net-tools bzip2 gcc tree zlib* `
+  `yum -y install libaio-devel flex bison ncurses-devel glibc-devel patch openeuler-lsb readline-devel unzip dos2unix vim git wget lrzsz net-tools bzip2 gcc tree expect zlib* `
 
 ## 1.5 安装Python3
 
@@ -244,3 +244,24 @@ memcheck：代表生成memcheck版本的二进制程序，该版本编译时，�
 release：代表生成release版本的二进制程序，该版本编译时，配置GCC高级别优化选项，去除内核调试代码，通常用于生产环境或性能测试环境。
 debug：代表生成debug版本的二进制程序，该版本编译时，增加内核代码调试功能，通常用于开发自测环境。
 memcheck：代表生成memcheck版本的二进制程序，该版本编译时，在debug版本基础上新增ASAN功能，通常用于定位内存问题。
+
+原因：
+
+飞腾CPU缺少LSE指令
+
+官网发布的 openEuler_arm 包，在编译的时候，打开了ARM_LSE指令集做了编译的优化。但是对于一些其他 arm 服务器，不一定支持。
+飞腾CPU不支持lse指令集
+
+构建脚本：
+
+build\script\utils\make_compile.sh
+# it may be risk to enable 'ARM_LSE' for all ARM CPU, but we bid our CPUs are not elder than ARMv8.1
+实测在 鲲鹏 920 和 麒麟 990 的 cpu 芯片下是支持安装的。cpu 可以通过 lscpu 名称查看。
+
+对于其他不自持该指令的系统，需要去掉 -D__ARM_LSE 指令重新编译即可。
+
+在编译脚本中 build\script\utils\make_compile.sh，删除掉所有的 -D__ARM_LSE ， 重新打包数据库。
+
+sh build.sh -m release -3rd /sdb/binarylibs -pkg
+# -3rd 是对应三方库二进制的目录
+
