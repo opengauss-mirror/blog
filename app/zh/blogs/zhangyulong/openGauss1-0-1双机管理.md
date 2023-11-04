@@ -129,8 +129,7 @@ node_name                 : backup
 
 node                      : 2
 instance_id               : 6002
-node_ip                   : 192.168.6.8
-data_path                 : /opt/enmo/openGauss/101/data/dn
+node_ip                   : ***.***.***.***data_path                 : /opt/enmo/openGauss/101/data/dn
 type                      : Datanode
 instance_state            : Standby
 static_connections        : 1

@@ -65,7 +65,7 @@ INFO: Backup catalog '/home/omm2/backup1' successfully inited
 ### 添加一个新的备份实例
 
 ```
-$ /u01/mogdb2.1.0/app/bin/gs_probackup add-instance -B /home/omm2/backup1 --instance=dn_6001 --remote-host=192.168.2.150  --remote-user=omm2  -D /u01/mogdb2.1.0/data/db1 -Urepl -p30000 -dpostgres
+$ /u01/mogdb2.1.0/app/bin/gs_probackup add-instance -B /home/omm2/backup1 --instance=dn_6001 --remote-host=***.***.***.***50  --remote-user=omm2  -D /u01/mogdb2.1.0/data/db1 -Urepl -p30000 -dpostgres
 LOG: Start SSH client process, pid 10597
 INFO: Instance 'dn_6001' successfully inited
 
@@ -76,7 +76,7 @@ INFO: Instance 'dn_6001' successfully inited
 ### 数据库全备
 
 ```
-$ gs_probackup backup -B /home/omm2/backup1 --instance=dn_6001 -b FULL --remote-host=192.168.2.150  --remote-user=omm2
+$ gs_probackup backup -B /home/omm2/backup1 --instance=dn_6001 -b FULL --remote-host=***.***.***.***50  --remote-user=omm2
 INFO: Backup start, gs_probackup version: 2.4.2, instance: dn_6001, backup ID: R80P6X, backup mode: FULL, wal mode: STREAM, remote: true, compress-algorithm: none, compress-level: 1
 LOG: Backup destination is initialized
 Password for user repl:

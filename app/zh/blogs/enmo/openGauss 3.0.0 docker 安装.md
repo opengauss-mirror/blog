@@ -44,8 +44,8 @@ read -p "Please input OG_SUBNET (容器所在网段) [172.11.0.0/24]: " OG_SUBNE
 OG_SUBNET=${OG_SUBNET:-172.11.0.0/24}
 echo "OG_SUBNET set $OG_SUBNET"
 
-read -p "Please input GS_PASSWORD (定义数据库密码)[Enmo@123]: " GS_PASSWORD
-GS_PASSWORD=${GS_PASSWORD:-Enmo@123}
+read -p "Please input GS_PASSWORD (定义数据库密码)[****@***]: " GS_PASSWORD
+GS_PASSWORD=${GS_PASSWORD:-****@***}
 echo "GS_PASSWORD set $GS_PASSWORD"
 
 read -p "Please input MASTER_IP (主库IP)[172.11.0.101]: " MASTER_IP

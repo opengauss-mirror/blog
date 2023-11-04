@@ -79,8 +79,7 @@ enp125s0f0=`/sbin/ifconfig enp125s0f0|sed -n 2p |awk  '{ print $2 }'`
 
 ```
 enp125s0f0=`/sbin/ifconfig enp125s0f0|sed -n 2p |awk  '{ print $2 }'`
-eth0ip=1.1.1.1
-```
+eth0ip=***.***.***.***```
 
 配置好脚本后，执行 hacheck 脚本：
 

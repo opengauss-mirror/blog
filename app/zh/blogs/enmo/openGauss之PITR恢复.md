@@ -68,7 +68,7 @@ recovery_target_inclusive = true
 系统日志：/var/log/omm/omm/pg_log/dn_6001/
 xlog 备份目录：/backup_xlog
 物理备份目录：/backup
-IP：10.0.0.100(外网)，192.168.1.100（内网）
+IP：10.0.0.100(外网)，***.***.***.***00（内网）
 
 #### 2.操作流程：
 
@@ -350,8 +350,8 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Primary Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Standby Normal
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Primary Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Standby Normal
 #主备正常，连接数据库之后，查看数据也是正常的。
 ```
 

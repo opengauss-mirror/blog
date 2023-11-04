@@ -46,7 +46,7 @@ gs_om -t status --detail
 执行以下下命令清除坏死节点，避免对依赖 gs_om 的工具产生影响。
 
 ```
-gs_dropnode -U omm -G dbgrp -h 192.168.1.1
+gs_dropnode -U omm -G dbgrp -h ***.***.***.***
 
 ```
 
@@ -61,13 +61,13 @@ gs_dropnode -U omm -G dbgrp -h 192.168.1.1
 新版本链接地址：https://gitee.com/struggle\_hw/openGauss-OM/blob/c0212048050453c57955b342dada5b6de6803622/script/gs\_dropnode
 
 ```
-gs_dropnode -U omm -G dbgrp -h 192.168.1.1
+gs_dropnode -U omm -G dbgrp -h ***.***.***.***
 ```
 
 如下图所示，摘除节点日志如下，成功。
 
 ```
-[omm@kvm-yl1 ~]$ gs_dropnode -U omm -G dbgrp -h 192.168.122.92
+[omm@kvm-yl1 ~]$ gs_dropnode -U omm -G dbgrp -h ***.***.***.***
 The target node to be dropped is (['kvm-yl2'])
 Do you want to continue to drop the target node (yes/no)? yes
 The cluster will have only one standalone node left after the operation!
@@ -135,15 +135,13 @@ hostfile 如下：
 
 ```
 cat hostfile
-192.168.1.1
-192.168.1.2
-192.168.1.3
-```
+***.***.***.***
+***.***.***.******.***.***.***```
 
 创建新的 xml 文件，将老节点剔除，新节点加入。
 
 ```
-./gs_expansion -U omm -G dbgrp -h 192.168.122.92 -X ./clusterconfig.xml
+./gs_expansion -U omm -G dbgrp -h ***.***.***.*** -X ./clusterconfig.xml
 ```
 
 扩容日志如下，代表扩容成功。
@@ -152,8 +150,8 @@ cat hostfile
 Start to preinstall database on the new standby nodes.
 Successfully preinstall database on the new standby nodes.
 Start to install database on the new standby nodes.
-installing database on node 192.168.1.1:
-Please enter the password of user [omm] on node [192.168.1.1]:
+installing database on node ***.***.***.***:
+Please enter the password of user [omm] on node [***.***.***.***]:
 Parsing the configuration file.
 Check preinstall on every node.
 Successfully checked preinstall on every node.
@@ -185,7 +183,7 @@ Configuration is completed.
 Successfully started cluster.
 Successfully installed application.
 end deploy..
-Successfully install database on node ['192.168.1.1']
+Successfully install database on node ['***.***.***.***']
 Database on standby nodes installed finished. Start to establish the primary-standby relationship.
 Success to expansion standby nodes.
 ```

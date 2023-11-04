@@ -45,7 +45,7 @@ Rust 已经逐步开始进入企业应用和操作系统的内核开发，之前
 - 启动容器
 
   ```
-  docker run --name mogdb --privileged=true -d -e GS_PASSWORD=Enmo@123 -v C:\mogdb:/var/lib/mogdb -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
+  docker run --name mogdb --privileged=true -d -e GS_PASSWORD=****@*** -v C:\mogdb:/var/lib/mogdb -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
   ```
 
   ![image.png](./figures/rust2.png)

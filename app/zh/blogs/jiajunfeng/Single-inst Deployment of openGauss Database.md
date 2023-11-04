@@ -106,8 +106,8 @@ Python 3.6.11
 ```shell
 vi /etc/hosts
 --------------------
-192.168.0.11  db1.opengauss.com   #Gauss OM IP Hosts Mapping
-192.168.0.12  db2.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.***  db1.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.***  db2.opengauss.com   #Gauss OM IP Hosts Mapping
 --------------------
 ```
 
@@ -309,7 +309,7 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
   <!-- 数据库节点名称(hostname) -->
     <PARAM name="nodeNames" value="node1,node2" />
   <!-- 节点IP，与nodeNames一一对应 -->
-    <PARAM name="backIp1s" value="192.168.0.11,192.168.0.12"/>
+    <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***"/>
   <!-- 数据库安装目录 与其他路径相互独立-->
     <PARAM name="gaussdbAppPath" value="/gauss/app" />
   <!-- 日志目录 与其他路径相互独立 默认路径"$GAUSSLOG/安装用户名"-->
@@ -335,9 +335,9 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
     <PARAM name="azPriority" value="1"/>
   <!-- node1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
   <!-- 主机在后端存储网络中的IP地址(内网IP),所有openGauss主机使用后端存储网络通讯 -->
-    <PARAM name="backIp1" value="192.168.0.11"/>
+    <PARAM name="backIp1" value="***.***.***.***"/>
   <!-- 设置SSH可信通道IP地址(外网IP),若无外网,则可以不设置该选项或者同backIp1设置相同IP -->
-    <PARAM name="sshIp1" value="192.168.0.11"/>
+    <PARAM name="sshIp1" value="***.***.***.***"/>
 
   <!--DBnode 数据库主节点信息-->
     <PARAM name="dataNum" value="1"/>
@@ -377,7 +377,7 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
     <CLUSTER>
         <PARAM name="clusterName" value="dbCluster" />
         <PARAM name="nodeNames" value="node1" />
-        <PARAM name="backIp1s" value="192.168.0.11"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
         <PARAM name="gaussdbAppPath" value="/gauss/app" />
         <PARAM name="gaussdbLogPath" value="/gauss/log/omm" />
         <PARAM name="tmpMppdbPath" value="/gauss/tmp" />
@@ -393,8 +393,8 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.11"/>
-            <PARAM name="sshIp1" value="192.168.0.11"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
 	    <!--dbnode-->
 	    <PARAM name="dataNum" value="1"/>
@@ -444,8 +444,8 @@ cd /soft/openGauss/script
 ```shell
 vi /soft/hostfile
 -----------------------
-192.168.0.11
-192.168.0.12
+***.***.***.***
+***.***.***.***
 -----------------------
 cd  /soft/openGauss/script
 ./gs_sshexkey -f /soft/hostfile
@@ -458,8 +458,8 @@ cd  /soft/openGauss/script
 ```shell
 vi /soft/hostfile
 -----------------------
-192.168.0.11
-192.168.0.12
+***.***.***.***
+***.***.***.***
 -----------------------
 
 cd  /soft/openGauss/script

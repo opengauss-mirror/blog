@@ -207,7 +207,7 @@ DNS 服务器设置：
 </td>
 <td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.2 "><p id="p175672418531"><a name="p175672418531"></a><a name="p175672418531"></a>CentOS7.6虚拟机</p>
 </td>
-<td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.3 "><p id="p165742413533"><a name="p165742413533"></a><a name="p165742413533"></a>192.168.80.201</p>
+<td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.3 "><p id="p165742413533"><a name="p165742413533"></a><a name="p165742413533"></a>***.***.***.***</p>
 </td>
 <td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.4 ">&nbsp;&nbsp;</td>
 </tr>
@@ -216,7 +216,7 @@ DNS 服务器设置：
 <td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.2 "><p id="p103035291532"><a name="p103035291532"></a><a name="p103035291532"></a>CentOS7.6虚拟机</p>
 <p id="p16303152905310"><a name="p16303152905310"></a><a name="p16303152905310"></a>Unbound1.6.6（DNS）</p>
 </td>
-<td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.3 "><p id="p33039290539"><a name="p33039290539"></a><a name="p33039290539"></a>192.168.80.111</p>
+<td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.3 "><p id="p33039290539"><a name="p33039290539"></a><a name="p33039290539"></a>***.***.***.***</p>
 </td>
 <td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.4 "><p id="p16303429105314"><a name="p16303429105314"></a><a name="p16303429105314"></a>DNS服务器与openGauss位于同一网段；只有一级DNS；</p>
 </td>
@@ -226,7 +226,7 @@ DNS 服务器设置：
 <td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.2 "><p id="p1396014348547"><a name="p1396014348547"></a><a name="p1396014348547"></a>Windows+eclipse</p>
 <p id="p396017341547"><a name="p396017341547"></a><a name="p396017341547"></a>openGauss JDBC2.0.0</p>
 </td>
-<td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.3 "><p id="p169601134125417"><a name="p169601134125417"></a><a name="p169601134125417"></a>192.168.80.1</p>
+<td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.3 "><p id="p169601134125417"><a name="p169601134125417"></a><a name="p169601134125417"></a>***.***.***.***</p>
 </td>
 <td class="cellrowborder"  width="25%" headers="mcps1.1.5.1.4 ">&nbsp;&nbsp;</td>
 </tr>
@@ -238,8 +238,8 @@ DNS 服务器设置：
 ```
 public static void main(String[] args) {
     long startTime=System.currentTimeMillis();
-    //创建数据库连接，连接地址："jdbc:postgresql://192.168.80.201:26000/postgres"。
-      Connection conn = GetConnection("jack", "gauss@123");
+    //创建数据库连接，连接地址："jdbc:postgresql://***.***.***.***:26000/postgres"。
+      Connection conn = GetConnection("jack", "*****@***");
         long endTime=System.currentTimeMillis();
         long time=endTime-startTime;
         System.out.println("连接耗时："+ time);
@@ -368,7 +368,7 @@ public static void main(String[] args) {
 </td>
 <td class="cellrowborder"  width="16.666666666666664%" headers="mcps1.1.7.1.2 "><p id="p359592115817"><a name="p359592115817"></a><a name="p359592115817"></a>on</p>
 </td>
-<td class="cellrowborder"  width="16.666666666666664%" headers="mcps1.1.7.1.3 "><p id="p459592118583"><a name="p459592118583"></a><a name="p459592118583"></a>错误的DNS服务器：192.168.80.222（不存在，或者未开机）</p>
+<td class="cellrowborder"  width="16.666666666666664%" headers="mcps1.1.7.1.3 "><p id="p459592118583"><a name="p459592118583"></a><a name="p459592118583"></a>错误的DNS服务器：***.***.***.***（不存在，或者未开机）</p>
 </td>
 <td class="cellrowborder"  width="16.666666666666664%" headers="mcps1.1.7.1.4 "><p id="p959522175815"><a name="p959522175815"></a><a name="p959522175815"></a>——</p>
 </td>

@@ -251,12 +251,12 @@ drop procedure get_age;
 
 ```
 //简单创建一个用户
-create user u1 password 'u1@12345';
+create user u1 password '**@*****';
 //创建具有管理员权限的用户
-create user u2 sysadmin identified by 'u2@12345';
+create user u2 sysadmin identified by '**@*****';
 
 //创建用户u3，要求u3用户第一次登录就要改密码
-create user u3 password 'u3@12345' expired;
+create user u3 password '**@*****' expired;
 
 //通过系统视图查看用户信息
 select * from pg_user where usename='test';
@@ -265,8 +265,8 @@ select * from pg_user where usename='test';
 #### （2）修改用户
 
 ```
-//修改u1用户的密码为‘u1@23456’
-alter user u1 identified by 'u1@23456' replace 'u1@12345';
+//修改u1用户的密码为‘**@*****’
+alter user u1 identified by '**@*****' replace '**@*****';
 //为u1用户追加createrole权限
 alter user u1 createrole;
 //锁定u1用户
@@ -321,7 +321,7 @@ drop tablespace test_nsp_new;
 
 ```
 //创建一个测试用户
-create user jack password 'jack@123';
+create user jack password '**@*****';
 //将对表的insert、select权限授予用户jack之前，需要将表student2所在模式的usage权限授予test
 grant usage on schema test to jack;
 grant insert,select on table test.student2 to jack;
@@ -370,7 +370,7 @@ revoke usage on schema test from jack;
 //简单的创建一个模式
 create schema test_sch1;
 //新建一个角色，然后创建一个与该角色同名的模式，并在该模式下创建一张表
-create role test2 identified by 'test@123';
+create role test2 identified by '****@***';
 create schema authorization test2 create table student3(id int,name varchar(15));
 
 //通过information_schema模式下的视图schemata查看模式

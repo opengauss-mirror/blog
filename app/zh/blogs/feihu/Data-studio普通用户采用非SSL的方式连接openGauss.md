@@ -46,7 +46,7 @@ gs_guc reload -N feihu -I all -c "listen_addresses='localhost,x.x.x.x(数据库�
 4.修改 pg_hba.conf 文件，增加其他远程访问连接的许可。
 
 ```
-gs_guc set -N all -I all -h "host all all 0.0.0.0/0 sha256"
+gs_guc set -N all -I all -h "host all all ***.***.***.***/0 sha256"
 ```
 
 5.重启数据库。

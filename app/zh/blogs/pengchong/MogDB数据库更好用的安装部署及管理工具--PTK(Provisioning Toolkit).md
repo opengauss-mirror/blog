@@ -133,13 +133,11 @@ global:
   tmp_dir: /opt/mogdb301/tmp
   cm_server_port: 15300
 db_servers:
-- host: 192.168.137.131
-  db_port: 3000
+- host: ***.***.***.***  db_port: 3000
   role: primary
   az_name: AZ1
   az_priority: 1
-- host: 192.168.137.132
-  db_port: 3000
+- host: ***.***.***.***  db_port: 3000
   role: standby
   az_name: AZ1
   az_priority: 1
@@ -327,8 +325,7 @@ current_az      			: AZ_ALL
 使用 scale-in 指定要删除备机的 IP 进行缩容
 
 ```
-# /opt/ptk/ptk cluster -n mymogdb scale-in -H 192.168.137.132
-...
+# /opt/ptk/ptk cluster -n mymogdb scale-in -H ***.***.***.***...
 Would you want delete directory(AppDir,DataDir,ToolDir,LogDir)?[Y|Yes](default=N) y
 Would you want clear the env?[Y|Yes](default=N) y
 Would you want delete the user?[Y|Yes](default=N) n
@@ -365,12 +362,10 @@ scale-out 需要接收一个新增节点配置的文件，使用–gen-template 
 修改完的 add.yaml 文件内容如下：
 
 ```
-- host: 192.168.137.132
-  db_port: 3000
+- host: ***.***.***.***  db_port: 3000
   role: standby
   ssh_option:
-    host: 192.168.137.132
-    port: 22
+    host: ***.***.***.***    port: 22
     user: root
     password: "pTk6ZDA2NmFmOTQ8RDxCPUNBP19NSnVKVFV1eFJ6SG5wOElmVC1uS3pqbWNDSGh1bFJzNEZqSHlGQTRuRWs="
 ```

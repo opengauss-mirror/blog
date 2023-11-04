@@ -24,8 +24,8 @@ times: '10:20'
 
 **1. 安装集群 1**
 
-主节点：192.168.0.141
-备节点：192.168.0.145
+主节点：***.***.***.***41
+备节点：***.***.***.***45
 
 xml 文件参考：
 
@@ -35,7 +35,7 @@ xml 文件参考：
  <CLUSTER>
   <PARAM name="clusterName" value="openGauss" />
    <PARAM name="nodeNames" value="OPGS1COM,OPGS2COM" />
-   <PARAM name="backIp1s" value="192.168.0.141,192.168.0.145"/>
+   <PARAM name="backIp1s" value="***.***.***.***41,***.***.***.***45"/>
    <PARAM name="gaussdbAppPath" value="/gauss/openGauss/app" />
    <PARAM name="gaussdbLogPath" value="/gaussarch/log" />
    <PARAM name="tmpMppdbPath" value="/gauss/openGauss/tmp" />
@@ -48,14 +48,14 @@ xml 文件参考：
      <PARAM name="name" value="OPGS1COM"/>
      <PARAM name="azName" value="AZ1"/>
      <PARAM name="azPriority" value="1"/>
-     <PARAM name="backIp1" value="192.168.0.141"/>
-     <PARAM name="sshIp1" value="192.168.0.141"/>
+     <PARAM name="backIp1" value="***.***.***.***41"/>
+     <PARAM name="sshIp1" value="***.***.***.***41"/>
      <!--CM节点部署信息-->
      <PARAM name="cmsNum" value="1"/>
      <PARAM name="cmServerPortBase" value="15000"/>
      <PARAM name="cmServerPortStandby" value="16000"/>
-     <PARAM name="cmServerListenIp1" value="192.168.0.141,192.168.0.145"/>
-     <PARAM name="cmServerHaIp1" value="192.168.0.141,192.168.0.145"/>
+     <PARAM name="cmServerListenIp1" value="***.***.***.***41,***.***.***.***45"/>
+     <PARAM name="cmServerHaIp1" value="***.***.***.***41,***.***.***.***45"/>
      <PARAM name="cmServerlevel" value="1"/>
      <PARAM name="cmServerRelation" value="OPGS1COM,OPGS2COM "/>
      <PARAM name="cmDir" value="/gauss/openGauss/cm"/>
@@ -64,16 +64,16 @@ xml 文件参考：
      <PARAM name="dataPortBase" value="26000"/>
      <PARAM name="dataNode1" value="/gaussdata/openGauss/db1,OPGS2COM,/gaussdata/openGauss/db1"/>
      <PARAM name="dataNode1_syncNum" value="1"/>
-     <PARAM name="localStreamIpmap1" value="(192.168.0.141, 192.168.0.141),(192.168.0.145, 192.168.0.145)"/>
-     <PARAM name="remoteStreamIpmap1" value="(192.168.0.142, 192.168.0.142),(192.168.0.143, 192.168.0.143)"/>
+     <PARAM name="localStreamIpmap1" value="(***.***.***.***41, ***.***.***.***41),(***.***.***.***45, ***.***.***.***45)"/>
+     <PARAM name="remoteStreamIpmap1" value="(***.***.***.***42, ***.***.***.***42),(***.***.***.***43, ***.***.***.***43)"/>
      <PARAM name="remotedataPortBase" value="26000"/>
     </DEVICE>
     <DEVICE sn="1000002">
      <PARAM name="name" value="OPGS2COM"/>
      <PARAM name="azName" value="AZ1"/>
      <PARAM name="azPriority" value="1"/>
-     <PARAM name="backIp1" value="192.168.0.145"/>
-     <PARAM name="sshIp1" value="192.168.0.145"/>
+     <PARAM name="backIp1" value="***.***.***.***45"/>
+     <PARAM name="sshIp1" value="***.***.***.***45"/>
      <!--CM-->
      <PARAM name="cmDir" value="/gauss/openGauss/cm"/>
     </DEVICE>
@@ -83,8 +83,8 @@ xml 文件参考：
 
 **2. 安装集群 2**
 
-主节点：192.168.0.142
-备节点：192.168.0.143
+主节点：***.***.***.***42
+备节点：***.***.***.***43
 
 xml 文件参考：
 
@@ -94,7 +94,7 @@ xml 文件参考：
  <CLUSTER>
   <PARAM name="clusterName" value="openGauss" />
    <PARAM name="nodeNames" value="OPGS3COM,OPGS4COM" />
-   <PARAM name="backIp1s" value="192.168.0.142,192.168.0.143"/>
+   <PARAM name="backIp1s" value="***.***.***.***42,***.***.***.***43"/>
    <PARAM name="gaussdbAppPath" value="/gauss/openGauss/app" />
    <PARAM name="gaussdbLogPath" value="/gaussarch/log" />
    <PARAM name="tmpMppdbPath" value="/gauss/openGauss/tmp" />
@@ -107,14 +107,14 @@ xml 文件参考：
      <PARAM name="name" value="OPGS3COM"/>
      <PARAM name="azName" value="AZ1"/>
      <PARAM name="azPriority" value="1"/>
-     <PARAM name="backIp1" value="192.168.0.142"/>
-     <PARAM name="sshIp1" value="192.168.0.142"/>
+     <PARAM name="backIp1" value="***.***.***.***42"/>
+     <PARAM name="sshIp1" value="***.***.***.***42"/>
      <!--CM节点部署信息-->
      <PARAM name="cmsNum" value="1"/>
      <PARAM name="cmServerPortBase" value="17000"/>
      <PARAM name="cmServerPortStandby" value="18000"/>
-     <PARAM name="cmServerListenIp1" value="192.168.0.142,192.168.0.143"/>
-     <PARAM name="cmServerHaIp1" value="192.168.0.142,192.168.0.143"/>
+     <PARAM name="cmServerListenIp1" value="***.***.***.***42,***.***.***.***43"/>
+     <PARAM name="cmServerHaIp1" value="***.***.***.***42,***.***.***.***43"/>
      <PARAM name="cmServerlevel" value="1"/>
      <PARAM name="cmServerRelation" value="OPGS3COM,OPGS4COM "/>
      <PARAM name="cmDir" value="/gauss/openGauss/cm"/>
@@ -123,16 +123,16 @@ xml 文件参考：
      <PARAM name="dataPortBase" value="26000"/>
      <PARAM name="dataNode1" value="/gaussdata/openGauss/db1,OPGS4COM,/gaussdata/openGauss/db1"/>
      <PARAM name="dataNode1_syncNum" value="1"/>
-     <PARAM name="localStreamIpmap1" value="(192.168.0.142, 192.168.0.142),(192.168.0.143, 192.168.0.143)"/>
-     <PARAM name="remoteStreamIpmap1" value="(192.168.0.141, 192.168.0.141),(192.168.0.145, 192.168.0.145)"/>
+     <PARAM name="localStreamIpmap1" value="(***.***.***.***42, ***.***.***.***42),(***.***.***.***43, ***.***.***.***43)"/>
+     <PARAM name="remoteStreamIpmap1" value="(***.***.***.***41, ***.***.***.***41),(***.***.***.***45, ***.***.***.***45)"/>
      <PARAM name="remotedataPortBase" value="26000"/>
     </DEVICE>
     <DEVICE sn="1000002">
      <PARAM name="name" value="OPGS4COM"/>
      <PARAM name="azName" value="AZ1"/>
      <PARAM name="azPriority" value="1"/>
-     <PARAM name="backIp1" value="192.168.0.143"/>
-     <PARAM name="sshIp1" value="192.168.0.143"/>
+     <PARAM name="backIp1" value="***.***.***.***43"/>
+     <PARAM name="sshIp1" value="***.***.***.***43"/>
      <!--CM-->
      <PARAM name="cmDir" value="/gauss/openGauss/cm"/>
     </DEVICE>
@@ -143,19 +143,19 @@ xml 文件参考：
 **3. 在主集群创建容灾用户**
 
 ```
-gsql -d postgres -p PORT -c "create user DR_USERNAME with replication password 'DR_PASSWORD';"
+gsql -d postgres -p PORT -c "create user DR_USERNAME with replication password '**_*********';"
 ```
 
 **4. 将集群 1 启动为主集群**
 
 ```
-gs_sdr -t start -m primary -X XMLFILE [-U DR_USERNAME [-W DR_PASSWORD]] [--time-out=SECS]
+gs_sdr -t start -m primary -X XMLFILE [-U DR_USERNAME [-W **_*********]] [--time-out=SECS]
 ```
 
 **5. 将集群 2 启动为备集群**
 
 ```
-gs_sdr -t start -m disaster_standby -U USER -W PASSWORD -X XMLFILE [-U DR_USERNAME [-W DR_PASSWORD]] [--time-out=SECS]
+gs_sdr -t start -m disaster_standby -U USER -W PASSWORD -X XMLFILE [-U DR_USERNAME [-W **_*********]] [--time-out=SECS]
 ```
 
 **6. 查询**
@@ -204,7 +204,7 @@ gsql -p 26000 -d postgres -c "select name,reset_val from pg_settings where categ
 前
 
 ```
-<  replconninfo1| localhost=192.168.0.141 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.145 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+<  replconninfo1| localhost=***.***.***.***41 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***45 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
 <  replconninfo2|
 <  replconninfo3|
 ```
@@ -212,9 +212,9 @@ gsql -p 26000 -d postgres -c "select name,reset_val from pg_settings where categ
 后
 
 ```
->  replconninfo1| localhost=192.168.0.141 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.145 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=true iscrossregion=false
->  replconninfo2| localhost=192.168.0.141 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.142 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=false iscrossregion=true
->  replconninfo3| localhost=192.168.0.141 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.143 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=false iscrossregion=true
+>  replconninfo1| localhost=***.***.***.***41 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***45 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=true iscrossregion=false
+>  replconninfo2| localhost=***.***.***.***41 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***42 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=false iscrossregion=true
+>  replconninfo3| localhost=***.***.***.***41 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***43 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=false iscrossregion=true
 ```
 
 前

@@ -86,7 +86,7 @@ MogDB 容器版本已经内置了 Mogila 样本数据库，无需额外安装。
    Type "help" for help.
    MogDB=#create database mogila DBCOMPATIBILITY='PG';
    CREATE DATABASE
-   MogDB=#create user mogdb password 'Enmo@123';
+   MogDB=#create user mogdb password '****@***';
    CREATE ROLE
    MogDB=#\q
    [omm@test ~]$

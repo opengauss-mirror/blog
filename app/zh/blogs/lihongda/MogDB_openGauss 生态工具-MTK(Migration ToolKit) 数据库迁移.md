@@ -23,8 +23,7 @@ times: '12:30'
 
 ### 1. 源库创建（Oracle）
 
-- 创建 Oracle 11.2.0.4
-
+- 创建 Oracle ***.***.***.***
 ```
 ocker pull registry.cn-hangzhou.aliyuncs.com/lhrbest/oracle_11g_ee_lhr_11.2.0.4:1.0
 docker run -itd --name oracle -h oracle --privileged=true -p 1521:1521 -p 222:22 -p 1158:1158 lhrbest/oracle_11g_ee_lhr_11.2.0.4:1.0 init
@@ -78,7 +77,7 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
       "host": "172.16.0.106",
       "user": "mogdb",
       "port": 26000,
-      "password": "Enmo@123",
+      "password": "****@***",
       "dbName": "mtk",
       "dsn": ""
     },

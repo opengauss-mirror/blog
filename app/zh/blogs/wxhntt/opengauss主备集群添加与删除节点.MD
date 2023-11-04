@@ -67,8 +67,7 @@ opengauss主备集群节点的添加与删除
 
 3.2移除备节点10.100.10.94
 
-执行命令：gs_dropnode -U omm -G dbgrp -h 10.100.10.94
-
+执行命令：gs_dropnode -U omm -G dbgrp -h ***.***.***.***
 <img src='./images/2-3-2.png'>
 
 注：从执行结果上可以推断节点已删除，但自动重启集群超时，可能由于网络或其他问题导致，可通过手动重启集群恢复。
@@ -149,8 +148,7 @@ opengauss提供了gs_expansion工具对数据库的备机进行扩容。
 
 3.4主节点操作：执行gs_expansion完成扩容操作
 
-执行命令：./gs_expansion -U omm -G dbgrp -X /opt/opengauss/cluster_config.xml    -h 10.100.10.94
-
+执行命令：./gs_expansion -U omm -G dbgrp -X /opt/opengauss/cluster_config.xml    -h ***.***.***.***
 <img src='./images/3-3-4-1.png'>
 
 注：结果显示在执行预初始化新节点时超时了，可能由于网络或其他问题导致。重新执行后如下所示：

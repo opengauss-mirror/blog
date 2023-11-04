@@ -27,7 +27,7 @@ times: '16:30'
 
 ## gs_dropnode 删除集群备节点<a name="section549175573015"></a>
 
-拟删除 192.168.0.12 节点，该节点 目前负责将 WAL 日志传送给级联备 192.168.0.14.
+拟删除 ***.***.***.*** 节点，该节点 目前负责将 WAL 日志传送给级联备 ***.***.***.***4.
 
 **前提条件**
 
@@ -51,7 +51,7 @@ times: '16:30'
 查询当前级联备日志接收状态
 
 ```
-## 级联备节点操作192.168.0.14
+## 级联备节点操作***.***.***.***4
 postgres=# select * from pg_stat_get_wal_receiver();
 -[ RECORD 1 ]--------------+----------------------------------------
 receiver_pid               | 2090
@@ -68,14 +68,14 @@ receiver_write_location    | 0/70066C0
 receiver_flush_location    | 0/70066C0
 receiver_replay_location   | 0/70066C0
 sync_percent               | 100%
-channel                    | 192.168.0.14:57492<--192.168.0.12:26001
+channel                    | ***.***.***.***4:57492<--***.***.***.***:26001
 ```
 
-移除备节点 192.168.0.12
+移除备节点 ***.***.***.***
 
 ```
-## 在主节点操作192.168.0.11
-[omm@prod ~]$ gs_dropnode -U omm -G dbgrp -h 192.168.0.12
+## 在主节点操作***.***.***.***
+[omm@prod ~]$ gs_dropnode -U omm -G dbgrp -h ***.***.***.***
 The target node to be dropped is (['stb1.opengauss.com'])
 Do you want to continue to drop the target node (yes/no)? yes
 [gs_dropnode]Start to drop nodes of the cluster.
@@ -142,11 +142,11 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 ---------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 
-## 查询级联备日志接收状态(级联备192.168.0.14上操作)    -- 自动切换同步源端
+## 查询级联备日志接收状态(级联备***.***.***.***4上操作)    -- 自动切换同步源端
 postgres=# select * from pg_stat_get_wal_receiver();
 -[ RECORD 1 ]--------------+----------------------------------------
 receiver_pid               | 3017
@@ -163,7 +163,7 @@ receiver_write_location    | 0/7006C38
 receiver_flush_location    | 0/7006C38
 receiver_replay_location   | 0/7006C38
 sync_percent               | 100%
-channel                    | 192.168.0.14:35508<--192.168.0.13:26001
+channel                    | ***.***.***.***4:35508<--***.***.***.***:26001
 ```
 
 在已删除节点操作：关闭与原集群的 SSH 链接，避免后续误操作
@@ -193,8 +193,8 @@ Uninstallation succeeded.
 
 ```
 [root@stb1 ~]# cd /soft/openGauss/script/
-[root@stb1 script]# scp 192.168.0.11:/soft/openGauss/script/*  .              ## 拷贝脚本至将清理的备机
-[root@stb1 script]# scp 192.168.0.11:/soft/openGauss/cluster_config.xml  .    ## 拷贝集群配置文件至将清理的备机
+[root@stb1 script]# scp ***.***.***.***:/soft/openGauss/script/*  .              ## 拷贝脚本至将清理的备机
+[root@stb1 script]# scp ***.***.***.***:/soft/openGauss/cluster_config.xml  .    ## 拷贝集群配置文件至将清理的备机
 [root@stb1 script]# ./gs_postuninstall -U omm -X /soft/openGauss/cluster_config.xml --delete-user --delete-group -L
 Parsing the configuration file.
 Successfully parsed the configuration file.
@@ -262,14 +262,14 @@ openGauss 提供了 gs_expansion 工具对数据库的备机进行扩容。
 ## 创建用户及用户组
 [root@stb1 ~]# groupadd dbgrp
 [root@stb1 ~]# useradd -g dbgrp omm
-[root@stb1 ~]# echo "gauss@123"|passwd --stdin omm
+[root@stb1 ~]# echo "*****@***"|passwd --stdin omm
 
 ## 创建必要的目录并授权(否则会提示权限不足)
 [root@stb1 ~]# mkdir -p /gauss/log/omm
 [root@stb1 ~]# chown -R omm:dbgrp /gauss
 
 ## 参考主机的hosts文件，配置新增备机的hosts文件
-[root@standby1 ~]# ssh root@192.168.0.11 "cat /etc/hosts|grep opengauss.com"  >> /etc/hosts
+[root@standby1 ~]# ssh root@***.***.***.*** "cat /etc/hosts|grep opengauss.com"  >> /etc/hosts
 ```
 
 <!-- > <img src='public_sys-resources/icon-note.gif'>  -->
@@ -284,10 +284,10 @@ Primary 节点操作：建立新节点与所有数据节点的 SSH 互信
 [root@prod ~]# cd /soft/openGauss/script/
 [root@prod script]# vi hostfile     ## 添加整个集群的IP地址(包括新节点)
 -----------------------
-192.168.0.11
-192.168.0.12
-192.168.0.13
-192.168.0.14
+***.***.***.***
+***.***.***.***
+***.***.***.***
+***.***.***.***4
 -----------------------
 [root@prod script]# ./gs_sshexkey -f hostfile    ## 创建root用户互信
 Please enter password for current user[root].
@@ -353,8 +353,8 @@ Primary 节点操作：修改 XML 配置文件，添加新节点信息
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 若服务器仅有一个网卡，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.12"/>
-            <PARAM name="sshIp1" value="192.168.0.12"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
         </DEVICE>
 --------------------------------------------------
 ```
@@ -386,14 +386,14 @@ Exception: [GAUSS-51607] : Failed to start instance. Error: Please check the gs_
 
 ```
 [root@prod ~]# cd /soft/openGauss/script/
-[root@prod script]# ./gs_expansion -U omm -G dbgrp -X /soft/openGauss/cluster_config.xml -h 192.168.0.12
+[root@prod script]# ./gs_expansion -U omm -G dbgrp -X /soft/openGauss/cluster_config.xml -h ***.***.***.***
 Start to preinstall database on the new standby nodes.
 Successfully preinstall database on the new standby nodes.
 
 Start to install database on the new standby nodes.
 
-installing database on node 192.168.0.12:
-Please enter the password of user [omm] on node [192.168.0.12]:  ## 输入初始用户omm的密码
+installing database on node ***.***.***.***:
+Please enter the password of user [omm] on node [***.***.***.***]:  ## 输入初始用户omm的密码
 Parsing the configuration file.
 Check preinstall on every node.
 Successfully checked preinstall on every node.
@@ -425,7 +425,7 @@ Configuration is completed.
 Successfully started cluster.
 Successfully installed application.
 end deploy..
-Successfully install database on node ['192.168.0.12']
+Successfully install database on node ['***.***.***.***']
 Database on standby nodes installed finished. Start to establish the primary-standby relationship.
 Success to expansion standby nodes.
 ## 扩容操作成功完成
@@ -445,10 +445,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Down    Manually stopped |    ## 扩容节点成功，但未自启动
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Down    Manually stopped |    ## 扩容节点成功，但未自启动
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 ```
 
 刷新动态配置文件，并启动新的备节点
@@ -478,10 +478,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state            |
 ----------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Need repair(Connecting) |    ## 新增的备节点需要重建
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Need repair(Connecting) |    ## 新增的备节点需要重建
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 ```
 
 设置所有节点的 synchronous_standby_names 参数
@@ -500,34 +500,34 @@ alter system set synchronous_standby_names = 'ANY 1(dn_6001,dn_6002,dn_6003)'; -
 配置所有节点的 pg_hba.conf 条目
 
 ```
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all 192.168.0.11/32 trust"
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all 192.168.0.12/32 trust"
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all 192.168.0.13/32 trust"
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all 192.168.0.14/32 trust"
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all ***.***.***.***/32 trust"
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all ***.***.***.***/32 trust"
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all ***.***.***.***/32 trust"
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all ***.***.***.***4/32 trust"
 ```
 
 设置所有节点的复制参数
 
 ```
 -- Primary示例：
-alter system set replconninfo1 = 'localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.12 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo2 = 'localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.13 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo3 = 'localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.14 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo1 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo2 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo3 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***4 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
 
 -- Standby1示例：
-alter system set replconninfo1 = 'localhost=192.168.0.12 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.11 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo2 = 'localhost=192.168.0.12 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.13 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo3 = 'localhost=192.168.0.12 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.14 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo1 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo2 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo3 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***4 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
 
 -- Standby2示例：
-alter system set replconninfo1 = 'localhost=192.168.0.13 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.11 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo2 = 'localhost=192.168.0.13 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.12 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo3 = 'localhost=192.168.0.13 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.14 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo1 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo2 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo3 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***4 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
 
 -- Case Standby示例：
-alter system set replconninfo1 = 'localhost=192.168.0.14 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.11 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo2 = 'localhost=192.168.0.14 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.12 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
-alter system set replconninfo3 = 'localhost=192.168.0.14 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.13 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo1 = 'localhost=***.***.***.***4 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo2 = 'localhost=***.***.***.***4 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
+alter system set replconninfo3 = 'localhost=***.***.***.***4 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004';
 ```
 
 重建备节点
@@ -552,8 +552,8 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state            |
 ----------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 ```

@@ -69,7 +69,7 @@ host    all             user_sm3        0/0            sm3
 通过 gsql 进行测试可正常连接
 
 ```
-[omm@mogdb ~]$ gsql -Uuser_sm3 -p3000 -h192.168.137.250  postgres -r --password='Admin@1234'
+[omm@mogdb ~]$ gsql -Uuser_sm3 -p3000 -h***.***.***.***  postgres -r --password='Admin@1234'
 gsql ((openGauss 3.0.0 build 02c14696) compiled at 2022-04-01 18:12:34 commit 0 last mr  )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.
@@ -102,7 +102,7 @@ https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
 java
 	public static void main(String[] args) throws Exception{
 	    Class.forName("org.opengauss.Driver");
-	    Connection conn = DriverManager.getConnection("jdbc:opengauss://192.168.137.250:3000/postgres",
+	    Connection conn = DriverManager.getConnection("jdbc:opengauss://***.***.***.***:3000/postgres",
 	    		"user_sm3","Admin@1234");
 	    String sql = " insert into t values(?)";
         PreparedStatement ps = null;

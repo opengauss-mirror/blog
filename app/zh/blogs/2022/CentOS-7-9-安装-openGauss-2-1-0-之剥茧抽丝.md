@@ -29,9 +29,9 @@ times: '12:30'
 # timedatectl set-timezone Asia/Shanghai
 # hostnamectl set-hostname gauss01
 
-# nmcli con mod enp0s3 ipv4.method manual ipv4.address 192.168.2.131/24
-# nmcli con mod enp0s3 ipv4.gateway 192.168.2.1
-# nmcli con mod enp0s3 ipv4.dns 192.168.1.1
+# nmcli con mod enp0s3 ipv4.method manual ipv4.address ***.***.***.***31/24
+# nmcli con mod enp0s3 ipv4.gateway ***.***.***.***
+# nmcli con mod enp0s3 ipv4.dns ***.***.***.***
 # nmcli con mod enp0s3 connection.autoconnect yes
 ```
 
@@ -153,7 +153,7 @@ CentOS 默认关闭，无需要配置。
 <PARAM name="tmpMppdbPath" value="/opt/huawei/tmp"/>
 <PARAM name="gaussdbToolPath" value="/opt/huawei/install/om" />
 <PARAM name="corePath" value="/opt/huawei/corefile"/>
-<PARAM name="backIp1s" value="192.168.1.171"/>
+<PARAM name="backIp1s" value="***.***.***.***71"/>
 </CLUSTER>
 
 <DEVICELIST>
@@ -161,8 +161,8 @@ CentOS 默认关闭，无需要配置。
 <PARAM name="name" value="gauss01"/>
 <PARAM name="azName" value="AZ1"/>
 <PARAM name="azPriority" value="1"/>
-<PARAM name="backIp1" value="192.168.1.171"/>
-<PARAM name="sshIp1" value="192.168.1.171"/>
+<PARAM name="backIp1" value="***.***.***.***71"/>
+<PARAM name="sshIp1" value="***.***.***.***71"/>
 <!-- dn -->
 <PARAM name="dataNum" value="1"/>
 <PARAM name="dataPortBase" value="15400"/>

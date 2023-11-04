@@ -86,13 +86,13 @@ openGauss 1.1.0 定位为 Update 版本，与原来的 1.0.1 版本特性功能�
 </tr>
 <tr id="row2828145551516"><td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p20828424161611"><a name="p20828424161611"></a><a name="p20828424161611"></a><strong id="b7828924141617"><a name="b7828924141617"></a><a name="b7828924141617"></a>IP地址</strong></p>
 </td>
-<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p182819249166"><a name="p182819249166"></a><a name="p182819249166"></a>192.168.0.11</p>
+<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p182819249166"><a name="p182819249166"></a><a name="p182819249166"></a>***.***.***.***</p>
 </td>
-<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p7828182411163"><a name="p7828182411163"></a><a name="p7828182411163"></a>192.168.0.12</p>
+<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p7828182411163"><a name="p7828182411163"></a><a name="p7828182411163"></a>***.***.***.***</p>
 </td>
-<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p19828132415167"><a name="p19828132415167"></a><a name="p19828132415167"></a>192.168.0.13</p>
+<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p19828132415167"><a name="p19828132415167"></a><a name="p19828132415167"></a>***.***.***.***</p>
 </td>
-<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p1828824191617"><a name="p1828824191617"></a><a name="p1828824191617"></a>192.168.0.14</p>
+<td class="cellrowborder"  width="20%" headers="mcps1.1.6.1.1 "><p id="p1828824191617"><a name="p1828824191617"></a><a name="p1828824191617"></a>***.***.***.***4</p>
 </td>
 </tr>
 </tbody>
@@ -219,10 +219,10 @@ hostname && ifconfig |grep broadcast|awk '{print $2}'
 
 ## 添加Hosts解析
 cat >> /etc/hosts <<EOF
-192.168.0.11 prod.opengauss.com   #Gauss OM IP Hosts Mapping
-192.168.0.12 stb1.opengauss.com   #Gauss OM IP Hosts Mapping
-192.168.0.13 stb2.opengauss.com   #Gauss OM IP Hosts Mapping
-192.168.0.14 casstb.opengauss.com #Gauss OM IP Hosts Mapping
+***.***.***.*** prod.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.*** stb1.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.*** stb2.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.***4 casstb.opengauss.com #Gauss OM IP Hosts Mapping
 EOF
 
 cat /etc/hosts
@@ -377,7 +377,7 @@ cat >> /soft/openGauss/cluster_config.xml << EOF
         <!--数据库core文件目录-->
         <PARAM name="corePath" value="/gauss/corefile" />
         <!-- 节点后端通讯IP，与nodeNames对应 -->
-        <PARAM name="backIp1s" value="192.168.0.11,192.168.0.12,192.168.0.13,192.168.0.14"/>
+        <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***,***.***.***.***,***.***.***.***4"/>
     </CLUSTER>
     <!-- 每台服务器上的节点部署信息 -->
     <DEVICELIST>
@@ -389,15 +389,15 @@ cat >> /soft/openGauss/cluster_config.xml << EOF
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 若服务器仅有一个网卡，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.11"/>
-            <PARAM name="sshIp1" value="192.168.0.11"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
         <!--dbnode-->
         <!--当前主机上需要部署的数据库节点个数-->
         <PARAM name="dataNum" value="1"/>
         <!--DBnode端口号-->
         <PARAM name="dataPortBase" value="26000"/>
         <!--DBnode侦听IP-->
-        <PARAM name="dataListenIp1" value="192.168.0.11,192.168.0.12,192.168.0.13,192.168.0.14"/>
+        <PARAM name="dataListenIp1" value="***.***.***.***,***.***.***.***,***.***.***.***,***.***.***.***4"/>
         <!--DBnode主节点上数据目录，及备机数据目录-->
         <PARAM name="dataNode1" value="/gauss/data/db1,stb1.opengauss.com,/gauss/data/db1,stb2.opengauss.com,/gauss/data/db1,casstb.opengauss.com,/gauss/data/db1"/>
         <!--DBnode节点上设定同步模式的节点数-->
@@ -411,8 +411,8 @@ cat >> /soft/openGauss/cluster_config.xml << EOF
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 若服务器仅有一个网卡，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.12"/>
-            <PARAM name="sshIp1" value="192.168.0.12"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
         </DEVICE>
         <DEVICE sn="stb2.opengauss.com">
             <!-- node3的hostname -->
@@ -421,8 +421,8 @@ cat >> /soft/openGauss/cluster_config.xml << EOF
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 若服务器仅有一个网卡，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.13"/>
-            <PARAM name="sshIp1" value="192.168.0.13"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
         </DEVICE>
         <DEVICE sn="casstb.opengauss.com">
             <!-- node4的hostname -->
@@ -431,8 +431,8 @@ cat >> /soft/openGauss/cluster_config.xml << EOF
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 若服务器仅有一个网卡，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.14"/>
-            <PARAM name="sshIp1" value="192.168.0.14"/>
+            <PARAM name="backIp1" value="***.***.***.***4"/>
+            <PARAM name="sshIp1" value="***.***.***.***4"/>
             <!-- node1是否为级联备, on表示该实例为级联备，另外级联备机在相同的AZ里需要配有备机 -->
             <PARAM name="cascadeRole" value="on"/>
         </DEVICE>
@@ -750,7 +750,7 @@ end deploy..
 gsql -d postgres -p 26000 -r
 
 -- 修改初始用户密码
-postgres=# alter role omm identified by 'gauss@123' replace 'gauss@2020';   -- 修改初始用户omm密码为gauss@123
+postgres=# alter role omm identified by '*****@***' replace 'gauss@2020';   -- 修改初始用户omm密码为*****@***
 
 -- 查询数据库信息
 postgres=# select version();                                                -- 检查数据库版本
@@ -785,10 +785,10 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node                      node_ip         instance                state
 ----------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 ```
 
 **7.2 复制连接配置检查**
@@ -797,15 +797,15 @@ node                      node_ip         instance                state
 postgres=# show replconninfo1;
                                                                                replconninfo1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.12 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+ localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
 postgres=# show replconninfo2;
                                                                                replconninfo2
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.13 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+ localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
 postgres=# show replconninfo3;
                                                                                replconninfo3
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.14 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+ localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***4 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
 
 postgres=# show max_wal_senders;
  max_wal_senders
@@ -841,7 +841,7 @@ sync_percent               | 100%
 sync_state                 | Async
 sync_priority              | 0
 sync_most_available        | Off
-channel                    | 192.168.0.11:26001-->192.168.0.12:54854
+channel                    | ***.***.***.***:26001-->***.***.***.***:54854
 -[ RECORD 2 ]--------------+----------------------------------------
 pid                        | 140097703044864
 sender_pid                 | 21718
@@ -863,7 +863,7 @@ sync_percent               | 100%
 sync_state                 | Async
 sync_priority              | 0
 sync_most_available        | Off
-channel                    | 192.168.0.11:26001-->192.168.0.13:48502
+channel                    | ***.***.***.***:26001-->***.***.***.***:48502
 
 -- 在cascade备机(级联备机)检查日志接收线程
 postgres=# \pset x
@@ -884,7 +884,7 @@ receiver_write_location    | 0/7002F88
 receiver_flush_location    | 0/7002F88
 receiver_replay_location   | 0/7002F88
 sync_percent               | 100%
-channel                    | 192.168.0.14:46818<--192.168.0.12:26001
+channel                    | ***.***.***.***4:46818<--***.***.***.***:26001
 ```
 
 **Tips：** 级联备机会在同一个 AZ 内寻找一台备机获取需要同步的数据，但至于选择同 AZ 内的哪一台备机，具架构师的反馈，这个是随机选择。

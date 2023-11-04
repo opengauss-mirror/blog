@@ -270,7 +270,7 @@ Server:
  Labels:
  Experimental: false
  Insecure Registries:
-  127.0.0.0/8
+  ***.***.***.***/8
  Live Restore Enabled: false
 ```
 
@@ -322,13 +322,13 @@ mkdir /mogdb
 1. 继续输入以下命令创建一个新的容器，将容器命名为“mogdb”，以启动 MogDB 实例：
 
 ```
-docker run --name mogdb --privileged=true -d -e GS_PASSWORD=Enmo@123  -v /mogdb:/var/lib/mogdb  -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
+docker run --name mogdb --privileged=true -d -e GS_PASSWORD=****@***  -v /mogdb:/var/lib/mogdb  -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
 ```
 
 ```
 [docker@JiekeXu ~]$ docker ps
 CONTAINER ID   IMAGE                                               COMMAND                CREATED              STATUS              PORTS                                         NAMES
-16740a035d7e  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0   "entrypoint.sh mogdb"   About a minute ago   Up About a minute   0.0.0.0:15432->5432/tcp,
+16740a035d7e  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0   "entrypoint.sh mogdb"   About a minute ago   Up About a minute   ***.***.***.***:15432->5432/tcp,
 :::15432->5432/tcp   mogdb
 ```
 

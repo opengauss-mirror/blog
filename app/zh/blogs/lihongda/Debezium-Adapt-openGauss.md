@@ -90,7 +90,7 @@ openGauss 为开源数据库 PG for 9.2.4 基础上 deconding,wal2json 为 PG �
 postgres=# alter system set wal_level = logical;
 NOTICE:  please restart the database for the POSTMASTER level parameter to take effect.
 ALTER SYSTEM SET
-[omm@0f0ce5be9d04 ~]$ echo "host replication gaussdb 0.0.0.0/0 md5" >> /var/lib/opengauss/data/pg_hba.conf
+[omm@0f0ce5be9d04 ~]$ echo "host replication gaussdb ***.***.***.***/0 md5" >> /var/lib/opengauss/data/pg_hba.conf
 [omm@0f0ce5be9d04 ~]$ gs_ctl restart -D /var/lib/opengauss/data/
 [2020-12-07 03:51:12.500][293][][gs_ctl]: gs_ctl restarted ,datadir is -D "/var/lib/opengauss/data"
 waiting for server to shut down...
@@ -290,7 +290,7 @@ services:
     ports:
      - 5432:5432
     environment:
-     - GS_PASSWORD=Enmo@123
+     - GS_PASSWORD=****@***
   connect:
     image: debezium/connect:${DEBEZIUM_VERSION}
     ports:
@@ -316,7 +316,7 @@ services:
         "database.hostname": "opengauss",
         "database.port": "5432",
         "database.user": "gaussdb",
-        "database.password": "Enmo@123",
+        "database.password": "****@***",
         "database.dbname" : "postgres",
         "database.server.name": "dbserver1_opengauss",
         "schema.include.list": "gaussdb",
@@ -368,7 +368,7 @@ Location: http://localhost:8083/connectors/inventory-connector1
 Content-Type: application/json
 Content-Length: 453
 Server: Jetty(9.4.24.v20191120)
-{"name":"inventory-connector1","config":{"connector.class":"io.debezium.connector.postgresql.PostgresConnector","tasks.max":"1","database.hostname":"opengauss","database.port":"5432","database.user":"gaussdb","database.password":"Enmo@123","database.dbname":"postgres","database.server.name":"dbserver1_opengauss","schema.include.list":"gaussdb","plugin.name":"wal2json","slot.name":"wal2json2","name":"inventory-connector1"},"tasks":[],"type":"source"}
+{"name":"inventory-connector1","config":{"connector.class":"io.debezium.connector.postgresql.PostgresConnector","tasks.max":"1","database.hostname":"opengauss","database.port":"5432","database.user":"gaussdb","database.password":"****@***","database.dbname":"postgres","database.server.name":"dbserver1_opengauss","schema.include.list":"gaussdb","plugin.name":"wal2json","slot.name":"wal2json2","name":"inventory-connector1"},"tasks":[],"type":"source"}
 ```
 
 **Consume messages from a Debezium topic**

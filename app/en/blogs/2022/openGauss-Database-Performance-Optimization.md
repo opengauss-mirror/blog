@@ -436,7 +436,7 @@ Run the preceding command based on the core binding configuration and benchmark 
   osCollectorScript=./misc/os_collector_linux.py
   osCollectorInterval=1
   // Collect OS load information.
-  //osCollectorSSHAddr=osuer@10.44.133.78
+  //osCollectorSSHAddr=osuer@***.***.***.***
   //osCollectorDevices=net_enp3s0 blk_nvme0n1 blk_nvme1n1 blk_nvme2n1 blk_nvme3n1
   ```
 

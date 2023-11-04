@@ -76,9 +76,9 @@ $ZBX_SERVER_NAME = zabbix # server 配置的服务名
 
 #SourceIP 不填写
 
-Server=127.0.0.1,IP1 #如果不填写大网 ip，将导致 web 侧不同主机无法互相访问
+Server=***.***.***.***,IP1 #如果不填写大网 ip，将导致 web 侧不同主机无法互相访问
 
-ServerActive=127.0.0.1 #活动的 server 服务，配置成 127 或 IP1 在 agent1 上都可以正常工作
+ServerActive=***.***.***.*** #活动的 server 服务，配置成 127 或 IP1 在 agent1 上都可以正常工作
 
 Hostname=IP1 #这里配置 web 服务所在的 ip
 
@@ -370,7 +370,7 @@ UserParameter=pgsql.bgwriter[*], gsql -qtAX -h "$1" -p "$2" -U "$3" -d "$4" -W "
 
 <img src='./img/zabbix-agentd配置错误.png'>
 
-日志提示添加监控使用的 localhost 地址为 127.0.0.1，而 zabbix_agentd.conf 中 Server 填写的地址未包含 127.0.0.1，因此在配置文件中添加 localhost 地址即可
+日志提示添加监控使用的 localhost 地址为 ***.***.***.***，而 zabbix_agentd.conf 中 Server 填写的地址未包含 ***.***.***.***，因此在配置文件中添加 localhost 地址即可
 
 ### b. 创建自定义监控项报错
 

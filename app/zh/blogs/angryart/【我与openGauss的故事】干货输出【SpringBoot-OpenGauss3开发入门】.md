@@ -355,7 +355,7 @@ java.lang.NullPointerException: null
 而 opengauss 内部执行报错
 
 ```bash
-[omm@enmoedu1 ~]$ gsql -U  henley -h  192.168.30.65 -p  15400
+[omm@enmoedu1 ~]$ gsql -U  henley -h  ***.***.***.*** -p  15400
 Password for user henley:
 gsql: FATAL:  Invalid username/password,login denied.
 
@@ -372,7 +372,7 @@ encryption_type = 1
 `vi /home/omm/opengauss3/install/data/dn/pg_hba.conf`
 
 增加设置
-host all henley 0.0.0.0/0 md5
+host all henley ***.***.***.***/0 md5
 
 ### 用户没有对表的操作权限
 
@@ -448,7 +448,7 @@ wget  https://opengauss.obs.cn-south-1.myhuaweicloud.com/
 再在 idea 把 jar 包引入进来，引入步骤 Project Structure --> Project Settings --> Libraries --> Add(alt +insert) --> apply
 
 application.properties 稍微修改一下
-==spring.datasource.url=jdbc:opengauss://192.168.30.65:15400/mytest==
+==spring.datasource.url=jdbc:opengauss://***.***.***.***:15400/mytest==
 ==spring.datasource.driver-class-name=org.opengauss.Driver==
 
 ```

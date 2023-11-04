@@ -35,7 +35,7 @@ times: '12:30'
 
 使用 SSH 远程登录到服务器之后，即可开始之后的步骤。
 执行命令 SSH 账户名@域名或 IP 地址连接到远程服务器，连接上之后输入密码登录。
-如 `SSH root@db.example.cn`或 `SSH root@127.0.0.1`。
+如 `SSH root@db.example.cn`或 `SSH root@***.***.***.***`。
 如果是本地虚拟机，请开机输入密码登录即可。
 
 ### 关闭防火墙
@@ -84,8 +84,8 @@ times: '12:30'
 ### 拉取 openGauss 镜像并启动
 
 ```
-执行 docker run --name opengauss --privileged=true -d -e GS_PASSWORD=Enmo@123 -p 8887:5432 enmotech/opengauss:latest 拉取镜像并创建容器。
-其中，opengauss 为容器名，8887:5432 为容器内部的 5432 端口映射到外部 8887 端口，默认密码为 Enmo@123。
+执行 docker run --name opengauss --privileged=true -d -e GS_PASSWORD=****@*** -p 8887:5432 enmotech/opengauss:latest 拉取镜像并创建容器。
+其中，opengauss 为容器名，8887:5432 为容器内部的 5432 端口映射到外部 8887 端口，默认密码为 ****@***。
 之后执行 docker start opengauss 启动 openGauss 镜像。
 通过 docker update --restart=always opengauss 来设置 openGauss 镜像随着 docker 的启动而启动
 ```
@@ -103,7 +103,7 @@ times: '12:30'
 因为外部连接时，不允许使用初始账户 omm，所以新建一个账户。
 
 ```
-执行语句 CREATE USER testuser WITH PASSWORD ‘Enmo@123’;创建一个名为 testuser，密码为 Enmo@123 的账户。
+执行语句 CREATE USER testuser WITH PASSWORD ‘****@***’;创建一个名为 testuser，密码为 ****@*** 的账户。
 执行语句 GRANT ALL PRIVILEGES ON DATABASE omm testuser;给予 testuser 默认数据库 omm 权限。
 执行语句 GRANT ALL PRIVILEGES ON all tables in schema public TO testuser;给予全部表权限给 testuser。
 ```
@@ -123,7 +123,7 @@ times: '12:30'
 
 <img src="https://data.educoder.net/api/attachments/1595860" alt=" 2 ">
 
-设置主机地址为你的服务器/虚拟机 IP 地址，端口设置为 8887。数据库为 omm，用户名和密码为刚才设置的用户名和密码。(testuser，Enmo@123)
+设置主机地址为你的服务器/虚拟机 IP 地址，端口设置为 8887。数据库为 omm，用户名和密码为刚才设置的用户名和密码。(testuser，****@***)
 
 <img src="https://data.educoder.net/api/attachments/1595862" alt=" 5 ">
 

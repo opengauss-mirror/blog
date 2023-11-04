@@ -36,8 +36,8 @@ openGauss 提供了卸载脚本帮助用户完整的卸载 openGauss 数据库�
     node        node_ip         instance                                 state
     ----------------------------------------------------------------------------
     AZ1 1  db01 192.168.0.43    1    /opt/huawei/data/cmserver/cm_server Primary
-    AZ1 2  db02 192.168.0.22    2    /opt/huawei/data/cmserver/cm_server Standby
-    AZ1 3  db03 192.168.0.242   3    /opt/huawei/data/cmserver/cm_server Standby
+    AZ1 2  db02 ***.***.***.***2    2    /opt/huawei/data/cmserver/cm_server Standby
+    AZ1 3  db03 ***.***.***.***42   3    /opt/huawei/data/cmserver/cm_server Standby
     ```
 
 2.  以操作系统用户 omm 登录数据库主节点 db01 192.168.0.43。
@@ -46,7 +46,7 @@ openGauss 提供了卸载脚本帮助用户完整的卸载 openGauss 数据库�
     [root@db01 ~]# su - omm
     Last login: Mon Oct 25 14:24:27 CST 2021 on pts/0
     [omm@db01 ~]$ ip a | grep 43
-        inet 192.168.0.43/24 brd 192.168.0.255 scope global dynamic noprefixroute eth0
+        inet 192.168.0.43/24 brd ***.***.***.***55 scope global dynamic noprefixroute eth0
     ```
 
 3.  使用 gs_uninstall 卸载 openGauss。

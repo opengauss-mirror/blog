@@ -46,7 +46,7 @@ export MGOUSER=/root/.mgo/mgouser
 export MGO_CA_CERT=/root/.mgo/client.crt
 export MGO_CLIENT_CERT=/root/.mgo/client.crt
 export MGO_CLIENT_KEY=/root/.mgo/client.key
-export MGO_APISERVER_URL='https://127.0.0.1:32444'
+export MGO_APISERVER_URL='https://***.***.***.***:32444'
 EOF
 
 source ~/.bashrc

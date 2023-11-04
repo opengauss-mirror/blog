@@ -144,10 +144,10 @@ agent_port=8081
 # - ip: 业务IP
 # - heartbeat_ips： 心跳网络ip，允许配置多个心跳网络，以逗号隔开
 [host1]
-ip=192.168.56.227
+ip=***.***.***.***
 heartbeat_ips=
 [host2]
-ip=192.168.56.228
+ip=***.***.***.***
 heartbeat_ips=
 # [host3]
 # ip=
@@ -183,10 +183,10 @@ heartbeat_ips=
 
 [zone1]
 ## 该VIP为虚拟ip地址，请根据实际情况填写
-vip=192.168.56.229
+vip=***.***.***.***29
 
 hosts=host1,host2
-ping_list=192.168.56.1
+ping_list=***.***.***.***
 cascades=
 arping=
 # [zone2]
@@ -214,17 +214,17 @@ systemctl start mogha.service
 - 主库心跳日志信息
 
   ```
-  2021-12-29 13:20:49,211 INFO [__init__.py:59]: ping result: {'192.168.56.1': True, '192.168.56.228': True}
+  2021-12-29 13:20:49,211 INFO [__init__.py:59]: ping result: {'***.***.***.***': True, '***.***.***.***': True}
   2021-12-29 13:20:49,323 INFO [__init__.py:84]: local instance is alive Primary, state: Normal
-  2021-12-29 13:20:54,593 INFO [__init__.py:59]: ping result: {'192.168.56.1': True, '192.168.56.228': True}
+  2021-12-29 13:20:54,593 INFO [__init__.py:59]: ping result: {'***.***.***.***': True, '***.***.***.***': True}
   2021-12-29 13:20:54,719 INFO [__init__.py:84]: local instance is alive Primary, state: Normal
   ```
 
 - 备库心跳日志信息
 
   ```
-  2021-12-29 13:32:07,774 INFO [__init__.py:59]: ping result: {'192.168.56.1': True, '192.168.56.227': True}
+  2021-12-29 13:32:07,774 INFO [__init__.py:59]: ping result: {'***.***.***.***': True, '***.***.***.***': True}
   2021-12-29 13:32:07,890 INFO [__init__.py:84]: local instance is alive Standby, state: Normal
-  2021-12-29 13:32:13,109 INFO [__init__.py:59]: ping result: {'192.168.56.1': True, '192.168.56.227': True}
+  2021-12-29 13:32:13,109 INFO [__init__.py:59]: ping result: {'***.***.***.***': True, '***.***.***.***': True}
   2021-12-29 13:32:13,219 INFO [__init__.py:84]: local instance is alive Standby, state: Normal
   ```

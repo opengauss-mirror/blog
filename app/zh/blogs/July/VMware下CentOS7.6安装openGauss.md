@@ -222,7 +222,7 @@ cd 进根目录/mnt/hgfs，可以看到先前设置的主机共享文件夹 不�
 <!-- 数据库节点名称(hostname) -->
 <PARAM name="nodeNames" value="localhost.localdomain" />
 <!-- 节点IP，与nodeNames一一对应 -->
-<PARAM name="backIp1s" value="192.168.100.129"/>
+<PARAM name="backIp1s" value="***.***.***.***"/>
 <!-- 数据库安装目录-->
 <PARAM name="gaussdbAppPath" value="/opt/huawei/install/app" />
 <!-- 日志目录-->
@@ -246,8 +246,8 @@ cd 进根目录/mnt/hgfs，可以看到先前设置的主机共享文件夹 不�
 <PARAM name="azName" value="AZ1"/>
 <PARAM name="azPriority" value="1"/>
 <!-- node1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-<PARAM name="backIp1" value="192.168.100.129"/>
-<PARAM name="sshIp1" value="192.168.100.129"/>
+<PARAM name="backIp1" value="***.***.***.***"/>
+<PARAM name="sshIp1" value="***.***.***.***"/>
 <!--DBnode-->
 <PARAM name="dataNum" value="1"/>
 <!--DBnode端口号-->

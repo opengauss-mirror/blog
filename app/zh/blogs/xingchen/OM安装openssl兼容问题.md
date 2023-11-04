@@ -79,6 +79,6 @@ export PATH=$PATH:/root/gauss_om/omm/script
 
 4. 对于在安装后，使用 ssh 工具出现 `undefined symbol EVP_KDF_ctrl` 问题的场景； 可以再在使用 ssh 之前， 把系统的 lib 库库优先级放到前面，就不会影响 ssh。
    ```
-   export LD_LABRRRY_PATH=/usr/lib64:$LD_LABRRRY_PATH；ssh 192.168.0.100 command;
+   export LD_LABRRRY_PATH=/usr/lib64:$LD_LABRRRY_PATH；ssh ***.***.***.***00 command;
    ```
    这个问题由于系统自身对 openssl 做了修改，尤其在 Centos8 上， 删除 openssl 中的函数在 openGauss 中还继续使用，该兼容问题无法解决，只能通过加载环境变量的优先级方式来规避。

@@ -211,11 +211,11 @@ Ora2Pg provides the **ora2pg** command to complete these processes. Generally, m
 
   ```
   ORACLE_HOME     /opt/oracle/product/19c/dbhome_1
-  ORACLE_DSN       dbi:Oracle:host=127.0.0.1;sid=ORCLCDB;port=1521
+  ORACLE_DSN       dbi:Oracle:host=***.***.***.***;sid=ORCLCDB;port=1521
   ORACLE_USER     system
   ORACLE_PWD      manager
   SCHEMA                testuser
-  PG_DSN                 dbi:Pg:dbname=mydb;host=127.0.0.1;port=5432
+  PG_DSN                 dbi:Pg:dbname=mydb;host=***.***.***.***;port=5432
   PG_USER               testuser
   PG_PWD                openGauss123
   ```
@@ -246,10 +246,10 @@ Ora2Pg provides the **ora2pg** command to complete these processes. Generally, m
   3.  Change **psql** in **import_all.sh** to **gsql**.
   4.  Add an option for executing the script when data is imported by a common user, and specify the user password to avoid frequent password input.
 
-      Run the import script. In the script, the **testuser** user is used to log in to the **mydb** database with the IP address **127.0.0.1** and the port number **5432**. The **-f** option indicates that the check on whether the user and database need to be created is skipped.
+      Run the import script. In the script, the **testuser** user is used to log in to the **mydb** database with the IP address *****.***.***.***** and the port number **5432**. The **-f** option indicates that the check on whether the user and database need to be created is skipped.
 
       ```
-       sh import_all.sh -d mydb -o testuser –h 127.0.0.1 -p 5432 –f 1
+       sh import_all.sh -d mydb -o testuser –h ***.***.***.*** -p 5432 –f 1
       ```
 
       After the script is executed, the system prompts you whether to import the object structures and data, as shown in the following figure. \(In the preceding information, the **-w** option is added by manually modifying the **import_all.sh** script.\)

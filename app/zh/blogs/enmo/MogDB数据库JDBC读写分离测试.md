@@ -185,7 +185,7 @@ public class TestFailoverAndLoadbalance {
     public static void testLoadBalance() {
         for (int i = 0; i < 100; i++) {
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:postgresql://192.168.137.227:8001,192.168.137.227:8002,192.168.137.227:8003/postgres?targetServerType=master&loadBalanceHosts=true&loggerLevel=off",
+                    "jdbc:postgresql://***.***.***.***:8001,***.***.***.***:8002,***.***.***.***:8003/postgres?targetServerType=master&loadBalanceHosts=true&loggerLevel=off",
                     "admin", "Admin@1234")) {
                 System.out.println("NO:" + i);
                 //execSelect(conn);

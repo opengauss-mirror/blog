@@ -46,7 +46,7 @@ $ openssl req -new -nodes -text \
 -config openssl.cnf \
 -out server.csr \
 -keyout server.key \
--subj "/CN=192.168.137.5"
+-subj "/CN=***.***.***.***"
 ```
 
 将证书请求文件\(包含用户信息\)和证书签名分开操作，证书请求文件可重用，因为后面可能需要重新生成签名信息。
@@ -86,7 +86,7 @@ $ cp server.crt server.key $PGDATA
 pg_hba.conf 文件配置 hostssl 条目，认证方法保持 md5 或者 scram 不变。
 
 ```
-hostssl  all  all  0.0.0.0/0  md5
+hostssl  all  all  ***.***.***.***/0  md5
 ```
 
 说明：也可以按原来的 host 连接类型，同时支持非 ssl 和 ssl 连接，配置为 hostssl 只支持 hostssl，这里配置为 hostssl。
@@ -117,7 +117,7 @@ chmod 0600 ~/.postgresql/root.crt
 openGauss
 
 ```
-gsql "sslmode=verify-ca" -p6432 -h 192.168.137.5 -Upostgres
+gsql "sslmode=verify-ca" -p6432 -h ***.***.***.*** -Upostgres
 gsql: root certificate file "/home/omm/.postgresql/root.crt" does not exist
 Either provide the file or change sslmode to disable server certificate verification.
 ```
@@ -125,7 +125,7 @@ Either provide the file or change sslmode to disable server certificate verifica
 PostgreSQL
 
 ```
-psql "sslmode=verify-ca" -h192.168.137.11
+psql "sslmode=verify-ca" -h***.***.***.***
 psql: error: root certificate file "/home/postgres/.postgresql/root.crt" does not exist
 Either provide the file or change sslmode to disable server certificate verification.
 ```
@@ -139,19 +139,19 @@ Either provide the file or change sslmode to disable server certificate verifica
 openGauss
 
 ```
-gsql "sslmode=verify-ca" -p6432 -h 192.168.137.5 -Upostgres
+gsql "sslmode=verify-ca" -p6432 -h ***.***.***.*** -Upostgres
 gsql: could not read root certificate file "/home/omm/.postgresql/root.crt": too long
-gsql "sslmode=verify-ca" -p6432 -h 192.168.137.5 -Upostgres
+gsql "sslmode=verify-ca" -p6432 -h ***.***.***.*** -Upostgres
 gsql: could not read root certificate file "/home/omm/.postgresql/root.crt": wrong tag
 ```
 
 PostgreSQL
 
 ```
-psql "sslmode=verify-ca" -h192.168.137.11
+psql "sslmode=verify-ca" -h***.***.***.***
 psql: error: could not read root certificate file "/home/postgres/.postgresql/root.crt":
 bad base64 decode
-psql "sslmode=verify-ca" -p7000 -h192.168.137.11
+psql "sslmode=verify-ca" -p7000 -h***.***.***.***
 psql: error: could not read root certificate file "/home/postgres/.postgresql/root.crt": too long
 ```
 
@@ -164,7 +164,7 @@ psql: error: could not read root certificate file "/home/postgres/.postgresql/ro
 openGauss
 
 ```
-gsql "sslmode=verify-ca" -p6432 -h 192.168.137.5 -Upostgres
+gsql "sslmode=verify-ca" -p6432 -h ***.***.***.*** -Upostgres
 Password for user postgres:
 gsql ((GaussDB Kernel V500R001C20 build ) compiled at 2021-03-09 18:30:51 commit 0 last mr  )
 SSL connection (cipher: DHE-RSA-AES128-GCM-SHA256, bits: 128)
@@ -176,7 +176,7 @@ postgres=>
 PostgreSQL
 
 ```
-psql "sslmode=verify-ca"  -h192.168.137.11
+psql "sslmode=verify-ca"  -h***.***.***.***
 Password for user postgres:
 psql (12.6)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
@@ -195,14 +195,14 @@ openGauss
 
 ```
 gsql "sslmode=verify-full" -p6432 -h opengauss1 -Upostgres
-gsql: server common name "192.168.137.5" does not match host name "opengauss1"
+gsql: server common name "***.***.***.***" does not match host name "opengauss1"
 ```
 
 PostgreSQL
 
 ```
 psql "sslmode=verify-full" -hnode11
-psql: error: server certificate for "192.168.137.11" does not match host name "node11"
+psql: error: server certificate for "***.***.***.***" does not match host name "node11"
 ```
 
 分别使用 ip 地址及主机名测试，与通用名 CN 匹配的 ip 地址可成功登录，使用主机名连接报错，报错提示如上，符合预期。

@@ -32,14 +32,14 @@ Initialize the environment as the **master** or **node** role.
 </th>
 </tr>
 </thead>
-<tbody><tr id="row10273202782317"><td class="cellrowborder"  width="40.40404040404041%" headers="mcps1.1.4.1.1 "><p id="p527314272234"><a name="p527314272234"></a><a name="p527314272234"></a>192.168.0.1</p>
+<tbody><tr id="row10273202782317"><td class="cellrowborder"  width="40.40404040404041%" headers="mcps1.1.4.1.1 "><p id="p527314272234"><a name="p527314272234"></a><a name="p527314272234"></a>***.***.***.***</p>
 </td>
 <td class="cellrowborder"  width="30.303030303030305%" headers="mcps1.1.4.1.2 "><p id="p1527382718233"><a name="p1527382718233"></a><a name="p1527382718233"></a>k8smaster</p>
 </td>
 <td class="cellrowborder"  width="29.292929292929294%" headers="mcps1.1.4.1.3 "><p id="p927317270237"><a name="p927317270237"></a><a name="p927317270237"></a>master</p>
 </td>
 </tr>
-<tr id="row2273132713237"><td class="cellrowborder"  width="40.40404040404041%" headers="mcps1.1.4.1.1 "><p id="p02731527152311"><a name="p02731527152311"></a><a name="p02731527152311"></a>192.168.0.2</p>
+<tr id="row2273132713237"><td class="cellrowborder"  width="40.40404040404041%" headers="mcps1.1.4.1.1 "><p id="p02731527152311"><a name="p02731527152311"></a><a name="p02731527152311"></a>***.***.***.***</p>
 </td>
 <td class="cellrowborder"  width="30.303030303030305%" headers="mcps1.1.4.1.2 "><p id="p6273142782316"><a name="p6273142782316"></a><a name="p6273142782316"></a>k8snode01</p>
 </td>
@@ -161,7 +161,7 @@ kubeadm init --config kubeadm.yaml
 After the operation is successful, retain the following information for later use:
 
 ```
-kubeadm join 192.168.0.35:6443 --token ru2883.u4rhwkx5oqrol9at \
+kubeadm join ***.***.***.***:6443 --token ru2883.u4rhwkx5oqrol9at \
         --discovery-token-ca-cert-hash sha256:f2dbe7ce49b322e8145b6e9b4303e56468ad1352daabecb797f7bd161a64e018
 ```
 
@@ -184,7 +184,7 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 After the node is installed, it does not need to be initialized. Run the **kubeadm join** command to add the node to the primary node.
 
 ```
-kubeadm join 192.168.0.35:6443 --token ru2883.u4rhwkx5oqrol9at \
+kubeadm join ***.***.***.***:6443 --token ru2883.u4rhwkx5oqrol9at \
         --discovery-token-ca-cert-hash sha256:f2dbe7ce49b322e8145b6e9b4303e56468ad1352daabecb797f7bd161a64e018
 ```
 

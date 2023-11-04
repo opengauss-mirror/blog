@@ -23,11 +23,9 @@ summary: 'build 卡在 create backup label success 问题'
 ## 二，使用 gs_basebackup 工具在备库做备份，同样遇到卡住问题
 
 ```
-gs_basebackup -D /opt/huawei/install/data/backup -p 15400 -h 192.168.33.33
-INFO:  The starting position of the xlog copy of the full build is: 0/19000028. The slot minimum LSN is: 0/0.
+gs_basebackup -D /opt/huawei/install/data/backup -p 15400 -h ***.***.***.***INFO:  The starting position of the xlog copy of the full build is: 0/19000028. The slot minimum LSN is: 0/0.
 [2022-12-21 16:57:39]:gs_basebackup: could not initiate base backup: wait 192.168.33.33:15401 timeout expired
-[omm@testserver backup]$ gs_basebackup -D /opt/huawei/install/data/backup -p 15400 -h 192.168.33.33
-INFO:  The starting position of the xlog copy of the full build is: 0/1A000028. The slot minimum LSN is: 0/0.
+[omm@testserver backup]$ gs_basebackup -D /opt/huawei/install/data/backup -p 15400 -h ***.***.***.***INFO:  The starting position of the xlog copy of the full build is: 0/1A000028. The slot minimum LSN is: 0/0.
 ```
 
 日志如下
@@ -83,9 +81,7 @@ DEVICE=enp135s0f1.33
 ONBOOT=yes
 MTU=1500
 VLAN=yes
-IPADDR=192.168.33.33
-NETMASK=255.255.255.0
-VLAN_EGRESS_PRIORITY_MAP=0:3,1:3,2:3,3:3,4:3,5:3,6:3,7:3
+IPADDR=***.***.***.***NETMASK=***.***.***.***VLAN_EGRESS_PRIORITY_MAP=0:3,1:3,2:3,3:3,4:3,5:3,6:3,7:3
 
 ```
 

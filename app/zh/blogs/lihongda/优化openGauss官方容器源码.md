@@ -128,7 +128,7 @@ Server:
  Labels:
  Experimental: false
  Insecure Registries:
-  127.0.0.0/8
+  ***.***.***.***/8
  Live Restore Enabled: false
 
 ==========================
@@ -205,7 +205,7 @@ Server:
  Labels:
  Experimental: false
  Insecure Registries:
-  127.0.0.0/8
+  ***.***.***.***/8
  Registry Mirrors:
   https://9cpn8tt6.mirror.aliyuncs.com/
   https://registry.docker-cn.com/
@@ -739,7 +739,7 @@ docker_verify_minimum_env() {
 
                         Please Check if the password contains uppercase, lowercase, numbers, special characters, and password length(8).
                         At least one uppercase, lowercase, numeric, special character.
-                        Example: Enmo@123
+                        Example: ****@***
 EOWARN
        exit 1
         fi
@@ -869,7 +869,7 @@ opengauss_setup_hba_conf() {
                 if [ 'trust' = "$GS_HOST_AUTH_METHOD" ]; then
                         echo '# warning trust is enabled for all connections'
                 fi
-                echo "host all all 0.0.0.0/0 $GS_HOST_AUTH_METHOD"
+                echo "host all all ***.***.***.***/0 $GS_HOST_AUTH_METHOD"
                 if [ -n "$SERVER_MODE" ]; then
                     echo "host replication repuser $OG_SUBNET trust"
                 fi
@@ -891,7 +891,7 @@ opengauss_setup_postgresql_conf() {
                 fi
 
                 if [ -n "$SERVER_MODE" ]; then
-                    echo "listen_addresses = '0.0.0.0'"
+                    echo "listen_addresses = '***.***.***.***'"
                     echo "most_available_sync = on"
                     echo "remote_read_mode = non_authentication"
                     echo "pgxc_node_name = '$NODE_NAME'"
@@ -928,7 +928,7 @@ docker_temp_server_start() {
 
         # internal start of server in order to allow setup using gsql client
         # does not listen on external TCP/IP and waits until start finishes
-        set -- "$@" -c listen_addresses='127.0.0.1' -p "${PGPORT:-5432}"
+        set -- "$@" -c listen_addresses='***.***.***.***' -p "${PGPORT:-5432}"
 
         PGUSER="${PGUSER:-$GS_USER}" \
         gs_ctl -D "$PGDATA" \
@@ -1104,8 +1104,7 @@ Installed:
 Complete!
 + wget https://github.com/tianon/gosu/releases/download/1.14/gosu-amd64
 --2022-10-09 07:43:31--  https://github.com/tianon/gosu/releases/download/1.14/gosu-amd64
-Resolving github.com (github.com)... 20.205.243.166
-Connecting to github.com (github.com)|20.205.243.166|:443... connected.
+Resolving github.com (github.com)... ***.***.***.***Connecting to github.com (github.com)|20.205.243.166|:443... connected.
 HTTP request sent, awaiting response... 302 Found
 Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/19708981/82f5cda4-dad5-4537-ace2-fb61e8c1a25a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20221009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221009T074332Z&X-Amz-Expires=300&X-Amz-Signature=9b00f8879f4fa6823a42ab5aa0ccfb0c261ca849c281eb0460eb2b4022cc2a51&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=19708981&response-content-disposition=attachment%3B%20filename%3Dgosu-amd64&response-content-type=application%2Foctet-stream [following]
 --2022-10-09 07:43:32--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/19708981/82f5cda4-dad5-4537-ace2-fb61e8c1a25a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20221009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221009T074332Z&X-Amz-Expires=300&X-Amz-Signature=9b00f8879f4fa6823a42ab5aa0ccfb0c261ca849c281eb0460eb2b4022cc2a51&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=19708981&response-content-disposition=attachment%3B%20filename%3Dgosu-amd64&response-content-type=application%2Foctet-stream
@@ -1373,13 +1372,11 @@ openGauss=#
 [root@ecs-lee dockerfiles]# sh create_master_slave.sh
 Please input OG_SUBNET (容器所在网段) [172.11.0.0/24]:
 OG_SUBNET set 172.11.0.0/24
-Please input GS_PASSWORD (定义数据库密码)[Enmo@123]:
-GS_PASSWORD set Enmo@123
+Please input GS_PASSWORD (定义数据库密码)[****@***]:
+GS_PASSWORD set ****@***
 Please input MASTER_IP (主库IP)[172.11.0.101]:
-MASTER_IP set 172.11.0.101
-Please input SLAVE_1_IP (备库IP)[172.11.0.102]:
-SLAVE_1_IP set 172.11.0.102
-Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]:
+MASTER_IP set ***.***.***.***Please input SLAVE_1_IP (备库IP)[172.11.0.102]:
+SLAVE_1_IP set ***.***.***.***Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]:
 MASTER_HOST_PORT set 5432
 Please input MASTER_LOCAL_PORT (主库通信端口)[5434]:
 MASTER_LOCAL_PORT set 5434
@@ -1403,13 +1400,11 @@ opengaussnetwork
 [root@ecs-lee dockerfiles]# sh create_master_slave.sh
 Please input OG_SUBNET (容器所在网段) [172.11.0.0/24]:
 OG_SUBNET set 172.11.0.0/24
-Please input GS_PASSWORD (定义数据库密码)[Enmo@123]:
-GS_PASSWORD set Enmo@123
+Please input GS_PASSWORD (定义数据库密码)[****@***]:
+GS_PASSWORD set ****@***
 Please input MASTER_IP (主库IP)[172.11.0.101]:
-MASTER_IP set 172.11.0.101
-Please input SLAVE_1_IP (备库IP)[172.11.0.102]:
-SLAVE_1_IP set 172.11.0.102
-Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]:
+MASTER_IP set ***.***.***.***Please input SLAVE_1_IP (备库IP)[172.11.0.102]:
+SLAVE_1_IP set ***.***.***.***Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]:
 MASTER_HOST_PORT set 5432
 Please input MASTER_LOCAL_PORT (主库通信端口)[5434]:
 MASTER_LOCAL_PORT set 5434

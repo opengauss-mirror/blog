@@ -91,7 +91,7 @@ DCF will continue to evolve in scenarios such as data communication, multiple lo
 
 ## 3 How Do We Use DCF?<a name="section198432026141419"></a>
 
-Assume that there are three nodes in the cluster and their IP addresses are 192.168.0.11, 192.168.0.12, and 192.168.0.13.
+Assume that there are three nodes in the cluster and their IP addresses are ***.***.***.***, ***.***.***.***, and ***.***.***.***.
 
 The node IDs are 1, 2, and 3, and the node roles are LEADER, FOLLOWER, and FOLLOWER.
 
@@ -111,7 +111,7 @@ The following values are examples and can be replaced as required. Each line is 
   <!-- Database node name (hostname) -->
     <PARAM name="nodeNames" value="node1,node2,node3" />
   <!-- Node IP address, which corresponds to nodeNames -->
-    <PARAM name="backIp1s" value="192.168.0.11,192.168.0.12,192.168.0.13"/>
+    <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***,***.***.***.***"/>
   <!-- Database installation directory -->
     <PARAM name="gaussdbAppPath" value="/opt/huawei/newsql/app" />
   <!-- Log directory -->
@@ -125,7 +125,7 @@ The following values are examples and can be replaced as required. Each line is 
   <!--Whether to enable the DCF mode. on: enable; off: disable -->
     <PARAM name="enable_dcf" value="on/off"/>
  <!-- DCF configuration information -->
-    <PARAM name="dcf_config" value="[{&quot;stream_id&quot;:1,&quot;node_id&quot;:1,&quot;ip&quot;:&quot;192.168.0.11&quot;,&quot;port&quot;:17783,&quot;role&quot;:&quot;LEADER&quot;},{&quot;stream_id&quot;:1,&quot;node_id&quot;:2,&quot;ip&quot;:&quot;192.168.0.12&quot;,&quot;port&quot;:17783,&quot;role&quot;:&quot;FOLLOWER&quot;},{&quot;stream_id&quot;:1,&quot;node_id&quot;:3,&quot;ip&quot;:&quot;192.168.0.13&quot;,&quot;port&quot;:17783,&quot;role&quot;:&quot;FOLLOWER&quot;}]"/>
+    <PARAM name="dcf_config" value="[{&quot;stream_id&quot;:1,&quot;node_id&quot;:1,&quot;ip&quot;:&quot;***.***.***.***&quot;,&quot;port&quot;:17783,&quot;role&quot;:&quot;LEADER&quot;},{&quot;stream_id&quot;:1,&quot;node_id&quot;:2,&quot;ip&quot;:&quot;***.***.***.***&quot;,&quot;port&quot;:17783,&quot;role&quot;:&quot;FOLLOWER&quot;},{&quot;stream_id&quot;:1,&quot;node_id&quot;:3,&quot;ip&quot;:&quot;***.***.***.***&quot;,&quot;port&quot;:17783,&quot;role&quot;:&quot;FOLLOWER&quot;}]"/>
   </CLUSTER>
 ```
 

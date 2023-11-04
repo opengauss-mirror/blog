@@ -201,8 +201,7 @@ sh bind_net_irq.sh  16 （X86环境不需执行此步骤）
 
 **3. 网卡固件确认与更新**
 
-> 确认当前环境的小网网卡固件版本是否为 2.5.0.0
-
+> 确认当前环境的小网网卡固件版本是否为 ***.***.***.***
 ```shell
 
 ethtool -i enp3s0
@@ -211,9 +210,7 @@ ethtool -i enp3s0
 
 ```
 driver: hinic
-version: 2.3.2.11
-firmware-version: 2.5.0.0
-expansion-rom-version:
+version: ***.***.***.***firmware-version: ***.***.***.***expansion-rom-version:
 bus-info: 0000:03:00.0
 ```
 
@@ -245,8 +242,7 @@ Please reboot OS to take firmware effect.
 
 ```
 
-3. 重启服务器，再确认小网网卡固件版本成功更新为 2.4.1.0
-
+3. 重启服务器，再确认小网网卡固件版本成功更新为 ***.***.***.***
 ```shell
 
 ethtool -i enp3s0
@@ -255,9 +251,7 @@ ethtool -i enp3s0
 
 ```
 driver: hinic
-version: 2.3.2.11
-firmware-version: 2.4.1.0
-expansion-rom-version:
+version: ***.***.***.***firmware-version: ***.***.***.***expansion-rom-version:
 bus-info: 0000:03:00.0
 ```
 
@@ -470,8 +464,7 @@ resultDirectory=my_result_%tY-%tm-%td_%tH%tM%tS
 osCollectorScript=./misc/os_collector_linux.py
 osCollectorInterval=1
 // 收集OS负载信息
-//osCollectorSSHAddr=osuer@10.44.133.78
-//osCollectorDevices=net_enp3s0 blk_nvme0n1 blk_nvme1n1 blk_nvme2n1 blk_nvme3n1
+//osCollectorSSHAddr=osuer@***.***.***.***//osCollectorDevices=net_enp3s0 blk_nvme0n1 blk_nvme1n1 blk_nvme2n1 blk_nvme3n1
 
 ```
 

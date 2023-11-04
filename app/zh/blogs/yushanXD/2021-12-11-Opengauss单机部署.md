@@ -86,7 +86,7 @@ swapoff -a
 
 ```shell
 1 echo "node1" > /etc/hostname
-2 echo  “ 192.168.17.129 node1” >>/etc/hosts
+2 echo  “ ***.***.***.*** node1” >>/etc/hosts
 ```
 
 ## 二、安装详细步骤
@@ -130,15 +130,15 @@ cp script/gspylib/etc/conf/cluster_config_template.xml .
 <PARAM name="gaussdbToolPath" value="/opt/huawei/install/om" />        <!-- 数据库core文件目录-->
 <PARAM name="corePath" value="/opt/huawei/corefile" />        <!-- 节点IP，与数据库节点名称列表一一对应 -->
 <PARAM name="clusterType" value="single-inst"/>
-<PARAM name="backIp1s" value="192.168.17.129"/>
+<PARAM name="backIp1s" value="***.***.***.***"/>
 </CLUSTER>    <!-- 每台服务器上的节点部署信息 -->
 <DEVICELIST>        <!-- 节点1上的部署信息 -->
 <DEVICE sn="1000001">            <!-- 节点1的主机名称 -->
  <PARAM name="name" value="node1"/>            <!-- 节点1所在的AZ及AZ优先级 -->
 <PARAM name="azName" value="AZ1"/>
 <PARAM name="azPriority" value="1"/>            <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-<PARAM name="backIp1" value="192.168.17.129"/>
-<PARAM name="sshIp1" value="192.168.17.129"/>        <!--dbnode-->
+<PARAM name="backIp1" value="***.***.***.***"/>
+<PARAM name="sshIp1" value="***.***.***.***"/>        <!--dbnode-->
 <PARAM name="dataNum" value="1"/>
 <PARAM name="dataPortBase" value="26000"/>
 <PARAM name="dataNode1" value="/opt/huawei/install/data/db1"/>
@@ -286,20 +286,20 @@ end deploy..
 ##### ② 执行如下命令增加对外提供服务的网卡 IP 或者主机名（英文逗号分隔），其中 NodeName 为当前节点名称，如：
 
 ```shell
- gs_guc reload -N NodeName -I all -c "listen_addresses='localhost,192.168.17.129'"
+ gs_guc reload -N NodeName -I all -c "listen_addresses='localhost,***.***.***.***'"
 ```
 
-##### ③ 执行如下命令在数据库主节点配置文件中增加一条认证规则。（这里假设客户端 IP 地址为 192.168.17.129，即远程连接的机器的 IP 地址）
+##### ③ 执行如下命令在数据库主节点配置文件中增加一条认证规则。（这里假设客户端 IP 地址为 ***.***.***.***，即远程连接的机器的 IP 地址）
 
 ```shell
-gs_guc reload -N all -I all -h "host all yushan 192.168.17.129/32 sha256"
+gs_guc reload -N all -I all -h "host all yushan ***.***.***.***/32 sha256"
 
 - -N all表示openGauss中的所有主机。
 - -I all表示主机中的所有实例。
 - -h表示指定需要在“pg_hba.conf”增加的语句。
 - all表示允许客户端连接到任意的数据库。
 - yushan表示连接数据库的用户。
-- 192.168.17.129/32表示只允许IP地址为192.168.17.129的主机连接。在使用过程中，请根据用户的网络进行配置修改。32表示子网掩码为1的位数，即255.255.255.255
+- ***.***.***.***/32表示只允许IP地址为***.***.***.***的主机连接。在使用过程中，请根据用户的网络进行配置修改。32表示子网掩码为1的位数，即255.255.255.255
 - sha256表示连接时jack用户的密码使用sha256算法加密。
 ```
 
@@ -324,7 +324,7 @@ public static Connection getConnect(String username, String passwd)
         //驱动类。
         String driver = "org.postgresql.Driver";
         //数据库连接描述符。
-        String sourceURL = "jdbc:postgresql://127.0.0.1:26000/postgres";
+        String sourceURL = "jdbc:postgresql://***.***.***.***:26000/postgres";
         Connection conn = null;
 
         try

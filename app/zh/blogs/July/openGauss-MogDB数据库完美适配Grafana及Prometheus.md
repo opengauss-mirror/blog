@@ -113,7 +113,7 @@ After=network.target
 [Service]
 Type=simple
 User=prometheus
-ExecStart=/appdata/prometheus/prometheus-2.31.1.linux-arm64/prometheus --web.listen-address="0.0.0.0:50090" --config.file=/appdata/prometheus/etc/prometheus.yml --storage.tsdb.path=/appdata/prometheus/data
+ExecStart=/appdata/prometheus/prometheus-2.31.1.linux-arm64/prometheus --web.listen-address="***.***.***.***:50090" --config.file=/appdata/prometheus/etc/prometheus.yml --storage.tsdb.path=/appdata/prometheus/data
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 

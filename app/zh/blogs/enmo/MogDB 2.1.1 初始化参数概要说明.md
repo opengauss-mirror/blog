@@ -212,7 +212,7 @@ gs_guc set -I all -N all -c "enable_wdr_snapshot=on"
 gs_guc set -I all -N all -c "instr_unique_sql_count=5000"
 
 ##客户端白名单
-gs_guc set -I all -N all -h "host     all      all  0.0.0.0/0    md5"
+gs_guc set -I all -N all -h "host     all      all  ***.***.***.***/0    md5"
 
 ##其他参数
 ##checkpoint_segments checkpoint_timeout周期内所保留的最少WAL日志段文件数量

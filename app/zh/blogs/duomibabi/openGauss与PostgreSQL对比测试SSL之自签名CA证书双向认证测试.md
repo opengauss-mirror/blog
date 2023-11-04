@@ -62,7 +62,7 @@ $ openssl req -new -nodes -text \
 -config openssl.cnf \
 -out server.csr \
 -keyout server.key \
--subj "/CN=192.168.137.5"
+-subj "/CN=***.***.***.***"
 ```
 
 将证书请求文件\(包含用户信息\)和证书签名分开操作，证书请求文件可重用，因为后面可能需要重新生成证书。
@@ -148,7 +148,7 @@ chmod 0600 ~/.postgresql/root.crt
 pg_hba.conf 文件配置 hostssl 条目。
 
 ```
-hostssl  all  all  0.0.0.0/0  md5
+hostssl  all  all  ***.***.***.***/0  md5
 ```
 
 测试验证数据库服务器证书
@@ -156,7 +156,7 @@ hostssl  all  all  0.0.0.0/0  md5
 openGauss 数据库
 
 ```
-gsql "sslmode=verify-ca" -p6432 -h 192.168.137.5 -Upostgres
+gsql "sslmode=verify-ca" -p6432 -h ***.***.***.*** -Upostgres
 Password for user postgres:
 gsql ((GaussDB Kernel V500R001C20 build ) compiled at 2021-03-09 18:30:51 commit 0 last mr  )
 SSL connection (cipher: DHE-RSA-AES128-GCM-SHA256, bits: 128)
@@ -168,7 +168,7 @@ postgres=>
 PostgreSQL 数据库
 
 ```
-psql "sslmode=verify-ca"  -h192.168.137.11
+psql "sslmode=verify-ca"  -h***.***.***.***
 Password for user postgres:
 psql (12.6)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
@@ -187,14 +187,14 @@ openGauss 数据库
 
 ```
 gsql "sslmode=verify-full" -p6432 -h opengauss1 -Upostgres
-gsql: server common name "192.168.137.5" does not match host name "opengauss1"
+gsql: server common name "***.***.***.***" does not match host name "opengauss1"
 ```
 
 PostgreSQL 数据库
 
 ```
 psql "sslmode=verify-full" -hnode11
-psql: error: server certificate for "192.168.137.11" does not match host name "node11"
+psql: error: server certificate for "***.***.***.***" does not match host name "node11"
 ```
 
 分别使用 ip 地址及主机名测试，与通用名 CN 匹配的 ip 地址可成功登录，使用主机名连接报错，报错提示如上，符合预期。
@@ -206,7 +206,7 @@ psql: error: server certificate for "192.168.137.11" does not match host name "n
 pg_hba.conf 文件配置 hostssl 条目。
 
 ```
-hostssl  all  all  0.0.0.0/0  md5 clientcert=verify-ca
+hostssl  all  all  ***.***.***.***/0  md5 clientcert=verify-ca
 ```
 
 此时数据库连接使用 ip 地址或者 hostname 均可连接。
@@ -215,7 +215,7 @@ openGauss 数据库
 
 ```
 gsql "sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/.postgresql/client.key"
--h192.168.137.5 -p6432 -Upostgres
+-h***.***.***.*** -p6432 -Upostgres
 Password for user postgres:
 Warning: The client certificate will expire in 29 days.
 gsql ((GaussDB Kernel V500R001C20 build ) compiled at 2021-03-09 18:30:51 commit 0 last mr  )
@@ -237,7 +237,7 @@ gsql "sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/.postgresql/clie
 PostgreSQL 数据库
 
 ```
-psql "sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key" -h192.168.137.11
+psql "sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key" -h***.***.***.***
 Password for user postgres:
 psql (12.6)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
@@ -261,9 +261,9 @@ postgres=# \q
 如果使用不正确的客户端证书，比如手工修改 client.crt 内容，测试会失败。
 
 ```
-psql "sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key" -h192.168.137.11
+psql "sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key" -h***.***.***.***
 psql: error: SSL error: tlsv1 alert unknown ca
-FATAL:  no pg_hba.conf entry for host "192.168.137.11", user "postgres", database "postgres", SSL off
+FATAL:  no pg_hba.conf entry for host "***.***.***.***", user "postgres", database "postgres", SSL off
 ```
 
 分别使用 ip 地址及主机名测试 clientcert=verify-ca 选项，测试结果符合预期。
@@ -275,7 +275,7 @@ FATAL:  no pg_hba.conf entry for host "192.168.137.11", user "postgres", databas
 pg_hba.conf 文件配置 hostssl 条目。
 
 ```
-hostssl  all  all  0.0.0.0/0  md5 clientcert=verify-full
+hostssl  all  all  ***.***.***.***/0  md5 clientcert=verify-full
 ```
 
 此时数据库连接用户必须配置 CN 中配置的名称 dbuser1
@@ -283,7 +283,7 @@ hostssl  all  all  0.0.0.0/0  md5 clientcert=verify-full
 openGauss 数据库
 
 ```
-gsql "dbname=postgres sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/.postgresql/client.key" -h192.168.137.5 -p6432 -Udbuser1
+gsql "dbname=postgres sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/.postgresql/client.key" -h***.***.***.*** -p6432 -Udbuser1
 ```
 
 上面使用 dbuser1 可以登录成功，如果使用其他用户也能登录成功。
@@ -291,14 +291,14 @@ gsql "dbname=postgres sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/
 PostgreSQL 数据库
 
 ```
-psql "dbname=postgres sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key" -h192.168.137.11 -p6000 -Udbuser1
+psql "dbname=postgres sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key" -h***.***.***.*** -p6000 -Udbuser1
 ```
 
 上面使用 dbuser1 可以登录成功，如果使用其他用户比如 postgres 则会出现下面的错误提示。
 
 ```
 psql: error: FATAL:  password authentication failed for user "postgres"
-FATAL:  no pg_hba.conf entry for host "192.168.137.11", user "postgres", database "postgres", SSL off
+FATAL:  no pg_hba.conf entry for host "***.***.***.***", user "postgres", database "postgres", SSL off
 ```
 
 **测试五**
@@ -308,7 +308,7 @@ FATAL:  no pg_hba.conf entry for host "192.168.137.11", user "postgres", databas
 pg_hba.conf 文件配置 hostssl 条目。
 
 ```
-hostssl  all  all  0.0.0.0/0  cert
+hostssl  all  all  ***.***.***.***/0  cert
 ```
 
 此时数据库连接用户必须配置 CN 中配置的名称 dbuser1，同时不需要输入密码。
@@ -316,7 +316,7 @@ hostssl  all  all  0.0.0.0/0  cert
 openGauss 数据库
 
 ```
-gsql "dbname=postgres sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/.postgresql/client.key" -h192.168.137.5 -p6432 -Udbuser1
+gsql "dbname=postgres sslcert=/home/omm/.postgresql/client.crt sslkey=/home/omm/.postgresql/client.key" -h***.***.***.*** -p6432 -Udbuser1
 Warning: The client certificate will expire in 29 days.
 gsql ((GaussDB Kernel V500R001C20 build ) compiled at 2021-03-09 18:30:51 commit 0 last mr  )
 SSL connection (cipher: DHE-RSA-AES128-GCM-SHA256, bits: 128)
@@ -330,14 +330,14 @@ postgres=>
 ```
 Warning: The client certificate will expire in 29 days.
 gsql: FATAL:  certificate authentication failed for user "postgres"
-FATAL:  no pg_hba.conf entry for host "192.168.137.5", user "postgres", database "postgres", SSL off
+FATAL:  no pg_hba.conf entry for host "***.***.***.***", user "postgres", database "postgres", SSL off
 ```
 
 PostgreSQL 数据库
 
 ```
 psql "dbname=postgres sslcert=/home/postgres/.postgresql/client.crt sslkey=/home/postgres/.postgresql/client.key"
--h192.168.137.11 -Udbuser1
+-h***.***.***.*** -Udbuser1
 psql (12.6)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
 Type "help" for help.
@@ -349,7 +349,7 @@ postgres=> \q
 
 ```
 psql: error: FATAL:  certificate authentication failed for user "postgres"
-FATAL:  no pg_hba.conf entry for host "192.168.137.11", user "postgres", database "postgres", SSL off
+FATAL:  no pg_hba.conf entry for host "***.***.***.***", user "postgres", database "postgres", SSL off
 ```
 
 ## 总结<a name="section9842758113911"></a>

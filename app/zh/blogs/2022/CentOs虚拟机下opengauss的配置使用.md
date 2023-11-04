@@ -78,7 +78,7 @@ times: '12:30'
   记录 ip 和主机名，之后配置需要用到
 
   ```
-  ip 192.168.201.131
+  ip ***.***.***.***
   主机名 db1
   ```
 
@@ -210,7 +210,7 @@ times: '12:30'
   </ROOT>
   ```
 
-  其中 ip 设置为之前的 192.168.201.131,主机名为 db1，如下:
+  其中 ip 设置为之前的 ***.***.***.***,主机名为 db1，如下:
 
   <img src='./figures/d21813079e7b40a1b9edde6b9298d2f3.png'>
 
@@ -284,7 +284,7 @@ times: '12:30'
   	//创建数据库连接。
   	  public static Connection GetConnection(String username, String passwd) {
   	    String driver = "org.postgresql.Driver";
-  	    String sourceURL = "jdbc:postgresql://192.168.201.131:26000/postgres";
+  	    String sourceURL = "jdbc:postgresql://***.***.***.***:26000/postgres";
   	    Connection conn = null;
   	    try {
   	      //加载数据库驱动。
@@ -471,7 +471,7 @@ times: '12:30'
   放行 ip 命令\(在官方文档客户端接入验证处可以查询\)如下
 
   ```
-  gs_guc set -N all -I all -h "host all parker 192.168.201.1/32 sha256"
+  gs_guc set -N all -I all -h "host all parker ***.***.***.***/32 sha256"
   ```
 
   具体的接入 ip 若不清楚可以通过报错信息或本地的 ipconfig 进行查看

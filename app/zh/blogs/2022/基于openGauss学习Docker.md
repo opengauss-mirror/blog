@@ -281,8 +281,8 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
     	-p 容器端口
     -P（大）        # 随机指定端口
 
-    # 新建 opengauss 的容器并后台启动，配置密码 Enmo@123，端口映射
-    # docker run --name opengauss --privileged=true -d -e GS_PASSWORD=Enmo@123 -p 5432:5432 enmotech/opengauss:latest
+    # 新建 opengauss 的容器并后台启动，配置密码 ****@***，端口映射
+    # docker run --name opengauss --privileged=true -d -e GS_PASSWORD=****@*** -p 5432:5432 enmotech/opengauss:latest
     ad8892ff8b45fc3329ed76afd634de136ec7b67fb2ba02221a0ee8886ee932b8
     ```
 
@@ -296,7 +296,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
 
     [root@mogdb ~]# docker ps
     CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                                       NAMES
-    ad8892ff8b45   enmotech/opengauss:latest   "entrypoint.sh gauss…"   5 minutes ago   Up 5 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   opengauss
+    ad8892ff8b45   enmotech/opengauss:latest   "entrypoint.sh gauss…"   5 minutes ago   Up 5 minutes   ***.***.***.***:5432->5432/tcp, :::5432->5432/tcp   opengauss
     ```
 
   - 启停容器
@@ -322,7 +322,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
     Non-SSL connection (SSL connection is recommended when requiring high-security)
     Type "help" for help.
 
-    omm=# CREATE USER tpcc_usr WITH PASSWORD "tpcc@1234";
+    omm=# CREATE USER tpcc_usr WITH PASSWORD "****@***4";
     NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
     CREATE ROLE
     omm=# alter user tpcc_usr sysadmin;
@@ -420,12 +420,12 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
 
   ```
   # 容器名opengauss2，端口映射为5433，使用镜像ID是1e760f8f2f3d
-  [root@mogdb ~]# docker run --name opengauss2 --privileged=true -d -e GS_PASSWORD=Enmo@123 -p 5433:5432 1e760f8f2f3d
+  [root@mogdb ~]# docker run --name opengauss2 --privileged=true -d -e GS_PASSWORD=****@*** -p 5433:5432 1e760f8f2f3d
   0a1c49aaa9114f19e33fef20753be092f923ffe558aa1d4251c55d3948dff486
   [root@mogdb ~]# docker ps
   CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-  0a1c49aaa911   1e760f8f2f3d                "entrypoint.sh gauss…"   8 seconds ago    Up 8 seconds    0.0.0.0:5433->5432/tcp, :::5433->5432/tcp   opengauss2  #<<<<<<<
-  ad8892ff8b45   enmotech/opengauss:latest   "entrypoint.sh gauss…"   46 minutes ago   Up 37 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   opengauss
+  0a1c49aaa911   1e760f8f2f3d                "entrypoint.sh gauss…"   8 seconds ago    Up 8 seconds    ***.***.***.***:5433->5432/tcp, :::5433->5432/tcp   opengauss2  #<<<<<<<
+  ad8892ff8b45   enmotech/opengauss:latest   "entrypoint.sh gauss…"   46 minutes ago   Up 37 minutes   ***.***.***.***:5432->5432/tcp, :::5432->5432/tcp   opengauss
 
   [root@mogdb ~]# docker exec -it 0a1c49aaa911 /bin/bash
   root@0a1c49aaa911:/# su - omm
@@ -477,7 +477,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
   # 测试
   # mkdir /root/data
   docker run --name opengauss03 --privileged=true -d \
-  -e GS_PASSWORD=Enmo@123 -p 5434:5432 \
+  -e GS_PASSWORD=****@*** -p 5434:5432 \
   -v /root/data:/var/lib/opengauss/data \
   1e760f8f2f3d
 
@@ -541,7 +541,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
   ```
   # 匿名挂载  -v 容器内的路径
   docker run --name opengauss04 --privileged=true -d \
-  -e GS_PASSWORD=Enmo@123 -p 5435:5432 \
+  -e GS_PASSWORD=****@*** -p 5435:5432 \
   -v /var/lib/opengauss/data \
   1e760f8f2f3d
 
@@ -570,7 +570,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
 
   # 具名挂载
   docker run --name opengauss05 --privileged=true -d \
-  -e GS_PASSWORD=Enmo@123 -p 5436:5432 \
+  -e GS_PASSWORD=****@*** -p 5436:5432 \
   -v juming:/var/lib/opengauss/data \
   1e760f8f2f3d
 
@@ -665,11 +665,11 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
   enmotech/opengauss   latest     b4dd24d09223   2 months ago     383MB
   centos               7.6.1810   f1cb7c7d58b7   2 years ago      202MB
 
-  [root@mogdb ~]# docker run --name opengauss10 --privileged=true -d -e GS_PASSWORD=Enmo@123 -p 5866:5432 -v /var/lib/opengauss opengauss:2.1.0
+  [root@mogdb ~]# docker run --name opengauss10 --privileged=true -d -e GS_PASSWORD=****@*** -p 5866:5432 -v /var/lib/opengauss opengauss:2.1.0
   30124a1b285a6fe92b4ea55bc340603148e5ba52db481aacf23354e242cfaa9c
   [root@mogdb ~]# docker ps
   CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-  30124a1b285a   opengauss:2.1.0             "entrypoint.sh gauss…"   11 seconds ago   Up 10 seconds   0.0.0.0:5866->5432/tcp, :::5866->5432/tcp   opengauss10
+  30124a1b285a   opengauss:2.1.0             "entrypoint.sh gauss…"   11 seconds ago   Up 10 seconds   ***.***.***.***:5866->5432/tcp, :::5866->5432/tcp   opengauss10
 
   # 登录opengauss容器，创建用户
   ​```
@@ -680,7 +680,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
   Non-SSL connection (SSL connection is recommended when requiring high-security)
   Type "help" for help.
 
-  omm=# CREATE USER tpcc_usr WITH PASSWORD "tpcc@1234";
+  omm=# CREATE USER tpcc_usr WITH PASSWORD "****@***4";
   NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
   CREATE ROLE
   omm=# alter user tpcc_usr sysadmin;

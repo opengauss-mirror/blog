@@ -62,7 +62,7 @@ times: '17:30'
 
       public static void main(String[] args) {
           String driver = "org.postgresql.Driver";
-          String sourceURL = "jdbc:postgresql://127.0.0.1:5432/postgres";
+          String sourceURL = "jdbc:postgresql://***.***.***.***:5432/postgres";
           String userName = "tpcc";
           String password = "password";
 

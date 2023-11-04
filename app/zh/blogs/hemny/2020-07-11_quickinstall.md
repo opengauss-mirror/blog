@@ -61,17 +61,17 @@ rm -rf /home/gauss/tmp
 这里直接采用 gs_initdb 命令初始化。
 
 ```
-gs_initdb -w Aa123456 --nodename='sgnode'
+gs_initdb -w ******** --nodename='sgnode'
 
 # 配置数据库
 # vi $PGDATA/postgresql.conf 追加
 listen_addresses = '*'
-local_bind_address = '0.0.0.0'
+local_bind_address = '***.***.***.***'
 port = 5432
 
 # 配置hba文件
 # vi $PGDATA/pg_hba.conf  追加以下内容
-host    all             all             0.0.0.0/0               sha256
+host    all             all             ***.***.***.***/0               sha256
 
 ```
 
@@ -89,17 +89,17 @@ PS：初始化数据库的用户，是不能通过 IP 远程连接的哦，所�
 gsql -dpostgres
 
 # 修改初始化用户的密码（若需要），openGauss 加强安全，如果需要修改初始化数据库用户的密码，需要用REPLACE哦！
-postgres=#  ALTER ROLE gauss IDENTIFIED BY 'Aa1234567' REPLACE 'Aa123456';
+postgres=#  ALTER ROLE gauss IDENTIFIED BY '********7' REPLACE '********';
 
 # 创建用户(初始化数据库的用户不能进行远程连接，需要重新创建用户)
-postgres=# create user user1 with password 'Aa123456';
+postgres=# create user user1 with password '********';
 postgres=# grant all PRIVILEGES to user1;
 
 ```
 
 ### 验证远程登录数据库
 
-gsql -dpostgres -h192.168.1.67 -Uuser1
+gsql -dpostgres -h***.***.***.*** -Uuser1
 
 ### 总结
 

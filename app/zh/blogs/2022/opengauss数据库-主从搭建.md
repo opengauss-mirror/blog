@@ -171,7 +171,7 @@ yum -y install libaio-devel flex bison ncurses-devel glibc-devel patch redhat-ls
           <!-- 数据库core文件目录-->
           <PARAM name="corePath" value="/opt/huawei/corefile"/>
           <!-- 节点IP，与数据库节点名称列表一一对应 -->
-          <PARAM name="backIp1s" value="192.168.56.227,192.168.56.228"/>
+          <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***"/>
 
       </CLUSTER>
       <!-- 每台服务器上的节点部署信息 -->
@@ -184,8 +184,8 @@ yum -y install libaio-devel flex bison ncurses-devel glibc-devel patch redhat-ls
              <PARAM name="azName" value="AZ1"/>
               <PARAM name="azPriority" value="1"/>
               <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-              <PARAM name="backIp1" value="192.168.56.227"/>
-              <PARAM name="sshIp1" value="192.168.56.227"/>
+              <PARAM name="backIp1" value="***.***.***.***"/>
+              <PARAM name="sshIp1" value="***.***.***.***"/>
 
               <!--dn-->
               <PARAM name="dataNum" value="1"/>
@@ -203,8 +203,8 @@ yum -y install libaio-devel flex bison ncurses-devel glibc-devel patch redhat-ls
               <PARAM name="azName" value="AZ1"/>
               <PARAM name="azPriority" value="1"/>
               <!-- 节点2的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-              <PARAM name="backIp1" value="192.168.56.228"/>
-              <PARAM name="sshIp1" value="192.168.56.228"/>
+              <PARAM name="backIp1" value="***.***.***.***"/>
+              <PARAM name="sshIp1" value="***.***.***.***"/>
          </DEVICE>
       </DEVICELIST>
   </ROOT>
@@ -409,7 +409,7 @@ yum -y install libaio-devel flex bison ncurses-devel glibc-devel patch redhat-ls
           sync_state                     : Quorum
           sync_priority                  : 1
           sync_most_available            : Off
-          channel                        : 192.168.56.227:26001-->192.168.56.228:35144
+          channel                        : ***.***.***.***:26001-->***.***.***.***:35144
    Receiver info:
   No information
   ```

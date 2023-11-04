@@ -38,7 +38,7 @@ postgres=# show password_encryption_type;
  2
 (1 row)
 
-postgres=# create user test password 'abcd@1234';
+postgres=# create user test password '****@**34';
 CREATE ROLE
 postgres=# select rolname,rolpassword from pg_authid where rolname='test';
  rolname |                                                                                                                     rolpassword
@@ -50,7 +50,7 @@ postgres=# select rolname,rolpassword from pg_authid where rolname='test';
 (1 row)
 postgres=# alter system set password_encryption_type =0;
 ALTER SYSTEM SET
-postgres=# create user test1 password 'abcd@1234';
+postgres=# create user test1 password '****@**34';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 postgres=# select rolname,rolpassword from pg_authid where rolname in('test','test1');
@@ -78,11 +78,11 @@ postgres=# show password_policy;
 -----------------
  1
 (1 row)
-postgres=#  alter user test password 'abcd@12';
+postgres=#  alter user test password '****@**';
 ERROR:  Password must contain at least 8 characters.
 postgres=# alter system set password_policy =0;
 ALTER SYSTEM SET
-postgres=# alter user test password 'abcd@12';
+postgres=# alter user test password '****@**';
 ALTER ROLE
 ```
 
@@ -111,7 +111,7 @@ postgres=# show password_min_length;
 (1 row)
 postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'abcd@12';
+postgres=# alter user test password '****@**';
 ERROR:  Password must contain at least 8 characters.
 
 ```
@@ -126,7 +126,7 @@ postgres=# show password_min_length;
 (1 row)
 postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'abcd@12';
+postgres=# alter user test password '****@**';
 ERROR:  Password must contain at least 8 characters.
 
 ```
@@ -136,7 +136,7 @@ ERROR:  Password must contain at least 8 characters.
 ```
 postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'ABaaaaaa';
+postgres=# alter user test password '********';
 ERROR:  Password must contain at least three kinds of characters.
 
 ```
@@ -153,9 +153,9 @@ postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
 postgres=# alter system set password_min_lowercase=1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'ABCD@789';
+postgres=# alter user test password '****@***';
 ERROR:  Password must contain at least 1 lower characters.
-postgres=# alter user test password 'abcd@123';
+postgres=# alter user test password '****@**3';
 ALTER ROLE
 
 ```
@@ -172,9 +172,9 @@ postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
 postgres=# alter system set password_min_digital=1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'ABCd@dsc';
+postgres=# alter user test password '****@***';
 ERROR:  Password must contain at least 1 digital characters.
-postgres=#  alter user test password 'ABCd@321';
+postgres=#  alter user test password '****@***';
 ALTER ROLE
 
 ```
@@ -191,9 +191,9 @@ postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
 postgres=# alter system set password_min_digital=1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'ABCd@dsc';
+postgres=# alter user test password '****@***';
 ERROR:  Password must contain at least 1 digital characters.
-postgres=#  alter user test password 'ABCd@321';
+postgres=#  alter user test password '****@***';
 ALTER ROLE
 
 ```
@@ -210,9 +210,9 @@ postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
 postgres=# alter system set password_min_special=1;
 ALTER SYSTEM SET
-postgres=# alter user test password 'ABCd1dsc';
+postgres=# alter user test password '********';
 ERROR:  Password must contain at least 1 special characters.
-postgres=# alter user test password 'ABCd@3214';
+postgres=# alter user test password '****@***4';
 ALTER ROLE
 
 ```
@@ -232,9 +232,9 @@ postgres=# alter system set password_min_digital=0;
 ALTER SYSTEM SET
 postgres=# alter system set password_min_special=0;
 ALTER SYSTEM SET
-postgres=# create user test1234 password 'tesT1234';
+postgres=# create user test1234 password '********';
 ERROR:  Password should not equal to the rolname.
-postgres=# create user test1234 password '4321Tset';
+postgres=# create user test1234 password '********';
 ERROR:  Password should not equal to the reverse of rolname.
 
 ```
@@ -244,11 +244,11 @@ ERROR:  Password should not equal to the reverse of rolname.
 ```
 postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
-postgres=#  alter user test password 'ABCd@3214';
+postgres=#  alter user test password '****@***4';
 ERROR:  New password should not equal to the old ones.
-postgres=#  alter user test password '4123@dCBA';
+postgres=#  alter user test password '****@****';
 ERROR:  New password should not equal to the reverse of old ones.
-postgres=#  alter user test password '4123@dCBa';
+postgres=#  alter user test password '****@****';
 ALTER ROLE
 
 ```
@@ -259,20 +259,20 @@ ALTER ROLE
 
 ```
 #向数据库弱口令字典中，添加弱口令
-postgres=# CREATE WEAK PASSWORD DICTIONARY ('abcd@1234');
+postgres=# CREATE WEAK PASSWORD DICTIONARY ('****@**34');
 CREATE WEAK PASSWORD DICTIONARY
 postgres=# alter system set password_policy =1;
 ALTER SYSTEM SET
-postgres=# create user test2 password 'abcd@1234';
+postgres=# create user test2 password '****@**34';
 ERROR:  Password should not be weak password.
-postgres=# CREATE WEAK PASSWORD DICTIONARY ('abcd@123');
+postgres=# CREATE WEAK PASSWORD DICTIONARY ('****@**3');
 CREATE WEAK PASSWORD DICTIONARY
 #查看数据库弱口令字典中，弱口令设置
 postgres=# SELECT * FROM gs_global_config WHERE NAME LIKE 'weak_password';
      name      |   value
 ---------------+-----------
- weak_password | abcd@1234
- weak_password | abcd@123
+ weak_password | ****@**34
+ weak_password | ****@**3
 (2 rows)
 #删除数据库弱口令字典中，记录的所有弱口令，不支持只删除指定的弱口令。
 postgres=# DROP WEAK PASSWORD DICTIONARY;
@@ -301,7 +301,7 @@ postgres=# show password_reuse_max;
 (1 row)
 postgres=# alter system set password_policy =0;
 ALTER SYSTEM SET
-postgres=# alter user test password '4123@dCBa';
+postgres=# alter user test password '****@****';
 ERROR:  The password cannot be reused.
 
 ```
@@ -320,9 +320,9 @@ postgres=# alter system set password_reuse_time =0;
 ALTER SYSTEM SET
 postgres=# alter system set password_reuse_max =1;
 ALTER SYSTEM SET
-postgres=# alter user test password '4123@dCBa';
+postgres=# alter user test password '****@****';
 ALTER ROLE
-postgres=# alter user test password '4123@dCBa';
+postgres=# alter user test password '****@****';
 ERROR:  The password cannot be reused.
 
 ```
@@ -435,7 +435,7 @@ postgres=# select sysdate;
  2021-12-31 22:51:19
 (1 row)
 
-postgres=# CREATE USER test3 WITH PASSWORD 'test@123' VALID BEGIN '2021-12-31 08:00:00' VALID UNTIL '2021-12-31 23:00:00';
+postgres=# CREATE USER test3 WITH PASSWORD '****@***' VALID BEGIN '2021-12-31 08:00:00' VALID UNTIL '2021-12-31 23:00:00';
 CREATE ROLE
 postgres=# \du test3
                           List of roles

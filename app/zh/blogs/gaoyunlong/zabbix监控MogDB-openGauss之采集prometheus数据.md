@@ -87,7 +87,7 @@ postgres=# create database zabbix DBCOMPATIBILITY='PG';
 
 --创建用户
 postgres=# \c zabbix
-abbix=# create user zabbix encrypted password 'zabbix@123';create user zabbix encrypted password 'zabbix@123';
+abbix=# create user zabbix encrypted password '******@***';create user zabbix encrypted password '******@***';
 
 --修改pg_hba.conf
 host    all          zabbix             172.16.3.90/32 md5

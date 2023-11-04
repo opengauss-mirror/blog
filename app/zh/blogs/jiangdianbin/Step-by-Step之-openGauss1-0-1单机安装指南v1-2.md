@@ -56,7 +56,7 @@ getenforce
 
 ```
 cat >>/etc/hosts <<EOF
-192.168.0.11 node1
+***.***.***.*** node1
 EOF
 ```
 
@@ -270,7 +270,7 @@ cat > clusterconfig.xml<<EOF
 
   <!-- 数据库集群的节点IP，与数据库集群节点名称列表一一对应 --\>
 
-<PARAM name="backIp1s" value="192.168.0.11"/\>
+<PARAM name="backIp1s" value="***.***.***.***"/\>
 
   <!-- 数据库集群的类型，本例为单实例安装 --\>
 
@@ -298,9 +298,9 @@ cat > clusterconfig.xml<<EOF
 
 <!-- 节点1的IP，如果节点服务器只有一个网卡，将backIP1和sshIP1配置成同一个IP --\>
 
-<PARAM name="backIp1" value="192.168.0.11"/\>
+<PARAM name="backIp1" value="***.***.***.***"/\>
 
-<PARAM name="sshIp1" value="192.168.0.11"/\>
+<PARAM name="sshIp1" value="***.***.***.***"/\>
 
 <!--dbnode--\>
 
@@ -492,7 +492,7 @@ current_az      : AZ_ALL
 
 node     node_ip         instance                      state
 ---------------------------------------------------------------------------
-1  node1 192.168.0.11    6001 /opt/gaussdb/data/db1 P Primary Manually stopped
+1  node1 ***.***.***.***    6001 /opt/gaussdb/data/db1 P Primary Manually stopped
 [omm@node1 db1]$
 ```
 
@@ -519,7 +519,7 @@ current_az      : AZ_ALL
 
 node     node_ip         instance                      state
 ---------------------------------------------------------------------------
-1  node1 192.168.0.11    6001 /opt/gaussdb/data/db1 P Primary Normal
+1  node1 ***.***.***.***    6001 /opt/gaussdb/data/db1 P Primary Normal
 [omm@node1 ~]$
 ```
 
@@ -540,7 +540,7 @@ node_name                 : node1
 
 node                      : 1
 instance_id               : 6001
-node_ip                   : 192.168.0.11
+node_ip                   : ***.***.***.***
 data_path                 : /opt/gaussdb/data/db1
 type                      : Datanode
 instance_state            : Down
@@ -576,7 +576,7 @@ node_name                 : node1
 
 node                      : 1
 instance_id               : 6001
-node_ip                   : 192.168.0.11
+node_ip                   : ***.***.***.***
 data_path                 : /opt/gaussdb/data/db1
 type                      : Datanode
 instance_state            : Primary

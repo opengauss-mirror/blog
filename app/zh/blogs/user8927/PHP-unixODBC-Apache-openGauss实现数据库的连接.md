@@ -125,7 +125,7 @@ cp php-fpm.conf.default php-fpm.conf
 修改 Apache 配置文件，在其中增加以下语句。
 
 ```
-LoadModule proxy_module modules/mod_proxy.so LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so  ProxyRequests Off ProxyPassMatch "^/(.*\.php(/.*)?)$" "fcgi://127.0.0.1:9000/[php文件的路径]/$1"
+LoadModule proxy_module modules/mod_proxy.so LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so  ProxyRequests Off ProxyPassMatch "^/(.*\.php(/.*)?)$" "fcgi://***.***.***.***:9000/[php文件的路径]/$1"
 ```
 
 调用 phpinfo\(\)显示如下：

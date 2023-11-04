@@ -39,16 +39,16 @@ https://www.modb.pro/course/133
 
 ```
 SQL文本：
-create user user1 createrole password 'user1_123';
-create user user2 createdb identified by 'user2_123';
-create user user3 password 'user3_123';
+create user user1 createrole password '*****_***';
+create user user2 createdb identified by '*****_***';
+create user user3 password '*****_***';
 \du+
 
-omm=# create user user1 createrole password 'user1_123';
+omm=# create user user1 createrole password '*****_***';
 CREATE ROLE
-omm=# create user user2 createdb identified by 'user2_123';
+omm=# create user user2 createdb identified by '*****_***';
 CREATE ROLE
-omm=# create user user3 password 'user3_123';
+omm=# create user user3 password '*****_***';
 CREATE ROLE
 omm=# \du+
                                                                      List of roles
@@ -68,13 +68,13 @@ omm=#
 
 ```
 SQL文本：
-alter user user1 identified by 'user1_456' replace 'user1_123';
+alter user user1 identified by 'user1_456' replace '*****_***';
 或者
-alter user user1 password 'user1_789' ;
+alter user user1 password '*****_***' ;
 
-omm=# alter user user1 identified by 'user1_456' replace 'user1_123';
+omm=# alter user user1 identified by 'user1_456' replace '*****_***';
 ALTER ROLE
-omm=# alter user user1 password 'user1_789' ;
+omm=# alter user user1 password '*****_***' ;
 ALTER ROLE
 omm=# \du+
                                                                      List of roles

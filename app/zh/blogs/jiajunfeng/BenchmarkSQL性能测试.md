@@ -48,14 +48,14 @@ times: '12:30'
 </td>
 <td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.2 "><p id="p090965319402"><a name="p090965319402"></a><a name="p090965319402"></a>1c/4G/40GB</p>
 </td>
-<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.3 "><p id="p1290915312406"><a name="p1290915312406"></a><a name="p1290915312406"></a>192.168.0.10 (华为云ECS服务器)</p>
+<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.3 "><p id="p1290915312406"><a name="p1290915312406"></a><a name="p1290915312406"></a>***.***.***.***0 (华为云ECS服务器)</p>
 </td>
 </tr>
 <tr id="row590935319406"><td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.1 "><p id="p19909185374015"><a name="p19909185374015"></a><a name="p19909185374015"></a><strong id="b39134311427"><a name="b39134311427"></a><a name="b39134311427"></a>openGauss DB主机</strong></p>
 </td>
 <td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.2 "><p id="p7910135318409"><a name="p7910135318409"></a><a name="p7910135318409"></a>2c/8G/40GB</p>
 </td>
-<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.3 "><p id="p5910105374014"><a name="p5910105374014"></a><a name="p5910105374014"></a>192.168.0.11 (华为云ECS服务器||未做任何调优)</p>
+<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.1.4.1.3 "><p id="p5910105374014"><a name="p5910105374014"></a><a name="p5910105374014"></a>***.***.***.*** (华为云ECS服务器||未做任何调优)</p>
 </td>
 </tr>
 </tbody>
@@ -254,12 +254,12 @@ driver=org.postgresql.Driver
 
 
 // 修改连接字符串, 包含IP、端口号、数据库
-conn=jdbc:postgresql://192.168.0.11:26000/tpcc1000?prepareThreshold=1&batchMode=on&fetchsize=10
+conn=jdbc:postgresql://***.***.***.***:26000/tpcc1000?prepareThreshold=1&batchMode=on&fetchsize=10
 
 
 // 设置数据库登录用户和密码。
 user=jack
-password=gauss@123
+password=*****@***
 
 warehouses=20        //仓库数，每个Warehouse的数据量大小约为76823.04KB
 loadWorkers=4        //用于在数据库中初始化数据的加载进程数量，默认为4 (建议填写CPU核数)
@@ -285,7 +285,7 @@ osCollectorInterval=1
 
 
 //收集OS负载信息。
-osCollectorSSHAddr=omm@192.168.0.11
+osCollectorSSHAddr=omm@***.***.***.***
 osCollectorDevices=net_eth0 blk_vda
 ------------------------------------------------------------
 ```
@@ -443,7 +443,7 @@ create table bmsql_stock (
 
 ```
 [root@benchmarksql ~]# ssh-keygen -t rsa
-[root@benchmarksql ~]# ssh-copy-id omm@192.168.0.11
+[root@benchmarksql ~]# ssh-copy-id omm@***.***.***.***
 ```
 
 ## 配置 openGauss DB 主机<a name="section13220125485916"></a>
@@ -451,7 +451,7 @@ create table bmsql_stock (
 创建数据库及用户
 
 ```
-postgres=# create user jack with sysadmin identified by 'gauss@123';
+postgres=# create user jack with sysadmin identified by '*****@***';
 CREATE ROLE
 postgres=# create database tpcc1000 encoding='UTF-8' owner=jack;
 CREATE DATABASE
@@ -460,7 +460,7 @@ CREATE DATABASE
 配置 pg_hba.conf
 
 ```
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host  tpcc1000  jack  192.168.0.10/32  sha256"
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host  tpcc1000  jack  ***.***.***.***0/32  sha256"
 ```
 
 备份数据目录，测试完毕后可以快速恢复

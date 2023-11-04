@@ -103,7 +103,7 @@ enmotech=#
 #### 备份整个 database
 
 ```
-[omm@mogdb ~]$ gs_dump -p 26000 -U test -W test@1234 enmotech -f enmotech_20211201.tar -F t
+[omm@mogdb ~]$ gs_dump -p 26000 -U test -W ****@***4 enmotech -f enmotech_20211201.tar -F t
 gs_dump[port='26000'][enmotech][2021-12-01 16:24:15]: The total objects number is 388.
 gs_dump[port='26000'][enmotech][2021-12-01 16:24:15]: [100.00%] 388 objects have been dumped.
 gs_dump[port='26000'][enmotech][2021-12-01 16:24:15]: dump database enmotech successfully
@@ -128,7 +128,7 @@ enmotech=# \q
 #### 通过 gs_restore 进行还原操作
 
 ```
-[omm@mogdb ~]$ gs_restore enmotech_20211201.tar  -d enmotech -p26000 -Utest -W test@1234
+[omm@mogdb ~]$ gs_restore enmotech_20211201.tar  -d enmotech -p26000 -Utest -W ****@***4
 start restore operation ...
 table db2mogdb complete data imported !
 Finish reading 8 SQL statements!
@@ -142,7 +142,7 @@ total time: 13  ms
 #### 检查数据恢复是否成功
 
 ```
-[omm@mogdb ~]$  gsql -d enmotech -p26000 -Utest -W test@1234
+[omm@mogdb ~]$  gsql -d enmotech -p26000 -Utest -W ****@***4
 gsql ((MogDB 2.0.0 build b75b585a) compiled at 2021-05-28 17:20:47 commit 0 last mr  )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.
@@ -177,7 +177,7 @@ Type "help" for help.
 enmotech=# truncate table db2mogdb;
 TRUNCATE TABLE
 enmotech=# \q
-[omm@mogdb ~]$ gs_restore enmotech_20211201.tar  -d enmotech -p26000 -Utest -W test@1234
+[omm@mogdb ~]$ gs_restore enmotech_20211201.tar  -d enmotech -p26000 -Utest -W ****@***4
 start restore operation ...
 Error while PROCESSING TOC:
 Error from TOC entry 468; 1259 16522 TABLE db2mogdb test
@@ -241,7 +241,7 @@ enmotech=# select count(1) from roger.test1201;
 
 ```
 
-[omm@mogdb ~]$ gs_dump -p 26000 -U test -W test@1234 enmotech -f enmotech_all.tar -F t
+[omm@mogdb ~]$ gs_dump -p 26000 -U test -W ****@***4 enmotech -f enmotech_all.tar -F t
 gs_dump[port='26000'][enmotech][2021-12-01 16:39:56]: The total objects number is 391.
 gs_dump[port='26000'][enmotech][2021-12-01 16:39:56]: [100.00%] 391 objects have been dumped.
 gs_dump[port='26000'][enmotech][2021-12-01 16:39:56]: dump database enmotech successfully
@@ -259,7 +259,7 @@ enmotech=# drop schema roger CASCADE; NOTICE:  drop cascades to table roger.test
 
 ```
 
-[omm@mogdb ~]$ gs_restore enmotech_all.tar -d enmotech -n roger -p26000 -Utest -W test@1234
+[omm@mogdb ~]$ gs_restore enmotech_all.tar -d enmotech -n roger -p26000 -Utest -W ****@***4
 start restore operation ...
 table test1201 complete data imported !
 Finish reading 11 SQL statements!
@@ -299,7 +299,7 @@ enmotech=#
 #### 从整个 database 备份中恢复单个表
 
 ```
-[omm@mogdb ~]$ gs_restore enmotech_all.tar -d enmotech -n roger -t test1201 -p26000 -Utest -W test@1234
+[omm@mogdb ~]$ gs_restore enmotech_all.tar -d enmotech -n roger -t test1201 -p26000 -Utest -W ****@***4
 start restore operation ...
 table test1201 complete data imported !
 Finish reading 11 SQL statements!

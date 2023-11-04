@@ -15,8 +15,8 @@ times: '17:30'
 
 | IP            | Hostname  | Role   |
 | ------------- | --------- | ------ |
-| 192.168.0.87  | k8smaster | master |
-| 192.168.0.161 | k8snode01 | node   |
+| ***.***.***.***  | k8smaster | master |
+| ***.***.***.***61 | k8snode01 | node   |
 
 ```
 关闭firewalld
@@ -135,7 +135,7 @@ apiServer:
 成功后保留如下信息，后面会使用到：
 
 ```
-kubeadm join 192.168.0.35:6443 --token ru2883.u4rhwkx5oqrol9at \
+kubeadm join ***.***.***.***:6443 --token ru2883.u4rhwkx5oqrol9at \
         --discovery-token-ca-cert-hash sha256:f2dbe7ce49b322e8145b6e9b4303e56468ad1352daabecb797f7bd161a64e018
 ```
 
@@ -156,7 +156,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Node 节点执行完安装后无需初始化，执行`kubeadm join`命令加入主节点
 
 ```
-kubeadm join 192.168.0.35:6443 --token ru2883.u4rhwkx5oqrol9at \
+kubeadm join ***.***.***.***:6443 --token ru2883.u4rhwkx5oqrol9at \
         --discovery-token-ca-cert-hash sha256:f2dbe7ce49b322e8145b6e9b4303e56468ad1352daabecb797f7bd161a64e018
 ```
 

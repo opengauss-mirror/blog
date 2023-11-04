@@ -11,7 +11,7 @@ public class insert {
   //创建数据库连接。
   public static Connection GetConnection(String username, String passwd) {
     String driver = "org.postgresql.Driver";
-    String sourceURL = "jdbc:postgresql://127.0.0.1:5432/testdb";
+    String sourceURL = "jdbc:postgresql://***.***.***.***:5432/testdb";
     Connection conn = null;
     try {
       //加载数据库驱动。

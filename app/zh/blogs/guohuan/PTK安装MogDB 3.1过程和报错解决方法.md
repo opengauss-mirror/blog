@@ -30,7 +30,7 @@ global:
   group: omm310beta1
   base_dir: /opt/mogdb3.1.0beta1
 db_servers:
-  - host: 127.0.0.1
+  - host: ***.***.***.***
     db_port: 27007
 ```
 

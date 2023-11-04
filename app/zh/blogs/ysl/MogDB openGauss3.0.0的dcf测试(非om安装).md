@@ -42,7 +42,7 @@ yum install -y bzip2 bzip2-devel curl libaio
 ```
 groupadd omma -g 20001
 useradd omma -g 20001 -u 20001
-echo "Enmo@123" | passwd --stdin omma
+echo "****@***" | passwd --stdin omma
 
 mkdir -p /opengauss/{soft,data}
 tar xf openGauss-3.0.0-CentOS-64bit-all.tar.gz -C /opengauss/soft
@@ -73,7 +73,7 @@ tar -xf openGauss-3.0.0-CentOS-64bit.tar.bz2
 后续所有操作均使用 omma 用户,初始化需要加-c 参数，会生成 dcf 相关文件(注意 nodename)
 
 ```
-gs_initdb --nodename=gaussdb1 -w Enmo@123 -D /opengauss/data/ -c
+gs_initdb --nodename=gaussdb1 -w ****@*** -D /opengauss/data/ -c
 ```
 
 <img src='https://oss-emcsprod-public.modb.pro/image/editor/20220511-73f1aeed-0295-4a65-9a95-d66a7e14637a.png'>

@@ -33,24 +33,8 @@ PTK 支持安装 MogDB 的操作系统众多，达到 22 个，后期还会不�
 
 ```bash
 [root@mogdb-kernel-0002 ~]# ptk checkos -f config.yaml
-INFO[2022-07-27T09:14:49.863] local ip: 172.16.0.245
-INFO[2022-07-27T09:14:49.879] prechecking dependent tools...
-INFO[2022-07-27T09:14:49.897] platform: kylin_V10_64bit                     host=172.16.0.245
-INFO[2022-07-27T09:14:49.900] kernel version: 4.19.90-23.8.v2101.ky10.aarch64  host=172.16.0.245
-INFO[2022-07-27T09:14:49.977] locale: LANG=zh_CN.UTF-8                      host=172.16.0.245
-INFO[2022-07-27T09:14:49.981] timezone: +0800                               host=172.16.0.245
-INFO[2022-07-27T09:14:49.984] swap memory 4194240kB, total memory 65624960kB  host=172.16.0.245
-WARN[2022-07-27T09:14:50.028] vm.min_free_kbytes=3270976, expect 3281248    host=172.16.0.245
-INFO[2022-07-27T09:14:50.070] check kernel.core_pattern                     host=172.16.0.245
-INFO[2022-07-27T09:14:50.076] check removeIPC value                         host=172.16.0.245
-WARN[2022-07-27T09:14:50.098] device(/dev/vda) readahead value=8192, expect 16384.  host=172.16.0.245
-WARN[2022-07-27T09:14:50.098] device(/dev/vdb) readahead value=8192, expect 16384.  host=172.16.0.245
-WARN[2022-07-27T09:14:50.115] device(dm-0) 'IO Request'=128, expect 256     host=172.16.0.245
-WARN[2022-07-27T09:14:50.115] device(dm-1) 'IO Request'=128, expect 256     host=172.16.0.245
-WARN[2022-07-27T09:14:50.130] not found network conf file for enp4s0 in dir /etc/sysconfig/network-scripts, skip check bonding  host=172.16.0.245
-INFO[2022-07-27T09:14:52.788] check port 28000                              host=172.16.0.245
-INFO[2022-07-27T09:14:53.013] port 28000 is occupied                            host=172.16.0.245
-INFO[2022-07-27T09:14:53.013] all checkers finished
+INFO[2022-07-27T09:14:49.863] local ip: ***.***.***.***INFO[2022-07-27T09:14:49.879] prechecking dependent tools...
+INFO[2022-07-27T09:14:49.897] platform: kylin_V10_64bit                     host=***.***.***.***INFO[2022-07-27T09:14:49.900] kernel version: 4.19.90-23.8.v2101.ky10.aarch64  host=***.***.***.***INFO[2022-07-27T09:14:49.977] locale: LANG=zh_CN.UTF-8                      host=***.***.***.***INFO[2022-07-27T09:14:49.981] timezone: +0800                               host=***.***.***.***INFO[2022-07-27T09:14:49.984] swap memory 4194240kB, total memory 65624960kB  host=***.***.***.***WARN[2022-07-27T09:14:50.028] vm.min_free_kbytes=3270976, expect 3281248    host=***.***.***.***INFO[2022-07-27T09:14:50.070] check kernel.core_pattern                     host=***.***.***.***INFO[2022-07-27T09:14:50.076] check removeIPC value                         host=***.***.***.***WARN[2022-07-27T09:14:50.098] device(/dev/vda) readahead value=8192, expect 16384.  host=***.***.***.***WARN[2022-07-27T09:14:50.098] device(/dev/vdb) readahead value=8192, expect 16384.  host=***.***.***.***WARN[2022-07-27T09:14:50.115] device(dm-0) 'IO Request'=128, expect 256     host=***.***.***.***WARN[2022-07-27T09:14:50.115] device(dm-1) 'IO Request'=128, expect 256     host=***.***.***.***WARN[2022-07-27T09:14:50.130] not found network conf file for enp4s0 in dir /etc/sysconfig/network-scripts, skip check bonding  host=***.***.***.***INFO[2022-07-27T09:14:52.788] check port 28000                              host=***.***.***.***INFO[2022-07-27T09:14:53.013] port 28000 is occupied                            host=***.***.***.***INFO[2022-07-27T09:14:53.013] all checkers finished
 # Check Results
                 Item                |  Level
 ------------------------------------+----------

@@ -482,7 +482,7 @@ release版本：
 ```
 mkdir $data/dn1  (其中$data指数据目录)
 
-gs_initdb $data/dn1 --nodename single_node -w "opengauss@123"
+gs_initdb $data/dn1 --nodename single_node -w "open*****@***"
 ```
 
 (5) 启动数据库

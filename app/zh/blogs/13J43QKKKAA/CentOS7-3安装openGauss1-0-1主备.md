@@ -134,9 +134,9 @@ swapoff -a（重启失效）
 
 ip 端口
 
-Gauss1 192.168.134.145 26000
+Gauss1 ***.***.***.*** 26000
 
-Gauss2 192.168.134.146 26000
+Gauss2 ***.***.***.*** 26000
 
 **5.用户名和密码**
 
@@ -173,7 +173,7 @@ ALTER ROLE omm IDENTIFIED BY ‘newpasswd’ REPLACE ‘oldpasswd’;
 cluster_state : Normalredistributing : Nocurrent_az : AZ_ALL
 [ Datanode State ]
 node node_ip instance state | node node_ip instance state
-1 Gauss1 192.168.134.145 6001 /opt/huawei/install/opt/db1 P Primary Normal | 2 Gauss2 192.168.134.139 6002 /opt/huawei/install/opt/db1 S Standby Normal
+1 Gauss1 ***.***.***.*** 6001 /opt/huawei/install/opt/db1 P Primary Normal | 2 Gauss2 ***.***.***.*** 6002 /opt/huawei/install/opt/db1 S Standby Normal
 gs_om -t start -启动
 gs_om -t stop -停止
 ```
@@ -188,8 +188,8 @@ gs_uninstall --delete-data
 
 ```
 postgres=# show replconninfo1;replconninfo1
-localhost=192.168.134.145 localport=26001 localheartbeatport=26005 localservice=26004
-remotehost=192.168.134.139 remotep(1 row)
+localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004
+remotehost=***.***.***.*** remotep(1 row)
 ```
 
 **10.检查日志传送线程状态**
@@ -219,7 +219,7 @@ sync_percent | 100%
 sync_state | Async
 sync_priority | 0
 sync_most_available | Off
-channel | 192.168.134.145:26001–>192.168.134.139:49386
+channel | ***.***.***.***:26001–>***.***.***.***:49386
 ```
 
 **11.查看日志接收线程**
@@ -243,5 +243,5 @@ receiver_write_location | 0/F026470
 receiver_flush_location | 0/F026470
 receiver_replay_location | 0/F026470
 sync_percent | 100%
-channel | 192.168.134.139:49480<–192.168.134.145:26001
+channel | ***.***.***.***:49480<–***.***.***.***:26001
 ```

@@ -70,8 +70,7 @@ systemctl disable firewalld.service
 ```
 [root@localhost ~]# ssh-keygen -t rsa
 [root@localhost ~]# cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys #使用 ssh 命令不需要输入密码的时候就表示互信成功
-[root@localhost .ssh]# ssh 172.20.10.8
-Last login: Wed Sep 14 17:40:53 2022 from opengauss
+[root@localhost .ssh]# ssh ***.***.***.***Last login: Wed Sep 14 17:40:53 2022 from opengauss
 ```
 
 ### 8、创建安装 openGauss 的配置文件

@@ -67,7 +67,7 @@ alter … account unlock；解锁
 postgres=# alter user aps2 account unlock;
 ALTER ROLE
 postgres=#
-postgres=# alter user aps2 password 'aps2#12345';
+postgres=# alter user aps2 password '****#*****';
 ALTER ROLE
 postgres=# \q
 [omm@gsdb01 db1]$

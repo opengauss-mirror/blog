@@ -41,7 +41,7 @@ times: '19:30'
     ```
     groupadd dbgrp -g 2000
     useradd omm -g 2000
-    -u 2000 echo "Enmo@123" | passwd --stdin omm
+    -u 2000 echo "****@***" | passwd --stdin omm
     mkdir -p /opt/mogdb/software
     chown -R omm:dbgrp /opt/
     ```
@@ -74,18 +74,18 @@ times: '19:30'
 2.  init 数据库
 
     ```
-    bin/gs_initdb --pgdata=/opt/mogdb/data --nodename=primary --pwpasswd=Enmo@123 --encoding=UTF-8 --locale=en_US.UTF-8
+    bin/gs_initdb --pgdata=/opt/mogdb/data --nodename=primary --pwpasswd=****@*** --encoding=UTF-8 --locale=en_US.UTF-8
     ```
 
 3.  修改初始化参数
 
     ```
     echo "port=26000" >> /opt/mogdb/data/postgresql.conf
-    echo "listen_addresses = '0.0.0.0'" >> /opt/mogdb/data/postgresql.conf
+    echo "listen_addresses = '***.***.***.***'" >> /opt/mogdb/data/postgresql.conf
     echo "password_encryption_type = 0" >> /opt/mogdb/data/postgresql.conf
     echo "log_directory = 'pg_log'" >> /opt/mogdb/data/postgresql.conf
     echo "remote_read_mode=non_authentication" >> /opt/mogdb/data/postgresql.conf
-    echo "host all all 0.0.0.0/0 md5" >> /opt/mogdb/data/pg_hba.conf
+    echo "host all all ***.***.***.***/0 md5" >> /opt/mogdb/data/pg_hba.conf
     ```
 
 4.  启动数据库

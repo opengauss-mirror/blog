@@ -48,7 +48,7 @@ export PATH=/gaussdata/opendb/bin:$PATH
 配置 pg_hba.conf 文件-主备，修改 pg_hba.conf，添加各对端白名单。
 
 ```
-host    all         all           192.168.1.1/32         trust
+host    all         all           ***.***.***.***/32         trust
 host    all         all           192.168.1.2/32         trust
 host    all         all           192.168.1.3/32         trust
 ```
@@ -118,14 +118,14 @@ host    all         all           192.168.1.3/32         trust
 </tr>
 <tr id="row19468156616"><td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p10362102020619"><a name="p10362102020619"></a><a name="p10362102020619"></a>replconninfo1</p>
 </td>
-<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p636317201667"><a name="p636317201667"></a><a name="p636317201667"></a>localhost=192.168.1.1 localport=5433 localservice=5434 remotehost=192.168.1.3 remoteport=5433 remoteservice=5434</p>
+<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p636317201667"><a name="p636317201667"></a><a name="p636317201667"></a>localhost=***.***.***.*** localport=5433 localservice=5434 remotehost=192.168.1.3 remoteport=5433 remoteservice=5434</p>
 </td>
 <td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p43631920563"><a name="p43631920563"></a><a name="p43631920563"></a>主备的流复制参数，最多支持6个备机，因此最多可配6个通道。无论准备，分别配置对端的所有DN的复制通道，无先后顺序区别。</p>
 </td>
 </tr>
 <tr id="row1748151517619"><td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.1 "><p id="p1636319201361"><a name="p1636319201361"></a><a name="p1636319201361"></a>replconninfo2</p>
 </td>
-<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p6363172013611"><a name="p6363172013611"></a><a name="p6363172013611"></a>localhost=192.168.1.1 localport=5433 localservice=5434 remotehost=192.168.1.2 remoteport=5433 remoteservice=5434</p>
+<td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.2 "><p id="p6363172013611"><a name="p6363172013611"></a><a name="p6363172013611"></a>localhost=***.***.***.*** localport=5433 localservice=5434 remotehost=192.168.1.2 remoteport=5433 remoteservice=5434</p>
 </td>
 <td class="cellrowborder"  width="33.33333333333333%" headers="mcps1.2.4.1.3 "><p id="p23640201367"><a name="p23640201367"></a><a name="p23640201367"></a>-</p>
 </td>
@@ -216,7 +216,7 @@ sync_percent                   : 100%
 sync_state                     : Potential
 sync_priority                  : 1
 sync_most_available            : Off
-channel                        : 192.168.1.2:5433-->192.168.1.1:35524
+channel                        : 192.168.1.2:5433-->***.***.***.***:35524
 Receiver info:
 2020-07-25 10:13:04  38232 gs_ctl:No information
 ```
@@ -232,7 +232,7 @@ postgres=# select pg_stat_get_wal_senders();
 -[ RECORD 1 ]-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 pg_stat_get_wal_senders | (281469756571152,40036,Primary,Standby,Normal,Streaming,"2020-07-25 15:43:33.380714+08","2020-07-25 15:43:33.485774+08",0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,100%,Sync,1,Off,192.168.1.3:5433-->192.168.1.2:34610)
 -[ RECORD 2 ]-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-pg_stat_get_wal_senders | (281469722885648,15979,Primary,Standby,Normal,Streaming,"2020-07-25 15:43:33.380597+08","2020-07-25 15:43:33.493195+08",0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,100%,Potential,1,Off,192.168.1.3:5433-->192.168.1.1:37190)
+pg_stat_get_wal_senders | (281469722885648,15979,Primary,Standby,Normal,Streaming,"2020-07-25 15:43:33.380597+08","2020-07-25 15:43:33.493195+08",0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,0/6844CCE0,100%,Potential,1,Off,192.168.1.3:5433-->***.***.***.***:37190)
 ```
 
 **数据同步验证**
@@ -328,7 +328,7 @@ sync_percent                   : 100%
 sync_state                     : Sync
 sync_priority                  : 1
 sync_most_available            : Off
-channel                        : 192.168.1.1:5433-->192.168.1.2:36158
+channel                        : ***.***.***.***:5433-->192.168.1.2:36158
  Receiver info:
 2020-07-25 16:00:57  24500 gs_ctl:No information
 ```
@@ -373,7 +373,7 @@ sync_percent                   : 100%
 sync_state                     : Sync
 sync_priority                  : 1
 sync_most_available            : Off
-channel                        : 192.168.1.1:5433-->192.168.1.2:36158
+channel                        : ***.***.***.***:5433-->192.168.1.2:36158
 sender_pid                     : 52804
 local_role                     : Primary
 peer_role                      : Standby
@@ -391,7 +391,7 @@ sync_percent                   : 100%
 sync_state                     : Potential
 sync_priority                  : 1
 sync_most_available            : Off
-channel                        : 192.168.1.1:5433-->192.168.1.3:43292
+channel                        : ***.***.***.***:5433-->192.168.1.3:43292
  Receiver info:
 2020-07-25 16:22:42  13717 gs_ctl:No information
 ```

@@ -25,20 +25,20 @@ opengauss 当前新版本支持从库使用 gs_basebackup 做基准备份，同�
 
 ```
 port=6432
-listen_addresses = '0.0.0.0'
+listen_addresses = '***.***.***.***'
 password_encryption_type = 0
 remote_read_mode=non_authentication
-replconninfo1 = 'localhost=192.168.1.23 localport=6439 localservice=6432 remotehost=192.168.1.23 remoteport=7439 remoteservice=7432'
+replconninfo1 = 'localhost=***.***.***.*** localport=6439 localservice=6432 remotehost=***.***.***.*** remoteport=7439 remoteservice=7432'
 ```
 
 **从库 postgresql.conf 配置**
 
 ```
 port=7432
-listen_addresses = '0.0.0.0'
+listen_addresses = '***.***.***.***'
 password_encryption_type = 0
 remote_read_mode=non_authentication
-replconninfo1 = 'localhost=192.168.1.23 localport=7439 localservice=7432 remotehost=192.168.1.23 remoteport=6439 remoteservice=6432'
+replconninfo1 = 'localhost=***.***.***.*** localport=7439 localservice=7432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432'
 ```
 
 可以看到 replconninfo1 参数主从库都是同一个 IP，主库连接端口为 6432，从库连接端口为 7432。
@@ -46,8 +46,8 @@ replconninfo1 = 'localhost=192.168.1.23 localport=7439 localservice=7432 remoteh
 **pg_hba.conf 配置**
 
 ```
-host all all 0.0.0.0/0 md5
-host    replication    all        0.0.0.0/0           trust'
+host all all ***.***.***.***/0 md5
+host    replication    all        ***.***.***.***/0           trust'
 ```
 
 ## 主从搭建过程<a name="section1647573112366"></a>
@@ -62,7 +62,7 @@ $ gs_ctl start -D /opt/ogdata
 
 ```
 $ gs_basebackup --pgdata=/opt/ogdata2 \
---host=192.168.1.23 \
+--host=***.***.***.*** \
 --port=6431 \
 --username=repuser
 ```
@@ -71,7 +71,7 @@ $ gs_basebackup --pgdata=/opt/ogdata2 \
 
 ```
 port=7432
-replconninfo1 = 'localhost=192.168.1.23 localport=7439 localservice=7432 remotehost=192.168.1.23 remoteport=6439 remoteservice=6432'
+replconninfo1 = 'localhost=***.***.***.*** localport=7439 localservice=7432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432'
 ```
 
 **4.修改从库 node_name**
@@ -105,7 +105,7 @@ $ gs_ctl query -D /opt/ogdata2
 主库测试写
 
 ```
-$ gsql -h192.168.1.23  -p6432 -Upostgres -r
+$ gsql -h***.***.***.***  -p6432 -Upostgres -r
 
 postgres=> create table tab(id int,info varchar);
 CREATE TABLE
@@ -117,7 +117,7 @@ INSERT 0 1
 从库测试读写
 
 ```
-$ gsql -h192.168.1.23  -p7432 -Upostgres -r
+$ gsql -h***.***.***.***  -p7432 -Upostgres -r
 
 postgres=> delete from tab;
 ERROR:  cannot execute DELETE in a read-only transaction

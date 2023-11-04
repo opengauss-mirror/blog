@@ -42,10 +42,10 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node                    node_ip         instance                state
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 
 ## 说明：--detail参数通过在每个数据库节点执行gs_ctl query命令进行查询并汇总结果，来获取openGauss的详细信息。
 ```
@@ -132,7 +132,7 @@ redistributing            : No
 node                      : 1
 node_name                 : prod.opengauss.com
 instance_id               : 6001
-node_ip                   : 192.168.0.11
+node_ip                   : ***.***.***.***
 data_path                 : /gauss/data/db1
 type                      : Datanode
 instance_state            : Normal
@@ -145,7 +145,7 @@ instance_role             : Primary
 node                      : 2
 node_name                 : stb1.opengauss.com
 instance_id               : 6002
-node_ip                   : 192.168.0.12
+node_ip                   : ***.***.***.***
 data_path                 : /gauss/data/db1
 type                      : Datanode
 instance_state            : Normal
@@ -167,7 +167,7 @@ sync_state                : Async
 node                      : 3
 node_name                 : stb2.opengauss.com
 instance_id               : 6003
-node_ip                   : 192.168.0.13
+node_ip                   : ***.***.***.***
 data_path                 : /gauss/data/db1
 type                      : Datanode
 instance_state            : Normal
@@ -189,7 +189,7 @@ sync_state                : Async
 node                      : 4
 node_name                 : casstb.opengauss.com
 instance_id               : 6004
-node_ip                   : 192.168.0.14
+node_ip                   : ***.***.***.***4
 data_path                 : /gauss/data/db1
 type                      : Datanode
 instance_state            : Normal
@@ -319,7 +319,7 @@ instance_role             : Cascade Standby
 查询 wal 日志传送状态
 
 ```
-## 主节点(192.168.0.11) 信息查询
+## 主节点(***.***.***.***) 信息查询
 postgres=# \pset expanded
 postgres=# select * from pg_stat_get_wal_senders();
 -[ RECORD 1 ]--------------+----------------------------------------
@@ -343,7 +343,7 @@ sync_percent               | 100%
 sync_state                 | Async
 sync_priority              | 0
 sync_most_available        | Off
-channel                    | 192.168.0.11:26001-->192.168.0.12:40076
+channel                    | ***.***.***.***:26001-->***.***.***.***:40076
 -[ RECORD 2 ]--------------+----------------------------------------
 pid                        | 140306989049600
 sender_pid                 | 3735
@@ -365,10 +365,10 @@ sync_percent               | 100%
 sync_state                 | Async
 sync_priority              | 0
 sync_most_available        | Off
-channel                    | 192.168.0.11:26001-->192.168.0.13:58760
+channel                    | ***.***.***.***:26001-->***.***.***.***:58760
 
 
-## 级联备节点(192.168.0.14) 信息查询
+## 级联备节点(***.***.***.***4) 信息查询
 postgres=# \pset x
 postgres=# select * from pg_stat_get_wal_receiver();
 -[ RECORD 1 ]--------------+----------------------------------------
@@ -386,7 +386,7 @@ receiver_write_location    | 0/7006E68
 receiver_flush_location    | 0/7006E68
 receiver_replay_location   | 0/7006E68
 sync_percent               | 100%
-channel                    | 192.168.0.14:42128<--192.168.0.13:26001
+channel                    | ***.***.***.***4:42128<--***.***.***.***:26001
 ```
 
 查询复制状态
@@ -413,7 +413,7 @@ pid                      | 140307005830912
 usesysid                 | 10
 usename                  | omm
 application_name         |
-client_addr              | 192.168.0.12
+client_addr              | ***.***.***.***
 client_hostname          | stb1.opengauss.com
 client_port              | 40076
 backend_start            |
@@ -430,7 +430,7 @@ pid                      | 140306989049600
 usesysid                 | 10
 usename                  | omm
 application_name         |
-client_addr              | 192.168.0.13
+client_addr              | ***.***.***.***
 client_hostname          | stb2.opengauss.com
 client_port              | 58760
 backend_start            |
@@ -449,9 +449,9 @@ sync_state               | Async
 postgres=# select name,setting from pg_settings where name like  '%replconninfo%';
      name      |                                                                                  setting
 ---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- replconninfo1 | localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.12 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
- replconninfo2 | localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.13 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
- replconninfo3 | localhost=192.168.0.11 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=192.168.0.14 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+ replconninfo1 | localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+ replconninfo2 | localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
+ replconninfo3 | localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***4 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004
 ## 说明：
 ## localport          --> 同步日志传输端口
 ## localheartbeatport --> 集群心跳端口
@@ -520,13 +520,13 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Primary Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Primary Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 ## 集群状态正常，可以进行switchover操作
 
-## 级联备库状态查询(在级联备库查询)  || 备库192.168.0.13目前正在向级联备库192.168.0.14同步数据
+## 级联备库状态查询(在级联备库查询)  || 备库***.***.***.***目前正在向级联备库***.***.***.***4同步数据
 postgres=# \pset x
 Expanded display is on.
 postgres=# select * from pg_stat_get_wal_receiver();
@@ -545,12 +545,12 @@ receiver_write_location    | 0/7005640
 receiver_flush_location    | 0/7005640
 receiver_replay_location   | 0/7005640
 sync_percent               | 100%
-channel                    | 192.168.0.14:46578<--192.168.0.13:26001
+channel                    | ***.***.***.***4:46578<--***.***.***.***:26001
 ```
 
 **2. 切换主/备角色**
 
-本次在备库 192.168.0.13 上执行 switchover 操作。
+本次在备库 ***.***.***.*** 上执行 switchover 操作。
 
 ```
 [omm@stb2 ~]$ gs_ctl switchover -D /gauss/data/db1
@@ -575,12 +575,12 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Standby Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Primary Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Standby Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Primary Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Normal
 
-## 级联备库状态查询(在级联备库查询)    || 此时级联备库自动切换数据源，从新的备库(192.168.0.11)同步日志数据
+## 级联备库状态查询(在级联备库查询)    || 此时级联备库自动切换数据源，从新的备库(***.***.***.***)同步日志数据
 postgres=# \pset x
 Expanded display is on.
 postgres=# select * from pg_stat_get_wal_receiver();
@@ -599,7 +599,7 @@ receiver_write_location    | 0/7005F00
 receiver_flush_location    | 0/7005F00
 receiver_replay_location   | 0/7005F00
 sync_percent               | 100%
-channel                    | 192.168.0.14:58796<--192.168.0.11:26001
+channel                    | ***.***.***.***4:58796<--***.***.***.***:26001
 ```
 
 **4. 保存集群主备机器信息\(刷新动态配置文件\)**
@@ -640,10 +640,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state          |
 --------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Unknown Unknown |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Unknown Unknown |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Unknown Unknown |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Cascade Need repair(Disconnected)
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Unknown Unknown |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Unknown Unknown |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Unknown Unknown |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Cascade Need repair(Disconnected)
 Thu Jan 21 18:05:47 CST 2021
 ```
 
@@ -664,24 +664,24 @@ azPriority:1
 node :1
 nodeName:prod.opengauss.com
 ssh channel :
-sshChannel 1:192.168.0.11
+sshChannel 1:***.***.***.***
 datanodeCount :1
 datanode 1:
 datanodeLocalDataPath :/gauss/data/db1
 datanodeXlogPath :
-datanodeListenIP 1:192.168.0.11
+datanodeListenIP 1:***.***.***.***
 datanodePort :26000
-datanodeLocalHAIP 1:192.168.0.11
+datanodeLocalHAIP 1:***.***.***.***
 datanodeLocalHAPort :26001
 dn_replication_num: 4
 datanodePeer0DataPath :/gauss/data/db1
-datanodePeer0HAIP 1:192.168.0.12
+datanodePeer0HAIP 1:***.***.***.***
 datanodePeer0HAPort :26001
 datanodePeer1DataPath :/gauss/data/db1
-datanodePeer1HAIP 1:192.168.0.13
+datanodePeer1HAIP 1:***.***.***.***
 datanodePeer1HAPort :26001
 datanodePeer2DataPath :/gauss/data/db1
-datanodePeer2HAIP 1:192.168.0.14
+datanodePeer2HAIP 1:***.***.***.***4
 datanodePeer2HAPort :26001
 azName:AZ1
 azPriority:1
@@ -754,10 +754,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state          |
 --------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Unknown Unknown |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Unknown Unknown |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Unknown Unknown |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Unknown Unknown |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Unknown Unknown |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Unknown Unknown |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 
 ## 查询复制状态
 postgres=# select * from pg_stat_get_stream_replications();
@@ -783,10 +783,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state                   |
 -----------------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Down    Manually stopped |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Down    Manually stopped |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Down    Manually stopped |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Down    Manually stopped |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Down    Manually stopped |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Down    Manually stopped |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 ```
 
 刷新动态配置文件并重启集群
@@ -825,13 +825,13 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state            |
 ----------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Standby Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S  Standby Need repair(WAL) |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Standby Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S  Standby Need repair(WAL) |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 ```
 
-重建问题备节点\(在问题节点 192.168.0.13 上处理\)
+重建问题备节点\(在问题节点 ***.***.***.*** 上处理\)
 
 ```
 [omm@stb1 ~]$ gs_ctl build -D /gauss/data/db1 -b full
@@ -846,10 +846,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Standby Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Standby Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 
 ## 说明：虽然集群状态角色已经切换完毕，但是集群标签(如：P/S/C)并没有变更过来，这个需要修改
 ```
@@ -869,12 +869,12 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Standby Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Primary Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Standby Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Primary Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 
-## 重启问题旧的主节点(192.168.0.13)
+## 重启问题旧的主节点(***.***.***.***)
 [omm@stb2 ~]$ gs_ctl stop -D /gauss/data/db1
 [omm@stb2 ~]$ gs_ctl start -D /gauss/data/db1 -M standby
 
@@ -890,10 +890,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state                            |
 --------------------------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Standby Need repair(Disconnected) |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Need repair(WAL) |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Standby Need repair(WAL) |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Standby Need repair(Disconnected) |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Need repair(WAL) |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Standby Need repair(WAL) |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 
 ## 重建备节点
 [omm@prod ~]$ gs_ctl build -D /gauss/data/db1
@@ -912,10 +912,10 @@ current_az      : AZ_ALL
 
 node                    node_ip         instance                state         |
 -------------------------------------------------------------------------------
-1  prod.opengauss.com   192.168.0.11    6001 /gauss/data/db1 P Standby Normal |
-2  stb1.opengauss.com   192.168.0.12    6002 /gauss/data/db1 S Standby Normal |
-3  stb2.opengauss.com   192.168.0.13    6003 /gauss/data/db1 S Cascade Normal |
-4  casstb.opengauss.com 192.168.0.14    6004 /gauss/data/db1 C Primary Normal
+1  prod.opengauss.com   ***.***.***.***    6001 /gauss/data/db1 P Standby Normal |
+2  stb1.opengauss.com   ***.***.***.***    6002 /gauss/data/db1 S Standby Normal |
+3  stb2.opengauss.com   ***.***.***.***    6003 /gauss/data/db1 S Cascade Normal |
+4  casstb.opengauss.com ***.***.***.***4    6004 /gauss/data/db1 C Primary Normal
 
 ## 刷新动态配置文件
 [omm@casstb ~]$ gs_om -t refreshconf

@@ -125,8 +125,7 @@ where FILTER_TYPE can be:
 -- 创建策略一【脱敏方式：maskall】
 策略名：mask_card_pol
 针对用户：user1
-针对IP：192.168.0.99
-针对应用：gsql
+针对IP：***.***.***.***针对应用：gsql
 脱敏方式：creditcardmasking
 create masking policy mask_card_pol
        creditcardmasking on label (creditcard_label)

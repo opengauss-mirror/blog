@@ -118,7 +118,7 @@ PGDATA 为实际 openGauss 或 PostgreSQL 数据目录。
 pg_hba.conf 文件配置 hostssl 条目，认证方法可选。
 
 ```
-hostssl  all  all  0.0.0.0/0  md5
+hostssl  all  all  ***.***.***.***/0  md5
 ```
 
 postgreql.conf 文件配置如下参数。
@@ -134,7 +134,7 @@ ssl_key_file= 'server.key'
 先测试 openGauss，可以看到建立了 SSL 连接。
 
 ```
-$ gsql -h 192.168.137.5 -p6432 -Upostgres postgres
+$ gsql -h ***.***.***.*** -p6432 -Upostgres postgres
 Password for user postgres:
 gsql ((GaussDB Kernel V500R001C20 build ) compiled at 2021-03-09 18:30:51 commit 0 last mr  )
 SSL connection (cipher: DHE-RSA-AES128-GCM-SHA256, bits: 128)
@@ -145,7 +145,7 @@ postgres=>
 再测试 PostgreSQL。
 
 ```
-$ psql -h192.168.137.11
+$ psql -h***.***.***.***
 Password for user postgres:
 psql (12.6)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)

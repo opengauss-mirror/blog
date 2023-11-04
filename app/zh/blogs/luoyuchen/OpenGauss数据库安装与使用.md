@@ -164,7 +164,7 @@ CentOS7
 
 根据文件夹中 readme 文件中的指导开始安装
 
-> sh install.sh -w gauss@123
+> sh install.sh -w *****@***
 
 极简版采用安装脚本
 <img src='./figures/12.png'>

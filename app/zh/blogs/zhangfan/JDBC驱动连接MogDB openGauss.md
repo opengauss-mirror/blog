@@ -37,12 +37,12 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.301-b09, mixed mode)
 ```
 数据库配置文件postgresql.conf和pg_hba.conf中加上如下内容
 [omm@node1 data]$ tail -4 postgresql.conf
-listen_addresses = '0.0.0.0'
+listen_addresses = '***.***.***.***'
 password_encryption_type = 0
 log_directory = 'pg_log'
 remote_read_mode=non_authentication
 [omm@node1 data]$ tail -1 pg_hba.conf
-host all all 0.0.0.0/0 md5
+host all all ***.***.***.***/0 md5
 重启数据库
 gs_om -t stop
 gs_om -t start

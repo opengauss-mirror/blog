@@ -47,7 +47,7 @@ INSERT INTO demo.websites VALUES
 
 ## vip 使用方法<a name="section14562484258"></a>
 
-请注意 192.168.56.229 为 mogha 组件中的 vip 地址
+请注意 ***.***.***.***29 为 mogha 组件中的 vip 地址
 
 ```
 package com.company;
@@ -55,7 +55,7 @@ import java.sql.*;
 
 public class openGaussSelect {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
-    static final String DB_URL = "jdbc:postgresql://192.168.56.229:26000/test";
+    static final String DB_URL = "jdbc:postgresql://***.***.***.***29:26000/test";
     // 数据库的用户名与密码，需要根据自己的设置
     static final String USER = "test";
     static final String PASS = "zhou0815FANG";
@@ -129,7 +129,7 @@ package com.company;
 import java.sql.*;
 public class openGaussSelect {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
-    static final String DB_URL = "jdbc:postgresql://192.168.56.227:26000,192.168.56.228:26000/test?targetServerType=master";
+    static final String DB_URL = "jdbc:postgresql://***.***.***.***:26000,***.***.***.***:26000/test?targetServerType=master";
     // 数据库的用户名与密码，需要根据自己的设置
     static final String USER = "test";
     static final String PASS = "zhou0815FANG";

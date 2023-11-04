@@ -20,16 +20,16 @@ times: '10:20'
 
 节点信息
 
-192.168.0.141 主节点
-192.168.0.145 备节点
-192.168.0.10 vip
+***.***.***.***41 主节点
+***.***.***.***45 备节点
+***.***.***.***0 vip
 
 # 一、数据库集群未安装的场景下配置 VIP
 
 ## 1. 添加 vip
 
 ```
-ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
+ifconfig eth0:26000 ***.***.***.***0 netmask 255.255.255.0 up
 ```
 
 ## 2. ifconfig 提权
@@ -51,8 +51,8 @@ ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
   <CLUSTER>
    <PARAM name="clusterName" value="openGauss" />
     <PARAM name="nodeNames" value="OPGS1COM,OPGS2COM" />
-    <PARAM name="backIp1s" value="192.168.0.141,192.168.0.145"/>
-    <PARAM name="floatIp1" value="192.168.0.10"/>
+    <PARAM name="backIp1s" value="***.***.***.***41,***.***.***.***45"/>
+    <PARAM name="floatIp1" value="***.***.***.***0"/>
     <PARAM name="gaussdbAppPath" value="/gauss/openGauss/app" />
     <PARAM name="gaussdbLogPath" value="/gaussarch/log" />
     <PARAM name="tmpMppdbPath" value="/gauss/openGauss/tmp" />
@@ -65,14 +65,14 @@ ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
       <PARAM name="name" value="OPGS1COM"/>
       <PARAM name="azName" value="AZ1"/>
       <PARAM name="azPriority" value="1"/>
-      <PARAM name="backIp1" value="192.168.0.141"/>
-      <PARAM name="sshIp1" value="192.168.0.141"/>
+      <PARAM name="backIp1" value="***.***.***.***41"/>
+      <PARAM name="sshIp1" value="***.***.***.***41"/>
       <!--CM节点部署信息-->
       <PARAM name="cmsNum" value="1"/>
       <PARAM name="cmServerPortBase" value="17000"/>
       <PARAM name="cmServerPortStandby" value="18000"/>
-      <PARAM name="cmServerListenIp1" value="192.168.0.141,192.168.0.145"/>
-      <PARAM name="cmServerHaIp1" value="192.168.0.141,192.168.0.145"/>
+      <PARAM name="cmServerListenIp1" value="***.***.***.***41,***.***.***.***45"/>
+      <PARAM name="cmServerHaIp1" value="***.***.***.***41,***.***.***.***45"/>
       <PARAM name="cmServerlevel" value="1"/>
       <PARAM name="cmServerRelation" value="OPGS1COM,OPGS2COM "/>
       <PARAM name="cmDir" value="/gauss/openGauss/cm"/>
@@ -81,17 +81,17 @@ ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
       <PARAM name="dataPortBase" value="26000"/>
       <PARAM name="dataNode1" value="/gaussdata/openGauss/db1,OPGS2COM,/gaussdata/openGauss/db1"/>
       <PARAM name="dataNode1_syncNum" value="1"/>
-      <PARAM name="localStreamIpmap1" value="(192.168.0.141, 192.168.0.141),(192.168.0.145, 192.168.0.145)"/>
+      <PARAM name="localStreamIpmap1" value="(***.***.***.***41, ***.***.***.***41),(***.***.***.***45, ***.***.***.***45)"/>
       <PARAM name="remotedataPortBase" value="26000"/>
-      <PARAM name="dataListenIp1" value="192.168.0.141,192.168.0.145"/>
+      <PARAM name="dataListenIp1" value="***.***.***.***41,***.***.***.***45"/>
       <PARAM name="floatIpMap1" value="floatIp1,floatIp1"/>
      </DEVICE>
      <DEVICE sn="1000002">
       <PARAM name="name" value="OPGS2COM"/>
       <PARAM name="azName" value="AZ1"/>
       <PARAM name="azPriority" value="1"/>
-      <PARAM name="backIp1" value="192.168.0.145"/>
-      <PARAM name="sshIp1" value="192.168.0.145"/>
+      <PARAM name="backIp1" value="***.***.***.***45"/>
+      <PARAM name="sshIp1" value="***.***.***.***45"/>
       <!--CM-->
       <PARAM name="cmDir" value="/gauss/openGauss/cm"/>
      </DEVICE>
@@ -108,7 +108,7 @@ ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
 ## 1. 添加 vip
 
 ```
-ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
+ifconfig eth0:26000 ***.***.***.***0 netmask 255.255.255.0 up
 ```
 
 ## 2. ifconfig 提权
@@ -123,12 +123,12 @@ ifconfig eth0:26000 192.168.0.10 netmask 255.255.255.0 up
 ## 3. 新增 floatIp 资源
 
 ```
-cm_ctl res --add --res_name="VIP_az1" --res_attr="resources_type=VIP,float_ip=192.168.0.10"
+cm_ctl res --add --res_name="VIP_az1" --res_attr="resources_type=VIP,float_ip=***.***.***.***0"
 ```
 
 ```
-cm_ctl res --edit --res_name="VIP_az1" --add_inst="node_id=1,res_instance_id=6001" --inst_attr="base_ip=192.168.0.141"
-cm_ctl res --edit --res_name="VIP_az1" --add_inst="node_id=2,res_instance_id=6002" --inst_attr="base_ip=192.168.0.145"
+cm_ctl res --edit --res_name="VIP_az1" --add_inst="node_id=1,res_instance_id=6001" --inst_attr="base_ip=***.***.***.***41"
+cm_ctl res --edit --res_name="VIP_az1" --add_inst="node_id=2,res_instance_id=6002" --inst_attr="base_ip=***.***.***.***45"
 ```
 
 执行完成后，建议使用 cm_ctl res –check 命令进行检查。
@@ -147,7 +147,7 @@ cm_ctl res --check
 在数据库 pg_hba.conf 文件中以 sha256 方式添加 floatIp
 
 ```
-host    all    all    192.168.0.10/32     sha256
+host    all    all    ***.***.***.***0/32     sha256
 ```
 
 ## 5. 检查 vip 是否绑定成功
@@ -161,5 +161,5 @@ cm_ctl show
 ## 6. jdbc 连接测试
 
 ```
-url=jdbc:postgresql://192.168.0.10:26000/postgres?connectTimeout=5&targetServerType=master&tcpKeepAlive=true
+url=jdbc:postgresql://***.***.***.***0:26000/postgres?connectTimeout=5&targetServerType=master&tcpKeepAlive=true
 ```

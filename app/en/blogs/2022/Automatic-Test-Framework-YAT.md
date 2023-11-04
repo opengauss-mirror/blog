@@ -35,7 +35,7 @@ Figure 1 Overall YAT framework
   Currently, languages such as SQL, Shell, Python \(unittes\), and Groovy \(Junit/Spock\) are supported. New languages and frameworks can be added through adapters. SQL statements supported by YAT are supersets of standard SQL statements.That is, YAT is extended based on standard SQL statements. Users can run shell commands, control connections, execute loops, bind SQL statements, control multiple sessions, and concurrently execute SQL statements in SQL scripts. For example:
 
   ```
-  @conn user/passwd@127.0.0.1:9090;  -- Reconnect to the database as the new user.
+  @conn user/passwd@***.***.***.***:9090;  -- Reconnect to the database as the new user.
   drop table if exists tbl_x;  -- Execute SQL statements.
 
   create table tbl_x (id int, age int, xb int);
@@ -71,7 +71,7 @@ Figure 1 Overall YAT framework
       commit;
   }
 
-  @session(name: s2, user: abc, password: 'gauss@123')
+  @session(name: s2, user: abc, password: '*****@***')
   {
       @set autocommit false;
       update table tbl_x set par1 = 2 par2 = 2;

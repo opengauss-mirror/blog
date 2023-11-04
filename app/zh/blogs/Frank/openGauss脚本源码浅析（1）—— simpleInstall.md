@@ -139,7 +139,7 @@ function config_db() {
     info "[config datanode.]"
     local -a ip_arr
     local -i index=0
-    for line in $(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
+    for line in $(/sbin/ifconfig -a|grep inet|grep -v ***.***.***.***|grep -v inet6|awk '{print $2}'|tr -d "addr:")
     do
         ip_arr[index]=$line
         let index=$index+1
@@ -263,8 +263,7 @@ or
 
 0 LOG:  [Alarm Module]Host Name: host-10-208-88-234
 
-0 LOG:  [Alarm Module]Host IP: 10.208.88.234
-
+0 LOG:  [Alarm Module]Host IP: ***.***.***.***
 0 LOG:  [Alarm Module]Cluster Name: dbCluster
 
 0 LOG:  [Alarm Module]Get real path of alarmItem.conf failed!
@@ -278,8 +277,7 @@ gaussdb.state does not exist, and skipt setting since it is optional.2022-05-23 
 
 2022-05-23 12:30:51.587 [unknown] [unknown] localhost 281460165246992 0[0:0#0]  0 [BACKEND] LOG:  [Alarm Module]Host Name: host-10-208-88-234
 
-2022-05-23 12:30:51.636 [unknown] [unknown] localhost 281460165246992 0[0:0#0]  0 [BACKEND] LOG:  [Alarm Module]Host IP: 10.208.88.234
-
+2022-05-23 12:30:51.636 [unknown] [unknown] localhost 281460165246992 0[0:0#0]  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
 2022-05-23 12:30:51.636 [unknown] [unknown] localhost 281460165246992 0[0:0#0]  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: dbCluster
 
 2022-05-23 12:30:51.636 [unknown] [unknown] localhost 281460165246992 0[0:0#0]  0 [BACKEND] LOG:  [Alarm Module]Get real path of alarmItem.conf failed!

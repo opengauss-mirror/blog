@@ -131,7 +131,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 3、运行 opengauss 镜像
 
-sudo docker run --name opengauss --privileged=true -d -p 5432:5432 -e GS_PASSWORD=Enmo@123 enmotech/opengauss:latest
+sudo docker run --name opengauss --privileged=true -d -p 5432:5432 -e GS_PASSWORD=****@*** enmotech/opengauss:latest
 
 4、进入容器
 
