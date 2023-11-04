@@ -135,14 +135,14 @@ WantedBy=multi-user.target
 ##以下为容器操作
 su - omm
 
-gs_guc set -D /var/lib/mogdb/data -c "listen_addresses = '0.0.0.0'"
+gs_guc set -D /var/lib/mogdb/data -c "listen_addresses = '***.***.***.***'"
 gs_guc set -D /var/lib/mogdb/data -c "port=5432"
-gs_guc set -D /var/lib/mogdb/data -h "host     all      all  0.0.0.0/0    md5"
+gs_guc set -D /var/lib/mogdb/data -h "host     all      all  ***.***.***.***/0    md5"
 gs_guc set -D /var/lib/mogdb/data -c "password_encryption_type=1"
 gs_ctl reload -D /var/lib/mogdb/data
 
 gsql -d postgres -p 5432 -r
-create user test with sysadmin password 'Test@1234';
+create user test with sysadmin password '****@****';
 ```
 
 <img src='./images/20220629-6e52948e-efd7-4d3f-a2f0-915fe5dfa918.png'>
@@ -150,7 +150,7 @@ create user test with sysadmin password 'Test@1234';
 容器内使用 gsql 命令进行验证
 
 ```
-gsql -d postgres -U test -W Test@1234 -h127.0.0.1 -p 5432 -r
+gsql -d postgres -U test -W ****@**** -h***.***.***.*** -p 5432 -r
 ```
 
 <img src='./images/20220629-f5599c04-808a-40b7-9b10-3c0bdda1078c.png'>
@@ -162,31 +162,31 @@ gsql -d postgres -U test -W Test@1234 -h127.0.0.1 -p 5432 -r
 
 ```
 ##创建虚拟网络
-# docker network create --subnet=192.168.18.0/24 myNetwork
+# docker network create --subnet=***.***.***.***/24 myNetwork
 # docker network list
 
 ##主节点
 # docker run --name mogdb_master \
- --network myNetwork --ip 192.168.18.10 --privileged=true \
+ --network myNetwork --ip ***.***.***.*** --privileged=true \
  --hostname mogdb_master --detach \
  --env GS_PORT=51000 \
- --env OG_SUBNET=192.168.18.0/24 \
- --env GS_PASSWORD=Enmo@1234 \
+ --env OG_SUBNET=***.***.***.***/24 \
+ --env GS_PASSWORD=****@***4 \
  --env NODE_NAME=mogdb_master \
- --env REPL_CONN_INFO="replconninfo1 = 'localhost=192.168.18.10 localport=51000  localservice=51000 remotehost=192.168.18.11 remoteport=51000 remoteservice=51000 '\n" \
+ --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=51000  localservice=51000 remotehost=***.***.***.*** remoteport=51000 remoteservice=51000 '\n" \
  --volume /dbdata/mogdb_docker:/var/lib/mogdb_master \
  --publish 51001:51000 \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M primary
 
 ##从节点
 # docker run --name mogdb_slave_one \
- --network myNetwork --ip 192.168.18.11 --privileged=true \
+ --network myNetwork --ip ***.***.***.*** --privileged=true \
  --hostname mogdb_slave_one --detach \
  --env GS_PORT=51000 \
- --env OG_SUBNET=192.168.18.0/24 \
- --env GS_PASSWORD=Enmo@1234 \
+ --env OG_SUBNET=***.***.***.***/24 \
+ --env GS_PASSWORD=****@***4 \
  --env NODE_NAME=mogdb_slave \
- --env REPL_CONN_INFO="replconninfo1 = 'localhost=192.168.18.11 localport=51000 localservice=51000 remotehost=192.168.18.10 remoteport=51000 remoteservice=51000 '\n" \
+ --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=51000 localservice=51000 remotehost=***.***.***.*** remoteport=51000 remoteservice=51000 '\n" \
  --volume /dbdata/mogdb_docker:/var/lib/mogdb_standby \
  --publish 51002:51000 \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
@@ -204,9 +204,9 @@ swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
 
 su - omm
 
-gs_guc set -D /var/lib/mogdb/data -c "listen_addresses = '0.0.0.0'"
+gs_guc set -D /var/lib/mogdb/data -c "listen_addresses = '***.***.***.***'"
 gs_guc set -D /var/lib/mogdb/data -c "port=51000"
-gs_guc set -D /var/lib/mogdb/data -h "host     all      all  0.0.0.0/0    md5"
+gs_guc set -D /var/lib/mogdb/data -h "host     all      all  ***.***.***.***/0    md5"
 
 gs_ctl reload -D /var/lib/mogdb/data
 
@@ -218,9 +218,9 @@ insert into t1 select 'mogdb docker master-slave build scuess';
 ##从节点容器操作
 # docker exec -it mogdb_slave_one bash
 
-gs_guc set -D /var/lib/mogdb/data -c "listen_addresses = '0.0.0.0'"
+gs_guc set -D /var/lib/mogdb/data -c "listen_addresses = '***.***.***.***'"
 gs_guc set -D /var/lib/mogdb/data -c "port=51000"
-gs_guc set -D /var/lib/mogdb/data -h "host     all      all  0.0.0.0/0    md5"
+gs_guc set -D /var/lib/mogdb/data -h "host     all      all  ***.***.***.***/0    md5"
 
 gs_ctl reload -D /var/lib/mogdb/data
 

@@ -54,7 +54,7 @@ yum install -y libaio-devel flex bison ncurses-devel glibc-devel patch redhat-ls
 ```
 hostname && ifconfig |grep broadcast|awk '{print $2}'
 sed -i '/MasterG/d' /etc/hosts
-echo "192.168.2.131 MasterG ##Gauss OM IP Hosts Mapping" >> /etc/hosts
+echo "***.***.***.***31 MasterG ##Gauss OM IP Hosts Mapping" >> /etc/hosts
 cat /etc/hosts|grep Gauss
 
 
@@ -159,15 +159,15 @@ cp script/gspylib/etc/conf/cluster_config_template.xml .
 <PARAM name="gaussdbToolPath" value="/opt/huawei/install/om" /> <!-- 数据库core文件目录-->
 <PARAM name="corePath" value="/opt/huawei/corefile" />  <!-- 节点IP，与数据库节点名称列表一一对应 -->
 <PARAM name="clusterType" value="single-inst"/>
-<PARAM name="backIp1s" value="192.168.17.129"/>
+<PARAM name="backIp1s" value="***.***.***.***"/>
 </CLUSTER>    <!-- 每台服务器上的节点部署信息 -->
 <DEVICELIST>        <!-- 节点1上的部署信息 -->
 <DEVICE sn="1000001">            <!-- 节点1的主机名称 -->
  <PARAM name="name" value="node1"/>   <!-- 节点1所在的AZ及AZ优先级 -->
 <PARAM name="azName" value="AZ1"/>
 <PARAM name="azPriority" value="1"/>  <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-<PARAM name="backIp1" value="192.168.2.131"/>
-<PARAM name="sshIp1" value="192.168.2.131"/>  <!--dbnode-->
+<PARAM name="backIp1" value="***.***.***.***31"/>
+<PARAM name="sshIp1" value="***.***.***.***31"/>  <!--dbnode-->
 <PARAM name="dataNum" value="1"/>
 <PARAM name="dataPortBase" value="26000"/>
 <PARAM name="dataNode1" value="/opt/huawei/install/data/db1"/>
@@ -324,7 +324,7 @@ gsql -d postgres -p 26000
 NodeName 为当前节点名称，还要注意 localhost 改成对应的。
 
 ```
-gs_guc reload -N node1-I all -c "listen_addresses='localhost,192.168.2.131’”
+gs_guc reload -N node1-I all -c "listen_addresses='localhost,***.***.***.***31’”
 
 
 ```
@@ -332,7 +332,7 @@ gs_guc reload -N node1-I all -c "listen_addresses='localhost,192.168.2.131’”
 （4）执行下列指令，在数据库主节点配置文件中增加一条规则：
 
 ```
-gs_guc reload -N all -I all -h "host all user 192.168.17.129/32 sha256"
+gs_guc reload -N all -I all -h "host all user ***.***.***.***/32 sha256"
 
 
 ```
@@ -344,7 +344,7 @@ import java.sql.*;
 public class java_connect_opengauss{
     public static Connection getConnect(String username, String passwd){
         String driver = "org.postgresql.Driver";
-        String sourceURL = "jdbc:postgresql://127.0.0.1:26000/postgres";
+        String sourceURL = "jdbc:postgresql://***.***.***.***:26000/postgres";
         Connection conn = null;
         try{
             Class.forName(driver);

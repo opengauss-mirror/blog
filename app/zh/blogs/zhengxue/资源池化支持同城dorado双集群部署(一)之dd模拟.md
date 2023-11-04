@@ -315,7 +315,7 @@ fi
 &emsp;@Precondition!@：节点 0 对应的 dssserver 必须提前拉起，即 dsserver 进程存在
 
 ```
-gs_initdb -D /opt/omm/cluster/dn0 --nodename=node1 -U omm -w opengauss@123 --vgname=+data --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdj
+gs_initdb -D /opt/omm/cluster/dn0 --nodename=node1 -U omm -w open*****@*** --vgname=+data --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdj
 ```
 
 (2)配置主集群主节点 0
@@ -356,7 +356,7 @@ host all all 10.10.10.20/32 sha256
 (3)主集群备节点 1 初始化
 
 ```
-gs_initdb -D /opt/omm/cluster/dn1 --nodename=node2 -U omm -w opengauss@123 --vgname=+data --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 1 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home1/.dss_unix_d_socket'
+gs_initdb -D /opt/omm/cluster/dn1 --nodename=node2 -U omm -w open*****@*** --vgname=+data --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 1 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home1/.dss_unix_d_socket'
 ```
 
 主集群备节点 1 配置参数
@@ -383,7 +383,7 @@ gs_ctl start -D /opt/omm/cluster/dn0
 &emsp;(1) 备集群首备节点 0 初始化
 
 ```
-gs_initdb -D /opt/omm/cluster/dn0 --nodename=node1 -U omm -w opengauss@123 --vgname=+data --enable-dss --dms_url="0:10.10.10.20:4411,1:10.10.10.20:4412" -I 0 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdi
+gs_initdb -D /opt/omm/cluster/dn0 --nodename=node1 -U omm -w open*****@*** --vgname=+data --enable-dss --dms_url="0:10.10.10.20:4411,1:10.10.10.20:4412" -I 0 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdi
 ```
 
 &emsp;(2) 配置备集群首备节点 0
@@ -438,7 +438,7 @@ gs_ctl build -D /opt/omm/cluster/dn0 -b cross_cluster_full -g 0 --vgname=+data -
 &emsp;@shirley_zhengx tell you in secret that is very important!@：备集群第一次初始化的时候，一定要初始化首备节点 0 并对首备做完 build 之后，再初始化备集群其它从备节点，即第(3)要在第(4)之前执行 @very very important!@：
 
 ```
-gs_initdb -D /opt/omm/cluster/dn1 --nodename=node2 -U omm -w opengauss@123 --vgname=+data --enable-dss --dma-url="0:10.10.10.20:4411,1:10.10.10.20:4412" -I 1 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home1/.dss_unix_d_socket'
+gs_initdb -D /opt/omm/cluster/dn1 --nodename=node2 -U omm -w open*****@*** --vgname=+data --enable-dss --dma-url="0:10.10.10.20:4411,1:10.10.10.20:4412" -I 1 --socketpath='UDS:/opt/omm/cluster/ss_data/dss_home1/.dss_unix_d_socket'
 ```
 
 备集群从备节点 1 配置参数

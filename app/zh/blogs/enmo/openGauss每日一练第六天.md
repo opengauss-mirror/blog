@@ -56,12 +56,12 @@ omm-#
 
 ```
 SQL文本：
-create user tim password 'tim_1234';
+create user tim password '***_****';
 \dn+
 alter schema tpcds owner to tim;
 \dn+
 
-omm=# create user tim password 'tim_1234';
+omm=# create user tim password '***_****';
 omm=# CREATE ROLE
 omm=# \dn+
                               List of schemas

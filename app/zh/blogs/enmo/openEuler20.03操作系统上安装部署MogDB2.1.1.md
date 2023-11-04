@@ -103,8 +103,7 @@ Ysyx3579(一上一下，还比较好记)，
 连接：
    名称：euler （随便写）
    协议：ssh
-   主机：10.0.0.102
-   端口号：22
+   主机：***.***.***.***   端口号：22
 连接——>用户身份验证
    用户名：root
    密码：Ysyx3579
@@ -282,7 +281,7 @@ export LD_LIBRARY_PATH=/opt/software/mogdb/script/gspylib/clib:$LD_LIBRARY_PATH
 11. 检查 mogdb 相关状态
 
 ```
-#查看mogdb服务监听的地址和端口信息   netstat -lntup | grep mogdb   (Not all processes could be identified, non-owned process info   will not be shown, you would have to be root to see it all.)   tcp 0 0 10.0.0.102:26000 0.0.0.0:* LISTEN 28621/mogdb   tcp 0 0 127.0.0.1:26000 0.0.0.0:* LISTEN 28621/mogdb   tcp 0 0 10.0.0.102:26001 0.0.0.0:* LISTEN 28621/mogdb   tcp 0 0 127.0.0.1:26001 0.0.0.0:* LISTEN 28621/mogdb   tcp6 0 0 ::1:26000 :::* LISTEN 28621/mogdb   tcp6 0 0 ::1:26001 :::* LISTEN 28621/mogdb #查看进程信息：   [omm@EulerMog ~]$ ps -ef | grep mogdb   omm 28621 1 4 14:54 pts/2 00:00:06 /opt/mogdb/app/bin/mogdb -D /mogdb/data/db1   omm 29227 23391 0 14:56 pts/2 00:00:00 grep --color=auto mogdb #查看集群信息   [omm@EulerMog ~]$ gs_om -t status --detail   [ Cluster State ] cluster_state : Normal   redistributing : No   current_az : AZ_ALL [ Datanode State ] node    node_ip         port      instance                state 1 EulerMog 10.0.0.102 26000 6001 /mogdb/data/db1 P Primary Normal
+#查看mogdb服务监听的地址和端口信息   netstat -lntup | grep mogdb   (Not all processes could be identified, non-owned process info   will not be shown, you would have to be root to see it all.)   tcp 0 0 10.0.0.102:26000 ***.***.***.***:* LISTEN 28621/mogdb   tcp 0 0 ***.***.***.***:26000 ***.***.***.***:* LISTEN 28621/mogdb   tcp 0 0 10.0.0.102:26001 ***.***.***.***:* LISTEN 28621/mogdb   tcp 0 0 ***.***.***.***:26001 ***.***.***.***:* LISTEN 28621/mogdb   tcp6 0 0 ::1:26000 :::* LISTEN 28621/mogdb   tcp6 0 0 ::1:26001 :::* LISTEN 28621/mogdb #查看进程信息：   [omm@EulerMog ~]$ ps -ef | grep mogdb   omm 28621 1 4 14:54 pts/2 00:00:06 /opt/mogdb/app/bin/mogdb -D /mogdb/data/db1   omm 29227 23391 0 14:56 pts/2 00:00:00 grep --color=auto mogdb #查看集群信息   [omm@EulerMog ~]$ gs_om -t status --detail   [ Cluster State ] cluster_state : Normal   redistributing : No   current_az : AZ_ALL [ Datanode State ] node    node_ip         port      instance                state 1 EulerMog 10.0.0.102 26000 6001 /mogdb/data/db1 P Primary Normal
 ```
 
 12. 连接数据库

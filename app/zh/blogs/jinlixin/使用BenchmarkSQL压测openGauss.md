@@ -126,7 +126,7 @@ times: '12:30'
     进入run目录，会看到多个不同后缀名的props文件，不同的文件配置不同的数据库，由于我们需要压测postgresql和openGauss，openGauss兼容postgresql，需要配置props.pg文件。cp props.pg props.opengauss在配置文件中需要修改的包括conn,user, password(这三项用于连接指定的数据库，因此需要提前在postgresql中创建好对应的DB以及用户) 。配置项具体如下：
     db=postgres
     driver=org.postgresql.Driver
-    conn=jdbc:postgresql://192.168.1.155:5432/tpcc
+    conn=jdbc:postgresql://***.***.***.***55:5432/tpcc
     user=
     password= //以上为数据库连接信息
     warehouses=100 //数据仓库数量，每个仓库大概为100M，数据量50W。压测并发数量最多为该值的10倍，需要提前规划好

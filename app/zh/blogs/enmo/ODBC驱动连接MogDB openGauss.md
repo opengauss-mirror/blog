@@ -70,7 +70,7 @@ Driver=TEST
 Servername=8.131.53.xxx (数据库IP)
 Database=test_db        (数据库名)
 Username=test_usr       (数据库用户)
-Password=test@123      （数据库密码）
+Password=****@***      （数据库密码）
 Port=26000              (数据端口)
 Sslmode=allow
 
@@ -86,12 +86,12 @@ setup=/usr/local/lib/psqlodbcw.so
 这里使用简单的方式配置（也可采用guc参数进行设置）
 [omm@node1 data]$ tail -5 postgresql.conf
 port=26000
-listen_addresses = '0.0.0.0'
+listen_addresses = '***.***.***.***'
 password_encryption_type = 0
 log_directory = 'pg_log'
 remote_read_mode=non_authentication
 [omm@node1 data]$ tail -1 pg_hba.conf
-host all all 0.0.0.0/0 md5
+host all all ***.***.***.***/0 md5
 重启数据库
 gs_om -t stop
 gs_om -t start

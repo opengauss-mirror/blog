@@ -100,7 +100,7 @@ dss 实例 1 的内容如下:
 ```shell
 INST_ID=0
 _LOG_LEVEL=255
-DSS_NODES_LIST=0:127.0.0.1:17102,1:127.0.0.1:18102
+DSS_NODES_LIST=0:***.***.***.***:17102,1:***.***.***.***:18102
 DISK_LOCK_FILE_PATH=/home/test/dss/dss0
 LSNR_PATH=/home/test/dss/dss0
 _LOG_MAX_FILE_SIZE=20M
@@ -130,7 +130,7 @@ dss 实例 2 的内容如下, 注意 DISK_LOCK_FILE_PATH 配置的与 1 一致:
 ```shell
 INST_ID=1
 _LOG_LEVEL=255
-DSS_NODES_LIST=0:127.0.0.1:17102,1:127.0.0.1:18102
+DSS_NODES_LIST=0:***.***.***.***:17102,1:***.***.***.***:18102
 DISK_LOCK_FILE_PATH=/home/test/dss/dss0
 LSNR_PATH=/home/test/dss/dss1
 _LOG_MAX_FILE_SIZE=20M
@@ -173,7 +173,7 @@ dsscmd ls -m M -p +data -U UDS:/home/test/dss/dss0/.dss_unix_d_socket
 mkdir -p /home/test/data
 rm -rf node1 node2
 
-gs_intdb -D /home/test/data/node1 --nodename=node1 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:127.0.0.1:1613,1:127.0.0.1:1614" -I 0 --socketpath='UDS:/home/test/dss/dss0/.dss_unix_d_socket'
+gs_intdb -D /home/test/data/node1 --nodename=node1 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:***.***.***.***:1613,1:***.***.***.***:1614" -I 0 --socketpath='UDS:/home/test/dss/dss0/.dss_unix_d_socket'
 
 echo "ss_enable_ssl = off
 listen_addresses = '*'
@@ -186,9 +186,9 @@ ss_log_backup_file_count = 100
 ss_log_max_file_size = 1GB
 " >> /home/test/data/node1/postgresql.conf
 
-sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node1/pg_hba.conf
+sed '91 ahost       all        all         ***.***.***.***/0        sha256' -i /home/test/data/node1/pg_hba.conf
 
-gs_intdb -D /home/test/data/node2 --nodename=node2 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:127.0.0.1:1613,1:127.0.0.1:1614" -I 1 --socketpath='UDS:/home/test/dss/dss1/.dss_unix_d_socket'
+gs_intdb -D /home/test/data/node2 --nodename=node2 -U tester -w Pasword --vgname=+data --enable-dss --dms_url="0:***.***.***.***:1613,1:***.***.***.***:1614" -I 1 --socketpath='UDS:/home/test/dss/dss1/.dss_unix_d_socket'
 
 echo "ss_enable_ssl = off
 listen_addresses = '*'
@@ -201,7 +201,7 @@ ss_log_backup_file_count = 100
 ss_log_max_file_size = 1GB
 " >> /home/test/data/node2/postgresql.conf
 
-sed '91 ahost       all        all         0.0.0.0/0        sha256' -i /home/test/data/node2/pg_hba.conf
+sed '91 ahost       all        all         ***.***.***.***/0        sha256' -i /home/test/data/node2/pg_hba.conf
 ```
 
 10. 依次启动节点 1 和节点 2

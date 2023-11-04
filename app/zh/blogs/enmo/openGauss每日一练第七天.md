@@ -38,13 +38,13 @@ times: '10:20'
 ```
 SQL文本：
 create tablespace tspc1 relative location 'tbs/tspc1';
-create user lucy password 'lucy_123';
+create user lucy password '***_****';
 alter tablespace tspc1 owner to lucy;
 \db+
 
 omm=# create tablespace tspc1 relative location 'tbs/tspc1';
 CREATE TABLESPACE
-omm=# create user lucy password 'lucy_123';
+omm=# create user lucy password '***_****';
 CREATE ROLE
 omm=# alter tablespace tspc1 owner to lucy;
 ALTER TABLESPACE
@@ -97,13 +97,13 @@ omm=#
 ```
 SQL文本：
 alter tablespace tspc1 rename to tspc2;
-create user lily password 'lily_123';
+create user lily password '***_***';
 alter tablespace tspc2 owner to lily;
 \db+
 
 omm=# alter tablespace tspc1 rename to tspc2;
 ALTER TABLESPACE
-omm=# create user lily password 'lily_123';
+omm=# create user lily password '***_***';
 CREATE ROLE
 omm=# alter tablespace tspc2 owner to lily;
 ALTER TABLESPACE

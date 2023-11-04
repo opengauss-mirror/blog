@@ -42,8 +42,8 @@ RTO(Recovery Time Objective，复原时间目标)是数据中心可容许服务�
 
 | 角色 | IP              | VIP             | 数据库       | 操作系统     | 高可用软件   |
 | ---- | --------------- | --------------- | ------------ | ------------ | ------------ |
-| 主   | 192.168.101.159 | 192.168.101.161 | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
-| 备   | 192.168.101.160 | 192.168.101.161 | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
+| 主   | 192.168.101.159 | ***.***.***.*** | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
+| 备   | 192.168.101.160 | ***.***.***.*** | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
 
 # 3. 主备状态检查
 
@@ -140,8 +140,7 @@ mogha 服务正常
 ```
 [root@mogdba mogha]# ifconfig
 ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.101.159  netmask 255.255.255.0  broadcast 192.168.101.255
-        inet6 fe80::d894:ac81:4fba:2740  prefixlen 64  scopeid 0x20<link>
+        inet 192.168.101.159  netmask 255.255.255.0  broadcast ***.***.***.***        inet6 fe80::d894:ac81:4fba:2740  prefixlen 64  scopeid 0x20<link>
         ether 00:0c:29:3f:e3:e4  txqueuelen 1000  (Ethernet)
         RX packets 208899  bytes 226654097 (216.1 MiB)
         RX errors 0  dropped 0  overruns 0  frame 0
@@ -149,8 +148,7 @@ ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 ens33:1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.101.161  netmask 255.255.255.0  broadcast 192.168.101.255
-        ether 00:0c:29:3f:e3:e4  txqueuelen 1000  (Ethernet)
+        inet ***.***.***.***  netmask 255.255.255.0  broadcast ***.***.***.***        ether 00:0c:29:3f:e3:e4  txqueuelen 1000  (Ethernet)
 ```
 
 看见 ens33:1 虚拟网卡已绑定
@@ -162,7 +160,7 @@ ens33:1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 ```sql
 MogDB=# create table ha_test (time timestamp,ip varchar);
 CREATE TABLE
-MogDB=# CREATE USER ha_user identified by 'Enmo@123';
+MogDB=# CREATE USER ha_user identified by '****@***';
 CREATE ROLE
 MogDB=# alter table ha_test owner to ha_user;
 ALTER TABLE
@@ -178,7 +176,7 @@ ALTER TABLE
 
 while true
 do
-gsql -d postgres -h 192.168.101.161 -U ha_user -W 'Enmo@123' -c "insert into ha_test select current_timestamp,setting from pg_settings where name='local_bind_address';"
+gsql -d postgres -h ***.***.***.*** -U ha_user -W '****@***' -c "insert into ha_test select current_timestamp,setting from pg_settings where name='local_bind_address';"
 sleep 1
 done
 ```
@@ -243,19 +241,8 @@ omm       67476  64006  0 23:05 pts/1    00:00:00 grep --color=auto mogdb
 MogDB=# select * from ha_test;
             time            |       ip
 ----------------------------+-----------------
- 2022-09-11 23:04:58.743228 | 192.168.101.159
- 2022-09-11 23:04:59.774394 | 192.168.101.159
- 2022-09-11 23:05:00.806935 | 192.168.101.159
- ............................................
- 2022-09-11 23:05:49.239632 | 192.168.101.159
- 2022-09-11 23:05:50.270707 | 192.168.101.159
- 2022-09-11 23:05:51.300373 | 192.168.101.159
- 2022-09-11 23:05:59.503423 | 192.168.101.160
- 2022-09-11 23:11:36.580824 | 192.168.101.160
- 2022-09-11 23:11:37.61244  | 192.168.101.160
- 2022-09-11 23:11:38.643501 | 192.168.101.160
- 2022-09-11 23:11:39.673735 | 192.168.101.160
-```
+ 2022-09-11 23:04:58.743228 | ***.***.***.*** 2022-09-11 23:04:59.774394 | ***.***.***.*** 2022-09-11 23:05:00.806935 | ***.***.***.*** ............................................
+ 2022-09-11 23:05:49.239632 | ***.***.***.*** 2022-09-11 23:05:50.270707 | ***.***.***.*** 2022-09-11 23:05:51.300373 | ***.***.***.*** 2022-09-11 23:05:59.503423 | ***.***.***.*** 2022-09-11 23:11:36.580824 | ***.***.***.*** 2022-09-11 23:11:37.61244  | ***.***.***.*** 2022-09-11 23:11:38.643501 | ***.***.***.*** 2022-09-11 23:11:39.673735 | ***.***.***.***```
 
 根据原理，RTO 值大概在 8s 左右。
 
@@ -270,8 +257,7 @@ MogDB=# select * from ha_test;
 操作步骤如 5.1，直接查看最终结果
 
 ```
- 2022-09-11 23:30:37.810103 | 192.168.101.159 2022-09-11 23:30:38.843325 | 192.168.101.160
-```
+ 2022-09-11 23:30:37.810103 | 192.168.101.159 2022-09-11 23:30:38.843325 | ***.***.***.***```
 
 这样的方法得出的 RTO 只有 1s，这显然是不对的。
 
@@ -291,10 +277,7 @@ MogDB=# select * from ha_test;
 操作步骤如 5.1，接下来直接看表中结果
 
 ```
- 2022-09-12 12:45:41.501278 | 192.168.101.159
- 2022-09-12 12:45:42.535259 | 192.168.101.159
- 2022-09-12 12:45:58.489625 | 192.168.101.160
-t2-t1=16s > 9s 验证成功
+ 2022-09-12 12:45:41.501278 | ***.***.***.*** 2022-09-12 12:45:42.535259 | ***.***.***.*** 2022-09-12 12:45:58.489625 | ***.***.***.***t2-t1=16s > 9s 验证成功
 RTO= t2-9s-t1 = 7s
 ```
 

@@ -43,7 +43,7 @@ mkdir -p /opt/omm/
 
 需要修改的配置项：
 ecs-6ac8 -> 改为当前服务器实际的名称，可以用 hostname 命令查看。
-192.168.0.2 -> 配置为当前服务器的 Ip 地址，使用 ifconfig 名称查看。
+***.***.***.*** -> 配置为当前服务器的 Ip 地址，使用 ifconfig 名称查看。
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -56,15 +56,15 @@ ecs-6ac8 -> 改为当前服务器实际的名称，可以用 hostname 命令查�
         <PARAM name="tmpMppdbPath" value="/opt/omminstall/opengauss/tmp" />
         <PARAM name="gaussdbToolPath" value="/opt/omminstall/opengauss/om" />
         <PARAM name="corePath" value="/opt/omminstall/opengauss/corefile" />
-        <PARAM name="backIp1s" value="192.168.0.2"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
     </CLUSTER>
     <DEVICELIST>
         <DEVICE sn="100001">
             <PARAM name="name" value="ecs-6ac8"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.0.2"/>
-            <PARAM name="sshIp1" value="192.168.0.2"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
             <PARAM name="dataNum" value="1"/>
             <PARAM name="dataPortBase" value="2000"/>
             <PARAM name="dataNode1" value="/opt/omminstall/opengauss/data/dn1"/>

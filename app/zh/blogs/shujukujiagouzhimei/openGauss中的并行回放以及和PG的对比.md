@@ -64,13 +64,13 @@ No information
         receiver_flush_location        : 3C/27000000
         receiver_replay_location       : 3A/8F4A9910
         sync_percent                   : 97%
-        channel                        : 192.168.1.2:48458<--192.168.1.1:5533
+        channel                        : 192.168.1.2:48458<--***.***.***.***:5533
 ```
 
 过一段时间发现追平了，但是 receiver_replay_location 和 receiver_flush_location 之间有差距，持续观察：
 
 ```
-[omm@db02 pg_xlog]$ gs_ctl query[2020-09-16 15:32:08.432][237296][][gs_ctl]: gs_ctl query ,datadir is (null) HA state:                   local_role                     : Standby        static_connections             : 2        db_state                       : Normal        detail_information             : Normal Senders info:       No information Receiver info:              receiver_pid                   : 211639        local_role                     : Standby        peer_role                      : Primary        peer_state                     : Normal        state                          : Normal        sender_sent_location           : 3D/FC647630        sender_write_location          : 3D/FC647630        sender_flush_location          : 3D/FC647630        sender_replay_location         : 3D/FC647630        receiver_received_location     : 3D/FC647630        receiver_write_location        : 3D/FC647630        receiver_flush_location        : 3D/FC647630        receiver_replay_location       : 3D/FC647630        sync_percent                   : 100%        channel                        : 192.168.1.2:48458<--192.168.1.1:5533
+[omm@db02 pg_xlog]$ gs_ctl query[2020-09-16 15:32:08.432][237296][][gs_ctl]: gs_ctl query ,datadir is (null) HA state:                   local_role                     : Standby        static_connections             : 2        db_state                       : Normal        detail_information             : Normal Senders info:       No information Receiver info:              receiver_pid                   : 211639        local_role                     : Standby        peer_role                      : Primary        peer_state                     : Normal        state                          : Normal        sender_sent_location           : 3D/FC647630        sender_write_location          : 3D/FC647630        sender_flush_location          : 3D/FC647630        sender_replay_location         : 3D/FC647630        receiver_received_location     : 3D/FC647630        receiver_write_location        : 3D/FC647630        receiver_flush_location        : 3D/FC647630        receiver_replay_location       : 3D/FC647630        sync_percent                   : 100%        channel                        : 192.168.1.2:48458<--***.***.***.***:5533
 
 
 [omm@db02 pg_xlog]$ date
@@ -117,7 +117,7 @@ No information
         receiver_flush_location        : 44/65000000
         receiver_replay_location       : 44/432AFCC8
         sync_percent                   : 95%
-        channel                        : 192.168.1.2:38322<--192.168.1.1:5533
+        channel                        : 192.168.1.2:38322<--***.***.***.***:5533
 ```
 
 稳定后：
@@ -149,7 +149,7 @@ No information
         receiver_flush_location        : 47/AF961308
         receiver_replay_location       : 47/AF961308
         sync_percent                   : 100%
-        channel                        : 192.168.1.2:38322<--192.168.1.1:5533
+        channel                        : 192.168.1.2:38322<--***.***.***.***:5533
 
 
 [omm@db02 gaussdata]$ date

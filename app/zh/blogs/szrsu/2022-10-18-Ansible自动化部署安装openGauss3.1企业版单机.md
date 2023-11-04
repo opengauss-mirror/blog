@@ -113,8 +113,7 @@ vars：安装openGauss定义的变量；
 [root@cs79-mysql:/etc/ansible/roles]# cd openGauss_Install/files/
 [root@cs79-mysql:/etc/ansible/roles/openGauss_Install/files]# # wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/3.1.0/x86/openGauss-3.1.0-CentOS-64bit-all.tar.gz
 –2022-10-09 21:42:01-- https://opengauss.obs.cn-south-1.myhuaweicloud.com/3.1.0/x86/openGauss-3.1.0-CentOS-64bit-all.tar.gz
-Resolving opengauss.obs.cn-south-1.myhuaweicloud.com (opengauss.obs.cn-south-1.myhuaweicloud.com)… 121.37.63.38, 139.159.208.64, 139.159.208.243
-Connecting to opengauss.obs.cn-south-1.myhuaweicloud.com (opengauss.obs.cn-south-1.myhuaweicloud.com)|121.37.63.38|:443… connected.
+Resolving opengauss.obs.cn-south-1.myhuaweicloud.com (opengauss.obs.cn-south-1.myhuaweicloud.com)… 121.37.63.38, 139.159.208.64, ***.***.***.***Connecting to opengauss.obs.cn-south-1.myhuaweicloud.com (opengauss.obs.cn-south-1.myhuaweicloud.com)|121.37.63.38|:443… connected.
 HTTP request sent, awaiting response… 200 OK
 Length: 123022609 (117M) [application/gzip]
 Saving to: ‘openGauss-3.1.0-CentOS-64bit-all.tar.gz’

@@ -26,11 +26,10 @@ times: '19:00'
 </td><td   style="width:187px;">db1.opengauss.com
 </td><td   style="width:184px;">db2.opengauss.com
 </td></tr><tr><td   style="width:120px;"><b>外网IP地址</b>
-</td><td   style="width:187px;">192.168.124.11
-</td><td   style="width:184px;">192.168.124.12
-</td></tr><tr><td   style="width:120px;"><b>内网IP地址</b>
-</td><td   style="width:187px;">192.168.100.11
-</td><td   style="width:184px;">192.168.100.12
+</td><td   style="width:187px;">***.***.***.***
+</td><td   style="width:184px;">***.***.***.***</td></tr><tr><td   style="width:120px;"><b>内网IP地址</b>
+</td><td   style="width:187px;">***.***.***.***
+</td><td   style="width:184px;">***.***.***.***
 </td></tr></tbody></table></div></div>
 
 **1.1 硬件需求**
@@ -117,8 +116,8 @@ Python 3.6.11
 ```shell
 vi /etc/hosts
 --------------------
-192.168.100.11  db1 db1.opengauss.com   #Gauss OM IP Hosts Mapping
-192.168.100.12  db2 db2.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.***  db1 db1.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.***  db2 db2.opengauss.com   #Gauss OM IP Hosts Mapping
 --------------------
 ```
 
@@ -318,7 +317,7 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
     <CLUSTER>
         <PARAM name="clusterName" value="gsCluster" />
         <PARAM name="nodeNames" value="db1.opengauss.com,db2.opengauss.com" />
-        <PARAM name="backIp1s" value="192.168.100.11,192.168.100.12"/>
+        <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***"/>
         <PARAM name="gaussdbAppPath" value="/gauss/app" />
         <PARAM name="gaussdbLogPath" value="/gauss/log/omm" />
         <PARAM name="tmpMppdbPath" value="/gauss/tmp"/>
@@ -335,9 +334,9 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
             <!-- 主机后端存储网络通讯IP地址和HA通讯IP地址-->
-            <PARAM name="backIp1" value="192.168.100.11"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
             <!-- 设置SSH可信通道IP地址(外网IP),若无外网,则可以不设置该选项或者同backIp1设置相同IP -->
-            <PARAM name="sshIp1" value="192.168.124.11"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
         <!--DBnode 数据库主节点信息-->
         <!-- 当前主机上需要部署的数据库节点个数 -->
@@ -357,7 +356,7 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
             <!-- 主机后端存储网络通讯IP地址和HA通讯IP地址-->
-            <PARAM name="backIp1" value="192.168.100.12"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
             <!-- 设置SSH可信通道IP地址(外网IP),若无外网,则可以不设置该选项或者同backIp1设置相同IP -->
             <PARAM name="sshIp1" value="192.168.124.12"/>
     </DEVICE>
@@ -579,8 +578,8 @@ Total numbers:14. Abnormal numbers:0. Warning numbers:1.
 ```shell
 vi /soft/hostfile
 -----------------------
-192.168.100.11
-192.168.100.12
+***.***.***.***
+***.***.***.***
 -----------------------
 cd  /soft/openGauss/script
 ./gs_sshexkey -f /soft/hostfile
@@ -596,8 +595,8 @@ cd /soft/openGauss/script
 ## 手动创建互信(脚本)
 vi /soft/hostfile
 -----------------------
-192.168.100.11
-192.168.100.12
+***.***.***.***
+***.***.***.***
 -----------------------
 cd  /soft/openGauss/script
 ./gs_sshexkey -f /soft/hostfile
@@ -781,8 +780,8 @@ current_az      : AZ_ALL
 
 node                 node_ip         instance                     state
 -----------------------------------------------------------------------------------------------------------
-1  db1.opengauss.com 192.168.100.11  6001 /gauss/data/db1      P Primary Normal
-2  db2.opengauss.com 192.168.100.12  6002 /gauss/data/slavedb2 S Standby Normal
+1  db1.opengauss.com ***.***.***.***  6001 /gauss/data/db1      P Primary Normal
+2  db2.opengauss.com ***.***.***.***  6002 /gauss/data/slavedb2 S Standby Normal
 ```
 
 **6.4 集群的主/备切换测试**
@@ -800,8 +799,8 @@ current_az      : AZ_ALL
 
 node                 node_ip         instance                     state
 -----------------------------------------------------------------------------------------------------------
-1  db1.opengauss.com 192.168.100.11  6001 /gauss/data/db1      P Primary Normal
-2  db2.opengauss.com 192.168.100.12  6002 /gauss/data/slavedb2 S Standby Normal
+1  db1.opengauss.com ***.***.***.***  6001 /gauss/data/db1      P Primary Normal
+2  db2.opengauss.com ***.***.***.***  6002 /gauss/data/slavedb2 S Standby Normal
 
 ## 切换主/备角色(在备库执行)
 [omm@db2 slavedb2]$ gs_ctl switchover -D /gauss/data/slavedb2/
@@ -823,8 +822,8 @@ current_az      : AZ_ALL
 
 node                 node_ip         instance                     state
 -------------------------------------------------------------------------------------------------------
-1  db1.opengauss.com 192.168.100.11  6001 /gauss/data/db1      S Standby Normal
-2  db2.opengauss.com 192.168.100.12  6002 /gauss/data/slavedb2 P Primary Normal
+1  db1.opengauss.com ***.***.***.***  6001 /gauss/data/db1      S Standby Normal
+2  db2.opengauss.com ***.***.***.***  6002 /gauss/data/slavedb2 P Primary Normal
 
 ## 保存集群主备机器信息
 [omm@db2 slavedb2]$ gs_om -t refreshconf

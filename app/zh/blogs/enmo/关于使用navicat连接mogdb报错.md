@@ -25,10 +25,8 @@ times: '12:30'
 
 默认已经安装好 navicat，我这里使用的版本是 Navicat Premium 15，关于它的安装破解网上有很多资源。
 
-虚拟机 IP:10.0.0.100
-虚拟机使用 NAT 网络模式
-宿主机与其通讯的虚拟 IP 为：10.0.0.1
-
+虚拟机 IP:***.***.***.***虚拟机使用 NAT 网络模式
+宿主机与其通讯的虚拟 IP 为：***.***.***.***
 navicat，工作界面简洁，可以支持多种类型的数据库连接，如下：
 <img src='./images/20220413-41683e06-4b13-4aad-bfdc-5fc5cf1178ee.png'>
 
@@ -97,7 +95,7 @@ openGauss=# select rolpassword from pg_authid where rolname='zb';               
 修改用户的密码:
 
 ```
-openGauss=# alter user zb password 'haha@123';
+openGauss=# alter user zb password '****@***';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 ALTER ROLE
 #再次查看用户加密后的密码：

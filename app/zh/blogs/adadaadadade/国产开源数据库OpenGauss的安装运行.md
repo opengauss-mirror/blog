@@ -43,7 +43,7 @@ yum install libaio-devel flex bison ncurses-devel glibc-devel patch readline-dev
     <!-- 数据库节点名称(hostname) -->
         <PARAM name="nodeNames" value="node1" />
     <!-- 节点IP，与nodeNames一一对应 -->
-        <PARAM name="backIp1s" value="192.168.0.187"/>
+        <PARAM name="backIp1s" value="***.***.***.***87"/>
     <!-- 数据库安装目录-->
         <PARAM name="gaussdbAppPath" value="/opt/huawei/install/app" />
     <!-- 日志目录-->
@@ -67,8 +67,8 @@ yum install libaio-devel flex bison ncurses-devel glibc-devel patch readline-dev
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
         <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.187"/>
-            <PARAM name="sshIp1" value="192.168.0.187"/>
+            <PARAM name="backIp1" value="***.***.***.***87"/>
+            <PARAM name="sshIp1" value="***.***.***.***87"/>
 
 	    <!--dbnode-->
 	    	<PARAM name="dataNum" value="1"/>
@@ -526,9 +526,9 @@ java -cp ".;postgresql.jar" Gauss "SELECT * FROM nt;"
 
 ```
 九月 13, 2021 11:58:25 上午 org.postgresql.core.v3.ConnectionFactoryImpl openConnectionImpl
-信息: [75000bb7-1475-4579-94cb-f53a01bec9eb] Try to connect. IP: *.*.*.*:****
+信息: [75000bb7-1475-4579-94cb-f53a01bec9eb] Try to connect. IP: ***.***.***.***:****
 九月 13, 2021 11:58:26 上午 org.postgresql.core.v3.ConnectionFactoryImpl openConnectionImpl
-信息: [*.*.*.*:****/*.*.*.*:****] Connection is established. ID: 75000bb7-1475-4579-94cb-f53a01bec9eb
+信息: [***.***.***.***:****/***.***.***.***:****] Connection is established. ID: 75000bb7-1475-4579-94cb-f53a01bec9eb
 九月 13, 2021 11:58:26 上午 org.postgresql.core.v3.ConnectionFactoryImpl openConnectionImpl
 信息: Connect complete. ID: 75000bb7-1475-4579-94cb-f53a01bec9eb
 Connection succeed!

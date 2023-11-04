@@ -25,9 +25,9 @@ times: '12:30'
 
 数据库版本： openGauss 1.1.0Primary
 
-主机/IP： opengaussdb1/192.168.1.11 \(openGauss 主备已部署完毕\)
+主机/IP： opengaussdb1/***.***.***.***1 \(openGauss 主备已部署完毕\)
 
-Standby 主机/IP： opengaussdb2/192.168.1.12 \(openGauss 主备已部署完毕\)
+Standby 主机/IP： opengaussdb2/***.***.***.***2 \(openGauss 主备已部署完毕\)
 
 <!-- > <img src='public_sys-resources/icon-note.gif'> -->
 
@@ -77,18 +77,18 @@ vrrp_instance VI_1 {
       auth_pass 1111
   }
   virtual_ipaddress {                     #设置虚拟 IP 地址，可以设置多个，每个一行
-      192.168.1.10
+      ***.***.***.***0
   }
 }
 
 ## 虚拟服务器定义
-virtual_server 192.168.1.10 26000 {        #设置虚拟服务器的 IP 和端口，用空格隔开
+virtual_server ***.***.***.***0 26000 {        #设置虚拟服务器的 IP 和端口，用空格隔开
   delay_loop 6                             #设置运行情况检查时间，单位是秒
 # lb_algo rr                               #负载调度算法(轮询)
 # lb_kind DR                               #负载均衡机制(NAT、TUN、DR)
   persistence_timeout 50                   #会话保持时间(秒)
   protocol TCP                             #转发协议类型
-   real_server 192.168.1.11 26000 {        #配置服务节点
+   real_server ***.***.***.***1 26000 {        #配置服务节点
           weight 100                       #配置服务节点的权重
           notify_down /gauss/failoverdb.sh #故障响应脚本
           TCP_CHECK {                      #使用TCP_CHECK方式进行健康检查
@@ -107,8 +107,8 @@ vi /gauss/failoverdb.sh
 #!/bin/bash
 echo "Start to failover openGauss database."
 pkill keepalived
-ssh 192.168.1.12 "su - omm -c 'gs_ctl failover -D /gauss/data/db1'"
-ssh 192.168.1.12 "su - omm -c 'gs_om -t refreshconf'"
+ssh ***.***.***.***2 "su - omm -c 'gs_ctl failover -D /gauss/data/db1'"
+ssh ***.***.***.***2 "su - omm -c 'gs_om -t refreshconf'"
 echo 'Failover operation is completed.'
 --------------------------------------------
 chmod 764 /gauss/failoverdb.sh
@@ -141,18 +141,18 @@ vrrp_instance VI_1 {
       auth_pass 1111
   }
   virtual_ipaddress {                     #设置虚拟 IP 地址，可以设置多个，每个一行
-      192.168.1.10
+      ***.***.***.***0
   }
 }
 
 ## 虚拟服务器定义
-virtual_server 192.168.1.10 26000 {        #设置虚拟服务器的 IP 和端口，用空格隔开
+virtual_server ***.***.***.***0 26000 {        #设置虚拟服务器的 IP 和端口，用空格隔开
   delay_loop 6                             #设置运行情况检查时间，单位是秒
 # lb_algo rr                               #负载调度算法(轮询)
 # lb_kind DR                               #负载均衡机制(NAT、TUN、DR)
   persistence_timeout 50                   #会话保持时间(秒)
   protocol TCP                             #转发协议类型
-    real_server 192.168.1.12 26000 {       #配置服务节点
+    real_server ***.***.***.***2 26000 {       #配置服务节点
           weight 60                        #配置服务节点的权重
           notify_down /gauss/failoverdb.sh #虚拟服务故障响应脚本
         MISC_CHECK {                       ## 使用 MISC_CHECK 方式自定义脚本做健康检查
@@ -174,7 +174,7 @@ virtual_server 192.168.1.10 26000 {        #设置虚拟服务器的 IP 和端�
 ```
 vi /gauss/check.sh
 -------------------------------------------
-ssh 192.168.1.11  "su - omm -c \"gsql -d postgres -p 26000 -t -A -c 'select 1;'\""
+ssh ***.***.***.***1  "su - omm -c \"gsql -d postgres -p 26000 -t -A -c 'select 1;'\""
 -------------------------------------------
 ```
 
@@ -198,8 +198,8 @@ chmod 764 /gauss/failoverdb.sh
 - 修改 openGauss 侦听地址。
 
 ```
-$ gs_guc set -I all -N all -c "listen_addresses = '0.0.0.0'"
-$ gs_guc set -I all -N all -c "local_bind_address = '0.0.0.0'"
+$ gs_guc set -I all -N all -c "listen_addresses = '***.***.***.***'"
+$ gs_guc set -I all -N all -c "local_bind_address = '***.***.***.***'"
 ```
 
 - 修改所有节点 replconninfo 参数（避免端口冲突）。
@@ -227,8 +227,8 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node            node_ip         instance                state         |
 -----------------------------------------------------------------------
-1  opengaussdb1 192.168.1.11    6001 /gauss/data/db1 P Primary Normal |
-2  opengaussdb2 192.168.1.12    6002 /gauss/data/db1 S Standby Normal
+1  opengaussdb1 ***.***.***.***1    6001 /gauss/data/db1 P Primary Normal |
+2  opengaussdb2 ***.***.***.***2    6002 /gauss/data/db1 S Standby Normal
 
 ## 检查KeepAlived进程状态
 [omm@opengaussdb1 ~]$ ps -ef|grep keep|grep -v grep
@@ -240,15 +240,15 @@ root      15666  15664  0 16:15 ?        00:00:00 /usr/sbin/keepalived -D
 [root@opengaussdb1 ~]# ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
+    inet ***.***.***.***/8 scope host lo
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
 2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 00:0c:29:da:60:c0 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.1.11/24 brd 192.168.1.255 scope global noprefixroute ens33
+    inet ***.***.***.***1/24 brd ***.***.***.*** scope global noprefixroute ens33
        valid_lft forever preferred_lft forever
-    inet 192.168.1.10/32 scope global ens33               ## VIP：192.168.1.10
+    inet ***.***.***.***0/32 scope global ens33               ## VIP：***.***.***.***0
        valid_lft forever preferred_lft forever
     inet6 2408:8270:237:ded0:c89c:adab:e7b:8bd6/64 scope global noprefixroute dynamic
        valid_lft 258806sec preferred_lft 172406sec
@@ -258,7 +258,7 @@ root      15666  15664  0 16:15 ?        00:00:00 /usr/sbin/keepalived -D
 
 ## 故障模拟测试<a name="section118145475428"></a>
 
-- 主节点\[192.168.1.11\]操作。
+- 主节点\[***.***.***.***1\]操作。
 
 ```
 ## kill数据库进程
@@ -269,13 +269,13 @@ root      19254   9299  0 16:42 pts/0    00:00:00 grep --color=auto gauss
 
 ## 检查message日志[检测到故障，执行notify_down脚本，并关闭keepalived服务]
 # tail -fn 200 /var/log/messages
-Feb 19 16:42:57 opengaussdb1 Keepalived_healthcheckers[18816]: TCP connection to [192.168.1.11]:26000 failed.
-Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: TCP connection to [192.168.1.11]:26000 failed.
-Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Check on service [192.168.1.11]:26000 failed after 1 retry.
-Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Removing service [192.168.1.11]:26000 from VS [192.168.1.10]:26000
+Feb 19 16:42:57 opengaussdb1 Keepalived_healthcheckers[18816]: TCP connection to [***.***.***.***1]:26000 failed.
+Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: TCP connection to [***.***.***.***1]:26000 failed.
+Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Check on service [***.***.***.***1]:26000 failed after 1 retry.
+Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Removing service [***.***.***.***1]:26000 from VS [***.***.***.***0]:26000
 Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: IPVS (cmd 1160, errno 2): No such destination
-Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Executing [/gauss/failoverdb.sh] for service [192.168.1.11]:26000 in VS [192.168.1.10]:26000
-Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Lost quorum 1-0=1 > 0 for VS [192.168.1.10]:26000
+Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Executing [/gauss/failoverdb.sh] for service [***.***.***.***1]:26000 in VS [***.***.***.***0]:26000
+Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: Lost quorum 1-0=1 > 0 for VS [***.***.***.***0]:26000
 Feb 19 16:43:00 opengaussdb1 Keepalived[18815]: Stopping
 Feb 19 16:43:00 opengaussdb1 Keepalived_healthcheckers[18816]: pid 19258 exited due to signal 15
 Feb 19 16:43:00 opengaussdb1 Keepalived_vrrp[18817]: VRRP_Instance(VI_1) sent 0 priority
@@ -286,13 +286,13 @@ Feb 19 16:43:01 opengaussdb1 Keepalived_vrrp[18817]: Stopped
 Feb 19 16:43:01 opengaussdb1 Keepalived[18815]: Stopped Keepalived v1.3.5 (03/19,2017), git commit v1.3.5-6-g6fa32f2
 ```
 
-- 备节点\[192.168.1.12\]检查。
+- 备节点\[***.***.***.***2\]检查。
 
 ```
 ## 检查VIP是否已漂移
 [root@opengaussdb2 ~]# ip a|grep 192.168
-    inet 192.168.1.12/24 brd 192.168.1.255 scope global noprefixroute ens33
-    inet 192.168.1.10/32 scope global ens33
+    inet ***.***.***.***2/24 brd ***.***.***.*** scope global noprefixroute ens33
+    inet ***.***.***.***0/32 scope global ens33
 
 ## 检查数据库状态[已failover成为Primary]
 [omm@opengaussdb2 ~]$ gs_om -t status --detail
@@ -303,6 +303,6 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node            node_ip         instance                state                   |
 ---------------------------------------------------------------------------------
-1  opengaussdb1 192.168.1.11    6001 /gauss/data/db1 P Down    Manually stopped |
-2  opengaussdb2 192.168.1.12    6002 /gauss/data/db1 S Primary Normal
+1  opengaussdb1 ***.***.***.***1    6001 /gauss/data/db1 P Down    Manually stopped |
+2  opengaussdb2 ***.***.***.***2    6002 /gauss/data/db1 S Primary Normal
 ```

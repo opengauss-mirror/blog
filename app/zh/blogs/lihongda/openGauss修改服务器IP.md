@@ -85,10 +85,10 @@ ssh: connect to host ecs-0002 port 22: No route to host
 - /etc/hosts
 
 ```
-[root@ecs-0001 ~]# sed -i 's/192.168.0.10/192.168.0.30/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
-[root@ecs-0001 ~]# sed -i 's/192.168.0.20/192.168.0.40/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
-[root@ecs-0002 ~]# sed -i 's/192.168.0.10/192.168.0.30/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
-[root@ecs-0002 ~]# sed -i 's/192.168.0.20/192.168.0.40/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0001 ~]# sed -i 's/***.***.***.***0/192.168.0.30/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0001 ~]# sed -i 's/***.***.***.***0/192.168.0.40/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0002 ~]# sed -i 's/***.***.***.***0/192.168.0.30/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0002 ~]# sed -i 's/***.***.***.***0/192.168.0.40/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
 ```
 
 ### 3. 生成集群文件并发送到备库
@@ -137,8 +137,7 @@ redistributing            : No
 node                      : 1
 node_name                 : ecs-0001
 instance_id               : 6001
-node_ip                   : 192.168.0.30
-data_path                 : /appdata/data
+node_ip                   : ***.***.***.***data_path                 : /appdata/data
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1
@@ -151,8 +150,7 @@ instance_role             : Primary
 node                      : 2
 node_name                 : ecs-0002
 instance_id               : 6002
-node_ip                   : 192.168.0.40
-data_path                 : /appdata/data
+node_ip                   : ***.***.***.***data_path                 : /appdata/data
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1

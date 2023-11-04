@@ -100,8 +100,7 @@ times: '12:30'
 
     0 LOG:  [Alarm Module]Host Name: wzsy01
 
-    0 LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+    0 LOG:  [Alarm Module]Host IP: ***.***.***.***
     0 LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -115,8 +114,7 @@ times: '12:30'
     2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 DB010  0 [REDO] LOG:  ConfigRecoveryParallelism, true_max_recovery_parallelism:4, max_recovery_parallelism:4
     2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]can not read GAUSS_WARNING_TYPE env.
     2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host Name: wzsy01
-    2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: 9.1.14.39
-    2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
+    2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***    2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
     2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
     2021-07-26 15:15:54.716 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  Transparent encryption disabled.
     2021-07-26 15:15:54.720 60fe612a.1 [unknown] 140709682288384 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  loaded library "security_plugin"
@@ -169,8 +167,7 @@ times: '12:30'
 
     0 LOG:  [Alarm Module]Host Name: wzsy02
 
-    0 LOG:  [Alarm Module]Host IP: 9.1.14.40
-
+    0 LOG:  [Alarm Module]Host IP: ***.***.***.***
     0 LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -186,8 +183,7 @@ times: '12:30'
 
     2021-07-26 15:45:05.976 60fe6801.1 [unknown] 140434066839296 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host Name: wzsy02
 
-    2021-07-26 15:45:05.976 60fe6801.1 [unknown] 140434066839296 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: 9.1.14.40
-
+    2021-07-26 15:45:05.976 60fe6801.1 [unknown] 140434066839296 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
     2021-07-26 15:45:05.976 60fe6801.1 [unknown] 140434066839296 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     2021-07-26 15:45:05.977 60fe6801.1 [unknown] 140434066839296 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -236,8 +232,7 @@ times: '12:30'
 
     0 LOG:  [Alarm Module]Host Name: wzsy01
 
-    0 LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+    0 LOG:  [Alarm Module]Host IP: ***.***.***.***
     0 LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -253,8 +248,7 @@ times: '12:30'
 
     2021-07-26 15:46:02.433 60fe683a.1 [unknown] 139749337880320 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host Name: wzsy01
 
-    2021-07-26 15:46:02.434 60fe683a.1 [unknown] 139749337880320 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+    2021-07-26 15:46:02.434 60fe683a.1 [unknown] 139749337880320 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
     2021-07-26 15:46:02.434 60fe683a.1 [unknown] 139749337880320 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     2021-07-26 15:46:02.434 60fe683a.1 [unknown] 139749337880320 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -385,8 +379,7 @@ times: '12:30'
 
     0 LOG:  [Alarm Module]Host Name: wzsy01
 
-    0 LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+    0 LOG:  [Alarm Module]Host IP: ***.***.***.***
     0 LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -402,8 +395,7 @@ times: '12:30'
 
     2021-07-26 15:48:59.850 60fe68eb.1 [unknown] 140413211043584 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host Name: wzsy01
 
-    2021-07-26 15:48:59.850 60fe68eb.1 [unknown] 140413211043584 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+    2021-07-26 15:48:59.850 60fe68eb.1 [unknown] 140413211043584 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
     2021-07-26 15:48:59.850 60fe68eb.1 [unknown] 140413211043584 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
 
     2021-07-26 15:48:59.850 60fe68eb.1 [unknown] 140413211043584 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52

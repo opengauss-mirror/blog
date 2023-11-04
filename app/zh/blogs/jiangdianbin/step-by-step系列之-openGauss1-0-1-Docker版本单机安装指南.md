@@ -681,7 +681,7 @@ GAUSSDATA=/var/lib/opengauss/data
 
 [https://www.cnblogs.com/zhangyongli2011/p/12981754.html](https://www.cnblogs.com/zhangyongli2011/p/12981754.html)
 
-gsql -d enmotech -U enmotech -W'Enm0t3ch' -h 192.168.1.94 -p 8888
+gsql -d enmotech -U enmotech -W'Enm0t3ch' -h ***.***.***.*** -p 8888
 
 DOcker 容器化：
 

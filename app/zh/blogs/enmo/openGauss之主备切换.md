@@ -70,8 +70,8 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Standby Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Primary Normal
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Standby Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Primary Normal
 
 ```
 
@@ -145,8 +145,8 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Primary Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Primary Normal
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Primary Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Primary Normal
 
 ```
 
@@ -175,8 +175,8 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Primary Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Standby Need repair(WAL)
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Primary Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Standby Need repair(WAL)
 
 ```
 
@@ -250,7 +250,7 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Primary Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Standby Normal
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Primary Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Standby Normal
 可以发现，Standby Need repair故障就解决了。
 ```

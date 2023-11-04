@@ -109,7 +109,7 @@ tar -jxf openGauss-2.1.0-CentOS-64bit.tar.bz2 -C /opt/openGauss
 # 进入解压后目录下的simpleInstall
 cd /opt/openGauss/simpleInstall
 # 执行install.sh脚本安装openGauss
-sh install.sh -w test@123 -p 40200
+sh install.sh -w ****@*** -p 40200
 -w 初始化密码
 -p 指定端口 默认5432
 # 使用如下命令连接数据库
@@ -126,7 +126,7 @@ sysctl -w kernel.sem="250 85000 250 330"
 
 ```shell
 # 在文件末尾追加客户端host认证方式
-host all all 0.0.0.0/0 sha256
+host all all ***.***.***.***/0 sha256
 ```
 
 4. 修改`/opt/openGauss/data/single_node/postgresql.conf`文件
@@ -148,9 +148,9 @@ cd /opt/openGauss/bin
 
 ```shell
 # 连接数据库
-/opt/openGauss/bin/gsql -d postgres -p 40200 -W 'test@123' -r
+/opt/openGauss/bin/gsql -d postgres -p 40200 -W '****@***' -r
 # 创建一个用户
-create role test with createddb password "test@1234";
+create role test with createddb password "****@***4";
 # 创建数据库
 create database testdb owner test;
 # 授予用户对数据库的全部权限
@@ -162,7 +162,7 @@ grant all privileges  to test;
 7. 使用新用户连接数据库
 
 ```shell
-/opt/openGauss/bin/gsql -d postgres -p 40200 -U test -W 'test@123' -r
+/opt/openGauss/bin/gsql -d postgres -p 40200 -U test -W '****@***' -r
 ```
 
 ### 3.下载安装 DataStudio

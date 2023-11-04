@@ -74,7 +74,7 @@ ORACLE_DSN  dbi:Oracle:host=x.x.x.x;port=1521;sid=xxx
 ORACLE_USER xxx
 ORACLE_PWD  xxx
 PG_VERSION  12
-PG_DSN  dbi:Pg:host=127.0.0.1;port=6000;dbname=xxx
+PG_DSN  dbi:Pg:host=***.***.***.***;port=6000;dbname=xxx
 PG_USER        xxx
 PG_PWD         xxx
 SCHEMA         xxx

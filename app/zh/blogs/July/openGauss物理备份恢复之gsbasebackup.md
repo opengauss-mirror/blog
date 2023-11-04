@@ -201,8 +201,7 @@ gs_basebackup 参数可以分为如下几类：
 
   0 LOG:  [Alarm Module]Host Name: wzsy01
 
-  0 LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+  0 LOG:  [Alarm Module]Host IP: ***.***.***.***
   0 LOG:  [Alarm Module]Cluster Name: Cluster_template
 
   0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -218,8 +217,7 @@ gs_basebackup 参数可以分为如下几类：
 
   2021-07-26 11:24:59.789 60fe2b0b.1 [unknown] 140465425811200 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host Name: wzsy01
 
-  2021-07-26 11:24:59.790 60fe2b0b.1 [unknown] 140465425811200 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+  2021-07-26 11:24:59.790 60fe2b0b.1 [unknown] 140465425811200 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
   2021-07-26 11:24:59.790 60fe2b0b.1 [unknown] 140465425811200 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
 
   2021-07-26 11:24:59.790 60fe2b0b.1 [unknown] 140465425811200 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -277,8 +275,7 @@ gs_basebackup 参数可以分为如下几类：
 
   0 LOG:  [Alarm Module]Host Name: wzsy01
 
-  0 LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+  0 LOG:  [Alarm Module]Host IP: ***.***.***.***
   0 LOG:  [Alarm Module]Cluster Name: Cluster_template
 
   0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
@@ -294,8 +291,7 @@ gs_basebackup 参数可以分为如下几类：
 
   2021-07-26 14:51:41.301 60fe5b7d.1 [unknown] 139948390721280 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host Name: wzsy01
 
-  2021-07-26 14:51:41.301 60fe5b7d.1 [unknown] 139948390721280 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: 9.1.14.39
-
+  2021-07-26 14:51:41.301 60fe5b7d.1 [unknown] 139948390721280 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
   2021-07-26 14:51:41.301 60fe5b7d.1 [unknown] 139948390721280 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: Cluster_template
 
   2021-07-26 14:51:41.301 60fe5b7d.1 [unknown] 139948390721280 [unknown] 0 dn_6001_6002 00000  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52

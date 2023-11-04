@@ -236,7 +236,7 @@ openGauss 是华为旗下的国产数据库，我对着这个数据库的了解�
 
 openGauss_conn:
 
-host: "127.0.0.1"
+host: "***.***.***.***"
 
 port: "5432"
 
@@ -250,7 +250,7 @@ database: "postgres"
 
 mysql_conn:
 
-host: "127.0.0.1"
+host: "***.***.***.***"
 
 port: "3306"
 
@@ -298,7 +298,7 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
   kafka:
 
-  bootstrap-servers: 192.168.0.114:9092 # kafka 集群地址
+  bootstrap-servers: ***.***.***.***4:9092 # kafka 集群地址
   data:
 
   check:
@@ -307,9 +307,9 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
   bucket-expect-capacity: 10 # 桶容量范围最小值为1
 
-  source-uri: http://127.0.0.1:9002 # 配置源端服务地址和服务端口server.port
+  source-uri: http://***.***.***.***:9002 # 配置源端服务地址和服务端口server.port
 
-  sink-uri: http://127.0.0.1:9001 # 配置源端服务地址和服务端口server.port
+  sink-uri: http://***.***.***.***:9001 # 配置源端服务地址和服务端口server.port
   配置 application-source.yml文件
 
   server:
@@ -320,7 +320,7 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
   check:
 
-  server-uri: http://127.0.0.1:9000 # 数据校验服务地址
+  server-uri: http://***.***.***.***:9000 # 数据校验服务地址
   extract:
 
   schema: test # 源端数据实例
@@ -353,11 +353,11 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
       driver-class-name: com.mysql.cj.jdbc.Driver
 
-      url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://***.***.***.***:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
 
       username: jack  # 源端mysql用于校验的用户名称
 
-      password: test@123  # 源端mysql用于校验的用户名称密码
+      password: ****@***  # 源端mysql用于校验的用户名称密码
   配置 application-sink.yml文件
 
   server:
@@ -368,7 +368,7 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
   check:
 
-  server-uri: http://127.0.0.1:9000 # 数据校验服务地址
+  server-uri: http://***.***.***.***:9000 # 数据校验服务地址
   extract:
 
   schema: test  # 宿端opengauss 用于校验数据schema
@@ -384,11 +384,11 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
       # 宿端opengauss用于校验数据库链接地址
 
-      url: jdbc:opengauss://127.0.0.1:15432/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&batchMode=OFF
+      url: jdbc:opengauss://***.***.***.***:15432/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&batchMode=OFF
 
       username: jack # 宿端opengauss用于校验的用户名称
 
-      password: test@123  # 宿端opengauss用于校验的用户名称密码
+      password: ****@***  # 宿端opengauss用于校验的用户名称密码
   校验前的准备工作
 
   cd /data/kafka/confluent-7.2.0

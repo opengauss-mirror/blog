@@ -111,15 +111,15 @@ global:
 
 
 db_servers:
-  - host: "192.168.122.221"
+  - host: "***.***.***.***"
     db_port: 26000
     ha_port: 26001
     role: "primary"
-  - host: "192.168.122.157"
+  - host: "***.***.***.***"
     db_port: 26000
     ha_port: 26001
     role: "standby"
-  - host: "192.168.122.68"
+  - host: "***.***.***.***"
     db_port: 26000
     ha_port: 26001
     role: "standby"
@@ -148,17 +148,17 @@ ptk checkos -i A --detail # 加上--detail 会显示详细信息
 ```
 --检查所有节点
 [root@node1 .ptk]# ptk checkos -i A -f config.yaml
-INFO[2022-07-06T09:48:23.777] local ip: 192.168.122.221
-[host 192.168.122.221]: not found tool: bzip2
-[host 192.168.122.221]: not found tool: lsof
-[host 192.168.122.221]: not found tool: ifconfig
-[host 192.168.122.221]: not found package: numactl
-[host 192.168.122.68]: not found tool: bzip2
-[host 192.168.122.68]: not found tool: lsof
-[host 192.168.122.68]: not found package: numactl
-[host 192.168.122.157]: not found tool: bzip2
-[host 192.168.122.157]: not found tool: lsof
-[host 192.168.122.157]: not found package: numactl
+INFO[2022-07-06T09:48:23.777] local ip: ***.***.***.***
+[host ***.***.***.***]: not found tool: bzip2
+[host ***.***.***.***]: not found tool: lsof
+[host ***.***.***.***]: not found tool: ifconfig
+[host ***.***.***.***]: not found package: numactl
+[host ***.***.***.***]: not found tool: bzip2
+[host ***.***.***.***]: not found tool: lsof
+[host ***.***.***.***]: not found package: numactl
+[host ***.***.***.***]: not found tool: bzip2
+[host ***.***.***.***]: not found tool: lsof
+[host ***.***.***.***]: not found package: numactl
 Please installed the above missing packages first before do other operations
 [PTK-4010] the system does not meet installation requirements
 
@@ -188,9 +188,9 @@ Please installed the above missing packages first before do other operations
 [root@node1 .ptk]# ptk ls
   cluster_name |       instances       | user |  data_dir   | db_version
 ---------------+-----------------------+------+-------------+--------------
-  MogDB3.0     | 192.168.122.221:26000 | omm  | /data/mogdb | MogDB-3.0.0
-               | 192.168.122.157:26000 |      |             |
-               | 192.168.122.68:26000  |      |             |
+  MogDB3.0     | ***.***.***.***:26000 | omm  | /data/mogdb | MogDB-3.0.0
+               | ***.***.***.***:26000 |      |             |
+               | ***.***.***.***:26000  |      |             |
 [root@node1 .ptk]# ptk cluster status -n MogDB3.0
 
 [   Cluster State   ]
@@ -204,9 +204,9 @@ current_az      			: AZ_ALL
 
    id  |       ip        | port  | user | instance | db_role | state
 -------+-----------------+-------+------+----------+---------+---------
-  6003 | 192.168.122.68  | 26000 | omm  | dn_6003  | primary | Normal
-  6001 | 192.168.122.221 | 26000 | omm  | dn_6001  | standby | Normal
-  6002 | 192.168.122.157 | 26000 | omm  | dn_6002  | standby | Normal
+  6003 | ***.***.***.***  | 26000 | omm  | dn_6003  | primary | Normal
+  6001 | ***.***.***.*** | 26000 | omm  | dn_6001  | standby | Normal
+  6002 | ***.***.***.*** | 26000 | omm  | dn_6002  | standby | Normal
 ```
 
 #### 集群卸载
@@ -225,17 +225,17 @@ global:
   tmp_dir: /opt/mogdb/tmp
   cm_server_port: 15300
 db_servers:
-- host: 192.168.122.68
+- host: ***.***.***.***
   db_port: 26000
   role: primary
   az_name: AZ1
   az_priority: 1
-- host: 192.168.122.221
+- host: ***.***.***.***
   db_port: 26000
   role: standby
   az_name: AZ1
   az_priority: 1
-- host: 192.168.122.157
+- host: ***.***.***.***
   db_port: 26000
   role: standby
   az_name: AZ1

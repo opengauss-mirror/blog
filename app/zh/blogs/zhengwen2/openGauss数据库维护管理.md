@@ -41,7 +41,7 @@ Processes: 	113
 Memory used: 	7.0%
 Swap used: 	0.0%
 Usage On: 	15%
-IP address: 	192.168.0.96
+IP address: 	***.***.***.***
 Users online: 	2
 [root@ecs-e1b3 ~]#
 ```
@@ -411,7 +411,7 @@ Processes: 109
 Memory used: 6.7%
 Swap used: 0.0%
 Usage On: 15%
-IP address: 192.168.0.96
+IP address: ***.***.***.***
 Users online: 1
 [root@ecs-e1b3 ~]# su - omm
 Last login: Fri Jul 10 19:05:39 CST 2020 on pts/0
@@ -422,7 +422,7 @@ Processes: 111
 Memory used: 7.0%
 Swap used: 0.0%
 Usage On: 15%
-IP address: 192.168.0.96
+IP address: ***.***.***.***
 Users online: 1
 [omm@ecs-e1b3 ~]$
 ```
@@ -548,7 +548,7 @@ Processes: 	109
 Memory used: 	6.7%
 Swap used: 	0.0%
 Usage On: 	15%
-IP address: 	192.168.0.96
+IP address: 	***.***.***.***
 Users online: 	1
 [root@ecs-e1b3 ~]# su - omm
 Last login: Fri Jul 10 19:05:39 CST 2020 on pts/0
@@ -559,7 +559,7 @@ Processes: 	111
 Memory used: 	7.0%
 Swap used: 	0.0%
 Usage On: 	15%
-IP address: 	192.168.0.96
+IP address: 	***.***.***.***
 Users online: 	1
 [omm@ecs-e1b3 ~]$
 ```
@@ -768,7 +768,7 @@ Processes: 109
 Memory used: 6.7%
 Swap used: 0.0%
 Usage On: 15%
-IP address: 192.168.0.96
+IP address: ***.***.***.***
 Users online: 1
 [root@ecs-e1b3 ~]# su - omm
 Last login: Fri Jul 10 19:05:39 CST 2020 on pts/0
@@ -779,7 +779,7 @@ Processes: 111
 Memory used: 7.0%
 Swap used: 0.0%
 Usage On: 15%
-IP address: 192.168.0.96
+IP address: ***.***.***.***
 Users online: 1
 [omm@ecs-e1b3 ~]$
 ```
@@ -1180,7 +1180,7 @@ Processes: 154
 Memory used: 2.3%
 Swap used: 0.0%
 Usage On: 14%
-IP address: 192.168.0.12
+IP address: ***.***.***.***
 Users online: 3
 [root@ecs-e1b3 ~]# su - omm
 Last login: Mon Jul 27 09:23:44 CST 2020 on pts/0
@@ -1191,7 +1191,7 @@ Processes: 156
 Memory used: 2.4%
 Swap used: 0.0%
 Usage On: 14%
-IP address: 192.168.0.12
+IP address: ***.***.***.***
 Users online: 3
 ```
 
@@ -1343,7 +1343,7 @@ Processes: 109
 Memory used: 6.7%
 Swap used: 0.0%
 Usage On: 15%
-IP address: 192.168.0.96
+IP address: ***.***.***.***
 Users online: 1
 [root@ecs-e1b3 ~]# su - omm
 Last login: Fri Jul 27 16:22:11 CST 2020 on pts/0
@@ -1354,7 +1354,7 @@ Processes: 111
 Memory used: 7.0%
 Swap used: 0.0%
 Usage On: 15%
-IP address: 192.168.0.96
+IP address: ***.***.***.***
 Users online: 1
 [omm@ecs-e1b3 ~]$
 ```

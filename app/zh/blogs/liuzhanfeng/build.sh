@@ -270,7 +270,7 @@ function ConfigDatabaseNode()
         touch $PWD/dss/dss0/dssdba/cfg/dss_inst.ini
         echo "INST_ID=0
         _LOG_LEVEL=255
-        DSS_NODES_LIST=0:127.0.0.1:$default_DSS_NODES_LIST1,1:127.0.0.1:$default_DSS_NODES_LIST2
+        DSS_NODES_LIST=0:***.***.***.***:$default_DSS_NODES_LIST1,1:***.***.***.***:$default_DSS_NODES_LIST2
         DISK_LOCK_FILE_PATH=$PWD/dss/dss0
         LSNR_PATH=$PWD/dss/dss0
        _LOG_MAX_FILE_SIZE=20M
@@ -282,7 +282,7 @@ function ConfigDatabaseNode()
        touch $PWD/dss/dss1/dssdba/cfg/dss_inst.ini
         echo "INST_ID=1
         _LOG_LEVEL=255
-        DSS_NODES_LIST=0:127.0.0.1:$default_DSS_NODES_LIST1,1:127.0.0.1:$default_DSS_NODES_LIST2
+        DSS_NODES_LIST=0:***.***.***.***:$default_DSS_NODES_LIST1,1:***.***.***.***:$default_DSS_NODES_LIST2
         DISK_LOCK_FILE_PATH=$PWD/dss/dss0
         LSNR_PATH=$PWD/dss/dss1
        _LOG_MAX_FILE_SIZE=20M
@@ -323,7 +323,7 @@ function InitDb()
         echo $(date +%F%n%R) "Init node1 and node2"
         mkdir -p $PWD/data
 	info "start gs_initdb node1"
-        gs_initdb -D $PWD/data/node1 --nodename=node1 -U $USER -w $password --vgname=+$USER --enable-dss --dms_url="0:127.0.0.1:$default_dms_url_port1,1:127.0.0.1:$default_dms_url_port2" -I 0 --socketpath='UDS:'$PWD'/dss/dss0/.dss_unix_d_socket'
+        gs_initdb -D $PWD/data/node1 --nodename=node1 -U $USER -w $password --vgname=+$USER --enable-dss --dms_url="0:***.***.***.***:$default_dms_url_port1,1:***.***.***.***:$default_dms_url_port2" -I 0 --socketpath='UDS:'$PWD'/dss/dss0/.dss_unix_d_socket'
 	info "echo node1 information"
         echo "ss_enable_ssl = off
         listen_addresses = '*'
@@ -336,9 +336,9 @@ function InitDb()
         ss_log_max_file_size = 1GB
         " >> $PWD/data/node1/postgresql.conf
 
-        sed '91 ahost       all        all         0.0.0.0/0        sha256' -i $PWD/data/node1/pg_hba.conf
+        sed '91 ahost       all        all         ***.***.***.***/0        sha256' -i $PWD/data/node1/pg_hba.conf
 	info "gs_initdb node2"
-        gs_initdb -D $PWD/data/node2 --nodename=node2 -U $USER -w $password --vgname=+$USER --enable-dss --dms_url="0:127.0.0.1:$default_dms_url_port1,1:127.0.0.1:$default_dms_url_port2" -I 1 --socketpath='UDS:'$PWD'/dss/dss1/.dss_unix_d_socket'
+        gs_initdb -D $PWD/data/node2 --nodename=node2 -U $USER -w $password --vgname=+$USER --enable-dss --dms_url="0:***.***.***.***:$default_dms_url_port1,1:***.***.***.***:$default_dms_url_port2" -I 1 --socketpath='UDS:'$PWD'/dss/dss1/.dss_unix_d_socket'
 	check
 
         echo "ss_enable_ssl = off
@@ -352,7 +352,7 @@ function InitDb()
         ss_log_max_file_size = 1GB
         " >> $PWD/data/node2/postgresql.conf
 
-        sed '91 ahost       all        all         0.0.0.0/0        sha256' -i $PWD/data/node2/pg_hba.conf
+        sed '91 ahost       all        all         ***.***.***.***/0        sha256' -i $PWD/data/node2/pg_hba.conf
 
 }
 

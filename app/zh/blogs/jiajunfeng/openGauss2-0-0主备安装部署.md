@@ -81,11 +81,11 @@ openGauss 2.0.0 于 2021 年 3 月 31 日正式发布，大部分对 openGauss �
 
 硬件配置： \[华为云 ECS\] 2c/8G/40GB
 
-节点信息： \[主节点\] 192.168.0.21 prod
+节点信息： \[主节点\] ***.***.***.***1 prod
 
-\[备节点\] 192.168.0.22 stb1
+\[备节点\] ***.***.***.***2 stb1
 
-\[级联备\] 192.168.0.23 casstb
+\[级联备\] ***.***.***.***3 casstb
 
 ## 运行环境初始化<a name="section12023434403"></a>
 
@@ -220,7 +220,7 @@ sh /root/initial_env.sh    ## 执行初始化脚本[SCTP内核参数告警可以
         <PARAM name="tmpMppdbPath" value="/gauss/tmp"/>
         <PARAM name="gaussdbToolPath" value="/gauss/om" />
         <PARAM name="corePath" value="/gauss/corefile"/>
-        <PARAM name="backIp1s" value="192.168.0.21,192.168.0.22,192.168.0.23"/>
+        <PARAM name="backIp1s" value="***.***.***.***1,***.***.***.***2,***.***.***.***3"/>
     </CLUSTER>
 
     <!-- 每台服务器上的节点部署信息 -->
@@ -231,8 +231,8 @@ sh /root/initial_env.sh    ## 执行初始化脚本[SCTP内核参数告警可以
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.21"/>
-            <PARAM name="sshIp1" value="192.168.0.21"/>
+            <PARAM name="backIp1" value="***.***.***.***1"/>
+            <PARAM name="sshIp1" value="***.***.***.***1"/>
 	    <!--dn-->
             <PARAM name="dataNum" value="1"/>
 	        <PARAM name="dataPortBase" value="26000"/>
@@ -246,8 +246,8 @@ sh /root/initial_env.sh    ## 执行初始化脚本[SCTP内核参数告警可以
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.22"/>
-            <PARAM name="sshIp1" value="192.168.0.22"/>
+            <PARAM name="backIp1" value="***.***.***.***2"/>
+            <PARAM name="sshIp1" value="***.***.***.***2"/>
 	</DEVICE>
 
         <!-- node3上的节点部署信息，其中“name”的值配置为主机名称 -->
@@ -256,8 +256,8 @@ sh /root/initial_env.sh    ## 执行初始化脚本[SCTP内核参数告警可以
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.23"/>
-            <PARAM name="sshIp1" value="192.168.0.23"/>
+            <PARAM name="backIp1" value="***.***.***.***3"/>
+            <PARAM name="sshIp1" value="***.***.***.***3"/>
             <PARAM name="cascadeRole" value="on"/>
 	</DEVICE>
     </DEVICELIST>
@@ -374,7 +374,7 @@ postgres=# \l
 postgres=# select * from dbe_perf.replication_stat;
        pid       | usesysid | usename |       application_name        | client_addr  | client_hostname | client_port |     backend_start         |   state   | sender_sent_location | receiver_write_location | receiver_flush_location | receiver_replay_location | sync_priority | sync_state
 -----------------+----------+---------+-------------------------------+--------------+-----------------+-------------+-------------------------------+-----------+----------------------+-------------------------+-------------------------+--------------------------+---------------+------------
- 139635524359936 |       10 | omm     | WalSender to Standby[dn_6002] | 192.168.0.22 | stb1            |       42460 | 2021-04-02 09:34:26.351701+08 | Streaming | 0/6002580            | 0/6002580               | 0/6002580               | 0/6002580                |             0 | Async
+ 139635524359936 |       10 | omm     | WalSender to Standby[dn_6002] | ***.***.***.***2 | stb1            |       42460 | 2021-04-02 09:34:26.351701+08 | Streaming | 0/6002580            | 0/6002580               | 0/6002580               | 0/6002580                |             0 | Async
 ```
 
 ## 检查主备信息<a name="section11679194214349"></a>
@@ -392,9 +392,9 @@ current_az      : AZ_ALL
 
 node      node_ip         instance                state         |
 -----------------------------------------------------------------
-1  prod   192.168.0.21    6001 /gauss/data/db1 P Primary Normal |
-2  stb1   192.168.0.22    6002 /gauss/data/db1 S Standby Normal |
-3  casstb 192.168.0.23    6003 /gauss/data/db1 C Cascade Normal
+1  prod   ***.***.***.***1    6001 /gauss/data/db1 P Primary Normal |
+2  stb1   ***.***.***.***2    6002 /gauss/data/db1 S Standby Normal |
+3  casstb ***.***.***.***3    6003 /gauss/data/db1 C Cascade Normal
 
 ## 查询主备同步信息
 [omm@prod ~]$ gs_ctl query -D /gauss/data/db1
@@ -423,7 +423,7 @@ node      node_ip         instance                state         |
         sync_state                     : Async
         sync_priority                  : 0
         sync_most_available            : Off
-        channel                        : 192.168.0.21:26001--&gt;192.168.0.22:42460
+        channel                        : ***.***.***.***1:26001--&gt;***.***.***.***2:42460
 
 ## 查询集群节点配置信息
 [omm@prod ~]$ gs_om -t view
@@ -438,21 +438,21 @@ azPriority:1
 node :1
 nodeName:prod
 ssh channel :
-sshChannel 1:192.168.0.21
+sshChannel 1:***.***.***.***1
 datanodeCount :1
 datanode 1:
 datanodeLocalDataPath :/gauss/data/db1
 datanodeXlogPath :
-datanodeListenIP 1:192.168.0.21
+datanodeListenIP 1:***.***.***.***1
 datanodePort :26000
-datanodeLocalHAIP 1:192.168.0.21
+datanodeLocalHAIP 1:***.***.***.***1
 datanodeLocalHAPort :26001
 dn_replication_num: 3
 datanodePeer0DataPath :/gauss/data/db1
-datanodePeer0HAIP 1:192.168.0.22
+datanodePeer0HAIP 1:***.***.***.***2
 datanodePeer0HAPort :26001
 datanodePeer1DataPath :/gauss/data/db1
-datanodePeer1HAIP 1:192.168.0.23
+datanodePeer1HAIP 1:***.***.***.***3
 datanodePeer1HAPort :26001
 azName:AZ1
 azPriority:1
@@ -460,21 +460,21 @@ azPriority:1
 node :2
 nodeName:stb1
 ssh channel :
-sshChannel 1:192.168.0.22
+sshChannel 1:***.***.***.***2
 datanodeCount :1
 datanode 1:
 datanodeLocalDataPath :/gauss/data/db1
 datanodeXlogPath :
-datanodeListenIP 1:192.168.0.22
+datanodeListenIP 1:***.***.***.***2
 datanodePort :26000
-datanodeLocalHAIP 1:192.168.0.22
+datanodeLocalHAIP 1:***.***.***.***2
 datanodeLocalHAPort :26001
 dn_replication_num: 3
 datanodePeer0DataPath :/gauss/data/db1
-datanodePeer0HAIP 1:192.168.0.21
+datanodePeer0HAIP 1:***.***.***.***1
 datanodePeer0HAPort :26001
 datanodePeer1DataPath :/gauss/data/db1
-datanodePeer1HAIP 1:192.168.0.23
+datanodePeer1HAIP 1:***.***.***.***3
 datanodePeer1HAPort :26001
 azName:AZ1
 azPriority:1
@@ -482,20 +482,20 @@ azPriority:1
 node :3
 nodeName:casstb
 ssh channel :
-sshChannel 1:192.168.0.23
+sshChannel 1:***.***.***.***3
 datanodeCount :1
 datanode 1:
 datanodeLocalDataPath :/gauss/data/db1
 datanodeXlogPath :
-datanodeListenIP 1:192.168.0.23
+datanodeListenIP 1:***.***.***.***3
 datanodePort :26000
-datanodeLocalHAIP 1:192.168.0.23
+datanodeLocalHAIP 1:***.***.***.***3
 datanodeLocalHAPort :26001
 dn_replication_num: 3
 datanodePeer0DataPath :/gauss/data/db1
-datanodePeer0HAIP 1:192.168.0.21
+datanodePeer0HAIP 1:***.***.***.***1
 datanodePeer0HAPort :26001
 datanodePeer1DataPath :/gauss/data/db1
-datanodePeer1HAIP 1:192.168.0.22
+datanodePeer1HAIP 1:***.***.***.***2
 datanodePeer1HAPort :26001</textarea>
 ```

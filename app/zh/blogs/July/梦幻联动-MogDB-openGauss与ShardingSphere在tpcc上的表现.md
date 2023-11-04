@@ -172,8 +172,8 @@ apache-shardingsphere-5.0.0-RC1-SNAPSHOT-shardingsphere-proxy-bin.tar.gz 为 pro
       maxLifetimeMilliseconds: 1800000
       maxPoolSize: 3000
       minPoolSize: 1
-      password: tpcc@123
-      url: jdbc:postgresql://192.168.2.157:26000/tpcc?serverTimezone=UTC&useSSL=false&loggerLevel=OFF
+      password: ****@***
+      url: jdbc:postgresql://***.***.***.***57:26000/tpcc?serverTimezone=UTC&useSSL=false&loggerLevel=OFF
       username: tpcc
     ds_1:
       connectionTimeoutMilliseconds: 30000
@@ -181,8 +181,8 @@ apache-shardingsphere-5.0.0-RC1-SNAPSHOT-shardingsphere-proxy-bin.tar.gz 为 pro
       maxLifetimeMilliseconds: 1800000
       maxPoolSize: 3000
       minPoolSize: 1
-      password: tpcc@123
-      url: jdbc:postgresql://192.168.2.158:26000/tpcc?serverTimezone=UTC&useSSL=false&loggerLevel=OFF
+      password: ****@***
+      url: jdbc:postgresql://***.***.***.***58:26000/tpcc?serverTimezone=UTC&useSSL=false&loggerLevel=OFF
       username: tpcc
 
   rules:
@@ -347,7 +347,7 @@ or register at http://www.atomikos.com/Main/RegisterYourDownload to disable this
 5. 测试连接
 
 ```
-[lee@node157 ~]$ gsql -d tpcc -Usharding -h 192.168.2.136 -p3307 -Wsharding
+[lee@node157 ~]$ gsql -d tpcc -Usharding -h ***.***.***.***36 -p3307 -Wsharding
 gsql ((MogDB 2.1.0 build ) compiled at 2021-10-26 19:07:06 commit 0 last mr  )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.
@@ -362,7 +362,7 @@ tpcc=>
 [root@db1 run]# cat props.mogdb.ss
 db=postgres
 driver=org.postgresql.Driver
-conn=jdbc:postgresql://192.168.2.136:3307/tpcc?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off
+conn=jdbc:postgresql://***.***.***.***36:3307/tpcc?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off
 user=sharding
 password=sharding
 
@@ -428,7 +428,7 @@ resultDirectory=ss_result_%tY-%tm-%td_%tH%tM%tS
 13:55:30,142 [main] INFO   jTPCC : Term-00,
 13:55:30,142 [main] INFO   jTPCC : Term-00, db=postgres
 13:55:30,142 [main] INFO   jTPCC : Term-00, driver=org.postgresql.Driver
-13:55:30,143 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://192.168.2.136:3307/tpcc?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off
+13:55:30,143 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://***.***.***.***36:3307/tpcc?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off
 13:55:30,143 [main] INFO   jTPCC : Term-00, user=sharding
 13:55:30,143 [main] INFO   jTPCC : Term-00,
 13:55:30,143 [main] INFO   jTPCC : Term-00, warehouses=100

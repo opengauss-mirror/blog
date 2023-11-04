@@ -68,7 +68,7 @@ summary: '个人配置openGauss的过程总结'
 
 记录 ip 和主机名，之后配置需要用到
 
-`ip` `192.168.201.131`
+`ip` `***.***.***.***`
 
 `主机名` `db1`
 
@@ -192,7 +192,7 @@ yum 安装相关包
 </ROOT>
 ```
 
-其中 ip 设置为之前的`192.168.201.131`,主机名为`db1`，如下:
+其中 ip 设置为之前的`***.***.***.***`,主机名为`db1`，如下:
 <img src='./pic/openGauss安装/openGauss配置文件.png'>
 
 解压安装包
@@ -260,7 +260,7 @@ public class Gaussjdbc {
 	//创建数据库连接。
 	  public static Connection GetConnection(String username, String passwd) {
 	    String driver = "org.postgresql.Driver";
-	    String sourceURL = "jdbc:postgresql://192.168.201.131:26000/postgres";
+	    String sourceURL = "jdbc:postgresql://***.***.***.***:26000/postgres";
 	    Connection conn = null;
 	    try {
 	      //加载数据库驱动。
@@ -451,7 +451,7 @@ public class Gaussjdbc {
 
 放行 ip 命令(在官方文档`客户端接入验证`处可以查询)如下
 
-` gs_guc set -N all -I all -h "host all parker 192.168.201.1/32 sha256"`
+` gs_guc set -N all -I all -h "host all parker ***.***.***.***/32 sha256"`
 
 具体的接入 ip 若不清楚可以通过报错信息或本地的 ipconfig 进行查看
 

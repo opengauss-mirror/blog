@@ -38,10 +38,10 @@ opengau+   18357       1  2 11:08 pts/1    00:00:01 /usr/local/opengauss/1.1.0/b
 [opengauss@ecs-761c dn_22000]$ netstat -nap | grep gauss
 (Not all processes could be identified, non-owned process info
  will not be shown, you would have to be root to see it all.)
-tcp        0      0 127.0.0.1:12000         0.0.0.0:*               LISTEN      17649/gaussdb
-tcp        0      0 127.0.0.1:12001         0.0.0.0:*               LISTEN      17649/gaussdb
-tcp        0      0 127.0.0.1:22000         0.0.0.0:*               LISTEN      18357/gaussdb
-tcp        0      0 127.0.0.1:22001         0.0.0.0:*               LISTEN      18357/gaussdb
+tcp        0      0 ***.***.***.***:12000         ***.***.***.***:*               LISTEN      17649/gaussdb
+tcp        0      0 ***.***.***.***:12001         ***.***.***.***:*               LISTEN      17649/gaussdb
+tcp        0      0 ***.***.***.***:22000         ***.***.***.***:*               LISTEN      18357/gaussdb
+tcp        0      0 ***.***.***.***:22001         ***.***.***.***:*               LISTEN      18357/gaussdb
 tcp6       0      0 ::1:12000               :::*                    LISTEN      17649/gaussdb
 tcp6       0      0 ::1:12001               :::*                    LISTEN      17649/gaussdb
 tcp6       0      0 ::1:22000               :::*                    LISTEN      18357/gaussdb
@@ -133,7 +133,7 @@ gs_guc set -D {dn} -c 'replication_type=1';
 主机实例 dn_12000 设置：
 
 ```
-gs_guc set -D /home/opengauss/datanode/dn_12000 -c "replconninfo1='localhost=127.0.0.1 localport=12001 localheartbeatport=12004 localservice=12005 remotehost=127.0.0.1 remoteport=22001 remoteheartbeatport=22004 remoteservice=22005'"
+gs_guc set -D /home/opengauss/datanode/dn_12000 -c "replconninfo1='localhost=***.***.***.*** localport=12001 localheartbeatport=12004 localservice=12005 remotehost=***.***.***.*** remoteport=22001 remoteheartbeatport=22004 remoteservice=22005'"
 gs_guc set -D /home/opengauss/datanode/dn_12000 -c 'remote_read_mode=off';
 gs_guc set -D /home/opengauss/datanode/dn_12000 -c 'replication_type=1';
 ```
@@ -141,7 +141,7 @@ gs_guc set -D /home/opengauss/datanode/dn_12000 -c 'replication_type=1';
 备机实例 dn_22000 设置：
 
 ```
-gs_guc set -D /home/opengauss/datanode/dn_22000 -c "replconninfo1='localhost=127.0.0.1 localport=22001 localheartbeatport=22004 localservice=22005 remotehost=127.0.0.1 remoteport=12001 remoteheartbeatport=12004 remoteservice=12005'"
+gs_guc set -D /home/opengauss/datanode/dn_22000 -c "replconninfo1='localhost=***.***.***.*** localport=22001 localheartbeatport=22004 localservice=22005 remotehost=***.***.***.*** remoteport=12001 remoteheartbeatport=12004 remoteservice=12005'"
 gs_guc set -D /home/opengauss/datanode/dn_22000 -c 'remote_read_mode=off';
 gs_guc set -D /home/opengauss/datanode/dn_22000 -c 'replication_type=1';
 ```
@@ -198,7 +198,7 @@ gs_ctl query -D /home/opengauss/datanode/dn_12000
         sync_state                     : Sync
         sync_priority                  : 1
         sync_most_available            : Off
-        channel                        : 127.0.0.1:12001-->127.0.0.1:51698
+        channel                        : ***.***.***.***:12001-->***.***.***.***:51698
 
  Receiver info:
 No information

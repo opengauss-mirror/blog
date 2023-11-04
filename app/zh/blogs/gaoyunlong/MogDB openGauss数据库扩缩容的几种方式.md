@@ -82,8 +82,8 @@ current_az      : AZ_ALL
 
     node node_ip         port      instance            state
 ----------------------------------------------------------------------------
-1  node1 192.168.122.221 25000      6001 /data/mogdb   P Primary Normal
-2  node2 192.168.122.157 25000      6002 /data/mogdb   S Standby Normal
+1  node1 ***.***.***.*** 25000      6001 /data/mogdb   P Primary Normal
+2  node2 ***.***.***.*** 25000      6002 /data/mogdb   S Standby Normal
 ```
 
 #### xml 配置文件
@@ -94,7 +94,7 @@ current_az      : AZ_ALL
     <CLUSTER>
         <PARAM name="clusterName" value="dbCluster" />
         <PARAM name="nodeNames" value="node1,node2" />
-        <PARAM name="backIp1s" value="192.168.122.221,192.168.122.157"/>
+        <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***"/>
         <PARAM name="gaussdbAppPath" value="/opt/mogdb/app" />
         <PARAM name="gaussdbLogPath" value="/var/log/mogdb" />
         <PARAM name="gaussdbToolPath" value="/opt/mogdb/tools" />
@@ -106,8 +106,8 @@ current_az      : AZ_ALL
             <PARAM name="name" value="node1"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.122.221"/>
-            <PARAM name="sshIp1" value="192.168.122.221"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
         <PARAM name="dataNum" value="1"/>
         <PARAM name="dataPortBase" value="25000"/>
@@ -118,8 +118,8 @@ current_az      : AZ_ALL
             <PARAM name="name" value="node2"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.122.157"/>
-            <PARAM name="sshIp1" value="192.168.122.157"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
     </DEVICE>
     </DEVICELIST>
 </ROOT>
@@ -141,7 +141,7 @@ current_az      : AZ_ALL
 
 #### 扩容节点准备
 
-扩容节点：192.168.122.68
+扩容节点：***.***.***.***
 参考 [操作系统配置](https://docs.mogdb.io/zh/mogdb/v3.0/os-configuration)
 
 ```
@@ -151,8 +151,8 @@ current_az      : AZ_ALL
 [root@node3 ~]# passwd omm
 
 --建立互信，第一次需要先相互登陆确认一下
-[root@node2 ~]# scp -r .ssh root@192.168.122.68:/root
-[omm@node2 ~]$ scp -r .ssh omm@192.168.122.68:/home/omm/
+[root@node2 ~]# scp -r .ssh root@***.***.***.***:/root
+[omm@node2 ~]$ scp -r .ssh omm@***.***.***.***:/home/omm/
 
 --python3 版本要保持一致，如果不一致需要重新安装
 ```
@@ -165,7 +165,7 @@ current_az      : AZ_ALL
     <CLUSTER>
         <PARAM name="clusterName" value="dbCluster" />
         <PARAM name="nodeNames" value="node1,node2,node3" />
-        <PARAM name="backIp1s" value="192.168.122.221,192.168.122.157,192.168.122.68"/>
+        <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***,***.***.***.***"/>
         <PARAM name="gaussdbAppPath" value="/opt/mogdb/app" />
         <PARAM name="gaussdbLogPath" value="/var/log/mogdb" />
         <PARAM name="gaussdbToolPath" value="/opt/mogdb/tools" />
@@ -177,8 +177,8 @@ current_az      : AZ_ALL
             <PARAM name="name" value="node1"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.122.221"/>
-            <PARAM name="sshIp1" value="192.168.122.221"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
         <PARAM name="dataNum" value="1"/>
         <PARAM name="dataPortBase" value="25000"/>
@@ -189,16 +189,16 @@ current_az      : AZ_ALL
             <PARAM name="name" value="node2"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.122.157"/>
-            <PARAM name="sshIp1" value="192.168.122.157"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
     	</DEVICE>
 
         <DEVICE sn="1000003">
             <PARAM name="name" value="node3"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.122.68"/>
-            <PARAM name="sshIp1" value="192.168.122.68"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
         </DEVICE>
     </DEVICELIST>
 </ROOT>
@@ -209,18 +209,18 @@ current_az      : AZ_ALL
 ```
 [root@node1 ~]# cd /opt/mogdb300
 [root@node1 mogdb300]# source /home/omm/.bashrc
-[root@node1 mogdb300]# ./script/gs_expansion -U omm -G dbgrp -X /opt/mogdb300/config.xml -h 192.168.122.68
+[root@node1 mogdb300]# ./script/gs_expansion -U omm -G dbgrp -X /opt/mogdb300/config.xml -h ***.***.***.***
 Start expansion without cluster manager component.
 Start to preinstall database on new nodes.
 Start to send soft to each standby nodes.
 End to send soft to each standby nodes.
 Start to preinstall database step.
-Preinstall 192.168.122.68 success
+Preinstall ***.***.***.*** success
 End to preinstall database step.
 End to preinstall database on new nodes.
 
 Start to install database on new nodes.
-Installing database on node 192.168.122.68:
+Installing database on node ***.***.***.***:
 Parsing the configuration file.
 Check preinstall on every node.
 Successfully checked preinstall on every node.
@@ -253,7 +253,7 @@ Configuration is completed.
 Successfully started cluster.
 Successfully installed application.
 end deploy..
-192.168.122.68 install success.
+***.***.***.*** install success.
 Finish to install database on all nodes.
 Database on standby nodes installed finished.
 
@@ -261,13 +261,13 @@ Checking mogdb and gs_om version.
 End to check mogdb and gs_om version.
 
 Start to establish the relationship.
-Start to build standby 192.168.122.68.
-Build standby 192.168.122.68 success.
+Start to build standby ***.***.***.***.
+Build standby ***.***.***.*** success.
 Start to generate and send cluster static file.
 End to generate and send cluster static file.
 
 Expansion results:
-192.168.122.68:	Success
+***.***.***.***:	Success
 Expansion Finish.
 ```
 
@@ -287,9 +287,9 @@ current_az      : AZ_ALL
 
     node node_ip         port      instance            state
 ----------------------------------------------------------------------------
-1  node1 192.168.122.221 25000      6001 /data/mogdb   P Primary Normal
-2  node2 192.168.122.157 25000      6002 /data/mogdb   S Standby Normal
-3  node3 192.168.122.68  25000      6003 /data/mogdb   S Standby Normal
+1  node1 ***.***.***.*** 25000      6001 /data/mogdb   P Primary Normal
+2  node2 ***.***.***.*** 25000      6002 /data/mogdb   S Standby Normal
+3  node3 ***.***.***.***  25000      6003 /data/mogdb   S Standby Normal
 
 --扩容节点查询
 [root@node3 ~]# su - omm
@@ -319,7 +319,7 @@ No information
 	receiver_flush_location        : 0/6000808
 	receiver_replay_location       : 0/6000808
 	sync_percent                   : 100%
-	channel                        : 192.168.122.68:44046<--192.168.122.221:25001
+	channel                        : ***.***.***.***:44046<--***.***.***.***:25001
 
 [omm@node3 ~]$
 ```
@@ -352,11 +352,11 @@ current_az      : AZ_ALL
 
     node node_ip         port      instance            state
 ----------------------------------------------------------------------------
-1  node1 192.168.122.221 25000      6001 /data/mogdb   P Primary Normal
-2  node2 192.168.122.157 25000      6002 /data/mogdb   S Standby Normal
-3  node3 192.168.122.68  25000      6003 /data/mogdb   S Standby Normal
+1  node1 ***.***.***.*** 25000      6001 /data/mogdb   P Primary Normal
+2  node2 ***.***.***.*** 25000      6002 /data/mogdb   S Standby Normal
+3  node3 ***.***.***.***  25000      6003 /data/mogdb   S Standby Normal
 
-[omm@node1 ~]$ gs_dropnode -U omm -G dbgrp -h 192.168.122.68
+[omm@node1 ~]$ gs_dropnode -U omm -G dbgrp -h ***.***.***.***
 The target node to be dropped is (['node3'])
 Do you want to continue to drop the target node (yes/no)?yes
 Drop node start without CM node.
@@ -403,8 +403,8 @@ current_az      : AZ_ALL
 
     node node_ip         port      instance            state
 ----------------------------------------------------------------------------
-1  node1 192.168.122.221 25000      6001 /data/mogdb   P Primary Normal
-2  node2 192.168.122.157 25000      6002 /data/mogdb   S Standby Normal
+1  node1 ***.***.***.*** 25000      6001 /data/mogdb   P Primary Normal
+2  node2 ***.***.***.*** 25000      6002 /data/mogdb   S Standby Normal
 [omm@node1 ~]$
 ```
 
@@ -420,16 +420,16 @@ current_az      : AZ_ALL
 [2022-08-05 10:27:53.100][24663][][gs_ctl]: Is server running?
 
 [omm@node3 ~]$ cat /data/mogdb/postgresql.conf |grep -i replconninfo
-replconninfo1 = 'localhost=192.168.122.68 localport=25001 localheartbeatport=25003 localservice=25004 remotehost=192.168.122.157 remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
-replconninfo2 = 'localhost=192.168.122.68 localport=25001 localheartbeatport=25003 localservice=25004 remotehost=192.168.122.221 remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
+replconninfo1 = 'localhost=***.***.***.*** localport=25001 localheartbeatport=25003 localservice=25004 remotehost=***.***.***.*** remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
+replconninfo2 = 'localhost=***.***.***.*** localport=25001 localheartbeatport=25003 localservice=25004 remotehost=***.***.***.*** remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
 
 --注释复制信息
 [omm@node3 ~]$ gs_guc set -D /data/mogdb/ -c "replconninfo1"
 [omm@node3 ~]$ gs_guc set -D /data/mogdb/ -c "replconninfo2"
 
 [omm@node3 ~]$ cat /data/mogdb/postgresql.conf |grep -i replconninfo
-#replconninfo1 = 'localhost=192.168.122.68 localport=25001 localheartbeatport=25003 localservice=25004 remotehost=192.168.122.157 remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
-#replconninfo2 = 'localhost=192.168.122.68 localport=25001 localheartbeatport=25003 localservice=25004 remotehost=192.168.122.221 remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
+#replconninfo1 = 'localhost=***.***.***.*** localport=25001 localheartbeatport=25003 localservice=25004 remotehost=***.***.***.*** remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
+#replconninfo2 = 'localhost=***.***.***.*** localport=25001 localheartbeatport=25003 localservice=25004 remotehost=***.***.***.*** remoteport=25001 remoteheartbeatport=25003 remoteservice=25004'
 
 --启动数据库
 [omm@node3 ~]$ gs_ctl -D /data/mogdb start
@@ -519,8 +519,8 @@ current_az      			: AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port  | user | instance | db_role | state
 -------+-----------------+-------+------+----------+---------+---------
-  6001 | 192.168.122.221 | 25000 | omm  | dn_6001  | primary | Normal
-  6002 | 192.168.122.157 | 25000 | omm  | dn_6002  | standby | Normal
+  6001 | ***.***.***.*** | 25000 | omm  | dn_6001  | primary | Normal
+  6002 | ***.***.***.*** | 25000 | omm  | dn_6002  | standby | Normal
 ```
 
 #### 生成扩容配置文件
@@ -528,11 +528,11 @@ current_az      			: AZ_ALL
 ```
 [root@node1 .ptk]# ptk cluster -n M30 scale-out --gen-template > add.yaml
 [root@node1 .ptk]# cat add.yaml
-- host: 192.168.122.68
+- host: ***.***.***.***
   db_port: 25000
   role: standby
   ssh_option:
-    host: 192.168.122.68
+    host: ***.***.***.***
     port: 22
     user: root
     password: "pTk6MDQ2Y2U0ZDE8QzxCPEU/RE8ycy1UZFpEZ0xSMU9PQzRZMkpoY2JuT0x2Z05FbG9pZDlBMm5hZlFEVzQ="
@@ -545,16 +545,16 @@ current_az      			: AZ_ALL
 scale [stage=preCheck]
 INFO[2022-08-05T14:19:52.162] start check operating system
 INFO[2022-08-05T14:19:52.633] prechecking dependent tools...
-INFO[2022-08-05T14:19:52.932] platform: centos_7_64bit                      host=192.168.122.68
+INFO[2022-08-05T14:19:52.932] platform: centos_7_64bit                      host=***.***.***.***
 .
 .
 .
-INFO[2022-08-05T14:20:25.432] reload 192.168.122.157 database by gs_ctl     host=192.168.122.157
-INFO[2022-08-05T14:20:25.504] set 192.168.122.68 postgresql.conf            host=192.168.122.68
-INFO[2022-08-05T14:20:25.582] generate static config to /opt/mogdb/app/bin/cluster_static_config  host=192.168.122.68
-INFO[2022-08-05T14:20:25.612] change /opt/mogdb/app/bin/cluster_static_config owner to omm  host=192.168.122.68
-INFO[2022-08-05T14:20:25.625] set 192.168.122.68 hba config                 host=192.168.122.68
-INFO[2022-08-05T14:20:25.709] build 192.168.122.68 database by gs_ctl       host=192.168.122.68
+INFO[2022-08-05T14:20:25.432] reload ***.***.***.*** database by gs_ctl     host=***.***.***.***
+INFO[2022-08-05T14:20:25.504] set ***.***.***.*** postgresql.conf            host=***.***.***.***
+INFO[2022-08-05T14:20:25.582] generate static config to /opt/mogdb/app/bin/cluster_static_config  host=***.***.***.***
+INFO[2022-08-05T14:20:25.612] change /opt/mogdb/app/bin/cluster_static_config owner to omm  host=***.***.***.***
+INFO[2022-08-05T14:20:25.625] set ***.***.***.*** hba config                 host=***.***.***.***
+INFO[2022-08-05T14:20:25.709] build ***.***.***.*** database by gs_ctl       host=***.***.***.***
 Scale success.
 
 [root@node1 .ptk]# ptk cluster -n M30 status
@@ -567,9 +567,9 @@ current_az      			: AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port  | user | instance | db_role | state
 -------+-----------------+-------+------+----------+---------+---------
-  6001 | 192.168.122.221 | 25000 | omm  | dn_6001  | primary | Normal
-  6002 | 192.168.122.157 | 25000 | omm  | dn_6002  | standby | Normal
-  6003 | 192.168.122.68  | 25000 | omm  | dn_6003  | standby | Normal
+  6001 | ***.***.***.*** | 25000 | omm  | dn_6001  | primary | Normal
+  6002 | ***.***.***.*** | 25000 | omm  | dn_6002  | standby | Normal
+  6003 | ***.***.***.***  | 25000 | omm  | dn_6003  | standby | Normal
 ```
 
 ### PTK 集群缩容
@@ -605,23 +605,23 @@ Global Flags:
 #### 集群缩容
 
 ```
-[root@node1 .ptk]# ptk cluster -n M30 scale-in -H 192.168.122.68 --stop-db
+[root@node1 .ptk]# ptk cluster -n M30 scale-in -H ***.***.***.*** --stop-db
 scale [stage=preCheck]
 scale [stage=exec]
-modify the instance[192.168.122.68]:/data/mogdb/postgres.conf replconninfo value
-INFO[2022-08-05T14:41:46.280] reload 192.168.122.68 database by gs_ctl      host=192.168.122.68
-modify the instance[192.168.122.157]:/data/mogdb/postgres.conf replconninfo value
-INFO[2022-08-05T14:41:46.385] reload 192.168.122.157 database by gs_ctl     host=192.168.122.157
-modify the instance[192.168.122.221]:/data/mogdb/postgres.conf replconninfo value
-INFO[2022-08-05T14:41:46.458] reload 192.168.122.221 database by gs_ctl     host=192.168.122.221
+modify the instance[***.***.***.***]:/data/mogdb/postgres.conf replconninfo value
+INFO[2022-08-05T14:41:46.280] reload ***.***.***.*** database by gs_ctl      host=***.***.***.***
+modify the instance[***.***.***.***]:/data/mogdb/postgres.conf replconninfo value
+INFO[2022-08-05T14:41:46.385] reload ***.***.***.*** database by gs_ctl     host=***.***.***.***
+modify the instance[***.***.***.***]:/data/mogdb/postgres.conf replconninfo value
+INFO[2022-08-05T14:41:46.458] reload ***.***.***.*** database by gs_ctl     host=***.***.***.***
 scale [stage=postExec]
 Would you want delete directory(AppDir,DataDir,ToolDir,LogDir)?[Y|Yes](default=N) Y
 Would you want delete the user?[Y|Yes](default=N) Y
 Would you want clear the env?[Y|Yes](default=N) Y
-INFO[2022-08-05T14:42:06.251] stop 192.168.122.68 database by gs_ctl        host=192.168.122.68
-INFO[2022-08-05T14:42:06.321] remove files /opt/mogdb/app,/data/mogdb,/opt/mogdb/tool,/opt/mogdb/log  host=192.168.122.68
-INFO[2022-08-05T14:42:06.587] remove user profiles                          host=192.168.122.68
-INFO[2022-08-05T14:42:06.607] delete os user omm                            host=192.168.122.68
+INFO[2022-08-05T14:42:06.251] stop ***.***.***.*** database by gs_ctl        host=***.***.***.***
+INFO[2022-08-05T14:42:06.321] remove files /opt/mogdb/app,/data/mogdb,/opt/mogdb/tool,/opt/mogdb/log  host=***.***.***.***
+INFO[2022-08-05T14:42:06.587] remove user profiles                          host=***.***.***.***
+INFO[2022-08-05T14:42:06.607] delete os user omm                            host=***.***.***.***
 Scale success.
 [root@node1 .ptk]# ptk cluster -n M30 status
 [   Cluster State   ]
@@ -633,7 +633,7 @@ current_az      			: AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port  | user | instance | db_role | state
 -------+-----------------+-------+------+----------+---------+---------
-  6001 | 192.168.122.221 | 25000 | omm  | dn_6001  | primary | Normal
-  6002 | 192.168.122.157 | 25000 | omm  | dn_6002  | standby | Normal
+  6001 | ***.***.***.*** | 25000 | omm  | dn_6001  | primary | Normal
+  6002 | ***.***.***.*** | 25000 | omm  | dn_6002  | standby | Normal
 [root@node1 .ptk]#
 ```

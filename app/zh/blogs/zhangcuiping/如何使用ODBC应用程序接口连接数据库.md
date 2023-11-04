@@ -77,7 +77,7 @@ times: '15:20'
     Servername=本机IP
     Database=postgres
     Username=user1
-    Password=Enmo@123
+    Password=****@***
     Port=26000
 
    vi ~/.bash_profile

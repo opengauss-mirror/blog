@@ -55,7 +55,7 @@ yum install libaio-devel -y
 #创建数据库初始化用户组和用户
 groupadd dbgrp -g 1000
 useradd omm -u 1000 -g 1000
-echo "test@123" | passwd --stdin omm
+echo "****@***" | passwd --stdin omm
 #创建安装包存放目录
 mkdir -p /opt/software/openGauss3.0
 #创建数据库初始化数据目录
@@ -93,12 +93,12 @@ source .bashrc
 
 ```
 su - omm
-gs_initdb -D /data/openGauss3.0 --nodename=primary -E UTF-8 -w test@123
+gs_initdb -D /data/openGauss3.0 --nodename=primary -E UTF-8 -w ****@***
 cd /data/openGauss3.0
 #编辑postgresql.conf配置文件，将相关信息添加到最后一行
 vim postgresql.conf
 port=26000
-listen_addresses = '0.0.0.0'
+listen_addresses = '***.***.***.***'
 log_directory = 'pg_log'
 remote_read_mode=non_authentication
 replconninfo1='localhost=10.0.0.100 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=10.0.0.101 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'
@@ -106,7 +106,7 @@ replconninfo1='localhost=10.0.0.100 localport=26001 localheartbeatport=26005 loc
 #localhost为主库IP,remotehost为备库IP
 #编辑pg_hba.conf配置文件，将相关信息添加到最后一行
 vim pg_hba.conf
-host all all 0.0.0.0/0 sha256
+host all all ***.***.***.***/0 sha256
 ```
 
 #### 2.以 primary 方式启动数据库

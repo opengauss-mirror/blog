@@ -109,7 +109,7 @@ Python 3.6.11
 ```shell
 vi /etc/hosts
 --------------------
-192.168.100.11  db1 db1.opengauss.com   #Gauss OM IP Hosts Mapping
+***.***.***.***  db1 db1.opengauss.com   #Gauss OM IP Hosts Mapping
 --------------------
 ```
 
@@ -312,7 +312,7 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
         <!-- 数据库节点名称(hostname) -->
         <PARAM name="nodeNames" value="db1.opengauss.com" />
         <!-- 节点后端通讯IP，与nodeNames对应 -->
-        <PARAM name="backIp1s" value="192.168.0.11"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
         <!-- 数据库安装目录 与其他路径相互独立-->
         <PARAM name="gaussdbAppPath" value="/gauss/app" />
         <!-- 日志目录,与其他路径相互独立,默认路径"$GAUSSLOG/安装用户名"-->
@@ -335,8 +335,8 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.11"/>
-            <PARAM name="sshIp1" value="192.168.0.11"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
         <!--dbnode-->
         <!--当前主机上需要部署的数据库节点个数-->
@@ -400,7 +400,7 @@ cd /soft/openGauss/script
 ```shell
 vi /soft/hostfile
 -----------------------
-192.168.0.11
+***.***.***.***
 -----------------------
 
 cd  /soft/openGauss/script
@@ -413,7 +413,7 @@ cd  /soft/openGauss/script
 # 手动使用脚本创建互信
 vi /soft/hostfile
 -----------------------
-192.168.0.11
+***.***.***.***
 -----------------------
 
 cd  /soft/openGauss/script

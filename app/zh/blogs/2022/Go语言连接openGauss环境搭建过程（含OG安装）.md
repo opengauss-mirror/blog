@@ -88,7 +88,7 @@ times: '12:30'
   #添加一行
 
   cat >>/etc/hosts <<EOF
-  192.168.183.28 node1
+  ***.***.***.*** node1
   EOF
   ```
 
@@ -215,7 +215,7 @@ times: '12:30'
           <!-- 数据库core文件目录-->
           <PARAM name="corePath" value="/opt/huawei/corefile" />
           <!-- 节点IP，与数据库节点名称列表一一对应 -->
-          <PARAM name="backIp1s" value="192.168.183.28"/>
+          <PARAM name="backIp1s" value="***.***.***.***"/>
       </CLUSTER>
       <!-- 每台服务器上的节点部署信息 -->
       <DEVICELIST>
@@ -227,8 +227,8 @@ times: '12:30'
               <PARAM name="azName" value="AZ1"/>
               <PARAM name="azPriority" value="1"/>
               <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-              <PARAM name="backIp1" value="192.168.183.28"/>
-              <PARAM name="sshIp1" value="192.168.183.28"/>
+              <PARAM name="backIp1" value="***.***.***.***"/>
+              <PARAM name="sshIp1" value="***.***.***.***"/>
       <!--dbnode-->
       <PARAM name="dataNum" value="1"/>
       <PARAM name="dataPortBase" value="26000"/>
@@ -507,7 +507,7 @@ times: '12:30'
   ```
   [openGaussODBC]
   Driver=openGauss
-  Servername=192.168.183.28
+  Servername=***.***.***.***
   Database=postgres
   Username=gem
   Password=huawei@1234

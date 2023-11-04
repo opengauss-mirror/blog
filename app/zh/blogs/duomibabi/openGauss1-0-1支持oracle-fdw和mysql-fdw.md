@@ -104,7 +104,7 @@ make -sj install
 
 vi /opt/ogdata/postgresql.conf
 port=6432
-listen_addresses = '0.0.0.0'
+listen_addresses = '***.***.***.***'
 password_encryption_type = 0
 ```
 
@@ -229,8 +229,7 @@ CREATE EXTENSION
 postgres=> select oracle_diag();
                          oracle_diag
 --------------------------------------------------------------
- oracle_fdw 2.2.0, PostgreSQL 9.2.4, Oracle client 11.2.0.4.0
-(1 row)
+ oracle_fdw 2.2.0, PostgreSQL 9.2.4, Oracle client 11.***.***.***.***(1 row)
 ```
 
 postgres 用户\(有 sysadmin 管理权限\)赋予普通用户 opengauss 使用 oracle_fdw 权限。

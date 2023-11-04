@@ -20,8 +20,7 @@ times: '12:30'
 - 硬件环境：x86 虚拟机的内存 4GB
 - 软件环境：CentOS7.6 x64
 - 数据库版本：opengauss2.0.0,数据库软件是通过编译安装
-- 节点：node1 192.168.126.129
-- 节点：node2 192.168.126.130
+- 节点：node1 ***.***.***.***- 节点：node2 ***.***.***.***
 
 ## 1.1. 背景信息
 
@@ -560,7 +559,7 @@ $ ssh-keygen
 2. 第二步:用 ssh-copy-id 将公钥复制到远程机器中
 
 ```
-ssh-copy-id -i .ssh/id_rsa.pub omm@192.168.126.130
+ssh-copy-id -i .ssh/id_rsa.pub omm@***.***.***.***
 ```
 
 ```bash
@@ -608,7 +607,7 @@ INFO: Backup catalog '/opt/opgaussbak' successfully inited
 node1 执行：
 
 ```
-[omm@node1 ~]$ gs_probackup   add-instance -B /opt/opgaussbak -D /opt/ogdata --instance node1bak --remote-proto=ssh --remote-host=192.168.126.130  --remote-port=22 --remote-path=/opt/og/bin --remote-user=omm
+[omm@node1 ~]$ gs_probackup   add-instance -B /opt/opgaussbak -D /opt/ogdata --instance node1bak --remote-proto=ssh --remote-host=***.***.***.***  --remote-port=22 --remote-path=/opt/og/bin --remote-user=omm
 ```
 
 报错 1：
@@ -642,7 +641,7 @@ sudo /sbin/ldconfig –v
 node1 再次执行：
 
 ```
-[omm@node1 ~]$ /opt/og/bin/gs_probackup add-instance -B /opt/opgaussbak -D /opt/ogdata --instance node1bak --remote-proto=ssh --remote-host=192.168.126.130  --remote-port=22 --remote-path=/opt/og/bin --remote-user=omm
+[omm@node1 ~]$ /opt/og/bin/gs_probackup add-instance -B /opt/opgaussbak -D /opt/ogdata --instance node1bak --remote-proto=ssh --remote-host=***.***.***.***  --remote-port=22 --remote-path=/opt/og/bin --remote-user=omm
 LOG: Start SSH client process, pid 23822
 INFO: Instance 'node1bak' successfully inited
 [omm@node1 ~]$
@@ -653,7 +652,7 @@ INFO: Instance 'node1bak' successfully inited
 node1 执行：
 
 ```
-gs_probackup backup –B /opt/opgaussbak  --instance=node1 -b full -D /opt/ogdata -h 192.168.126.130 -p 6543 -d postgres -U rep1 -W asdfg.1314 --remote-host=192.168.126.130 --remote-proto=ssh --remote-port=22 --remote-user=omm --remote-path=/opt/og/bin
+gs_probackup backup –B /opt/opgaussbak  --instance=node1 -b full -D /opt/ogdata -h ***.***.***.*** -p 6543 -d postgres -U rep1 -W asdfg.1314 --remote-host=***.***.***.*** --remote-proto=ssh --remote-port=22 --remote-user=omm --remote-path=/opt/og/bin
 ```
 
 报错如下：
@@ -745,7 +744,7 @@ postgres=# select * from t4;
 ```
 
 ```
-[omm@node1 ~]$ gs_probackup backup -B /opt/opgaussbak  --instance=node1bak -b PTRACK -D /opt/ogdata -h 192.168.126.130 -p 6543 -d postgres -U rep1 -W asdfg.1314 --remote-host=192.168.126.130 --remote-proto=ssh --remote-port=22 --remote-user=omm --remote-path=/opt/og/bin
+[omm@node1 ~]$ gs_probackup backup -B /opt/opgaussbak  --instance=node1bak -b PTRACK -D /opt/ogdata -h ***.***.***.*** -p 6543 -d postgres -U rep1 -W asdfg.1314 --remote-host=***.***.***.*** --remote-proto=ssh --remote-port=22 --remote-user=omm --remote-path=/opt/og/bin
 ```
 
 日志如下：

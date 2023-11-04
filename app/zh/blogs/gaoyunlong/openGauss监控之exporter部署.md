@@ -113,7 +113,7 @@ grant select on pg_stat_replication to opengauss_exporter;
 
 将 opengauss_exporter 部署服务器的 ip 地址以 md5 的加密方式加入白名单；
 
-如果是部署在本地服务器，需要以 md5 的方式添加在 host all all 127.0.0.1/32 trust 前面，
+如果是部署在本地服务器，需要以 md5 的方式添加在 host all all ***.***.***.***/32 trust 前面，
 
 否则会有 FATAL：Forbid remote connection with trust method! 报错
 
@@ -151,7 +151,7 @@ nohup /opt/opengauss_exporter/opengauss_exporter --config="/opt/opengauss_export
 
 确保防火墙关闭，如果防火墙打开，则需要开通 9187 端口。
 
-在浏览器输入服务器 ip 及 exporter 端口号，如：http://127.0.0.1:9187//metrics
+在浏览器输入服务器 ip 及 exporter 端口号，如：http://***.***.***.***:9187//metrics
 
 展示效果如下：
 

@@ -56,7 +56,7 @@ docker pull swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
 - 启动容器
 
 ```
-docker run --name mogdb --privileged=true -d -e GS_PASSWORD=Enmo@123 -v C:\mogdb:/var/lib/mogdb -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
+docker run --name mogdb --privileged=true -d -e GS_PASSWORD=****@*** -v C:\mogdb:/var/lib/mogdb -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:3.0.0
 ```
 
 ![image.png](./images/20220822-9195910f-6b9f-4ef3-a7cd-83af66fd5e7b.png)

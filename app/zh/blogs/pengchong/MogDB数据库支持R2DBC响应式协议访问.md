@@ -63,7 +63,7 @@ insert into product values(1,'PostgreSQL',0),
 修改工程项目下的 application.properties 文件
 
 ```java
-spring.r2dbc.url=r2dbc:postgresql://192.168.137.227:15400/productdb
+spring.r2dbc.url=r2dbc:postgresql://***.***.***.***:15400/productdb
 spring.r2dbc.username=moguser
 spring.r2dbc.password=Admin@1234
 运行程序进行测试点击R2dbcApplication文件，Run As运行

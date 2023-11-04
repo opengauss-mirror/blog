@@ -43,8 +43,7 @@ global:
   tool_dir: /opt/mogdb/tool
   tmp_dir: /opt/mogdb/tmp
 db_servers:
-- host: 172.16.0.127
-  db_port: 28000
+- host: ***.***.***.***  db_port: 28000
   role: primary
   az_name: AZ1
   az_priority: 1
@@ -53,8 +52,7 @@ db_servers:
 Do you really want to uninstall this cluster? Please confirm carefully[Y|Yes](default=N) y
 Do you want to delete db data '/opt/mogdb/data'?[Y|Yes](default=N) y
 Do you want to delete user 'ommdoc'?[Y|Yes](default=N) y
-INFO[2022-10-13T15:50:28.762] check db dirs owner                           host=172.16.0.127
-[172.16.0.127] [PTK-50304] the file/dir path '/opt/mogdb/data' not belongs to ommdoc
+INFO[2022-10-13T15:50:28.762] check db dirs owner                           host=***.***.***.***[172.16.0.127] [PTK-50304] the file/dir path '/opt/mogdb/data' not belongs to ommdoc
 [root@hostname opt]#
 
 ```
@@ -83,8 +81,7 @@ INFO[2022-10-13T15:50:28.762] check db dirs owner                           host
      tool_dir: /opt/mogdb/tool
      tmp_dir: /opt/mogdb/tmp
    db_servers:
-   - host: 172.16.0.127
-     db_port: 28000
+   - host: ***.***.***.***     db_port: 28000
      role: primary
      az_name: AZ1
      az_priority: 1
@@ -93,12 +90,4 @@ INFO[2022-10-13T15:50:28.762] check db dirs owner                           host
    Do you really want to uninstall this cluster? Please confirm carefully[Y|Yes](default=N) y
    Do you want to delete db data '/opt/mogdb/data'?[Y|Yes](default=N) y
    Do you want to delete user 'ommdoc'?[Y|Yes](default=N) y
-   INFO[2022-10-13T15:51:06.643] check db dirs owner                           host=172.16.0.127
-   INFO[2022-10-13T15:51:06.648] check db process status                       host=172.16.0.127
-   INFO[2022-10-13T15:51:06.659] clean crontab                                 host=172.16.0.127
-   INFO[2022-10-13T15:51:06.719] kill ommdoc's processes                       host=172.16.0.127
-   INFO[2022-10-13T15:51:06.822] remove files /opt/mogdb/app,/opt/mogdb/tool,/opt/mogdb/cm,/opt/mogdb/tmp,/opt/mogdb/data,/opt/mogdb/log  host=172.16.0.127
-   INFO[2022-10-13T15:51:06.904] delete os user ommdoc                         host=172.16.0.127
-   INFO[2022-10-13T15:51:07.088] clearing /etc/cron.allow                      host=172.16.0.127
-   INFO[2022-10-13T15:51:07.092] clearing /etc/security/limits.conf            host=172.16.0.127
-   ```
+   INFO[2022-10-13T15:51:06.643] check db dirs owner                           host=***.***.***.***   INFO[2022-10-13T15:51:06.648] check db process status                       host=***.***.***.***   INFO[2022-10-13T15:51:06.659] clean crontab                                 host=***.***.***.***   INFO[2022-10-13T15:51:06.719] kill ommdoc's processes                       host=***.***.***.***   INFO[2022-10-13T15:51:06.822] remove files /opt/mogdb/app,/opt/mogdb/tool,/opt/mogdb/cm,/opt/mogdb/tmp,/opt/mogdb/data,/opt/mogdb/log  host=***.***.***.***   INFO[2022-10-13T15:51:06.904] delete os user ommdoc                         host=***.***.***.***   INFO[2022-10-13T15:51:07.088] clearing /etc/cron.allow                      host=***.***.***.***   INFO[2022-10-13T15:51:07.092] clearing /etc/security/limits.conf            host=***.***.***.***   ```

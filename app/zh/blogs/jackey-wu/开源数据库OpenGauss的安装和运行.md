@@ -128,7 +128,7 @@ EOF
 
 ```
 [root@node1 ~]# echo "node1" > /etc/hostname
-[root@node1 ~]# echo "192.168.111.132 node1" >>/etc/hosts
+[root@node1 ~]# echo "***.***.***.*** node1" >>/etc/hosts
 ```
 
 10. **重启**
@@ -223,13 +223,13 @@ Ps：如果在预安装失败 就执行 gs_checkos -i A -h node1 --detail 命令
 2. **切换 omm 系统用户登录数据库**
 
 ```
-[root@node1 ~]#gs_guc set -N all -I all -h "host all jack 192.168.111.132/32 sha256"
+[root@node1 ~]#gs_guc set -N all -I all -h "host all jack ***.***.***.***/32 sha256"
 [root@node1 ~]#gsql -d postgres -p 26000
 ```
 
 3. **创建用户并赋予用户管理权限**
 
-   i. 创建用户 jack 并设置密码为 jack@123
+   i. 创建用户 jack 并设置密码为 **@*****
 
    ```
    [root@node1 ~]#create user jackey identified by '123321jackey.';

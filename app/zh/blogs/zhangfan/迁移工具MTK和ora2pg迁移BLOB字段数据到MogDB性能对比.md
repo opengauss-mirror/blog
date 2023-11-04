@@ -156,7 +156,7 @@ drwxr-xr-x 2 root root 4.0K  1月 24 13:52 example
 ```
 [root@ecs-1b06 ~]# docker ps
 CONTAINER ID        IMAGE                                    COMMAND             CREATED             STATUS              PORTS                                                                 NAMES
-52dcc856bf99        lhrbest/oracle_11g_ee_lhr_11.2.0.4:1.0   "init"              36 minutes ago      Up 36 minutes       0.0.0.0:1158->1158/tcp, 0.0.0.0:1521->1521/tcp, 0.0.0.0:222->22/tcp   oracle
+52dcc856bf99        lhrbest/oracle_11g_ee_lhr_11.2.0.4:1.0   "init"              36 minutes ago      Up 36 minutes       ***.***.***.***:1158->1158/tcp, ***.***.***.***:1521->1521/tcp, ***.***.***.***:222->22/tcp   oracle
 [root@ecs-1b06 ~]# docker exec -it 52dcc856bf99 bash
 [root@oracle /]# su - oracle
 [oracle@oracle ~]$ sqlplus /nolog

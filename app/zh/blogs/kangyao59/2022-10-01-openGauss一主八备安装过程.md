@@ -18,15 +18,15 @@ summary: 'openGauss一主八备安装过程.'
 
 | os-release    | hostname | ip            | 角色    |
 | ------------- | -------- | ------------- | ------- |
-| centos7.6 x86 | primary  | 192.168.1.100 | primary |
-| centos7.6 x86 | standby1 | 192.168.1.101 | standby |
-| centos7.6 x86 | standby2 | 192.168.1.102 | standby |
-| centos7.6 x86 | standby3 | 192.168.1.103 | standby |
-| centos7.6 x86 | standby4 | 192.168.1.104 | standby |
-| centos7.6 x86 | standby5 | 192.168.1.105 | standby |
-| centos7.6 x86 | standby6 | 192.168.1.106 | standby |
-| centos7.6 x86 | standby7 | 192.168.1.107 | standby |
-| centos7.6 x86 | standby8 | 192.168.1.108 | standby |
+| centos7.6 x86 | primary  | ***.***.***.***00 | primary |
+| centos7.6 x86 | standby1 | ***.***.***.***01 | standby |
+| centos7.6 x86 | standby2 | ***.***.***.***02 | standby |
+| centos7.6 x86 | standby3 | ***.***.***.***03 | standby |
+| centos7.6 x86 | standby4 | ***.***.***.***04 | standby |
+| centos7.6 x86 | standby5 | ***.***.***.***05 | standby |
+| centos7.6 x86 | standby6 | ***.***.***.***06 | standby |
+| centos7.6 x86 | standby7 | ***.***.***.***07 | standby |
+| centos7.6 x86 | standby8 | ***.***.***.***08 | standby |
 
 ## 安装依赖包
 
@@ -140,15 +140,15 @@ rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n' libaio-devel flex bison 
 修改 hosts 文件
 
 ```shell
-echo '192.168.1.100 primary' >> /etc/hosts
-echo '192.168.1.101 standby1' >> /etc/hosts
-echo '192.168.1.102 standby2' >> /etc/hosts
-echo '192.168.1.103 standby3' >> /etc/hosts
-echo '192.168.1.104 standby4' >> /etc/hosts
-echo '192.168.1.105 standby5' >> /etc/hosts
-echo '192.168.1.106 standby6' >> /etc/hosts
-echo '192.168.1.107 standby7' >> /etc/hosts
-echo '192.168.1.108 standby8' >> /etc/hosts
+echo '***.***.***.***00 primary' >> /etc/hosts
+echo '***.***.***.***01 standby1' >> /etc/hosts
+echo '***.***.***.***02 standby2' >> /etc/hosts
+echo '***.***.***.***03 standby3' >> /etc/hosts
+echo '***.***.***.***04 standby4' >> /etc/hosts
+echo '***.***.***.***05 standby5' >> /etc/hosts
+echo '***.***.***.***06 standby6' >> /etc/hosts
+echo '***.***.***.***07 standby7' >> /etc/hosts
+echo '***.***.***.***08 standby8' >> /etc/hosts
 ```
 
 修改 SELINUX 值
@@ -284,7 +284,7 @@ vim /tmp/8standby.xml
         <PARAM name="tmpMppdbPath" value="/openGauss3.1/cluster/tmp"/>
         <PARAM name="gaussdbToolPath" value="/openGauss3.1/cluster/tool" />
         <PARAM name="corePath" value="/home/core"/>
-        <PARAM name="backIp1s" value="192.168.1.100,192.168.1.101,192.168.1.102,192.168.1.103,192.168.1.104,192.168.1.105,192.168.1.106,192.168.1.107,192.168.1.108"/>
+        <PARAM name="backIp1s" value="***.***.***.***00,***.***.***.***01,***.***.***.***02,***.***.***.***03,***.***.***.***04,***.***.***.***05,***.***.***.***06,***.***.***.***07,***.***.***.***08"/>
 
     </CLUSTER>
     <!-- 每台服务器上的节点部署信息 -->
@@ -295,13 +295,13 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.100"/>
-            <PARAM name="sshIp1" value="192.168.1.100"/>
+            <PARAM name="backIp1" value="***.***.***.***00"/>
+            <PARAM name="sshIp1" value="***.***.***.***00"/>
             <!--CM节点部署信息-->
             <PARAM name="cmsNum" value="1"/>
             <PARAM name="cmServerPortBase" value="15000"/>
-            <PARAM name="cmServerListenIp1" value="192.168.1.100,192.168.1.101,192.168.1.102,192.168.1.103,192.168.1.104,192.168.1.105,192.168.1.106,192.168.1.107,192.168.1.108"/>
-            <PARAM name="cmServerHaIp1" value="192.168.1.100,192.168.1.101,192.168.1.102,192.168.1.103,192.168.1.104,192.168.1.105,192.168.1.106,192.168.1.107,192.168.1.108"/>
+            <PARAM name="cmServerListenIp1" value="***.***.***.***00,***.***.***.***01,***.***.***.***02,***.***.***.***03,***.***.***.***04,***.***.***.***05,***.***.***.***06,***.***.***.***07,***.***.***.***08"/>
+            <PARAM name="cmServerHaIp1" value="***.***.***.***00,***.***.***.***01,***.***.***.***02,***.***.***.***03,***.***.***.***04,***.***.***.***05,***.***.***.***06,***.***.***.***07,***.***.***.***08"/>
             <PARAM name="cmServerlevel" value="1"/>
             <PARAM name="cmServerRelation" value="primary,standby1,standby2,standby3,standby4,standby5,standby6,standby7,standby8"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -318,8 +318,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.101"/>
-            <PARAM name="sshIp1" value="192.168.1.101"/>
+            <PARAM name="backIp1" value="***.***.***.***01"/>
+            <PARAM name="sshIp1" value="***.***.***.***01"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -331,8 +331,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.102"/>
-            <PARAM name="sshIp1" value="192.168.1.102"/>
+            <PARAM name="backIp1" value="***.***.***.***02"/>
+            <PARAM name="sshIp1" value="***.***.***.***02"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -344,8 +344,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.103"/>
-            <PARAM name="sshIp1" value="192.168.1.103"/>
+            <PARAM name="backIp1" value="***.***.***.***03"/>
+            <PARAM name="sshIp1" value="***.***.***.***03"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -357,8 +357,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.104"/>
-            <PARAM name="sshIp1" value="192.168.1.104"/>
+            <PARAM name="backIp1" value="***.***.***.***04"/>
+            <PARAM name="sshIp1" value="***.***.***.***04"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -370,8 +370,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.105"/>
-            <PARAM name="sshIp1" value="192.168.1.105"/>
+            <PARAM name="backIp1" value="***.***.***.***05"/>
+            <PARAM name="sshIp1" value="***.***.***.***05"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -383,8 +383,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.106"/>
-            <PARAM name="sshIp1" value="192.168.1.106"/>
+            <PARAM name="backIp1" value="***.***.***.***06"/>
+            <PARAM name="sshIp1" value="***.***.***.***06"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -396,8 +396,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.107"/>
-            <PARAM name="sshIp1" value="192.168.1.107"/>
+            <PARAM name="backIp1" value="***.***.***.***07"/>
+            <PARAM name="sshIp1" value="***.***.***.***07"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -409,8 +409,8 @@ vim /tmp/8standby.xml
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.1.108"/>
-            <PARAM name="sshIp1" value="192.168.1.108"/>
+            <PARAM name="backIp1" value="***.***.***.***08"/>
+            <PARAM name="sshIp1" value="***.***.***.***08"/>
             <!-- cm -->
             <PARAM name="cmServerPortStandby" value="15000"/>
             <PARAM name="cmDir" value="/openGauss3.1/cluster/cmserver"/>
@@ -446,7 +446,7 @@ tar -zxvf openGauss-3.1.0-CentOS-64bit-om.tar.gz
 ```shell
 groupadd dbgrp
 useradd -g dbgrp -d /home/omm -m -s /bin/bash omm
-echo test@123|passwd --stdin omm
+echo ****@***|passwd --stdin omm
 ```
 
 预安装
@@ -623,15 +623,15 @@ gs_om -t status --detail
 
 node        node_ip         instance                                      state
 ---------------------------------------------------------------------------------
-1  primary  192.168.1.100   1    /openGauss3.1/cluster/cmserver/cm_server Standby
-2  standby1 192.168.1.101   2    /openGauss3.1/cluster/cmserver/cm_server Standby
-3  standby2 192.168.1.102   3    /openGauss3.1/cluster/cmserver/cm_server Standby
-4  standby3 192.168.1.103   4    /openGauss3.1/cluster/cmserver/cm_server Standby
-5  standby4 192.168.1.104   5    /openGauss3.1/cluster/cmserver/cm_server Primary
-6  standby5 192.168.1.105   6    /openGauss3.1/cluster/cmserver/cm_server Standby
-7  standby6 192.168.1.106   7    /openGauss3.1/cluster/cmserver/cm_server Standby
-8  standby7 192.168.1.107   8    /openGauss3.1/cluster/cmserver/cm_server Standby
-9  standby8 192.168.1.108   9    /openGauss3.1/cluster/cmserver/cm_server Standby
+1  primary  ***.***.***.***00   1    /openGauss3.1/cluster/cmserver/cm_server Standby
+2  standby1 ***.***.***.***01   2    /openGauss3.1/cluster/cmserver/cm_server Standby
+3  standby2 ***.***.***.***02   3    /openGauss3.1/cluster/cmserver/cm_server Standby
+4  standby3 ***.***.***.***03   4    /openGauss3.1/cluster/cmserver/cm_server Standby
+5  standby4 ***.***.***.***04   5    /openGauss3.1/cluster/cmserver/cm_server Primary
+6  standby5 ***.***.***.***05   6    /openGauss3.1/cluster/cmserver/cm_server Standby
+7  standby6 ***.***.***.***06   7    /openGauss3.1/cluster/cmserver/cm_server Standby
+8  standby7 ***.***.***.***07   8    /openGauss3.1/cluster/cmserver/cm_server Standby
+9  standby8 ***.***.***.***08   9    /openGauss3.1/cluster/cmserver/cm_server Standby
 
 [   Cluster State   ]
 
@@ -644,15 +644,15 @@ current_az      : AZ_ALL
 
 node        node_ip         instance                      state
 ---------------------------------------------------------------------------
-1  primary  192.168.1.100   6001 /openGauss3.1/cluster/dn P Primary Normal
-2  standby1 192.168.1.101   6002 /openGauss3.1/cluster/dn S Standby Normal
-3  standby2 192.168.1.102   6003 /openGauss3.1/cluster/dn S Standby Normal
-4  standby3 192.168.1.103   6004 /openGauss3.1/cluster/dn S Standby Normal
-5  standby4 192.168.1.104   6005 /openGauss3.1/cluster/dn S Standby Normal
-6  standby5 192.168.1.105   6006 /openGauss3.1/cluster/dn S Standby Normal
-7  standby6 192.168.1.106   6007 /openGauss3.1/cluster/dn S Standby Normal
-8  standby7 192.168.1.107   6008 /openGauss3.1/cluster/dn S Standby Normal
-9  standby8 192.168.1.108   6009 /openGauss3.1/cluster/dn S Standby Normal
+1  primary  ***.***.***.***00   6001 /openGauss3.1/cluster/dn P Primary Normal
+2  standby1 ***.***.***.***01   6002 /openGauss3.1/cluster/dn S Standby Normal
+3  standby2 ***.***.***.***02   6003 /openGauss3.1/cluster/dn S Standby Normal
+4  standby3 ***.***.***.***03   6004 /openGauss3.1/cluster/dn S Standby Normal
+5  standby4 ***.***.***.***04   6005 /openGauss3.1/cluster/dn S Standby Normal
+6  standby5 ***.***.***.***05   6006 /openGauss3.1/cluster/dn S Standby Normal
+7  standby6 ***.***.***.***06   6007 /openGauss3.1/cluster/dn S Standby Normal
+8  standby7 ***.***.***.***07   6008 /openGauss3.1/cluster/dn S Standby Normal
+9  standby8 ***.***.***.***08   6009 /openGauss3.1/cluster/dn S Standby Normal
 [omm@primary ~]$
 
 #连接数据库

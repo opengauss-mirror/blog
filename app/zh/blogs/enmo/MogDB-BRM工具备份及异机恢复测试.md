@@ -74,12 +74,12 @@ enable_backup_wal_file_check: on
 ## 启动备份文件中心同步
 #enable_backup_push: on
 ## 当前Brm节点名称，当enable_backup_center_push为on时此项为必填
-#brm_node_name: 127.0.0.1:5434
+#brm_node_name: ***.***.***.***:5434
 ## brm 备份文件集中存储配置
 #backup_center:
-#  - host: 127.0.0.1
+#  - host: ***.***.***.***
 #   port: 44332
-#  - host: 127.0.0.1
+#  - host: ***.***.***.***
 #   port: 44333
 ```
 
@@ -316,12 +316,12 @@ enable_backup_wal_file_check: on
 ## 启动备份文件中心同步
 #enable_backup_push: on
 ## 当前BRM节点名称，当enable_backup_center_push为on时此项为必填
-#brm_node_name: 127.0.0.1:5434
+#brm_node_name: ***.***.***.***:5434
 ## BRM 备份文件集中存储配置
 #backup_center:
-#  - host: 127.0.0.1
+#  - host: ***.***.***.***
 #   port: 44332
-#  - host: 127.0.0.1
+#  - host: ***.***.***.***
 #   port: 44333
 ```
 

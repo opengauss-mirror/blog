@@ -160,7 +160,7 @@ vi /etc/redhat-release
 
 ```shell
 echo "vector" > /etc/hostname
-echo "192.168.48.128 vector" >>/etc/hostd
+echo "***.***.***.*** vector" >>/etc/hostd
 ```
 
 ​ 最后系统重启后记得查看主机名是否修改成功：
@@ -285,7 +285,7 @@ tar -zxvf openGauss-2.0.0-CentOS-64bit-om.tar.gz
         <!-- 数据库core文件目录-->
         <PARAM name="corePath" value="/opt/huawei/corefile" />
         <!-- 节点IP，与数据库节点名称列表一一对应 -->
-        <PARAM name="backIp1s" value="192.168.0.1"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
     </CLUSTER>
     <!-- 每台服务器上的节点部署信息 -->
     <DEVICELIST>
@@ -297,8 +297,8 @@ tar -zxvf openGauss-2.0.0-CentOS-64bit-om.tar.gz
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.0.1"/>
-            <PARAM name="sshIp1" value="192.168.0.1"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
 	    <!--dbnode-->
 	    <PARAM name="dataNum" value="1"/>
@@ -310,7 +310,7 @@ tar -zxvf openGauss-2.0.0-CentOS-64bit-om.tar.gz
 </ROOT>
 ```
 
-​ 根据我的 ip 地址 192.168.48.128 和我的主机名 vector 更改之后文件内容如下：
+​ 根据我的 ip 地址 ***.***.***.*** 和我的主机名 vector 更改之后文件内容如下：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -332,7 +332,7 @@ tar -zxvf openGauss-2.0.0-CentOS-64bit-om.tar.gz
         <!-- 数据库core文件目录-->
         <PARAM name="corePath" value="/opt/huawei/corefile" />
         <!-- 节点IP，与数据库节点名称列表一一对应 -->
-        <PARAM name="backIp1s" value="192.168.48.128"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
     </CLUSTER>
     <!-- 每台服务器上的节点部署信息 -->
     <DEVICELIST>
@@ -344,8 +344,8 @@ tar -zxvf openGauss-2.0.0-CentOS-64bit-om.tar.gz
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.48.128"/>
-            <PARAM name="sshIp1" value="192.168.48.128"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
 	    <!--dbnode-->
 	    <PARAM name="dataNum" value="1"/>
@@ -541,7 +541,7 @@ public class test{//keep
         //驱动类。
         String driver = "org.postgresql.Driver";
         //数据库连接描述符。将15400替换为自己的端口号
-        String sourceURL = "jdbc:postgresql://127.0.0.1:15400/postgres";
+        String sourceURL = "jdbc:postgresql://***.***.***.***:15400/postgres";
         Connection conn = null;
 
         try
@@ -652,7 +652,7 @@ public class gausstest{//keep
         //驱动类。
         String driver = "org.postgresql.Driver";
         //数据库连接描述符。
-        String sourceURL = "jdbc:postgresql://127.0.0.1:15400/postgres";
+        String sourceURL = "jdbc:postgresql://***.***.***.***:15400/postgres";
         Connection conn = null;
 
         try

@@ -39,8 +39,7 @@ OUTPUT: [2023-05-16 10:59:09.298][3905515][][gs_ctl]: gs_ctl started,datadir is 
 
 0 LOG:  [Alarm Module]Host Name: mogdb-kernel-0002
 
-0 LOG:  [Alarm Module]Host IP: 172.16.0.245
-
+0 LOG:  [Alarm Module]Host IP: ***.***.***.***
 0 LOG:  [Alarm Module]Cluster Name: mogdb12
 
 0 WARNING:  failed to open feature control file, please check whether it exists: FileName=gaussdb.version, Errno=2, Errmessage=No such file or directory.
@@ -52,8 +51,7 @@ gaussdb.state does not exist, and skipt setting since it is optional.2023-05-16 
 
 2023-05-16 10:59:09.394 [unknown] [unknown] localhost 70372950802448 0[0:0#0] 0 [BACKEND] LOG:  [Alarm Module]Host Name: mogdb-kernel-0002
 
-2023-05-16 10:59:09.394 [unknown] [unknown] localhost 70372950802448 0[0:0#0] 0 [BACKEND] LOG:  [Alarm Module]Host IP: 172.16.0.245
-
+2023-05-16 10:59:09.394 [unknown] [unknown] localhost 70372950802448 0[0:0#0] 0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
 2023-05-16 10:59:09.394 [unknown] [unknown] localhost 70372950802448 0[0:0#0] 0 [BACKEND] LOG:  [Alarm Module]Cluster Name: mogdb12
 
 2023-05-16 10:59:09.399 [unknown] [unknown] localhost 70372950802448 0[0:0#0] 0 [BACKEND] LOG:  loaded library "security_plugin"

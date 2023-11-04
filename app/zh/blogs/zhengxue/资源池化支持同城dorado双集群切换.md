@@ -228,7 +228,7 @@ HA state:
         sync_state                     : Async
         sync_priority                  : 0
         sync_most_available            : Off
-        channel                        : 127.0.0.1:6600-->127.0.0.1:43350
+        channel                        : ***.***.***.***:6600-->***.***.***.***:43350
 
  Receiver info:
 No information
@@ -271,7 +271,7 @@ No information
         receiver_flush_location        : 2/A458
         receiver_replay_location       : 2/A458
         sync_percent                   : 100%
-        channel                        : 127.0.0.1:41952<--127.0.0.1:6600
+        channel                        : ***.***.***.***:41952<--***.***.***.***:6600
 
 备集群备节点1
 gs_ctl query -D /home/omm/ss_hatest1/dn1
@@ -296,8 +296,8 @@ port = 6600
 xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
 xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_primary'
 application_name = 'dn_master_0'
-cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9600'
-cross_cluster_replconninfo2='localhost=127.0.0.1 localport=6600 remotehost=127.0.0.1 remoteport=9700'
+cross_cluster_replconninfo1='localhost=***.***.***.*** localport=6600 remotehost=***.***.***.*** remoteport=9600'
+cross_cluster_replconninfo2='localhost=***.***.***.*** localport=6600 remotehost=***.***.***.*** remoteport=9700'
 cluster_run_mode = 'cluster_primary'
 ha_module_debug = off
 ss_log_level = 255
@@ -309,8 +309,8 @@ port = 6700
 xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
 xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_primary'
 application_name = 'dn_master_1'
-cross_cluster_replconninfo1='localhost=127.0.0.1 localport=6700 remotehost=127.0.0.1 remoteport=9600'
-cross_cluster_replconninfo2='localhost=127.0.0.1 localport=6700 remotehost=127.0.0.1 remoteport=9700'
+cross_cluster_replconninfo1='localhost=***.***.***.*** localport=6700 remotehost=***.***.***.*** remoteport=9600'
+cross_cluster_replconninfo2='localhost=***.***.***.*** localport=6700 remotehost=***.***.***.*** remoteport=9700'
 cluster_run_mode = 'cluster_primary'
 ha_module_debug = off
 ss_log_level = 255
@@ -324,8 +324,8 @@ port = 9600
 xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
 xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_primary'
 application_name = 'dn_standby_0'
-cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6600'
-cross_cluster_replconninfo2='localhost=127.0.0.1 localport=9600 remotehost=127.0.0.1 remoteport=6700'
+cross_cluster_replconninfo1='localhost=***.***.***.*** localport=9600 remotehost=***.***.***.*** remoteport=6600'
+cross_cluster_replconninfo2='localhost=***.***.***.*** localport=9600 remotehost=***.***.***.*** remoteport=6700'
 cluster_run_mode = 'cluster_standby'
 ha_module_debug = off
 ss_log_level = 255
@@ -337,8 +337,8 @@ port = 9700
 xlog_file_path = '/home/zx/ss_hatest/dorado_shared_disk'
 xlog_lock_file_path = '/home/zx/ss_hatest/shared_lock_primary'
 application_name = 'dn_standby_1'
-cross_cluster_replconninfo1='localhost=127.0.0.1 localport=9700 remotehost=127.0.0.1 remoteport=6600'
-cross_cluster_replconninfo2='localhost=127.0.0.1 localport=9700 remotehost=127.0.0.1 remoteport=6700'
+cross_cluster_replconninfo1='localhost=***.***.***.*** localport=9700 remotehost=***.***.***.*** remoteport=6600'
+cross_cluster_replconninfo2='localhost=***.***.***.*** localport=9700 remotehost=***.***.***.*** remoteport=6700'
 cluster_run_mode = 'cluster_standby'
 ha_module_debug = off
 ss_log_level = 255
@@ -460,7 +460,7 @@ No information
         sync_state                     : Async
         sync_priority                  : 0
         sync_most_available            : Off
-        channel                        : 127.0.0.1:9700-->127.0.0.1:37904
+        channel                        : ***.***.***.***:9700-->***.***.***.***:37904
 
  Receiver info:
 No information
@@ -491,7 +491,7 @@ No information
         receiver_flush_location        : 2/43EA798
         receiver_replay_location       : 2/43EA798
         sync_percent                   : 100%
-        channel                        : 127.0.0.1:37904<--127.0.0.1:9700
+        channel                        : ***.***.***.***:37904<--***.***.***.***:9700
 
 备集群从备节点1
 [omm@nodename pg_log]$ gs_ctl query -D /home/zx/ss_hatest1/dn1

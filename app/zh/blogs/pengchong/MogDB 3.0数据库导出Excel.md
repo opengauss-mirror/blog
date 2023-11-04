@@ -40,7 +40,7 @@ pgclimb version 0.2
 下面通过查询语句导出 pg_settings 到 pg_settings.xlsx
 
 ```
-./tools/pgclimb --host=192.168.137.250 --port=3000 \
+./tools/pgclimb --host=***.***.***.*** --port=3000 \
 --dbname=postgres --username=admin --password=Admin@1234 \
 --output=pg_settings.xlsx \
 --query="select * from pg_settings" \
@@ -50,7 +50,7 @@ xlsx --sheet "ver1"
 然后我们也可以继续在 pg_settings.xlsx 文件追加导出新的 sheet
 
 ```
-./tools/pgclimb --host=192.168.137.250 --port=3000 \
+./tools/pgclimb --host=***.***.***.*** --port=3000 \
 --dbname=postgres --username=admin --password=Admin@1234 \
 --output=pg_settings.xlsx \
 --query="select * from pg_settings" \

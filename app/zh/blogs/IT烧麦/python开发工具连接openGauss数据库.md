@@ -165,7 +165,7 @@ Python 3.6.8 (default, Nov 16 2020, 16:55:22)
 [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import psycopg2
->>> conn = psycopg2.connect(database="postgres", user="gsname", password="gsname@123", host="192.168.204.16", port="15400")
+>>> conn = psycopg2.connect(database="postgres", user="gsname", password="******@***", host="***.***.***.***", port="15400")
 >>> cur = conn.cursor()
 >>> cur.execute("select * from  COMPANY3 ");
 >>> rows = cur.fetchall()
@@ -249,7 +249,7 @@ https://www.jetbrains.com/pycharm/download/#section=windows
 ```
 import psycopg2
 
-conn = psycopg2.connect(database="postgres", user="pyuser", password="pyuser@123", host="192.168.204.16", port="15400")
+conn = psycopg2.connect(database="postgres", user="pyuser", password="******@***", host="***.***.***.***", port="15400")
 
 cur = conn.cursor()
 

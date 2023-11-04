@@ -52,15 +52,15 @@ opengauss         2.0.0               757bf74560e3        5 weeks ago         63
 [root@n-k8s-m ~]#chown nfsnobody:nfsnobody /home/pv1
 [root@n-k8s-m ~]#cat /etc/exports</p>
 
-<pre><code class="lang-">/home/pv1 192.168.137.0/24(rw,async,all_squash)
+<pre><code class="lang-">/home/pv1 ***.***.***.***/24(rw,async,all_squash)
 </code></pre>
 <p>[root@n-k8s-m ~]#exportfs -rv</p>
-<pre><code class="lang-">exporting 192.168.137.0/24:/home/pv1
+<pre><code class="lang-">exporting ***.***.***.***/24:/home/pv1
 </code></pre>
 
-/home/pv1 192.168.137.0/24(rw,async,all_squash)
+/home/pv1 ***.***.***.***/24(rw,async,all_squash)
 >[root@n-k8s-m ~]#exportfs -rv
-exporting 192.168.137.0/24:/home/pv1
+exporting ***.***.***.***/24:/home/pv1
 ```
 
 ### 4.创建 openGauss 所使用的存储 pv
@@ -82,8 +82,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   nfs:
     path: &quot;/home/pv1&quot;
-    server: 192.168.137.61
-    readOnly: false
+    server: ***.***.***.***    readOnly: false
 
 #创建pv
     [root@n-k8s-m opengauss]# kubectl create -f opengauss_pv.yml

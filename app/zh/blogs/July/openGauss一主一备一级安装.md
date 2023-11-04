@@ -36,8 +36,7 @@ times: '12:30'
 mkdir -p opt/sofeware/openGauss
 chmod 775 -R opt/sofeware/openGauss
 export HOSTNAME=node1
-export HOSTIP=192.168.59.26
-export SOFTWARE_DIRECTORY=/opt/soft/openGauss
+export HOSTIP=***.***.***.***export SOFTWARE_DIRECTORY=/opt/soft/openGauss
 ## 1. 设置主机名并配置hosts文件
 hostnamectl set-hostname $HOSTNAME
 sed -i '/$HOSTIP/d' etc/hosts
@@ -142,7 +141,7 @@ total 8
 -rw-------. 1 root root 1683 Jul 19 12:39 anaconda-ks.cfg
 -rwxr-xr-x. 1 root root 3419 Jul 19 14:40 OSprepare_node1.sh
 [root@node1 ~]# sh OSprepare_node1.sh
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+***.***.***.***   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.59.26  node1   #Gauss OM IP Hosts Mapping
 1.Configure etc/hosts completed.

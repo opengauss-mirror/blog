@@ -204,7 +204,7 @@ END;
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ORACLE_HOME	/u02/app/oracle/product/11.2.4/db1
-ORACLE_DSN	 dbi:Oracle:host=192.168.56.2;sid=orcl;port=1521;
+ORACLE_DSN	 dbi:Oracle:host=***.***.***.***;sid=orcl;port=1521;
 ORACLE_USER	system
 ORACLE_PWD	 system_123456
 SCHEMA         liuzitao      #需要导出的业务用户名称
@@ -230,10 +230,10 @@ ORACLE_DSN
 	此指令用于以标准 DBI DSN 的形式设置数据源名称。例如：
         dbi:Oracle:host=oradb_host.myhost.com;sid=DB_SID;port=1521或
         dbi:Oracle:DB_SID 在 18c 上，例如：
-        dbi:Oracle:host=192.168.1.29;service_name=pdb1;port=1521
+        dbi:Oracle:host=***.***.***.***;service_name=pdb1;port=1521
 	对于第二种表示法，SID 应在已知文件 $ORACLE_HOME/network/admin/tnsnames.ora 或提供给 TNS_ADMIN 环境变量的路径中声明。
 	对于MySQL，DSN将像这样运行：
-        dbi:mysql:host=192.168.1.10;database=sakila;port=3306   "SID"部分替换为"数据库"。
+        dbi:mysql:host=***.***.***.***0;database=sakila;port=3306   "SID"部分替换为"数据库"。
 -------------------------------
 ORACLE_USER and ORACLE_PWD
 	这两个指令用于定义 Oracle 数据库连接的用户和密码。请注意，最好以 Oracle 超级管理员身份登录，以避免在数据库扫描期间出现授权问题，并确保没有遗漏任何内容。
@@ -386,8 +386,8 @@ ora2pg只导入元数据：
 ```bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ./import_all.sh -a -d liuzitao -o liuzitao -p 5432
-./import_all.sh -a -d liuzitao -h 127.0.0.1 -o linl -n linl -p 5432
-./import_all.sh -a -h 127.0.0.1 -d liuzitao -o linl -p 5432
+./import_all.sh -a -d liuzitao -h ***.***.***.*** -o linl -n linl -p 5432
+./import_all.sh -a -h ***.***.***.*** -d liuzitao -o linl -p 5432
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

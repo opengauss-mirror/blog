@@ -30,7 +30,7 @@ SQL 可以针对不同的数据库对象赋予不同的权限，这样就可以�
 将 warehouse 表的 SELECT 权限授予用户 U1，具体语句如下：
 
 ```
-MogDB=# create user U1 password 'Enmo@123';
+MogDB=# create user U1 password '****@***';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 MogDB=# GRANT SELECT ON TABLE warehouse TO U1;

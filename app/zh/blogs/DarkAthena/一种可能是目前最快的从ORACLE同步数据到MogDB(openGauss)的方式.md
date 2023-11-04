@@ -75,7 +75,7 @@ export LD_LIBRARY_PATH=/opt/mogdb/instantclient_21_7:$LD_LIBRARY_PATH
 4. 先找个小表测试下 sqluldr2 能否导出文件,文件正常生成，说明 oracle 客户端配置正确
 
 ```
-./sqluldr2 scott/tiger@192.168.163.108/orcl query=emp quote=0x22 field="," degree=8 file=123.csv
+./sqluldr2 scott/tiger@***.***.***.***/orcl query=emp quote=0x22 field="," degree=8 file=123.csv
 ```
 
 ```
@@ -120,7 +120,7 @@ create table SCOTT.EMP
 6. ★ 测试通过管道传输数据，没有报错
 
 ```bash
-./sqluldr2 scott/tiger@192.168.163.108/orcl query=emp quote=0x22 field="," degree=8 file=- |gsql -d postgres -Umogdb -WEnmo@123 -hlocalhost -p26000 -c "\copy scott.emp from stdin DELIMITER ',' quote '\"' csv"
+./sqluldr2 scott/tiger@***.***.***.***/orcl query=emp quote=0x22 field="," degree=8 file=- |gsql -d postgres -Umogdb -W****@*** -hlocalhost -p26000 -c "\copy scott.emp from stdin DELIMITER ',' quote '\"' csv"
 ```
 
 7. 在目标端查询 scott.emp 表，数据和源端一致
@@ -163,7 +163,7 @@ SQL> select count(1) from  scott.T_TEST1;
 ```
 [omm@MiWiFi-R3G-srv mogdb]$ echo $(date)
 Thu Sep 15 04:24:23 EDT 2022
-[omm@MiWiFi-R3G-srv mogdb]$ ./sqluldr2 scott/tiger@192.168.163.108/orcl query=SCOTT.T_TEST1 quote=0x22 field="," degree=8 file=- |gsql -d postgres -Umogdb -WEnmo@123 -hlocalhost -p26000 -c "\copy SCOTT.T_TEST1 from stdin DELIMITER ',' quote '\"' csv"
+[omm@MiWiFi-R3G-srv mogdb]$ ./sqluldr2 scott/tiger@***.***.***.***/orcl query=SCOTT.T_TEST1 quote=0x22 field="," degree=8 file=- |gsql -d postgres -Umogdb -W****@*** -hlocalhost -p26000 -c "\copy SCOTT.T_TEST1 from stdin DELIMITER ',' quote '\"' csv"
 [omm@MiWiFi-R3G-srv mogdb]$ echo $(date)
 Thu Sep 15 04:24:30 EDT 2022
 ```
@@ -173,7 +173,7 @@ Thu Sep 15 04:24:30 EDT 2022
 ```
 [omm@MiWiFi-R3G-srv mogdb]$ echo $(date)
 Thu Sep 15 04:20:00 EDT 2022
-[omm@MiWiFi-R3G-srv mogdb]$ ./sqluldr2 scott/tiger@192.168.163.108/orcl query=SCOTT.T_TEST1 quote=0x22 field="," degree=8 file=1234.csv
+[omm@MiWiFi-R3G-srv mogdb]$ ./sqluldr2 scott/tiger@***.***.***.***/orcl query=SCOTT.T_TEST1 quote=0x22 field="," degree=8 file=1234.csv
            0 rows exported at 2022-09-15 04:20:00, size 0 MB.
      1000000 rows exported at 2022-09-15 04:20:05, size 48 MB.
          output file 1234.csv closed at 1000000 rows, size 48 MB.
@@ -184,7 +184,7 @@ Thu Sep 15 04:20:05 EDT 2022
 ```
 [omm@MiWiFi-R3G-srv mogdb]$ echo $(date)
 Thu Sep 15 04:23:03 EDT 2022
-[omm@MiWiFi-R3G-srv mogdb]$ gsql -d postgres -Umogdb -WEnmo@123 -hlocalhost -p26000 -c "\copy SCOTT.T_TEST1 from '/opt/mogdb/1234.csv' DELIMITER ',' quote '\"' csv"
+[omm@MiWiFi-R3G-srv mogdb]$ gsql -d postgres -Umogdb -W****@*** -hlocalhost -p26000 -c "\copy SCOTT.T_TEST1 from '/opt/mogdb/1234.csv' DELIMITER ',' quote '\"' csv"
 [omm@MiWiFi-R3G-srv mogdb]$ echo $(date)
 Thu Sep 15 04:23:10 EDT 2022
 ```

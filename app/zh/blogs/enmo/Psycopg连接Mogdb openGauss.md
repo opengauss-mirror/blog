@@ -57,7 +57,7 @@ Psycopg 是一种用于执行 SQL 语句的 PythonAPI，可以为 PostgreSQL、G
 ```
 openGauss=# create database test_db;
 CREATE DATABASE
-openGauss=# create user test_usr password 'test@123';
+openGauss=# create user test_usr password '****@***';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 openGauss=# alter user test_usr sysadmin;
@@ -68,7 +68,7 @@ ALTER ROLE
 
 ```
 import psycopg2
-conn=psycopg2.connect(database="test_db",user="test_usr",password="test@123",host="本机ip",port=26000)
+conn=psycopg2.connect(database="test_db",user="test_usr",password="****@***",host="本机ip",port=26000)
 print("Conn database successfully")
 cur=conn.cursor()
 cur.execute("CREATE TABLE student(id integer,name varchar,sex varchar);")
@@ -117,7 +117,7 @@ ImportError: libpq.so.5: cannot open shared object file: No such file or directo
 [root@mogdb-kernel-0004 Psycopg]# python3 conn.py
 Traceback (most recent call last):
   File "conn.py", line 2, in <module>
-    conn=psycopg2.connect(database="test_db",user="test_usr",password="test@123",host="localhost",port=26000)
+    conn=psycopg2.connect(database="test_db",user="test_usr",password="****@***",host="localhost",port=26000)
   File "/root/Psycopg/psycopg2/__init__.py", line 122, in connect
     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
 psycopg2.OperationalError: SCRAM authentication requires libpq version 10 or above
@@ -146,7 +146,7 @@ yum install postgresql10-devel
 [root@mogdb-kernel-0004 Psycopg]# python3 conn.py
 Traceback (most recent call last):
   File "conn.py", line 2, in <module>
-    conn=psycopg2.connect(database="test_db",user="test_usr",password="test@123",host="localhost",port=26000)
+    conn=psycopg2.connect(database="test_db",user="test_usr",password="****@***",host="localhost",port=26000)
   File "/root/Psycopg/psycopg2/__init__.py", line 122, in connect
     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
 psycopg2.OperationalError: none of the server's SASL authentication mechanisms are supported
@@ -156,7 +156,7 @@ psycopg2.OperationalError: none of the server's SASL authentication mechanisms a
 
 ```
 这里是host无法识别localhost,将其改为本机ip即可
-conn=psycopg2.connect(database="test_db",user="test_usr",password="test@123",host="localhost",port=26000)
+conn=psycopg2.connect(database="test_db",user="test_usr",password="****@***",host="localhost",port=26000)
 改正过后
-conn=psycopg2.connect(database="test_db",user="test_usr",password="test@123",host="172.16.0.xxx",port=26000)
+conn=psycopg2.connect(database="test_db",user="test_usr",password="****@***",host="172.16.0.xxx",port=26000)
 ```

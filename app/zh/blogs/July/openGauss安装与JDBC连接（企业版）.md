@@ -257,7 +257,7 @@ times: '12:30'
   使用如下命令把要添加的 IP 追加到 listen_addresses 后面，多个配置项之间用英文逗号分隔。例如，追加 IP 地址 10.11.12.13。
 
   ```
-  gs_guc set -I all -c"listen_addresses='localhost,192.168.0.100,10.11.12.13'"
+  gs_guc set -I all -c"listen_addresses='localhost,***.***.***.***00,10.11.12.13'"
   ```
 
   **步骤 4** 执行如下命令重启 openGauss。

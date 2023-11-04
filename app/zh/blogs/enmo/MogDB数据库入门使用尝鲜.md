@@ -73,7 +73,7 @@ mkdir /mymogdb
 4、启动容器
 
 ```
-docker run --name mymogdb --privileged=true -d -e GS_PASSWORD=Secretpassword@123 -v /mymogdb:/var/lib/opengauss -p 15432:5432  swr.cn-east-3.myhuaweicloud.com/enmotech/mogdb:2.0.1_amd
+docker run --name mymogdb --privileged=true -d -e GS_PASSWORD=**************@*** -v /mymogdb:/var/lib/opengauss -p 15432:5432  swr.cn-east-3.myhuaweicloud.com/enmotech/mogdb:2.0.1_amd
 ```
 
 【注意 📢】

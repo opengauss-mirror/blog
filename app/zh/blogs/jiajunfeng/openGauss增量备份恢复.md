@@ -794,7 +794,7 @@ content-crc = 1055823518
 
 ```
 ## Server端用户及权限配置
-postgres=# create user rep1 with sysadmin replication identified by 'gauss@123';  --rep1权限：sysadmin+replication
+postgres=# create user rep1 with sysadmin replication identified by '*****@***';  --rep1权限：sysadmin+replication
 CREATE ROLE
 postgres=# \du rep1
                  List of roles
@@ -802,15 +802,15 @@ postgres=# \du rep1
 -----------+-----------------------+-----------
  rep1      | Replication, Sysadmin | {}
 
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all 192.168.0.12/32 sha256"    ## 放开客户端对server端的连接
-[omm@prod ~]$ gs_guc reload -N all -I all -h "host replication rep1 192.168.0.12/32 sha256"    ## 放开rep1用户对server端的replication权限
-[omm@stb1 ~]$ ssh-copy-id 192.168.0.12          ## 配置SSH互信
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host all all ***.***.***.***/32 sha256"    ## 放开客户端对server端的连接
+[omm@prod ~]$ gs_guc reload -N all -I all -h "host replication rep1 ***.***.***.***/32 sha256"    ## 放开rep1用户对server端的replication权限
+[omm@stb1 ~]$ ssh-copy-id ***.***.***.***          ## 配置SSH互信
 [omm@stb1 ~]$ ssh-copy-id stb1.opengauss.com    ## 配置SSH互信
 
 
 ## 备份客户端配置
 1. SSH互信
-[omm@stb1 ~]$ ssh-copy-id 192.168.0.11          ## 配置SSH互信
+[omm@stb1 ~]$ ssh-copy-id ***.***.***.***          ## 配置SSH互信
 [omm@stb1 ~]$ ssh-copy-id prod.opengauss.com    ## 配置SSH互信
 
 2. 初始化
@@ -820,7 +820,7 @@ INFO: Backup catalog '/home/omm/gs_bak' successfully inited
 
 3. 添加实例
 [omm@stb1 ~]$ gs_probackup add-instance -B /home/omm/gs_bak -D /gauss/data/db1 --instance='remote_prod'  \
-> --remote-host=192.168.0.11  \       ## 远程Server主机
+> --remote-host=***.***.***.***  \       ## 远程Server主机
 > --remote-port=22 \		      ## 远程连接端口(默认22端口)
 > --remote-proto=ssh \                ## 远程连接协议(默认ssh)
 > --remote-path=/gauss/app/bin \      ## 远程Server主机的gs_probackup程序所在目录
@@ -830,8 +830,8 @@ INFO: Instance 'remote_prod' successfully inited
 
 4. 执行远程备份
 [omm@stb1 ~]$ gs_probackup backup -B /home/omm/gs_bak --instance=remote_prod -b full -D /gauss/data/db1 \
-> -h 192.168.0.11 -p 26000 -d postgres -U rep1 -W gauss@123 \
-> --remote-host=192.168.0.11 --remote-proto=ssh --remote-port=22 --remote-user=omm --remote-path=/gauss/app/bin
+> -h ***.***.***.*** -p 26000 -d postgres -U rep1 -W *****@*** \
+> --remote-host=***.***.***.*** --remote-proto=ssh --remote-port=22 --remote-user=omm --remote-path=/gauss/app/bin
 INFO: Backup start, gs_probackup version: 2.4.2, instance: remote_prod, backup ID: QMSXKL, backup mode: FULL, wal mode: STREAM, remote: true, compress-algorithm: none, compress-level: 1
 LOG: Backup destination is initialized
 WARNING: This openGauss instance was initialized without data block checksums. gs_probackup have no way to detect data block corruption without them. Reinitialize PGDATA with option '--data-checksums'.

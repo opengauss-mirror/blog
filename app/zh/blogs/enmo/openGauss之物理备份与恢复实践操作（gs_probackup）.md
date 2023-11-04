@@ -151,11 +151,9 @@ LOG: Backup destination is initialized
 #记住备份ID，恢复的时候需要使用，backup ID:R7QMXH
 
 ### og2操作：
-gs_probackup add-instance -B /backup -D /data/og2 --instance OG2 --remote-host 10.0.0.101
-#在备份目录中添加新实例OG2
+gs_probackup add-instance -B /backup -D /data/og2 --instance OG2 --remote-host ***.***.***.***#在备份目录中添加新实例OG2
 [omm@OG1 ~]$ gs_probackup add-instance -B /backup -D /data/og2 --instance OG2 --remote-host
- 10.0.0.101
-LOG: Start SSH client process, pid 19802
+ ***.***.***.***LOG: Start SSH client process, pid 19802
 INFO: Instance 'OG2' successfully inited
 #查看一下备份目录中的目录结构
 [omm@OG1 ~]$ tree -L 3 /backup
@@ -426,8 +424,8 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Primary Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Standby Need repair(WAL)
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Primary Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Standby Need repair(WAL)
 
 
 ```
@@ -451,8 +449,8 @@ current_az      : AZ_ALL
 
     nodenode_ip         port      instance          state
 ------------------------------------------------------------------------
-1  OG1 192.168.1.100   15400      6001 /data/og1   P Primary Normal
-2  OG2 192.168.1.101   15400      6002 /data/og2   S Standby Normal
+1  OG1 ***.***.***.***00   15400      6001 /data/og1   P Primary Normal
+2  OG2 ***.***.***.***01   15400      6002 /data/og2   S Standby Normal
 
 可见主备状态恢复正常，操作到此结束。
 ```

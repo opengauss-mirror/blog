@@ -56,7 +56,7 @@ recovery_target_inclusive = true              ## 声明是否在指定恢复目�
 
 ```
 -- 源库物理备份
-[omm@db1 ~]$ gs_basebackup -D /home/omm/gs_bak -h 192.168.0.225 -p 26000 -U omm -W
+[omm@db1 ~]$ gs_basebackup -D /home/omm/gs_bak -h ***.***.***.***25 -p 26000 -U omm -W
 Password:
 INFO:  The starting position of the xlog copy of the full build is: 0/10000028. The slot minimum LSN is: 0/0.
 begin build tablespace list
@@ -164,7 +164,7 @@ mydb=# select pg_current_xlog_location();
 
 ```
 -- 拷贝源库的WAL日志至目标机器的归档路径下(/gauss1/bak/archive)
-[omm@client ~]$ scp  192.168.0.225:/gauss/data/db1/pg_xlog/*  /gauss1/bak/archive
+[omm@client ~]$ scp  ***.***.***.***25:/gauss/data/db1/pg_xlog/*  /gauss1/bak/archive
 ```
 
 **配置 recovery.conf 文件\(目标库基于还原点 restore_point_1 恢复\)**
@@ -217,7 +217,7 @@ CONTEXT:  referenced column: pg_current_xlog_location
 2020-12-29 15:51:20.293 [unknown] [unknown] localhost 140086181410560 0 0 [BACKEND] LOG:  recovery stopping at restore point "restore_point_1", time 2020-12-29 15:42:57.37431+08
 2020-12-29 15:51:20.293 [unknown] [unknown] localhost 140086181410560 0 0 [BACKEND] LOG:  recovery has paused
 2020-12-29 15:51:20.293 [unknown] [unknown] localhost 140086181410560 0 0 [BACKEND] HINT:  Execute pg_xlog_replay_resume() to continue.
-2020-12-29 15:51:20.521 omm postgres db1.opengauss.com 140085919975168 0 0 [BACKEND] FATAL:  no pg_hba.conf entry for host "192.168.0.225", user "omm", database "postgres", SSL off
+2020-12-29 15:51:20.521 omm postgres db1.opengauss.com 140085919975168 0 0 [BACKEND] FATAL:  no pg_hba.conf entry for host "***.***.***.***25", user "omm", database "postgres", SSL off
 ```
 
 **第二阶段恢复\(恢复至 xid = ‘10006’\)**

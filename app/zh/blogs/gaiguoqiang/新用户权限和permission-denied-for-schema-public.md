@@ -56,7 +56,7 @@ omm=# \q
 在操作系统上，连接到容器数据库中：
 
 ```
-[root@ecs-514e-0004 ~]# gsql -d enmotech -U enmotech -W'Enm0t3ch' -h 192.168.1.94 -p 8888
+[root@ecs-514e-0004 ~]# gsql -d enmotech -U enmotech -W'Enm0t3ch' -h ***.***.***.*** -p 8888
 gsql ((openGauss 1.0 build ec0e781b) compiled at 2020-04-27 17:25:57 commit 2144 last mr 131 )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.

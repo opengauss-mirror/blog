@@ -18,7 +18,7 @@ times: '19:30'
 
 | Hostname | IP          | 系统                  | 规格      | 磁盘       |
 | -------- | ----------- | --------------------- | --------- | ---------- |
-| Ceph1    | 192.168.0.2 | openEuler20.03 x86_64 | 8 核 16GB | 2 \* 100GB |
+| Ceph1    | ***.***.***.*** | openEuler20.03 x86_64 | 8 核 16GB | 2 \* 100GB |
 | Ceph2    | 192.168.0.3 | openEuler20.03 x86_64 | 8 核 16GB | 2 \* 100GB |
 
 ![](./ddes/disk.png)
@@ -302,7 +302,7 @@ export PATH=$GAUSSHOME/bin:$PATH
 #### 初始化 openGauss：
 
 ```
-gs_initdb -d /data/ddes/datanode/dn1 --nodename=ss -w Test@123 --vgname="+data" --enable-dss --dms_url="0:127.0.0.1:1611,1:127.0.0.1:1711" -I 0 --socketpath="UDS:/tmp/.dss_unix_d_socket"
+gs_initdb -d /data/ddes/datanode/dn1 --nodename=ss -w Test@123 --vgname="+data" --enable-dss --dms_url="0:***.***.***.***:1611,1:***.***.***.***:1711" -I 0 --socketpath="UDS:/tmp/.dss_unix_d_socket"
 ```
 
 由于单机版本的不支持 dms，在初始化完成后，修改下 postgresql.conf，将`ss_enable_dms`置为`off`

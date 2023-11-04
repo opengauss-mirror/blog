@@ -46,8 +46,7 @@ redistributing            : No
 node                      : 2
 node_name                 : node2
 instance_id               : 6002
-node_ip                   : 192.168.59.27
-data_path                 : /opt/huawei/install/data/d2
+node_ip                   : ***.***.***.***data_path                 : /opt/huawei/install/data/d2
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1
@@ -80,8 +79,7 @@ redistributing            : No
 node                      : 3
 node_name                 : node3
 instance_id               : 6003
-node_ip                   : 192.168.59.28
-data_path                 : /opt/huawei/install/data/d3
+node_ip                   : ***.***.***.***data_path                 : /opt/huawei/install/data/d3
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1
@@ -112,8 +110,7 @@ redistributing            : No
 node                      : 1
 node_name                 : node1
 instance_id               : 6001
-node_ip                   : 192.168.59.26
-data_path                 : /opt/huawei/install/data/d1
+node_ip                   : ***.***.***.***data_path                 : /opt/huawei/install/data/d1
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1
@@ -238,8 +235,7 @@ redistributing            : No
 node                      : 1
 node_name                 : node1
 instance_id               : 6001
-node_ip                   : 192.168.59.26
-data_path                 : /opt/huawei/install/data/d1
+node_ip                   : ***.***.***.***data_path                 : /opt/huawei/install/data/d1
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1
@@ -260,8 +256,7 @@ redistributing            : No
 node                      : 2
 node_name                 : node2
 instance_id               : 6002
-node_ip                   : 192.168.59.27
-data_path                 : /opt/huawei/install/data/d2
+node_ip                   : ***.***.***.***data_path                 : /opt/huawei/install/data/d2
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1
@@ -291,8 +286,7 @@ redistributing            : No
 node                      : 3
 node_name                 : node3
 instance_id               : 6003
-node_ip                   : 192.168.59.28
-data_path                 : /opt/huawei/install/data/d3
+node_ip                   : ***.***.***.***data_path                 : /opt/huawei/install/data/d3
 type                      : Datanode
 instance_state            : Normal
 az_name                   : AZ1

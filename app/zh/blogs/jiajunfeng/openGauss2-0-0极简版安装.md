@@ -151,7 +151,7 @@ chown -R omm:dbgrp /opt
 [omm@db1 openGauss]$ tar -jxf openGauss-2.0.0-CentOS-64bit.tar.bz2 -C /opt/software/openGauss/
 ## 一键式脚本安装
 [omm@db1 openGauss]$ cd /opt/software/openGauss/simpleInstall/
-[omm@db1 simpleInstall]$ sh install.sh -w gauss@123  -p 26000      ## -w指定数据库初始用户密码、-p指定数据库端口
+[omm@db1 simpleInstall]$ sh install.sh -w *****@***  -p 26000      ## -w指定数据库初始用户密码、-p指定数据库端口
 [step 1]: check parameter
 [step 2]: check install env and os setting
 [step 3]: change_gausshome_owner
@@ -186,7 +186,7 @@ or
 [2021-04-01 09:59:21.136][8464][][gs_ctl]: waiting for server to start...
 0 LOG:  [Alarm Module]can not read GAUSS_WARNING_TYPE env.
 0 LOG:  [Alarm Module]Host Name: db1
-0 LOG:  [Alarm Module]Host IP: 127.0.0.1
+0 LOG:  [Alarm Module]Host IP: ***.***.***.***
 0 LOG:  [Alarm Module]Cluster Name: dbCluster
 0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
 0 WARNING:  failed to open feature control file, please check whether it exists: FileName=gaussdb.version, Errno=2, Errmessage=No such file or directory.
@@ -198,7 +198,7 @@ The core dump path is an invalid directory
 gaussdb.state does not exist, and skipt setting since it is optional.2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  [Alarm Module]can not read GAUSS_WARNING_TYPE env.
 
 2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  [Alarm Module]Host Name: db1
-2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  [Alarm Module]Host IP: 127.0.0.1
+2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  [Alarm Module]Host IP: ***.***.***.***
 2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  [Alarm Module]Cluster Name: dbCluster
 2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 52
 2021-04-01 09:59:21.359 [unknown] [unknown] localhost 140033854506752 0  0 [BACKEND] LOG:  Transparent encryption disabled.
@@ -273,7 +273,7 @@ openGauss极简主备部署，脚本的基本操作就是分别单机安装主�
 [omm@db1 openGauss]$ cd /opt/software/openGauss/simpleInstall/
 
 ## 主备部署需要配合--multinode参数
-[omm@db1 simpleInstall]$ sh install.sh -w gauss@123  -p 26000   --multinode
+[omm@db1 simpleInstall]$ sh install.sh -w *****@***  -p 26000   --multinode
 [step 1]: check parameter
 [step 2]: check install env and os setting
 [step 3]: change_gausshome_owner
@@ -331,7 +331,7 @@ or
 
 [config datanode.]
 remote_read_mode = non_authentication
-host    all             all             192.168.0.100/32            trust
+host    all             all             ***.***.***.***00/32            trust
 [start primary datanode.]
 [2021-04-01 10:16:53.293][1997][][gs_ctl]: gs_ctl started,datadir is /opt/software/openGauss/data/master
 [2021-04-01 10:16:53.400][1997][][gs_ctl]: waiting for server to start...
@@ -397,7 +397,7 @@ postgres=# \l
         sync_state                     : Sync
         sync_priority                  : 1
         sync_most_available            : Off
-        channel                        : 192.168.0.100:26001-->192.168.0.100:37014
+        channel                        : ***.***.***.***00:26001-->***.***.***.***00:37014
 
  Receiver info:
 No information

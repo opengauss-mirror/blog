@@ -44,8 +44,7 @@ global:
   tool_dir: /opt/mogdb/tool
   tmp_dir: /opt/mogdb/tmp
 db_servers:
-- host: 172.16.0.127
-  db_port: 28000
+- host: ***.***.***.***  db_port: 28000
   role: primary
   az_name: AZ1
   az_priority: 1
@@ -54,13 +53,7 @@ db_servers:
 Do you really want to uninstall this cluster? Please confirm carefully[Y|Yes](default=N) y
 Do you want to delete db data '/opt/mogdb/data'?[Y|Yes](default=N) y
 Do you want to delete user 'ommdoc'?[Y|Yes](default=N) y
-INFO[2022-08-18T10:13:21.187] check db dirs owner                           host=172.16.0.127
-INFO[2022-08-18T10:13:21.194] check db process status                       host=172.16.0.127
-INFO[2022-08-18T10:13:21.205] clean crontab                                 host=172.16.0.127
-INFO[2022-08-18T10:13:21.264] kill ommdoc's processes                       host=172.16.0.127
-INFO[2022-08-18T10:13:21.355] remove files /opt/mogdb/app,/opt/mogdb/tool,/opt/mogdb/cm,/opt/mogdb/tmp,/opt/mogdb/data,/opt/mogdb/log  host=172.16.0.127
-INFO[2022-08-18T10:13:21.477] delete os user ommdoc                         host=172.16.0.127
-ERRO[2022-08-18T10:13:21.513] error occur when uninstall, maybe there are some dirty file/dir need clean by your self manually
+INFO[2022-08-18T10:13:21.187] check db dirs owner                           host=***.***.***.***INFO[2022-08-18T10:13:21.194] check db process status                       host=***.***.***.***INFO[2022-08-18T10:13:21.205] clean crontab                                 host=***.***.***.***INFO[2022-08-18T10:13:21.264] kill ommdoc's processes                       host=***.***.***.***INFO[2022-08-18T10:13:21.355] remove files /opt/mogdb/app,/opt/mogdb/tool,/opt/mogdb/cm,/opt/mogdb/tmp,/opt/mogdb/data,/opt/mogdb/log  host=***.***.***.***INFO[2022-08-18T10:13:21.477] delete os user ommdoc                         host=***.***.***.***ERRO[2022-08-18T10:13:21.513] error occur when uninstall, maybe there are some dirty file/dir need clean by your self manually
 [172.16.0.127] failed to delete os user 'ommdoc': exit status 1, cmd: test -f /etc/sudoers.d/ommdoc && rm -f /etc/sudoers.d/ommdoc; userdel -rf ommdoc || [ $? -eq 6 ], output: userdel: failure while writing changes to /etc/passwd
 
 [root@mogdb-kernel-0003 ~]#
