@@ -121,7 +121,7 @@ lspci |grep Mellanox
     ofed_info -s
     ```
 
-    回显驱动版本与[安装MLNX驱动](安装MLNX驱动.md)版本一致则版本无误。
+    回显驱动版本与安装MLNX驱动版本一致则版本无误。
 
 3.  加载MST工具。
 
