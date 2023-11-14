@@ -87,7 +87,7 @@ Git Hash: d064a36
 [root@node1 .ptk]# ptk encrypt omm
 omm: pTk6YjM5YWY4MmM8QzxCPEU/Qm5UWFZGXzB4bldmcHI3T1lKMEVXeXltZzVBemU3V3EwcWpvbXJrM2dlSzg=
 [root@node1 .ptk]# ptk encrypt MogDB@0701
-MogDB@0701: pTk6MDQ2Y2U0ZDE8QzxCPEU/RE8ycy1UZFpEZ0xSMU9PQzRZMkpoY2JuT0x2Z05FbG9pZDlBMm5hZlFEVzQ=
+MogDB@0701: ******
 
 --编辑后配置文件展示
 [root@node1 .ptk]# cat config.yaml |grep -v '#'
@@ -95,7 +95,7 @@ global:
   cluster_name: "MogDB3.0"
   user: "omm"
   group: "dbgrp"
-  db_password: "pTk6MDQ2Y2U0ZDE8QzxCPEU/RE8ycy1UZFpEZ0xSMU9PQzRZMkpoY2JuT0x2Z05FbG9pZDlBMm5hZlFEVzQ="
+  db_password: "******"
   db_port: 26000
   cm_server_port: 15300
   base_dir: "/opt/mogdb"
@@ -107,7 +107,7 @@ global:
   ssh_option:
      port: 22
      user: root
-     password: "pTk6MDQ2Y2U0ZDE8QzxCPEU/RE8ycy1UZFpEZ0xSMU9PQzRZMkpoY2JuT0x2Z05FbG9pZDlBMm5hZlFEVzQ="
+     password: "******"
 
 
 db_servers:

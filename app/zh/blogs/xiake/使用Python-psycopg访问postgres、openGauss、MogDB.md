@@ -90,7 +90,7 @@ Python 3.7.9 (default, Jan 25 2022, 15:12:36)
 [GCC 7.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import psycopg2
->>> conn=psycopg2.connect(database="postgres",user="postgres",password="frank@123",host="localhost",port=5432)
+>>> conn=psycopg2.connect(database="postgres",user="postgres",password="****** ",host="localhost",port=5432)
 >>> cur=conn.cursor()
 >>> cur.execute("CREATE TABLE student(id integer,name varchar,sex varchar);")
 >>> cur.execute("INSERT INTO student(id,name,sex) VALUES(%s,%s,%s)",(1,'Aspirin','M'))

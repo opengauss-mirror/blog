@@ -42,7 +42,7 @@ wget [参数] [URL 地址]
 2. 使用 wget FTP 下载
 
    ```
-   wget --ftp-user=USERNAME --ftp-password=PASSWORD http://example.com
+   wget --ftp-user=USERNAME --ftp-password=******  http://example.com
    ```
 
 3. 使用 wget -c 断点续传，即当网络不稳定或突然断网，可以使用如下命令进行下载

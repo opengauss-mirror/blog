@@ -35,12 +35,12 @@ Type "help" for help.
 
 openGauss=# create database mydb1;
 CREATE DATABASE
-openGauss=# create user user1 password 'Admin@1234';
+openGauss=# create user user1 password '****** ';
 CREATE ROLE
 openGauss=# alter database mydb1 owner to user1;
 ALTER DATABASE
 openGauss=# \q
-[omm@mogdb ~]$ gsql -d mydb1 -U user1 -r --password='Admin@1234'
+[omm@mogdb ~]$ gsql -d mydb1 -U user1 -r --password='****** '
 gsql ((openGauss 3.0.0 build 02c14696) compiled at 2022-04-01 18:12:34 commit 0 last mr  )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.

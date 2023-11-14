@@ -82,7 +82,7 @@ postgresql://[user[:password]@][netloc][:port][/dbname][?option=value&...]
 ```
 LOAD DATABASE
 FROM mysql://mysql_test:password123@1.1.1.1:3306/mysql_database
-INTO postgresql://opengauss_test:password_123@1.1.1.1:5432/opengauss_database
+INTO postgresql://opengauss_test:********_***@1.1.1.1:5432/opengauss_database
 WITH include drop, create tables, create indexes, reset no sequences,
      workers = 8, concurrency = 1,
      multiple readers per thread, rows per range = 50000
@@ -92,7 +92,7 @@ type varchar when(= 1 precision) to "boolean" drop typemod keep default keep not
 
 以上配置文件的含义是，迁移数据时，MySQL 侧使用的用户名密码分别是 **mysql_test** 和 **password123** 。MySQL 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **3306** ，待迁移的数据库是 **mysql_database** 。
 
-openGauss 侧使用的用户名密码分别是 **opengauss_test** 和 **password_123** 。openGauss 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **5432** ，目标数据库是 **opengauss_database** 。
+openGauss 侧使用的用户名密码分别是 **opengauss_test** 和 **********_***** 。openGauss 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **5432** ，目标数据库是 **opengauss_database** 。
 
 需要注意的是，这里使用的用户需要有远程连接 MySQL 和 openGauss 的权限，以及对对应数据库的读写权限。同时对于 openGauss，运行 pgloader 所在的机器需要在 openGauss 的远程访问白名单中。
 

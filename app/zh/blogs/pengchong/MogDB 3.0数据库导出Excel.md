@@ -41,7 +41,7 @@ pgclimb version 0.2
 
 ```
 ./tools/pgclimb --host=***.***.***.*** --port=3000 \
---dbname=postgres --username=admin --password=Admin@1234 \
+--dbname=postgres --username=admin --password=******  \
 --output=pg_settings.xlsx \
 --query="select * from pg_settings" \
 xlsx --sheet "ver1"
@@ -51,7 +51,7 @@ xlsx --sheet "ver1"
 
 ```
 ./tools/pgclimb --host=***.***.***.*** --port=3000 \
---dbname=postgres --username=admin --password=Admin@1234 \
+--dbname=postgres --username=admin --password=******  \
 --output=pg_settings.xlsx \
 --query="select * from pg_settings" \
 xlsx --sheet "ver2"

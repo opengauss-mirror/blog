@@ -72,9 +72,9 @@ Connection options:
   -p, --port=PORT                       database server port number
   -U, --username=NAME                   connect as specified database user
   -w, --no-password                     never prompt for password
-  -W, --password=PASSWORD               the password of specified database user
+  -W, --password=******               the password of specified database user
   --role=ROLENAME                       do SET ROLE before restore
-  --rolepassword=ROLEPASSWORD           the password for role
+  --rolepassword=******            the password for role
 [omm@mogdb bin]$
 
 ```

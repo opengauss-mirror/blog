@@ -114,7 +114,7 @@ openGauss 是华为旗下的国产数据库，我对着这个数据库的了解�
 
   user: "opengauss_test"
 
-  password: "password_123"
+  password: "********_***"
 
   database: "opengauss_database"
 
@@ -136,7 +136,7 @@ openGauss 是华为旗下的国产数据库，我对着这个数据库的了解�
 
   user: "mysql_test"
 
-  password: "password123"
+  password: "***********"
 
   charset: 'utf8'
 
@@ -242,7 +242,7 @@ port: "5432"
 
 user: "opengauss"
 
-password: "password123"
+password: "***********"
 
 database: "postgres"
 
@@ -256,7 +256,7 @@ port: "3306"
 
 user: "mysql"
 
-password: "password123"
+password: "***********"
 
 database: "mysql"
 
@@ -434,7 +434,7 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
   user: "user"
 
-  password: "password"
+  password: "******"
 
   database: "postgres"
 
@@ -480,7 +480,7 @@ numactl -C 0-31 -m 0 java -Xms15G -Xmx25G -jar ./target/online-migration-mysql-3
 
   user: "user"
 
-  password: "password"
+  password: "******"
 
   database: "database
 

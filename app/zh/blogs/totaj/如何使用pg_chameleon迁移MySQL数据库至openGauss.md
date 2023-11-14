@@ -69,7 +69,7 @@ pg_conn:
   host: "1.1.1.1"
   port: "5432"
   user: "opengauss_test"
-  password: "password_123"
+  password: "********_***"
   database: "opengauss_database"
   charset: "utf8"
 
@@ -79,7 +79,7 @@ sources:
       host: "1.1.1.1"
       port: "3306"
       user: "mysql_test"
-      password: "password123"
+      password: "***********"
       charset: 'utf8'
       connect_timeout: 10
     schema_mappings:
@@ -107,7 +107,7 @@ keep_existing_schema: No
 
 以上配置文件的含义是，迁移数据时，MySQL 侧使用的用户名密码分别是 **mysql_test** 和 **password123** 。MySQL 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **3306**，待迁移的数据库是 **mysql_database** 。
 
-openGauss 侧使用的用户名密码分别是 **opengauss_test** 和 **password_123** 。openGauss 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **5432** ，目标数据库是 **opengauss_database**，同时会在 **opengauss_database**下创建 **sch_mysql_database** schema，迁移的表都将位于该 schema 下。
+openGauss 侧使用的用户名密码分别是 **opengauss_test** 和 **********_***** 。openGauss 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **5432** ，目标数据库是 **opengauss_database**，同时会在 **opengauss_database**下创建 **sch_mysql_database** schema，迁移的表都将位于该 schema 下。
 
 需要注意的是，这里使用的用户需要有远程连接 MySQL 和 openGauss 的权限，以及对对应数据库的读写权限。同时对于 openGauss，运行 pg_chameleon 所在的机器需要在 openGauss 的远程访问白名单中。对于 MySQL，用户还需要有 RELOAD、REPLICATION CLIENT、REPLICATION SLAVE 的权限。
 
