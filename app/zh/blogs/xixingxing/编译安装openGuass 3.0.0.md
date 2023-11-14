@@ -35,7 +35,7 @@ CentOS Linux release 7.6.1810 (Core)
 ```
 hostnamectl set-hostname og
 cat>>/etc/hosts<<EOF
-192.168.137.129 og
+***.***.***.*** og
 EOF
 ```
 

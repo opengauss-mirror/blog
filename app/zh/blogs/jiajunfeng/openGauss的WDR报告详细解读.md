@@ -167,7 +167,7 @@ postgres=# select * from snapshot.snapshot offset 20;
 postgres=# select * from pg_node_env;
  node_name |     host     | process | port  | installpath  |     datapath      |          log_directory
 -----------+--------------+---------+-------+--------------+-------------------+---------------------------------
- dn_6001   | 192.168.0.99 |    9442 | 26000 | /gaussdb/app | /gaussdb/data/db1 | /gaussdb/log/omm/pg_log/dn_6001
+ dn_6001   | ***.***.***.*** |    9442 | 26000 | /gaussdb/app | /gaussdb/data/db1 | /gaussdb/log/omm/pg_log/dn_6001
 ```
 
 #### 4.3 创建 WDR Report[使用 gsql 客户端生成]

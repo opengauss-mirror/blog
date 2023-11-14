@@ -30,7 +30,7 @@ current_az : AZ_ALL
 [ Datanode State ]
 node node_ip instance state | node node_ip instance state
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-1 ecs-268e-0004 192.168.1.213 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Standby Normal
+1 ecs-268e-0004 ***.***.***.*** 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Standby Normal
 ```
 
 Standby Normal 备份列表：
@@ -87,7 +87,7 @@ port = 25000 # (change requires restart)
 
 ```
 [omm@ecs-268e-0004 db1]$ cat postgresql.conf | grep 'replconninfo1'
-#replconninfo1 = 'localhost=192.168.1.213 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***76 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004' # replication connection information used to connect primary on standby, or standby on primary,
+#replconninfo1 = 'localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.***76 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004' # replication connection information used to connect primary on standby, or standby on primary,
 
 [omm@ecs-268e-0004 data]$ gs_ctl -D /opt/data/db1/ start
 [2021-01-12 10:14:46.150][553923][][gs_ctl]: gs_ctl started,datadir is /opt/data/db1
@@ -261,7 +261,7 @@ current_az : AZ_ALL
 
 node node_ip instance state | node node_ip instance state
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-1 ecs-268e-0004 192.168.1.213 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Standby Normal
+1 ecs-268e-0004 ***.***.***.*** 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Standby Normal
 ```
 
 ## 从库恢复为集群中其他从库<a name="section44251457217"></a>
@@ -373,7 +373,7 @@ current_az : AZ_ALL
 
 node node_ip instance state | node node_ip instance state
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-1 ecs-268e-0004 192.168.1.213 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Down Manually stopped
+1 ecs-268e-0004 ***.***.***.*** 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Down Manually stopped
 ```
 
 查看集群状态：
@@ -394,7 +394,7 @@ current_az : AZ_ALL
 
 node node_ip instance state | node node_ip instance state
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-1 ecs-268e-0004 192.168.1.213 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Standby Normal
+1 ecs-268e-0004 ***.***.***.*** 6001 /opt/data/dn1 P Primary Normal | 2 ecs-268e-0005 ***.***.***.***76 6002 /opt/data/dn1 S Standby Normal
 
 [omm@ecs-268e-0004 ~]$
 ```

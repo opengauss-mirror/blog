@@ -23,9 +23,9 @@ times: '12:30'
 
 该脚本执行成功后，所有关于 openGauss 数据库的文件将保存在/gaussdb 目录中。
 
-- 脚本内容中“192.168.0.99”请替换为服务器实际的私有 IP 地址。
-- 脚本内容中“192.168.0.99”请替换为服务器实际的私有 IP 地址。
-- 脚本内容中“192.168.0.99”请替换为服务器实际的私有 IP 地址。
+- 脚本内容中“***.***.***.***”请替换为服务器实际的私有 IP 地址。
+- 脚本内容中“***.***.***.***”请替换为服务器实际的私有 IP 地址。
+- 脚本内容中“***.***.***.***”请替换为服务器实际的私有 IP 地址。
 
   ```
   #!/bin/bash
@@ -43,7 +43,7 @@ times: '12:30'
 
   ## 1.定义主机信息[请根据实际情况修改]
   export MY_HOSTNAME=node1           ## 主机名
-  export MY_HOSTIP=192.168.0.99      ## IP地址
+  export MY_HOSTIP=***.***.***.***      ## IP地址
   export MY_SOFTWARE_DIRECTORY=/soft/openGauss      ## 软件包所在目录
   export MY_XML=/soft/openGauss/clusterconfig.xml   ## 集群配置文件XML
   export openGauss_Download_url=https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.1/x86/openGauss-2.0.1-CentOS-64bit-all.tar.gz  ## openGauss软件包下载地址

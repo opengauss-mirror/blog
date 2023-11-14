@@ -24,7 +24,7 @@ summary: 'build 卡在 create backup label success 问题'
 
 ```
 gs_basebackup -D /opt/huawei/install/data/backup -p 15400 -h ***.***.***.***INFO:  The starting position of the xlog copy of the full build is: 0/19000028. The slot minimum LSN is: 0/0.
-[2022-12-21 16:57:39]:gs_basebackup: could not initiate base backup: wait 192.168.33.33:15401 timeout expired
+[2022-12-21 16:57:39]:gs_basebackup: could not initiate base backup: wait ***.***.***.***:15401 timeout expired
 [omm@testserver backup]$ gs_basebackup -D /opt/huawei/install/data/backup -p 15400 -h ***.***.***.***INFO:  The starting position of the xlog copy of the full build is: 0/1A000028. The slot minimum LSN is: 0/0.
 ```
 
@@ -63,7 +63,7 @@ upgrade_sql.tar.gz
 ```
 15: enp135s0f1.33@enp135s0f1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 4200 qdisc noqueue state UP group default qlen 1000
     link/ether 0c:42:a1:c6:29:89 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.33.34/24 brd 192.168.33.255 scope global noprefixroute enp135s0f1.33
+    inet ***.***.***.***/24 brd ***.***.***.*** scope global noprefixroute enp135s0f1.33
        valid_lft forever preferred_lft forever
     inet6 fe80::e42:a1ff:fec6:2989/64 scope link
        valid_lft forever preferred_lft forever

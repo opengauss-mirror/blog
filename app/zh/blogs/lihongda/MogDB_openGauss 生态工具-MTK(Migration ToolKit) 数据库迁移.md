@@ -59,7 +59,7 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
     "type": "oracle",
     "connect": {
       "version": "",
-      "host": "172.16.0.176",
+      "host": "***.***.***.***",
       "user": "system",
       "port": 1521,
       "password": "system",
@@ -74,7 +74,7 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
     "type": "openGauss",
     "connect": {
       "version": "",
-      "host": "172.16.0.106",
+      "host": "***.***.***.***",
       "user": "mogdb",
       "port": 26000,
       "password": "****@***",

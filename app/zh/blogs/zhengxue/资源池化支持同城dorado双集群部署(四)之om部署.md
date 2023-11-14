@@ -597,10 +597,10 @@ echo "assign parameter to main standby."
 gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "xlog_file_path = '/dev/sdk'"
 gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "xlog_lock_file_path = '/opt/mpp/install/shared_lock_standby.lock"
 gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "application_name = 'dn_standby_0'"
-gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "cross_cluster_replconninfo1='localhost=172.16.108.54 localport=25400 remotehost=172.16.108.23 remoteport=44100'"
+gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "cross_cluster_replconninfo1='localhost=***.***.***.*** localport=25400 remotehost=***.***.***.*** remoteport=44100'"
 gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "cluster_run_mode = 'cluster_standby'"
 gs_guc set -N node1 -D /opt/mpp/install/data/dn -c "ha_module_debug = off"
-gs_guc set -N node1 -D /opt/mpp/cluster/dn0 -h "host    all             all             172.16.108.23/32        trust"
+gs_guc set -N node1 -D /opt/mpp/cluster/dn0 -h "host    all             all             ***.***.***.***/32        trust"
 
 
 #assign parameter to standby
@@ -608,10 +608,10 @@ echo "assign parameter to standby."
 gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "xlog_file_path = '/dev/sdc'"
 gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "xlog_lock_file_path = '/opt/mpp/install/shared_lock_standby.lock'"
 gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "application_name = 'dn_standby_1'"
-gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "cross_cluster_replconninfo1='localhost=172.16.108.55 localport=25400 remotehost=172.16.108.23 remoteport=44100'"
+gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "cross_cluster_replconninfo1='localhost=***.***.***.*** localport=25400 remotehost=***.***.***.*** remoteport=44100'"
 gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "cluster_run_mode = 'cluster_standby'"
 gs_guc set -N node2 -D /opt/mpp/install/data/dn -c "ha_module_debug = off"
-gs_guc set -N node2 -D /opt/mpp/cluster/dn0 -h "host    all             all             172.16.108.23/32        trust"
+gs_guc set -N node2 -D /opt/mpp/cluster/dn0 -h "host    all             all             ***.***.***.***/32        trust"
 
 #start dssserver
 export DSS_MAINTAIN=TRUE

@@ -34,7 +34,7 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node           node_ip         instance                       state            | node           node_ip         instance                       state
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  cen7-og1-02 192.168.229.53  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 192.168.229.54  6002 /opt/openGauss/data/dn S Standby Normal
+1  cen7-og1-02 ***.***.***.***  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 ***.***.***.***  6002 /opt/openGauss/data/dn S Standby Normal
 ```
 
 在备节点执行切换主备操作：
@@ -59,7 +59,7 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node           node_ip         instance                       state            | node           node_ip         instance                       state
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  cen7-og1-02 192.168.229.53  6001 /opt/openGauss/data/dn P Standby Normal | 2  cen7-og1-03 192.168.229.54  6002 /opt/openGauss/data/dn S Primary Normal
+1  cen7-og1-02 ***.***.***.***  6001 /opt/openGauss/data/dn P Standby Normal | 2  cen7-og1-03 ***.***.***.***  6002 /opt/openGauss/data/dn S Primary Normal
 ```
 
 保存数据库主备机器信息：确保 gs_om -t refreshconf 命令执行成功，否则再次重启会影响数据库状态。
@@ -85,7 +85,7 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node           node_ip         instance                       state            | node           node_ip         instance                       state
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  cen7-og1-02 192.168.229.53  6001 /opt/openGauss/data/dn P Standby Normal | 2  cen7-og1-03 192.168.229.54  6002 /opt/openGauss/data/dn S Primary Normal
+1  cen7-og1-02 ***.***.***.***  6001 /opt/openGauss/data/dn P Standby Normal | 2  cen7-og1-03 ***.***.***.***  6002 /opt/openGauss/data/dn S Primary Normal
 ```
 
 备节点执行主备切换操作：
@@ -110,7 +110,7 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node           node_ip         instance                       state            | node           node_ip         instance                       state
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  cen7-og1-02 192.168.229.53  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 192.168.229.54  6002 /opt/openGauss/data/dn S Primary Normal
+1  cen7-og1-02 ***.***.***.***  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 ***.***.***.***  6002 /opt/openGauss/data/dn S Primary Normal
 ```
 
 在确定降为备机的节点关闭并以 standy 模式启动 openGauss 服务：
@@ -135,7 +135,7 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node           node_ip         instance                       state            | node           node_ip         instance                       state
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  cen7-og1-02 192.168.229.53  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 192.168.229.54  6002 /opt/openGauss/data/dn S Standby Need repair(WAL)
+1  cen7-og1-02 ***.***.***.***  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 ***.***.***.***  6002 /opt/openGauss/data/dn S Standby Need repair(WAL)
 ```
 
 在备库所在节点执行修复命令：
@@ -167,7 +167,7 @@ current_az      : AZ_ALL
 [  Datanode State   ]
 node           node_ip         instance                       state            | node           node_ip         instance                       state
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  cen7-og1-02 192.168.229.53  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 192.168.229.54  6002 /opt/openGauss/data/dn S Standby Normal
+1  cen7-og1-02 ***.***.***.***  6001 /opt/openGauss/data/dn P Primary Normal | 2  cen7-og1-03 ***.***.***.***  6002 /opt/openGauss/data/dn S Standby Normal
 ```
 
 保存数据库主备机器信息：确保 gs_om -t refreshconf 命令执行成功，否则再次重启会影响数据库状态。

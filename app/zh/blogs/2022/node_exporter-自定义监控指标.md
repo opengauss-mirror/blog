@@ -43,8 +43,8 @@ node_exporter 除了可以收集系统指标外，还可以采集我们自定义
   --HELP 和 TYPE 如果没有制定，node_exporter会自动添加
   # HELP db_select Metric read from /opt/node_exporter/prom/db_heartbeat.prom
   # TYPE db_select untyped
-  db_select{database="172.16.3.90:5432"} 1
-  db_select{database="172.16.3.90:7432"} 0
+  db_select{database="***.***.***.***:5432"} 1
+  db_select{database="***.***.***.***:7432"} 0
   ```
 
   在浏览器中可以看到，我们自定义的指标已经采集到
@@ -95,8 +95,8 @@ node_exporter 除了可以收集系统指标外，还可以采集我们自定义
   source /home/omm/.bashrc
 
   nums=(
-  172.16.3.90:5432:opengauss_exporter:opengauss_exporter123
-  172.16.3.90:7432:opengauss_exporter:opengauss_exporter123
+  ***.***.***.***:5432:opengauss_exporter:opengauss_exporter123
+  ***.***.***.***:7432:opengauss_exporter:opengauss_exporter123
   )
 
   for i in $(seq 0 $[${#nums[*]}-1])

@@ -191,11 +191,11 @@ openGauss 目前支持在 centos 及 openEuler 系统上运行
 
        <img src='./typora-user-images/image-20211103171515916.png'>
 
-       点击“ROOT 密码“，给 ROOT 用户设置密码（如：openGauss@123）。
+       点击“ROOT 密码“，给 ROOT 用户设置密码（如：*********@***）。
 
        <img src='./typora-user-images/image-20211103171533677.png'>
 
-       点击“创建用户“，在此新创建一个用户（如：用户 test，密码 openGauss@123）,具体如下：
+       点击“创建用户“，在此新创建一个用户（如：用户 test，密码 *********@***）,具体如下：
 
        ​ <img src='./typora-user-images/image-20211103171544484.png'>
 

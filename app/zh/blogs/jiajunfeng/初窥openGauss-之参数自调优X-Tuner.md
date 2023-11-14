@@ -109,7 +109,7 @@ sh load.sh
 ## 6. 执行快速推荐命令（基于已经作业执行的信息进行推荐，信息来源 pg_stat_database 等）<a name="section1425514315174"></a>
 
 ```
-[omm@lab01 xtuner]$ gs_xtuner recommend --db-name tpch --db-user omm --host 192.168.0.99 --host-user omm --port 26000
+[omm@lab01 xtuner]$ gs_xtuner recommend --db-name tpch --db-user omm --host ***.***.***.*** --host-user omm --port 26000
 Please input the password of database:
 Please input the password of host:
 Start to recommend knobs. Just a moment, please.

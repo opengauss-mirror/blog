@@ -52,7 +52,7 @@ db_servers:
 Do you really want to uninstall this cluster? Please confirm carefully[Y|Yes](default=N) y
 Do you want to delete db data '/opt/mogdb/data'?[Y|Yes](default=N) y
 Do you want to delete user 'ommdoc'?[Y|Yes](default=N) y
-INFO[2022-10-13T15:50:28.762] check db dirs owner                           host=***.***.***.***[172.16.0.127] [PTK-50304] the file/dir path '/opt/mogdb/data' not belongs to ommdoc
+INFO[2022-10-13T15:50:28.762] check db dirs owner                           host=***.***.***.***[***.***.***.***] [PTK-50304] the file/dir path '/opt/mogdb/data' not belongs to ommdoc
 [root@hostname opt]#
 
 ```

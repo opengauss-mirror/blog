@@ -64,7 +64,7 @@ sh build.sh -3rd /xxx/.../binarylibs -m debug
 7.切换目录，执行资源池化环境部署脚本
 
 ```shell
-sh build.sh -w Huawei@123  #密码，长度至少8为，包含三种不同类型字符
+sh build.sh -w ******@***  #密码，长度至少8为，包含三种不同类型字符
 ```
 
 8.脚本流程简单介绍

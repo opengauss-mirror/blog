@@ -57,7 +57,7 @@ recovery_target_inclusive = true ## 声明是否在指定恢复目标之后停�
 ### 1、环境准备(gs_baasebackup 备份)
 
 ```
-[omm@db1 db1]$ gs_basebackup -U em_ljc -W -h 192.168.3.24 -p 26000 -D /home/omm/gs_pitr
+[omm@db1 db1]$ gs_basebackup -U em_ljc -W -h ***.***.***.*** -p 26000 -D /home/omm/gs_pitr
 Password:
 INFO:  The starting position of the xlog copy of the full build is: 4/EA000028. The slot minimum LSN is: 0/0.
 [2022-10-29 14:18:24]:begin build tablespace list

@@ -664,7 +664,7 @@ LOG: Backup destination is initialized
 WARNING: This openGauss instance was initialized without data block checksums. gs_probackup have no way to detect data block corruption without them. Reinitialize PGDATA with option '--data-checksums'.
 LOG: Start SSH client process, pid 23937
 LOG: Database backup start
-ERROR: could not connect to database postgres: FATAL:  no pg_hba.conf entry for replication connection from host "192.168.126.129", user "rep1", SSL off
+ERROR: could not connect to database postgres: FATAL:  no pg_hba.conf entry for replication connection from host "***.***.***.***", user "rep1", SSL off
 WARNING: backup in progress, stop backup
 INFO: wait for pg_stop_backup()
 INFO: pg_stop backup() successfully executed
@@ -672,10 +672,10 @@ WARNING: Backup QSIXPL is running, setting its status to ERROR
 ```
 
 解决如下：
-添加 192.168.126.129 node1 可以访问 node2 进行备份。
+添加 ***.***.***.*** node1 可以访问 node2 进行备份。
 
 ```
-host    replication     rep1           192.168.126.129/32            md5
+host    replication     rep1           ***.***.***.***/32            md5
 ```
 
 再次执行日志如下：

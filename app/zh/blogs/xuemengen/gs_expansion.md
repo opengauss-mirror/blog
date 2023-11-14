@@ -53,14 +53,14 @@ Successfully created SSH trust.
 切换到 root 用户，务必要首先导入当前集群环境变量，`source /home/omm/env`
 
 ```
-./gs_expansion -U omm -G dbgrp -h 192.168.1.2 -X ./clusterconfig.xml
+./gs_expansion -U omm -G dbgrp -h ***.***.***.*** -X ./clusterconfig.xml
 ```
 
 最后显示如下
 
 ```
 Expansion results:
-192.168.1.2:     Success
+***.***.***.***:     Success
 Expansion Finish.
 ```
 

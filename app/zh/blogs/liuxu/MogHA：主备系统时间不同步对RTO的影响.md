@@ -42,8 +42,8 @@ RTO(Recovery Time Objective，复原时间目标)是数据中心可容许服务�
 
 | 角色 | IP              | VIP             | 数据库       | 操作系统     | 高可用软件   |
 | ---- | --------------- | --------------- | ------------ | ------------ | ------------ |
-| 主   | 192.168.101.159 | ***.***.***.*** | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
-| 备   | 192.168.101.160 | ***.***.***.*** | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
+| 主   | ***.***.***.*** | ***.***.***.*** | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
+| 备   | ***.***.***.*** | ***.***.***.*** | MogDB v3.0.1 | CentOS 7 x86 | MogHA v2.3.5 |
 
 # 3. 主备状态检查
 
@@ -64,8 +64,8 @@ current_az                              : AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port  | user | instance | db_role | state
 -------+-----------------+-------+------+----------+---------+---------
-  6001 | 192.168.101.159 | 26000 | omm  | dn_6001  | primary | Normal
-  6002 | 192.168.101.160 | 26000 | omm  | dn_6002  | standby | Normal
+  6001 | ***.***.***.*** | 26000 | omm  | dn_6001  | primary | Normal
+  6002 | ***.***.***.*** | 26000 | omm  | dn_6002  | standby | Normal
 ```
 
 集群状态正常
@@ -95,13 +95,13 @@ Sep 11 21:43:39 mogdba sudo[5333]:      omm : TTY=unknown ; PWD=/home/omm/mogha 
 Hint: Some lines were ellipsized, use -l to show in full.
 
 [root@mogdba mogha]# tailf /home/omm/mogha/mogha_heartbeat.log
-2022-09-11 22:20:17,885 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.160': True}
+2022-09-11 22:20:17,885 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 2022-09-11 22:20:17,935 INFO [__init__.py:86]: local instance is alive Primary, state: Normal
-2022-09-11 22:20:23,027 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.160': True}
+2022-09-11 22:20:23,027 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 2022-09-11 22:20:23,077 INFO [__init__.py:86]: local instance is alive Primary, state: Normal
-2022-09-11 22:20:28,171 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.160': True}
+2022-09-11 22:20:28,171 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 2022-09-11 22:20:28,220 INFO [__init__.py:86]: local instance is alive Primary, state: Normal
-2022-09-11 22:20:33,312 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.160': True}
+2022-09-11 22:20:33,312 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 ```
 
 - 从：mogdbb
@@ -126,11 +126,11 @@ Sep 11 21:43:35 mogdbb mogha[8598]: config loaded successfully
 
 [root@mogdbb ~]# cd /home/omm/mogha
 [root@mogdbb mogha]# tailf mogha_heartbeat.log
-2022-09-11 22:20:38,771 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.159': True}
+2022-09-11 22:20:38,771 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 2022-09-11 22:20:38,823 INFO [__init__.py:86]: local instance is alive Standby, state: Normal
-2022-09-11 22:20:43,907 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.159': True}
+2022-09-11 22:20:43,907 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 2022-09-11 22:20:43,960 INFO [__init__.py:86]: local instance is alive Standby, state: Normal
-2022-09-11 22:20:49,040 INFO [__init__.py:61]: ping result: {'192.168.101.255': False, '192.168.101.159': True}
+2022-09-11 22:20:49,040 INFO [__init__.py:61]: ping result: {'***.***.***.***': False, '***.***.***.***': True}
 ```
 
 mogha 服务正常
@@ -140,7 +140,7 @@ mogha 服务正常
 ```
 [root@mogdba mogha]# ifconfig
 ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.101.159  netmask 255.255.255.0  broadcast ***.***.***.***        inet6 fe80::d894:ac81:4fba:2740  prefixlen 64  scopeid 0x20<link>
+        inet ***.***.***.***  netmask 255.255.255.0  broadcast ***.***.***.***        inet6 fe80::d894:ac81:4fba:2740  prefixlen 64  scopeid 0x20<link>
         ether 00:0c:29:3f:e3:e4  txqueuelen 1000  (Ethernet)
         RX packets 208899  bytes 226654097 (216.1 MiB)
         RX errors 0  dropped 0  overruns 0  frame 0
@@ -257,7 +257,7 @@ MogDB=# select * from ha_test;
 操作步骤如 5.1，直接查看最终结果
 
 ```
- 2022-09-11 23:30:37.810103 | 192.168.101.159 2022-09-11 23:30:38.843325 | ***.***.***.***```
+ 2022-09-11 23:30:37.810103 | ***.***.***.*** 2022-09-11 23:30:38.843325 | ***.***.***.***```
 
 这样的方法得出的 RTO 只有 1s，这显然是不对的。
 

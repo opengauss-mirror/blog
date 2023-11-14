@@ -43,7 +43,7 @@ vi  /root/auto_install.sh
 
 ## 1.定义主机信息[请根据实际情况修改]
 export MY_HOSTNAME=node1           ## 主机名
-export MY_HOSTIP=192.168.8.133     ## IP地址
+export MY_HOSTIP=***.***.***.***     ## IP地址
 export MY_SOFTWARE_DIRECTORY=/soft/openGauss      ## 软件包所在目录
 export MY_XML=/soft/openGauss/clusterconfig.xml   ## 集群配置文件XML
 export openGauss_Download_url=https://opengauss.obs.cn-south-1.myhuaweicloud.com/2.0.0/x86_openEuler/openGauss-2.0.0-openEuler-64bit-all.tar.gz  ## openGauss软件包下载地址

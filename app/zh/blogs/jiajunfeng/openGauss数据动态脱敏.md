@@ -129,7 +129,7 @@ where FILTER_TYPE can be:
 脱敏方式：creditcardmasking
 create masking policy mask_card_pol
        creditcardmasking on label (creditcard_label)
-       filter on roles('user1') ,IP('192.168.0.99'),APP('gsql');
+       filter on roles('user1') ,IP('***.***.***.***'),APP('gsql');
 -- 小缺陷：测试发现应用程序无法识别"Data Studio"，这个APP列表待完善,或者使用方法待说明
 
 -- 创建策略二：【脱敏方式：maskall】
@@ -151,7 +151,7 @@ create masking policy mask_pid_pol shufflemasking on label(pid_label);
 脱敏效果测试
 
 ```
-[omm@lab01 ~]$ gsql -d mydb -p 26000 -h 192.168.0.99 -U user1 -r
+[omm@lab01 ~]$ gsql -d mydb -p 26000 -h ***.***.***.*** -U user1 -r
 mydb=> select * from person;
  id | name |     creditcard      |                 address
 ----+------+---------------------+------------------------------------------
@@ -195,7 +195,7 @@ mydb=# select * from gs_policy_label;
 mydb=# select * from gs_masking_policy_filters;
   filtertype  | filterlabelname | policyoid |        modifydate         |             logicaloperator
 --------------+-----------------+-----------+---------------------------+-----------------------------------------
- logical_expr | logical_expr    |     16420 | 2021-04-06 11:38:24.74733 | **roles[16399]ip[192.168.0.99]app[gsql]
+ logical_expr | logical_expr    |     16420 | 2021-04-06 11:38:24.74733 | **roles[16399]ip[***.***.***.***]app[gsql]
 ```
 
 ## 总结<a name="section73961317203010"></a>

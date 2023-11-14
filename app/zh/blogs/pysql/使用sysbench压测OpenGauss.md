@@ -29,8 +29,8 @@ current_az : AZ_ALL
 
 ---
 
-1 node115 192.168.205.115 26000 6001 /apps3/opengauss/install/data/dn P Down Manually stopped
-2 node116 192.168.205.116 26000 6002 /apps3/opengauss/install/data/dn S Down Manually stopped
+1 node115 ***.***.***.*** 26000 6001 /apps3/opengauss/install/data/dn P Down Manually stopped
+2 node116 ***.***.***.*** 26000 6002 /apps3/opengauss/install/data/dn S Down Manually stopped
 
 在 OpenGauss 数据库中新建测试用户和测试库：
 openGauss=# create user benchuser WITH PASSWORD 'Bench_8899';
@@ -45,10 +45,10 @@ GRANT
 并加入访问认证：使用 md5
 /apps2/opengauss/install/data/dn/pg_hba.conf
 新增
-host all benchuser 192.168.205.110/32 md5
+host all benchuser ***.***.***.***/32 md5
 
 ###客户端环境
-IP：192.168.205.110 安装 sysbench 和 psql 客户端
+IP：***.***.***.*** 安装 sysbench 和 psql 客户端
 
 [root@node110 ~]# sysbench --version
 sysbench 1.0.17
@@ -58,7 +58,7 @@ psql (PostgreSQL) 10.21
 
 使用客户端测试连接 OpenGauss
 
-[root@node110 ~]# psql -h 192.168.205.115 -d sysbench -U benchuser -p 26000
+[root@node110 ~]# psql -h ***.***.***.*** -d sysbench -U benchuser -p 26000
 psql: fe_sendauth: invalid authentication request from server: AUTH_REQ_SASL_CONT without AUTH_REQ_SASL
 
 查阅资料：默认安装 openGauss 后，创建的用户和密码是采用默认密码加密 password_encryption_type=2
@@ -74,7 +74,7 @@ ALTER ROLE
 
 客户端连接正常：
 
-[root@node110 ~]# psql -h 192.168.205.115 -d sysbench -U benchuser -p 26000
+[root@node110 ~]# psql -h ***.***.***.*** -d sysbench -U benchuser -p 26000
 Password for user benchuser:
 psql (10.21, server 9.2.4)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
@@ -84,10 +84,10 @@ sysbench=>
 
 ### 准备压测数据：
 
-sysbench --db-driver=pgsql --pgsql-host=192.168.205.115 --pgsql-user=benchuser --pgsql-password=Bench_889 --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua prepare
+sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=Bench_889 --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua prepare
 
 执行压测：
 
-sysbench --db-driver=pgsql --pgsql-host=192.168.205.115 --pgsql-user=benchuser --pgsql-password=Bench_889 --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
+sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=Bench_889 --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
 
 后续进一步使用 sysbench 探索 OpenGauss 性能指标。

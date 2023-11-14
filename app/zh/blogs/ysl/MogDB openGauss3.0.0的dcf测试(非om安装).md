@@ -24,9 +24,9 @@ times: '10:20'
 **IP 地址**
 
 ```
-172.20.10.6 LERDER
-172.20.10.7 FOLLOWER
-172.20.10.8 FOLLOWER
+***.***.***.*** LERDER
+***.***.***.*** FOLLOWER
+***.***.***.*** FOLLOWER
 ```
 
 ## 一、安装 openGauss
@@ -98,9 +98,9 @@ dcf_node_id = 1
 dcf_ssl=off
 dcf_data_path = '/opengauss/data/dcf_data'
 dcf_log_path= '/opengauss/data/dcf_log'
-dcf_config='[{"stream_id":1,"node_id":1,"ip":"172.20.10.6","port":21000,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"172.20.10.7","port":21000,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"172.20.10.8","port":21000,"role":"FOLLOWER"}]'
-replconninfo1 = 'localhost=172.20.10.6 localport=21001 localheartbeatport=21005 localservice=21004 remotehost=172.20.10.7 remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
-replconninfo2 = 'localhost=172.20.10.6 localport=21001 localheartbeatport=21005 localservice=21004 remotehost=172.20.10.8 remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
+dcf_config='[{"stream_id":1,"node_id":1,"ip":"***.***.***.***","port":21000,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"***.***.***.***","port":21000,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"***.***.***.***","port":21000,"role":"FOLLOWER"}]'
+replconninfo1 = 'localhost=***.***.***.*** localport=21001 localheartbeatport=21005 localservice=21004 remotehost=***.***.***.*** remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
+replconninfo2 = 'localhost=***.***.***.*** localport=21001 localheartbeatport=21005 localservice=21004 remotehost=***.***.***.*** remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
 ```
 
 类似得，在其他两个备机添加
@@ -112,9 +112,9 @@ dcf_node_id = 2
 dcf_ssl=off
 dcf_data_path = '/opengauss/data/dcf_data'
 dcf_log_path= '/opengauss/data/dcf_log'
-dcf_config='[{"stream_id":1,"node_id":1,"ip":"172.20.10.6","port":21000,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"172.20.10.7","port":21000,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"172.20.10.8","port":21000,"role":"FOLLOWER"}]'
-replconninfo1 = 'localhost=172.20.10.7 localport=21001 localheartbeatport=21005 localservice=21004 remotehost=172.20.10.6 remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
-replconninfo2 = 'localhost=172.20.10.7 localport=21001 localheartbeatport=21005 localservice=21004 remotehost=172.20.10.8 remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
+dcf_config='[{"stream_id":1,"node_id":1,"ip":"***.***.***.***","port":21000,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"***.***.***.***","port":21000,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"***.***.***.***","port":21000,"role":"FOLLOWER"}]'
+replconninfo1 = 'localhost=***.***.***.*** localport=21001 localheartbeatport=21005 localservice=21004 remotehost=***.***.***.*** remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
+replconninfo2 = 'localhost=***.***.***.*** localport=21001 localheartbeatport=21005 localservice=21004 remotehost=***.***.***.*** remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
 ```
 
 节点三：
@@ -125,9 +125,9 @@ dcf_node_id = 3
 dcf_ssl=off
 dcf_data_path = '/opengauss/data/dcf_data'
 dcf_log_path= '/opengauss/data/dcf_log'
-dcf_config='[{"stream_id":1,"node_id":1,"ip":"172.20.10.6","port":21000,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"172.20.10.7","port":21000,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"172.20.10.8","port":21000,"role":"FOLLOWER"}]'
-replconninfo1 = 'localhost=172.20.10.8 localport=21001 localheartbeatport=21005 localservice=21004 remotehost=172.20.10.7 remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
-replconninfo2 = 'localhost=172.20.10.8 localport=21001 localheartbeatport=21005 localservice=21004 remotehost=172.20.10.6 remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
+dcf_config='[{"stream_id":1,"node_id":1,"ip":"***.***.***.***","port":21000,"role":"LEADER"},{"stream_id":1,"node_id":2,"ip":"***.***.***.***","port":21000,"role":"FOLLOWER"},{"stream_id":1,"node_id":3,"ip":"***.***.***.***","port":21000,"role":"FOLLOWER"}]'
+replconninfo1 = 'localhost=***.***.***.*** localport=21001 localheartbeatport=21005 localservice=21004 remotehost=***.***.***.*** remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
+replconninfo2 = 'localhost=***.***.***.*** localport=21001 localheartbeatport=21005 localservice=21004 remotehost=***.***.***.*** remoteport=21001 remoteheartbeatport=21005 remoteservice=21004'
 ```
 
 ## 三、启动 openGauss

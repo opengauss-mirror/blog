@@ -143,7 +143,7 @@ total 8
 [root@node1 ~]# sh OSprepare_node1.sh
 ***.***.***.***   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.59.26  node1   #Gauss OM IP Hosts Mapping
+***.***.***.***  node1   #Gauss OM IP Hosts Mapping
 1.Configure etc/hosts completed.
 Removed symlink etc/systemd/system/multi-user.target.wants/firewalld.service.
 Removed symlink etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
@@ -413,7 +413,7 @@ openGauss-2.0.1-CentOS-64bit-all.tar.gz
         <PARAM name="tmpMppdbPath" value="/opt/huawei/tmp"/>
         <PARAM name="gaussdbToolPath" value="/opt/huawei/install/om" />
         <PARAM name="corePath" value="/opt/huawei/corefile"/>
-        <PARAM name="backIp1s" value="192.168.59.26,192.168.59.27,192.168.59.28"/>
+        <PARAM name="backIp1s" value="***.***.***.***,***.***.***.***,***.***.***.***"/>
 
     </CLUSTER>
     <!-- 每台服务器上的节点部署信息 -->
@@ -424,8 +424,8 @@ openGauss-2.0.1-CentOS-64bit-all.tar.gz
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.59.26"/>
-            <PARAM name="sshIp1" value="192.168.59.26"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
       <!--dn-->
             <PARAM name="dataNum" value="1"/>
@@ -440,8 +440,8 @@ openGauss-2.0.1-CentOS-64bit-all.tar.gz
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.59.27"/>
-            <PARAM name="sshIp1" value="192.168.59.27"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
   </DEVICE>
 
         <!-- node3上的节点部署信息，其中“name”的值配置为主机名称 -->
@@ -450,8 +450,8 @@ openGauss-2.0.1-CentOS-64bit-all.tar.gz
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="192.168.59.28"/>
-            <PARAM name="sshIp1" value="192.168.59.28"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
             <PARAM name="cascadeRole" value="on"/>
   </DEVICE>
     </DEVICELIST>
@@ -696,7 +696,7 @@ current_az      : AZ_ALL
 
 node     node_ip         instance                            state            | node     node_ip         instance                            state            | node     node_ip         instance                            state
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  node1 192.168.59.26   6001 /opt/huawei/install/data/d1 P Primary Normal | 2  node2 192.168.59.27   6002 /opt/huawei/install/data/d2 S Standby Normal | 3  node3 192.168.59.28   6003 /opt/huawei/install/data/d3 C Cascade Normal
+1  node1 ***.***.***.***   6001 /opt/huawei/install/data/d1 P Primary Normal | 2  node2 ***.***.***.***   6002 /opt/huawei/install/data/d2 S Standby Normal | 3  node3 ***.***.***.***   6003 /opt/huawei/install/data/d3 C Cascade Normal
 [omm@node1 ~]$ gsql -d postgres -p 15400 -r
 gsql ((openGauss 2.0.1 build d97c0e8a) compiled at 2021-06-02 19:37:17 commit 0 last mr  )
 Non-SSL connection (SSL connection is recommended when requiring high-security)

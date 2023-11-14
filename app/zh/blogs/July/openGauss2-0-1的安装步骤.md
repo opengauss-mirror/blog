@@ -19,7 +19,7 @@ times: '12:30'
 
 # openGauss2.0.1 的安装步骤<a name="ZH-CN_TOPIC_0000001200514123"></a>
 
-openGauss 的安装，测试环境：操作系统版本：CentOS7.6 x86_64，硬件配置：2C4G 1 台，服务器名称：kafka1.wuyi.com， IP 地址: 172.16.32.5。
+openGauss 的安装，测试环境：操作系统版本：CentOS7.6 x86_64，硬件配置：2C4G 1 台，服务器名称：kafka1.wuyi.com， IP 地址: ***.***.***.***。
 
 - 1 关闭防火墙和关闭 SELinux
 
@@ -179,7 +179,7 @@ openGauss 的安装，测试环境：操作系统版本：CentOS7.6 x86_64，硬
 
           <PARAM name="nodeNames" value="kafka1.wuyi.com" />
 
-          <PARAM name="backIp1s" value="172.16.32.5"/>
+          <PARAM name="backIp1s" value="***.***.***.***"/>
 
           <PARAM name="gaussdbAppPath" value="/gaussdb/app" />
 
@@ -209,9 +209,9 @@ openGauss 的安装，测试环境：操作系统版本：CentOS7.6 x86_64，硬
 
               <!-- 如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
 
-              <PARAM name="backIp1" value="172.16.32.5"/>
+              <PARAM name="backIp1" value="***.***.***.***"/>
 
-              <PARAM name="sshIp1" value="172.16.32.5"/>
+              <PARAM name="sshIp1" value="***.***.***.***"/>
 
 
 

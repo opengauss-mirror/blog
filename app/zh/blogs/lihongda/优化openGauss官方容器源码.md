@@ -1370,12 +1370,12 @@ openGauss=#
 
 ```
 [root@ecs-lee dockerfiles]# sh create_master_slave.sh
-Please input OG_SUBNET (容器所在网段) [172.11.0.0/24]:
-OG_SUBNET set 172.11.0.0/24
+Please input OG_SUBNET (容器所在网段) [***.***.***.***/24]:
+OG_SUBNET set ***.***.***.***/24
 Please input GS_PASSWORD (定义数据库密码)[****@***]:
 GS_PASSWORD set ****@***
-Please input MASTER_IP (主库IP)[172.11.0.101]:
-MASTER_IP set ***.***.***.***Please input SLAVE_1_IP (备库IP)[172.11.0.102]:
+Please input MASTER_IP (主库IP)[***.***.***.***]:
+MASTER_IP set ***.***.***.***Please input SLAVE_1_IP (备库IP)[***.***.***.***]:
 SLAVE_1_IP set ***.***.***.***Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]:
 MASTER_HOST_PORT set 5432
 Please input MASTER_LOCAL_PORT (主库通信端口)[5434]:
@@ -1398,12 +1398,12 @@ Unable to find image 'opengauss:1.0.1' locally
 [root@ecs-lee dockerfiles]# docker network rm opengaussnetwork
 opengaussnetwork
 [root@ecs-lee dockerfiles]# sh create_master_slave.sh
-Please input OG_SUBNET (容器所在网段) [172.11.0.0/24]:
-OG_SUBNET set 172.11.0.0/24
+Please input OG_SUBNET (容器所在网段) [***.***.***.***/24]:
+OG_SUBNET set ***.***.***.***/24
 Please input GS_PASSWORD (定义数据库密码)[****@***]:
 GS_PASSWORD set ****@***
-Please input MASTER_IP (主库IP)[172.11.0.101]:
-MASTER_IP set ***.***.***.***Please input SLAVE_1_IP (备库IP)[172.11.0.102]:
+Please input MASTER_IP (主库IP)[***.***.***.***]:
+MASTER_IP set ***.***.***.***Please input SLAVE_1_IP (备库IP)[***.***.***.***]:
 SLAVE_1_IP set ***.***.***.***Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]:
 MASTER_HOST_PORT set 5432
 Please input MASTER_LOCAL_PORT (主库通信端口)[5434]:
@@ -1454,7 +1454,7 @@ Last login: Sun Oct  9 07:57:32 UTC 2022 on pts/0
         sync_state                     : Sync
         sync_priority                  : 1
         sync_most_available            : On
-        channel                        : 172.11.0.101:5434-->172.11.0.102:51754
+        channel                        : ***.***.***.***:5434-->***.***.***.***:51754
 
  Receiver info:
 No information

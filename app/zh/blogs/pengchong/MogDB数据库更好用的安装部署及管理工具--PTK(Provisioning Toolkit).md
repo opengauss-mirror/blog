@@ -93,7 +93,7 @@ Build Date: 2022-08-05T09:11:42Z
 Git Hash: a1358c6
 ```
 
-本文环境使用两节点虚机 192.168.137.131 和 192.168.137.132，1G 内存+1CPU，PTK 直接使用其中一台机器。
+本文环境使用两节点虚机 ***.***.***.*** 和 ***.***.***.***，1G 内存+1CPU，PTK 直接使用其中一台机器。
 
 生产环境推荐采用独立的服务器安装 PTK。
 
@@ -107,8 +107,8 @@ PTK 的使用需要 root 用户操作，需要做一些系统依赖及操作系�
 # /opt/ptk/ptk ls
   cluster_name |      instances       | user |      data_dir      |          db_version          |     create_time
 ---------------+----------------------+------+--------------------+------------------------------+----------------------
-  mymogdb      | 192.168.137.131:3000 | omm  | /opt/mogdb301/data | MogDB 3.0.1 (build 1a363ea9) | 2022-08-16 15:57:17
-               | 192.168.137.132:3000 |      |                    |                              |
+  mymogdb      | ***.***.***.***:3000 | omm  | /opt/mogdb301/data | MogDB 3.0.1 (build 1a363ea9) | 2022-08-16 15:57:17
+               | ***.***.***.***:3000 |      |                    |                              |
 ```
 
 操作之前也应该优先使用 ls 命令进行检查
@@ -198,7 +198,7 @@ Please check root_fix_os.[TIMESTAMP].sh for commands to resolve.
 # Check Results
               Item              |  Level   |                               Message
 --------------------------------+----------+-----------------------------------------------------------------------
-  A16.Check_CPU_Instruction_Set | Abnormal | [192.168.137.131] [PTK-508001] not found cpu instruction set: [bmi2]
+  A16.Check_CPU_Instruction_Set | Abnormal | [***.***.***.***] [PTK-508001] not found cpu instruction set: [bmi2]
 Total count 1, abnormal count 1, warning count 0
 
 Failed to check os, can’t perform installation unless fix all the abnormal items
@@ -257,7 +257,7 @@ global:
       conn_timeout: "5s"
       exec_timeout: "1m"
 db_servers:
-  - host: "192.168.137.131"
+  - host: "***.***.***.***"
     db_port: 3000
     ha_port: 3001
     role: "primary"
@@ -265,7 +265,7 @@ db_servers:
     gs_initdb_opts:
     - "--encoding=UTF-8"
     - "--dbcompatibility=PG"
-  - host: "192.168.137.132"
+  - host: "***.***.***.***"
     db_port: 3000
     ha_port: 3001
     role: "standby"
@@ -291,8 +291,8 @@ db_servers:
 INFO[2022-08-19T10:55:02.420] Time elapsed: 1m45s
   cluste_name |      host       | user | port | stage  |    status     | message
 --------------+-----------------+------+------+--------+---------------+----------
-  mymogdb     | 192.168.137.131 | omm  | 3000 | launch | start_success | success
-              | 192.168.137.132 | omm  | 3000 | launch | start_success | success
+  mymogdb     | ***.***.***.*** | omm  | 3000 | launch | start_success | success
+              | ***.***.***.*** | omm  | 3000 | launch | start_success | success
 ```
 
 ##### 查看状态
@@ -310,8 +310,8 @@ current_az      			: AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port | user | instance | db_role | state
 -------+-----------------+------+------+----------+---------+---------
-  6001 | 192.168.137.131 | 3000 | omm  | dn_6001  | primary | Normal
-  6002 | 192.168.137.132 | 3000 | omm  | dn_6002  | standby | Normal
+  6001 | ***.***.***.*** | 3000 | omm  | dn_6001  | primary | Normal
+  6002 | ***.***.***.*** | 3000 | omm  | dn_6002  | standby | Normal
 ```
 
 ### 四、PTK 扩缩容
@@ -346,7 +346,7 @@ current_az      			: AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port | user | instance | db_role | state
 -------+-----------------+------+------+----------+---------+---------
-  6001 | 192.168.137.131 | 3000 | omm  | dn_6001  | Normal  | Normal
+  6001 | ***.***.***.*** | 3000 | omm  | dn_6001  | Normal  | Normal
 ```
 
 #### 测试扩容
@@ -402,8 +402,8 @@ current_az      			: AZ_ALL
 [  Datanode State   ]
    id  |       ip        | port | user | instance | db_role | state
 -------+-----------------+------+------+----------+---------+---------
-  6001 | 192.168.137.131 | 3000 | omm  | dn_6001  | primary | Normal
-  6002 | 192.168.137.132 | 3000 | omm  | dn_6002  | standby | Normal
+  6001 | ***.***.***.*** | 3000 | omm  | dn_6001  | primary | Normal
+  6002 | ***.***.***.*** | 3000 | omm  | dn_6002  | standby | Normal
 ```
 
 ### 总结

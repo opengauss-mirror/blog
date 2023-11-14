@@ -358,7 +358,7 @@ mtu = 8192  # 推荐值：8192，同时需要协调对网络端口做出相应�
             <!-- 主机后端存储网络通讯IP地址和HA通讯IP地址-->
             <PARAM name="backIp1" value="***.***.***.***"/>
             <!-- 设置SSH可信通道IP地址(外网IP),若无外网,则可以不设置该选项或者同backIp1设置相同IP -->
-            <PARAM name="sshIp1" value="192.168.124.12"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
     </DEVICE>
     </DEVICELIST>
 </ROOT>

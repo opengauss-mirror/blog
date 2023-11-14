@@ -42,8 +42,8 @@ WARNING: Backup RGOU8R is running, setting its status to ERROR
    [root@hostname]# ptk ls
      cluster_name |     instances      |  user   |      data_dir      | db_version
    ---------------+--------------------+---------+--------------------+--------------
-     mogdb1       | 172.16.0.127:27000 | ommdoc1 | /opt/mogdbpoc/data | MogDB-3.0.1
-     cluster_doc  | 172.16.0.127:28000 | ommdoc  | /opt/mogdb/data    | MogDB-3.0.0
+     mogdb1       | ***.***.***.***:27000 | ommdoc1 | /opt/mogdbpoc/data | MogDB-3.0.1
+     cluster_doc  | ***.***.***.***:28000 | ommdoc  | /opt/mogdb/data    | MogDB-3.0.0
    ```
 
 2. 未指定数据库连接信息。（如果数据库端口不是默认端口，需要设置数据库连接信息）

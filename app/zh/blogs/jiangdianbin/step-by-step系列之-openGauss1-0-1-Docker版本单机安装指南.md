@@ -646,7 +646,7 @@ omm=# \q
 ```
 [omm@ac74618df201 data]$
 cat >>/var/lib/opengauss/data/pg_hba.conf<<EOF
-host all enmo1 192.168.0.0/24 md5
+host all enmo1 ***.***.***.***/24 md5
 EOF
 
 [omm@ac74618df201 data]$

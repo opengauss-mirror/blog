@@ -38,8 +38,8 @@ database_version                        : MogDB 3.0.0 (build 62408a0f)
 [  Datanode State   ]
   cluster_name |  id  |      ip      | port  | user  | nodename | db_role |               state                | upstream
 ---------------+------+--------------+-------+-------+----------+---------+------------------------------------+-----------
-  mogdb12      | 6001 | 172.16.0.245 | 26007 | omm12 | dn_6001  | primary | Normal                             | -
-               | 6002 | 172.16.0.127 | 26007 | omm12 | dn_6002  | standby | Need repair(System id not matched) | -
+  mogdb12      | 6001 | ***.***.***.*** | 26007 | omm12 | dn_6001  | primary | Normal                             | -
+               | 6002 | ***.***.***.*** | 26007 | omm12 | dn_6002  | standby | Need repair(System id not matched) | -
 ```
 
 **解决办法**：
@@ -62,6 +62,6 @@ database_version                        : MogDB 3.0.0 (build 62408a0f)
 [  Datanode State   ]
   cluster_name |  id  |      ip      | port  | user  | nodename | db_role | state  | upstream
 ---------------+------+--------------+-------+-------+----------+---------+--------+-----------
-  mogdb12      | 6001 | 172.16.0.245 | 26007 | omm12 | dn_6001  | primary | Normal | -
-               | 6002 | 172.16.0.127 | 26007 | omm12 | dn_6002  | standby | Normal | -
+  mogdb12      | 6001 | ***.***.***.*** | 26007 | omm12 | dn_6001  | primary | Normal | -
+               | 6002 | ***.***.***.*** | 26007 | omm12 | dn_6002  | standby | Normal | -
 ```

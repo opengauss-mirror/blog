@@ -62,9 +62,9 @@ summary: "Just about everything you'll need to style in the theme: headings, par
 
 ```sql
 
-#配置允许IP地址为192.168.0.0的客户端访问本机
+#配置允许IP地址为***.***.***.***的客户端访问本机
 
-gs_guc set -N all -I all -h "host all jack 192.168.0.0/24 sha256"
+gs_guc set -N all -I all -h "host all jack ***.***.***.***/24 sha256"
 
 # 建立用户
 
@@ -80,7 +80,7 @@ CREATE USER hack PASSWORD 'Test@123';
 
 #hack表示连接数据库的用户。
 
-#192.168.0.0/24表示只允许这个IP地址主机连接。此处的IP地址不能为openGauss内的IP，在使用过程中，请根据用户的网络进行配置修改。32表示子网掩码为1的位数，即255.255.255.255。
+#***.***.***.***/24表示只允许这个IP地址主机连接。此处的IP地址不能为openGauss内的IP，在使用过程中，请根据用户的网络进行配置修改。32表示子网掩码为1的位数，即255.255.255.255。
 
 #sha256表示连接时jack用户的密码使用sha256算法加密。
 

@@ -40,7 +40,7 @@ gs_guc reload -D $PGDATA -c "password_encryption_type=1"
 设置数据库白名单：
 
 ```
-gs_guc reload -D $PGDATA -h "host all all 192.168.0.0/16 md5"
+gs_guc reload -D $PGDATA -h "host all all ***.***.***.***/16 md5"
 ```
 
 ### 1.生成 rmp 包

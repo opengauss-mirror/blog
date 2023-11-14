@@ -120,7 +120,7 @@ Are you sure you want to create the user[omm] and create trust for it (yes/no)? 
 
 Please enter password for cluster user.
 Password:
-请输入为创建的 omm 用户设置的密码，例如 openGauss@123
+请输入为创建的 omm 用户设置的密码，例如 *********@***
 下一步再输入一遍进行确认。
 
 等待预安装过程完成。
@@ -143,7 +143,7 @@ gs_install -X /opt/omm/clusterconfig.xml
 ```
 
 在安装过程中，需要设置数据库的管理密码。
-（密码要求长度大于 8 位，并至少包含数字、字母、特殊字符在内的三种类型。如 openGauss@123 ）
+（密码要求长度大于 8 位，并至少包含数字、字母、特殊字符在内的三种类型。如 *********@*** ）
 
 Please enter password for database: 请输入数据库密码
 Please repeat for database: 请再输入一次数据库密码

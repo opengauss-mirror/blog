@@ -103,7 +103,7 @@ times: '19:30'
     - 配置连接通道
 
       ```
-      echo "replconninfo1='localhost=172.16.0.106 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=172.16.0.245 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'	 " >> /opt/mogdb/data/postgresql.conf
+      echo "replconninfo1='localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'	 " >> /opt/mogdb/data/postgresql.conf
       ```
 
     **localhost 为主库 IP,remotehost 为备库 IP**
@@ -125,13 +125,13 @@ times: '19:30'
       echo "export LD_LIBRARY_PATH=\$GAUSSHOME/lib:\$LD_LIBRARY_PATH" >> /home/omm/.bashrc
       source /home/omm/.bashrc
       - 将主库的配置文件传到备库
-      scp /opt/mogdb/data/pg_hba.conf /opt/mogdb/data/postgresql.conf 172.16.0.245:/opt/mogdb/data/
+      scp /opt/mogdb/data/pg_hba.conf /opt/mogdb/data/postgresql.conf ***.***.***.***:/opt/mogdb/data/
       ```
 
     - 配置连接通道,将 localhost 和 remotehost 对调
 
       ```
-      .sed -i “/^replconninfo1/creplconninfo1=‘localhost=172.16.0.245 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=172.16.0.106 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004’” /opt/mogdb/data/postgresql.conf
+      .sed -i “/^replconninfo1/creplconninfo1=‘localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004’” /opt/mogdb/data/postgresql.conf
       ```
 
     **localhost 为备库 IP,remotehost 为主库 IP**
@@ -173,7 +173,7 @@ times: '19:30'
                 sync_state                     : Sync
                 sync_priority                  : 1
                 sync_most_available            : Off
-                channel                        : 172.16.0.106:26001-->172.16.0.245:60856
+                channel                        : ***.***.***.***:26001-->***.***.***.***:60856
 
          Receiver info:
         No information
@@ -207,7 +207,7 @@ times: '19:30'
                 receiver_flush_location        : 0/14000140
                 receiver_replay_location       : 0/14000140
                 sync_percent                   : 100%
-                channel                        : 172.16.0.245:60856<--172.16.0.106:26001
+                channel                        : ***.***.***.***:60856<--***.***.***.***:26001
         ```
 
 **至此主备已安装完成**
@@ -220,13 +220,13 @@ times: '19:30'
     - 主库操作
 
       ```
-      gsql -d postgres -p26000 -c “alter system set replconninfo2 to ‘localhost=172.16.0.106 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=172.16.0.127 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=true’;”
+      gsql -d postgres -p26000 -c “alter system set replconninfo2 to ‘localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=true’;”
       ```
 
     - 备库操作
 
       ```
-      gsql -d postgres -p26000 -c “alter system set replconninfo2 to ‘localhost=172.16.0.245 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=172.16.0.127 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=true’;”
+      gsql -d postgres -p26000 -c “alter system set replconninfo2 to ‘localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004 iscascade=true’;”
       ```
 
 3.  级联库操作
@@ -244,14 +244,14 @@ times: '19:30'
     - 将备库的配置文件传到备库
 
       ```
-      scp /opt/mogdb/data/pg_hba.conf /opt/mogdb/data/postgresql.conf 172.16.0.245:/opt/mogdb/data/
+      scp /opt/mogdb/data/pg_hba.conf /opt/mogdb/data/postgresql.conf ***.***.***.***:/opt/mogdb/data/
       ```
 
     - 配置连接通道
 
       ```
-      sed -i "/^replconninfo1/creplconninfo1='localhost=172.16.0.127 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=172.16.0.106 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'" /opt/mogdb/data/postgresql.conf
-      sed -i "/replconninfo2/creplconninfo2='localhost=172.16.0.127 localport=26001 localheartbeatport=26005 localservice=26004 remotehost=172.16.0.245 remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'" /opt/mogdb/data/postgresql.conf
+      sed -i "/^replconninfo1/creplconninfo1='localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'" /opt/mogdb/data/postgresql.conf
+      sed -i "/replconninfo2/creplconninfo2='localhost=***.***.***.*** localport=26001 localheartbeatport=26005 localservice=26004 remotehost=***.***.***.*** remoteport=26001 remoteheartbeatport=26005 remoteservice=26004'" /opt/mogdb/data/postgresql.conf
       ```
 
     **localhost 为级联 IP，remotehost 为主库 IP 和备库 IP。**
@@ -293,7 +293,7 @@ times: '19:30'
             sync_state                     : Sync
             sync_priority                  : 1
             sync_most_available            : Off
-            channel                        : 172.16.0.106:26001-->172.16.0.245:34586
+            channel                        : ***.***.***.***:26001-->***.***.***.***:34586
 
      Receiver info:
     No information
@@ -328,7 +328,7 @@ times: '19:30'
             sync_state                     : Async
             sync_priority                  : 0
             sync_most_available            : Off
-            channel                        : 172.16.0.245:26001-->172.16.0.127:49110
+            channel                        : ***.***.***.***:26001-->***.***.***.***:49110
 
      Receiver info:
             receiver_pid                   : 146771
@@ -345,7 +345,7 @@ times: '19:30'
             receiver_flush_location        : 0/1A000140
             receiver_replay_location       : 0/1A000140
             sync_percent                   : 100%
-            channel                        : 172.16.0.245:34586<--172.16.0.106:26001
+            channel                        : ***.***.***.***:34586<--***.***.***.***:26001
     ```
 
     - 级联库
@@ -376,7 +376,7 @@ times: '19:30'
             receiver_flush_location        : 0/1A000140
             receiver_replay_location       : 0/1A000140
             sync_percent                   : 100%
-            channel                        : 172.16.0.127:49110<--172.16.0.245:26001
+            channel                        : ***.***.***.***:49110<--***.***.***.***:26001
     ```
 
     **至此主备级联安装完成**

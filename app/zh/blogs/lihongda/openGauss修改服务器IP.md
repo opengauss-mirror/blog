@@ -85,10 +85,10 @@ ssh: connect to host ecs-0002 port 22: No route to host
 - /etc/hosts
 
 ```
-[root@ecs-0001 ~]# sed -i 's/***.***.***.***0/192.168.0.30/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
-[root@ecs-0001 ~]# sed -i 's/***.***.***.***0/192.168.0.40/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
-[root@ecs-0002 ~]# sed -i 's/***.***.***.***0/192.168.0.30/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
-[root@ecs-0002 ~]# sed -i 's/***.***.***.***0/192.168.0.40/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0001 ~]# sed -i 's/***.***.***.***0/***.***.***.***/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0001 ~]# sed -i 's/***.***.***.***0/***.***.***.***/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0002 ~]# sed -i 's/***.***.***.***0/***.***.***.***/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
+[root@ecs-0002 ~]# sed -i 's/***.***.***.***0/***.***.***.***/g' /appdata/data/postgresql.conf /appdata/data/pg_hba.conf /opt/software/opengauss/clusterconfig.xml /etc/hosts
 ```
 
 ### 3. 生成集群文件并发送到备库

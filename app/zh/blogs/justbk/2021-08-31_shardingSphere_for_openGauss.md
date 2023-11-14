@@ -97,7 +97,7 @@ dataSources:
     maxLifetimeMilliseconds: 1800000
     maxPoolSize: 200
     minPoolSize: 10
-    password: Huawei@123
+    password: ******@***
     url: jdbc:opengauss://90.90.44.171:44000/ds_0?serverTimezone=UTC&useSSL=false&connectTimeout=10
     username: test
   ds_1:
@@ -107,7 +107,7 @@ dataSources:
     maxLifetimeMilliseconds: 1800000
     maxPoolSize: 200
     minPoolSize: 10
-    password: Huawei@123
+    password: ******@***
     url: jdbc:opengauss://90.90.44.171:44000/ds_1?serverTimezone=UTC&useSSL=false&connectTimeout=10
     username: test
 rules:

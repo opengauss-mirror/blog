@@ -57,7 +57,7 @@ enmo=>
 2.暂停表 customer_t1 相关的应用程序操作后，使用 gs_dump 命令导出表数据（仅数据）:
 
 ```
-$ gs_dump -U enmo -h 192.168.229.52 -p 15400 enmo -a --table customer_t1 -F c -f /home/omm/dump/customer_t1_data_only.bak
+$ gs_dump -U enmo -h ***.***.***.*** -p 15400 enmo -a --table customer_t1 -F c -f /home/omm/dump/customer_t1_data_only.bak
 Password:
 gs_dump[port='15400'][enmo][2021-03-28 10:11:42]: dump database enmo successfully
 gs_dump[port='15400'][enmo][2021-03-28 10:11:42]: total time: 8732 ms
@@ -115,7 +115,7 @@ enmo=>
 5.使用 gs_restore 将磁盘文件的数据加载/恢复到数据库表中
 
 ```
-$ gs_restore -U enmo -h 192.168.229.52 -p 15400 -d enmo /home/omm/dump/customer_t1_data_only.bak
+$ gs_restore -U enmo -h ***.***.***.*** -p 15400 -d enmo /home/omm/dump/customer_t1_data_only.bak
 Password:
 start restore operation ...
 table customer_t1 complete data imported !

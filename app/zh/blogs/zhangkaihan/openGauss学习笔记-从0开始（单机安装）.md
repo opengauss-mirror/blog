@@ -98,7 +98,7 @@ systemctl disable firewalld.service
         <!-- 数据库core文件目录-->
         <PARAM name="corePath" value="/opt/random/corefile" />
         <!-- 节点IP，与数据库节点名称列表一一对应 -->
-        <PARAM name="backIp1s" value="172.20.10.8"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
     </CLUSTER>
     <!-- 每台服务器上的节点部署信息 -->
     <DEVICELIST>
@@ -110,8 +110,8 @@ systemctl disable firewalld.service
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
             <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
-            <PARAM name="backIp1" value="172.20.10.8"/>
-            <PARAM name="sshIp1" value="172.20.10.8"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
 	    <!--dbnode-->
 	    <PARAM name="dataNum" value="1"/>
