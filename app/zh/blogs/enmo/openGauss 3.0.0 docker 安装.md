@@ -40,20 +40,20 @@ times: '10:20'
 
 #set OG_SUBNET,GS_PASSWORD,MASTER_IP,SLAVE_1_IP,MASTER_HOST_PORT,MASTER_LOCAL_PORT,SLAVE_1_HOST_PORT,SLAVE_1_LOCAL_PORT,MASTER_NODENAME,SLAVE_NODENAME
 
-read -p "Please input OG_SUBNET (容器所在网段) [172.11.0.0/24]: " OG_SUBNET
-OG_SUBNET=${OG_SUBNET:-172.11.0.0/24}
+read -p "Please input OG_SUBNET (容器所在网段) [***.***.***.***/24]: " OG_SUBNET
+OG_SUBNET=${OG_SUBNET:-***.***.***.***/24}
 echo "OG_SUBNET set $OG_SUBNET"
 
 read -p "Please input GS_PASSWORD (定义数据库密码)[****@***]: " GS_PASSWORD
 GS_PASSWORD=${GS_PASSWORD:-****@***}
 echo "GS_PASSWORD set $GS_PASSWORD"
 
-read -p "Please input MASTER_IP (主库IP)[172.11.0.101]: " MASTER_IP
-MASTER_IP=${MASTER_IP:-172.11.0.101}
+read -p "Please input MASTER_IP (主库IP)[***.***.***.***]: " MASTER_IP
+MASTER_IP=${MASTER_IP:-***.***.***.***}
 echo "MASTER_IP set $MASTER_IP"
 
-read -p "Please input SLAVE_1_IP (备库IP)[172.11.0.102]: " SLAVE_1_IP
-SLAVE_1_IP=${SLAVE_1_IP:-172.11.0.102}
+read -p "Please input SLAVE_1_IP (备库IP)[***.***.***.***]: " SLAVE_1_IP
+SLAVE_1_IP=${SLAVE_1_IP:-***.***.***.***}
 echo "SLAVE_1_IP set $SLAVE_1_IP"
 
 read -p "Please input MASTER_HOST_PORT (主库数据库服务端口)[5432]: " MASTER_HOST_PORT

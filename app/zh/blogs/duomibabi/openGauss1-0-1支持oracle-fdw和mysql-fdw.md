@@ -156,7 +156,7 @@ GRANT
 普通用户 openGauss 操作创建 server。
 
 ```
-postgres=> create server server_mysql foreign data wrapper mysql_fdw options(host'172.19.0.100',port '3306');
+postgres=> create server server_mysql foreign data wrapper mysql_fdw options(host'***.***.***.***',port '3306');
 CREATE SERVER
 ```
 
@@ -244,7 +244,7 @@ GRANT
 ```
 $ gsql -p6432 -Uopengauss postgres
 
-postgres=> create server server_oracle foreign data wrapper oracle_fdw options(dbserver '172.17.0.2:1521/lee');
+postgres=> create server server_oracle foreign data wrapper oracle_fdw options(dbserver '***.***.***.***:1521/lee');
 CREATE SERVER
 ```
 

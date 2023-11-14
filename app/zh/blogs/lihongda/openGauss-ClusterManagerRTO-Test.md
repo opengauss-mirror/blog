@@ -82,7 +82,7 @@ DSN="user=gaussdb password=secret host=foo,bar,baz port=5432,5432,5433 dbname=my
 )
 
 func main() {
- os.Setenv("DSN", "postgres://gaussdb:Enmo12345@172.16.0.65:26000,172.16.0.202:26000,172.16.0.193:26000/postgres?"+
+ os.Setenv("DSN", "postgres://gaussdb:Enmo12345@***.***.***.***:26000,***.***.***.***:26000,***.***.***.***:26000/postgres?"+
 "sslmode=disable&loggerLevel=debug&target_session_attrs=read-write")
         connStr := os.Getenv("DSN")
         if connStr == "" {
@@ -165,8 +165,8 @@ func getNodeName(db *sql.DB) error {
 - 时间差
 
 ```
-2022/04/11 16:02:13.614273 connector.go:222:  info dialing server host 172.16.0.65 port 26000
-2022/04/11 16:02:20.683716 connector.go:145: debug find instance host 172.16.0.202 port 26000
+2022/04/11 16:02:13.614273 connector.go:222:  info dialing server host ***.***.***.*** port 26000
+2022/04/11 16:02:20.683716 connector.go:145: debug find instance host ***.***.***.*** port 26000
 
 RTO时间7s
 ```

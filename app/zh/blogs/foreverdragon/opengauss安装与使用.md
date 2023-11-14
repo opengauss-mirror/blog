@@ -339,7 +339,7 @@ Preinstallation succeeded.
 
 ```
 
-期间需要输入操作系统 root 用户的密码（如密码：openGauss@123）和创建操作系统 omm 用户及设置密码（如密码：openGauss@123）。密码依然不回显，直接输入密码并回车即可。
+期间需要输入操作系统 root 用户的密码（如密码：*********@***）和创建操作系统 omm 用户及设置密码（如密码：*********@***）。密码依然不回显，直接输入密码并回车即可。
 
 当返回 Preinstallation succeeded 内容时，表明初始化完成。
 
@@ -445,7 +445,7 @@ end deploy..
 
 ```
 
-注意：输入 omm 用户密码时，不要输入错误（如密码：openGauss@123）。
+注意：输入 omm 用户密码时，不要输入错误（如密码：*********@***）。
 
 结果：
 
@@ -564,7 +564,7 @@ drwxr-xr-x. 2 root root 115 Dec 31 20:41 simpleInstall
 
 1.  第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 Bigdata@123（建议用户自定义密码）。
 
-2.  ` postgres=\# **alter role omm identified by 'Bigdata@123' replace 'openGauss@123';**`
+2.  ` postgres=\# **alter role omm identified by 'Bigdata@123' replace '*********@***';**`
 
 3.  ALTER ROLE
 

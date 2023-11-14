@@ -255,7 +255,7 @@ class openGaussTest {
     // 驱动类
     String driver = "org.postgresql.Driver";
     // 数据库连接描述符
-    String sourceURL = "jdbc:postgresql://192.168.193.129:5432/finance";
+    String sourceURL = "jdbc:postgresql://***.***.***.***:5432/finance";
     Connection conn = null;
 
     try {

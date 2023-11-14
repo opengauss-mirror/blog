@@ -34,17 +34,17 @@ docker pull swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1
 搭建主库
 
 ```
-docker network create --subnet=172.18.0.0/16 myNetwork
+docker network create --subnet=***.***.***.***/16 myNetwork
 
 docker run --name mogdb1 \
 --publish 8001:5432 \
---network myNetwork --ip 172.18.0.101 --privileged=true \
+--network myNetwork --ip ***.***.***.***1 --privileged=true \
 --hostname mogdb1 --detach \
 --env GS_PORT=5432 \
---env OG_SUBNET=172.18.0.0/16 \
+--env OG_SUBNET=***.***.***.***/16 \
 --env GS_PASSWORD=Admin@1234 \
 --env NODE_NAME=mogdb1 \
---env REPL_CONN_INFO="replconninfo1 = 'localhost=172.18.0.101 localport=5434 localservice=5432 remotehost=172.18.0.102 remoteport=5434 remoteservice=5432 '\n" \
+--env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.***1 localport=5434 localservice=5432 remotehost=***.***.***.***2 remoteport=5434 remoteservice=5432 '\n" \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M primary
 
 ```
@@ -54,13 +54,13 @@ swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M primary
 ```
 docker run --name mogdb2 \
 --publish 8002:5432 \
---network myNetwork --ip 172.18.0.102 --privileged=true \
+--network myNetwork --ip ***.***.***.***2 --privileged=true \
 --hostname mogdb2 --detach \
 --env GS_PORT=5432 \
---env OG_SUBNET=172.18.0.0/16 \
+--env OG_SUBNET=***.***.***.***/16 \
 --env GS_PASSWORD=Admin@1234 \
 --env NODE_NAME=mogdb2 \
---env REPL_CONN_INFO="replconninfo1 = 'localhost=172.18.0.102 localport=5434 localservice=5432 remotehost=172.18.0.101 remoteport=5434 remoteservice=5432 '\n" \
+--env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.***2 localport=5434 localservice=5432 remotehost=***.***.***.***1 remoteport=5434 remoteservice=5432 '\n" \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
 
 ```
@@ -70,13 +70,13 @@ swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
 ```
 docker run --name mogdb3 \
 --publish 8003:5432 \
---network myNetwork --ip 172.18.0.103 --privileged=true \
+--network myNetwork --ip ***.***.***.***3 --privileged=true \
 --hostname mogdb3 --detach \
 --env GS_PORT=5432 \
---env OG_SUBNET=172.18.0.0/16 \
+--env OG_SUBNET=***.***.***.***/16 \
 --env GS_PASSWORD=Admin@1234 \
 --env NODE_NAME=mogdb3 \
---env REPL_CONN_INFO="replconninfo2 = 'localhost=172.18.0.103 localport=5434 localservice=5432 remotehost=172.18.0.101 remoteport=5434 remoteservice=5432 '\n" \
+--env REPL_CONN_INFO="replconninfo2 = 'localhost=***.***.***.***3 localport=5434 localservice=5432 remotehost=***.***.***.***1 remoteport=5434 remoteservice=5432 '\n" \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
 
 ```
@@ -84,7 +84,7 @@ swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
 修改 mogdb1 主库 replconninfo2 参数
 
 ```
-alter system set replconninfo2 = 'localhost=172.18.0.101 localport=5434 localservice=5432 remotehost=172.18.0.103 remoteport=5434 remoteservice=5432 ';
+alter system set replconninfo2 = 'localhost=***.***.***.***1 localport=5434 localservice=5432 remotehost=***.***.***.***3 remoteport=5434 remoteservice=5432 ';
 
 ```
 
@@ -117,7 +117,7 @@ omm@mogdb1:~$ gs_ctl query -D /var/lib/mogdb/data/
 	sync_state                     : Sync
 	sync_priority                  : 1
 	sync_most_available            : On
-	channel                        : 172.18.0.101:5434-->172.18.0.103:41886
+	channel                        : ***.***.***.***1:5434-->***.***.***.***3:41886
 
 	sender_pid                     : 81
 	local_role                     : Primary
@@ -136,7 +136,7 @@ omm@mogdb1:~$ gs_ctl query -D /var/lib/mogdb/data/
 	sync_state                     : Potential
 	sync_priority                  : 1
 	sync_most_available            : On
-	channel                        : 172.18.0.101:5434-->172.18.0.102:42836
+	channel                        : ***.***.***.***1:5434-->***.***.***.***2:42836
 
  Receiver info:
 No information

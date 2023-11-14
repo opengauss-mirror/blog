@@ -111,7 +111,7 @@ tpcc_db=# select version();                                                 vers
 16:11:48,307 [main] INFO   jTPCC : Term-00,
 16:11:48,307 [main] INFO   jTPCC : Term-00, db=postgres
 16:11:48,307 [main] INFO   jTPCC : Term-00, driver=org.postgresql.Driver
-16:11:48,307 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://172.16.71.29:5432/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
+16:11:48,307 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://***.***.***.***:5432/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
 16:11:48,308 [main] INFO   jTPCC : Term-00, user=tpcc
 16:11:48,308 [main] INFO   jTPCC : Term-00,
 16:11:48,308 [main] INFO   jTPCC : Term-00, warehouses=10
@@ -219,7 +219,7 @@ tpcc_db=# select name,setting from pg_settings where name ='default_statistics_t
 16:03:00,028 [main] INFO   jTPCC : Term-00,
 16:03:00,029 [main] INFO   jTPCC : Term-00, db=postgres
 16:03:00,029 [main] INFO   jTPCC : Term-00, driver=org.postgresql.Driver
-16:03:00,029 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://172.16.71.29:5432/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
+16:03:00,029 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://***.***.***.***:5432/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
 16:03:00,029 [main] INFO   jTPCC : Term-00, user=tpcc
 16:03:00,029 [main] INFO   jTPCC : Term-00,
 16:03:00,029 [main] INFO   jTPCC : Term-00, warehouses=10
@@ -302,7 +302,7 @@ vacuum analyze;
 16:32:08,777 [main] INFO   jTPCC : Term-00,
 16:32:08,777 [main] INFO   jTPCC : Term-00, db=postgres
 16:32:08,777 [main] INFO   jTPCC : Term-00, driver=org.postgresql.Driver
-16:32:08,777 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://172.16.71.29:26000/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
+16:32:08,777 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://***.***.***.***:26000/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
 16:32:08,777 [main] INFO   jTPCC : Term-00, user=tpcc
 16:32:08,777 [main] INFO   jTPCC : Term-00,
 16:32:08,777 [main] INFO   jTPCC : Term-00, warehouses=10
@@ -413,7 +413,7 @@ postgres=# select name,setting from pg_settings where name ='default_statistics_
 16:47:36,935 [main] INFO   jTPCC : Term-00,
 16:47:36,935 [main] INFO   jTPCC : Term-00, db=postgres
 16:47:36,936 [main] INFO   jTPCC : Term-00, driver=org.postgresql.Driver
-16:47:36,936 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://172.16.71.29:26000/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
+16:47:36,936 [main] INFO   jTPCC : Term-00, conn=jdbc:postgresql://***.***.***.***:26000/tpcc_db?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off&autoReconnect=true
 16:47:36,936 [main] INFO   jTPCC : Term-00, user=tpcc
 16:47:36,936 [main] INFO   jTPCC : Term-00,
 16:47:36,936 [main] INFO   jTPCC : Term-00, warehouses=10

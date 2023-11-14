@@ -188,7 +188,7 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
    <img src='./typora-user-images/image-20211110171525896.png'>
 
-   期间需要输入操作系统 root 用户的密码（如密码：openGauss@123）和创建操作系统 omm 用户及设置密码（如密码：openGauss@123）。密码依然不回显，直接输入密码并回车即可。
+   期间需要输入操作系统 root 用户的密码（如密码：*********@***）和创建操作系统 omm 用户及设置密码（如密码：*********@***）。密码依然不回显，直接输入密码并回车即可。
 
    当返回 Preinstallation succeeded 内容时，表明初始化完成。
 
@@ -248,7 +248,7 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
 4.  **第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 Bigdata@123（建议用户自定义密码）**
 
-**alter role omm identified by _'Bigdata@123_' replace _'openGauss@123'_;**
+**alter role omm identified by _'Bigdata@123_' replace _'*********@***'_;**
 
       显示“ALTER ROLE”则成功
 

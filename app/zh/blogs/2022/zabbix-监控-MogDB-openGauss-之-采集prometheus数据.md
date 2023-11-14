@@ -71,7 +71,7 @@ yum -y install gcc gcc-c++ curl curl-devel net-snmp net-snmp-devel readline.x86_
   vim /etc/opt/rh/rh-nginx116/nginx/conf.d/zabbix.conf
 
   listen 80;
-  server_name 172.16.3.90;
+  server_name ***.***.***.***;
 
   ***
   vim /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
@@ -91,10 +91,10 @@ yum -y install gcc gcc-c++ curl curl-devel net-snmp net-snmp-devel readline.x86_
   abbix=# create user zabbix encrypted password '******@***';create user zabbix encrypted password '******@***';
 
   --修改pg_hba.conf
-  host    all          zabbix             172.16.3.90/32 md5
+  host    all          zabbix             ***.***.***.***/32 md5
 
   --导入数据
-  $ zcat /usr/share/doc/zabbix-server-pgsql*/create.sql.gz | gsql -h 172.16.3.90 -U zabbix zabbix -f
+  $ zcat /usr/share/doc/zabbix-server-pgsql*/create.sql.gz | gsql -h ***.***.***.*** -U zabbix zabbix -f
 
   ```
 
@@ -109,7 +109,7 @@ yum -y install gcc gcc-c++ curl curl-devel net-snmp net-snmp-devel readline.x86_
 
 - 展示 Zabbix 前端
 
-  连接到新安装的 Zabbix 前端，直接浏览器输入:172.16.3.90 ,如有下图展示说明 zabbix 启动成功，配置完前段界面后，zabbix 初始账号是：Admin，密码：zabbix
+  连接到新安装的 Zabbix 前端，直接浏览器输入:***.***.***.*** ,如有下图展示说明 zabbix 启动成功，配置完前段界面后，zabbix 初始账号是：Admin，密码：******
 
   <img src='./figures/20211203-7294cdd5-5b8a-41dd-9558-468c56d0e49d.png'>
 

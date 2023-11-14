@@ -97,7 +97,7 @@ make install -sj\
 1. 初始化数据库目录
 
    ```
-    gs_initdb -D /home/omm/ogcompile/datanode/dn1 --nodename=single -w openGauss@123
+    gs_initdb -D /home/omm/ogcompile/datanode/dn1 --nodename=single -w *********@***
 
    ```
 

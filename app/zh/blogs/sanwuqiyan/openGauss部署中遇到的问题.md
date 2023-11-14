@@ -27,7 +27,7 @@ times: '15:30'
 2).
 ① /etc/sysconfig/network-scripts/ifcfg-ens33  ifcfg-ens33为我的文件名，你需要在/etc/sysconfig/network-scripts下找到和这个文件名差不多的文件（通过ls命令查看文件），如ifcfg-设备名。
 ② 修改：  BOOTPROTO="static"、ONBOOT="yes"
-③ 添加：  IPADDR=192.168.122.2、NETMAST=255.255.255.0、GATEWAY=192.168.6.2、BROADCAST=192.168.6.255。注意IPADDR为你的主机IP地址、NETMAST、GATEWAY可以在VMWare中的编辑–>虚拟网络编辑器->VMnet8->NAT设置->子网掩码和网关、BROADCAST 相当于网关的最后八位改为255）
+③ 添加：  IPADDR=***.***.***.***、NETMAST=255.255.255.0、GATEWAY=***.***.***.***、BROADCAST=***.***.***.***。注意IPADDR为你的主机IP地址、NETMAST、GATEWAY可以在VMWare中的编辑–>虚拟网络编辑器->VMnet8->NAT设置->子网掩码和网关、BROADCAST 相当于网关的最后八位改为255）
 3). /etc/hostname 下改为你自己的主机名
 ```
 
@@ -52,7 +52,7 @@ times: '15:30'
 解决办法：
 1.创建用户组：groupadd dbgrp
 2.创建用户：useradd -g dbgrp -m omm -d /home/omm
-3.输入用户密码：passwd omm
+3.输入用户密码：******
 ```
 
 **5.当输入命令：gs_install -X /soft/openGauss/clusterconfig.xml 时出现错误如下：gs_install：command not found**

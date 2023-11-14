@@ -54,13 +54,13 @@ alter user moguser IDENTIFIED BY ‘root123.xxxx’ **REPLACE** ‘root123.xxxx1
 修改 pg_hba.conf 文件，这个文件要想当清楚，需要在(IPv4 local connections)增添一条为
 IPv4 local connections:
 
-- host all all 172.24.78.107/32 md5
+- host all all ***.***.***.***/32 md5
   最后重启 mogdb 实例(视情况而定)或者 gsql 执行 pg_reload_conf()函数
 
 昨晚以上的所有步骤，就可以通过 sysbench 来连接 mogdb 数据库。
 
 ```
-root@mogdb001 ~]# sysbench /usr/share/sysbench/oltp_common.lua --db-driver=pgsql --pgsql-host=172.24.78.107 --pgsql-user=user1 --pgsql-password=root123.xxxx --pgsql-db=sbtest --tables=16 --table_size=1000000000 --threads=64 prepare
+root@mogdb001 ~]# sysbench /usr/share/sysbench/oltp_common.lua --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=user1 --pgsql-password=root123.xxxx --pgsql-db=sbtest --tables=16 --table_size=1000000000 --threads=64 prepare
 sysbench 1.0.17 (using system LuaJIT 2.0.4)
 
 Initializing worker threads…

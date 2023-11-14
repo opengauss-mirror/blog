@@ -380,6 +380,6 @@ WantedBy=multi-user.target
 
 4.7. 使用 web 浏览器测试 grafana
 
-打开 http://x.x.x.x:51009/ ，默认账号：admin 默认密码：admin
+打开 http://x.x.x.x:51009/ ，默认账号：admin 默认密码：*****
 
 然后配置 prometheus，加载 dashboard 即可。

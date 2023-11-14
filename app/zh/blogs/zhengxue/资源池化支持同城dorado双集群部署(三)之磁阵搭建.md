@@ -245,7 +245,7 @@ function start_dssserver()
 function gs_initdb_dn()
 {
     rm -rf /opt/mpp/cluster/dn0/*
-    gs_initdb -D /opt/mpp/cluster/dn0 --nodename=node0 -U mpp -w Huawei@123 --vgname=+data,+log0 --enable-dss --dms_url="0:172.16.108.23:4411" -I 0 --socketpath='UDS:/opt/mpp/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdh
+    gs_initdb -D /opt/mpp/cluster/dn0 --nodename=node0 -U mpp -w ******@*** --vgname=+data,+log0 --enable-dss --dms_url="0:***.***.***.***:4411" -I 0 --socketpath='UDS:/opt/mpp/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdh
 }
 
 
@@ -264,8 +264,8 @@ function assign_parameter()
     gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -c "ss_log_level = 255"
     gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -c "ss_log_backup_file_count = 100"
     gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -c "ss_log_max_file_size = 1GB"
-    gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -h "host    all             all             172.16.108.54/32        trust"
-    gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -h "host    all             all             172.16.108.55/32        trust"
+    gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -h "host    all             all             ***.***.***.***/32        trust"
+    gs_guc set -Z datanode -D /opt/mpp/cluster/dn0 -h "host    all             all             ***.***.***.***/32        trust"
 }
 
 
@@ -308,7 +308,7 @@ ps x 查看 dss 进程，如下
 使用 dss 的 data 数据卷、log0 日志卷、dorado 共享卷/dev/sdh 初始化主集群节点 0
 
 ```
-gs_initdb -D /opt/mpp/cluster/dn0 --nodename=node0 -U mpp -w Huawei@123 --vgname=+data,+log0 --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/mpp/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdh
+gs_initdb -D /opt/mpp/cluster/dn0 --nodename=node0 -U mpp -w ******@*** --vgname=+data,+log0 --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/mpp/cluster/ss_data/dss_home0/.dss_unix_d_socket' -d -n -g /dev/sdh
 ```
 
 &emsp;参数解释：
@@ -337,7 +337,7 @@ xlog_lock_file_path = '/opt/mpp/cluster/dn0/redolog.lock'
 (3)主集群备节点 1 初始化
 
 ```
-gs_initdb -D /opt/mpp/cluster/dn1 --nodename=node1 -U mpp -w Huawei@123 --vgname=+data,+log1 --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/mpp/cluster/ss_data/dss_home1/.dss_unix_d_socket'
+gs_initdb -D /opt/mpp/cluster/dn1 --nodename=node1 -U mpp -w ******@*** --vgname=+data,+log1 --enable-dss --dms_url="0:10.10.10.10:4411,1:10.10.10.10:4412" -I 0 --socketpath='UDS:/opt/mpp/cluster/ss_data/dss_home1/.dss_unix_d_socket'
 ```
 
 主集群备节点 1 配置参数

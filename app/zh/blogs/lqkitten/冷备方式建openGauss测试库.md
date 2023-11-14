@@ -19,7 +19,7 @@ times: '12:30'
 
 # 冷备方式建 openGauss 测试库<a name="ZH-CN_TOPIC_0000001116618881"></a>
 
-准备 openGauss 测试库，原库主机名 gdb1，IP 地址为 ***.***.***.***6，测试机主机名 gsdb，IP 地址为 192.168.56.9。
+准备 openGauss 测试库，原库主机名 gdb1，IP 地址为 ***.***.***.***6，测试机主机名 gsdb，IP 地址为 ***.***.***.***。
 
 在 gsdb 上新建 omm 用户，并设定相应环境变量，同时将原机的 openGauss 克隆过来。
 
@@ -39,7 +39,7 @@ The content is not correct.
 
 ```
 [omm@gsdb bin]$ sed -i 's/gdb1/gsdb/g' cluster_static_config
-[omm@gsdb bin]$ sed -i 's/***.***.***.***6/192.168.56.9/g' cluster_static_config
+[omm@gsdb bin]$ sed -i 's/***.***.***.***6/***.***.***.***/g' cluster_static_config
 ```
 
 启动。
@@ -86,5 +86,5 @@ current_az : AZ_ALL
 [ Datanode State ]
 node node_ip instance state
 --------------------------------------------------------------------------------
-1 gsdb 192.168.56.9 6001 /opt/huawei/install/data/dn P Primary Normal
+1 gsdb ***.***.***.*** 6001 /opt/huawei/install/data/dn P Primary Normal
 ```

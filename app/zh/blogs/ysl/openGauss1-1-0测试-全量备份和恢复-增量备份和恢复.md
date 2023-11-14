@@ -30,7 +30,7 @@ times: '17:30'
 1.执行备份命令，指定备份路径如/opt/enmo/openGauss/101/data/backup
 
 ```
-[omm@enmo backup]$ gs_basebackup -D /opt/enmo/openGauss/101/data/backup/ -h 172.20.10.9 -p 15400
+[omm@enmo backup]$ gs_basebackup -D /opt/enmo/openGauss/101/data/backup/ -h ***.***.***.*** -p 15400
 ```
 
 <img src='./figures/20210115-65cb7b06-83ab-4e3f-bf64-034abbb46312.png'>

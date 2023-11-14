@@ -122,7 +122,7 @@ drwx------ 2 frank frank     4096 Apr  1 18:33 dependency
 - 安装
 
 ```bash
-[frank@ecs-fc4a opengauss]$ echo OpenGauss@123 | sh ./install.sh --mode single -D ~/opengauss/data -R ~/opengauss/install  --start
+[frank@ecs-fc4a opengauss]$ echo *********@*** | sh ./install.sh --mode single -D ~/opengauss/data -R ~/opengauss/install  --start
 [frank@ecs-fc4a opengauss]$ source /home/frank/.bashrc
 ```
 

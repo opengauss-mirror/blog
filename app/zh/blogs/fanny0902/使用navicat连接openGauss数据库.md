@@ -81,10 +81,10 @@ times: '17:30'
 [omm@opengauss openGauss]$ gsql -d postgres -p 5432
 
 # 修改密码方式
-alter user test identified by 'openGauss@1234'
+alter user test identified by '*********@***4'
 
 # 创建新用户方式
- create user navicatuser password 'openGauss@1234';
+ create user navicatuser password '*********@***4';
 ```
 
 ### 开放端口

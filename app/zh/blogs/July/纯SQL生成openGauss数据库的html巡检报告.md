@@ -82,13 +82,13 @@ times: '12:30'
 若是 openGauss 或华为的 GaussDB 数据库的 gsql 客户端，则执行：
 
 ```
-gsql -U gaussdb -h 192.168.66.35 -p 15432 -d postgres -W'lhr@123XXT' -H -f D:\DB_openGauss_HC_lhr_v7.0.0.sql > d:\a.html
+gsql -U gaussdb -h ***.***.***.*** -p 15432 -d postgres -W'lhr@123XXT' -H -f D:\DB_openGauss_HC_lhr_v7.0.0.sql > d:\a.html
 ```
 
 若是 PostgreSQL 数据库的 psql 客户端，则执行：
 
 ```
-psql -U gaussdb -h 192.168.66.35 -p 54324 -d postgres -W -H -f D:\DB_openGauss_HC_lhr_v7.0.0.sql > d:\a.html
+psql -U gaussdb -h ***.***.***.*** -p 54324 -d postgres -W -H -f D:\DB_openGauss_HC_lhr_v7.0.0.sql > d:\a.html
 ```
 
 ## 4、html 巡检结果<a name="section3752341182113"></a>

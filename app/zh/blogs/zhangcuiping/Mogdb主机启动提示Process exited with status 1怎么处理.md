@@ -30,8 +30,8 @@ Mogdb 主备环境，主机启动提示 Process exited with status 1
 [root@mogdb-kernel-0002 mogdb]# ptk cluster -n mogdb12 start
 INFO[2023-05-16T10:59:09.208] operation: start
 INFO[2023-05-16T10:59:09.209] ========================================
-INFO[2023-05-16T10:59:09.209] start db [172.16.0.245:26007] ...
-ERRO[2023-05-16T10:59:10.331] start db [172.16.0.245:26007] failed
+INFO[2023-05-16T10:59:09.209] start db [***.***.***.***:26007] ...
+ERRO[2023-05-16T10:59:10.331] start db [***.***.***.***:26007] failed
 ERROR: Process exited with status 1
 OUTPUT: [2023-05-16 10:59:09.298][3905515][][gs_ctl]: gs_ctl started,datadir is /home/omm12/mogdb/data
 [2023-05-16 10:59:09.329][3905515][][gs_ctl]: waiting for server to start...
@@ -87,7 +87,7 @@ database_version                        : MogDB 3.0.0 (build 62408a0f)
 [  Datanode State   ]
   cluster_name |  id  |      ip      | port  | user  | nodename | db_role |               state                | upstream
 ---------------+------+--------------+-------+-------+----------+---------+------------------------------------+-----------
-  mogdb12      | 6001 | 172.16.0.245 | 26007 | omm12 | dn_6001  | primary | stopped
+  mogdb12      | 6001 | ***.***.***.*** | 26007 | omm12 | dn_6001  | primary | stopped
 
 ```
 

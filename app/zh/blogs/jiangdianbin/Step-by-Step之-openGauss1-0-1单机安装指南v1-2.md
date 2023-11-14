@@ -120,7 +120,7 @@ vi /etc/ntp.conf
 添加以下一行：
 
 ```
-restrict 192.168.0.0 mask 255.255.255.0 nomodify notrap
+restrict ***.***.***.*** mask 255.255.255.0 nomodify notrap
 ```
 
 添加以下 3 行，并注释掉所有的 server 行：
@@ -363,7 +363,7 @@ gs_install -X /opt/software/openGauss/script/clusterconfig.xml
 
 **注意：**
 
-用户需根据提示输入数据库的密码，密码需要具有一定的复杂度，为保证用户正常使用该数据库，请记住输入的数据库密码。此处建议密码设置为 huawei@1234。
+用户需根据提示输入数据库的密码，密码需要具有一定的复杂度，为保证用户正常使用该数据库，请记住输入的数据库密码。此处建议密码设置为 ******@****。
 
 （16G 内存创建就不会出错）
 
@@ -435,7 +435,7 @@ gsql ((openGauss 1.0.1 build 13b34b53) compiled at 2020-10-12 02:00:59 commit 0 
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.
 postgres=#
-alter role omm identified by 'Passw0rd@1234' replace 'huawei@1234';
+alter role omm identified by 'Passw0rd@1234' replace '******@****';
 ```
 
 检查数据库版本

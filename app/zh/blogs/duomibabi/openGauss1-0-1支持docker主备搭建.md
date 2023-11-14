@@ -36,20 +36,20 @@ docker pull enmotech/opengauss:1.0.1
 ### 创建自定义网络，创建容器便于使用固定 IP<a name="section827385053313"></a>
 
 ```
-docker network create --subnet=172.18.0.0/16 myNetwork
+docker network create --subnet=***.***.***.***/16 myNetwork
 ```
 
 ### 创建主库容器并运行<a name="section18401141113349"></a>
 
 ```
 docker run --name op_master \
---network myNetwork --ip 172.18.0.10 --privileged=true \
+--network myNetwork --ip ***.***.***.*** --privileged=true \
 --hostname op_master --detach \
 --env GS_PORT=6432 \
---env OG_SUBNET=172.18.0.0/16 \
+--env OG_SUBNET=***.***.***.***/16 \
 --env GS_PASSWORD=Enmotech@2020 \
 --env NODE_NAME=op_master \
---env REPL_CONN_INFO="replconninfo1 = 'localhost=172.18.0.10 localport=6439 localservice=6432 remotehost=172.18.0.11 remoteport=6439 remoteservice=6432 '\n" \
+--env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=6439 localservice=6432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432 '\n" \
 --cpuset-cpus="1,3" \
 opengauss:1.0.1 -M primary
 ```
@@ -58,13 +58,13 @@ opengauss:1.0.1 -M primary
 
 ```
 docker run --name op_slave_one \
---network myNetwork --ip 172.18.0.11 --privileged=true \
+--network myNetwork --ip ***.***.***.*** --privileged=true \
 --hostname op_slave_one --detach \
 --env GS_PORT=6432 \
---env OG_SUBNET=172.18.0.0/16 \
+--env OG_SUBNET=***.***.***.***/16 \
 --env GS_PASSWORD=Enmotech@2020 \
 --env NODE_NAME=op_slave_one \
---env REPL_CONN_INFO="replconninfo1 = 'localhost=172.18.0.11 localport=6439 localservice=6432 remotehost=172.18.0.10 remoteport=6439 remoteservice=6432 '\n" \
+--env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=6439 localservice=6432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432 '\n" \
 --cpuset-cpus="2,4" \
 opengauss:1.0.1 -M standby
 ```
@@ -110,7 +110,7 @@ docker exec -it op_master bash
 	sync_state                     : Sync
 	sync_priority                  : 1
 	sync_most_available            : On
-	channel                        : 172.18.0.10:6439-->172.18.0.11:55440
+	channel                        : ***.***.***.***:6439-->***.***.***.***:55440
 
  Receiver info:
 No information
@@ -146,7 +146,7 @@ No information
 	receiver_flush_location        : 0/5000238
 	receiver_replay_location       : 0/5000238
 	sync_percent                   : 100%
-	channel                        : 172.18.0.11:55440<--172.18.0.10:6439
+	channel                        : ***.***.***.***:55440<--***.***.***.***:6439
 ```
 
 说明：从上面主库 Senders 信息和备库 Receiver 可以看到主备状态正常。
@@ -227,7 +227,7 @@ ERROR:  cannot execute DELETE in a read-only transaction
 	sync_state                     : Sync
 	sync_priority                  : 1
 	sync_most_available            : On
-	channel                        : 172.18.0.11:6439-->172.18.0.10:39314
+	channel                        : ***.***.***.***:6439-->***.***.***.***:39314
 
  Receiver info:
 No information
@@ -261,7 +261,7 @@ No information
 	receiver_flush_location        : 0/5004A10
 	receiver_replay_location       : 0/5004A10
 	sync_percent                   : 100%
-	channel                        : 172.18.0.10:39314<--172.18.0.11:6439
+	channel                        : ***.***.***.***:39314<--***.***.***.***:6439
 ```
 
 可以看到 op_master 变为备库，op_slave_one 变为主库，切换成功。

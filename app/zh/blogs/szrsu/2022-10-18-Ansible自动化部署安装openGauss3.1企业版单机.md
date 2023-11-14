@@ -135,9 +135,9 @@ openGauss_software: openGauss-3.1.0-CentOS-64bit-all.tar.gz
 #解压目录
 install_dir: /opt/software/openGauss
 #omm用户密码
-omm_password: openGauss@123
+omm_password: *********@***
 #数据库密码
-db_password: openGauss@123
+db_password: *********@***
 ```
 
 ### 3.7、创建安装时需要的 xml 模板

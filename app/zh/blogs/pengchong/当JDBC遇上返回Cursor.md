@@ -89,7 +89,7 @@ function 返回游标在 PostgreSQL 或者 MogDB(openGauss)数据库里访问的
 ```
 	public static void main(String[] args) throws Exception{
 	    Class.forName("org.postgresql.Driver");
-	    Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.137.251:1402/postgres","postgres","admin");
+	    Connection conn = DriverManager.getConnection("jdbc:postgresql://***.***.***.***:1402/postgres","postgres","admin");
 	    CallableStatement stmt = null;
 	    ResultSet resultSet = null;
             try{
@@ -126,7 +126,7 @@ procedure 返回游标的 jdbc 代码跟上面 function 测试类似：
 ```
 	public static void main(String[] args) throws Exception{
 	    Class.forName("org.postgresql.Driver");
-	    Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.137.251:1402/postgres?escapeSyntaxCallMode=call", "postgres","admin");
+	    Connection conn = DriverManager.getConnection("jdbc:postgresql://***.***.***.***:1402/postgres?escapeSyntaxCallMode=call", "postgres","admin");
 	    CallableStatement stmt = null;
 	    ResultSet resultSet = null;
             try{
@@ -160,7 +160,7 @@ procedure 返回游标的 jdbc 代码跟上面 function 测试类似：
 上面的 connection 连接串加上 escapeSyntaxCallMode 参数，修改成：
 
 ```
-jdbc:postgresql://192.168.137.251:1402/postgres?escapeSyntaxCallMode=call
+jdbc:postgresql://***.***.***.***:1402/postgres?escapeSyntaxCallMode=call
 ```
 
 则可正常执行
@@ -189,7 +189,7 @@ jdbc 代码如下：
 ```
 	public static void main(String[] args) throws Exception{
 	    Class.forName("org.postgresql.Driver");
-	    Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.137.251:1402/postgres?escapeSyntaxCallMode=call","postgres","admin");
+	    Connection conn = DriverManager.getConnection("jdbc:postgresql://***.***.***.***:1402/postgres?escapeSyntaxCallMode=call","postgres","admin");
 	    CallableStatement stmt = null;
 	    ResultSet resultSet = null;
             try{

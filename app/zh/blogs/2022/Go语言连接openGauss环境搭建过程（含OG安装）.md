@@ -321,7 +321,7 @@ times: '12:30'
   gs_install -X /opt/software/openGauss/script/clusterconfig.xml
   ```
 
-  重要提示：用户需根据提示输入数据库的密码，密码需要具有一定的复杂度，为保证用户正常使用该数据库，请记住输入的数据库密码。此处建议密码设置为 huawei@1234
+  重要提示：用户需根据提示输入数据库的密码，密码需要具有一定的复杂度，为保证用户正常使用该数据库，请记住输入的数据库密码。此处建议密码设置为 ******@****
 
   ```
   [omm@node1 ~]$ cd /opt/software/openGauss/script
@@ -344,8 +344,8 @@ times: '12:30'
   Successfully installed APP.
   begin init Instance..
   encrypt cipher and rand files for database.
-  Please enter password for database:huawei@1234
-  Please repeat for database:huawei@1234
+  Please enter password for database:******@****
+  Please repeat for database:******@****
   begin to create CA cert files
   The sslcert will be generated in /opt/huawei/install/app/share/sslcert/om
   Cluster installation is completed.
@@ -510,7 +510,7 @@ times: '12:30'
   Servername=***.***.***.***
   Database=postgres
   Username=gem
-  Password=huawei@1234
+  Password=******@****
   Port=26000
   DatabaseName=postgres
   ```
@@ -540,7 +540,7 @@ times: '12:30'
 
   func main() {
       fmt.Printf("%s\n", "创建数据库链接")
-      conn, err := sql.Open("odbc","DSN=openGaussODBC;UID=gem;PWD=huawei@1234")
+      conn, err := sql.Open("odbc","DSN=openGaussODBC;UID=gem;PWD=******@****")
       if err != nil {
           fmt.Println("链接错误")
           return

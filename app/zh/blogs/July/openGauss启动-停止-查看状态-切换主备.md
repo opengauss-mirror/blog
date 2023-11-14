@@ -34,7 +34,7 @@ current_az      : AZ_ALL
 
 node     node_ip         instance        state            | node     node_ip         instance        state      | node     node_ip         instance          state
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  node1 192.168.59.26   6001 opt/huawei/install/data/d1 P Primary Normal | 2  node2 192.168.59.27   6002 opt/huawei/install/data/d2 S Standby Normal | 3  node3 192.168.59.28   6003 opt/huawei/install/data/d3 C Cascade Normal
+1  node1 ***.***.***.***   6001 opt/huawei/install/data/d1 P Primary Normal | 2  node2 ***.***.***.***   6002 opt/huawei/install/data/d2 S Standby Normal | 3  node3 ***.***.***.***   6003 opt/huawei/install/data/d3 C Cascade Normal
 [omm@node1 ~]$ gs_om -t status -h node2
 -----------------------------------------------------------------------
 
@@ -95,7 +95,7 @@ receiver_flush_location   : 0/68451B0
 receiver_replay_location  : 0/68451B0
 sync_percent              : 100%
 sync_state                : Async
-upstream_nodeIp           : 192.168.59.27:15401
+upstream_nodeIp           : ***.***.***.***:15401
 
 -----------------------------------------------------------------------
 
@@ -149,7 +149,7 @@ current_az      : AZ_ALL
 
 node     node_ip       instance         state           | node     node_ip        instance         state            | node     node_ip         instance        state
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  node1 192.168.59.26   6001 opt/huawei/install/data/d1 P Down    Manually stopped | 2  node2 192.168.59.27   6002 opt/huawei/install/data/d2 S Down    Manually stopped | 3  node3 192.168.59.28   6003 opt/huawei/install/data/d3 C Down    Manually stopped
+1  node1 ***.***.***.***   6001 opt/huawei/install/data/d1 P Down    Manually stopped | 2  node2 ***.***.***.***   6002 opt/huawei/install/data/d2 S Down    Manually stopped | 3  node3 ***.***.***.***   6003 opt/huawei/install/data/d3 C Down    Manually stopped
 [omm@node1 ~]$ gs_om -t start
 Starting cluster.
 =========================================
@@ -198,7 +198,7 @@ current_az      : AZ_ALL
 
 node     node_ip         instance                            state            | node     node_ip         instance                            state            | node     node_ip         instance                            state
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  node1 192.168.59.26   6001 opt/huawei/install/data/d1 P Standby Normal | 2  node2 192.168.59.27   6002 opt/huawei/install/data/d2 S Primary Normal | 3  node3 192.168.59.28   6003 opt/huawei/install/data/d3 C Cascade Normal
+1  node1 ***.***.***.***   6001 opt/huawei/install/data/d1 P Standby Normal | 2  node2 ***.***.***.***   6002 opt/huawei/install/data/d2 S Primary Normal | 3  node3 ***.***.***.***   6003 opt/huawei/install/data/d3 C Cascade Normal
 ```
 
 ## 3. 切换主备<a name="section197031047192118"></a>
@@ -223,7 +223,7 @@ current_az      : AZ_ALL
 
 node     node_ip         instance     state            | node     node_ip         instance      state            | node     node_ip         instance                state
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  node1 192.168.59.26   6001 opt/huawei/install/data/d1 P Primary Normal | 2  node2 192.168.59.27   6002 opt/huawei/install/data/d2 S Standby Normal | 3  node3 192.168.59.28   6003 opt/huawei/install/data/d3 C Cascade Normal
+1  node1 ***.***.***.***   6001 opt/huawei/install/data/d1 P Primary Normal | 2  node2 ***.***.***.***   6002 opt/huawei/install/data/d2 S Standby Normal | 3  node3 ***.***.***.***   6003 opt/huawei/install/data/d3 C Cascade Normal
 [omm@node1 ~]$ gs_om -t status -h node1
 -----------------------------------------------------------------------
 
@@ -302,7 +302,7 @@ receiver_flush_location   : 0/68475E0
 receiver_replay_location  : 0/68475E0
 sync_percent              : 100%
 sync_state                : Async
-upstream_nodeIp           : 192.168.59.27:15401
+upstream_nodeIp           : ***.***.***.***:15401
 
 -----------------------------------------------------------------------
 ```

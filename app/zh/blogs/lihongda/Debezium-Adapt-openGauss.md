@@ -147,14 +147,14 @@ Action to be performed:
       --start            start streaming in a replication slot (for the slotname see --slot)
       --drop             drop the replication slot (for the slotname see --slot)
 
-[omm@0f0ce5be9d04 data]$ pg_recvlogical -d postgres -S test_wal2json --create -U gaussdb -h 172.24.0.2 -P wal2json
+[omm@0f0ce5be9d04 data]$ pg_recvlogical -d postgres -S test_wal2json --create -U gaussdb -h ***.***.***.*** -P wal2json
 Password:
 ```
 
 保持 session1 终端
 
 ```
-[omm@0f0ce5be9d04 data]$ pg_recvlogical -d postgres -S test_wal2json --start  -U gaussdb -h 172.24.0.2 -o pretty-print=1 -f -
+[omm@0f0ce5be9d04 data]$ pg_recvlogical -d postgres -S test_wal2json --start  -U gaussdb -h ***.***.***.*** -o pretty-print=1 -f -
 Password:
 {
         "change": [

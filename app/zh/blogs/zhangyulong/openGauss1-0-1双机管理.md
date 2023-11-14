@@ -110,7 +110,7 @@ current_az      : AZ_ALL
 
 node      node_ip         instance                                state            | node      node_ip         instance                                state
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  enmo   192.168.6.7     6001 /opt/enmo/openGauss/101/data/dn P Primary Normal | 2  backup 192.168.6.8     6002 /opt/enmo/openGauss/101/data/dn S Standby Normal
+1  enmo   ***.***.***.***     6001 /opt/enmo/openGauss/101/data/dn P Primary Normal | 2  backup ***.***.***.***     6002 /opt/enmo/openGauss/101/data/dn S Standby Normal
 ```
 
 ## 查看某个主机上实例的状态<a name="section15880243182618"></a>
@@ -183,5 +183,5 @@ current_az      : AZ_ALL
 
 node      node_ip         instance                                state            | node      node_ip         instance                                state
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1  enmo   192.168.6.7     6001 /opt/enmo/openGauss/101/data/dn P Standby Normal | 2  backup 192.168.6.8     6002 /opt/enmo/openGauss/101/data/dn S Primary Normal
+1  enmo   ***.***.***.***     6001 /opt/enmo/openGauss/101/data/dn P Standby Normal | 2  backup ***.***.***.***     6002 /opt/enmo/openGauss/101/data/dn S Primary Normal
 ```

@@ -31,7 +31,7 @@ IPv6\(Internet Protocol Version 6\)，是 Internet Engineering Task Force \(IETF
 
 ```
    本地链接 IPv6 地址. . . . . . . . : fe80::828a:5e20:53cb:7719%6(首选)
-   IPv4 地址 . . . . . . . . . . . . : 192.168.137.68(首选)
+   IPv4 地址 . . . . . . . . . . . . : ***.***.***.***(首选)
 ```
 
 Centos 下使用 ip addr 命令查看 linux 网络接口，也会看到 IPv6 地址。
@@ -46,7 +46,7 @@ Centos 下使用 ip addr 命令查看 linux 网络接口，也会看到 IPv6 地
        valid_lft forever preferred_lft forever
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:b5:54:32 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.137.101/24 brd 192.168.137.255 scope global enp0s3
+    inet ***.***.***.***/24 brd ***.***.***.*** scope global enp0s3
        valid_lft forever preferred_lft forever
     inet6 fe80::a00:27ff:feb5:5432/64 scope link
        valid_lft forever preferred_lft forever
@@ -90,7 +90,7 @@ Centos 下使用 ip addr 命令查看 linux 网络接口，也会看到 IPv6 地
        valid_lft forever preferred_lft forever
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:b5:54:32 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.137.101/24 brd 192.168.137.255 scope global enp0s3
+    inet ***.***.***.***/24 brd ***.***.***.*** scope global enp0s3
        valid_lft forever preferred_lft forever
     inet6 2022:1::db1/64 scope global
        valid_lft forever preferred_lft forever
@@ -189,13 +189,13 @@ postgres=> SELECT datname,usename, client_addr FROM pg_stat_activity where usena
 1.使用普通的 IPv4 进行测试
 
 ```
-$ java -jar test.jar jdbc:postgresql://192.168.137.101:6432/postgres moguser Admin@1234
+$ java -jar test.jar jdbc:postgresql://***.***.***.***:6432/postgres moguser Admin@1234
 ```
 
 执行结果如下，可以看到数据库连接测试成功
 
 ```
-Input jdbc url:jdbc:postgresql://192.168.137.101:6432/postgres
+Input jdbc url:jdbc:postgresql://***.***.***.***:6432/postgres
 Input jdbc username:moguser
 Connection test successfully.
 ```

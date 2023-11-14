@@ -149,7 +149,7 @@ openGauss 是关系型数据库，采用客户端/服务器，单进程多线程
 
 | 配置选项    | 配置值                                              |
 | ----------- | --------------------------------------------------- |
-| 网络        | Vpc-default（192.168.0.0/16）（选现有默认网络即可） |
+| 网络        | Vpc-default（***.***.***.***/16）（选现有默认网络即可） |
 | 弹性公网 IP | 现在购买                                            |
 | 公网带宽    | 按流量计费                                          |
 | 带宽大小    | 5                                                   |
@@ -255,7 +255,7 @@ Python 3.7.4
 步骤 2 创建 XML 配置文件，用于数据库安装。\
 `[root@ecs-c9bf openGauss]# vi clusterconfig.xml`
 
-步骤 3 输入”i”进入 INSERT 模式，添加文本如下，加粗字体内容为示例，可自行替换。其中“ecs-c9bf”是弹性云服务器的名称，“192.168.0.58”为弹性云服务器的 IP 地址（私有），其他 value 值可以不进行修改。
+步骤 3 输入”i”进入 INSERT 模式，添加文本如下，加粗字体内容为示例，可自行替换。其中“ecs-c9bf”是弹性云服务器的名称，“***.***.***.***”为弹性云服务器的 IP 地址（私有），其他 value 值可以不进行修改。
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -263,7 +263,7 @@ Python 3.7.4
     <CLUSTER>
         <PARAM name="clusterName" value="dbCluster" />
         <PARAM name="nodeNames" value="ecs-c9bf" />
-        <PARAM name="backIp1s" value="192.168.0.58"/>
+        <PARAM name="backIp1s" value="***.***.***.***"/>
         <PARAM name="gaussdbAppPath" value="/opt/gaussdb/app" />
         <PARAM name="gaussdbLogPath" value="/var/log/gaussdb" />
         <PARAM name="gaussdbToolPath" value="/opt/huawei/wisequery" />
@@ -277,8 +277,8 @@ Python 3.7.4
             <PARAM name="name" value="ecs-c9bf"/>
             <PARAM name="azName" value="AZ1"/>
             <PARAM name="azPriority" value="1"/>
-            <PARAM name="backIp1" value="192.168.0.58"/>
-            <PARAM name="sshIp1" value="192.168.0.58"/>
+            <PARAM name="backIp1" value="***.***.***.***"/>
+            <PARAM name="sshIp1" value="***.***.***.***"/>
 
 	    <!--dbnode-->
 	    <PARAM name="dataNum" value="1"/>
