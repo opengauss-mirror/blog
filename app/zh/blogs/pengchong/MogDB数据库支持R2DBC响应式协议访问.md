@@ -65,7 +65,7 @@ insert into product values(1,'PostgreSQL',0),
 ```java
 spring.r2dbc.url=r2dbc:postgresql://***.***.***.***:15400/productdb
 spring.r2dbc.username=moguser
-spring.r2dbc.password=Admin@1234
+spring.r2dbc.password=****** 
 运行程序进行测试点击R2dbcApplication文件，Run As运行
 然后我们可以打开浏览器，输入接口地址进行测试：
 下面是查询所有产品(http://localhost:8080/product/all)

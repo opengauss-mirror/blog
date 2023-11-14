@@ -364,7 +364,7 @@ db=postgres
 driver=org.postgresql.Driver
 conn=jdbc:postgresql://***.***.***.***36:3307/tpcc?prepareThreshold=1&batchMode=on&fetchsize=10&loggerLevel=off
 user=sharding
-password=sharding
+password=******
 
 warehouses=100
 loadWorkers=50

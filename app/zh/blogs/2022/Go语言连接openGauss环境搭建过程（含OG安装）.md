@@ -264,9 +264,9 @@ times: '12:30'
   Successfully set core path.
   Are you sure you want to create the user[omm] and create trust for it (yes/no)? yes
   Please enter password for cluster user.
-  Password: omm123
+  Password: ******
   Please enter password for cluster user again.
-  Password: omm123
+  Password: ******
   Successfully created [omm] user on all nodes.
   Preparing SSH service.
   Successfully prepared SSH service.

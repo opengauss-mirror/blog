@@ -535,7 +535,7 @@ current_az      			: AZ_ALL
     host: ***.***.***.***
     port: 22
     user: root
-    password: "pTk6MDQ2Y2U0ZDE8QzxCPEU/RE8ycy1UZFpEZ0xSMU9PQzRZMkpoY2JuT0x2Z05FbG9pZDlBMm5hZlFEVzQ="
+    password: "******"
 ```
 
 #### 集群扩容

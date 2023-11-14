@@ -83,7 +83,7 @@ pg_conn:
 host: "localhost" ===========》opengauss 的 ip
 port: "15400" ===========》opengauss 的端口
 user: "opengauss" ========== 》open gauss 的用户
-password: "openGauss01" ===========》opengauss 的密码
+password: "******" ===========》opengauss 的密码
 database: "mysql_test" ===========》opengauss 的目标数据库
 charset: "utf8"
 
@@ -95,7 +95,7 @@ db_conn:
 host: "***.***.***.***" ============》mysql 的 ip
 port: "33650" ===========》mysql 的端口
 user: "root" ============》mysql 的用户
-password: "root" ============》mysql 的密码
+password: "****" ============》mysql 的密码
 charset: 'utf8'
 connect_timeout: 10
 schema_mappings:

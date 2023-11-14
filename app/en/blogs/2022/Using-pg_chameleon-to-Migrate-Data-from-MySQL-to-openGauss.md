@@ -75,7 +75,7 @@ pg_conn:
   host: "1.1.1.1"
   port: "5432"
   user: "opengauss_test"
-  password: "password_123"
+  password: "********_***"
   database: "opengauss_database"
   charset: "utf8"
 sources:
@@ -84,7 +84,7 @@ sources:
       host: "1.1.1.1"
       port: "3306"
       user: "mysql_test"
-      password: "password123"
+      password: "***********"
       charset: 'utf8'
       connect_timeout: 10
     schema_mappings:
@@ -112,7 +112,7 @@ keep_existing_schema: No
 
 The preceding configuration file indicates that the username and password for connecting to MySQL are **mysql_test** and **password123** respectively during data migration. The IP address and port number of the MySQL server are 1.1.1.1 and 3306, respectively. The source database is **mysql_database**.
 
-The username and password for connecting to openGauss are **opengauss_test** and **password_123**, respectively. The IP address and port number of the openGauss server are 1.1.1.1 and 5432, respectively. The target database is **opengauss_database**. The **sch_mysql_database** schema is created in **opengauss_database**, and all tables to be migrated are in this schema.
+The username and password for connecting to openGauss are **opengauss_test** and **********_*****, respectively. The IP address and port number of the openGauss server are 1.1.1.1 and 5432, respectively. The target database is **opengauss_database**. The **sch_mysql_database** schema is created in **opengauss_database**, and all tables to be migrated are in this schema.
 
 Note that the user must have the permission to remotely connect to MySQL and openGauss as well as the read and write permissions on the corresponding databases. For openGauss, the host where pg_chameleon runs must be in the remote access whitelist of openGauss. For MySQL, the user must have the **RELOAD**, **REPLICATION CLIENT**, and **REPLICATION SLAVE** permissions.
 

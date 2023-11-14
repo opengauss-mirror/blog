@@ -77,8 +77,8 @@ CGO_ENABLED=0 GOOS=linux GOARCH=arm64
 var (
         dsnExample = `DSN="postgres://gaussdb:secret@foo,bar,baz/mydb?sslmode=disable"
 DSN="postgres://gaussdb:secret@foo:1,bar:2,baz:3/mydb?sslmode=disable"
-DSN="user=gaussdb password=secret host=foo,bar,baz port=5432 dbname=mydb sslmode=disable"
-DSN="user=gaussdb password=secret host=foo,bar,baz port=5432,5432,5433 dbname=mydb sslmode=disable"`
+DSN="user=gaussdb password=***** host=foo,bar,baz port=5432 dbname=mydb sslmode=disable"
+DSN="user=gaussdb password=***** host=foo,bar,baz port=5432,5432,5433 dbname=mydb sslmode=disable"`
 )
 
 func main() {

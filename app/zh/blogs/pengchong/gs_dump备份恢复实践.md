@@ -154,7 +154,7 @@ gs_restore --username=mes -d mes3  mes_way3.dmp
 注意操作之前需要先删除相关对象，下面直接级联删除模式。
 
 ```
-gsql  -U mes mes3 -r --password='mes@1234'
+gsql  -U mes mes3 -r --password='****** '
 drop schema if exists mes cascade;
 \q
 ```

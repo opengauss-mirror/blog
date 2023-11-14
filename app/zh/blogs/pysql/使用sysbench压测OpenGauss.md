@@ -84,10 +84,10 @@ sysbench=>
 
 ### 准备压测数据：
 
-sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=Bench_889 --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua prepare
+sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=****** --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua prepare
 
 执行压测：
 
-sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=Bench_889 --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
+sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=******  --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
 
 后续进一步使用 sysbench 探索 OpenGauss 性能指标。

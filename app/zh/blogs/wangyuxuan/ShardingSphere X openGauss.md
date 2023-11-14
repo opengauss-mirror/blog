@@ -71,7 +71,7 @@ dataSources:
   ds_0:
     url: jdbc:opengauss://host:port/db_name
     username: USER
-    password: PASSWD
+    password: ******
     connectionTimeoutMilliseconds: 30000
     idleTimeoutMilliseconds: 60000
     maxLifetimeMilliseconds: 1800000
@@ -80,7 +80,7 @@ dataSources:
   ds_1:
     url: jdbc:opengauss://host:port/db_name
     username: USER
-    password: PASSWD
+    password: ******
     connectionTimeoutMilliseconds: 30000
     idleTimeoutMilliseconds: 60000
     maxLifetimeMilliseconds: 1800000
@@ -142,15 +142,15 @@ dataSources:
   primary_ds:
     url: jdbc:postgresql://localhost:5432/demo_primary_ds
     username: postgres
-    password: postgres
+    password: ******
   replica_ds_0:
     url: jdbc:postgresql://localhost:5432/demo_replica_ds_0
     username: postgres
-    password: postgres
+    password: ******
   replica_ds_1:
     url: jdbc:postgresql://localhost:5432/demo_replica_ds_1
     username: postgres
-    password: postgres
+    password: ******
 rules:
   - !READWRITE_SPLITTING
     dataSources:
