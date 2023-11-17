@@ -39,7 +39,7 @@ Here you can edit your blog.
 **站点使用了 vitepress 框架提供了更好的 SEO，及更快的加载速度,但也有更严格的打包规则，以下规则非常重要我们建议你花几分钟阅读：**
 
 - md 文件的文件名中禁止包含 **+** 号。
-- 图片命名禁止 **空格 、且大小写敏感**，建议统一使用小写命名加中划线连接。如 blog-example.png。
+- 图片命名禁止 **空格、中文 、且大小写敏感**，建议统一使用小写命名加中划线连接。如 blog-example.png。
 - `<font> </font> <center> </center>` 属于已弃用标签，vitepress 将不再支持，如有需要可以使用 `<div style="align:center"></div>`。
 - md 中如需使用 HTML 标签，该标签需要闭合，如&lt;div&gt; &lt;/div&gt;。
 - 暂不支持 c++ 语言代码块，如果你有 c++代码需要展示，请不要指定代码块语言，而是采用默认语言。

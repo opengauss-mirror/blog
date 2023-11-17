@@ -121,3 +121,4 @@ dist
 app/.vitepress/.cache
 app/.vitepress/.temp
 app/.vitepress/dist
+.vscode/settings.json

@@ -4,7 +4,7 @@
   min-height: calc(100vh - 443px);
   padding: 40px;
   margin: var(--o-spacing-h2) auto;
-  margin-bottom: var(--o-spacing-h1);
+  margin-bottom: 0;
   background-color: var(--o-color-bg2);
   box-shadow: var(--o-shadow-l1);
   & > *:first-child {
@@ -23,6 +23,7 @@
     margin-top: var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h2);
   }
+
   ol,
   ul {
     list-style: inherit;
@@ -30,6 +31,7 @@
 
   a {
     word-break: break-all;
+    display: inline-block;
   }
 
   h1,
@@ -39,7 +41,6 @@
   h5,
   h6 {
     color: var(--o-color-text1);
-    font-weight: normal;
 
     a {
       display: none;
@@ -114,22 +115,26 @@
     margin-top: var(--o-spacing-h8);
     margin-bottom: var(--o-spacing-h8);
     font-size: var(--o-font-size-text);
-    font-weight: normal;
-    word-break: break-all;
+    font-weight: 400;
     color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-tip);
+      text-align: justify;
+    }
+  }
+  p {
+    strong {
+      color: var(--o-color-text3);
     }
   }
 
   ul,
   ol {
-    padding-left: 1em;
-
+    padding-left: 2em;
     li {
       &::marker {
-        color: var(--o-color-text1);
+        color: var(--o-color-text3);
       }
     }
   }
@@ -178,29 +183,18 @@
 
   img {
     max-width: 100%;
-  }
-
-  video {
-    width: 100%;
-  }
-
-  // a[href^='#'] {
-  //   display: none;
-  // }
-  div[class*='language-'] {
-    // position: relative;
-    // margin: 8px 0;
-    // background-color: var(--o-color-bg1);
-    // box-shadow: var(--o-shadow-l1);
-    // overflow-x: auto;
-    pre {
-      background-color: #272822;
+    @media screen and (max-width: 767px) {
+      width: 100% !important;
     }
+  }
+
+  a[href^='#'] {
+    display: none;
   }
   code,
   pre {
     text-align: left;
-    white-space: pre;
+    white-space: pre-wrap;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
@@ -211,6 +205,9 @@
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
+    line-height: 1.45;
+    font-family: 'Helvetica', 'Arial', 'PingFang SC', 'Microsoft YaHei',
+      sans-serif;
   }
 
   pre {
@@ -220,10 +217,8 @@
     box-shadow: var(--o-shadow-l1);
     overflow-x: auto;
     z-index: 1;
-    padding: 24px 32px;
-    @media screen and (max-width: 768px) {
-      padding: 12px 24px;
-    }
+    padding: 24px 40px;
+    font-size: 14px;
     &::-webkit-scrollbar-track {
       border-radius: 4px;
       background-color: var(--o-color-bg2);
@@ -238,18 +233,23 @@
       border-radius: 4px;
       background: var(--o-color-bg4);
     }
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
   }
-
-  code {
-    padding: 0;
-    line-height: var(--o-line-height-text);
+  pre code {
+    color: var(--o-color-text3);
+  }
+  p code,
+  li code {
+    line-height: 16px;
     font-size: var(--o-font-size-text);
-    color: var(--o-color-text1);
+    padding: 0 4px;
+    background-color: var(--o-color-bg-secondary);
+    border: 1px solid var(--o-color-border2);
+    display: inline-block;
+    font-weight: 300;
   }
-}
-
-.dark .markdown img {
-  filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
 
 /**
@@ -258,7 +258,7 @@
 .legal-privacy {
   margin: 0 auto;
   padding: 0;
-  padding-top: 94px;
+  padding-top: 64px;
   padding-bottom: var(--o-spacing-h1);
   max-width: 880px;
   background: var(--o-color-bg1);
@@ -266,8 +266,7 @@
 }
 @media screen and (max-width: 768px) {
   .legal-privacy {
-    padding-top: 0;
-    margin-top: var(--o-spacing-h2);
+    padding-top: var(--o-spacing-h2);
     padding-bottom: var(--o-spacing-h2);
   }
 }
@@ -287,15 +286,31 @@
   font-size: var(--o-font-size-h7);
   letter-spacing: 0;
   line-height: var(--o-line-height-h8);
-  font-weight: 700;
+  font-weight: 300;
   margin-bottom: var(--o-spacing-h6);
+}
+.legal-privacy h3 {
+  font-weight: 300;
 }
 @media screen and (max-width: 768px) {
   .legal-privacy h2 {
     font-size: var(--o-font-size-text);
     letter-spacing: 0;
     line-height: var(--o-line-height-text);
-    font-weight: 700;
+    font-weight: 300;
     margin-bottom: --o-spacing-h8;
+  }
+}
+.dark .markdown img {
+  filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+}
+
+.contribution-markdown {
+  padding-bottom: var(--o-spacing-h1);
+  @media screen and (min-width: 768px) and (max-width: 1100px) {
+    padding-bottom: var(--o-spacing-h2);
+  }
+  @media screen and (max-width: 768px) {
+    padding-bottom: 0;
   }
 }

@@ -1,0 +1,31 @@
+@import './var.scss';
+
+.o-container {
+  &-level1 {
+    background-color: var(--o-container-bg-color-level1);
+    box-shadow: var(--o-container-shadow-level1);
+  }
+  &-level2 {
+    background-color: var(--o-container-bg-color-level2);
+    box-shadow: var(--o-container-shadow-level2);
+
+    &:hover {
+      @media screen and (min-width: 1100px) {
+        background-color: var(--o-container-bg-color-level2_hover);
+        box-shadow: var(--o-container-shadow-level2_hover);
+      }
+    }
+  }
+  &-level3 {
+    background-color: var(--o-container-bg-color-level3);
+    box-shadow: var(--o-container-shadow-level3);
+  }
+  &-level4 {
+    background-color: var(--o-container-bg-color-level4);
+    box-shadow: var(--o-container-shadow-level4);
+  }
+  &-level5 {
+    background-color: var(--o-container-bg-color-level5);
+    box-shadow: var(--o-container-shadow-level5);
+  }
+}

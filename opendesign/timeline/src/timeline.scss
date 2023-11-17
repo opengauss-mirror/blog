@@ -1,0 +1,73 @@
+@import './var.scss';
+.o-timeline {
+  position: relative;
+
+  &-list {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+
+    &::after {
+      width: 100%;
+      height: 2px;
+      background-color: var(--o-timeline-background-color);
+      content: '';
+      display: block;
+      position: absolute;
+      top: 43px;
+      z-index: 2;
+    }
+  }
+
+  &-item {
+    position: relative;
+    z-index: 3;
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &-day {
+    font-size: var(--o-timeline-font-size);
+    color: var(--o-timeline-font-color);
+    line-height: var(--o-timeline-line-height);
+    margin-bottom: var(--o-timeline-spacing-word);
+    transition: var(--o-timeline-transition);
+  }
+  &-icon {
+    cursor: pointer;
+    width: var(--o-timeline-font-size-icon);
+    height: var(--o-timeline-font-size-icon);
+    color: var(--o-timeline-font-color);
+    display: inline-block;
+    background-color: var(--o-timeline-background-icon);
+    transition: var(--o-timeline-transition);
+  }
+  .active {
+    .o-timeline-day {
+      color: var(--o-timeline-font-color-active);
+    }
+    .o-timeline-icon {
+      color: var(--o-timeline-font-color-active);
+    }
+  }
+
+  &-left-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 28px;
+    left: -10px;
+    z-index: 4;
+    color: var(--o-timeline-background-color);
+    font-size: var(--o-timeline-font-size-icon);
+  }
+  &-right-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 28px;
+    right: -10px;
+    z-index: 4;
+    color: var(--o-timeline-background-color);
+    font-size: var(--o-timeline-font-size-icon);
+  }
+}
