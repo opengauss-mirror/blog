@@ -3123,7 +3123,7 @@ export default [
     author: ['eygle'],
     title: 'MogDB/openGauss对于生僻字的存储和显示：㼆 㱔 䶮 𬎆(王莹)',
     tags: ['MogDB/openGauss对于生僻字的存储和显示：㼆 㱔 䶮 𬎆(王莹)'],
-    path: 'zh/blogs/gaiguoqiang/MogDB openGauss对于生僻字的存储和显示：㼆 㱔 䶮 𬎆(王莹)',
+    path: 'zh/blogs/gaiguoqiang/MogDB-openGauss对于生僻字的存储和显示',
   },
   {
     date: '2022-04-12',
@@ -3133,7 +3133,7 @@ export default [
     author: ['eygle'],
     title: '如何在 MogDB / openGauss 中存储注册商标( ® )字符',
     tags: ['如何在 MogDB / openGauss 中存储注册商标( ® )字符'],
-    path: 'zh/blogs/gaiguoqiang/如何在 MogDB openGauss 中存储注册商标( ® )字符',
+    path: 'zh/blogs/gaiguoqiang/如何在MogDB-openGauss中存储注册商标(®)字符',
   },
   {
     date: '2022-04-11',
