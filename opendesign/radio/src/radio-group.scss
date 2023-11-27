@@ -1,0 +1,7 @@
+.o-radio-group {
+  display: flex;
+  align-items: center;
+  .o-radio + .o-radio {
+    margin-left: 24px;
+  }
+}

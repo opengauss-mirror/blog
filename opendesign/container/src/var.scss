@@ -1,0 +1,17 @@
+.o-container {
+  // 背景颜色
+  --o-container-bg-color-level1: var(--o-color-fill1);
+  --o-container-bg-color-level2: var(--o-color-fill2);
+  --o-container-bg-color-level2_hover: var(--o-color-fill2_hover);
+  --o-container-bg-color-level3: var(--o-color-fill3);
+  --o-container-bg-color-level4: var(--o-color-fill4);
+  --o-container-bg-color-level5: var(--o-color-fill5);
+
+  // 阴影
+  --o-container-shadow-level1: var(--o-shadow-l1);
+  --o-container-shadow-level2: var(--o-shadow-l2);
+  --o-container-shadow-level2_hover: var(--o-shadow-l2_hover);
+  --o-container-shadow-level3: var(--o-shadow-l3);
+  --o-container-shadow-level4: var(--o-shadow-l4);
+  --o-container-shadow-level5: var(--o-shadow-l5);
+}

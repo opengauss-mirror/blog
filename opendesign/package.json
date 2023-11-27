@@ -1,0 +1,9 @@
+{
+  "name": "opendesign",
+  "version": "0.0.1",
+  "description": "opendesign components",
+  "main": "index.ts",
+  "dependencies": {
+    "vue": "^3.2.33"
+  }
+}

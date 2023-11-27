@@ -19,18 +19,21 @@ const resolveDate = (date: any) => {
     <h2 class="page-title">{{ frontmatter.title }}</h2>
     <div v-if="frontmatter.author" class="info">
       <template v-if="Array.isArray(frontmatter.author)">
-        <span v-for="item in frontmatter.author" :key="item" class="author">
-          {{ item }}
+        <span v-for="item in frontmatter.author" :key="item" class="author"
+          >{{ item }}
         </span>
       </template>
       <span v-else class="author">{{ frontmatter.author }} </span>
-      <span v-if="frontmatter.date" class="date">
-        {{ resolveDate(frontmatter.date) }}
+      <span v-if="frontmatter.date" class="date"
+        >{{ resolveDate(frontmatter.date) }}
       </span>
-      <template v-if="frontmatter.tags">
-        <span v-for="item in frontmatter.tags" :key="item" class="">
-          {{ item }}
-        </span>
+      <template v-if="Array.isArray(frontmatter.tags)">
+        <OTag v-for="item in frontmatter.tags" :key="item" size="small">{{
+          item
+        }}</OTag>
+      </template>
+      <template v-else>
+        <OTag size="small">{{ frontmatter.tags }}</OTag>
       </template>
     </div>
   </div>
@@ -42,8 +45,8 @@ const resolveDate = (date: any) => {
   border-bottom: 1px solid var(--o-color-border2);
   padding-bottom: 24px;
   .page-title {
-    font-size: 36px;
-    line-height: 48px;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
     margin: 0;
     font-weight: 500;
   }
@@ -86,8 +89,8 @@ const resolveDate = (date: any) => {
     margin-bottom: 16px;
     padding-bottom: 16px;
     .page-title {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height-h7);
     }
   }
 }

@@ -9,7 +9,7 @@ const i18n: { [key: string]: any } = {
   },
   en: {
     common: common.en,
-  }
+  },
 };
 
 export function useI18n() {

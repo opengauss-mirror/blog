@@ -1,0 +1,51 @@
+.o-tag {
+  // 文字颜色
+  --o-tag-font-color: var(--o-color-text4);
+  --o-tag-font-color-primary: var(--o-color-brand1);
+  --o-tag-font-color-secondary: var(--o-color-neutral4);
+  // 文字颜色 hover态，注：只有类型为outline的按钮hover时有文字颜色变化
+  --o-tag-font-color_hover: var(--o-color-brand2);
+  // 文字颜色 avtive态，注：只有类型为outline的按钮active时有文字颜色变化
+  --o-tag-font-color_active: var(--o-color-brand3);
+  --o-tag-font-color1: var(--o-color-text4);
+
+  // 背景颜色
+  --o-tag-bg-color: var(--o-color-transparent);
+  --o-tag-bg-color-primary: var(--o-color-brand1);
+  --o-tag-bg-color-secondary: var(--o-color-secondary);
+  --o-tag-bg-color-text: var(--o-color-transparent);
+  --o-tag-bg-color-disabled: var(--o-color-bg-secondary);
+
+  // 背景颜色 hover态
+  --o-tag-bg-color_hover: var(--o-color-transparent);
+  --o-tag-bg-color-primary_hover: var(--o-color-brand2);
+
+  // 背景颜色 active态
+  --o-tag-bg-color_active: var(--o-color-transparent);
+  --o-tag-bg-color-primary_active: var(--o-color-brand3);
+
+  // border
+  --o-tag-border: 1px solid var(--o-color-border1);
+  --o-tag-border-primary: 1px solid var(--o-color-brand1);
+  --o-tag-border-secondary: 1px solid var(--o-color-transparent);
+  --o-tag-border-text: 1px solid var(--o-color-transparent);
+  // border hover态
+  --o-tag-border_hover: 1px solid var(--o-color-brand2);
+  --o-tag-border-primary_hover: 1px solid var(--o-color-brand2);
+
+  // font-size
+  --o-tag-font-size: var(--o-font-size-text);
+  --o-tag-small-font-size: var(--o-font-size-tip);
+
+  // line-height
+  --o-tag-line-height: var(--o-line-height-text);
+  --o-tag-small-line-height: var(--o-line-height-tip);
+
+  // padding
+  --o-tag-padding: 3px 12px;
+  --o-tag-small-padding: 0 8px;
+  --o-tag-secondary-padding: 2px 4px;
+
+  // 特殊背景
+  --o-tag-bg-color-secondary: linear-gradient(225deg, #feb32a 0%, #f6d365 100%);
+}

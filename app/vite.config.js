@@ -6,10 +6,7 @@ import Icons from 'unplugin-icons/vite';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 
 export default defineConfig({
-  build: {
-    outDir: path.resolve(__dirname, '../dist'),
-    cssCodeSplit: true,
-  },
+  build: {},
   publicDir: path.resolve(__dirname, './.vitepress/public'),
   resolve: {
     alias: {
@@ -34,5 +31,4 @@ export default defineConfig({
       },
     }),
   ],
-  server: {},
 });

@@ -1,0 +1,90 @@
+.o-button {
+  // 文字颜色
+  --o-button-font-color: var(--o-color-brand1);
+  --o-button-font-color-primary: var(--o-color-text2);
+  --o-button-font-color-secondary: var(--o-color-text1);
+  --o-button-font-color-text: var(--o-color-text1);
+  // 文字颜色 hover态，注：只有类型为outline的按钮hover时有文字颜色变化
+  --o-button-font-color_hover: var(--o-color-brand2);
+  // 文字颜色 avtive态，注：只有类型为outline的按钮active时有文字颜色变化
+  --o-button-font-color_active: var(--o-color-brand3);
+  // 文字颜色 disabled态
+  --o-button-font-color_disabled: var(--o-color-brand5);
+  --o-button-font-color-primary_disabled: var(--o-color-text2);
+  --o-button-font-color-secondary_disabled: var(--o-color-text1);
+  --o-button-font-color-text_disabled: var(--o-color-text5);
+
+  // 背景颜色
+  --o-button-bg-color: var(--o-color-transparent);
+  --o-button-bg-color-primary: var(--o-color-brand1);
+  --o-button-bg-color-secondary: var(--o-color-secondary);
+  --o-button-bg-color-text: var(--o-color-transparent);
+  // 背景颜色 hover态
+  --o-button-bg-color_hover: var(--o-color-transparent);
+  --o-button-bg-color-primary_hover: var(--o-color-brand2);
+  --o-button-bg-color-secondary_hover: var(--o-color-secondary_hover);
+  --o-button-bg-color-text_hover: var(--o-color-secondary_hover);
+  // 背景颜色 active态
+  --o-button-bg-color_active: var(--o-color-transparent);
+  --o-button-bg-color-primary_active: var(--o-color-brand3);
+  --o-button-bg-color-secondary_active: var(--o-color-secondary_active);
+  --o-button-bg-color-text_active: var(--o-color-secondary_active);
+  // 背景颜色 disabled态
+  --o-button-bg-color_disabled: var(--o-color-transparent);
+  --o-button-bg-color-primary_disabled: var(--o-color-brand5);
+  --o-button-bg-color-secondary_disabled: var(--o-color-secondary_disabled);
+  --o-button-bg-color-text_disabled: var(--o-color-secondary_disabled);
+
+  // border
+  --o-button-border: 1px solid var(--o-color-brand1);
+  --o-button-border-primary: 1px solid var(--o-color-brand1);
+  --o-button-border-secondary: 1px solid var(--o-color-secondary);
+  --o-button-border-text: 1px solid var(--o-color-transparent);
+  // border hover态
+  --o-button-border_hover: 1px solid var(--o-color-brand2);
+  --o-button-border-primary_hover: 1px solid var(--o-color-brand2);
+  --o-button-border-secondary_hover: 1px solid var(--o-color-secondary_hover);
+  --o-button-border-text_hover: 1px solid var(--o-color-secondary_hover);
+  // border active态
+  --o-button-border_active: 1px solid var(--o-color-brand3);
+  --o-button-border-primary_active: 1px solid var(--o-color-brand3);
+  --o-button-border-secondary_active: 1px solid var(--o-color-secondary_active);
+  --o-button-border-text_active: 1px solid var(--o-color-secondary_active);
+  // border disabled态
+  --o-button-border_disabled: 1px solid var(--o-color-brand5);
+  --o-button-border-primary_disabled: 1px solid var(--o-color-brand5);
+  --o-button-border-secondary_disabled: 1px solid
+    var(--o-color-secondary_disabled);
+  --o-button-border-text_disabled: 1px solid var(--o-color-transparent);
+
+  // font-size
+  --o-button-font-size: var(--o-font-size-h8);
+  --o-button-font-size-small: var(--o-font-size-text);
+  --o-button-font-size-mini: var(--o-font-size-tip);
+
+  // line-height
+  --o-button-line-height: var(--o-line-height-h8);
+  --o-button-line-height-small: var(--o-line-height-text);
+  --o-button-line-height-mini: var(--o-line-height-tip);
+
+  // padding
+  --o-button-padding: 11px 28px;
+  --o-button-padding-small: 9px 28px;
+  --o-button-padding-mini: 6px 16px;
+
+  // icon margin
+  --o-button-icon-margin: 8px;
+  --o-button-icon-margin-small: 8px;
+  --o-button-icon-margin-mini: 4px;
+  // icon font-size
+  --o-button-icon-font-size: var(--o-font-size-h5);
+  --o-button-icon-font-size-small: var(--o-font-size-h8);
+  --o-button-icon-font-size-mini: var(--o-font-size-tip);
+  // icon padding
+  --o-button-icon-paddding: 20px;
+  --o-button-icon-paddding-small: 14px;
+  --o-button-icon-paddding-mini: 6x;
+
+  // animation
+  -o-button-transition: color 0.2s, background-color 0.3s, border 0.3s;
+}

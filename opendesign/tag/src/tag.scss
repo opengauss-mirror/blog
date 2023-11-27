@@ -1,0 +1,112 @@
+@import './var.scss';
+
+.o-tag {
+  padding: var(--o-tag-padding);
+  font-size: var(--o-tag-font-size);
+  line-height: var(--o-tag-line-height);
+  color: var(--o-tag-font-color);
+  border: var(--o-tag-border);
+  outline: none;
+  user-select: none;
+  cursor: default;
+  display: inline-block;
+
+  &:active {
+    @media screen and (min-width: 1100px) {
+      color: var(--o-tag-font-color_active);
+      border: var(--o-tag-font-color_active);
+    }
+  }
+
+  &.o-tag-type-primary {
+    color: var(--o-tag-font-color-primary);
+    border: var(--o-tag-border-primary);
+    &:hover {
+      @media screen and (min-width: 1100px) {
+        color: var(--o-color-brand2);
+        border: var(--o-tag-border-primary_hover);
+      }
+    }
+    &.o-tag-checked {
+      position: relative;
+      .checked-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        &::after {
+          border: 8px solid transparent;
+          border-right: 8px solid var(--o-color-brand1);
+          border-bottom: 8px solid var(--o-color-brand1);
+          content: '';
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          bottom: -1px;
+          right: -1px;
+          display: block;
+          z-index: 1;
+        }
+        svg {
+          width: 9px;
+          height: 9px;
+          color: #fff;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+        }
+      }
+    }
+  }
+  &.o-tag-checkable {
+    cursor: pointer;
+  }
+  &.o-tag-type-disabled {
+    color: var(--o-tag-font-color1);
+    border: var(--o-tag-border-secondary);
+    line-height: var(--o-tag-small-line-height);
+    padding: var(--o-tag-secondary-padding);
+    background: var(--o-tag-bg-color-disabled);
+    @media screen and (max-width: 767px) {
+      font-size: var(--o-tag-small-font-size);
+    }
+  }
+  &.o-tag-type-secondary {
+    color: var(--o-tag-font-color-secondary);
+    border: var(--o-tag-border-secondary);
+    line-height: var(--o-tag-small-line-height);
+    padding: var(--o-tag-secondary-padding);
+    background: var(--o-tag-bg-color-secondary);
+    @media screen and (max-width: 767px) {
+      font-size: var(--o-tag-small-font-size);
+    }
+  }
+
+  &.o-tag-type-text {
+    color: var(--o-tag-font-color);
+    border: var(--o-tag-border-text);
+    background: none;
+    &:hover,
+    &:active {
+      @media screen and (min-width: 1100px) {
+        color: var(--o-tag-font-color_hover);
+      }
+    }
+  }
+  &.o-tag-size-small {
+    padding: var(--o-tag-small-padding);
+    font-size: var(--o-tag-small-font-size);
+    line-height: var(--o-tag-small-line-height);
+
+    &:hover,
+    &:active {
+      @media screen and (min-width: 1100px) {
+        color: var(--o-tag-font-color);
+        border: var(--o-tag-border);
+      }
+    }
+  }
+}
