@@ -1,12 +1,14 @@
-+++
-title = "如何使用Flink连接openGauss数据库（flink-cdc-connector）"
-date = "2023-11-20"
-tags = ["openGauss社区开发入门","flink","cdc"]
-archives = "2023-11"
-author = "wangyuxuan"
-summary = "如何使用Flink连接openGauss数据库（flink-cdc-connector）"
-times = "15:30"
-+++
+---
+title: '如何使用Flink连接openGauss数据库（flink-cdc-connector）'
+date: '2023-11-20'
+category: 'blog'
+tags: ['openGauss社区开发入门','flink','cdc']
+archives: '2023-11'
+author: 'wangyuxuan'
+summary: '如何使用Flink连接openGauss数据库（flink-cdc-connector）'
+img: ''
+times: '15:30'
+---
 
 ## 什么是flink-cdc-connector
 
