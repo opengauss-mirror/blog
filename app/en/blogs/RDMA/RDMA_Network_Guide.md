@@ -119,7 +119,7 @@ Command output:
     ofed_info -s
     ```
 
-    If the queried driver version is the same as the version installed in  [Installing the MLNX Driver](installing-the-mlnx-driver.md), the driver version is correct.
+    If the queried driver version is the same as the version installed in  [Installing the MLNX Driver](#EN-US_TOPIC_0000001745738900), the driver version is correct.
 
 3.  Load the MST tool.
 
