@@ -132,13 +132,13 @@ The  **weak-modules**  script checks OS compatibility as follows:
 5.  Check whether all symbols in  **S-target**  can be matched in  **S-all**.
 
 -   If all symbols in  **S-target**  can be found in  **S-all**, the .ko file is determined as compatible. In this case, the symbolic link of the .ko file is created in  **/lib/modules/$\(uname -r\)/weak-updates/**.
--   If any symbol in  **S-target**  cannot be found in  **S-all**, the .ko file is considered incompatible and an error is reported. For details about error handling, see  [Solution](solution.md).
+-   If any symbol in  **S-target**  cannot be found in  **S-all**, the .ko file is considered incompatible and an error is reported. For details about error handling, see  [Solution](#EN-US_TOPIC_0000001745579444).
 
 # Precautions and Recommendations<a name="EN-US_TOPIC_0000001792658541"></a>
 
 Before installing the RPM packages, check whether the minor kernel version used for urma compilation matches the minor version of the OS. If they match, install the RPM packages.
 
-If not, refer to  [Solution](solution.md).
+If not, refer to  [Solution](#EN-US_TOPIC_0000001745579444).
 
 # Solution<a name="EN-US_TOPIC_0000001745579444"></a>
 
