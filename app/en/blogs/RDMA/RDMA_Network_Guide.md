@@ -352,7 +352,6 @@ Command output:
 
 **Table  1**  Common IB commands
 
-<a name="table1240142904111"></a>
 <table><thead align="left"><tr id="row44011295414"><th class="cellrowborder" valign="top" width="43.669999999999995%" id="mcps1.2.3.1.1"><p id="p1240142914417"><a name="p1240142914417"></a><a name="p1240142914417"></a>Command</p>
 </th>
 <th class="cellrowborder" valign="top" width="56.330000000000005%" id="mcps1.2.3.1.2"><p id="p18401132904110"><a name="p18401132904110"></a><a name="p18401132904110"></a>Description</p>
