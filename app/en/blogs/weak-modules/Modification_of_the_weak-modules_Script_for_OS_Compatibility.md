@@ -140,7 +140,7 @@ Before installing the RPM packages, check whether the minor kernel version used 
 
 If not, refer to  [Solution](#Solution).
 
-# Solution<a name="EN-US_TOPIC_0000001745579444"></a>
+# Solution
 
 Add the .ko files that have been installed using RPM to  **S-all**  to determine symbol dependency.
 
