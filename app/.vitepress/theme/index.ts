@@ -1,5 +1,4 @@
 import type { App } from 'vue';
-import { createPinia } from 'pinia';
 
 import '@/shared/styles/element-plus/index.scss';
 import '@/shared/styles/index.scss';
@@ -19,7 +18,6 @@ export default {
       // @ts-ignore
       global.window = {};
     }
-    app.use(createPinia());
 
     app.use(ElementPlus);
     app.use(OpenDesign);
