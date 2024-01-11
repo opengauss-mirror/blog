@@ -18,7 +18,6 @@
     "element-plus": "2.2.34",
     "lodash": "4.17.21",
     "opendesign": "./opendesign",
-    "pinia": "2.0.33",
     "vue": "3.2.47"
   },
   "devDependencies": {
