@@ -121,7 +121,7 @@ lspci |grep Mellanox
     ofed_info -s
     ```
 
-    回显驱动版本与安装MLNX驱动版本一致则版本无误。
+    回显驱动版本与[安装MLNX驱动](#安装mlnx驱动)版本一致则版本无误。
 
 3.  加载MST工具。
 
@@ -354,7 +354,6 @@ lspci |grep Mellanox
 
 **表 1**  常用IB命令
 
-<a name="table1240142904111"></a>
 <table><thead align="left"><tr id="row44011295414"><th class="cellrowborder" valign="top" width="43.669999999999995%" id="mcps1.2.3.1.1"><p id="p1240142914417"><a name="p1240142914417"></a><a name="p1240142914417"></a><strong id="b1132123717487"><a name="b1132123717487"></a><a name="b1132123717487"></a>命令</strong></p>
 </th>
 <th class="cellrowborder" valign="top" width="56.330000000000005%" id="mcps1.2.3.1.2"><p id="p18401132904110"><a name="p18401132904110"></a><a name="p18401132904110"></a><strong id="b6895439184812"><a name="b6895439184812"></a><a name="b6895439184812"></a>含义</strong></p>
