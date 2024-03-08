@@ -98,38 +98,38 @@ OpenJDK 64-Bit Server VM (Red_Hat-11.0.21.0.9-1.el7_9) (build 11.0.21+9-LTS, mix
 
 
 
-4. ### 下载datakit包并解压
+### 4.下载datakit包并解压
 
-   ~~~shell
-   [xq_1127@hostname datakit]$ ll
-   total 548472
-   -rw-r--r-- 1 root root 561633710 Nov 27 15:06 Datakit-5.1.0.tar.gz
-   [xq_1127@hostname datakit]$ tar -zxvf Datakit-5.1.0.tar.gz
-   [xq_1127@hostname datakit]$ ll
-   total 640704
-   -rw------- 1 xq_1027 xq_1027       939 Sep 28 14:17 application-temp.yml
-   -rw-r--r-- 1 root    root    561633710 Nov 27 15:06 Datakit-5.1.0.tar.gz
-   drwx------ 2 xq_1027 xq_1027      4096 Sep 28 14:21 doc
-   -rw------- 1 xq_1027 xq_1027  94426176 Sep 28 14:17 openGauss-datakit-5.1.0.jar
-   drwx------ 2 xq_1027 xq_1027      4096 Sep 28 14:21 visualtool-plugin
-   [xq_1127@hostname datakit]$ cd doc/
-   [xq_1127@hostname doc]$ ll
-   total 224
-   -rw------- 1 xq_1027 xq_1027  24930 Sep 28 14:20 alert-monitor-README.md
-   -rw------- 1 xq_1027 xq_1027   6746 Sep 28 14:21 base-ops-README.md
-   -rw------- 1 xq_1027 xq_1027   1142 Sep 28 14:20 datakit-demo-plugin-README.md
-   -rw------- 1 xq_1027 xq_1027   7748 Sep 28 14:17 datakit-README.md
-   -rw------- 1 xq_1027 xq_1027   3752 Sep 28 14:20 data-migration-README.md
-   -rw------- 1 xq_1027 xq_1027 108473 Sep 28 14:20 data-studio-README.md
-   -rw------- 1 xq_1027 xq_1027     66 Sep 28 14:20 datasync-mysql-README.md
-   -rw------- 1 xq_1027 xq_1027  18249 Sep 28 14:21 observability-instance-README.md
-   -rw------- 1 xq_1027 xq_1027   8610 Sep 28 14:20 observability-log-search-README.md
-   -rw------- 1 xq_1027 xq_1027  16815 Sep 28 14:21 observability-sql-diagnosis-README.md
-   -rw------- 1 xq_1027 xq_1027   6474 Sep 28 14:18 openGauss-tools-monitor-README.md
-   
-   ~~~
+~~~shell
+[xq_1127@hostname datakit]$ ll
+total 548472
+-rw-r--r-- 1 root root 561633710 Nov 27 15:06 Datakit-5.1.0.tar.gz
+[xq_1127@hostname datakit]$ tar -zxvf Datakit-5.1.0.tar.gz
+[xq_1127@hostname datakit]$ ll
+total 640704
+-rw------- 1 xq_1027 xq_1027       939 Sep 28 14:17 application-temp.yml
+-rw-r--r-- 1 root    root    561633710 Nov 27 15:06 Datakit-5.1.0.tar.gz
+drwx------ 2 xq_1027 xq_1027      4096 Sep 28 14:21 doc
+-rw------- 1 xq_1027 xq_1027  94426176 Sep 28 14:17 openGauss-datakit-5.1.0.jar
+drwx------ 2 xq_1027 xq_1027      4096 Sep 28 14:21 visualtool-plugin
+[xq_1127@hostname datakit]$ cd doc/
+[xq_1127@hostname doc]$ ll
+total 224
+-rw------- 1 xq_1027 xq_1027  24930 Sep 28 14:20 alert-monitor-README.md
+-rw------- 1 xq_1027 xq_1027   6746 Sep 28 14:21 base-ops-README.md
+-rw------- 1 xq_1027 xq_1027   1142 Sep 28 14:20 datakit-demo-plugin-README.md
+-rw------- 1 xq_1027 xq_1027   7748 Sep 28 14:17 datakit-README.md
+-rw------- 1 xq_1027 xq_1027   3752 Sep 28 14:20 data-migration-README.md
+-rw------- 1 xq_1027 xq_1027 108473 Sep 28 14:20 data-studio-README.md
+-rw------- 1 xq_1027 xq_1027     66 Sep 28 14:20 datasync-mysql-README.md
+-rw------- 1 xq_1027 xq_1027  18249 Sep 28 14:21 observability-instance-README.md
+-rw------- 1 xq_1027 xq_1027   8610 Sep 28 14:20 observability-log-search-README.md
+-rw------- 1 xq_1027 xq_1027  16815 Sep 28 14:21 observability-sql-diagnosis-README.md
+-rw------- 1 xq_1027 xq_1027   6474 Sep 28 14:18 openGauss-tools-monitor-README.md
 
-   
+~~~
+
+
 
 ### 5.创建相关配置文件
 
