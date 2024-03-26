@@ -2,11 +2,11 @@
 
 title = "GaussDB数据库参数调优建议"
 
-date = "2024-02-28"
+date = "2024-03-26"
 
 tags = ["openGauss"]
 
-archives = "2024-02"
+archives = "2024-03"
 
 author = "liwt"
 
