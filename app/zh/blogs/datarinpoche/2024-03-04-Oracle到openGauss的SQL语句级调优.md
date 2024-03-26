@@ -1,14 +1,18 @@
+```
 ---
 title: "Oracle到openGauss的SQL语句级调优"
 date: '2024-03-24'
 category: 'blog'
-tags: ['openGauss']
+tags: ['SQL调优']
 archives: '2024-03'
 author:'DataRinpoche'
-summary: "Oracle迁移至openGauss后，SQL语句级常见调优点."
+summary: "Oracle到openGauss的SQL语句级调优"
 ---
+```
 
+针对Oracle到openGauss迁移后的性能差异，由于SQL优化引擎的变动，我们往往需要进行语句级的SQL调优，以下我个人在实际项目中总结的一些常见的优化点。
 
+## 获取执行计划
 
 SQL调优的主要途径为根据执行计划进行SQL调优，在openGauss中可以通过explain sql获取指定SQL的执行计划
 
@@ -32,19 +36,21 @@ https://www.github.com/dalibo/pev2/releases/latest/download/index.html
 
 使用浏览器打开该文件，将上部获取到的执行计划文本粘贴至Plan输入框内，点击Submit,可直接生成可视化执行计划树
 
-![image-20231121171525051](C:\Users\for_l\AppData\Roaming\Typora\typora-user-images\image-20231121171525051.png)
+
+
+<img src = "input_explan.png">
 
 
 
-![image-20231121171711798](C:\Users\for_l\AppData\Roaming\Typora\typora-user-images\image-20231121171711798.png)
+<img src = "explan_tree.png">
 
 对于慢SQL，我们首要关注节点耗时，点击左侧time按钮，各节点耗时将通过条形图显示，我们选取耗时最高的sql 节点，进行分析及优化
 
 如上样例执行计划中，耗时最高的SQL 节点如下
 
+<img src = "explan_node.png">
 
 
-![image-20231121171929331](C:\Users\for_l\AppData\Roaming\Typora\typora-user-images\image-20231121171929331.png)
 
 可以发现该节点下，存在大量seq scan即顺序全表扫描，如果为实际SQL，我们可以在相应表上添加索引以提升性能
 
