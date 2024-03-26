@@ -21,6 +21,7 @@ summary = "本文提供openGauss使用BenchmarkSQL进行性能测试的方法和
 BenchmarkSQL，一个JDBC基准测试工具，内嵌了TPC-C测试脚本，支持很多数据库，如PostgreSQL、Oracle和Mysql等。
 
 TPC-C是专门针对联机交易处理系统（OLTP系统）的规范，一般情况下我们也把这类系统称为业务处理系统。几乎所有在OLTP市场提供软硬平台的国外主流厂商都发布了相应的TPC-C测试结果，随着计算机技术的不断发展，这些测试结果也在不断刷新。
+
 二、TPC-C 标准测试概述
 1.模拟 5 种事务处理
 1）新订单（New-Order）：事务内容：对于任意一个客户端,从固定的仓库随机选取 5-15 件商品,创建新订单.其中 1%的订单要由假想的用户操作失败而回滚。（主要特点：中量级、读写频繁、要求响应快）
@@ -39,6 +40,7 @@ TPC-C测试的结果主要有两个指标，即流量指标（Throughput,简称t
 做TPC-C测试的目的主要有两点：
 1）贴近生产环境进行实际操作（TPC-C可以提供类似这样的环境）。
 2）通过TPC-C测试结果可以清晰的了解数据库的性能等信息。
+
 三、环境介绍
 1.服务器信息
 主机IP	配置	操作系统	描述
@@ -443,6 +445,7 @@ cd  /root/soft/benchmarksql-5.0/run
 
 
 重跑：./runDatabaseDestroy.sh props.opengauss  //清理数据。或将5.3中的备份恢复。
+
 七、生成报告查看测试结果
 1. 生成报告
 测试结束后，run目录下会生成一个新目录：my_result_%tY-%tm-%td_%tH%tM%tS。使用 generateReport.sh脚本创建具有图形的 HTML 文件：
@@ -460,3 +463,4 @@ Generating my_result_2024-02-28_190456//report.html ... OK
 随后会在my_result_* 目录下生成一个html文件和数张图片，下载到本地，在浏览器中打开report.html，可以看到tpmc的曲线和系统硬件监控信息
  
 2. html报告查看
+1. - 这里是列表文本
