@@ -1,5 +1,4 @@
 ```
----
 title: "Oracle到openGauss的SQL语句级调优"
 date: '2024-03-24'
 category: 'blog'
@@ -7,7 +6,6 @@ tags: ['SQL调优']
 archives: '2024-03'
 author:'DataRinpoche'
 summary: "Oracle到openGauss的SQL语句级调优"
----
 ```
 
 针对Oracle到openGauss迁移后的性能差异，由于SQL优化引擎的变动，我们往往需要进行语句级的SQL调优，以下我个人在实际项目中总结的一些常见的优化点。
