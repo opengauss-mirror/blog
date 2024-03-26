@@ -1,11 +1,11 @@
 ---
-title: "Oracle到openGauss的SQL语句级调优"
+title: 'Oracle到openGauss的SQL语句级调优'
 date: '2024-03-24'
 category: 'blog'
 tags: ['SQL调优']
 archives: '2024-03'
 author:'DataRinpoche'
-summary: "Oracle到openGauss的SQL语句级调优"
+summary: 'Oracle到openGauss的SQL语句级调优'
 ---
 
 
