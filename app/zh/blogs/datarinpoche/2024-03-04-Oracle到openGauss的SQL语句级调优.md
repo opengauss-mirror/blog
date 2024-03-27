@@ -38,17 +38,17 @@ https://www.github.com/dalibo/pev2/releases/latest/download/index.html
 
 
 
-<img src = "input_explan.png">
+<img src = "./img/input_explan.png">
 
 
 
-<img src = "explan_tree.png">
+<img src = "./img/explan_tree.png">
 
 对于慢SQL，我们首要关注节点耗时，点击左侧time按钮，各节点耗时将通过条形图显示，我们选取耗时最高的sql 节点，进行分析及优化
 
 如上样例执行计划中，耗时最高的SQL 节点如下
 
-<img src = "explan_node.png">
+<img src = "./img/explan_node.png">
 
 
 
