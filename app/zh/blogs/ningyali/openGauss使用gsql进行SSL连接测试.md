@@ -68,5 +68,3 @@ export PGSSLROOTCERT='/home/omm/cacert.pem'
 ## 9.gsql连接
 
 gsql -d tpccdb -U u_ssl -W "**********" -h 数据库主机ip
-
-![image-20240529095405779](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240529095405779.png)
