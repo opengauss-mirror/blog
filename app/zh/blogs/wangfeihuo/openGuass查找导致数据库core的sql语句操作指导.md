@@ -1,4 +1,4 @@
-```
+---
 title: 'openGuass查找导致数据库core的sql语句操作指导'
 date: '2024-04-11'
 category: 'blog'
@@ -8,9 +8,7 @@ author: 'wangfeihuo'
 summary: 'openGuass查找导致数据库core的sql语句操作指导'
 img: '/zh/blogs/wangfeihuo/title/opengauss.png'
 times: '9:30'
-```
-
-
+---
 
 #### 一.  前言
 
