@@ -11,16 +11,16 @@ summary: "如何使用dbe_perf.track_memory_context以及pv_session_memctx_detai
 ​     近日，我们线上系统遇到动态内存高的报警（通过查询视图gs_total_memory_detail 获取的监控数值），经过定位，发现是绑定变量在不应该使用的场景使用了，导致会话线程在缓存执行计划上消耗了大量的内存，也就是CachedPlan 内存上下文占用内存多（通过查询gs_session_memory_detail可以获得某个会话线程各个上下文占用的内存)。虽然该问题已经定位，但还是想对opengauss的内存知识以及问题定位有更多的了解，然后查找一些资料以及学习了一小段代码，在这里做一下笔记。
 
   通过查询下面的视图，获取一个会话的内存消耗情况
-
+```
 xcytest=# select * from  gs_session_memory_detail where sessid like '%140445449905920%' and contextname like 'CachedPlan';
            sessid           | sesstype | contextname | level |          parent           | totalsize | freesize | usedsize 
 ----------------------------+----------+-------------+-------+---------------------------+-----------+----------+----------
  1716794872.140445449905920 | postgres | CachedPlan  |     2 | SessionCacheMemoryContext |     15360 |     5760 |     9600
  1716794872.140445449905920 | postgres | CachedPlan  |     2 | SessionCacheMemoryContext |     15360 |     5760 |     9600
  1716794872.140445449905920 | postgres | CachedPlan  |     2 | SessionCacheMemoryContext |      7168 |      888 |     6280
-
+```
 ​     除上述说到的两个视图外，还可以查询到更详细的内存分配信息，就是利用opengauss提供的context track 函数。 例如，想知道CachedPlan内存上下文在哪里被消耗的，可以使用select * from dbe_perf.track_memory_context('CachedPlan'); 命令进行查看， 执行完命令后，再查询dbe_perf.track_memory_context_detail 视图，就能看到详细信息，样式如下：
-
+```
 xcytest=#  select * from  dbe_perf.track_memory_context_detail();
  context_name |     file      | line | size 
 --------------+---------------+------+------
@@ -31,22 +31,24 @@ xcytest=#  select * from  dbe_perf.track_memory_context_detail();
  CachedPlan   | plancache.cpp | 1301 |   88
  CachedPlan   | bitmapset.cpp |   94 |    8
  CachedPlan   | copyfuncs.cpp | 6371 |   32
-
+```
 当不需要track详细信息时，可以使用下面的语句进行关闭，关闭后再查询上述视图，视图将没有数据。
+```
 select * from  dbe_perf.track_memory_context('');
-
+```
 除上述方法可以track内存上下文外，还有pv_session_memctx_detail 函数，它的用法如下：
 
 打印一个会话的内存使用情况
+```
 xcytest=# select * from pv_session_memctx_detail(140445646583552,'');
 -[ RECORD 1 ]------------+--
 pv_session_memctx_detail | t
-
+```
 打印某个会话的某个内存上下文的使用情况
 select pv_session_memctx_detail(140444974577408,'OptimizerTopMemoryContext');
 
 执行上述命令后，会在数据库的pg_log目录下生成一个memdump目录，生成如下文件
-
+```
 [omm@nd1 memdump]$ ls -lrt
 total 36
 -rw-------. 1 omm omm 6625 May 27 16:06 140445449905920_1716797214.log
@@ -54,9 +56,9 @@ total 36
 -rw-------. 1 omm omm 6256 May 27 16:18 140445646583552_1716797900.log
 -rw-------. 1 omm omm   27 May 27 16:36 SessionSelfMemoryContext_140444974577408_1716798975.log
 -rw-------. 1 omm omm  225 May 27 16:37 OptimizerTopMemoryContext_140444974577408_1716799037.log
-
+```
 文件内容的样式如下：
-
+```
 [omm@nd1 memdump]$ cat  OptimizerTopMemoryContext_140444974577408_1716799191.log
 variable.cpp:801, 32, 20
 variable.cpp:459, 32, 24
@@ -67,7 +69,7 @@ variable.cpp:600, 32, 20
 variable.cpp:205, 32, 24
 variable.cpp:865, 32, 24
 variable.cpp:161, 64, 48
-
+```
 对文件里面的内容的含义非常模糊，没有找到对其解析的相关资料，于是自行解析。通过从函数pv_session_memctx_detail入手，找到函数DumpMemoryCtxOnBackend， 该函数会给master线程发送PROCSIG_MEMORYCONTEXT_DUMP 信号，master线程收到信号后，调用DumpMemoryContext函数，然后调用recursiveMemoryContextForDump 函数，最后调用dumpAllocBlock函数，该函数的代码如下：
 
 <img src = "./2024-06-19-opengauss内存分配跟踪-01.png">
