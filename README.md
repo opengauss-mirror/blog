@@ -20,13 +20,13 @@ openGauss 是用 markdown 格式写博客的。
 
 ```
 ---
-title: "Sample Post"
+title: 'Sample Post'
 date: '2020-03-03'
 category: 'blog'
 tags: ['openGauss']
 archives: '2020-03'
-author:'openGaussBlog Maintainer'
-summary: "Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more."
+author: 'openGaussBlog Maintainer'
+summary: 'Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more.'
 ---
 
 Here you can edit your blog.
