@@ -1,11 +1,11 @@
 ---
-title: "opengauss内存分配跟踪"
+title: 'opengauss内存分配跟踪'
 date: '2024-06-19'
 category: 'blog'
 tags: ['openGauss']
 archives: '2024-06'
-author:'xuchunyang'
-summary: "如何使用dbe_perf.track_memory_context以及pv_session_memctx_detail追踪内存分配"
+author: 'xuchunyang'
+summary: '如何使用dbe_perf.track_memory_context以及pv_session_memctx_detail追踪内存分配'
 ---
 
 ​     近日，我们线上系统遇到动态内存高的报警（通过查询视图gs_total_memory_detail 获取的监控数值），经过定位，发现是绑定变量在不应该使用的场景使用了，导致会话线程在缓存执行计划上消耗了大量的内存，也就是CachedPlan 内存上下文占用内存多（通过查询gs_session_memory_detail可以获得某个会话线程各个上下文占用的内存)。虽然该问题已经定位，但还是想对opengauss的内存知识以及问题定位有更多的了解，然后查找一些资料以及学习了一小段代码，在这里做一下笔记。
