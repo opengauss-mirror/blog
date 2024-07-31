@@ -16,7 +16,7 @@ summary: '【第七届openGauss技术文章征集】一站式安装openGauss 6.0
 
 从事运维管理工作多年，目前就职于某科技有限公司，熟悉运维自动化、OceanBase部署运维、MySQL 运维以及各种云平台技术和产品。并已获得OceanBase认证OBCA、OBCP 证书、OpenGauss社区认证结业证书、崖山DBCA证书、亚信AntDBCA证书、翰高HDCA认证、GBase 8a|GBase 8c 证书。OceanBase & 墨天轮第二、三、四届技术征文大赛，多次获得 一、二、三 等奖，在openGauss 第五届、第六届技术征文大赛中多次获奖。时常在墨天轮发布原创技术文章，并多次被首页推荐。
 
-![image](image/openGauss%202/pic1.png)
+![image](image/openGauss2/pic1.png)
 
 
 # 前言
@@ -74,13 +74,13 @@ openGauss开源社区上提供了安装包的获取方式。
 https://opengauss.org/zh/download/
 ```
 
-![image](image/openGauss%202/pic2.png)
+![image](image/openGauss2/pic2.png)
 
 
 **b.单击“立即下载”。**
 
 
-![image](image/openGauss%202/pic3.png)
+![image](image/openGauss2/pic3.png)
 
 
 
@@ -94,7 +94,7 @@ openGauss-6.0.0-RC1-CentOS-64bit-all.tar.gz  openGauss-6.0.0-RC1-CentOS-64bit.ta
 ```
 
 
-![image](image/openGauss%202/pic4.png)
+![image](image/openGauss2/pic4.png)
 
 
 ## 3、解压安装包
@@ -117,7 +117,7 @@ upgrade_sql.sha256
 [root@worker1 soft]# 
 ```
 
-![image](image/openGauss%202/pic5.png)
+![image](image/openGauss2/pic5.png)
 
 
 ## 4、执行ls命令，显示类似如下信息：
@@ -142,7 +142,7 @@ total 293248
 ```
 
 
-![image](image/openGauss%202/pic6.png)
+![image](image/openGauss2/pic6.png)
 
 
 继续解压OM安装包，会在/opt/software/openGauss路径下自动生成script子目录，并且在script目录下生成gs_preinstall等各种OM工具脚本。
@@ -155,7 +155,7 @@ tar -zxvf openGauss-x.x.x-openEuler-64bit-om.tar.gz
 ```
 
 
-![image](image/openGauss%202/pic7.png)
+![image](image/openGauss2/pic7.png)
 
 
 ## 5、修改安装包目录权限
@@ -168,7 +168,7 @@ tar -zxvf openGauss-x.x.x-openEuler-64bit-om.tar.gz
 
 
 
-![image](image/openGauss%202/pic8.png)
+![image](image/openGauss2/pic8.png)
 
 
 # 三、准备软硬件安装环境
@@ -262,7 +262,7 @@ Python 2.7.5
 [root@worker1 soft]# 
 ```
 
-![image](image/openGauss%202/pic9.png)
+![image](image/openGauss2/pic9.png)
 
 
 CentOS 7一般默认安装的是Python 2.x版本。
@@ -277,14 +277,14 @@ CentOS 7一般默认安装的是Python 2.x版本。
 [root@worker1 soft]# yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel gcc libffi-devel
 ```
 
-![image](image/openGauss%202/pic10.png)
+![image](image/openGauss2/pic10.png)
 
 5.3. 下载Python 3源码包
 
 访问Python官方网站（https://www.python.org/downloads/source/）下载所需的Python 3版本的源码包，如Python 3.11.x。
 
 
-![image](image/openGauss%202/pic11.png)
+![image](image/openGauss2/pic11.png)
 
 
 5.4. 上传或下载源码包到CentOS 7
@@ -302,7 +302,7 @@ CentOS 7一般默认安装的是Python 2.x版本。
 ```
 
 
-![image](image/openGauss%202/pic12.png)
+![image](image/openGauss2/pic12.png)
 
 
 5.6. 编译和安装Python 3
@@ -315,9 +315,9 @@ CentOS 7一般默认安装的是Python 2.x版本。
 [root@worker1 Python-3.10.14]# ./configure --prefix=/usr/local/python3 --enable-shared --enable-optimizations 
  ```
 
-![image](image/openGauss%202/pic13.png)
+![image](image/openGauss2/pic13.png)
 
-![image](image/openGauss%202/pic14.png)
+![image](image/openGauss2/pic14.png)
 
 
 ```
@@ -329,7 +329,7 @@ CentOS 7一般默认安装的是Python 2.x版本。
 
 
 
-![image](image/openGauss%202/pic15.png)
+![image](image/openGauss2/pic15.png)
 
 
 其中，–prefix参数指定了Python 3的安装目录，/usr/local/python3是一个常见的选择。–enable-shared选项确保Python 3以共享库的形式安装。–enable-optimizations是可选的，用于启用编译优化。
@@ -347,7 +347,7 @@ CentOS 7一般默认安装的是Python 2.x版本。
 [root@worker1 Python-3.10.14]# 
 ```
 
-![image](image/openGauss%202/pic16.png)
+![image](image/openGauss2/pic16.png)
 
 或者，对于bash shell，也可以将上述export语句添加到~/.bashrc文件中。
 
@@ -357,7 +357,7 @@ CentOS 7一般默认安装的是Python 2.x版本。
 安装完成后，使用以下命令验证Python 3是否安装成功：
 
 
-![image](image/openGauss%202/pic17.png)
+![image](image/openGauss2/pic17.png)
 
 ```
 [root@worker1 Python-3.10.14]# 
@@ -421,7 +421,7 @@ libnsl（openEuler+x86环境中）
 [root@worker1 soft]# 
 ```
 
-![image](image/openGauss%202/pic18.png)
+![image](image/openGauss2/pic18.png)
 
 
 建议规划用户用于运行和维护openGauss，例如omm。
@@ -441,7 +441,7 @@ passwd: all authentication tokens updated successfully.
 [root@worker1 soft]# 
 ```
 
-![image](image/openGauss%202/pic19.png)
+![image](image/openGauss2/pic19.png)
 
 
 在安装openGauss过程中运行“gs_preinstall”时，会创建与安装用户同名的数据库用户，即数据库用户omm。此用户具备数据库的最高操作权限，此用户初始密码由用户指定。
@@ -478,7 +478,7 @@ openGauss-6.0.0-RC1-CentOS-64bit-cm.sha256   openGauss-6.0.0-RC1-CentOS-64bit-om
 [root@worker1 soft]# tar -zxvf openGauss-6.0.0-RC1-CentOS-64bit-om.tar.gz 
 ```
 
-![image](image/openGauss%202/pic20.png)
+![image](image/openGauss2/pic20.png)
 
 如果使用中文界面来安装，需要检查当前本地字符集是否支持中文(如:zh_CN.UTF-8)
 
@@ -501,7 +501,7 @@ domain_utils  gs_checkperf  gs_expansion  gs_postuninstall  gs_ssh         gs_up
 [root@worker1 script]# ./gs_preinstall -U omm -G dbgroup --one-stop-install --sep-env-file=ENVFILE
 ```
 
-![image](image/openGauss%202/pic21.png)
+![image](image/openGauss2/pic21.png)
 
 
 其中–sep-env-file是环境分离时使用，如果不使用环境分离，可以去掉该参数。
@@ -523,7 +523,7 @@ Please enter 1/2 for selection, the default option is 1) Chinese:
 ```
 
 
-![image](image/openGauss%202/pic22.png)
+![image](image/openGauss2/pic22.png)
 
 
 如果系统显示值包含"zh_CN"，则为中文语言，导航栏会显示中文内容。否则，您可以执行如下命令修改语言设置为中文：
@@ -538,7 +538,7 @@ zh_CN.UTF-8
 [root@worker1 script]# 
 ```
 
-![image](image/openGauss%202/pic23.png)
+![image](image/openGauss2/pic23.png)
 
 
 请选择是英文还是中文导航一键式生成xml文件?
@@ -552,7 +552,7 @@ zh_CN.UTF-8
 请输入1/2进行选择,默认选项为1)中文:
 ```
 
-![image](image/openGauss%202/pic24.png)
+![image](image/openGauss2/pic24.png)
 
 
 请输入xml的路径和文件名(默认:./cluster.xml)
@@ -632,7 +632,7 @@ xml内容是:
 ```
 
 
-![image](image/openGauss%202/pic25.png)
+![image](image/openGauss2/pic25.png)
 
 ```
 请确认xml的内容是否正确,正确输入yes;如需修改xml内容请自行修改,然后输入yes确认yes
@@ -649,7 +649,7 @@ Are you sure you want to create the user[omm] (yes/no)? yes
 ```
 
 
-![image](image/openGauss%202/pic26.png)
+![image](image/openGauss2/pic26.png)
 
 
 # 六、执行安装
@@ -686,7 +686,7 @@ Checking cpu instructions.
 Successfully checked cpu instructions.
 ```
 
-![image](image/openGauss%202/pic27.png)
+![image](image/openGauss2/pic27.png)
 
 
 ## 2、检查健康状态
@@ -744,7 +744,7 @@ Total numbers:14. Abnormal numbers:0. Warning numbers:4.
 ```
 
 
-![image](image/openGauss%202/pic28.png)
+![image](image/openGauss2/pic28.png)
 
 omm用户需要拥有安装包所在目录及子目录的权限。
 
@@ -758,7 +758,7 @@ omm用户需要拥有安装包所在目录及子目录的权限。
 ```
 
 
-![image](image/openGauss%202/pic29.png)
+![image](image/openGauss2/pic29.png)
 
 
 说明：
@@ -808,7 +808,7 @@ en_SG.utf8
 en_US.utf8 
 ```
 
-![image](image/openGauss%202/pic30.png)
+![image](image/openGauss2/pic30.png)
 
 根据需要选择区域，如en_US.utf8，初始化数据库时加入–locale=en_US.utf8选项进行安装，示例如下：
 
@@ -865,7 +865,7 @@ end deploy..
 [omm@worker1 script]$ 
 ```
 
-![image](image/openGauss%202/pic31.png)
+![image](image/openGauss2/pic31.png)
 
 ## 6、安装验证
 
@@ -889,7 +889,7 @@ redistributing  : No
 
 
 
-![image](image/openGauss%202/pic32.png)
+![image](image/openGauss2/pic32.png)
 
 
 数据库安装完成后，默认生成名称为postgres的数据库。第一次连接数据库时可以连接到此数据库。
@@ -907,7 +907,7 @@ Type "help" for help.
 openGauss=# 
 ```
 
-![image](image/openGauss%202/pic33.png)
+![image](image/openGauss2/pic33.png)
 
 
 
