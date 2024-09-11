@@ -1,5 +1,5 @@
 ---
-title: 'openGauss UniqueSQLMappingLock 异常等待导致CPU使用率100%故障分析'
+title: 'openGauss-UniqueSQLMappingLock-异常等待导致CPU使用率百分百故障分析'
 
 date: '2024-05-13'
 
@@ -9,7 +9,7 @@ archives: '2024-05'
 category: 'blog'
 author: '毕思博'
 
-summary: '【openGauss技术文章征集】openGauss UniqueSQLMappingLock 异常等待导致CPU使用率100%故障分析'
+summary: '【openGauss技术文章征集】openGauss-UniqueSQLMappingLock-异常等待导致CPU使用率百分百故障分析'
 ---
 
 
