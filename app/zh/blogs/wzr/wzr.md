@@ -7,6 +7,7 @@ author: 'wangrururu'
 summary: 'openGauss社区开发入门'
 img: '/zh/blogs/wzr/title/title.jpg'
 times: '10:06'
+category: 'blog'
 ---
 
 ## 1.事务概念：

@@ -14,6 +14,8 @@ summary: 'MogHA：主备系统时间不同步对RTO的影响'
 img: '/zh/post/liuxu/title/img.png'
 
 times: '10:20'
+
+category: 'blog'
 ---
 
 # MogHA：主备系统时间不同步对 RTO 的影响
