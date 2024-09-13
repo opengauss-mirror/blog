@@ -14,6 +14,8 @@ summary: '本文从实际场景出发记录了openGauss，CM，OM整体编译流
 img: '/zh/post/lihongda/title/title.png'
 
 times: '17:40'
+
+category: 'blog'
 ---
 
 # 前言

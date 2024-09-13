@@ -14,6 +14,8 @@ summary: 'openGauss社区开发入门'
 img: '/zh/post/z-qw/title/title.jpg'
 
 times: '17:30'
+
+category: 'blog'
 ---
 
 ## LOOP 语句

@@ -14,6 +14,8 @@ summary: '使用MTK迁移Mysql源库后主键自增列导致数据无法插入�
 img: '/zh/post/liuxu/title/img.png'
 
 times: '10:20'
+
+category: 'blog'
 ---
 
 # 使用 MTK 迁移 Mysql 源库后主键自增列导致数据无法插入问题

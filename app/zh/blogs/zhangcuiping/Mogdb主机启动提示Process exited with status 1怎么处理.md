@@ -14,6 +14,8 @@ summary: 'Mogdb主机启动提示Process exited with status 1怎么处理'
 img: '/zh/post/zhangcuiping/title/img.png'
 
 times: '14:20'
+
+category: 'blog'
 ---
 
 # Mogdb 主机启动提示 Process exited with status 1 怎么处理？
