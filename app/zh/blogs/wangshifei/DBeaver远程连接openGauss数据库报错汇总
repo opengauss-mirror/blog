@@ -1,0 +1,125 @@
+---
+title: '【第七届openGauss技术文章征集】DBeaver远程连接openGauss数据库报错汇总'
+date: '2024-10-15'
+category: 'blog'
+tags: ['openGauss']
+archives: '2024-04'
+author: '墨竹'
+summary: 'Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more.'
+---
+
+# DBeaver远程连接openGauss数据库报错汇总
+
+在openGauss 6.0.0版本正式上线后，在上手练习的过程就遇到Invalid username/password问题解决过程就用不少的时间来解决问题。因此就产生想按照PG配置习惯配置参数文件，看看会遇到哪些问题，顺便也整理测试过程中遇到的各种连接报错，以供初学者参考。
+
+## Connection refused: connect
+
+```
+Connection to 192.168.181.20:15400 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+  Connection refused: connect
+```
+
+当客户端提示该报错，我们可以通过三个方向进行排查
+
+1、查看防火墙状态，看是否关闭
+
+2、查看客户端的IP、端口填写是否正确
+
+3、查看postgresql.conf文件中listen_addresses是否配置
+
+如果参数是已经注释的，可以取消注释并配置*或者主机IP；如果已经配置参数，则需要检查配置的IP是否正确
+
+```
+--主机IP
+listen_addresses = '192.168.181.20'
+或
+listen_addresses = '*'
+```
+
+## The connection attempt failed
+
+```
+The connection attempt failed.
+  Connection reset
+```
+
+当客户端提示该报错，我们应该通过以下几点进行排查
+
+1、pg_hba.conf中是否新增认证规则
+
+2、pg_hba.conf中ADDRESS参数对应的IP和子网验证是否正确
+
+```
+--这里的IP和子网掩码，如果设置的时候也需要注意。当子网掩码的位数为32时，IP需要设置为固定的IP。假如不小心设置为192.168.181.0/32就会报如上的错误。
+host    all             all          192.168.181.1/32             sha256
+--对于测试环境我们访问不做控制我们可以设置为
+host    all             all         0.0.0.0/0             sha256
+--也可以对整个网段进行设置
+host    all             all          192.168.181.0/24             sha256
+```
+
+3、可能是参数配置后未生效导致，重启或者执行select pg_reload_conf()命令
+
+## Invalid username/password
+
+```
+[192.168.181.1:62786/192.168.181.20:15400] FATAL: Invalid username/password,login denied.
+```
+
+当客户端报错提示Invalid username/password时，目前遇到的该问题有两种场景，分别是密码不正确和认证加密方式不一致。
+
+### 密码不正确
+
+这种情况应该是我们遇到该问题的时候，首先应该检查输入是否正确。如果在不确认密码是否正确的时候，建议可以先修改密码，然后再测试是否可以正确连接数据库。
+
+```
+alter user test identified by 'openGauss@2024';
+```
+
+### 认证加密方式配置是否正确
+
+先查看openGauss数据库的参数password_encryption_type的值。
+
+```
+show password_encryption_type;
+```
+
+在未修改数据库中该参数的时候，该参数默认为2，即表示采用sha256方式对密码加密。然后再查看pg_hba.conf中新增规则的METHOD参数，是否为sha256，如果参数文件中配置的是其他加密方式，比如md5，则有如下两种方法解决该问题
+
+(1)、修改pg_hba.conf中加密方式为sha256
+
+(2)、修改password_encryption_type的参数值为1或0，这个时候我们配置md5，其实也是可以适用。但是需要注意修改password_encryption_type参数的配置不会自动触发已有用户密码加密方式的修改，只会影响新创建用户或修改用户密码操作。所以我们需要在修改参数后并重启数据库使参数生效，然后还需要修改数据库用户口令。
+
+```
+alter user test identified by 'openGauss@0430';
+```
+
+该问题可以详细查看《DBeaver连接openGauss报错Invalid username/password问题排查》https://www.modb.pro/db/1784591381011976192文章中详细介绍。
+
+## no pg_hba.conf entry for host
+
+```
+[192.168.181.1:64658/192.168.181.20:15400] FATAL: no pg_hba.conf entry for host "192.168.181.1", user "test", database "testdb", SSL off
+```
+
+当客户端提示该报错的时候，其实提示还是比较清晰的，检查一下pg_hba.conf中是否对数据库或用户做了限制。如果在配置文件中有对数据库和用户有限制，则检查配置是否正确或者是否新增对应访问控制规则。
+
+## FATAL: database "testdb2" does not exist
+
+```
+[192.168.181.1:64924/192.168.181.20:15400] FATAL: database "testdb2" does not exist
+```
+
+这条信息说明尝试连接的数据库不存在，请检查连接的数据库名输入是否有误。
+
+## Forbid remote connection with trust method!
+
+```
+[192.168.181.1:54091/192.168.181.20:15400] FATAL: Forbid remote connection with trust method!
+```
+
+采用这种认证模式时，openGauss只完全信任从服务器本机使用gsql且不指定-U参数的连接，此时不需要口令。设置文件系统权限只能Unix域套接字连接，它不会限制本地TCP/IP连接。为保证本地TCP/IP安全，**openGauss不允许远程连接使用trust认证方法**
+
+## 总结
+
+上述报错都是最近测试并使用openGauss 6.0.0的过程遇到的问题，我也对这些报错逐个模拟并对解决办法进行详细的验证。同时受限于个人能力，给出的解决方法并不一定全面，请各位老师多多包涵。后续有其他新的问题或者同类型错误场景，再对文档进行补充完善。
