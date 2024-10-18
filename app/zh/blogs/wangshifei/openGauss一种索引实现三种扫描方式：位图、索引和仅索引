@@ -1,0 +1,289 @@
+# openGauss一种索引实现三种扫描方式：位图、索引和仅索引
+
+性能问题应该是我们日常运维过程中遇到最多的一类的问题，也是用户吐槽最多的问题之一，而解决性能问题最常见的方法就是为表创建合适的索引。索引可以节省大量数据访问时间以及引导查询以最快的方式获取结果，从而大幅度提升sql语句的查询性能。
+
+在openGauss或者PG系列的数据库中，有不同的扫描方式可以利用索引来生成高效的执行计划。在这边文章中，我们将对openGauss的三种不同的索引扫描方式进行详细讲解，主要依据查询的表、查询检索的内容、使用的过滤器。三种不同的索引扫描类型：
+
+- 索引扫描
+- 仅索引扫描
+- 位图索引扫描
+
+## 准备测试用例
+
+在这里我们将使用只有一个单索引的表来演示，这样可以减少一些其他因素的影响，也会直观的感受到扫描方式又是受到什么样的过滤条件而改变。
+
+先创建一个person的业务表
+
+```
+create table person(
+	id serial primary key,
+	name text  not null,
+	age integer not null,
+	email text not null,
+	register_date timestamp default now() not null,
+	is_active boolean DEFAULT true NOT NULL
+);
+```
+
+然后使用SQL语句向表中插入100w行数据。
+
+```
+INSERT INTO person(name,age,email,register_date,is_active)
+	SELECT md5(random()::text), 
+	floor(random() * 99)::int, 
+	md5(random()::text) || '@163.com', 
+	now() - (random() * (interval '90 days')), 
+	case when random() > 0.5 then true else false end
+  FROM generate_series(1, 1000000);
+```
+
+## 创建索引
+
+为了满足测试用例的要求，在这里我们需要添加一个复合索引，可以让我们看到不同的索引扫描方式。
+
+```
+create index idx_person_age_date_active on person(age,register_date,is_active);
+```
+
+下面我们再来看一下，创建索引的三列的基数，即该列唯一键的数量。
+
+age字段：我们使用random函数并通过floor函数限制了结果，使得结果的取值范围为[1,99]
+
+register_date字段：该字段的取值每行都不同，是这三个字段中值重复度最低的。
+
+is_active字段：该列是布尔值，因此只能有true和false 两个不同的值
+
+我们也可以通过查看数据库的pg_stats视图来验证索引列的基数。为了确保统计信息的准确性，我们需要对该表重新收集统计信息。
+
+```
+ANALYZE person;
+```
+
+查看pg_stats视图
+
+```
+SELECT tablename,attname AS column_name,n_distinct AS dist_val
+      FROM pg_stats
+      WHERE tablename = 'person'
+      AND attname IN ('age','register_date','is_active')
+      ORDER BY dist_val DESC;
+ tablename |  column_name  | dist_val
+-----------+---------------+----------
+ person    | age           |       99
+ person    | is_active     |        2
+ person    | register_date |       -1
+(3 rows)
+```
+
+针对n_distinct的字段，age列有99个不同的值，is_active有2个值，register_date列显示负值-1。
+
+在通过查看openGauss的官网文档中对于pg_stats视图n_distinct列的解释：
+
+> -1表示一个唯一字段，独立数值的个数和行数相同
+
+其实就可以理解为不同值的数量可能与总数量相同。
+
+## 无索引-顺序扫描
+
+我们先来看一下不带过滤条件的查询语句的执行计划
+
+```
+test=# EXPLAIN ANALYZE SELECT * FROM person;
+                                                    QUERY PLAN
+------------------------------------------------------------------------------------------------------------------
+ Seq Scan on person  (cost=0.00..26394.00 rows=1000000 width=81) (actual time=0.010..86.210 rows=1000000 loops=1)
+ Total runtime: 123.725 ms
+(2 rows)
+
+```
+
+可以看到，由于需要从表中检索所有的数据，优化器决定使用顺序扫描方式，扫描了100W行，总耗时为123.725 ms
+
+## 位图索引扫描
+
+### 使用索引
+
+当查询需要访问大量的数据（可以利用批量读取（如顺序扫描）的优势）但又没有大到需要处理所有表数据时，优化器会选择位图索引扫描方式。位图索引扫描可以理解介于顺序扫描和索引扫描之间的方式，是一种折中处理的方式。 当我们看到执行计划使用了位图索引时，你会发现Bitmap Index Scan和Bitmap Heap Scan一般都是成对出现并配合使用，其中Bitmap Index Scan先在索引中查找符合条件的行并在内存中创建位图，而Bitmap Heap Scan使用该位图到表的数据文件中读取数据文件中的数据。 
+
+下面，我们来看看位图索引扫描的执行计划
+
+```
+test=# EXPLAIN ANALYZE SELECT * FROM person where age =30;
+                                                                 QUERY PLAN
+
+------------------------------------------------------------------------------------------------------------------------
+---------------------
+ Bitmap Heap Scan on person  (cost=139.00..10860.76 rows=5000 width=81) (actual time=2.357..11.236 rows=10052 loops=1)
+   Recheck Cond: (age = 30)
+   Heap Blocks: exact=7502
+   ->  Bitmap Index Scan on idx_person_age_date_active  (cost=0.00..137.75 rows=5000 width=0) (actual time=1.412..1.412
+ rows=10052 loops=1)
+         Index Cond: (age = 30)
+ Total runtime: 11.839 ms
+(6 rows)
+```
+
+在上述的执行计划中可知，首先使用了idx_person_age_date_active索引的位图索引扫描，把满足条件的行在内存中创建一个位图，并将其传递到父节点，即person表上的Bitmap Heap Scan路径，然后使用该位图到表中扫描，最后从表中读取完数据后仍需要重新检查一下过滤条件，并返回数据结果集。
+
+### 未使用索引
+
+我们再来看一下未使用索引时，执行计划是什么样的。需要禁用位图扫描参数.
+
+```
+set enable_bitmapscan =off;
+```
+
+下面，再次执行SQL语句
+
+```
+test=# EXPLAIN ANALYZE SELECT * FROM person where age =30;
+                                                  QUERY PLAN
+--------------------------------------------------------------------------------------------------------------
+ Seq Scan on person  (cost=0.00..28894.00 rows=9600 width=91) (actual time=0.086..140.609 rows=10052 loops=1)
+   Filter: (age = 30)
+   Rows Removed by Filter: 989948
+ Total runtime: 141.180 ms
+(4 rows)
+
+```
+
+从执行的结果中可知，使用位图索引扫描比顺序扫描，执行耗时上快了10倍多，cost降低1倍。也就是位图索引扫描利用批量读取有限数量的页面比直接顺序扫描执行速度更快，执行计划更优。
+
+```
+--重置位图索引扫描参数
+reset enable_bitmapscan;
+```
+
+## 索引扫描
+
+索引扫描的过程可以分成两步，第一步是从索引中获取行的物理位置，第二步是再到表的数据文件中读取相应的数据的过程，即从从堆或表页中读取数据。因此每次索引扫描访问都是两次读操作，但是该操作仍然是从表中检索数据的最有效的方式之一。当查询的行数较小时，优化器会选择这种扫描方式，因为索引扫描方式比顺序扫描读取数据有更低的cost且速度更快。
+
+以下是索引扫描的执行计划
+
+```
+test=# EXPLAIN ANALYZE SELECT * FROM person where age =8 and  register_date ='2024-10-10 13:30:07.262557'::timestamp;
+                                                             QUERY PLAN
+-------------------------------------------------------------------------------------------------------------------------------------
+ [Bypass]
+ Index Scan using idx_person_age_date_active on person  (cost=0.00..8.27 rows=1 width=91) (actual time=0.014..0.015 rows=1 loops=1)
+   Index Cond: ((age = 8) AND (register_date = '2024-10-10 13:30:07.262557'::timestamp without time zone))
+ Total runtime: 0.160 ms
+(4 rows)
+
+```
+
+在上面的执行计划可知，本次使用的sql是在之前的sql的基础上，添加了一个过滤条件age =8 and  register_date ='2024-10-10 13:30:07.262557'::timestamp。由于register_date是多列索引idx_person_age_date_active的一部分，且register_date重复度很高，因此基本就是从索引中一次读取就可以获取行位置，然后从该物理位置的表页中获取行数据，查询耗时0.160ms，速度是相当哇塞。
+
+在上面的测试用例中，SQL语句中的register_date列使用了固定的时间戳值进行过滤，但是如果我们对register_date列使用范围过滤，结果集行数较少，优化器仍然会选择对多行进行索引扫描，就比如下面的测试用例。
+
+```
+test=# EXPLAIN ANALYZE SELECT * FROM person where age =8 and  register_date >'2024-10-10 10:00:00'::timestamp and  register_date <'2024-10-10 11:00:00'::timestamp;
+                                                                                 QUERY PLAN
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ [Bypass]
+ Index Scan using idx_person_age_date_active on person  (cost=0.00..24.36 rows=5 width=91) (actual time=0.015..0.023 rows=5 loops=1)
+   Index Cond: ((age = 8) AND (register_date > '2024-10-10 10:00:00'::timestamp without time zone) AND (register_date < '2024-10-10 11:00:00'::timestamp without time zone))
+ Total runtime: 0.087 ms
+(4 rows)
+
+Time: 0.901 ms
+
+```
+
+从上面的执行计划看出，优化器估算的rows为5行，实际扫描的行数也是5行，尽管读取的数据行数增加，但是执行仍然很快，用时0.901ms。
+
+## 仅索引扫描
+
+### 仅索引扫描
+
+仅索引扫描方式是对索引扫描方式的改进的一种方法。当SQl查询的数据都已经存在于索引中时，openGauss会使用该方法，通俗的讲就是SELECT和WHERE子句中的列或表达式应该是索引的一部分，因此索引扫描的第二步在这里就不需要了，仅从索引中读取数据返回结果。
+
+下面，通过测试用例来说明一下
+
+```
+test=# EXPLAIN ANALYZE SELECT age,register_date,is_active FROM person where age =8 and  register_date ='2024-10-10 13:30:07.262557'::timestamp;
+                                                                QUERY PLAN
+------------------------------------------------------------------------------------------------------------------------------------------
+ [Bypass]
+ Index Only Scan using idx_person_age_date_active on person  (cost=0.00..8.27 rows=1 width=13) (actual time=0.055..0.056 rows=1 loops=1)
+   Index Cond: ((age = 8) AND (register_date = '2024-10-10 13:30:07.262557'::timestamp without time zone))
+   Heap Fetches: 1
+ Total runtime: 0.115 ms
+(5 rows)
+```
+
+从上面的执行计划可以看出，EXPLAIN输出显示Index Only Scan，但是Heap Fetches的值为1，也就是准确扫描到数据块的个数是1。
+
+>Heap Fetches表明需要扫描数据块的个数，虽然Index Only Scan 可以从索引直接输出结果，但是因为MVCC 机制的实现，需要对扫描的元组进行可见性判断，即检查visibility MAP 文件。当新建表之后，如果没有进行过vacuum和autovacuum操作，这时还没有VM文件，而索引并没有保存记录的版本信息，索引Index Only Scan 还是需要扫描数据块（Heap Fetches 代表需要扫描的数据块个数）来获取版本信息，这个时候可能会比Index Scan 慢。
+
+执行一下vacuum操作
+
+```
+vacuum;
+```
+
+再次执行查询语句
+
+```
+test=# EXPLAIN ANALYZE SELECT age,register_date,is_active FROM person where age =8 and  register_date ='2024-10-10 13:30:07.262557'::timestamp;
+                                                                QUERY PLAN
+------------------------------------------------------------------------------------------------------------------------------------------
+ [Bypass]
+ Index Only Scan using idx_person_age_date_active on person  (cost=0.00..4.27 rows=1 width=13) (actual time=0.013..0.014 rows=1 loops=1)
+   Index Cond: ((age = 8) AND (register_date = '2024-10-10 13:30:07.262557'::timestamp without time zone))
+   Heap Fetches: 0
+ Total runtime: 0.051 ms
+(5 rows)
+```
+
+这一次，在执行计划中不止看到了Index Only Scan，而且Heap Fetches的值为0，也就是没有从表页中访问过数据块。时间相对比Index Scan还要好，只有0.051ms
+
+>执行计划中 Heap Fetches: 0 表示没有回表取数据， 存在2种情况：
+>1）通过索引判断真的没有数据，所以不需要回表
+>2）通过索引判断真的有数据，再一次根据VM 判断，全部元祖是新的，所以从索引中就能获得最新的数据， 所以不需要回表 
+
+### 不合理的索引
+
+如果对所有列建立索引，从而使的索引包含与表相同的所有数据，这应该是一种错误的认知也不是一个好的想法。如果是这种情况，将看不到使用索引的任何优势，优化器也将会选择顺序扫描方式。
+
+下面，我们将在所有的列上建索引，然后观察sql的执行计划
+
+```
+DROP INDEX idx_person_age_date_active;
+CREATE INDEX idx_person_all ON person(id,name,age,email,register_date,is_active);
+ANALYZE person;
+
+test=# EXPLAIN ANALYZE SELECT * FROM person where age =8 and  register_date ='2024-10-10 13:30:07.262557'::timestamp;
+                                              QUERY PLAN
+-------------------------------------------------------------------------------------------------------
+ Seq Scan on person  (cost=0.00..31394.00 rows=1 width=91) (actual time=0.359..118.933 rows=1 loops=1)
+   Filter: ((age = 8) AND (register_date = '2024-10-10 13:30:07.262557'::timestamp without time zone))
+   Rows Removed by Filter: 999999
+ Total runtime: 119.077 ms
+(4 rows)
+
+```
+
+在上面的测试用例中，删除了之前新建的多列索引，并对所有列创建了一个新索引，然后执行ANALYZE刷新统计信息并执行查询语句。
+
+在这里我们查询了所有的列，但是优化器选择了顺序扫描的方式，执行耗时为119.077ms。
+
+## 总结
+
+openGauss的优化器可以根据存储的数据和在查询过滤条件上使用单个索引的不同，可以产生不同的扫描方式。最后，我们大概最做一下总结。
+
+1、在基数大的列上创建索引，在对该列进行查询过滤的时可以获得最佳的性能，但是如果在基数较低的列上创建索引会产生相反的效果，因为优化器大部分情况用不到该索引，而且还需要对该索引额为的维护。
+
+2、当查询小结果集或精确查询时，索引扫描应该是最优的方法，可以快速的检索数据。
+
+3、当查询需要访问大量的数据（可以利用批量读取（如顺序扫描）的优势）但又没有大到需要处理所有表数据时，优化器会选择位图索引扫描方式。
+
+4、如果查询所需要的列且列很少，可以利用仅索引扫描方式可以避免从堆或表页中进行读取数据。另外，除了多列索引可以使得优化器选择Index Only Scan，还可以考虑使用索引覆盖，INCLUDE 子句指定将一些非键列（non-key columns）包含在索引中， 可以直接返回非键列中的内容，而不必去访问索引所对应的堆表。
+
+## 参考
+
+PostgreSQL修炼之道从小工到专家（第二版）
+
+https://www.modb.pro/db/449252
+
+https://www.modb.pro/issue/18165
