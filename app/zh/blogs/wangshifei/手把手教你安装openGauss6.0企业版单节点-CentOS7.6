@@ -1,0 +1,356 @@
+# 手把手教你安装openGauss6.0企业版单节点-CentOS7.6
+
+这边文章主要是带领初学者安装openGauss6.0企业版单节点，让你快速上手。
+
+## 软硬件环境介绍
+
+| 软硬件名称 | 配置                        |
+| ---------- | --------------------------- |
+| CPU        | X86_64，8C                  |
+| 内存       | 8G                          |
+| 操作系统   | CentOS7.6                   |
+| Python版本 | Python2.7.5（后期会做更改） |
+
+## 获取安装包
+
+### 用root用户登录主机，并创建存放安装软件的目录
+
+```
+[root@ogdb ~]# mkdir -p /opt/software/openGauss
+```
+
+### 下载安装包
+
+从openGauss社区[下载对应版本安装包](https://opengauss.org/zh/download/)，在这里我们下载的版本为x86_64架构且操作系统版本为CentOS7.6。将下载的版本上传到/opt/software/openGauss目录下。
+
+```
+[root@ogdb openGauss]# ls -ll
+total 149764
+-rw-r--r-- 1 root root 153356080 Nov  1 10:01 openGauss-All-6.0.0-CentOS7-x86_64.tar.gz
+[root@ogdb openGauss]#
+```
+
+解压下载的安装包，解压安装包后，继续解压openGauss-OM-6.0.0-CentOS7-x86_64.tar.gz安装包
+
+```
+[root@ogdb openGauss]# tar -xvf openGauss-All-6.0.0-CentOS7-x86_64.tar.gz
+openGauss-CM-6.0.0-CentOS7-x86_64.tar.gz
+openGauss-OM-6.0.0-CentOS7-x86_64.tar.gz
+openGauss-Server-6.0.0-CentOS7-x86_64.tar.bz2
+openGauss-CM-6.0.0-CentOS7-x86_64.sha256
+openGauss-OM-6.0.0-CentOS7-x86_64.sha256
+openGauss-Server-6.0.0-CentOS7-x86_64.sha256
+upgrade_sql.tar.gz
+upgrade_sql.sha256
+[root@ogdb openGauss]#
+[root@ogdb openGauss]# tar -xvf openGauss-OM-6.0.0-CentOS7-x86_64.tar.gz
+```
+
+修改安装目录权限
+
+```
+[root@ogdb ~]# chmod 755 -R /opt/software
+```
+
+## 配置安装环境
+
+### 配置环境参数
+
+- 修改SELINUX值
+
+```
+vim /etc/selinux/config
+--修改SELINUX值为disabled，然后保存并退出
+SELINUX=disabled
+```
+
+重启操作系统
+
+```
+reboot
+```
+
+- 关闭防火墙 
+
+先查看当前防火墙的状态
+
+```
+[root@ogdb ~]# systemctl status firewalld
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
+   Active: active (running) since Fri 2024-11-01 14:05:03 CST; 1s ago
+     Docs: man:firewalld(1)
+ Main PID: 21392 (firewalld)
+    Tasks: 2
+   CGroup: /system.slice/firewalld.service
+           └─21392 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+
+Nov 01 14:05:03 ogdb systemd[1]: Starting firewalld - dynamic firewall daemon...
+Nov 01 14:05:03 ogdb systemd[1]: Started firewalld - dynamic firewall daemon.
+[root@ogdb ~]#
+```
+
+若防火墙状态显示为active (running)，则表示防火墙未关闭，请执行下面关闭防火墙的命令；否则跳过下面的步骤
+
+关闭防火墙并禁止开机重启
+
+```
+systemctl disable firewalld
+systemctl stop firewalld
+```
+
+- 设置字符集参数
+
+```
+[root@ogdb ~]# cat >> /etc/profile <<EOF
+> export LANG=en_US.UTF-8
+> EOF
+```
+
+执行命令使得配置生效
+
+```
+[root@ogdb ~]# source /etc/profile
+```
+
+### 使用yum安装系统依赖项
+
+备份原来的yum配置文件
+
+```
+[root@ogdb yum.repos.d]# mv /etc/yum.repos.d/CentOS-Base.repo  /etc/yum.repos.d/CentOS-Base.repo.bak
+```
+
+下载可用源的repo文件，在这里我们https://mirrors.huaweicloud.com/repository/conf获取服务器对应的repo配置文件CentOS-7-anon.repo
+
+```
+[root@ogdb yum.repos.d]# curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/repository/conf/CentOS-7-anon.repo
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1811    0  1811    0     0   2253      0 --:--:-- --:--:-- --:--:--  2252
+```
+
+执行命令，安装所需要的依赖包
+
+```
+yum install -y libaio-devel readline-devel expect python3
+```
+
+### 修改Python版本
+
+1. 由于openGauss安装所需要用到python-3.x命令，但是centos7.6版本默认python版本为python-2.7.x，因此需要切换到python-3.x。
+
+2. 备份python文件
+
+   ```
+   [root@ogdb bin]# cd /usr/bin
+   [root@ogdb bin]# mv python python.bak
+   ```
+
+3. 建立python3的软链接
+
+   ```
+   ln -s python3 /usr/bin/python
+   ```
+
+4. 验证python版本
+
+   ```
+   [root@ogdb bin]# python -V
+   Python 3.6.8
+   ```
+
+   官方对python版本为CentOS：支持>=Python 3.6.X且<=Python 3.10.X，可知符合要求。
+
+## 安装数据库
+
+### 创建XML配置文件
+
+安装openGauss前需要创建cluster_config.xml文件。cluster_config.xml文件包含部署openGauss的服务器信息、安装路径、IP地址以及端口号等。用于告知openGauss如何部署。用户需根据不同场景配置对应的XML文件。
+
+用root用户切换到安装目录
+
+```
+cd /opt/software/openGauss
+```
+
+创建XML配置文件，用于数据库安装
+
+```
+vi cluster_config.xml
+```
+
+将一下的内容粘贴到上面的文件中。
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+    <!-- openGauss整体信息 -->
+    <CLUSTER>
+        <!-- 数据库名称 -->
+        <PARAM name="clusterName" value="dbCluster" />
+        <!-- 数据库节点名称(hostname) -->
+        <PARAM name="nodeNames" value="ogdb" />
+        <!-- 数据库安装目录-->
+        <PARAM name="gaussdbAppPath" value="/opt/openGauss/app" />
+        <!-- 日志目录-->
+        <PARAM name="gaussdbLogPath" value="/var/log/openGauss" />
+        <!-- 临时文件目录-->
+        <PARAM name="tmpMppdbPath" value="/opt/openGauss/tmp" />
+        <!-- 数据库工具目录-->
+        <PARAM name="gaussdbToolPath" value="/opt/openGauss/om" />
+        <!-- 数据库core文件目录-->
+        <PARAM name="corePath" value="/opt/openGauss/corefile" />
+        <!-- 节点IP，与数据库节点名称列表一一对应 -->
+        <!-- 如果用ipv6 替换ipv4地址即可 如：<PARAM name="backIp1s" value="2407:xxxx:xxxx:xxxx:xxxx:xxxx:caa:2335"/> -->
+        <PARAM name="backIp1s" value="192.168.181.100"/> 
+    </CLUSTER>
+    <!-- 每台服务器上的节点部署信息 -->
+    <DEVICELIST>
+        <!-- 节点1上的部署信息 -->
+        <DEVICE sn="node1_hostname">
+            <!-- 节点1的主机名称 -->
+            <PARAM name="name" value="ogdb"/>
+            <!-- 节点1所在的AZ及AZ优先级 -->
+            <PARAM name="azName" value="AZ1"/>
+            <PARAM name="azPriority" value="1"/>
+            <!-- 节点1的IP，如果服务器只有一个网卡可用，将backIP1和sshIP1配置成同一个IP -->
+            <!-- 用ipv6安装部署时 换上ipv6地址即可，后面xml文件示例也是同样操作 -->
+            <PARAM name="backIp1" value="192.168.181.100"/>
+            <PARAM name="sshIp1" value="192.168.181.100"/>
+               
+	    <!--dbnode-->
+	    <PARAM name="dataNum" value="1"/>
+	    <PARAM name="dataPortBase" value="15400"/>
+	    <PARAM name="dataNode1" value="/data/openGauss/ogdb1"/>
+            <PARAM name="dataNode1_syncNum" value="0"/>
+        </DEVICE>
+    </DEVICELIST>
+</ROOT>
+```
+
+### 执行初始化脚本
+
+执行预安装初始化命令
+
+```
+cd /opt/software/openGauss/script
+./gs_preinstall -U omm -G dbgrp -X /opt/software/openGauss/cluster_config.xml
+```
+
+创建omm用户，对omm用户建立互信，并设置密码
+
+```
+Are you sure you want to create the user[omm] (yes/no)? yes
+Please enter password for cluster user.
+Password:
+Please enter password for cluster user again.
+Password:
+Generate cluster user password files successfully.
+```
+
+在结尾我们可以看到如下信息，就表示初始化安装完成。
+
+```
+Successfully set finish flag.
+Preinstallation succeeded.
+```
+
+### 执行安装
+
+切换到omm用户
+
+```
+[root@ogdb script]# su - omm
+Last login: Fri Nov  1 15:23:20 CST 2024
+[omm@ogdb ~]$
+```
+
+切换到目录/opt/software/openGauss/script，然后使用gs_install安装openGauss
+
+```
+cd /opt/software/openGauss/script
+gs_install -X /opt/software/openGauss/cluster_config.xml
+
+```
+
+在安装的过程中需要输入数据库的密码，密码要求一定的复杂度，请记住输入的密码
+
+```
+--数据库密码
+openGauss2024
+```
+
+安装日志
+
+```
+[omm@ogdb script]$ gs_install -X /opt/software/openGauss/cluster_config.xml
+Parsing the configuration file.
+Successfully checked gs_uninstall on every node.
+Check preinstall on every node.
+Successfully checked preinstall on every node.
+Creating the backup directory.
+Successfully created the backup directory.
+begin deploy..
+Installing the cluster.
+begin prepare Install Cluster..
+Checking the installation environment on all nodes.
+begin install Cluster..
+Installing applications on all nodes.
+Successfully installed APP.
+begin init Instance..
+encrypt cipher and rand files for database.
+Please enter password for database:
+Please repeat for database:
+[GAUSS-50322] : Failed to encrypt the password for databaseError:
+ Try "gs_guc --help" for more information.
+Invalid password,it must contain at least eight characters
+
+Please enter password for database:
+Please repeat for database:
+begin to create CA cert files
+The sslcert will be generated in /opt/openGauss/app/share/sslcert/om
+NO cm_server instance, no need to create CA for CM.
+Non-dss_ssl_enable, no need to create CA for DSS
+Cluster installation is completed.
+Configuring.
+Deleting instances from all nodes.
+Successfully deleted instances from all nodes.
+Checking node configuration on all nodes.
+Initializing instances on all nodes.
+Updating instance configuration on all nodes.
+Check consistence of memCheck and coresCheck on database nodes.
+Configuring pg_hba on all nodes.
+Configuration is completed.
+The cluster status is Normal.
+Successfully started cluster.
+Successfully installed application.
+end deploy..
+```
+
+## 数据库使用
+
+在安装完成后，数据库服务器是默认启动的
+
+切换到omm用户
+
+```
+su - omm
+```
+
+连接数据库，在这里的端口使用的默认端口15400，因此未指定端口
+
+```
+[omm@ogdb script]$ gsql -r
+gsql ((openGauss 6.0.0 build aee4abd5) compiled at 2024-09-29 18:38:08 commit 0 last mr  )
+Non-SSL connection (SSL connection is recommended when requiring high-security)
+Type "help" for help.
+
+openGauss=# 
+```
+
+到这里我们的openGauss6.0企业版单节点部署已经完成，希望你体验openGauss的旅程一帆风顺。
+
+## 参考
+
+https://docs.opengauss.org/zh/docs/6.0.0/docs/InstallationGuide/%E4%BC%81%E4%B8%9A%E7%89%88%E5%AE%89%E8%A3%85.html
