@@ -63,27 +63,25 @@ ulimit -v unlimited
 
 ## 如何进行 hacheck？
 
-hacheck 是对 openGauss 主备功能进行测试的 check，openGauss 的编译方式同 fastcheck，编译完成后，进入 `src/test/ha`目录，修改 standby_env.sh 文件，在文件最前面新增一行
+`hacheck` 是对 `openGauss` 主备功能进行测试的 check，`openGauss` 的编译方式同 `fastcheck`，编译完成后，进入 `src/test/ha`目录。
+
+脚本中将尝试通过 `ifconfig` 命令获取本机 IP，如果本机网卡的名称不是 `eth0`、`eth1`、`ens4f0`、`enp2s0f0`、`enp2s0f1`、`enp125s0f0` 之一的话，获取 IP 将失败。此时可以打开 `standby_env.sh`，在
 
 ```shell
-export prefix=$GAUSSHOME
-```
-
-脚本中将尝试通过 ifconfig 命令获取本机 IP，如果本机网卡的名称不是 eth0、eth1、ens4f0、enp2s0f0、enp2s0f1、enp125s0f0 之一的话，获取 IP 将失败，此时可以在
-
-```
 enp125s0f0=`/sbin/ifconfig enp125s0f0|sed -n 2p |awk  '{ print $2 }'`
 ```
 
 的下面手动添加本机 IP 地址：
 
-```
+```shell
 enp125s0f0=`/sbin/ifconfig enp125s0f0|sed -n 2p |awk  '{ print $2 }'`
-eth0ip=***.***.***.***```
+eth0ip=***.***.***.***
+```
 
-配置好脚本后，执行 hacheck 脚本：
+修改好后，可执行 `hacheck` 的测试脚本。`openGauss` 的安装路径需要通过环境变量 `PREFIX_HOME` 传递给 `hacheck` 脚本。这里给出一个示例：
 
 ```shell
+export PREFIX_HOME=${GAUSSHOME}
 sh run_ha_multi_single.sh
 sh run_ha_single.sh
 ```
