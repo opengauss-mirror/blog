@@ -1,0 +1,89 @@
+---
+title: '【第七届openGauss技术文章征集】意外发现openGauss兼容Oracle的几个条件表达式函数'
+date: '2024-10-15'
+category: 'blog'
+tags: ['openGauss']
+archives: '2024-04'
+author: '墨竹'
+summary: 'Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more.'
+---
+# 意外发现openGauss兼容Oracle的几个条件表达式函数
+
+最近工作中发现openGauss在兼容oracle模式下，可以兼容常用的两个条件表达式函数，因此就随手测试了一下。
+
+## 查看数据库版本
+
+```
+[omm@openGauss ~]$ gsql -r
+gsql ((openGauss 6.0.0-RC1 build ed7f8e37) compiled at 2024-03-31 11:59:31 commit 0 last mr  )
+Non-SSL connection (SSL connection is recommended when requiring high-security)
+Type "help" for help.
+
+openGauss=# select version();
+                                                                          version                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ (openGauss 6.0.0-RC1 build ed7f8e37) compiled at 2024-03-31 11:59:31 commit 0 last mr   on x86_64-unknown-linux-gnu, compiled by g++ (GCC) 10.3.0, 64-bit
+(1 row)
+
+
+```
+
+## 查看openGauss数据库的兼容模式
+
+```
+testdb=# select datname,datcompatibility from pg_database;
+  datname  | datcompatibility 
+-----------+------------------
+ template1 | A
+ template0 | A
+ testdb    | A
+ postgres  | A
+(4 rows)
+
+```
+
+## decode(expr1, expr2, result1 ,…)
+
+将表达式base_expr与后面的每个compare(n) 进行比较，如果匹配返回相应的value(n)。如果没有发生匹配，则返回default。
+![decode.png](https://oss-emcsprod-public.modb.pro/image/editor/20240525-3073290c-a4e5-4265-a30a-8a727cfbaf40.png)
+```
+testdb=# select id,name,address,decode(address,'北京市','BJ','南京市','NJ','ZG') JC from t1;
+ id | name | address | jc 
+----+------+---------+----
+  2 | zs2  | 北京市  | BJ
+  4 | zs4  |         | ZG
+  1 | zs1  | 南京市  | NJ
+(3 rows)
+
+```
+
+## nvl(expr1, expr2)
+
+如果value1为NULL则返回value2，如果value1非NULL，则返回value1。
+![nvl.jpg](https://oss-emcsprod-public.modb.pro/image/editor/20240525-afaa9177-90a4-46db-9a37-9f10103a8173.jpg)
+```
+testdb=# select * from t1;
+ id | name | address 
+----+------+---------
+  2 | zs2  | 北京市
+  4 | zs4  | 
+(2 rows)
+testdb=# select id,name,nvl(address,'上海') from t1;
+ id | name |  nvl   
+----+------+--------
+  2 | zs2  | 北京市
+  4 | zs4  | 上海
+(2 rows)
+```
+decode和nvl的使用方法与在Oracle中的使用方式一致，并无差别，这里不做详细介绍。在查看文档过程，官网文档函数和操作符章节与whale插件支持的函数相关章节两个地方都描述了对nvl、decode的支持情况，但是也未发现两处的区别在哪儿？不清楚当使用插件和不使用的情况的功能区别在哪儿呢？另外也发现在oracle中开发经常使用的nvl2条件表达式也支持，但是使用需要使用whale插件后才可以使用；后来想安装whale插件测试，但是也没有对应版本插件下载的地方，只能下载源码自行编译，对于这块感觉还是有点不方便。由于时间的问题也没有进一步编译插件源码进行测试。
+
+
+
+
+
+
+
+
+
+
+
