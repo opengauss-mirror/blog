@@ -1,4 +1,4 @@
-# RAG 实践：DeepSeek 与 openGauss 联袂打造私有本地知识库
+# RAG 实践：openGauss基于DeepSeek打造私有本地知识库
 
 ## 引言：LLM 的辉煌与困境
 在当今蓬勃发展的人工智能领域，大语言模型（LLM，Large Language Model）无疑是那颗最为璀璨的明星，吸引着全球研究者和开发者的目光。LLM 凭借其对海量文本数据的深度学习，掌握了语法和语义的复杂关系，从而具备了生成自然语言文本、精准回答各类问题、进行多语言翻译以及执行其他复杂语言任务的卓越能力。
@@ -21,17 +21,7 @@ RAG 的核心在于检索增强生成，即在生成最终答案之前，先对�
 
 ## 实践准备：搭建基础环境
 ### 操作系统与 Python 环境配置
-本文实践所采用的操作系统为 **openEuler 22.03 LTS(x86_64)**。为了确保各个组件之间能够实现无缝兼容并顺利运行，我们选择使用 **python3.11.11**，具体的安装步骤如下：
-
-```abap
-[test@localhost ~]$ wget https://www.python.org/ftp/python/3.11.11/Python-3.11.11.tar.xz
-[test@localhost ~]$ tar -xf Python-3.11.11.tar.xz
-[test@localhost ~]$ cd Python-3.11.11; mkdir build
-[test@localhost Python-3.11.11]$ ./configure --enable-optimizations --prefix=/home/test/Python-3.11.11/build/
-[test@localhost Python-3.11.11]$ make -j; make install -j
-```
-
-安装完成后，我们需要添加相应的环境变量，以确保系统能够正确识别和使用我们安装的 python3。
+本文实践所采用的操作系统为 **openEuler 22.03 LTS(x86_64)**。为了确保各个组件之间能够实现无缝兼容并顺利运行，我们选择使用 **python3.11**。
 
 ## DeepSeek推理模型部署：解锁强大文本生成能力
 ### 安装Ollama服务
@@ -51,9 +41,9 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 ```abap
 [test@localhost ~]$ wget https://ollama.com/download/ollama-linux-amd64.tgz
-[test@localhost ~]$ tar -zxvf ollama-linux-amd64.tgz -C /home/test/Python-3.11.11/build/
+[test@localhost ~]$ tar -zxvf ollama-linux-amd64.tgz -C /usr/
 [test@localhost ~]$ which ollama
-/home/test/Python-3.11.11/build/bin/ollama
+/usr/bin/ollama
 ```
 
 注：arm 架构的下载地址为 https://ollama.com/download/ollama-linux-arm64.tgz
@@ -67,7 +57,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ### 选择关键模型：DeepSeek与nomic-embed-text的协同
 在RAG应用中，文本嵌入模型和文本生成模型是至关重要的组成部分。ollama为我们提供了丰富多样的模型选择，而在本次实践中，我们着重引入了DeepSeek家族中的**deepseek-r1**模型来承担文本生成这一核心任务。
 
-**deepseek-r1** 模型是基于先进的深度学习技术开发的，它具有独特的架构和训练方式，能够更好地捕捉文本中的语义信息，从而为文本生成带来更出色的效果。同时，我们选用**nomic-embed-text**模型用于嵌入任务，该模型能够将文本转换为高维向量表示，为后续的检索和匹配提供了强有力的支持。二者协同工作，共同助力我们基于DeepSeek与openGauss联袂打造的私有本地知识库，使其能够更高效、更精准地为用户提供服务。
+**deepseek-r1** 模型是基于先进的深度学习技术开发的，它具有独特的架构和训练方式，能够更好地捕捉文本中的语义信息，从而为文本生成带来更出色的效果。同时，我们选用**nomic-embed-text**模型用于嵌入任务，该模型能够将文本转换为高维向量表示，为后续的检索和匹配提供了强有力的支持。二者协同工作，共同助力我们基于DeepSeek与openGauss打造的私有本地知识库，使其能够更高效、更精准地为用户提供服务。
 
 ```abap
 [test@localhost ~]$ ollama --version
@@ -281,18 +271,30 @@ print(response["message"]["content"])
 ```
 
 ```abap
-好的，我现在要解决用户关于 openGauss 发布版本的问题。根据提供的上下文信息，openGauss 每两年发布一个 LTS 版本，并且半年发布创新版本，当有重大问题修复时会发布补丁版本。
+好的，我现在要解决用户关于openGauss发布版本的问题。根据提供的上下文信息，openGauss每两年发布一个LTS版本，并且半年发布创新版本，当有重大问题修复时会发布补丁版本。
 
 首先，我需要整理已知的版本类型：
 
 1. **企业版**：面向企业用户，功能齐全。
 2. **极简版**：适合个人开发者，安装配置简单，解压即可使用。
 3. **轻量版**：精简功能，安装包小，占用内存少。
+4. **分布式镜像**：基于ShardingSphere和k8s的分布式容器化镜像。
+
+接下来，LTS版本是长期支持版本，创新版本供联创测试。此外，还有补丁版本用于修复问题。
+
+用户的问题是询问openGauss发布了哪些版本？因此，我需要总结这些信息，列出所有已知版本类型，并说明每个版本的目标用户和功能特点。
+
+最后，确保回答简练、高效，避免任何无用内容。
+
+openGauss 社区发布的主要版本类型包括：
+
+1. **企业版**：适合企业用户，提供全面的集群管理功能。
+2. **极简版**：适用于个人开发者，安装配置简单且解压即可使用。
+3. **轻量版**：精简功能，适合需要小而精的应用场景。
 4. **分布式镜像**：基于 ShardingSphere 和 k8s 的分布式容器化镜像。
 
-接下来，LTS 版本是长期支持版本，创新版本供联创测试。此外，还有补丁版本用于修复问题。
-
-用户的问题是询问 openGauss 发布了哪些版本？因此，我需要总结这些信息，列出所有已知版本类型，并说明每个版本的目标用户和
+这些版本根据不同的应用场景提供定制化的解决方案。LTS 版本作为长期支持版本，创新版本则供用户进行联创测试使用。当出现重大问题时，会发布补丁版本进行修复。更多信息可参考 openGauss 官网。
 ```
+可见，使用 deepseek 结合 openGauss 搭建的 RAG 应用，不仅能借助 deepseek 强大的文本生成能力和精准的文本嵌入功能，还能依托 openGauss 出色的向量数据库高效存储和快速检索向量数据，从而显著提升答案的准确性、可靠性，有效避免大语言模型的幻觉问题，为企业提供更优质的本地化知识服务。
 # 结语
 最后，我们基于ollama，成功利用openGauss和DeepSeek从零搭建起了简易的 RAG 应用，如愿获取到了所需的知识数据。在这个过程中，我们对 RAG 技术有了更深入的理解，也切实体会到了它在解决 LLM 实际应用问题上的作用。这个简易应用只是一个开端，你可以依据自身需求对相关环节进行灵活调整和优化，以更好地满足不同场景的需要。希望本文能帮助你加深对 RAG 技术应用实践的认识。
