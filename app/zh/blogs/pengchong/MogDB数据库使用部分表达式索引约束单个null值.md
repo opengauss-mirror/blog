@@ -28,7 +28,7 @@ times: '10:20'
 快速搭建 MogDB 环境
 
 ```
-docker run --name mogdb \ --privileged=true \ --detach \ --env GS_PASSWORD=Admin@1234 \ --publish 15400:5432 \ swr.cn-east-3.myhuaweicloud.com/enmotech/mogdb:2.0.1_amd
+docker run --name mogdb \ --privileged=true \ --detach \ --env GS_PASSWORD=****** \ --publish 15400:5432 \ swr.cn-east-3.myhuaweicloud.com/enmotech/mogdb:2.0.1_amd
 ```
 
 进入容器

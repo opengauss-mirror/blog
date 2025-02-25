@@ -37,7 +37,7 @@ times: '10:30'
    - 多次更新某一条数据，每次都更加索引键值。
 ### 测试用例
     1. 创建用户、数据库、模式
-    create user testusr password 'Test@123';
+    create user testusr password '******';
     grant all privileges to testusr;
     \c postgres
     drop database if exists testdb;

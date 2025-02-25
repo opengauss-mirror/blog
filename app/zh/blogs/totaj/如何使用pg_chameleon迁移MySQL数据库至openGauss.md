@@ -105,7 +105,7 @@ sources:
 keep_existing_schema: No
 ```
 
-以上配置文件的含义是，迁移数据时，MySQL 侧使用的用户名密码分别是 **mysql_test** 和 **password123** 。MySQL 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **3306**，待迁移的数据库是 **mysql_database** 。
+以上配置文件的含义是，迁移数据时，MySQL 侧使用的用户名密码分别是 **mysql_test** 和 ********** 。MySQL 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **3306**，待迁移的数据库是 **mysql_database** 。
 
 openGauss 侧使用的用户名密码分别是 **opengauss_test** 和 **********_***** 。openGauss 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **5432** ，目标数据库是 **opengauss_database**，同时会在 **opengauss_database**下创建 **sch_mysql_database** schema，迁移的表都将位于该 schema 下。
 

@@ -97,7 +97,7 @@ source $dd_home/dd_env
 dbhost=127.0.0.1
 database=my_test
 dbuser=$(whoami)
-password=Huawei@123
+password=******
 dbport1=19244
 dbport2=19234
 dmsurl="0:127.0.0.1:3604,1:127.0.0.1:3605"

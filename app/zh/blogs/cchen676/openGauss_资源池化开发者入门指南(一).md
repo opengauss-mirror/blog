@@ -58,7 +58,7 @@ openGauss 资源池化是 openGauss 推出的一种新型的集群架构.通过 
 - 一个 om_pssh.sh 主要用于实现 ssh 时自动输入密码
 - 一个 om_install.sh 主要用于实现自动安装
 - 需要准备好的是一个集成了 om, cm 和数据库的安装包 (一般 release 的包会包含) , 如果没有的话, 可能需要自己做包, 在编译时带上-pkg 选项, 分别做出来 openGauss, OM 和 CM 的包,再放到一起压缩成集成的安装包
-- 注意, 下面的脚本中以所有需要输入的密码都是"Password"为例
+- 注意, 下面的脚本中以所有需要输入的密码都是"******"为例
 - 以下脚本请勿使用于生产环境
 - 以下为纯手敲, 博主已经尽力了.
 - 如使用中有错误, 建议自行定制修改
@@ -75,12 +75,12 @@ function auto_() {
 		expect {
 			"yes/no" { send "yes\n"; exp_continue }
 			"denied" { exit 1; }
-			"*assword" { send "Password\n"; exp_continue }
+			"*assword" { send "******\n"; exp_continue }
 			"anger*\n*yes*" { send "yes\n"; exp_continue }
 			"Pdb" { interact }
-			"pass phrase for*:" { send "Password\n"; exp_continue }
-			"passphrase" { send "Password\n"; exp_continue }
-			"database:" { send "Password\n"; exp_continue }
+			"pass phrase for*:" { send "******\n"; exp_continue }
+			"passphrase" { send "******\n"; exp_continue }
+			"database:" { send "******\n"; exp_continue }
 		}
 EOF
 }

@@ -234,7 +234,7 @@ mogdb=# select xmin,xmax,* from xlogdump;
 
 ### 解析所有表
 
--c postgres://yunlong:Yunlong123@***.***.***.***:15500/mogdb
+-c postgres://yunlong:xxx@***.***.***.***:15500/mogdb
 建议使用具有 sysadmin 权限的用户连接到数据库，可以获取到所有的数据库对象
 
 ```
@@ -244,11 +244,11 @@ mogdb=# select xmin,xmax,* from xlogdump;
 {'table_name':'gs_txn_snapshot', 'schema_name':'pg_catalog', 'transaction id':'957987', 'action':'insert','tuple':{'snptime':'2022-04-14 00:18:17.236834-277:46:40','snpxmin':'957986','snpcsn':'938809','snpsnapshot':'xmin:957986
 
 --
-[o3m@mogdb01 pg_xlog]$ mog_xlogdump -c postgres://yunlong:Yunlong123@***.***.***.***:15500/mogdb -s 0/64F8A220 000000010000000000000064 |grep -v gs_txn_snapshot |grep -i table_name
+[o3m@mogdb01 pg_xlog]$ mog_xlogdump -c postgres://yunlong:xxx@***.***.***.***:15500/mogdb -s 0/64F8A220 000000010000000000000064 |grep -v gs_txn_snapshot |grep -i table_name
 --
 
-{'table_name':'pg_authid', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'rolname':'yunlong','rolsuper':false,'rolinherit':true,'rolcreaterole':false,'rolcreatedb':false,'rolcatupdate':false,'rolcanlogin':true,'rolreplication':false,'rolauditadmin':false,'rolsystemadmin':true,'rolconnlimit':'-1','rolpassword':'sha2565030b85f459cf837ab2ede05944250b43adda3c2e499a86e1f9fa349d8bc033fb1833614f8c65680bf1ea2047354dbe02493fe13ff8b94a0e2861994f933e40ac0a770e165ab9a7a2eb66ffe8bd4490ceb3f7168d7631b249b4fed559d426e00ecdfecefade',nullnull'rolrespool':'default_pool','roluseft':false,'rolparentid':'0',null'rolkind':'n',nullnullnullnull'rolmonitoradmin':false,'roloperatoradmin':false,'rolpolicyadmin':false}}
-{'table_name':'pg_auth_history', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'roloid':'24800','passwordtime':'2022-04-14 00:25:56.896461-277:46:40','rolpassword':'sha2565030b85f459cf837ab2ede05944250b43adda3c2e499a86e1f9fa349d8bc033fb1833614f8c65680bf1ea2047354dbe02493fe13ff8b94a0e2861994f933e40ac0a770e165ab9a7a2eb66ffe8bd4490ceb3f7168d7631b249b4fed559d426e00'}}
+{'table_name':'pg_authid', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'rolname':'yunlong','rolsuper':false,'rolinherit':true,'rolcreaterole':false,'rolcreatedb':false,'rolcatupdate':false,'rolcanlogin':true,'rolreplication':false,'rolauditadmin':false,'rolsystemadmin':true,'rolconnlimit':'-1','rolpassword':'xxxxxx',nullnull'rolrespool':'default_pool','roluseft':false,'rolparentid':'0',null'rolkind':'n',nullnullnullnull'rolmonitoradmin':false,'roloperatoradmin':false,'rolpolicyadmin':false}}
+{'table_name':'pg_auth_history', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'roloid':'24800','passwordtime':'2022-04-14 00:25:56.896461-277:46:40','rolpassword':'xxxxxx'}}
 {'table_name':'pg_namespace', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'nspname':'yunlong','nspowner':'24800','nsptimeline':'0','nspacl':'UnSupport Type','in_redistribution':'n','nspblockchain':false}}
 {'table_name':'pg_shdepend', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'dbid':'16444','classid':'2615','objid':'24802','objsubid':'0','refclassid':'1260','refobjid':'24800','deptype':'o',null}}
 {'table_name':'pg_user_status', 'schema_name':'pg_catalog', 'transaction id':'958293', 'action':'insert','tuple':{'roloid':'24800','failcount':'0','locktime':'2022-04-14 00:25:56.904328-277:46:40','rolstatus':'0','permspace':'0','tempspace':'0','passwordexpired':'0'}}

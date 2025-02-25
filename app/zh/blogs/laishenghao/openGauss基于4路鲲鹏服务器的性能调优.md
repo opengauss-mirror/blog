@@ -503,7 +503,7 @@ numactl -C 1-28,32-60,64-92,96-124,128-156,160-188,192-220,224-252 gs_ctl start 
 注意与前面在pg_hba.conf配置的参数保持一致。
 
 ```sql
-create user tpcc_bot with sysadmin identified by 'my_password@123';
+create user tpcc_bot with sysadmin identified by '******';
 create database tpcc1000 encoding='UTF-8' owner=tpcc_bot;
 ```
 

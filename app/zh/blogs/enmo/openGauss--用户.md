@@ -35,7 +35,7 @@ times: '10:20'
   例如：创建用户 joe，并设置用户拥有 CREATEDB 属性。
 
 ```
-postgres=# CREATE USER joe WITH CREATEDB PASSWORD "Bigdata@123"; CREATE ROLE
+postgres=# CREATE USER joe WITH CREATEDB PASSWORD "******"; CREATE ROLE
 ```
 
 - 要创建系统管理员，请使用带有 SYSADMIN 选项的 CREATE USER 语句 。

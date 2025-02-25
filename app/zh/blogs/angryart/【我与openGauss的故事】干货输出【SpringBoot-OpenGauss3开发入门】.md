@@ -19,7 +19,7 @@ summary: 'SpringBoot+openGauss开发入门'
 ```shell
 groupadd dbgroup
 useradd -g dbgroup omm # 可后面安装时创建
-passwd omm  #设置密码为Gauss_1234
+passwd omm  #设置密码为******
 
 ```
 

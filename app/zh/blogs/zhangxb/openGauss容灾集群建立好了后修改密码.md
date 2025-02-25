@@ -21,9 +21,9 @@ times: '18:40'
 ## 1. 搭建灾备集群
 
 ```
-gsql -d postgres -p 2400 -c "create user sdru1 with replication password 'opengauss@123';"
+gsql -d postgres -p 2400 -c "create user sdru1 with replication password '******';"
 
- gs_sdr -t start -m primary -X /opt/sdrmain.xml --time-out=7200 -U 'sdru1' -W 'opengauss@123'
+ gs_sdr -t start -m primary -X /opt/sdrmain.xml --time-out=7200 -U 'sdru1' -W '******'
 ```
 
 ![image-20241116160530106](.//images/image-20241116160530106.png)
@@ -80,13 +80,13 @@ om工具在搭建灾备涉及加密的如下几步：
 1. 在主节点修改sdr用户密码
 
    ```
-   alter user sdru1 password 'abc@1234567';
+   alter user sdru1 password '******';
    ```
 
 2. 生成密码的密文，保存在系统表里面
 
 ```
-gs_encrypt -f 'hadr' "sdru1|abc@1234567"
+gs_encrypt -f 'hadr' "sdru1|******"
 ALTER GLOBAL CONFIGURATION with(hadr_user_info ='kPuk8ITNo1JKS3xrs/VgQhJim4sGVkGkj8hxxNBvtibC6Du26xdRe8N5WuYPITAGdeYxAgTnsAlAOjhsouB7/Q==');
 ```
 

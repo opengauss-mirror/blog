@@ -68,7 +68,7 @@ import (
 
 /*
 需要有访问dbe_perf.global_instance_time的权限
-CREATE USER dbuser_monitor with login monadmin PASSWORD 'Mon@1234';
+CREATE USER dbuser_monitor with login monadmin PASSWORD '******';
 grant usage on schema dbe_perf to dbuser_monitor;
 grant select on dbe_perf.global_instance_time to dbuser_monitor;
 CGO_ENABLED=0 GOOS=linux GOARCH=arm64

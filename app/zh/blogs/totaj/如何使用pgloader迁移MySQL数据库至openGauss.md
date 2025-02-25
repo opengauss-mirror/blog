@@ -81,7 +81,7 @@ postgresql://[user[:password]@][netloc][:port][/dbname][?option=value&...]
 
 ```
 LOAD DATABASE
-FROM mysql://mysql_test:password123@1.1.1.1:3306/mysql_database
+FROM mysql://mysql_test:******@1.1.1.1:3306/mysql_database
 INTO postgresql://opengauss_test:********_***@1.1.1.1:5432/opengauss_database
 WITH include drop, create tables, create indexes, reset no sequences,
      workers = 8, concurrency = 1,
@@ -90,7 +90,7 @@ CAST
 type varchar when(= 1 precision) to "boolean" drop typemod keep default keep not null;
 ```
 
-以上配置文件的含义是，迁移数据时，MySQL 侧使用的用户名密码分别是 **mysql_test** 和 **password123** 。MySQL 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **3306** ，待迁移的数据库是 **mysql_database** 。
+以上配置文件的含义是，迁移数据时，MySQL 侧使用的用户名密码分别是 **mysql_test** 和 ********** 。MySQL 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **3306** ，待迁移的数据库是 **mysql_database** 。
 
 openGauss 侧使用的用户名密码分别是 **opengauss_test** 和 **********_***** 。openGauss 服务器的 IP 和 port 分别是 **1.1.1.1** 和 **5432** ，目标数据库是 **opengauss_database** 。
 

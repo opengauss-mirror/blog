@@ -35,7 +35,7 @@ ERROR:  The old password is invalid.
 omm=# create user enmotech with password 'enmotech';
 ERROR:  Password must contain at least three kinds of characters.
 omm=#
-omm=# create user enmotech with password 'Enm0t3ch';
+omm=# create user enmotech with password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 ```
@@ -56,7 +56,7 @@ omm=# \q
 在操作系统上，连接到容器数据库中：
 
 ```
-[root@ecs-514e-0004 ~]# gsql -d enmotech -U enmotech -W'Enm0t3ch' -h ***.***.***.*** -p 8888
+[root@ecs-514e-0004 ~]# gsql -d enmotech -U enmotech -W'******' -h ***.***.***.*** -p 8888
 gsql ((openGauss 1.0 build ec0e781b) compiled at 2020-04-27 17:25:57 commit 2144 last mr 131 )
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 Type "help" for help.

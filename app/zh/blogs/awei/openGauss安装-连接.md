@@ -266,7 +266,7 @@ IP。
 
 - 需先本地连接数据库，并在数据库中使用如下语句建立“jack”用户：
 
-  `postgres=# CREATE USER jack PASSWORD 'Test@123';`
+  `postgres=# CREATE USER jack PASSWORD '******';`
 
 - 允许客户端以“jack”用户连接到本机，此处远程连接禁止使用
 

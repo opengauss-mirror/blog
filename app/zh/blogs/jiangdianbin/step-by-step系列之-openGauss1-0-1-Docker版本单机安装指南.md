@@ -305,13 +305,13 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 在下面命令正常启动容器数据库之后，可以通过外部的 gsql 进行数据库访问。
 
-\# docker run --name opengaussnet --privileged=true -d -e GS_PASSWORD=Passw0rd@1234 \\
+\# docker run --name opengaussnet --privileged=true -d -e GS_PASSWORD=****** \\
 
 -v /enmotech/opengauss:/var/lib/opengauss \\
 
 -p 8888:5432 enmotech/opengauss:latest
 
-说明：windows 下，C:\\Users\\oldbear2008\>docker run --name opengaussnet --privileged=true -d -e GS_PASSWORD=Passw0rd@1234 -v /enmotech/opengauss:/var/lib/opengauss -p 8888:5432 enmotech/opengauss:latest 05755ccc4abea16bbfff6a361451470069daf2e16c7f551caee3b4bfbd1bbe45
+说明：windows 下，C:\\Users\\oldbear2008\>docker run --name opengaussnet --privileged=true -d -e GS_PASSWORD=****** -v /enmotech/opengauss:/var/lib/opengauss -p 8888:5432 enmotech/opengauss:latest 05755ccc4abea16bbfff6a361451470069daf2e16c7f551caee3b4bfbd1bbe45
 
 **数据持久化：**
 

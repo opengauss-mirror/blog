@@ -27,7 +27,7 @@ times: '12:30'
 
   ```
   docker run --name brm_opengauss \
-  --privileged=true -d -e GS_PASSWORD=mtkOP@123 \
+  --privileged=true -d -e GS_PASSWORD=****** \
   -v `pwd`/conf/brm.yaml:/etc/brm.yaml \
   -v `pwd`/var/lib/brm:/var/lib/brm \
   -v `pwd`/var/log/brm:/var/log/brm \
@@ -38,7 +38,7 @@ times: '12:30'
 
     ```
     docker run --name brm_opengauss_1230 \
-      --privileged=true -d -e GS_PASSWORD=mtkOP@123 \
+      --privileged=true -d -e GS_PASSWORD=****** \
       -v `pwd`/conf/brm.yaml:/etc/brm.yaml \
       -v `pwd`/var/lib/brm:/var/lib/brm \
       -v `pwd`/var/log/brm:/var/log/brm \

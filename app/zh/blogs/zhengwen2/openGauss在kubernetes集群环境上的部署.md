@@ -142,7 +142,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: GS_PASSWORD
-              value: Gauss@123
+              value: ******
           ports:
             - containerPort: 5432
               name: opengauss

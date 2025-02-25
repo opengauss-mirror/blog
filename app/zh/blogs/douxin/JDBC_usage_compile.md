@@ -64,7 +64,7 @@ times: '17:30'
           String driver = "org.postgresql.Driver";
           String sourceURL = "jdbc:postgresql://***.***.***.***:5432/postgres";
           String userName = "tpcc";
-          String password = "password";
+          String password = "******";
 
           try {
               // 1. 加载驱动程序

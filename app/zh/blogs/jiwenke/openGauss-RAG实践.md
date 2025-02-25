@@ -97,7 +97,7 @@ ollama version is 0.5.6
 镜像拉取完成后，我们可以启动openGauss服务：
 
 ```abap
-[root@localhost ~]$ docker run --name opengauss --privileged=true -d -e GS_PASSWORD=Test@123 -p 8888:5432 -v /home/test/opengauss:/var/lib/opengauss opengauss:7.0.0-RC1
+[root@localhost ~]$ docker run --name opengauss --privileged=true -d -e GS_PASSWORD=****** -p 8888:5432 -v /home/test/opengauss:/var/lib/opengauss opengauss:7.0.0-RC1
 ```
 
 至此，openGauss已经成功安装部署，我们可以通过psycopg2连接openGauss查看版本信息：
@@ -108,7 +108,7 @@ import psycopg2
 conn = psycopg2.connect(
     database="postgres",
     user="gaussdb",
-    password="Test@123",
+    password="******",
     host="127.0.0.1",
     port="8888"
 )
@@ -178,7 +178,7 @@ table_name = "opengauss_data"
 conn = psycopg2.connect(
     database="postgres",
     user="gaussdb",
-    password="Test@123",
+    password="******",
     host="127.0.0.1",
     port="8888"
 )

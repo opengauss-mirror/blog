@@ -68,7 +68,7 @@ gs_guc set -N all -I all -h "host all jack ***.***.***.***/24 sha256"
 
 # 建立用户
 
-CREATE USER hack PASSWORD 'Test@123';
+CREATE USER hack PASSWORD '******';
 
 #N all表示openGauss的所有主机。
 
@@ -208,11 +208,11 @@ Generating RSA private key, 2048 bit long modulus
 
 e is 65537 (0x10001)
 
---设置根私钥的保护密码，假设为Test@123
+--设置根私钥的保护密码，假设为******
 
 Enter pass phrase for demoCA/private/cakey.pem:
 
---再次输入私钥密码 Test@123
+--再次输入私钥密码 ******
 
 Verifying - Enter pass phrase for demoCA/private/cakey.pem:
 
@@ -225,7 +225,7 @@ openssl req -config openssl.cnf -new -key demoCA/private/cakey.pem -out demoCA/c
 
 Enter pass phrase for demoCA/private/cakey.pem:
 
---输入根私钥密码 Test@123
+--输入根私钥密码 ******
 
 You are about to be asked to enter information that will be incorporated
 
@@ -284,7 +284,7 @@ Using configuration from openssl.cnf
 
 Enter pass phrase for demoCA/private/cakey.pem:
 
---输入根私钥密码 Test@123
+--输入根私钥密码 ******
 
 Check that the request matches the signature
 
@@ -359,11 +359,11 @@ e is 65537 (0x10001)
 
 Enter pass phrase for server.key:
 
---服务端私钥的保护密码，假设为Test@123
+--服务端私钥的保护密码，假设为******
 
 Verifying - Enter pass phrase for server.key:
 
---再次确认服务端私钥的保护密码，即为Test@123
+--再次确认服务端私钥的保护密码，即为******
 
 
 #生成服务端证书请求文件

@@ -44,7 +44,7 @@ read -p "Please input OG_SUBNET (容器所在网段) [***.***.***.***/24]: " OG_
 OG_SUBNET=${OG_SUBNET:-***.***.***.***/24}
 echo "OG_SUBNET set $OG_SUBNET"
 
-read -p "Please input GS_PASSWORD (定义数据库密码)[****@***]: " GS_PASSWORD
+read -p "Please input GS_PASSWORD (定义数据库密码)[****@***]: " ******
 GS_PASSWORD=${GS_PASSWORD:-****@***}
 echo "GS_PASSWORD set $GS_PASSWORD"
 

@@ -163,7 +163,7 @@ CREATE SERVER
 普通用户 openGauss 操作创建用户映射。
 
 ```
-postgres=> create user mapping for opengauss server server_mysql options(username 'root',password '123456');
+postgres=> create user mapping for opengauss server server_mysql options(username 'root',password '******');
 CREATE USER MAPPING
 ```
 
@@ -251,7 +251,7 @@ CREATE SERVER
 普通用户 openGauss 操作创建用户映射。
 
 ```
-postgres=> create user mapping for opengauss server server_oracle options(user 'system',password 'admin');
+postgres=> create user mapping for opengauss server server_oracle options(user 'system',password '******');
 CREATE USER MAPPING
 ```
 

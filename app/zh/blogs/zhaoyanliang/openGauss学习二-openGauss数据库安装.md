@@ -246,9 +246,9 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
     使用数据库前，需先使用客户端程序或工具连接到数据库，然后就可以通过客户端程序或工具执行 SQL 来使用数据库了。gsql 是 openGauss 数据库提供的命令行方式的数据库连接工具。
 
-4.  **第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 Bigdata@123（建议用户自定义密码）**
+4.  **第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 ******（建议用户自定义密码）**
 
-**alter role omm identified by _'Bigdata@123_' replace _'*********@***'_;**
+**alter role omm identified by _'******_' replace _'*********@***'_;**
 
       显示“ALTER ROLE”则成功
 
@@ -256,11 +256,11 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
 默认只有 openGauss 安装时创建的管理员用户可以访问初始数据库，您还可以创建其他数据库用户帐号。
 
-指令：**CREATE USER joe WITH PASSWORD "Bigdata@123";**
+指令：**CREATE USER joe WITH PASSWORD "******";**
 
 <img src='./typora-user-images/image-20211114004255316.png'>
 
-    如上创建了一个用户名为joe，密码为Bigdata@123的用户。
+    如上创建了一个用户名为joe，密码为******的用户。
 
 6.  **创建数据库。**
 
@@ -274,7 +274,7 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/reposi
 
 使用新用户连接到此数据库：
 
-指令： **gsql -d db_tpcc -p 26000 -U joe -W Bigdata@123 -r**
+指令： **gsql -d db_tpcc -p 26000 -U joe -W ****** -r**
 
 显示如下内容表示成功：
 
