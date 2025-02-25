@@ -34,7 +34,61 @@ times: '17:30'
   - listen ：frontend和backend的组合体。
   ```
 
-- 在 HAProxy 配置文件中，[HAProxy 完整配置文件链接](../image/haproxy/haproxy.cfg)，我们定义了两个 listen 模块，名称分别为 opengauss 和 opengauss_balance,对应集群主机的写操作和备机的读操作及负载均衡。在 listen 模块中，使用 server 关键字设置后端服务器，即设置 Patroni 管理的 openGauss 集群中各个数据库节点的 ip 和端口号，即可将数据库节点的信息加入到 HAProxy 的管理中。
+- 在 HAProxy 配置文件中， 我们定义了两个 listen 模块，名称分别为 opengauss 和 opengauss_balance,对应集群主机的写操作和备机的读操作及负载均衡。在 listen 模块中，使用 server 关键字设置后端服务器，即设置 Patroni 管理的 openGauss 集群中各个数据库节点的 ip 和端口号，即可将数据库节点的信息加入到 HAProxy 的管理中。
+
+```
+global
+    maxconn 100
+
+defaults
+    log global
+    mode tcp
+    retries 2
+    timeout client 30m
+    timeout connect 4s
+    timeout server 30m
+    timeout check 5s
+
+listen stats
+    mode http
+    bind *:7000
+    stats enable
+    stats uri /
+
+listen opengauss
+    bind *:5000
+    option httpchk
+    http-check expect status 200
+    default-server inter 3s fall 3 rise 2 on-marked-down shutdown-sessions
+    # server opengauss_ip0_port0 ip0:port0 maxconn 100 check port 8008
+    # server opengauss_ip1_port1 ip1:port1 maxconn 100 check port 8008
+    # server opengauss_ip2_port2 ip2:port2 maxconn 100 check port 8008
+    # server opengauss_ip3_port3 ip3:port3 maxconn 100 check port 8008
+    # server opengauss_ip4_port4 ip4:port4 maxconn 100 check port 8008
+    # server opengauss_ip5_port5 ip5:port5 maxconn 100 check port 8008
+    # server opengauss_ip6_port6 ip6:port6 maxconn 100 check port 8008
+    # server opengauss_ip7_port7 ip7:port7 maxconn 100 check port 8008
+    # server opengauss_ip8_port8 ip8:port8 maxconn 100 check port 8008
+
+listen opengauss_balance
+    bind *:5001
+        mode tcp
+        option tcplog
+        balance roundrobin
+    option httpchk OPTIONS /replica
+    http-check expect status 200
+    default-server inter 3s fall 3 rise 2 on-marked-down shutdown-sessions
+    # server opengauss_ip0_port0 ip0:port0 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip1_port1 ip1:port1 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip2_port2 ip2:port2 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip3_port3 ip3:port3 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip4_port4 ip4:port4 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip5_port5 ip5:port5 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip6_port6 ip6:port6 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip7_port7 ip7:port7 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+    # server opengauss_ip8_port8 ip8:port8 maxconn 100 check port 8008 inter 5000 rise 2 fall 2
+
+```
 
 ### 2.1 主机的写操作配置
 

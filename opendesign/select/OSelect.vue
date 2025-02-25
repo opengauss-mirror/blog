@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAttrs, nextTick, onMounted, onUnmounted, computed } from 'vue';
-import { debounce } from 'lodash';
+import { useDebounceFn } from '@vueuse/core'
 
 const attrs = useAttrs();
 const props = defineProps({
@@ -12,7 +12,7 @@ const props = defineProps({
 
 const emit = defineEmits(['scorll-bottom']);
 
-const debounceEvent = debounce(
+const debounceEvent = useDebounceFn(
   function () {
     const isBottom =
       this.scrollHeight - this.scrollTop - 10 <= this.clientHeight;
@@ -21,9 +21,6 @@ const debounceEvent = debounce(
     }
   },
   300,
-  {
-    trailing: true,
-  }
 );
 
 const classNames = computed(() => {

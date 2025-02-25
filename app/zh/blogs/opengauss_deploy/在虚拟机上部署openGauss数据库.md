@@ -61,29 +61,24 @@ times: '19:30'
 1. 在华为云 ECS 上安装部署 openGauss 数据库指导手册
 
    文档下载：
-   wps: [在 ECS 上安装部署 openGauss 数据库指导手册.docx](../docs/在ECS上安装部署openGauss数据库指导手册.docx)
    pdf: [在 ECS 上安装部署 openGauss 数据库指导手册.pdf](../docs/在ECS上安装部署openGauss数据库指导手册.pdf)
 
 2. 在虚拟机+CentOS 上安装部署 openGauss 数据库指导手册
 
    文档下载：
-   wps: [在虚拟机+CentOS 上安装部署 openGauss 数据库指导手册.docx](../docs/在虚拟机+CentOS上安装部署openGauss数据库指导手册.docx)
    pdf: [在虚拟机+CentOS 上安装部署 openGauss 数据库指导手册.pdf](../docs/在虚拟机+CentOS上安装部署openGauss数据库指导手册.pdf)
 
 3. 在虚拟机+openEuler 上安装部署 openGauss 数据库指导手册
 
    文档下载：
-   wps: [在虚拟机+openEuler 上安装部署 openGauss 数据库指导手册.docx](../docs/在虚拟机+openEuler上安装部署openGauss数据库指导手册.docx)
    pdf: [在虚拟机+openEuler 上安装部署 openGauss 数据库指导手册.pdf](../docs/在虚拟机+openEuler上安装部署openGauss数据库指导手册.pdf)
 
 4. 使用虚拟机镜像文件导入部署 CentOS+openGauss 指导手册
 
    文档下载：
-   wps: [使用虚拟机镜像文件导入部署 CentOS+openGauss 指导手册.docx](../docs/使用虚拟机镜像文件导入部署CentOS+openGauss指导手册.docx)
    pdf: [使用虚拟机镜像文件导入部署 CentOS+openGauss 指导手册.pdf](../docs/使用虚拟机镜像文件导入部署CentOS+openGauss指导手册.pdf)
 
 5. 使用虚拟机镜像文件导入部署 openEuler+openGauss 指导手册
 
    文档下载:
-   wps: [使用虚拟机镜像文件导入部署 openEuler+openGauss 指导手册.docx](../docs/使用虚拟机镜像文件导入部署openEuler+openGauss指导手册.docx)
    pdf: [使用虚拟机镜像文件导入部署 openEuler+openGauss 指导手册.pdf](../docs/使用虚拟机镜像文件导入部署openEuler+openGauss指导手册.pdf)
