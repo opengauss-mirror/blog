@@ -30,7 +30,7 @@ times: '10:20'
 使用 docker 命令一键搭建
 
 ```
-docker run --name mogdb \ --privileged=true \ --detach \ --env GS_PASSWORD=Admin@1234 \ --publish 15400:5432 \ swr.cn-east-3.myhuaweicloud.com/enmotech/mogdb:2.0.1_amd
+docker run --name mogdb \ --privileged=true \ --detach \ --env GS_PASSWORD=****** \ --publish 15400:5432 \ swr.cn-east-3.myhuaweicloud.com/enmotech/mogdb:2.0.1_amd
 ```
 
 ### 数据库结构化准备
@@ -38,7 +38,7 @@ docker run --name mogdb \ --privileged=true \ --detach \ --env GS_PASSWORD=Admin
 ```
 create database productdb;
 \c productdb
-create user moguser password 'Admin@1234';
+create user moguser password '******';
 \c productdb moguser
 
 CREATE TABLE product

@@ -33,7 +33,7 @@ current_az : AZ_ALL
 2 node116 ***.***.***.*** 26000 6002 /apps3/opengauss/install/data/dn S Down Manually stopped
 
 在 OpenGauss 数据库中新建测试用户和测试库：
-openGauss=# create user benchuser WITH PASSWORD 'Bench_8899';
+openGauss=# create user benchuser WITH PASSWORD '******9';
 CREATE ROLE
 openGauss=# create database sysbench owner benchuser;
 CREATE DATABASE
@@ -68,7 +68,7 @@ password_encryption_type = 2
 改为 0
 
 同时用户密码也更新一下：
-openGauss=# alter user benchuser with password 'Bench_889';
+openGauss=# alter user benchuser with password '******';
 NOTICE: The encrypted password contains MD5 ciphertext, which is not secure.
 ALTER ROLE
 

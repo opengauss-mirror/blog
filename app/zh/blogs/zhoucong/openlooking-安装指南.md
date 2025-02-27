@@ -122,7 +122,7 @@ dataSources:
     maxLifetimeMilliseconds: 1800000
     maxPoolSize: 260
     minPoolSize: 1
-    password: Test@123
+    password: ******
     username: test
   ds_1:
     url: jdbc:opengauss://xxx.xxx.x.33:16000/test?loggerLevel=OFF  #数据库2 IP:port
@@ -131,7 +131,7 @@ dataSources:
     maxLifetimeMilliseconds: 1800000
     maxPoolSize: 260
     minPoolSize: 1
-    password: Test@123
+    password: ******
     username: test
 
 rules:

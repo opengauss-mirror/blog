@@ -11,8 +11,6 @@ times: '19:30'
 
 ## 在 ECS 上安装部署 openGauss 数据库指导手册
 
-文档下载：[在 ECS 上安装部署 openGauss 数据库指导手册.docx](./docs/在ECS上安装部署openGauss数据库指导手册.docx)
-
 <!--
 
 作者：CandyBullet
@@ -147,12 +145,12 @@ openGauss 是关系型数据库，采用客户端/服务器，单进程多线程
 步骤 4 自定义购买进行网路配置。
 表 1-2ECS 网络配置
 
-| 配置选项    | 配置值                                              |
-| ----------- | --------------------------------------------------- |
-| 网络        | Vpc-default（***.***.***.***/16）（选现有默认网络即可） |
-| 弹性公网 IP | 现在购买                                            |
-| 公网带宽    | 按流量计费                                          |
-| 带宽大小    | 5                                                   |
+| 配置选项    | 配置值                                                  |
+| ----------- | ------------------------------------------------------- |
+| 网络        | Vpc-default（**_._**.**_._**/16）（选现有默认网络即可） |
+| 弹性公网 IP | 现在购买                                                |
+| 公网带宽    | 按流量计费                                              |
+| 带宽大小    | 5                                                       |
 
 <img src='./images/ecscloud/008.png'>
 <img src='./images/ecscloud/009.png'>
@@ -255,7 +253,7 @@ Python 3.7.4
 步骤 2 创建 XML 配置文件，用于数据库安装。\
 `[root@ecs-c9bf openGauss]# vi clusterconfig.xml`
 
-步骤 3 输入”i”进入 INSERT 模式，添加文本如下，加粗字体内容为示例，可自行替换。其中“ecs-c9bf”是弹性云服务器的名称，“***.***.***.***”为弹性云服务器的 IP 地址（私有），其他 value 值可以不进行修改。
+步骤 3 输入”i”进入 INSERT 模式，添加文本如下，加粗字体内容为示例，可自行替换。其中“ecs-c9bf”是弹性云服务器的名称，“**_._**.**_._**”为弹性云服务器的 IP 地址（私有），其他 value 值可以不进行修改。
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -423,7 +421,7 @@ Are you sure you want to create trust for root (yes/no)? yes
 Please enter password for root.
 Password:  --说明：此处输入密码时，屏幕上不会有任何反馈，不用担心，这是LINUX操作系统对密码的保护.
 Creating SSH trust for the root permission user.
-创建操作系统omm用户，并对omm创建trust，并设置密码，设置为Admin@123(建议用户自定义设置密码)。
+创建操作系统omm用户，并对omm创建trust，并设置密码，设置为******(建议用户自定义设置密码)。
 Are you sure you want to create the user[omm] and create trust for it (yes/no)? yes
 Please enter password for cluster user.
 Password:
@@ -475,7 +473,7 @@ gs_install -X /opt/software/openGauss/clusterconfig.xml --gsinit-parameter="--en
 ```
 [omm@ecs-c9bf ~]$ gs_install -X /opt/software/openGauss/clusterconfig.xml --gsinit-parameter="--encoding=UTF8"  --dn-guc="max_process_memory=4GB"  --dn-guc="shared_buffers=256MB" --dn-guc="bulk_write_ring_size=256MB" --dn-guc="cstore_buffers=16MB"
 /opt/software/ openGauss/clusterconfig.xml为openGauss配置文件的路径。在执行过程中，用户需根据提示输入数据库管理员omm用户的密码，密码具有一定的复杂度，为保证用户正常使用该数据库，请记住输入的数据库密码。
-按照设置密码要求，设置密码为GaussDB@123（建议用户自定义设置密码）：
+按照设置密码要求，设置密码为******（建议用户自定义设置密码）：
 encrypt cipher and rand files for database.
 Please enter password for database:
 Please repeat for database:
@@ -572,10 +570,10 @@ postgres=#
 
 - 使用数据库前，需先使用客户端程序或工具连接到数据库，然后就可以通过客户端程序或工具执行 SQL 来使用数据库了。
 - gsql 是 openGauss 数据库提供的命令行方式的数据库连接工具。
-- 步骤 4 第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 Bigdata@123（建议用户自定义密码）。
+- 步骤 4 第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 **\*\***（建议用户自定义密码）。
 
 ```
-postgres=# alter role omm identified by 'Bigdata@123' replace 'GaussDB@123';
+postgres=# alter role omm identified by '******' replace '******';
 ```
 
 成功显示如下：
@@ -588,7 +586,7 @@ ALTER ROLE
 默认只有 openGauss 安装时创建的管理员用户可以访问初始数据库，您还可以创建其他数据库用户帐号。
 
 ```
-postgres=# CREATE USER joe WITH PASSWORD "Bigdata@123";
+postgres=# CREATE USER joe WITH PASSWORD "******";
 ```
 
 当结果显示为如下信息，则表示创建成功。
@@ -597,7 +595,7 @@ postgres=# CREATE USER joe WITH PASSWORD "Bigdata@123";
 CREATE ROLE
 ```
 
-如上创建了一个用户名为 joe，密码为 Bigdata@123 的用户。
+如上创建了一个用户名为 joe，密码为 **\*\*** 的用户。
 
 步骤 6 创建数据库。
 
@@ -621,7 +619,7 @@ postgres=#  \q
 使用新用户连接到此数据库。
 
 ```
-[omm@ecs-c9bf ~]$ gsql -d db_tpcc -p 26000 -U joe -W Bigdata@123  -r
+[omm@ecs-c9bf ~]$ gsql -d db_tpcc -p 26000 -U joe -W ******  -r
 ```
 
 当结果显示为如下信息，则表示连接成功。

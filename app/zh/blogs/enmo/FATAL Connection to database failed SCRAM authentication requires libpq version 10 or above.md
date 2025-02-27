@@ -27,7 +27,7 @@ times: '10:20'
 在自定义安装好 mogdb2.1 的版本之后，使用 sysbench(sysbench 1.0.17)进行压测 mogdb 数据库时，出现一下的问题
 
 ```
-[root@mogdb001 ~]# sysbench /usr/share/sysbench/oltp_common.lua --db-driver=pgsql --pgsql-host=localhost --pgsql-user=user1 --pgsql-password=root123.xxx --pgsql-db=sbtest --tables=16 --table_size=100000 --threads=4 prepare
+[root@mogdb001 ~]# sysbench /usr/share/sysbench/oltp_common.lua --db-driver=pgsql --pgsql-host=localhost --pgsql-user=user1 --pgsql-password=****** --pgsql-db=sbtest --tables=16 --table_size=100000 --threads=4 prepare
 ```
 
 - sysbench 1.0.17 (using system LuaJIT 2.0.4)
@@ -50,7 +50,7 @@ times: '10:20'
 
 修改参数 password_encryption_type=0。
 重新更新一下业务用户的密码，我这边是 user1，replace 密码的语句
-alter user moguser IDENTIFIED BY ‘root123.xxxx’ **REPLACE** ‘root123.xxxx1’;
+alter user moguser IDENTIFIED BY ‘******’ **REPLACE** ‘******1’;
 修改 pg_hba.conf 文件，这个文件要想当清楚，需要在(IPv4 local connections)增添一条为
 IPv4 local connections:
 
@@ -60,7 +60,7 @@ IPv4 local connections:
 昨晚以上的所有步骤，就可以通过 sysbench 来连接 mogdb 数据库。
 
 ```
-root@mogdb001 ~]# sysbench /usr/share/sysbench/oltp_common.lua --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=user1 --pgsql-password=root123.xxxx --pgsql-db=sbtest --tables=16 --table_size=1000000000 --threads=64 prepare
+root@mogdb001 ~]# sysbench /usr/share/sysbench/oltp_common.lua --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=user1 --pgsql-password=****** --pgsql-db=sbtest --tables=16 --table_size=1000000000 --threads=64 prepare
 sysbench 1.0.17 (using system LuaJIT 2.0.4)
 
 Initializing worker threads…

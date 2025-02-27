@@ -42,7 +42,7 @@ docker run --name mogdb1 \
 --hostname mogdb1 --detach \
 --env GS_PORT=5432 \
 --env OG_SUBNET=***.***.***.***/16 \
---env GS_PASSWORD=Admin@1234 \
+--env GS_PASSWORD=****** \
 --env NODE_NAME=mogdb1 \
 --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.***1 localport=5434 localservice=5432 remotehost=***.***.***.***2 remoteport=5434 remoteservice=5432 '\n" \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M primary
@@ -58,7 +58,7 @@ docker run --name mogdb2 \
 --hostname mogdb2 --detach \
 --env GS_PORT=5432 \
 --env OG_SUBNET=***.***.***.***/16 \
---env GS_PASSWORD=Admin@1234 \
+--env GS_PASSWORD=****** \
 --env NODE_NAME=mogdb2 \
 --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.***2 localport=5434 localservice=5432 remotehost=***.***.***.***1 remoteport=5434 remoteservice=5432 '\n" \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
@@ -74,7 +74,7 @@ docker run --name mogdb3 \
 --hostname mogdb3 --detach \
 --env GS_PORT=5432 \
 --env OG_SUBNET=***.***.***.***/16 \
---env GS_PASSWORD=Admin@1234 \
+--env GS_PASSWORD=****** \
 --env NODE_NAME=mogdb3 \
 --env REPL_CONN_INFO="replconninfo2 = 'localhost=***.***.***.***3 localport=5434 localservice=5432 remotehost=***.***.***.***1 remoteport=5434 remoteservice=5432 '\n" \
 swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1 -M standby
@@ -148,7 +148,7 @@ No information
 创建远程连接用户及测试表
 
 ```
-create user admin password 'Admin@1234'; \c - admin create table test(id int,info varchar);
+create user admin password '******'; \c - admin create table test(id int,info varchar);
 ```
 
 ### 二、JDBC 连接测试
@@ -186,7 +186,7 @@ public class TestFailoverAndLoadbalance {
         for (int i = 0; i < 100; i++) {
             try (Connection conn = DriverManager.getConnection(
                     "jdbc:postgresql://***.***.***.***:8001,***.***.***.***:8002,***.***.***.***:8003/postgres?targetServerType=master&loadBalanceHosts=true&loggerLevel=off",
-                    "admin", "Admin@1234")) {
+                    "admin", "******")) {
                 System.out.println("NO:" + i);
                 //execSelect(conn);
                 execInsert(conn);

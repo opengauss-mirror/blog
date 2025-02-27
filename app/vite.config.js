@@ -25,9 +25,7 @@ export default defineConfig({
     Icons({
       compiler: 'vue3',
       customCollections: {
-        app: FileSystemIconLoader(
-          path.resolve(__dirname, './.vitepress/src/assets/svg-icons')
-        ),
+        app: FileSystemIconLoader(path.resolve(__dirname, './.vitepress/src/assets/svg-icons')),
       },
     }),
   ],

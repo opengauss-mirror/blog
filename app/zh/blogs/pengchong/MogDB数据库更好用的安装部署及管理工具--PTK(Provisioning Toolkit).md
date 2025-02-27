@@ -43,7 +43,7 @@ omm 用户安装使用 gs_preinstall 命令
 gs_install -X /opt/software/clusterconfig.xml \
 --gsinit-parameter="--encoding=UTF8" \
 --gsinit-parameter="--dbcompatibility=PG" \
---gsinit-parameter="--pwpasswd=Admin@1234"
+--gsinit-parameter="--pwpasswd=******
 ```
 
 初次接触使用 om 安装的人可能会遇到不少问题…
@@ -228,7 +228,7 @@ Please check root_fix_os.[TIMESTAMP].sh for commands to resolve.
 
 ```
 # /opt/ptk/ptk encrypt admin
-admin: pTk6Y2Q4MzNmYmQ8RD1FPTxAPTgzSDBzTGdrY1VuVmVhd0s0LUhrTzNyNW5qNFhKaTFRNDI4RnN5VW52YWM=
+admin: ******=
 ```
 
 编辑好的配置文件 config.yaml 如下：
@@ -238,8 +238,8 @@ global:
   cluster_name: "mymogdb"
   user: "omm"
   group: "dbgrp"
-  user_password: "pTk6NDM4Yjk3NjA8RDxCPUQ8RDVYd2VfVDFfNzU3WEtWUkV2YU5YRHFSVlVCZFBwLV8ybkZabFY3VjJUTjA="
-  db_password: "pTk6MDE1ZmQ3ZTg8RDxCPUM/RVNKUzQtNE10S2h0NGZ3eXRpMXlTWURDWGdVSUtNeDZvRzNwRHk0M09lUEk="
+  user_password: "******"
+  db_password: "******"
   db_port: 3000
   cm_server_port: 15300
   base_dir: "/opt/mogdb301"
@@ -253,7 +253,7 @@ global:
   ssh_option:
       port: 22
       user: root
-      password: "pTk6ZDA2NmFmOTQ8RDxCPUNBP19NSnVKVFV1eFJ6SG5wOElmVC1uS3pqbWNDSGh1bFJzNEZqSHlGQTRuRWs="
+      password: "******"
       conn_timeout: "5s"
       exec_timeout: "1m"
 db_servers:
@@ -367,7 +367,7 @@ scale-out 需要接收一个新增节点配置的文件，使用–gen-template 
   ssh_option:
     host: ***.***.***.***    port: 22
     user: root
-    password: "pTk6ZDA2NmFmOTQ8RDxCPUNBP19NSnVKVFV1eFJ6SG5wOElmVC1uS3pqbWNDSGh1bFJzNEZqSHlGQTRuRWs="
+    password: "******"
 ```
 
 使用 scale-out 命令进行缩容

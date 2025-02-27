@@ -73,7 +73,7 @@ host    all             all          192.168.181.0/24             sha256
 这种情况应该是我们遇到该问题的时候，首先应该检查输入是否正确。如果在不确认密码是否正确的时候，建议可以先修改密码，然后再测试是否可以正确连接数据库。
 
 ```
-alter user test identified by 'openGauss@2024';
+alter user test identified by '******';
 ```
 
 ### 认证加密方式配置是否正确
@@ -91,7 +91,7 @@ show password_encryption_type;
 (2)、修改password_encryption_type的参数值为1或0，这个时候我们配置md5，其实也是可以适用。但是需要注意修改password_encryption_type参数的配置不会自动触发已有用户密码加密方式的修改，只会影响新创建用户或修改用户密码操作。所以我们需要在修改参数后并重启数据库使参数生效，然后还需要修改数据库用户口令。
 
 ```
-alter user test identified by 'openGauss@0430';
+alter user test identified by '******';
 ```
 
 该问题可以详细查看《DBeaver连接openGauss报错Invalid username/password问题排查》https://www.modb.pro/db/1784591381011976192文章中详细介绍。

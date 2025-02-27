@@ -562,7 +562,7 @@ Python 3.6.8
 --创建用户组dbgrp
 groupadd dbgrp
 
---创建用户组dbgroup下的普通用户omm，并设置密码为Gauss_234 
+--创建用户组dbgroup下的普通用户omm，并设置密码为****** 
 useradd -g dbgrp omm
 passwd omm
 ```

@@ -38,7 +38,7 @@ times: '12:30'
   export GAUSSDATA=/gaussdb/data/dn1
   export PATH=$PGHOME/bin:$PATH
   DUMP_USER=ysla
-  DUMP_PASSWORD='1qaz@WSX'
+  DUMP_PASSWORD='******'
   CUR_DATE=`date "+%Y-%m-%d-%H%M"`
   dbnamelist=`cat oo.txt`
 

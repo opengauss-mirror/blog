@@ -65,10 +65,10 @@ gs_om -t restart
 
 
 ```
-gsql -d postgres -p 15000 -c "CREATE USER repl REPLICATION SYSADMIN LOGIN ENCRYPTED PASSWORD 'repl@123'"
+gsql -d postgres -p 15000 -c "CREATE USER repl REPLICATION SYSADMIN LOGIN ENCRYPTED PASSWORD '******'"
 
 [omm@yf4 opt]$ gsql -d postgres -p 15000 -c "CREATE USER repl REPLICATION SYSADMIN 
-LOGIN ENCRYPTED PASSWORD 'repl@123'"
+LOGIN ENCRYPTED PASSWORD '******'"
 CREATE ROLE
 ```
 
@@ -125,9 +125,9 @@ CREATE TABLE
 ## 6.订阅端创建加密文件
 
 ```
-gs_ssh -c "gs_guc generate -S repl@123 -D $GAUSSHOME/bin -o subscription"
+gs_ssh -c "gs_guc generate -S ****** -D $GAUSSHOME/bin -o subscription"
 
-[omm@yf5 ~]$ gs_ssh -c "gs_guc generate -S repl@123 -D $GAUSSHOME/bin -o subscription"Successfully execute command on all nodes.
+[omm@yf5 ~]$ gs_ssh -c "gs_guc generate -S ****** -D $GAUSSHOME/bin -o subscription"Successfully execute command on all nodes.
 
 Output:[SUCCESS] yf5:
 The gs_guc run with the following arguments: [gs_guc -S *** -D /opt/openGauss/install/app/bin -o subscription generate ].
@@ -139,9 +139,9 @@ gs_guc generate -S ***
 ```
 gsql -d postgres -p 15000 -c "CREATE SUBSCRIPTION sub1 CONNECTION
 
- 'host=192.168.59.149 port=15001 dbname=postgres user=repl password=repl@123' PUBLICATION pub1"
+ 'host=192.168.59.149 port=15001 dbname=postgres user=repl password=******' PUBLICATION pub1"
 
-[omm@yf5 ~]$ gsql -d postgres -p 15000 -c "CREATE SUBSCRIPTION sub1 CONNECTION 'host=192.168.59.149 port=15001 dbname=postgres user=repl password=repl@123' PUBLICATION pub1"NOTICE:  created replication slot "sub1" on publisher
+[omm@yf5 ~]$ gsql -d postgres -p 15000 -c "CREATE SUBSCRIPTION sub1 CONNECTION 'host=192.168.59.149 port=15001 dbname=postgres user=repl password=******' PUBLICATION pub1"NOTICE:  created replication slot "sub1" on publisher
 CREATE SUBSCRIPTION
 ```
 
@@ -192,7 +192,7 @@ subconninfo                                              | subslotname | subsync
 ---------+---------+----------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------+---------------+----------
 -------+-----------+------------+------------------
 15737 | sub1    |   10 | t     
-| host=192.168.59.149 port=15001 dbname=postgres user=repl password=encryptOpty+wL5qbR/g1duD+0mVBEBTPUHu/DqESpg30CN6Bbh8go4hKEMAlGiKf8KtM6klUb
+| host=192.168.59.149 port=15001 dbname=postgres user=repl password=******
 | sub1        | off           | {pub1}       | f         | 0/0        | t
 
 (1 row)

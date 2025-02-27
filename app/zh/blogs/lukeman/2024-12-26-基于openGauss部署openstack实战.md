@@ -71,7 +71,7 @@ CREATE DATABASE
 openGauss=# \c keystone 
 Non-SSL connection (SSL connection is recommended when requiring high-security)
 -- 可根据实际情况设置keystone数据库用户密码，此处仅为示例，下面的安装步骤同理
-keystone=# CREATE USER keystone WITH PASSWORD 'Proto_test123';
+keystone=# CREATE USER keystone WITH PASSWORD '******';
 CREATE ROLE
 keystone=# grant all privileges on database keystone to keystone;
 GRANT
@@ -88,7 +88,7 @@ yum install openstack-keystone httpd mod_wsgi
 ```shell
 # 修改/etc/keystone/keystone.conf，根据实际情况替换数据库用户密码以及{IP}和{PORT}
 [database]
-connection = postgresql://keystone:Proto_test123@{IP}:{PORT}/keystone
+connection = postgresql://keystone:******@{IP}:{PORT}/keystone
 
 [token]
 provider = fernet
@@ -240,7 +240,7 @@ openGauss=# create database glance;
 CREATE DATABASE
 openGauss=# \c glance 
 Non-SSL connection (SSL connection is recommended when requiring high-security)
-glance=# create user glance with password 'Proto_test123';
+glance=# create user glance with password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 glance=# grant ALL privileges on database glance to glance;
@@ -251,7 +251,7 @@ GRANT
 vim /etc/glance/glance-api.conf
 #修改glance数据库相关配置，此处仅说明数据库配置，其他配置请参考官方文档
 [database]
-connection = postgresql://glance:Proto_test123@{IP}:{PORT}/glance
+connection = postgresql://glance:******@{IP}:{PORT}/glance
 ```
 
 #### Placement安装
@@ -262,7 +262,7 @@ openGauss=# create database placement dbcompatibility 'B';
 CREATE DATABASE
 openGauss=# \c placement 
 Non-SSL connection (SSL connection is recommended when requiring high-security)
-placement=# create user placement with password 'Proto_test123';
+placement=# create user placement with password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 placement=# grant ALL privileges on database placement to placement;
@@ -274,7 +274,7 @@ GRANT
 
 [placement_database]
 # ...
-connection = postgresql://placement:Proto_test123@{IP}:{PORT}/placement
+connection = postgresql://placement:******@{IP}:{PORT}/placement
 ```
 
 
@@ -289,7 +289,7 @@ openGauss=# CREATE DATABASE nova_cell0;
 CREATE DATABASE
 openGauss=# \c nova
 Non-SSL connection (SSL connection is recommended when requiring high-security)
-nova=# create user nova with password 'Proto_test123';
+nova=# create user nova with password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 
@@ -304,7 +304,7 @@ GRANT
 
 
 --- 创建Nova用户之后，使用Nova重新连接数据库
-gsql -d postgres -p {port} -r -U nova -W Proto_test123
+gsql -d postgres -p {port} -r -U nova -W ******
 
 --- 在nova_api和nova_cell0中使用Nova用户创建schema
 openGauss=> \c nova_api
@@ -325,10 +325,10 @@ CREATE SCHEMA
 vim /etc/nova/nova.conf
  
 [api_database]
-connection = postgresql://nova:Proto_test123@{IP}:{PORT}/nova_api
+connection = postgresql://nova:******@{IP}:{PORT}/nova_api
  
 [database]
-connection = postgresql://nova:Proto_test123@{IP}:{PORT}/nova
+connection = postgresql://nova:******@{IP}:{PORT}/nova
 ```
 
 #### Neutron安装
@@ -338,7 +338,7 @@ openGauss=# create database neutron;
 CREATE DATABASE
 openGauss=# \c neutron 
 Non-SSL connection (SSL connection is recommended when requiring high-security)
-neutron=# create user neutron with password 'Proto_test123';
+neutron=# create user neutron with password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 neutron=# grant ALL privileges on database neutron to neutron;
@@ -348,7 +348,7 @@ GRANT
 ```shell
 vim /etc/neutron/neutron.conf
 [database]
-connection = postgresql://neutron:Proto_test123@{IP}:{PORT}/neutron
+connection = postgresql://neutron:******@{IP}:{PORT}/neutron
 ```
 
 #### Cinder安装
@@ -358,7 +358,7 @@ openGauss=# create database cinder;
 CREATE DATABASE
 openGauss=# \c cinder
 Non-SSL connection (SSL connection is recommended when requiring high-security)
-neutron=# create user cinder with password 'Proto_test123';
+neutron=# create user cinder with password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
 CREATE ROLE
 neutron=# grant ALL privileges on database cinder to cinder;
@@ -369,7 +369,7 @@ GRANT
 vim /etc/cinder/cinder.conf
 
 [database]
-connection = postgresql://cinder:Proto_test123@{IP}:{PORT}/cinder
+connection = postgresql://cinder:******@{IP}:{PORT}/cinder
 ```
 #### Horizon安装
 安装horizon不涉及数据库操作，安装后可通过前端服务访问openStack的dashboard创建安全组规则、虚拟化网络、虚拟机等。

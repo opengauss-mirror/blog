@@ -53,7 +53,7 @@ gs_om -t start
 ```
 postgres=# create database jdbc_db;
 CREATE DATABASE
-postgres=# create user jdbc_usr password 'jdbc@123';
+postgres=# create user jdbc_usr password '******';
 NOTICE:  The encrypted password contains MD5 ciphertext,    which is not secure.
 CREATE ROLE
 postgres=# alter user jdbc_usr sysadmin;
@@ -86,7 +86,7 @@ public class ConnTest {
 
         try {
             //创建数据库连接。
-            conn = DriverManager.getConnection(sourceURL,"jdbc_usr", "jdbc@123");
+            conn = DriverManager.getConnection(sourceURL,"jdbc_usr", "******");
             System.out.println("连接成功!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,7 +127,7 @@ public class ConnTest {
      */
     public static void main(String[] args) {
         //创建数据库连接。
-        Connection conn = GetConnection("jdbc_usr", "jdbc@123");
+        Connection conn = GetConnection("jdbc_usr", "******");
         Select(conn);
         //关闭数据库连接。
         try {

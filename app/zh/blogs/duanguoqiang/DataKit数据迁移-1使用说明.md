@@ -79,10 +79,10 @@ gsql -d postgres -p <port> -r
 创建用户并赋予管理员权限
 
 ```sql
-create user opengauss_test with password 'Sample@123';
+create user opengauss_test with password '******';
 grant all privileges to opengauss_test;
 -- 其中，“opengauss_test”为用户名，可自定义，后续此文档中涉及到连接openGauss的用户，便使用此用户。
---       “Sample@123”为用户密码，可自定义。
+--       “******”为用户密码，可自定义。
 ```
 
 ## 3 执行迁移任务

@@ -1,13 +1,14 @@
-FROM gplane/pnpm as Builder
+FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/node:latest as Builder
 
 RUN mkdir -p /home/opengauss/web
 WORKDIR /home/opengauss/web
 COPY . /home/opengauss/web
 
+RUN npm install pnpm -g
 RUN pnpm install
 RUN pnpm build
 
-FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/openeuler/nginx:1.22.0-22.03-lts
+FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/openeuler/nginx:latest as NginxBuilder
 
 COPY --from=Builder /home/opengauss/web/app/.vitepress/dist /usr/share/nginx/html/
 

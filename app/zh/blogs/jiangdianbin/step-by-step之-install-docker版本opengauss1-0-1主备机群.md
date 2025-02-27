@@ -155,7 +155,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 创建主节点：
 
 ```
-[root@node1 ~]# docker run --name op_master --network myNetwork --ip ***.***.***.*** --privileged=true --hostname op_master --detach --env GS_PORT=6432 --env OG_SUBNET=***.***.***.***/16 --env GS_PASSWORD=Enmotech@2020 --env NODE_NAME=op_master --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=6439 localservice=6432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432 '\n" --cpuset-cpus="1,3" enmotech/opengauss:1.0.1 -M primary
+[root@node1 ~]# docker run --name op_master --network myNetwork --ip ***.***.***.*** --privileged=true --hostname op_master --detach --env GS_PORT=6432 --env OG_SUBNET=***.***.***.***/16 --env GS_PASSWORD=****** --env NODE_NAME=op_master --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=6439 localservice=6432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432 '\n" --cpuset-cpus="1,3" enmotech/opengauss:1.0.1 -M primary
 775afac757803a51f9e40886a00e8c3014301cd328823e716ec1c1fe39e4f85d
 [root@node1 ~]#
 ```
@@ -168,7 +168,7 @@ docker run --name op_slave_one \
 --hostname op_slave_one --detach \
 --env GS_PORT=6432 \
 --env OG_SUBNET=***.***.***.***/16 \
---env GS_PASSWORD=Enmotech@2020 \
+--env GS_PASSWORD=****** \
 --env NODE_NAME=op_slave_one \
 --env REPL_CONN_INFO="replconninfo1 = 'localhost=***.***.***.*** localport=6439 localservice=6432 remotehost=***.***.***.*** remoteport=6439 remoteservice=6432 '\n" \
 --cpuset-cpus="2,4" \

@@ -562,9 +562,9 @@ drwxr-xr-x. 2 root root 115 Dec 31 20:41 simpleInstall
 
 <!-- <img src='media/3b5b635cf4fb86d84ecb63a5e417253f.png'> -->
 
-1.  第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 Bigdata@123（建议用户自定义密码）。
+1.  第一次连接数据库时，需要先修改 omm 用户密码，新密码修改为 ******（建议用户自定义密码）。
 
-2.  ` postgres=\# **alter role omm identified by 'Bigdata@123' replace '*********@***';**`
+2.  ` postgres=\# **alter role omm identified by '******' replace '*********@***';**`
 
 3.  ALTER ROLE
 
@@ -576,13 +576,13 @@ drwxr-xr-x. 2 root root 115 Dec 31 20:41 simpleInstall
 
 7.  默认只有 openGauss 安装时创建的管理员用户可以访问初始数据库，您还可以创建其他数据库用户帐号。
 
-8.  `postgres=\# **CREATE USER joe WITH PASSWORD "Bigdata@123";**`
+8.  `postgres=\# **CREATE USER joe WITH PASSWORD "******";**`
 
 9.  当结果显示为如下信息，则表示创建成功。
 
 10. CREATE ROLE
 
-11. 如上创建了一个用户名为 joe，密码为 Bigdata@123 的用户。
+11. 如上创建了一个用户名为 joe，密码为 ****** 的用户。
 
 结果：
 
@@ -606,7 +606,7 @@ drwxr-xr-x. 2 root root 115 Dec 31 20:41 simpleInstall
 
 使用新用户连接到此数据库。
 
-`[omm@ecs-c9bf \~]\$ **gsql -d db_tpcc -p 26000 -U joe -W Bigdata@123 -r**`
+`[omm@ecs-c9bf \~]\$ **gsql -d db_tpcc -p 26000 -U joe -W ****** -r**`
 
 当结果显示为如下信息，则表示连接成功
 

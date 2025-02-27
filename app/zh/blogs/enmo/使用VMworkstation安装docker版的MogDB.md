@@ -119,7 +119,7 @@ WantedBy=multi-user.target
 
 ##创建单节点容器
 # docker run --name mogdb --privileged=true \
--d -e GS_PASSWORD=Mogdb@1234 \
+-d -e GS_PASSWORD=****** \
 -v /dbdata/mogdb_docker:/var/lib/mogdb \
 -p 15432:5432  swr.cn-north-4.myhuaweicloud.com/mogdb/mogdb:2.1.1
 

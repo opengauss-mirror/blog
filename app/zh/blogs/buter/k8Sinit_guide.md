@@ -136,7 +136,7 @@ apiServer:
 
 ```
 kubeadm join ***.***.***.***:6443 --token ru2883.u4rhwkx5oqrol9at \
-        --discovery-token-ca-cert-hash sha256:f2dbe7ce49b322e8145b6e9b4303e56468ad1352daabecb797f7bd161a64e018
+        --discovery-token-ca-cert-hash sha256:******
 ```
 
 初始化
@@ -157,7 +157,7 @@ Node 节点执行完安装后无需初始化，执行`kubeadm join`命令加入�
 
 ```
 kubeadm join ***.***.***.***:6443 --token ru2883.u4rhwkx5oqrol9at \
-        --discovery-token-ca-cert-hash sha256:f2dbe7ce49b322e8145b6e9b4303e56468ad1352daabecb797f7bd161a64e018
+        --discovery-token-ca-cert-hash sha256:******
 ```
 
 ## 8. 导入镜像(master 和 node 节点)
@@ -297,7 +297,7 @@ spec:
     - name: PORT
       value: "5432"
     - name: GS_PASSWORD
-      value: "Test@56789"
+      value: "******"
     - name: SERVER_MODE
       value: primary
     - name: db_config
@@ -344,7 +344,7 @@ spec:
     - name: PORT
       value: "5432"
     - name: GS_PASSWORD
-      value: "Test@56789"
+      value: "******"
     - name: SERVER_MODE
       value: standby
     - name: db_config
@@ -391,7 +391,7 @@ spec:
     - name: PORT
       value: "5432"
     - name: GS_PASSWORD
-      value: "Test@56789"
+      value: "******"
     - name: SERVER_MODE
       value: standby
     - name: db_config

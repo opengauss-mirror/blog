@@ -85,7 +85,7 @@ The following is an example of the configuration file for migrating data from My
 
 ```
 LOAD DATABASE
-FROM mysql://mysql_test:password123@1.1.1.1:3306/mysql_database
+FROM mysql://mysql_test:******@1.1.1.1:3306/mysql_database
 INTO postgresql://opengauss_test:********_***@1.1.1.1:5432/opengauss_database
 
 WITH include drop, create tables, create indexes, reset no sequences,
@@ -96,7 +96,7 @@ WITH include drop, create tables, create indexes, reset no sequences,
  type varchar when(= 1 precision) to "boolean" drop typemod keep default keep not null;
 ```
 
-The preceding configuration file indicates that the username and password for connecting to MySQL are **mysql_test** and **password123** respectively during data migration. The IP address and port number of the MySQL server are **1.1.1.1** and **3306**, respectively. The source database is **mysql_database**.
+The preceding configuration file indicates that the username and password for connecting to MySQL are **mysql_test** and **xxxxxx** respectively during data migration. The IP address and port number of the MySQL server are **1.1.1.1** and **3306**, respectively. The source database is **mysql_database**.
 
 The username and password for connecting to openGauss are **opengauss_test** and **********_*****, respectively. The IP address and port number of the openGauss server are **1.1.1.1** and **5432**, respectively, and the target database is **opengauss_database**.
 

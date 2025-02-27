@@ -25,7 +25,7 @@ times: '16:20'
   <img src='./images/docker_iamge.jpg' />
 
 - 4、启动镜像，指定下密码就行，如果密码太简单会报错。
-  `docker run --name myopengauss --privileged=true -d -e GS_PASSWORD=Gauss@123 enmotech/opengauss:3.0.0`
+  `docker run --name myopengauss --privileged=true -d -e GS_PASSWORD=****** enmotech/opengauss:3.0.0`
   <img src='./images/docker_run.jpg' />
 
 ## 二、测试 MOT 表

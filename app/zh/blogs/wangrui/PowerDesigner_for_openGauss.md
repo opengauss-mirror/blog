@@ -19,8 +19,6 @@ PowerDesigner 是 Sybase 的企业建模和设计解决方案，采用模型驱�
 
 (1)下载并安装 PowerDesigner 16.6 版本，进入{PowerDesigner_insatll_dir}/Resource Files/DBMS，导入 opengauss.xdb 文件；
 
-[openGauss 配置文件下载](./images/opengauss.xdb)
-
 (2)输入 cmd 命令“java –version”确认本地 JDK 版本在 1.5 以上，低于 1.5 需要在系统环境变量中配置 JAVA_HOME 和 CLASSPATH；
 
 (3)进入 openGauss 官网https://opengauss.org/ ，下载对应的 JDBC 版本到本地；

@@ -97,7 +97,7 @@ create database ogexporter DBCOMPATIBILITY='PG';
 - 密码复杂度需要符合数据库密码策略。
 
 ```
-CREATE USER opengauss_exporter WITH PASSWORD 'opengauss_exporter123' MONADMIN;
+CREATE USER opengauss_exporter WITH PASSWORD 'xxxxxx' MONADMIN;
 ```
 
 **赋权**
@@ -136,7 +136,7 @@ gs_guc reload -I all -N all -h "host dbname opengauss_exporter x.x.x.x/32 md5"
 将以下配置添加到～/.bashrc 文件，也可以在每次执行命令前执行。
 
 ```
-export DATA_SOURCE_NAME="host=x.x.x.x user=opengauss_exporter password=opengauss_exporter123 port=9832 dbname=og_pg sslmode=disable"
+export DATA_SOURCE_NAME="host=x.x.x.x user=opengauss_exporter password=xxxxxx port=9832 dbname=og_pg sslmode=disable"
 ```
 
 **启动 opengauss_exporter**

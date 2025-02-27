@@ -322,7 +322,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
     Non-SSL connection (SSL connection is recommended when requiring high-security)
     Type "help" for help.
 
-    omm=# CREATE USER tpcc_usr WITH PASSWORD "****@***4";
+    omm=# CREATE USER tpcc_usr WITH PASSWORD "******";
     NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
     CREATE ROLE
     omm=# alter user tpcc_usr sysadmin;
@@ -420,7 +420,7 @@ Docker 利用的是宿主机的内核，vm 需要虚拟机操作系统
 
   ```
   # 容器名opengauss2，端口映射为5433，使用镜像ID是1e760f8f2f3d
-  [root@mogdb ~]# docker run --name opengauss2 --privileged=true -d -e GS_PASSWORD=****@*** -p 5433:5432 1e760f8f2f3d
+  [root@mogdb ~]# docker run --name opengauss2 --privileged=true -d -e GS_PASSWORD=****** -p 5433:5432 1e760f8f2f3d
   0a1c49aaa9114f19e33fef20753be092f923ffe558aa1d4251c55d3948dff486
   [root@mogdb ~]# docker ps
   CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                       NAMES

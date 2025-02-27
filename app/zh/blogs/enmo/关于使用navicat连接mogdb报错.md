@@ -43,7 +43,7 @@ su - omm gs_om -t start
 #### 2.创建远程连接用户
 
 ```
-#本地连接数据库 gsql -d postgres -p 26000 -r #创建用户 create user zb password 'geet@123'; #授予用户管理员权限（如果需要） grant all privileges to zb;
+#本地连接数据库 gsql -d postgres -p 26000 -r #创建用户 create user zb password '******'; #授予用户管理员权限（如果需要） grant all privileges to zb;
 ```
 
 #### 3.配置客户端接入认证
@@ -83,7 +83,7 @@ gs_guc reload -N all -I all -c 'password_encryption_type=0' #检查配置是否�
 注：这一步一定要做，否则会导致你远程连接失败，报如下错:
 
 ```
-gsql -U zb -W geet@123 -h 10.0.0.100 -p 26000 gsql: FATAL:  Invalid username/password,login denied. FATAL:  Invalid username/password,login denied.
+gsql -U zb -W ****** -h 10.0.0.100 -p 26000 gsql: FATAL:  Invalid username/password,login denied. FATAL:  Invalid username/password,login denied.
 ```
 
 因为该用户之前的密码仍让使用 sha256 进行加密处理，现在你将加密方式改为 MD5，系统就会将你输入的密码使用 md5 加密，然后和使用 sha256 加密的原密码进行比对，肯定会失败呀，所以我们需要修改密码，再次修改的新密码将会使用新设置的 md5 算法进行加密,可以通过如下方式查看指定用户目前的密码加密方式：

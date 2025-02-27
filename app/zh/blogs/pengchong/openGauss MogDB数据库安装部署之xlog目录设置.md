@@ -59,7 +59,7 @@ gs_initdb --nodename=og_69 \
 --xlogdir=/mogdb_xlog/xlog15400
 --encoding=UTF-8 \
 --username=omm \
---pwpasswd=Mogdb@1234 \
+--pwpasswd=****** \
 --security
 ```
 

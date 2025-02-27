@@ -403,7 +403,7 @@ centos       7.6.1810   f1cb7c7d58b7   3 years ago      202MB
 - run
 
 ```
-[root@node3 dockerfiles]# docker run --name opengauss_3.0.0 --privileged=true -d -e GS_PASSWORD=GaussDB@123 opengauss:3.0.0
+[root@node3 dockerfiles]# docker run --name opengauss_3.0.0 --privileged=true -d -e GS_PASSWORD=****** opengauss:3.0.0
 77e79f91e71082fd0fff3376adb8de2dbfc4eb257ec0fd5c60d4b110c79e8d9f
 [root@node3 dockerfiles]# docker logs opengauss_3.0.0 -f
 
@@ -636,12 +636,12 @@ docker_create_db_directories() {
 # `initdb` automatically creates the "postgres", "template0", and "template1" dbnames
 # this is also where the database user is created, specified by `GS_USER` env
 docker_init_database_dir() {
-        # "initdb" is particular about the current user existing in "/etc/passwd", so we use "nss_wrapper" to fake that if necessary
-        if ! getent passwd "$(id -u)" &> /dev/null && [ -e /usr/lib/libnss_wrapper.so ]; then
+        # "initdb" is particular about the current user existing in "/etc/******", so we use "nss_wrapper" to fake that if necessary
+        if ! getent ****** "$(id -u)" &> /dev/null && [ -e /usr/lib/libnss_wrapper.so ]; then
                 export LD_PRELOAD='/usr/lib/libnss_wrapper.so'
-                export NSS_WRAPPER_PASSWD="$(mktemp)"
+                export NSS_WRAPPER_******="$(mktemp)"
                 export NSS_WRAPPER_GROUP="$(mktemp)"
-                echo "postgres:x:$(id -u):$(id -g):PostgreSQL:$PGDATA:/bin/false" > "$NSS_WRAPPER_PASSWD"
+                echo "postgres:x:$(id -u):$(id -g):PostgreSQL:$PGDATA:/bin/false" > "$NSS_WRAPPER_******"
                 echo "postgres:x:$(id -g):" > "$NSS_WRAPPER_GROUP"
         fi
 
@@ -651,8 +651,8 @@ docker_init_database_dir() {
 
         # unset/cleanup "nss_wrapper" bits
         if [ "${LD_PRELOAD:-}" = '/usr/lib/libnss_wrapper.so' ]; then
-                rm -f "$NSS_WRAPPER_PASSWD" "$NSS_WRAPPER_GROUP"
-                unset LD_PRELOAD NSS_WRAPPER_PASSWD NSS_WRAPPER_GROUP
+                rm -f "$NSS_WRAPPER_******" "$NSS_WRAPPER_GROUP"
+                unset LD_PRELOAD NSS_WRAPPER_****** NSS_WRAPPER_GROUP
         fi
 }
 
@@ -713,13 +713,13 @@ docker_verify_minimum_env() {
         fi
 
         if [ -n "$GS_PASSWORD" ]; then
-                cmdbase="$cmdbase --pwpasswd=$GS_PASSWORD"
+                cmdbase="$cmdbase --pw******=$GS_PASSWORD"
                    echo -e "                        Message: GS_PASSWORD is ${GS_PASSWORD}"
         else
                 randpw(){ < /dev/urandom tr -dc '^(.*[#?!@$%^&*-]).*$_A-Z-a-z-0-9' | head -c${1:-4};echo;}
                 GS_PASSWORD=`randpw`"Aa1!"
 
-                cmdbase="$cmdbase --pwpasswd=$GS_PASSWORD"
+                cmdbase="$cmdbase --pw******=$GS_PASSWORD"
                    echo -e "                        Message: Default GS_PASSWORD is "${GS_PASSWORD}"."
         fi
 
@@ -814,8 +814,8 @@ docker_process_sql() {
 # create initial database
 # uses environment variables for input: GS_DB
 docker_setup_db() {
-                 docker_process_sql --set passwd="$GS_PASSWORD" <<-'EOSQL'
-                        create user opengauss with login password :"passwd" ;
+                 docker_process_sql --set ******="$GS_PASSWORD" <<-'EOSQL'
+                        create user opengauss with login password :"******" ;
                         CREATE DATABASE opengauss;
                         grant all privileges to opengauss;
                         ALTER USER opengauss MONADMIN;
@@ -828,8 +828,8 @@ EOSQL
 
 docker_setup_user() {
         if [ -n "$GS_USERNAME" ]; then
-                GS_DB= docker_process_sql  --set passwd="$GS_PASSWORD" --set user="$GS_USERNAME" <<-'EOSQL'
-                        create user :"user" with login password :"passwd" ;
+                GS_DB= docker_process_sql  --set ******="$GS_PASSWORD" --set user="$GS_USERNAME" <<-'EOSQL'
+                        create user :"user" with login password :"******" ;
 EOSQL
         else
                 echo " default user is opengauss"
@@ -840,8 +840,8 @@ EOSQL
 
 docker_setup_rep_user() {
         if [ -n "$SERVER_MODE" ] && [ "$SERVER_MODE" = "primary" ]; then
-                GS_DB= docker_process_sql  --set passwd="$GS_PASSWORD" --set user="repuser" <<-'EOSQL'
-                        create user :"user" SYSADMIN REPLICATION password :"passwd" ;
+                GS_DB= docker_process_sql  --set ******="$GS_PASSWORD" --set user="repuser" <<-'EOSQL'
+                        create user :"user" SYSADMIN REPLICATION password :"******" ;
 EOSQL
         else
                 echo " default no repuser created"

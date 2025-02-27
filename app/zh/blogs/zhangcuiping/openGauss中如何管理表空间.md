@@ -27,7 +27,7 @@ times: '14:20'
   1. 执行如下命令创建用户 jack。
 
      ```sql
-     openGauss=#CREATE USER jack IDENTIFIED BY 'Bigdata@123';
+     openGauss=#CREATE USER jack IDENTIFIED BY '******';
      NOTICE:  The encrypted password contains MD5 ciphertext, which is not secure.
      CREATE ROLE
      ```

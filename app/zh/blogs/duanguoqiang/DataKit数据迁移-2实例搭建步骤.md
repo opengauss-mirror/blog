@@ -180,7 +180,7 @@ gsql -d target_db -p 5680 -r
 -- 设置b_compatibility_user_host_auth参数值为on
 set b_compatibility_user_host_auth to on;
 -- 创建同名用户
-create user 'username'@'%' with password 'Sample@123';
+create user 'username'@'%' with password '******';
 -- 给新增用户赋权
 grant all privileges to 'username'@'%';
 ```

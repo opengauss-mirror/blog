@@ -62,7 +62,7 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
       "host": "***.***.***.***",
       "user": "system",
       "port": 1521,
-      "password": "system",
+      "password": "******",
       "dbName": "LHR11G",
       "dsn": ""
     },
