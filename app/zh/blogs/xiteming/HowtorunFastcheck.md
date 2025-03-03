@@ -61,6 +61,11 @@ ulimit -v unlimited
 
 设置完环境变量后，正常跑 fastcheck_single 即可，跑完后，会在 `~/memchk/asan/`路径下生成文件名为 runlog.xxx 的 memcheck 报告。根据 memcheck 报告分析是否有内存问题。如何分析 memcheck 报告可自行网上搜索 memcheck 报告分析、asan 报告分析等关键字。
 
+### 关于 ODR violation
+
+由于 `gsql`、`libpq`、`libpgport` 等构建目标存在大量同名符号，动态链接后会被 ASan 检查出 ODR violation。
+目前暂时通过配置环境变量 `ASAN_OPTIONS=detect_odr_violation=0` 规避，具体可参考 `src/Makefile.global.in`。
+
 ## 如何进行 hacheck？
 
 `hacheck` 是对 `openGauss` 主备功能进行测试的 check，`openGauss` 的编译方式同 `fastcheck`，编译完成后，进入 `src/test/ha`目录。
