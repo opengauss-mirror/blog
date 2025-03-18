@@ -1,3 +1,13 @@
+---
+title: 'openGauss-RAG实践'
+date: '2025-03-18'
+category: 'blog'
+tags: ['openGauss']
+archives: '2025-03'
+author: 'openGauss'
+summary: 'openGauss-RAG实践'
+---
+
 # 打破AI黑盒，拥抱开源力量：基于openGauss+DeepSeek的本地知识库，打造你的专属AI助手！
 
 ## 引言：什么是RAG和LLM？
@@ -87,17 +97,14 @@ ollama version is 0.5.6
 通过如下命令获取 openGauss 镜像：
 
 ```abap
-[root@localhost ~]$ wget https://opengauss.obs.cn-south-1.myhuaweicloud.com/latest/x86_openEuler/openGauss-Docker-7.0.0-RC1.tar
-[root@localhost ~]$ docker load -i openGauss-Docker-7.0.0-RC1.tar
+[root@localhost ~]$ docker pull opengauss/opengauss:7.0.0-RC1
 ```
-
-注：arm 架构的获取方式为 https://opengauss.obs.cn-south-1.myhuaweicloud.com/latest/arm/openGauss-Docker-7.0.0-RC1.tar
 
 ### 启动服务
 镜像拉取完成后，我们可以启动openGauss服务：
 
 ```abap
-[root@localhost ~]$ docker run --name opengauss --privileged=true -d -e GS_PASSWORD=****** -p 8888:5432 -v /home/test/opengauss:/var/lib/opengauss opengauss:7.0.0-RC1
+[root@localhost ~]$ docker run --name opengauss --privileged=true -d -e GS_PASSWORD=****** -p 8888:5432 -v /home/test/opengauss:/var/lib/opengauss opengauss/opengauss:7.0.0-RC1
 ```
 
 至此，openGauss已经成功安装部署，我们可以通过psycopg2连接openGauss查看版本信息：
