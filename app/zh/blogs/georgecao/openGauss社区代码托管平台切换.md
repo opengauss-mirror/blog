@@ -8,8 +8,6 @@ author: 'Infra'
 summary: 'openGauss Community Infrastructure Upgrade—Code Hosting Platform Switch.'
 ---
 
-# openGauss社区基础设施升级——代码托管平台切换
-
 ## 背景
 经openGauss社区理事会决策，社区代码托管平台迁移到GitCode，由社区基础设施团队实施具体社区代码托管平台切换工作。
 
@@ -32,7 +30,7 @@ summary: 'openGauss Community Infrastructure Upgrade—Code Hosting Platform Swi
 完成上述授权书签署后，您在原代码托管平台上的所有贡献数据（包括代码、PR、ISSUE、评论等）都讲在新平台上展示；
 
 如果您在新老平台保持相同id，社区贡献数据将统一合并计算。具体讲：
-#### - 这里是列表文本迁移会影响我的历史贡献记录吗？
+#### - 迁移会影响我的历史贡献记录吗？
 您的所有贡献将被完整保留：
 1. 自动迁移：您已签署的贡献者协议（CLA）将自动同步至GitCode，在 GitCode 授权后历史PR/Issue数据将无缝转移。
 1. 归属透明：代码提交记录、Issue讨论等均保留原始作者信息。
@@ -40,7 +38,7 @@ summary: 'openGauss Community Infrastructure Upgrade—Code Hosting Platform Swi
 #### - 代码仓的贡献流程会有变化吗？
 核心流程完全一致，您仍可沿用熟悉的Git命令与PR提交流程，仅需注意：变更本地仓库地址（https://gitcode.com/opengauss/***）
 
-#### - 这里是列表文本Gitee镜像仓还会保留吗？同步频率如何？
+#### - Gitee镜像仓还会保留吗？同步频率如何？
 迁移完成后，gitee.com仓库将转为镜像仓，重大版本发布后一个工作日内完成从gitcode.com/opengauss同步到gitee.com/opengauss；
 
 ## 迁移时间
