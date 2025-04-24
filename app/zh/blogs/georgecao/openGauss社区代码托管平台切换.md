@@ -8,8 +8,6 @@ author: 'Infra'
 summary: 'openGauss Community Infrastructure Upgrade—Code Hosting Platform Switch.'
 ---
 
-# openGauss社区基础设施升级——代码托管平台切换
-
 ## 背景
 经openGauss社区理事会决策，社区代码托管平台迁移到GitCode，由社区基础设施团队实施具体社区代码托管平台切换工作。
 
