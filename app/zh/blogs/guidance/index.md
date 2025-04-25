@@ -9,13 +9,13 @@ category: 'blog'
 
 ## 准备
 
-1. 参考 <https://gitee.com/help/articles/4113> 注册 Gitee 账号。
+1. 参考 <https://docs.gitcode.com/docs/start/quick> 注册 GitCode 账号。
 
-2. 在 Gitee 个人设置中设置主邮箱地址，在此 <https://gitee.com/profile/emails>。
+2. 在 GitCode 个人设置中设置主邮箱地址，在此 <http://gitcode.com/setting/email>。
 
 3. 签署贡献者协议，<https://www.opengauss.org/zh/contribution/>。
 
-4. 参考 <https://gitee.com/help/articles/4106> 准备你的 git 环境。
+4. 参考 <https://docs.gitcode.com/docs/help/home/general-reference/git> 准备你的 git 环境。
 
 ## 理解博客格式
 
@@ -37,7 +37,7 @@ summary: 'Just about everything you'll need to style in the theme：headings, pa
 Here you can edit your blog.
 ```
 
-小提示：你可以复制 [https://gitee.com/opengauss/blog/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md](https://gitee.com/opengauss/blog/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md) 到你的工作路径下然后继续编辑。
+小提示：你可以复制 [https://gitcode.com/opengauss/blog/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md](https://gitcode.com/opengauss/blog/blob/v2/app/zh/blogs/blog_example/20220901-sample-post.md) 到你的工作路径下然后继续编辑。
 
 ### 关于格式
 
@@ -52,63 +52,65 @@ Here you can edit your blog.
 
 ## 提交博客
 
-博客的提交利用了 Gitee 的 PR(Pull Request)。
+博客的提交利用了 GitCode 的 PR(Pull Request)。
 
-1. Fork openGauss 博客项目 <https://gitee.com/opengauss/blog/tree/v2> 到你自己的 Gitee 上。如果需要具体指导请参考 <https://gitee.com/help/articles/4128> 。
+1. Fork openGauss 博客项目 <https://gitcode.com/opengauss/blog/tree/v2> 到你自己的 GitCode 上。如果需要具体指导请参考 <https://docs.gitcode.com/docs/help/home/org_project/pullrequests/> 。
 
 2. Clone 代码
 
-```
-git clone https://gitee.com/<your-gitee-id>/openGauss-blog
-```
+   ```
+   git clone https://gitcode.com/<your-gitcode-id>/openGauss-blog
+   ```
 
 3. 创建分支
 
-```
-git checkout -b <branch-name>
-```
+   ```
+   git checkout -b <branch-name>
+   ```
 
 4. 创建工作路径
 
-如果你发表中文博客，工作路径是 `app/zh/blogs` 。
-假设你要写一个中文博客：
+   如果你发表中文博客，工作路径是 `app/zh/blogs` 。
+   假设你要写一个中文博客：
 
-```
-cd app/zh/blogs
-mkdir <your-gitee-id>
-cd <your-gitee-id>
-touch YEAR-MONTH-DAY-title.md
-```
+   ```
+   cd app/zh/blogs
+   mkdir <your-gitcode-id>
+   cd <your-gitcode-id>
+   touch YEAR-MONTH-DAY-title.md
+   ```
 
-你可以以你的 md 文档名来命名你的资源文件，方便使用。例如：
+   你可以以你的 md 文档名来命名你的资源文件，方便使用。例如：
 
-```
-YEAR-MONTH-DAY-title-NN.MARKUP
-```
+   ```
+   YEAR-MONTH-DAY-title-NN.MARKUP
+   ```
 
-其中，YEAR, MONTH, DAY, 和 title 和你的博客 md 文件名一致。NN 是 01、02、03 这样的序号。MARKUP 文件扩展名。如下例子：
+   其中，YEAR, MONTH, DAY, 和 title 和你的博客 md 文件名一致。NN 是 01、02、03 这样的序号。MARKUP 文件扩展名。如下例子：
 
-```
-2020-01-01-new-years-is-coming.md
-2020-01-01-new-years-is-coming-01.png
-2020-01-01-new-years-is-coming-02.gif
-2020-01-01-new-years-is-coming-03.pdf
-```
+   ```
+   2020-01-01-new-years-is-coming.md
+   2020-01-01-new-years-is-coming-01.png
+   2020-01-01-new-years-is-coming-02.gif
+   2020-01-01-new-years-is-coming-03.pdf
+   ```
 
-使用 HTML \<img\> 标签嵌入图片， 但你的图片资源需要放入当前目录下（即 your-gitee-id 目录下），输入图片名称作为 src 值：
+   你可以使用如下代码来生成这些文件：
 
-```
-<img src = "./2020-01-01-new-years-is-coming-01.png">
-```
+   使用 HTML \<img\> 标签嵌入图片， 但你的图片资源需要放入当前目录下（即 your-gitcode-id 目录下），输入图片名称作为 src 值：
 
-1. Commit 你的博客
+   ```
+   <img src = "./2020-01-01-new-years-is-coming-01.png">
+   ```
 
-```
-git add <file-path>
-git commit -m "<message>"
-git push origin <branch-name>:<branch-name>
-```
+5. Commit 你的博客
 
-2. 参考 <https://gitee.com/help/articles/4128#article-header2> 提交你的 PR
+   ```
+   git add <file-path>
+   git commit -m "<message>"
+   git push origin <branch-name>:<branch-name>
+   ```
 
-3. 等待评审和合入。
+6. 参考 <https://docs.gitcode.com/docs/help/home/org_project/pullrequests/pr-create> 提交你的 PR
+
+7. 等待评审和合入。
