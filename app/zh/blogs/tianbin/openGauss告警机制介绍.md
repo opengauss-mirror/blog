@@ -21,7 +21,7 @@ openGauss作为一款高性能、高可用、高安全、易运维、全开放�
 ## 1.告警项初始化
 在Postmaster进程启动的过程中会对告警所需环境进行初始化。包括读取告警类型，告警项和初始化告警日志文件等。在src/lib/alarm目录下alarmItem.conf中定义了openGauss支持的各种告警项，目前已有告警60余项，后续会不断丰富和完善。
 
-<img src = "images/01.png">
+<img src = "./images/01.png">
 
 每个告警项包含6列，参数及含义如下：
 
@@ -51,7 +51,7 @@ void PrepareAlarmEnvironment()
 ## 2.告警信息格式
 数据库运行过程中产生的告警信息将默认记录在$GAUSSLOG/pg_log/dn_xxxx/system_alarm-xxxxx-current.log文件中。
 
-<img src = "images/02.png">
+<img src = "./images/02.png">
 
 告警信息以json格式记录，每个字段含义如下：
 
@@ -110,7 +110,7 @@ source_tag由主机名和dn名称拼接而成。
 # 二、告警检测
 ## 1.告警检测流程
 告警检测流程如下所示：
-<img src = "images/00.png">
+<img src = "./images/00.png">
 告警检测流程主要分为3个步骤：初始化告警项，告警检测，告警上报。
 ## 2.初始化告警项
 `AlarmCheckerMain`是告警框架的入口，它负责初始化各个告警项并循环进行检测告警项是否触发或者被修复。告警间隔`AlarmCheckInterval`默认为1，即每隔1s检测一次。
@@ -182,7 +182,7 @@ void AlarmCheckerLoop(Alarm* checkList, int checkListSize)
 
 告警上报根据当前告警项的状态（Normal或Reported）和检测结果的告警类型（Fault或Resume）判断是否需要上报告警信息，状态流转图如下所示：
 
-<img src = "images/03.png">
+<img src = "./images/03.png">
 
 告警上报加入了抑制机制，`SuppressAlarmLogReport`函数检测该告警是否已经超过最大重复上报次数或者小于上报的时间间隔，如果满足返回`true`表示此次告警不再上报，否则返回`false`，即需要上报本次告警。
 
@@ -205,11 +205,11 @@ void AlarmReporter(Alarm* alarmItem, AlarmType type, AlarmAdditionalParam* addit
 
 这里对xlog目录缺失告警进行构造。进入告警日志所在目录，查看文件。
 
-<img src="images/04.png"/>
+<img src="./images/04.png"/>
 
 新打开一个会话窗口，进入到dn所在目录。
 
-<img src="images/05.png"/>
+<img src="./images/05.png"/>
 
 执行mv命令将pg_xlog目录移动到上一曾目录，模拟xlog目录缺失。
 
@@ -218,7 +218,7 @@ void AlarmReporter(Alarm* alarmItem, AlarmType type, AlarmAdditionalParam* addit
 ```
 切换会话窗口，查看告警日志，发现告警已经触发
 
-<img src="images/06.png"/>
+<img src="./images/06.png"/>
 
 重新执行mv命令，将pg_xlog文件目录位置还原
 
@@ -227,7 +227,7 @@ void AlarmReporter(Alarm* alarmItem, AlarmType type, AlarmAdditionalParam* addit
 ```
 切换会话窗口，查看告警日志，发现告警已经恢复
 
-<img src="images/07.png"/>
+<img src="./images/07.png"/>
 
 # 总结
 
