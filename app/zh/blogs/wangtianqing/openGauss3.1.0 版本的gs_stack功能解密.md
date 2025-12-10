@@ -33,7 +33,7 @@ times: '12:30'
 执行命令：
 
 ```
-openGuass=# select * from gs_stack();
+openGauss=# select * from gs_stack();
 ```
 
 返回当前 openGauss 所有线程的调用栈：
@@ -63,7 +63,7 @@ openGuass=# select * from gs_stack();
 只需要查看某一个线程的调用栈时，执行命令：
 
 ```
-openGuass=# select gs_stack(xxx);
+openGauss=# select gs_stack(xxx);
 ```
 
 xxx 为为某个线程的 thread_id，能够返回 thread_id 为 xxx 的线程的调用栈：

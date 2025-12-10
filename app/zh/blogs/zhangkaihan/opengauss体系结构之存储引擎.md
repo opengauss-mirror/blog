@@ -11,7 +11,7 @@ times: '16:20'
 
 # 存储引擎概述
 
-存储引擎顾名思义就是数据的存放方式，比如 mysql 有 myisam 和 innodb 存储引擎，他们都是行存，只是 myisam 不支持事务。另外存储引擎还有列模式、行模式、内存数据库等等，openguass 的存储引擎关系可以用以下图来表示：
+存储引擎顾名思义就是数据的存放方式，比如 mysql 有 myisam 和 innodb 存储引擎，他们都是行存，只是 myisam 不支持事务。另外存储引擎还有列模式、行模式、内存数据库等等，opengauss 的存储引擎关系可以用以下图来表示：
 
 ![](https://fileserver.developer.huaweicloud.com/FileServer/getFile/cmtybbs/4b4/9b2/97b/e97de91d5b4b49b297bcdc90b5809ed2.20221104132456.28043051289216648016857533562900:20221105020914:2400:3658AA61E7E49F7BBBC9313FA18C722E424A21B0FEDCF69FD9CA0C90DC8CF6C5.png)
 

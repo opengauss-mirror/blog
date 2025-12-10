@@ -1,11 +1,11 @@
 -------------
-title: 'openGuass技术文章征集 飞腾平台编译安装openGauss数据库一'
+title: 'openGauss技术文章征集 飞腾平台编译安装openGauss数据库一'
 date: '2023-07-20'
 category: 'blog'
 tags: ['飞腾平台', '编译安装', 'openGauss']
 archives: '2023-07'
 author: 'wujian0402'
-summary: 'openGuass技术文章征集 飞腾平台编译安装openGauss数据库一'
+summary: 'openGauss技术文章征集 飞腾平台编译安装openGauss数据库一'
 times: '16:30'
 ------------- -
 

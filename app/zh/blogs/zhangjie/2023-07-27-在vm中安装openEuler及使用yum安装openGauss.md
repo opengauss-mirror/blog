@@ -5,7 +5,7 @@ category: 'blog'
 tags: ['openGauss']
 archives: '2023-07'
 author: 'zhangjie'
-summary: "本文将通过使用vm+openEuale环境安装一个openGuass,作为我在学习openGuass道路上的一个总结."
+summary: "本文将通过使用vm+openEuale环境安装一个openGauss,作为我在学习openGauss道路上的一个总结."
 ---
 
 
@@ -14,7 +14,7 @@ summary: "本文将通过使用vm+openEuale环境安装一个openGuass,作为我
 1.前言
 --------------
 随着互联网时代对数据库的新要求,以PostgreSQL为基础的开源数据库openGauss应运而生。openGauss在保持PostgreSQL接口兼容的前提下,对其查询优化器、高可用特性等进行了全面优化,实现了超高性能。同时,openGauss作为社区项目,新增功能持续丰富。优点是查询性能高、可靠性好、扩展性强,已经应用于多家大型企业的核心业务系统。但由于发展时间不长,生态建设还需进一步完善,对比成熟商业数据库,可视化和自动化管理还有差距。经过几年高速成长,openGauss已成功吸引广大开源社区参与,拥有活跃用户群体。
-本文将通过使用vm+openEuale环境安装一个openGuass,作为我在学习openGuass道路上的一个总结.
+本文将通过使用vm+openEuale环境安装一个openGauss,作为我在学习openGauss道路上的一个总结.
 
 2.安装openGauss实践
 ---------------
@@ -110,9 +110,9 @@ summary: "本文将通过使用vm+openEuale环境安装一个openGuass,作为我
   
 	执行安装脚本: yum install opengauss -y
 
-  	脚本安装完成后 切换openGuass用户 
+  	脚本安装完成后 切换openGauss用户 
 	
-	su - openguass
+	su - opengauss
 
   	登录数据库 gsql -d postgres -r
 
