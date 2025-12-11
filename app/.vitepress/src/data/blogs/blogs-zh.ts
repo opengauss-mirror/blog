@@ -2625,7 +2625,7 @@ export default [
     author: ['xixingxing'],
     title: '编译安装openGauss 3.0.0',
     tags: ['编译安装openGauss 3.0.0'],
-    path: 'zh/blogs/xixingxing/编译安装openGauss 3.0.0',
+    path: 'zh/blogs/xixingxing/编译安装openGuass 3.0.0',
   },
   {
     date: '2022-05-14',
@@ -4994,7 +4994,7 @@ export default [
     author: ['闫宗帅'],
     title: 'openGauss NUMA适配之线程绑核',
     tags: ['openGauss NUMA适配之线程绑核'],
-    path: 'zh/blogs/yanzongshuai/opengauss-NUMA适配之线程绑核',
+    path: 'zh/blogs/yanzongshuai/openguass-NUMA适配之线程绑核',
   },
   {
     date: '2021-06-29',
