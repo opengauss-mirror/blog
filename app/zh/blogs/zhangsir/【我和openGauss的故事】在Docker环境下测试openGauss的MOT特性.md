@@ -13,7 +13,7 @@ times: '16:20'
 
 随着 pg 在国内越来越热，我也想赶紧的学习学习，pg 的挺多语法跟 mysql 和 oracle 不太一样，光看书还是不太行，还是得多动手。前面实践了下 mogdb，这次借着机会学习学习 openGauss。 本次实践的是 opengauss 的 MOT 表，我们都知道现在数据库的瓶颈都在 IO 上，内存操作的速度是极快的，MOT 特性就是建立在内存中的存储引擎。根据官档介绍 MOT 是 openGauss 数据库最先进的生产级特性，看起来好处多多啊，这次主要是尝尝鲜。这次实践是基于 docker 的，之前对 docker 不太感冒，每次做个实验都要弄一套不同版本的数据库环境，太费事了，自从用了 docker 以后，感觉不要太爽，不用再在自己电脑上弄一个个虚拟机了，直接装个 docker 环境，撸镜像得了。
 
-## 一、利用 docker 拉起 openGuass
+## 一、利用 docker 拉起 openGauss
 
 - 1、配置好 docker 环境，这里就不再细讲了，网上都有保姆教程。
   <img src='./images/docker_info.jpg' />

@@ -182,7 +182,7 @@ In recent years, AI technologies, especially in the deep learning field, have de
 
   - SELECT Pushdown and Equivalence Inference
 
-    The SELECT pushdown can greatly reduce the calculation workload of upper-layer operators to achieve optimization. If the SELECT condition has equivalent operations, then equivalence rinference can be implemented by using the feature of equivalent operations, so as to obtain a new select condition.
+    The SELECT pushdown can greatly reduce the calculation workload of upper-layer operators to achieve optimization. If the SELECT condition has equivalent operations, then equivalence inference can be implemented by using the feature of equivalent operations, so as to obtain a new select condition.
 
     For example, if two tables t1 and t2 respectively contain 100 rows of data \[1,2,3, ..100\], the query statement is as follows:
 

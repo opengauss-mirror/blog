@@ -12,7 +12,7 @@ times: '9:30'
 
 ##### 一. 前言
 
-​      谓词下推是每一个SQL引擎必备的功能。本文主要通过走读代码了解openGuass中是如何实现谓词下推能力的。
+​      谓词下推是每一个SQL引擎必备的功能。本文主要通过走读代码了解openGauss中是如何实现谓词下推能力的。
 
 ​      谓词下推即时将过滤条件尽可能往tablescan的节点下推，实现上层算子尽可能少计算的能力，如下所示的谓词id<55就下推到了tablescan节点。
 
@@ -22,9 +22,9 @@ times: '9:30'
 
 ##### 二. 执行计划生成层将谓词信息保存在seqscan node的ps.qual
 
-​     实现谓词下推首先需要再执行计划生成节点将谓词过滤条件保存到tablescan节点，openGuass主要靠如下的步骤实现过滤条件保存到SeqScan的：
+​     实现谓词下推首先需要再执行计划生成节点将谓词过滤条件保存到tablescan节点，openGauss主要靠如下的步骤实现过滤条件保存到SeqScan的：
 
-1.  openGuass首先会在将Join中涉及的物理表提取出来，然后处理where条件中，将where条件谓词的信息保存到对应relation的baserestrictinfo字段中，此步的操作入口在deconstruct_jointree函数中，代码流程如下所示：
+1.  openGauss首先会在将Join中涉及的物理表提取出来，然后处理where条件中，将where条件谓词的信息保存到对应relation的baserestrictinfo字段中，此步的操作入口在deconstruct_jointree函数中，代码流程如下所示：
 
 ```
 deconstruct_jointree

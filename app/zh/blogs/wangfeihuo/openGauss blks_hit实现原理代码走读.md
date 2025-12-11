@@ -16,7 +16,7 @@ times: '9:30'
 
 ![image-20240817134646546](./images/image-20240817134646546.png)
 
-​     本文主要走读openGuass的代码来了解openGuass是在怎样进行缓存命中率的统计的。
+​     本文主要走读openGauss的代码来了解openGauss是在怎样进行缓存命中率的统计的。
 
 
 

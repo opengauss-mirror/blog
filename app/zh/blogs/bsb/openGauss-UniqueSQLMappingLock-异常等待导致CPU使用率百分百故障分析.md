@@ -23,7 +23,7 @@ summary: '【openGauss技术文章征集】openGauss-UniqueSQLMappingLock-异常
 
 <br/>
 
-openGuass 3.0.3版本主备模式架构。
+openGauss 3.0.3版本主备模式架构。
 
 <br/>
 

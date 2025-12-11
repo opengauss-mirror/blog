@@ -234,6 +234,6 @@ Run/debug configunations 中，设置挂载进程的路径
 
 Tips: 节约时间，可以选择 Disable auto build 从而避免每次开始调试时的 make 环节，事实上每次 make 的结果并不会用到
 
-开始调试时，确保数据库的服务端已经启动，此时选择进程名 guassdb\(omm\)
+开始调试时，确保数据库的服务端已经启动，此时选择进程名 gaussdb\(omm\)
 
 在文件 execMain.cpp 中设置断点，开始调试.

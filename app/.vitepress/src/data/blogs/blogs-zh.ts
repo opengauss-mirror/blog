@@ -132,7 +132,7 @@ export default [
   {
     date: '2023-07-27',
     summary:
-      '本文将通过使用vm+openEuale环境安装一个openGuass,作为我在学习openGuass道路上的一个总结.',
+      '本文将通过使用vm+openEuler环境安装一个openGauss,作为我在学习openGauss道路上的一个总结.',
     path: 'zh/blogs/zhangjie/2023-07-27-在vm中安装openEuler及使用yum安装openGauss',
     archives: '2023-07',
     author: ['zhangjie'],
@@ -2625,7 +2625,7 @@ export default [
     author: ['xixingxing'],
     title: '编译安装openGauss 3.0.0',
     tags: ['编译安装openGauss 3.0.0'],
-    path: 'zh/blogs/xixingxing/编译安装openGuass 3.0.0',
+    path: 'zh/blogs/xixingxing/编译安装openGauss 3.0.0',
   },
   {
     date: '2022-05-14',
@@ -4994,7 +4994,7 @@ export default [
     author: ['闫宗帅'],
     title: 'openGauss NUMA适配之线程绑核',
     tags: ['openGauss NUMA适配之线程绑核'],
-    path: 'zh/blogs/yanzongshuai/openguass-NUMA适配之线程绑核',
+    path: 'zh/blogs/yanzongshuai/opengauss-NUMA适配之线程绑核',
   },
   {
     date: '2021-06-29',
