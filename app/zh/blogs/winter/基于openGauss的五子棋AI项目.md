@@ -3,7 +3,7 @@ title: '基于openGauss的五子棋AI项目'
 
 date: '2022-10-07'
 category: 'blog'
-tags: ['OpenGauss技术文章征集']
+tags: ['openGauss技术文章征集']
 
 archives: '2022-10'
 

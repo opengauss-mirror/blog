@@ -1,15 +1,15 @@
 ---
-title: '华为OpenGauss数据库行存储源代码解析'
+title: '华为openGauss数据库行存储源代码解析'
 date: '2021-12-01'
 category: 'blog'
-tags: ['华为OpenGauss数据库行存储源代码解析']
+tags: ['华为openGauss数据库行存储源代码解析']
 archives: '2021-12'
 author: 'vector'
-summary: '华为OpenGauss数据库行存储源代码解析'
+summary: '华为openGauss数据库行存储源代码解析'
 times: '17:30'
 ---
 
-# 华为 OpenGauss 数据库行存储源代码解析
+# 华为 openGauss 数据库行存储源代码解析
 
 ​ 根据存储介质和并发控制机制，存储引擎分为磁盘引擎和内存引擎两大类。磁盘引擎主要面向通用的、大容量的业务场景，内存引擎主要面向容量可控的、追求极致性能的业务场景。在磁盘引擎中，为了满足不同业务场景对于数据不同的访问和使用模式，openGauss 进一步提供了 astore（append-store，追加写优化格式）、cstore（column store，列存储格式）以及可拓展的数据元组和数据页面组织格式。astore 为行存储格式，向上提供元组形式的读、写。
 

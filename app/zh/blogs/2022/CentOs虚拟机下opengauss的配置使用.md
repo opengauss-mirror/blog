@@ -27,7 +27,7 @@ times: '12:30'
 
 本机系统 Windows 10
 
-部署版本 OpenGauss 1.1.0
+部署版本 openGauss 1.1.0
 
 ## 安装详细步骤<a name="section465174803112"></a>
 

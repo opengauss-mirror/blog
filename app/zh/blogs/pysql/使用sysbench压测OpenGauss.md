@@ -1,5 +1,5 @@
 ---
-title: '使用sysbench压测OpenGauss3.0'
+title: '使用sysbench压测openGauss3.0'
 date: '2022-05-18'
 category: 'blog'
 tags: ['openGauss性能测试']
@@ -10,9 +10,9 @@ img: '/zh/blogs/pysql/title/title1.jpg'
 times: '12:30'
 ---
 
-#使用 sysbench 压测 OpenGauss3.0
+#使用 sysbench 压测 openGauss3.0
 
-非生产正式环境，只是在虚拟机上部署完 OpenGauss3.0 一主一备想获取 WDR 报告，但是没有相关业务数据和负载，想起 sysbench 之前可以压测 PostgreSQL，想想应该是兼容 OpenGauss 的，于是实验了一把。
+非生产正式环境，只是在虚拟机上部署完 openGauss3.0 一主一备想获取 WDR 报告，但是没有相关业务数据和负载，想起 sysbench 之前可以压测 PostgreSQL，想想应该是兼容 openGauss 的，于是实验了一把。
 
 ### 服务器端环境
 
@@ -32,7 +32,7 @@ current_az : AZ_ALL
 1 node115 ***.***.***.*** 26000 6001 /apps3/opengauss/install/data/dn P Down Manually stopped
 2 node116 ***.***.***.*** 26000 6002 /apps3/opengauss/install/data/dn S Down Manually stopped
 
-在 OpenGauss 数据库中新建测试用户和测试库：
+在 openGauss 数据库中新建测试用户和测试库：
 openGauss=# create user benchuser WITH PASSWORD '******9';
 CREATE ROLE
 openGauss=# create database sysbench owner benchuser;
@@ -56,7 +56,7 @@ sysbench 1.0.17
 [root@node110 ~]# psql -V
 psql (PostgreSQL) 10.21
 
-使用客户端测试连接 OpenGauss
+使用客户端测试连接 openGauss
 
 [root@node110 ~]# psql -h ***.***.***.*** -d sysbench -U benchuser -p 26000
 psql: fe_sendauth: invalid authentication request from server: AUTH_REQ_SASL_CONT without AUTH_REQ_SASL
@@ -90,4 +90,4 @@ sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser -
 
 sysbench --db-driver=pgsql --pgsql-host=***.***.***.*** --pgsql-user=benchuser --pgsql-password=******  --pgsql-db=sysbench --pgsql-port=26000 --oltp-test-mode=complex --oltp-tables-count=12 --oltp-table-size=20000 --threads=50 --time=1800 --report-interval=10 /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
 
-后续进一步使用 sysbench 探索 OpenGauss 性能指标。
+后续进一步使用 sysbench 探索 openGauss 性能指标。

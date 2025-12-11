@@ -2,10 +2,10 @@
 title: '使用gs_dumpall导出所有数据库'
 date: '2022-09-01'
 category: 'blog'
-tags: ['OpenGauss3.0.0']
+tags: ['openGauss3.0.0']
 archives: '2020-09'
 author: 'wllovever'
-summary: 'OpenGauss3.0.0'
+summary: 'openGauss3.0.0'
 img: ''
 times: '15:10'
 ---

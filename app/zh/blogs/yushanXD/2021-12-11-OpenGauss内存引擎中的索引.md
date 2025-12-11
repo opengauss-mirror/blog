@@ -23,7 +23,7 @@ times: '17:30'
 
 ## 二、内存引擎
 
-在 OpenGauss 中内存引擎全称为内存优化表（MOT）存储引擎。
+在 openGauss 中内存引擎全称为内存优化表（MOT）存储引擎。
 
 内存引擎作为在 openGauss 中与传统基于磁盘的行存储、列存储并存的一种高性能存储引擎，基于全内存态数据存储，为 openGauss 提高了高吞吐的实时数据处理分析能力及极低的事务处理时延，在不同业务负载场景下可以达到其他引擎事务处理能力的 3~10 倍。内存引擎之所以有较强的事务处理能力，更多因为其全面利用内存中可以实现的无锁化的数据及其索引结构、高效的数据管控，基于 NUMA 架构的内存管控，优化的数据处理算法及事务管理机制。
 
@@ -31,7 +31,7 @@ MOT 与基于磁盘的普通表并排创建。MOT 的有效设计实现了几乎
 
 <img src='./img/OpenGauss内存引擎架构图.png'>
 
-图 1 OpenGauss 内存引擎架构图
+图 1 openGauss 内存引擎架构图
 
 ## 三、Masstree
 
@@ -89,7 +89,7 @@ Masstree 以键(key)的前缀作为索引，每 k 个字节形成一层 B+ 树�
 
 图 5
 
-## 四、OpenGauss 中基于 Masstree 的索引
+## 四、openGauss 中基于 Masstree 的索引
 
 下面所有提到的大部分文件位于
 
@@ -101,7 +101,7 @@ openGauss-server-master\openGauss-server-master\src\gausskernel\storage\mot\core
 
 openGauss-server-master\openGauss-server-master\src\gausskernel\storage\mot\core\src\storage\index\Masstree
 
-OpenGauss 中对应 Masstree 的索引类名为 MasstreePrimaryIndex，
+openGauss 中对应 Masstree 的索引类名为 MasstreePrimaryIndex，
 
 继承 Index 超类。
 
@@ -121,7 +121,7 @@ OpenGauss 中对应 Masstree 的索引类名为 MasstreePrimaryIndex，
 
 为了防止读线程读到中间状态，叶节点被设计成最多存放 15 个 key，引入了一个 8 字节 64 位的 permutation(uint64_t)，这个 permutation 被划分成 16 份，每份 4 位，其中 1 份代表当前节点的 key 数量，另外 15 份用于存放每个 key 在节点中实际位置的索引，key 的插入是顺序插入，之后只需要修改 permutation 来更新节点内 key 的索引信息，然后施加一个 release 语义，当读线程对这个节点的 permutation 施加 acquire 语义时，可以获取到完整的节点信息。
 
-并发情况一般有两种竞争，OpenGauss 采用一个 32bit 的 version 参数应对并发控制。
+并发情况一般有两种竞争，openGauss 采用一个 32bit 的 version 参数应对并发控制。
 
 <img src='./img/p8.png'>
 
@@ -171,7 +171,7 @@ read-write 竞争：开始前和读结束后都需要获取当前节点的最新
 
 <img src='./img/p11.png'>
 
-图 11 OpenGauss 内存引擎索引上插入操作代码部分
+图 11 openGauss 内存引擎索引上插入操作代码部分
 
 <img src='./img/p12.png'>
 
@@ -193,7 +193,7 @@ read-write 竞争：开始前和读结束后都需要获取当前节点的最新
 
 <img src='./img/p14.png'>
 
-图 14 OpenGauss 内存引擎索引上删除操作代码部分
+图 14 openGauss 内存引擎索引上删除操作代码部分
 
 <img src='./img/p15.png'>
 

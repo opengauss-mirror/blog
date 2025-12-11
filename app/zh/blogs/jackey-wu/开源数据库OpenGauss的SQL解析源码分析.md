@@ -1,16 +1,16 @@
 ---
-title: '开源数据库OpenGauss的SQL解析源码分析'
+title: '开源数据库openGauss的SQL解析源码分析'
 date: '2021-12-06'
 category: 'blog'
-tags: ['OpenGauss入门']
+tags: ['openGauss入门']
 archives: '2021-12'
 author: 'Jackey WU'
-summary: '开源数据库OpenGauss的SQL解析源码分析'
+summary: '开源数据库openGauss的SQL解析源码分析'
 ---
 
-# 开源数据库 OpenGauss 的 SQL 解析源码分析
+# 开源数据库 openGauss 的 SQL 解析源码分析
 
-## OpenGauss 数据库体系概述
+## openGauss 数据库体系概述
 
 openGauss 是关系型数据库，采用客户端/服务器，单进程多线程架构；支持单机和一主多备部署方式，同时支持备机可读、双机高可用等特性。
 
@@ -18,7 +18,7 @@ openGauss 是关系型数据库，采用客户端/服务器，单进程多线程
 
 openGauss 查询响应是使用“单个用户对应一个服务器线程”的简单客户端/服务器模型实现的。由于我们无法预先知道需要建立多少连接，所以必须使用主进程（GaussMaster）来监听指定 TCP/IP（传输控制协议/网际协议）端口上的传入连接，只要连接请求 检测到，主进程将生成一个新的服务器线程。服务器线程使用信号量和共享内存相互通信，以确保整个并发数据访问期间的数据完整性。
 
-除开通信管理之外，OpenGauss 的一大组成部分就是 SQL 引擎，承担着查询解析、查询分流、查询重写、查询优化和查询执行等任务，之后剩下的就是存储引擎了。
+除开通信管理之外，openGauss 的一大组成部分就是 SQL 引擎，承担着查询解析、查询分流、查询重写、查询优化和查询执行等任务，之后剩下的就是存储引擎了。
 
 **SQL 组成**
 

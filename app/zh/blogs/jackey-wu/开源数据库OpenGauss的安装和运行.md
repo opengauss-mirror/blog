@@ -1,18 +1,18 @@
 ---
-title: '开源数据库OpenGauss的安装和运行'
+title: '开源数据库openGauss的安装和运行'
 date: '2021-12-06'
 category: 'blog'
-tags: ['OpenGauss入门']
+tags: ['openGauss入门']
 archives: '2021-12'
 author: 'Jackey WU'
-summary: '开源数据库OpenGauss的安装和运行'
+summary: '开源数据库openGauss的安装和运行'
 ---
 
-# 开源数据库 OpenGauss 的安装和运行
+# 开源数据库 openGauss 的安装和运行
 
 ## 安装环境
 
-### OpenGauss 版本
+### openGauss 版本
 
 openGauss-2.1.0-openEuler-64bit
 下载地址：
@@ -42,7 +42,7 @@ https://mirror.iscas.ac.cn/openeuler/openEuler-20.03-LTS/ISO/x86_64/openEuler-20
 
 ## 安装详细步骤
 
-首先需要说明，这一块儿大部分都没有截图，因为安装 OpenGauss 已经是很久以前的事情了，下面有的截图也只是后面补截取的。
+首先需要说明，这一块儿大部分都没有截图，因为安装 openGauss 已经是很久以前的事情了，下面有的截图也只是后面补截取的。
 
 ### 虚拟机准备
 

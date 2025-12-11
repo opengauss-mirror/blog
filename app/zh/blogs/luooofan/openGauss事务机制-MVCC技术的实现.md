@@ -58,7 +58,7 @@ MVCC 的主要优点是读数据的锁请求与写数据的锁请求不冲突，
 
 _src/include/access/htup.h_
 
-为了定义 MVCC 中不同版本的数据，Opengauss 在每个元组的头部信息 HeapTupleHeaderData 中引入了一些字段如下：
+为了定义 MVCC 中不同版本的数据，openGauss 在每个元组的头部信息 HeapTupleHeaderData 中引入了一些字段如下：
 
 ```
 typedef struct HeapTupleHeaderData {

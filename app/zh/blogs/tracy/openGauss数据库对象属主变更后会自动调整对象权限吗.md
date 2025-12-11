@@ -1,25 +1,25 @@
 ---
-title: 'OpenGauss数据库对象属主变更后会自动调整对象权限吗？'
+title: 'openGauss数据库对象属主变更后会自动调整对象权限吗？'
 
 date: '2022-04-06'
 
 category: 'blog'
-tags: ['OpenGauss数据库对象属主变更后会自动调整对象权限吗？']
+tags: ['openGauss数据库对象属主变更后会自动调整对象权限吗？']
 
 archives: '2022-04'
 
 author: 'tracy'
 
-summary: 'OpenGauss数据库对象属主变更后会自动调整对象权限吗？'
+summary: 'openGauss数据库对象属主变更后会自动调整对象权限吗？'
 
 img: '/zh/blogs/tracy/title/img20.png'
 
 times: '11:37'
 ---
 
-# OpenGauss 数据库对象属主变更后会自动调整对象权限吗？
+# openGauss 数据库对象属主变更后会自动调整对象权限吗？
 
-OpenGauss 数据库创建了数据库对象之后，可以使用 alter 命令修改对象的属主。
+openGauss 数据库创建了数据库对象之后，可以使用 alter 命令修改对象的属主。
 以表为例，修改属主的命令如下：
 
 ```
@@ -66,7 +66,7 @@ ALTER TABLE test.t OWNER TO test1;
 \dp test.t
 ```
 
-在 OpenGauss 中修改表属主的测试结果：
+在 openGauss 中修改表属主的测试结果：
 
 <img src='https://oss-emcsprod-public.modb.pro/image/editor/20220111-9e35cdfa-1cf6-467f-a17b-80c4b6559869.png'>
 

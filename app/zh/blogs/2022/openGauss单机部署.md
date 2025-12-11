@@ -93,9 +93,9 @@ times: '12:30'
 
 ## 二、安装详细步骤<a name="section14801132418136"></a>
 
-1.  Opengauss 安装
+1.  openGauss 安装
 
-    - （1）下载 opengauss 安装包及创建用户组和目录
+    - （1）下载 openGauss 安装包及创建用户组和目录
 
       ```
       1 groupadd dbgrp
@@ -275,7 +275,7 @@ export GS_CLUSTER_NAME=singlenode
 
       <img src='./figures/这里为260001.png'>
 
-2.  Opengauss 连接设置
+2.  openGauss 连接设置
 
     - （1）安装 java，确认 jdk 版本为 1.8
     - （2）从官网下载 jdbc 压缩包后，将其解压至路径/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.el7_9.x86_64/jre/lib/ext 下

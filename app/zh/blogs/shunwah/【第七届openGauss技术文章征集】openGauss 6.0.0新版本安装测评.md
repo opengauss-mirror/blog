@@ -14,7 +14,7 @@ summary: '【第七届openGauss技术文章征集】openGauss 6.0.0新版本安�
 
 
 
-从事运维管理工作多年，目前就职于某科技有限公司，熟悉运维自动化、OceanBase部署运维、MySQL 运维以及各种云平台技术和产品。并已获得OceanBase认证OBCA、OBCP 证书、OpenGauss社区认证结业证书、崖山DBCA证书、亚信AntDBCA证书、翰高HDCA认证、GBase 8a|GBase 8c 证书。OceanBase & 墨天轮第二、三、四届技术征文大赛，多次获得 一、二、三 等奖，在openGauss 第五届、第六届技术征文大赛中多次获奖。时常在墨天轮发布原创技术文章，并多次被首页推荐。
+从事运维管理工作多年，目前就职于某科技有限公司，熟悉运维自动化、OceanBase部署运维、MySQL 运维以及各种云平台技术和产品。并已获得OceanBase认证OBCA、OBCP 证书、openGauss社区认证结业证书、崖山DBCA证书、亚信AntDBCA证书、翰高HDCA认证、GBase 8a|GBase 8c 证书。OceanBase & 墨天轮第二、三、四届技术征文大赛，多次获得 一、二、三 等奖，在openGauss 第五届、第六届技术征文大赛中多次获奖。时常在墨天轮发布原创技术文章，并多次被首页推荐。
 
 ![image](image/openGauss/pic1.png)
 

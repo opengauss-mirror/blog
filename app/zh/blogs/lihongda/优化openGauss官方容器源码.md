@@ -1392,7 +1392,7 @@ Please input openGauss VERSION [1.0.1]:
 openGauss VERSION set 1.0.1
 starting
 41cc302ad46e9d13015684bbdfd28105cac7c1b0f3dd1ba3b73d95f87de45bb7
-OpenGauss Database Network Created.
+openGauss Database Network Created.
 Unable to find image 'opengauss:1.0.1' locally
 ^C
 [root@ecs-lee dockerfiles]# docker network rm opengaussnetwork
@@ -1420,11 +1420,11 @@ Please input openGauss VERSION [1.0.1]: 3.1.0
 openGauss VERSION set 3.1.0
 starting
 aa0b66ab132d25d70c94e65641ea5cabb02f2ac3e56def4b65f9a4f07b848580
-OpenGauss Database Network Created.
+openGauss Database Network Created.
 8f4a6be903997764b4bcf9f7d3117ed9f1ddd0c7e303d06b71657bb27386489d
-OpenGauss Database Master Docker Container created.
+openGauss Database Master Docker Container created.
 845434cdb53f8c64b396ec46db2d83cbc9da0ade52389a65ad2b498016ebb3c5
-OpenGauss Database Slave1 Docker Container created.
+openGauss Database Slave1 Docker Container created.
 [root@ecs-lee dockerfiles]# docker exec -it opengauss_master bash
 [root@opengauss_master /]# su - omm
 Last login: Sun Oct  9 07:57:32 UTC 2022 on pts/0

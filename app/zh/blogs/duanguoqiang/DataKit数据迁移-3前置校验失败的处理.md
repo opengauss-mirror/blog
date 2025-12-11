@@ -95,7 +95,7 @@ times: '16:40'
 ### 2、检查源端和目标端数据库是否可连接
 
 >MySQL: mysql -h ip -P port -u user -ppassword -S /~/mysql.sock\
->OpenGauss: gsql -r -d database -p port -U user -W password
+>openGauss: gsql -r -d database -p port -U user -W password
 
 ### 3、权限检查
 
@@ -214,7 +214,7 @@ show variables like 'wal_level';
 
 ### 5、大小写参数检查
 
-需确保Mysql和OpenGauss的大小写参数一致，查询大小写参数的命令如下：
+需确保Mysql和openGauss的大小写参数一致，查询大小写参数的命令如下：
 
 ```sql
 -- 查询Mysql的大小写参数

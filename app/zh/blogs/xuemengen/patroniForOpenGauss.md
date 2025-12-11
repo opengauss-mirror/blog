@@ -1,11 +1,11 @@
 ---
-title: 'patroniForOpenGauss高可用方案基本原理'
+title: 'patroniForopenGauss高可用方案基本原理'
 date: '2021-09-01'
 category: 'blog'
 tags: ['openGauss分布式解决方案']
 archives: '2021-09-01'
 author: 'xuemengen'
-summary: 'patroniForOpenGauss高可用方案基本原理'
+summary: 'patroniForopenGauss高可用方案基本原理'
 img: '/zh/blogs/xuemengen/title/img.png'
 times: '9:30'
 ---

@@ -21,7 +21,7 @@ times: '12:30'
 
 ## 概述<a name="section1791219408288"></a>
 
-自 B-tree 提出以来，衍生出很多不同类型的搜索树，GiST\(Generalized Search Tree\)广义搜索树是一种新型的索引结构，它可以在一种实现中提供很多不同树形结构的功能。GiST 是一种可扩展的数据结构，允许用户针对不同的数据类型开发索引，支持对支持的数据类型的各种方式的查找。GiST 可以统一许多流程的搜索树（如 R-tree、B±tree、hB-tree、TV-tree、CH-tree 等等），而无需构建多个搜索树。准确地说 Gist 并不是一种具体的索引类型，而是 tree 结构的索引模板，PG 和 OpenGauss 中有基于 Gist 实现的 R-tree 索引。
+自 B-tree 提出以来，衍生出很多不同类型的搜索树，GiST\(Generalized Search Tree\)广义搜索树是一种新型的索引结构，它可以在一种实现中提供很多不同树形结构的功能。GiST 是一种可扩展的数据结构，允许用户针对不同的数据类型开发索引，支持对支持的数据类型的各种方式的查找。GiST 可以统一许多流程的搜索树（如 R-tree、B±tree、hB-tree、TV-tree、CH-tree 等等），而无需构建多个搜索树。准确地说 Gist 并不是一种具体的索引类型，而是 tree 结构的索引模板，PG 和 openGauss 中有基于 Gist 实现的 R-tree 索引。
 
 除了统一这些搜索树外，GiST 还具有以前的树所没有的特性：数据和查询可扩展性。
 

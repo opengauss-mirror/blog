@@ -1,23 +1,23 @@
 ---
-title: 'OpenGauss数据库SQL解析模块源码分析'
+title: 'openGauss数据库SQL解析模块源码分析'
 
 date: '2021-11-29'
 
 category: 'blog'
-tags: ['OpenGauss数据库SQL解析模块']
+tags: ['openGauss数据库SQL解析模块']
 
 archives: '2021-11'
 
 author: '罗宇辰'
 
-summary: 'OpenGauss数据库安装与使用'
+summary: 'openGauss数据库安装与使用'
 
 img: '/zh/blogs/louie/title/1.png'
 
 times: '12:45'
 ---
 
-# OpenGauss 数据库 SQL 解析模块源码分析
+# openGauss 数据库 SQL 解析模块源码分析
 
 ## 一.概述
 

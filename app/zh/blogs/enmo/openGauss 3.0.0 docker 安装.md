@@ -89,11 +89,11 @@ echo "starting  "
 docker network create --subnet=$OG_SUBNET opengaussnetwork \
 || {
   echo ""
-  echo "ERROR: OpenGauss Database Network was NOT successfully created."
+  echo "ERROR: openGauss Database Network was NOT successfully created."
   echo "HINT: opengaussnetwork Maybe Already Exsist Please Execute 'docker network rm opengaussnetwork' "
   exit 1
 }
-echo "OpenGauss Database Network Created."
+echo "openGauss Database Network Created."
 
 docker run --network opengaussnetwork --ip $MASTER_IP --privileged=true \
 --name $MASTER_NODENAME -h $MASTER_NODENAME -p $MASTER_HOST_PORT:$MASTER_HOST_PORT -d \
@@ -105,10 +105,10 @@ docker run --network opengaussnetwork --ip $MASTER_IP --privileged=true \
 enmotech/opengauss:$VERSION -M primary \
 || {
   echo ""
-  echo "ERROR: OpenGauss Database Master Docker Container was NOT successfully created."
+  echo "ERROR: openGauss Database Master Docker Container was NOT successfully created."
   exit 1
 }
-echo "OpenGauss Database Master Docker Container created."
+echo "openGauss Database Master Docker Container created."
 
 sleep 30s
 
@@ -122,10 +122,10 @@ docker run --network opengaussnetwork --ip $SLAVE_1_IP --privileged=true \
 enmotech/opengauss:$VERSION -M standby \
 || {
   echo ""
-  echo "ERROR: OpenGauss Database Slave1 Docker Container was NOT successfully created."
+  echo "ERROR: openGauss Database Slave1 Docker Container was NOT successfully created."
   exit 1
 }
-echo "OpenGauss Database Slave1 Docker Container created."
+echo "openGauss Database Slave1 Docker Container created."
 
 ```
 

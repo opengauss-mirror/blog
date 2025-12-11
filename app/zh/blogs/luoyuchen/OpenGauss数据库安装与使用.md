@@ -1,23 +1,23 @@
 ---
-title: 'OpenGauss数据库安装与使用'
+title: 'openGauss数据库安装与使用'
 
 date: '2021-11-27'
 
 category: 'blog'
-tags: ['OpenGauss数据库安装与使用']
+tags: ['openGauss数据库安装与使用']
 
 archives: '2021-11'
 
 author: '罗宇辰'
 
-summary: 'OpenGauss数据库安装与使用'
+summary: 'openGauss数据库安装与使用'
 
 img: '/zh/blogs/luoyuchen/title/1.png'
 
 times: '13:50'
 ---
 
-# OpenGauss 数据库安装与使用报告
+# openGauss 数据库安装与使用报告
 
 ### 1.获取 openGauss 安装包
 
@@ -141,7 +141,7 @@ CentOS7
 > EOF
 > sysctl -p
 
-###3.安装 OpenGauss
+###3.安装 openGauss
 ####1）创建用于安装 openGauss 的文件夹
 
 > mkdir -p /opt/software/openGauss
@@ -157,7 +157,7 @@ CentOS7
 > cd /home/louie
 > tar -jxf openGauss-2.0.1-CentOS-64bit.tar.bz2 -C /opt/software/openGauss/
 
-####2）安装 OpenGauss
+####2）安装 openGauss
 进入解压好的文件夹中
 
 > cd /opt/software/openGauss/simpleInstall/
@@ -172,7 +172,7 @@ CentOS7
 ####3）安装成功
 <img src='./figures/13.png'>
 
-###4.OpenGauss 使用测试
+###4.openGauss 使用测试
 ####1）加入 PATH
 <img src='./figures/14.png'>
 

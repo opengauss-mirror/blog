@@ -1,8 +1,8 @@
 ---
-title: 'OpenGauss解析器'
+title: 'openGauss解析器'
 date: '2021-12-05'
 category: 'blog'
-tags: ['OpenGauss解析器']
+tags: ['openGauss解析器']
 archives: '2021-12'
 author: 'zhou-yuxiang'
 summary: 'openGauss社区开发入门'

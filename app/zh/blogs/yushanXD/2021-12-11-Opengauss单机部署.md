@@ -91,7 +91,7 @@ swapoff -a
 
 ## 二、安装详细步骤
 
-### 1．Opengauss 安装
+### 1．openGauss 安装
 
 #### （1）下载 opengauss 安装包及创建用户组和目录
 
@@ -273,7 +273,7 @@ end deploy..
 
 <img src='./img/command1.png'> <img src='./img/command2.png'>
 
-### 2．Opengauss 连接设置
+### 2．openGauss 连接设置
 
 #### （1）安装 java，确认 jdk 版本为 1.8
 

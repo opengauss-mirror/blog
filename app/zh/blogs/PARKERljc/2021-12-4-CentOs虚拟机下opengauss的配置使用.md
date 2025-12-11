@@ -21,7 +21,7 @@ summary: '个人配置openGauss的过程总结'
 
 ### 本机系统 `Windows 10`
 
-### 部署版本 `OpenGauss 1.1.0`
+### 部署版本 `openGauss 1.1.0`
 
 # 安装详细步骤
 

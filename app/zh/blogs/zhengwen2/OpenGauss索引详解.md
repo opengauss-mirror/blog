@@ -9,7 +9,7 @@ archives: '2021-07'
 
 author: '吴松'
 
-summary: 'OpenGauss索引详解'
+summary: 'openGauss索引详解'
 
 img: '/zh/blogs/zhengwen2/img/img22.jpg'
 
@@ -22,7 +22,7 @@ times: '12:30'
 
 ### B-Tree 索引
 
-B-tree 索引适合比较查询和范围查询，当查询条件使用(`&gt;,=,&lt;,&gt;=,&lt;=`)时，可以使用 B-tree 索引。B-tree 索引是 PostgreSQL 和 OpenGauss 的默认索引方式。
+B-tree 索引适合比较查询和范围查询，当查询条件使用(`&gt;,=,&lt;,&gt;=,&lt;=`)时，可以使用 B-tree 索引。B-tree 索引是 PostgreSQL 和 openGauss 的默认索引方式。
 
 <img src="https://oss-emcsprod-public.modb.pro/image/editor/20210708-38cc07a3-f562-49d2-8b56-8267d1f7ffe0.png" alt="image.png" />
 

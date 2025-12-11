@@ -19,7 +19,7 @@ times: '12:30'
 
 # openGauss/MogDB TPCH 性能测试步骤<a name="ZH-CN_TOPIC_0000001232693239"></a>
 
-TPCH 官网直接下载的包无法直接兼容 OpenGauss/MogDB/Postgresql，为了兼容 pg/og 的语法，总结了测试步骤供大家参考
+TPCH 官网直接下载的包无法直接兼容 openGauss/MogDB/Postgresql，为了兼容 pg/og 的语法，总结了测试步骤供大家参考
 
 - 建表
 

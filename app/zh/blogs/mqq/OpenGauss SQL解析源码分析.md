@@ -1,15 +1,15 @@
 ﻿---
-title: 'OpenGauss SQL解析源码分析'
+title: 'openGauss SQL解析源码分析'
 date: '2021-11-27'
 category: 'blog'
-tags: ['OpenGauss SQL解析源码分析']
+tags: ['openGauss SQL解析源码分析']
 archives: '2021-11'
 author: 'mqq'
-summary: 'OpenGauss SQL解析源码分析'
+summary: 'openGauss SQL解析源码分析'
 img: '/zh/blogs/mqq/title/title.png'
 ---
 
-# OpenGauss SQL 解析源码分析
+# openGauss SQL 解析源码分析
 
 ## SQL 引擎简介：
 

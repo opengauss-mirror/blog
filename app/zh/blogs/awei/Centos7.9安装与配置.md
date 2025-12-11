@@ -2,10 +2,10 @@
 title: '***Centos7.9安装与配置***'
 date: '2021-12-03'
 category: 'blog'
-tags: ['华为OpenGauss数据库安装与使用']
+tags: ['华为openGauss数据库安装与使用']
 archives: '2021-12'
 author: 'awei'
-summary: '华为OpenGauss数据库安装：***Centos7.9安装与配置***'
+summary: '华为openGauss数据库安装：***Centos7.9安装与配置***'
 times: '17:30'
 ---
 
