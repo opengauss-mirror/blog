@@ -119,7 +119,7 @@ https://blog.csdn.net/weixin\_43837229/article/details/94733475?utm\_medium=dist
 
 最终解决办法：
 
-利用容器安装 OpenGauss 数据库：
+利用容器安装 openGauss 数据库：
 
 1、安装 curl
 

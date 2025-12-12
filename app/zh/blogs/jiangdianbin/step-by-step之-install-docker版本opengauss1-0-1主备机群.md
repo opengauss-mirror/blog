@@ -107,7 +107,7 @@ docker.io   docker.io/enmotech/opengauss            openGauss latest images crea
 docker.io   docker.io/aff123/opengauss              aff学习opengauss                                0
 docker.io   docker.io/blueapple/opengauss           opengauss 1.0.0 CentOS 7.8.2003               0
 docker.io   docker.io/fibird/opengauss                                                            0
-docker.io   docker.io/gaobo1997/opengauss_compile   OpenGauss Compile Environment                 0
+docker.io   docker.io/gaobo1997/opengauss_compile   openGauss Compile Environment                 0
 docker.io   docker.io/travelliu/opengauss                                                         0
 ```
 

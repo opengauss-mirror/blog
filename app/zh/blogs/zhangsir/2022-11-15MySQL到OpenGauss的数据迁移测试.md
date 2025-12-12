@@ -1,5 +1,5 @@
 ---
-title: 'MySQL到OpenGauss的数据迁移测试'
+title: 'MySQL到openGauss的数据迁移测试'
 
 date: '2022-11-15'
 category: 'blog'
@@ -9,18 +9,18 @@ archives: '2022-11'
 
 author: 'zhangsir'
 
-summary: 'MySQL到OpenGauss的数据迁移测试'
+summary: 'MySQL到openGauss的数据迁移测试'
 
 times: '16:20'
 ---
 
 前言
 
-本文将测试利用 chameleon 工具从 MySQL 迁移数据到 OpenGauss3.1.0。
+本文将测试利用 chameleon 工具从 MySQL 迁移数据到 openGauss3.1.0。
 
 环境
 
-| 环境信息 | MYSQL          | OpenGauss    |
+| 环境信息 | MYSQL          | openGauss    |
 | -------- | -------------- | ------------ |
 | 版本     | 5.7.36         | 3.1.0        |
 | 系统版本 | docker19.03.15 | Centos 7.9   |
@@ -199,7 +199,7 @@ mysql> select \* from test;
 +----+--------+
 5 rows in set (0.00 sec)
 
-Opengauss 中的数据
+openGauss 中的数据
 
 mysql_test=# select \* from test;
 id | name
@@ -229,7 +229,7 @@ mysql> select \* from test;
 +----+--------+
 6 rows in set (0.00 sec)
 
-Opengauss 中查看数据，可以看到新插入的（6，'fffff'）已经同步到了 openGauss 中。
+openGauss 中查看数据，可以看到新插入的（6，'fffff'）已经同步到了 openGauss 中。
 
 mysql_test=# select \* from test;
 id | name

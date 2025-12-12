@@ -1,5 +1,5 @@
 ---
-title: '【我与openGauss的故事】干货输出【SpringBoot + OpenGauss3开发入门】'
+title: '【我与openGauss的故事】干货输出【SpringBoot + openGauss3开发入门】'
 
 date: '2022-10-8'
 category: 'blog'
@@ -12,7 +12,7 @@ author: '大数据模型'
 summary: 'SpringBoot+openGauss开发入门'
 ---
 
-本文介绍如何快速安装 OpenGauss3，OpenGauss3 的安装这是笔者浓缩提炼的，并且在 SpringBoot 中集成使用 OpenGauss3 数据库。
+本文介绍如何快速安装 openGauss3，openGauss3 的安装这是笔者浓缩提炼的，并且在 SpringBoot 中集成使用 openGauss3 数据库。
 
 ## 单机版 openGauss3 快速环境安装
 
@@ -274,14 +274,14 @@ export GAUSS_ENV=2
 export GS_CLUSTER_NAME=dbCluster
 ```
 
-## springBoot 应用集成 OpenGauss
+## springBoot 应用集成 openGauss
 
 **SOA 是一种粗粒度、松耦合服务架构**，服务之间通过简单、精确定义接口进行通讯，不涉及底层编程接口和通讯模型。SOA 可以看作是 B/S 模型、XML(标准通用标记语言的子集)/Web Service 技术之后的自然延伸，面向服务架构，它可以根据需求通过网络对松散耦合的粗粒度应用组件进行分布式部署、组合和使用。服务层是 SOA 的基础，可以直接被应用调用，从而有效控制系统中与软件代理交互的人为依赖性。
 
-简而言之**SOA 可以消除信息孤岛并实现共享业务重用**，我们通过 SOA 可以打造下图的复杂系统，其中**蓝色用户服务** ，我们可以通过**springboot + OpenGauss** 技术实现。
+简而言之**SOA 可以消除信息孤岛并实现共享业务重用**，我们通过 SOA 可以打造下图的复杂系统，其中**蓝色用户服务** ，我们可以通过**springboot + openGauss** 技术实现。
 
 ![输入图片说明](images/image.png)
-我们使用 OpenGauss 作为具体数据存储，使用开发工具创建一个数据库 mysqltest，并在 mysqltest 数据库中创建一张表 userennity 和 user1，创建语句如下：
+我们使用 openGauss 作为具体数据存储，使用开发工具创建一个数据库 mysqltest，并在 mysqltest 数据库中创建一张表 userennity 和 user1，创建语句如下：
 
 ```sql
 create table   userentity(
@@ -422,7 +422,7 @@ GRANT
 
 ```
 
-授权后能够正常，但是发现一个问题，现在我们是通过 Postgresql 的 jdbc 驱动去访问 OpenGauss 的，OpenGauss 没有自己的原生 jdbc 驱动吗？答案是有的，而且还支持 maven 方式，见下。
+授权后能够正常，但是发现一个问题，现在我们是通过 Postgresql 的 jdbc 驱动去访问 openGauss 的，openGauss 没有自己的原生 jdbc 驱动吗？答案是有的，而且还支持 maven 方式，见下。
 
 ```
         <!-- 加载jdbc连接数据库 -->

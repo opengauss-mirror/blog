@@ -194,9 +194,9 @@ WHERE last_updated > now()-600 limit 100;
 - 关于UniqueSQLMappinglock 数据库等等事件:
 
 
-UniqueSQLMappingLock在OpenGauss数据库中是用来控制对Unique SQL信息哈希表的并发访问的轻量级锁（LWLock）。Unique SQL是OpenGauss中用来追踪和统计数据库中执行的SQL语句的功能，它可以帮助数据库了解哪些SQL语句被执行，它们的执行频率，平均执行时间等信息。
+UniqueSQLMappingLock在openGauss数据库中是用来控制对Unique SQL信息哈希表的并发访问的轻量级锁（LWLock）。Unique SQL是openGauss中用来追踪和统计数据库中执行的SQL语句的功能，它可以帮助数据库了解哪些SQL语句被执行，它们的执行频率，平均执行时间等信息。
 
-在OpenGauss数据库中，Unique SQL信息是存储在一个全局哈希表中的。由于多个线程可能会同时尝试读取或更新这个哈希表中的信息，因此需要一个机制来保证对哈希表的访问是线程安全的。它确保在任何时候只有一个线程能够修改哈希表，而其他的线程必须等待直到UniqueSQLMappingLock锁被释放。
+在openGauss数据库中，Unique SQL信息是存储在一个全局哈希表中的。由于多个线程可能会同时尝试读取或更新这个哈希表中的信息，因此需要一个机制来保证对哈希表的访问是线程安全的。它确保在任何时候只有一个线程能够修改哈希表，而其他的线程必须等待直到UniqueSQLMappingLock锁被释放。
 
 **数据库归化unique sql的相关参数介绍**
 
@@ -500,7 +500,7 @@ select * from t1 where id = 2;
 
 select * from t1 where id = ?;
 
-GaussDB、Opengauss内核会对所有上面形式的SQL语句汇总统计信息，通过视图呈现给用户。通过这种方式，可以排除一些无关的常量值的干扰，获得某一类SQL语句的统计数据，为性能分析和问题定位提供数值依据。
+GaussDB、openGauss内核会对所有上面形式的SQL语句汇总统计信息，通过视图呈现给用户。通过这种方式，可以排除一些无关的常量值的干扰，获得某一类SQL语句的统计数据，为性能分析和问题定位提供数值依据。
 
 2、instr_unique_sql_count参数：该参数控制unique SQL数量最大值，如果超过该数值（不开启SQL 自动淘汰），则数据库不再记录新的SQL语句。
 

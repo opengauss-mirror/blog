@@ -1,8 +1,8 @@
 ---
-title: 'OpenGauss环境配置实验'
+title: 'openGauss环境配置实验'
 date: '2021-12-05'
 category: 'blog'
-tags: ['OpenGauss环境配置实验']
+tags: ['openGauss环境配置实验']
 archives: '2021-12'
 author: 'zhou-yuxiang'
 summary: 'openGauss社区开发入门'
@@ -111,7 +111,7 @@ https://blog.csdn.net/weixin_43837229/article/details/94733475?utm_medium=distri
 
 最终解决办法：
 
-利用容器安装 OpenGauss 数据库：
+利用容器安装 openGauss 数据库：
 
 1、安装 curl
 

@@ -17,7 +17,7 @@ img: '/zh/blogs/foreverdragon/title/title2.jpg'
 times: '19:25'
 ---
 
-Opengauss 事务管理系统分析
+openGauss 事务管理系统分析
 
 **一、概述：**
 

@@ -2,7 +2,7 @@
 
 ##  高可用方案
 对于opengauss的高可用集群进行研究得出如上图所示的高可用方案：
-采用keepalived + HaProxy + partoni + DCS(etcd)组成 数据库采用OpenGauss。
+采用keepalived + HaProxy + partoni + DCS(etcd)组成 数据库采用openGauss。
 可划分为三个部分：
 ###  第一部分是keepalived+HaProxy
 keepalived为客户端提供虚拟IP，HaProxy提供负载均衡，一般是两个工具部署在一起。如果keepalived1 + HaProxy不可用，则会keepalived服务自动进行故障转移到keepalived2 + HaProxy的服务器上，keepalived也负责提供虚拟IP，对用户显示的是一致的虚拟IP。HaProxy与各个集群的主节点相连，进行读写分离、负载均衡处理。
@@ -44,12 +44,12 @@ vrrp通告 包含优先级发送
 这里可以体现出opengauss方案的高可用性很可靠，同时实现了**连接保持功能**。
 **连接保持**：开启连接保持功能后，当服务与旧主节点（即高可用切换前的主节点）连接断开时，当前服务与前端应用的连接保持不断（即应用程序看到的Session），同时服务会与新主节点（即高可用切换后的主节点）重新建立连接并且恢复之前的会话状态，以实现对应用程序端无感知的高可用切换。
 
-###  第二部分是patroni + OpenGauss组成的集群
-集群是一主多从，集群中通过patroni对OpenGauss进行自动故障转移，但是该工具并没有选举算法（所以需要用到etcd的信息），只是做故障转移的处理，也是通过etcd进行心跳检测。OpenGauss主从之间wal日志进行异步流复制。
+###  第二部分是patroni + openGauss组成的集群
+集群是一主多从，集群中通过patroni对openGauss进行自动故障转移，但是该工具并没有选举算法（所以需要用到etcd的信息），只是做故障转移的处理，也是通过etcd进行心跳检测。openGauss主从之间wal日志进行异步流复制。
 patroni通过一个api接口连接到etcd，向其插入键值对记录patroni参数、数据库参数、主备信息以及连接信息，平常通过etcd对其它节点做心跳检测，通过从etcd获取键值对中存储的主备信息来判断各节点的状态对集群进行自动管理，其基本原理如下图所示。
 <img src = "./2023-08-07-一文帮你理解Openguass的高可用方案-5.png">
 
-#####  patroni + OpenGauss集群避免了“脑裂”现象
+#####  patroni + openGauss集群避免了“脑裂”现象
 而对于高可用来说，集群很容易发生**脑裂**现象。下面对于脑裂现象进行一个描述：
 
 即对于当前集群，本来主节点Leader是a，备节点是b，a会持续像b发送“心跳”，（通知：我是主节点！）而当两个机房之间的网络通信出现故障时，b收不到a的心跳，默认a点失效，此时b会执行升主操作，以保证该集群的可用性。此时选举机制就有可能在不同的网络分区中选出两个Leader a和b。当网络恢复时，这两个Leader a和b该如何处理数据同步？又该听谁的？这就是“脑裂”现象。

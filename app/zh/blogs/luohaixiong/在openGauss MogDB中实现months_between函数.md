@@ -19,7 +19,7 @@ times: '10:20'
 
 # 在 openGauss/MogDB 中实现 months_between 函数
 
-Oracle 有个函数，months_between, Opengauss 中并没有实现。
+Oracle 有个函数，months_between, openGauss 中并没有实现。
 
 ## Oracle 实现逻辑
 
@@ -37,7 +37,7 @@ Oracle 有个函数，months_between, Opengauss 中并没有实现。
 - months_between(‘20210531’,‘20210430’)
   和 months_between(‘20210530’,‘20210430’) 都返回 1.
 
-## Opengauss(MogDB)实现
+## openGauss/MogDB 实现
 
 知道了规则后，可以通过在 openGauss(MogDB)上创建自定义函数实现兼容。
 
@@ -65,7 +65,7 @@ d1 := date_part('day',t1);
  (t1-to_date(to_char(t1,'yyyymm'),'yyyymm'))
 ```
 
-很遗憾的是，Opengauss 没有实现 trunc(时间列）的功能，否则，下面会是更简便的写法。
+很遗憾的是，openGauss 没有实现 trunc(时间列）的功能，否则，下面会是更简便的写法。
 
 ```
  t1-trunc(t1,'MM')

@@ -1,23 +1,23 @@
 ---
-title: 'OpenGauss3.0.0 轻量版部署'
+title: 'openGauss3.0.0 轻量版部署'
 
 date: '2022-05-16'
 
 category: 'blog'
-tags: ['OpenGauss3.0.0']
+tags: ['openGauss3.0.0']
 
 archives: '2020-05'
 
 author: 'xingchen'
 
-summary: 'OpenGauss3.0.0'
+summary: 'openGauss3.0.0'
 
 img: '/zh/blogs/xingchen/title/58eccf60-364f-424b-9785-ecad541fc26f.png'
 
 times: '18:40'
 ---
 
-# OpenGauss3.0.0 轻量版部署
+# openGauss3.0.0 轻量版部署
 
 # 背景
 

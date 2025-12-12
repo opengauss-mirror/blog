@@ -1,11 +1,11 @@
 ---
-title: '华为OpenGauss数据库安装与使用'
+title: '华为openGauss数据库安装与使用'
 date: '2021-12-01'
 category: 'blog'
-tags: ['华为OpenGauss数据库安装与使用']
+tags: ['华为openGauss数据库安装与使用']
 archives: '2021-12'
 author: 'vector'
-summary: '华为OpenGauss数据库安装与使用'
+summary: '华为openGauss数据库安装与使用'
 times: '17:30'
 ---
 

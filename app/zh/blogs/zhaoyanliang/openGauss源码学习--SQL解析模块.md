@@ -194,7 +194,7 @@ type 表示非终结符：
 
 <img src='./typora-user-images/image-20211113120741461.png'>
 
-Opengauss 总的文法产生式极其复杂，这里只节选。
+openGauss 总的文法产生式极其复杂，这里只节选。
 
 #### 九、具体案例
 

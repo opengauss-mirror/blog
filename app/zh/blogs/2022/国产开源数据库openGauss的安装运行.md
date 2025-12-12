@@ -19,7 +19,7 @@ times: '12:30'
 
 # 国产开源数据库 openGauss 的安装运行<a name="ZH-CN_TOPIC_0000001232453171"></a>
 
-## 步骤一：OpenGauss 的安装<a name="section1055955475612"></a>
+## 步骤一：openGauss 的安装<a name="section1055955475612"></a>
 
 - 环境
 

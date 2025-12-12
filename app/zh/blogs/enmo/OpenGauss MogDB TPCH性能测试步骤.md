@@ -1,27 +1,27 @@
 ---
-title: 'OpenGauss/MogDB TPCH性能测试步骤'
+title: 'openGauss/MogDB TPCH性能测试步骤'
 
 date: '2022-05-24'
 
 category: 'blog'
-tags: ['OpenGauss/MogDB TPCH性能测试步骤']
+tags: ['openGauss/MogDB TPCH性能测试步骤']
 
 archives: '2022-05'
 
 author: '云和恩墨'
 
-summary: 'OpenGauss/MogDB TPCH性能测试步骤'
+summary: 'openGauss/MogDB TPCH性能测试步骤'
 
 img: '/zh/blogs/enmo/title/img.png'
 
 times: '10:20'
 ---
 
-# OpenGauss/MogDB TPCH 性能测试步骤
+# openGauss/MogDB TPCH 性能测试步骤
 
 本文出处：[https://www.modb.pro/db/226169](https://www.modb.pro/db/226169)
 
-TPCH 官网直接下载的包无法直接兼容 OpenGauss/MogDB/Postgresql，为了兼容 pg/og 的语法，总结了测试步骤供大家参考
+TPCH 官网直接下载的包无法直接兼容 openGauss/MogDB/Postgresql，为了兼容 pg/og 的语法，总结了测试步骤供大家参考
 
 1. 建表
 

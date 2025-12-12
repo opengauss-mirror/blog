@@ -1,15 +1,15 @@
 ---
-title: '国产开源数据库OpenGauss的安装运行 '
+title: '国产开源数据库openGauss的安装运行 '
 date: '2021-12-13'
 category: 'blog'
-tags: ['国产开源数据库OpenGauss的安装运行 ']
+tags: ['国产开源数据库openGauss的安装运行 ']
 archives: '2021-12'
 author: 'adadaadadade'
-summary: '国产开源数据库OpenGauss的安装运行 '
+summary: '国产开源数据库openGauss的安装运行 '
 times: '17:30'
 ---
 
-## 步骤一：OpenGauss 的安装
+## 步骤一：openGauss 的安装
 
 ### 环境
 

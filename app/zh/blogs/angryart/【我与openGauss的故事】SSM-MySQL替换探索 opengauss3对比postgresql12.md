@@ -117,9 +117,9 @@ alter table user1 alter column id set default nextval('public.sq_user_id');
 
 增加 sequence 后，写入数据后 ID 例有值了。
 
-### OpenGauss
+### openGauss
 
-依然是同样代码，把 jdbc 的连接串改成 OpenGauss， 我们启动 tomcat，加载服务，我们惊喜的发现没有报错。
+依然是同样代码，把 jdbc 的连接串改成 openGauss， 我们启动 tomcat，加载服务，我们惊喜的发现没有报错。
 ![image.png](images/20220930-84c4baf5-d181-426e-a889-57b889a2ece8.png)
 
 ```
@@ -128,7 +128,7 @@ alter table user1 alter column id set default nextval('public.sq_user_id');
 
 此处在 postgresql12 需要更改，在 opengauss3 不需要任何更改，spring 指向的应用层没有报错。
 
-但是数据库底层 ID 列的数据仍然空值，OpenGauss 也和 Postgresql 一样，都是用 sequence 去实现 ID 的自增长。
+但是数据库底层 ID 列的数据仍然空值，openGauss 也和 Postgresql 一样，都是用 sequence 去实现 ID 的自增长。
 
 ```sql
 create sequence public.userid_seq start with 1 increment by 1

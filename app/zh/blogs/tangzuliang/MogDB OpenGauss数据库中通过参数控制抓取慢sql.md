@@ -1,23 +1,23 @@
 ---
-title: 'MogDB/OpenGauss数据库中通过参数控制抓取慢sql'
+title: 'MogDB/openGauss数据库中通过参数控制抓取慢sql'
 
 date: '2022-04-14'
 
 category: 'blog'
-tags: ['MogDB/OpenGauss数据库中通过参数控制抓取慢sql']
+tags: ['MogDB/openGauss数据库中通过参数控制抓取慢sql']
 
 archives: '2022-04'
 
 author: '唐祖亮'
 
-summary: 'MogDB/OpenGauss数据库中通过参数控制抓取慢sql'
+summary: 'MogDB/openGauss数据库中通过参数控制抓取慢sql'
 
 img: '/zh/blogs/tangzuliang/title/img6.png'
 
 times: '10:20'
 ---
 
-# MogDB/OpenGauss 数据库中通过参数控制抓取慢 sql
+# MogDB/openGauss 数据库中通过参数控制抓取慢 sql
 
 本文出处：https://www.modb.pro/db/221556
 

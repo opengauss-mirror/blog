@@ -11,7 +11,7 @@ times: '11:30'
 
 ### 介绍
 
-OpenGauss operator 是由 OpenGauss 社区开源的 opeator 项目，目前已在多个实际场景落地。OpenGauss operator 是一个基于 Kubernetes 管理的 OpenGauss 集群安装与维护的工具，其功能主要包括数据库集群的安装部署、维护、拓扑保持、资源升级、水平扩缩容、同城切换等全生命周期管理。
+openGauss operator 是由 openGauss 社区开源的 opeator 项目，目前已在多个实际场景落地。openGauss operator 是一个基于 Kubernetes 管理的 openGauss 集群安装与维护的工具，其功能主要包括数据库集群的安装部署、维护、拓扑保持、资源升级、水平扩缩容、同城切换等全生命周期管理。
 
 1.整理架构
 
@@ -21,7 +21,7 @@ OpenGauss operator 是由 OpenGauss 社区开源的 opeator 项目，目前已�
 
 ![](./images/rwseperate.png)
 
-读写分离设计是基于 servcie 和 pod 添加 label 实现的 operator 会给 OpenGauss 集群下的主、备 pod 角色添加对应角色的 label。其中角色为主的节点，Pod 的 label 为 primary；角色为备的节点，Pod 的 label 为 standby。然后通过读写 servcie 根据 labels 映射到不同的 pod，其中读 service 会映射到所在 k8s 集群 OpengGauss 集群下所有备节点所在的 Pod，写 service 会映射到所在 k8s 集群 OpengGauss 集群主节点所在的 Pod，客户端通过访问 k8s 集群的任一 Node 的 ip+service 的 Nodeport，从而实现读写分离。
+读写分离设计是基于 servcie 和 pod 添加 label 实现的 operator 会给 openGauss 集群下的主、备 pod 角色添加对应角色的 label。其中角色为主的节点，Pod 的 label 为 primary；角色为备的节点，Pod 的 label 为 standby。然后通过读写 servcie 根据 labels 映射到不同的 pod，其中读 service 会映射到所在 k8s 集群 OpengGauss 集群下所有备节点所在的 Pod，写 service 会映射到所在 k8s 集群 OpengGauss 集群主节点所在的 Pod，客户端通过访问 k8s 集群的任一 Node 的 ip+service 的 Nodeport，从而实现读写分离。
 
 ### 使用
 
@@ -32,14 +32,14 @@ OpenGauss operator 是由 OpenGauss 社区开源的 opeator 项目，目前已�
 | :------------- | :---------- | :--------------------------------- |
 | ReadPort       | Int         | NodePort 读端口                    |
 | WritePort      | int         | NodePort 写端口                    |
-| DBPort         | int         | OpenGauss 实例端口                 |
-| Image          | string      | OpenGauss 镜像地址                 |
+| DBPort         | int         | openGauss 实例端口                 |
+| Image          | string      | openGauss 镜像地址                 |
 | LocalRole      | string      | 集群角色 ：primary /standby        |
-| CPU            | string      | OpenGauss 实例 CPU 限额            |
-| Storage        | string      | OpenGauss 实例存储限额             |
-| Memory         | string      | OpenGauss 实例内存限额             |
+| CPU            | string      | openGauss 实例 CPU 限额            |
+| Storage        | string      | openGauss 实例存储限额             |
+| Memory         | string      | openGauss 实例内存限额             |
 | BandWidth      | string      | 带宽                               |
-| IpList         | IpNodeEntry | Opengauss 实例的 IP 和工作节点名称 |
+| IpList         | IpNodeEntry | openGauss 实例的 IP 和工作节点名称 |
 | RemoteIpList   | \[]string   | 同城集群的实例 IP 列表             |
 | BackupPath     | string      | 本地备份路径                       |
 | ArchiveLogPath | string      | 本地归档路径                       |
@@ -67,13 +67,13 @@ operator 支持三种部署模式:
 ![](./images/k8s_ha.png)
 
 3.扩容、迁移
-OpenGauss 集群的扩容是通过修改 CR 的 iplist 属性来实现的，即：
+openGauss 集群的扩容是通过修改 CR 的 iplist 属性来实现的，即：
 
 ```
 iplist:
   - ip: *.*.0.5
     nodename: node1
-扩容即新增iplist的一个元素，通过调整OpenGauss的iplist，例如：
+扩容即新增iplist的一个元素，通过调整openGauss的iplist，例如：
 iplist:
   - ip: *.*.0.2
     nodename: node2
@@ -90,7 +90,7 @@ kubectl apply -f cluster.yaml
 
 ![](./images/arbitrate.png)
 
-2）OpenGauss 进程容器中使用通过 sidecar 方式采集 OpenGauss 日志，支持 es 日志采集，定时任务
+2）openGauss 进程容器中使用通过 sidecar 方式采集 openGauss 日志，支持 es 日志采集，定时任务
 
 5.运行维护、升级
 operator 支持资源修改已有集群的内存，CPU,带宽，存储容量等大小。其中多节点情况下，升级后会发生主从切换。
@@ -99,7 +99,7 @@ operator 支持资源修改已有集群的内存，CPU,带宽，存储容量等�
 operator 提供 data,backup 等 volume，支持 gs_basebackup 备份，归档操作
 
 7.资源回收
-删除 OpenGauss 集群，只需要执行 k8s 命令删除 cr 即可。需要注意的是，删除 OpenGauss 集群后，该 CR 的 pvc 仍然存在，以防止需要恢复数据。
+删除 openGauss 集群，只需要执行 k8s 命令删除 cr 即可。需要注意的是，删除 openGauss 集群后，该 CR 的 pvc 仍然存在，以防止需要恢复数据。
 
 `kubectl delete opengaussclusters.opengauss.sig -n <namespace name> <cr name>`
 
