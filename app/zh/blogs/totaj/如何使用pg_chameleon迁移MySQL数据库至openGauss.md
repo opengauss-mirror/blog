@@ -32,7 +32,7 @@ pg_chameleon 是一个用 Python 3 编写的实时复制工具，经过内部适
 
 4. pg_chameleon 用到了 CREATE SCHEMA IF NOT EXISTS、CREATE INDEX IF NOT EXISTS 语法。openGauss 不支持 SCHEMA 和 INDEX 的 IF NOT EXISTS 选项。需要修改成先判断 SCHEMA 和 INDEX 是否存在，然后再创建的逻辑。
 
-5. penGauss 对于数组的范围选择，使用的是 column_name[start, end] 的方式。而 PostgreSQL 使用的是 column_name[start : end] 的方式。需要修改 pg_chameleon 源码中关于数组的范围选择方式。
+5. openGauss 对于数组的范围选择，使用的是 column_name[start, end] 的方式。而 PostgreSQL 使用的是 column_name[start : end] 的方式。需要修改 pg_chameleon 源码中关于数组的范围选择方式。
 
 6. pg_chameleon 使用了继承表（INHERITS）功能，而当前 openGauss 不支持继承表。需要改写使用到继承表的 SQL 语句和表。
 
