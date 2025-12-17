@@ -1,16 +1,16 @@
 ---
-title: 'pengauss数据库-地理坐标gis安装'
+title: 'opengauss数据库-地理坐标gis安装'
 
 date: '2021-12-31'
 
 category: 'blog'
-tags: ['pengauss数据库-地理坐标gis安装']
+tags: ['opengauss数据库-地理坐标gis安装']
 
 archives: '2021-12'
 
 author: '周琦放'
 
-summary: 'pengauss数据库-地理坐标gis安装'
+summary: 'opengauss数据库-地理坐标gis安装'
 
 img: '/zh/blogs/2022/title/img19.png'
 
