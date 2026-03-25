@@ -1,11 +1,13 @@
 ---
-title: 'openGauss AI Pipeline——AI原生，打造高效智能应用框架新思路'
+title: 'openGauss AI Pipeline——AI原生，打造高效智能应用框架新思路”'
 date: '2026-03-25'
 category: 'blog'
-tags: ['openGauss'] ['AI Pipeline'] 
+tags: ['openGauss AI Pipeline ']
 archives: '2026-03'
 author: 'openGauss'
-summary: 'openGauss AI Pipeline以“AI 原生数据库”为核心理念，实现“库内向量化，数据免导出”的核心能力，将 AI 计算深度嵌入数据库内核，让数据在存储源头直接释放智能价值，打破传统 RAG 的“复杂性深谷”，为企业智能应用构建更高效、更安全、更易用的全新架构范式。'
+summary: 'openGauss AI Pipeline 以“AI 原生数据库”为核心理念，实现“库内向量化，数据免导出”的核心能力，将 AI 计算深度嵌入数据库内核，让数据在存储源头直接释放智能价值，打破传统 RAG 的“复杂性深谷”，为企业智能应用构建更高效、更安全、更易用的全新架构范式。'
+img: 
+times: '17:30'
 ---
 
 # openGauss AI Pipeline——AI原生，打造高效智能应用框架新思路
