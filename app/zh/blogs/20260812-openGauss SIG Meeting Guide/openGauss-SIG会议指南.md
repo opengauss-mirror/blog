@@ -1,4 +1,15 @@
-# SIG组会议指南
+---
+title: 'SIG组会议指南'
+date: '2026-08-13'
+category: 'blog'
+tags: ['openGauss','SIG组会议指南']
+archives: '2026-08'
+author: 'openGauss'
+summary: '本篇文档用于指导开发者如何参与 SIG 组会议，以及 SIG 组关键成员如何组织会议。'
+img: 
+times: '11:30'
+---
+
 
 openGauss 开源社区按照不同的 SIG（Special Interest Group，特别兴趣小组）来组织开发及版本相关工作。SIG 组通常会有固定例会时间，用于管理 SIG 组开发任务、技术方案评审、技术方案讨论等工作事务，重大跨领域议题还会提交社区技术委员会（TC）例会评审。本篇文档用于指导开发者如何参与 SIG 组会议，以及 SIG 组关键成员如何组织会议。
 
